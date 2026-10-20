@@ -1,0 +1,2009 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/3wmxia",
+    "id": "3wmxia",
+    "slide": 7,
+    "layoutId": "44b9c9d6-ae96-49e3-83d1-07a5b99d2588",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "dae4c7f4-8f3f-4c7e-a82c-8009938fb38a",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F8FAFC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1536,
+      "height": 864
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "IBM Plex Sans Thai"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "44b9c9d6-ae96-49e3-83d1-07a5b99d2588",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "dae4c7f4-8f3f-4c7e-a82c-8009938fb38a",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "dae4c7f4-8f3f-4c7e-a82c-8009938fb38a",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1wvqpgna",
+      "id": "1",
+      "name": "shape-171",
+      "bbox": [
+        0,
+        0,
+        1536,
+        91.2
+      ],
+      "geometry": "rect",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/etk7u1oz",
+      "id": "2",
+      "name": "text-172",
+      "bbox": [
+        86.4,
+        24,
+        1363.2,
+        52
+      ],
+      "geometry": "rect",
+      "text": "สรุปผลและแนวทางวิจัยในอนาคต",
+      "textPreview": "สรุปผลและแนวทางวิจัยในอนาคต",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 28,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "สรุปผลและแนวทางวิจัยในอนาคต"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "สรุปผลและแนวทางวิจัยในอนาคต",
+          "resolvedTextStyle": {
+            "fontSize": 28,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "สรุปผลและแนวทางวิจัยในอนาคต",
+              "fontSize": 28,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zud8n65k",
+      "id": "3",
+      "name": "shape-173",
+      "bbox": [
+        0,
+        820.8,
+        1536,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cr2psb6t",
+      "id": "4",
+      "name": "text-174",
+      "bbox": [
+        86.4,
+        837,
+        1260,
+        20
+      ],
+      "geometry": "rect",
+      "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+      "textPreview": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+      "resolvedFontSize": 14.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 14.67,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+          "resolvedTextStyle": {
+            "fontSize": 14.67,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+              "fontSize": 14.67,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsb6lwne",
+      "id": "5",
+      "name": "text-175",
+      "bbox": [
+        1360,
+        835,
+        90,
+        23
+      ],
+      "geometry": "rect",
+      "text": "6",
+      "textPreview": "6",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "6"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "6",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "6",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qpk7q1on",
+      "id": "6",
+      "name": "shape-176",
+      "bbox": [
+        86.4,
+        130,
+        664,
+        625
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rqtoj658",
+      "id": "7",
+      "name": "text-177",
+      "bbox": [
+        118.4,
+        154,
+        600,
+        36
+      ],
+      "geometry": "rect",
+      "text": "ผลที่ได้จากการทดลอง",
+      "textPreview": "ผลที่ได้จากการทดลอง",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ผลที่ได้จากการทดลอง"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ผลที่ได้จากการทดลอง",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ผลที่ได้จากการทดลอง",
+              "fontSize": 22,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wn6p4v6x",
+      "id": "8",
+      "name": "text-178",
+      "bbox": [
+        118.4,
+        214,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "1",
+      "textPreview": "1",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "1",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xofqx0ni",
+      "id": "9",
+      "name": "text-179",
+      "bbox": [
+        156.4,
+        214,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "แคชล่วงหน้าลดเวลาจนพร้อมโต้ตอบ",
+      "textPreview": "แคชล่วงหน้าลดเวลาจนพร้อมโต้ตอบ",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "แคชล่วงหน้าลดเวลาจนพร้อมโต้ตอบ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "แคชล่วงหน้าลดเวลาจนพร้อมโต้ตอบ",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "แคชล่วงหน้าลดเวลาจนพร้อมโต้ตอบ",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5cb6xsni",
+      "id": "10",
+      "name": "text-180",
+      "bbox": [
+        156.4,
+        250,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "การเพิ่มแคชและผลรวม (+cache) ลด TTA เฉลี่ย 32.3%\nช่วยลดงานคิวรีที่ต้องคำนวณตอนเปิดเว็บ",
+      "textPreview": "การเพิ่มแคชและผลรวม (+cache) ลด TTA เฉลี่ย 32.3% | ช่วยลดงานคิวรีที่ต้องคำนวณตอนเปิดเว็บ",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "การเพิ่มแคชและผลรวม (+cache) ลด TTA เฉลี่ย 32.3%"
+          },
+          {
+            "index": 2,
+            "text": "ช่วยลดงานคิวรีที่ต้องคำนวณตอนเปิดเว็บ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "การเพิ่มแคชและผลรวม (+cache) ลด TTA เฉลี่ย 32.3%",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "การเพิ่มแคชและผลรวม (+cache) ลด TTA เฉลี่ย 32.3%",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ช่วยลดงานคิวรีที่ต้องคำนวณตอนเปิดเว็บ",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ช่วยลดงานคิวรีที่ต้องคำนวณตอนเปิดเว็บ",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4b2p4nmd",
+      "id": "11",
+      "name": "shape-181",
+      "bbox": [
+        118.4,
+        379,
+        600,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jatovi5s",
+      "id": "12",
+      "name": "text-182",
+      "bbox": [
+        118.4,
+        400,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "2",
+      "textPreview": "2",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i9k72d47",
+      "id": "13",
+      "name": "text-183",
+      "bbox": [
+        156.4,
+        400,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "ภาพล่วงหน้าทำให้เห็นข้อมูลเร็วขึ้น",
+      "textPreview": "ภาพล่วงหน้าทำให้เห็นข้อมูลเร็วขึ้น",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ภาพล่วงหน้าทำให้เห็นข้อมูลเร็วขึ้น"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ภาพล่วงหน้าทำให้เห็นข้อมูลเร็วขึ้น",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ภาพล่วงหน้าทำให้เห็นข้อมูลเร็วขึ้น",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h8r6tsnm",
+      "id": "14",
+      "name": "text-184",
+      "bbox": [
+        156.4,
+        436,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "ชุดรวมลด TTR เฉลี่ย 83.7% และ TTA 33.3%\nภาพแสดงเร็วขึ้น แต่ยังต้องรอเริ่มคอมโพเนนต์โต้ตอบ",
+      "textPreview": "ชุดรวมลด TTR เฉลี่ย 83.7% และ TTA 33.3% | ภาพแสดงเร็วขึ้น แต่ยังต้องรอเริ่มคอมโพเนนต์โต้ตอบ",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ชุดรวมลด TTR เฉลี่ย 83.7% และ TTA 33.3%"
+          },
+          {
+            "index": 2,
+            "text": "ภาพแสดงเร็วขึ้น แต่ยังต้องรอเริ่มคอมโพเนนต์โต้ตอบ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ชุดรวมลด TTR เฉลี่ย 83.7% และ TTA 33.3%",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ชุดรวมลด TTR เฉลี่ย 83.7% และ TTA 33.3%",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ภาพแสดงเร็วขึ้น แต่ยังต้องรอเริ่มคอมโพเนนต์โต้ตอบ",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ภาพแสดงเร็วขึ้น แต่ยังต้องรอเริ่มคอมโพเนนต์โต้ตอบ",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wnip0nm1",
+      "id": "15",
+      "name": "shape-185",
+      "bbox": [
+        118.4,
+        565,
+        600,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vm9ori5g",
+      "id": "16",
+      "name": "text-186",
+      "bbox": [
+        118.4,
+        586,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ul07yd4v",
+      "id": "17",
+      "name": "text-187",
+      "bbox": [
+        156.4,
+        586,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "การลดเวลารอต้องแลกกับพื้นที่จัดเก็บ",
+      "textPreview": "การลดเวลารอต้องแลกกับพื้นที่จัดเก็บ",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "การลดเวลารอต้องแลกกับพื้นที่จัดเก็บ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "การลดเวลารอต้องแลกกับพื้นที่จัดเก็บ",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "การลดเวลารอต้องแลกกับพื้นที่จัดเก็บ",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/14vq5cnq",
+      "id": "18",
+      "name": "text-188",
+      "bbox": [
+        156.4,
+        622,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "SC เพิ่มเฉลี่ย 21.2% (SD 29.9%) เทียบ none\nต้นทุนพื้นที่ต่างกันตามรูปแบบภาพและขนาดข้อมูล",
+      "textPreview": "SC เพิ่มเฉลี่ย 21.2% (SD 29.9%) เทียบ none | ต้นทุนพื้นที่ต่างกันตามรูปแบบภาพและขนาดข้อมูล",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "SC เพิ่มเฉลี่ย 21.2% (SD 29.9%) เทียบ none"
+          },
+          {
+            "index": 2,
+            "text": "ต้นทุนพื้นที่ต่างกันตามรูปแบบภาพและขนาดข้อมูล"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "SC เพิ่มเฉลี่ย 21.2% (SD 29.9%) เทียบ none",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "SC เพิ่มเฉลี่ย 21.2% (SD 29.9%) เทียบ none",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ต้นทุนพื้นที่ต่างกันตามรูปแบบภาพและขนาดข้อมูล",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ต้นทุนพื้นที่ต่างกันตามรูปแบบภาพและขนาดข้อมูล",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g3mpw7m5",
+      "id": "19",
+      "name": "shape-189",
+      "bbox": [
+        785.6,
+        130,
+        664,
+        625
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0ze1ofyt",
+      "id": "20",
+      "name": "text-190",
+      "bbox": [
+        817.6,
+        154,
+        600,
+        36
+      ],
+      "geometry": "rect",
+      "text": "แนวทางที่ผู้วิจัยเสนอ",
+      "textPreview": "แนวทางที่ผู้วิจัยเสนอ",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "แนวทางที่ผู้วิจัยเสนอ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "แนวทางที่ผู้วิจัยเสนอ",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "แนวทางที่ผู้วิจัยเสนอ",
+              "fontSize": 22,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l0nihkze",
+      "id": "21",
+      "name": "text-191",
+      "bbox": [
+        817.6,
+        214,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "1",
+      "textPreview": "1",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "1",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yxczm5gn",
+      "id": "22",
+      "name": "text-192",
+      "bbox": [
+        855.6,
+        214,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "ลดภาระการเริ่มคอมโพเนนต์",
+      "textPreview": "ลดภาระการเริ่มคอมโพเนนต์",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ลดภาระการเริ่มคอมโพเนนต์"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ลดภาระการเริ่มคอมโพเนนต์",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ลดภาระการเริ่มคอมโพเนนต์",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zy50fah8",
+      "id": "23",
+      "name": "text-193",
+      "bbox": [
+        855.6,
+        250,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "ศึกษาวิธี Hydration ที่ละเอียดขึ้น\nเพื่อลดต้นทุนที่ยังใกล้การเรนเดอร์เต็มชุด (§5)",
+      "textPreview": "ศึกษาวิธี Hydration ที่ละเอียดขึ้น | เพื่อลดต้นทุนที่ยังใกล้การเรนเดอร์เต็มชุด (§5)",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ศึกษาวิธี Hydration ที่ละเอียดขึ้น"
+          },
+          {
+            "index": 2,
+            "text": "เพื่อลดต้นทุนที่ยังใกล้การเรนเดอร์เต็มชุด (§5)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ศึกษาวิธี Hydration ที่ละเอียดขึ้น",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ศึกษาวิธี Hydration ที่ละเอียดขึ้น",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "เพื่อลดต้นทุนที่ยังใกล้การเรนเดอร์เต็มชุด (§5)",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เพื่อลดต้นทุนที่ยังใกล้การเรนเดอร์เต็มชุด (§5)",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cvuhkvyh",
+      "id": "24",
+      "name": "shape-194",
+      "bbox": [
+        817.6,
+        379,
+        600,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dw3id0z2",
+      "id": "25",
+      "name": "text-195",
+      "bbox": [
+        817.6,
+        400,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "2",
+      "textPreview": "2",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qtczi5gr",
+      "id": "26",
+      "name": "text-196",
+      "bbox": [
+        855.6,
+        400,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "ผสานการคำนวณและสร้างใหม่เฉพาะส่วน",
+      "textPreview": "ผสานการคำนวณและสร้างใหม่เฉพาะส่วน",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ผสานการคำนวณและสร้างใหม่เฉพาะส่วน"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ผสานการคำนวณและสร้างใหม่เฉพาะส่วน",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ผสานการคำนวณและสร้างใหม่เฉพาะส่วน",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bul0bahc",
+      "id": "27",
+      "name": "text-197",
+      "bbox": [
+        855.6,
+        436,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "ใช้ทั้งช่วงเผยแพร่และรันไทม์ (Hybrid) และสร้างใหม่\nเฉพาะส่วนที่เปลี่ยน (Incremental Regeneration, §6)",
+      "textPreview": "ใช้ทั้งช่วงเผยแพร่และรันไทม์ (Hybrid) และสร้างใหม่ | เฉพาะส่วนที่เปลี่ยน (Incremental Regeneration, §6)",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ใช้ทั้งช่วงเผยแพร่และรันไทม์ (Hybrid) และสร้างใหม่"
+          },
+          {
+            "index": 2,
+            "text": "เฉพาะส่วนที่เปลี่ยน (Incremental Regeneration, §6)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ใช้ทั้งช่วงเผยแพร่และรันไทม์ (Hybrid) และสร้างใหม่",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ใช้ทั้งช่วงเผยแพร่และรันไทม์ (Hybrid) และสร้างใหม่",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "เฉพาะส่วนที่เปลี่ยน (Incremental Regeneration, §6)",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เฉพาะส่วนที่เปลี่ยน (Incremental Regeneration, §6)",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oruhgvyl",
+      "id": "28",
+      "name": "shape-198",
+      "bbox": [
+        817.6,
+        565,
+        600,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ps3i90z6",
+      "id": "29",
+      "name": "text-199",
+      "bbox": [
+        817.6,
+        586,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r210zq1s",
+      "id": "30",
+      "name": "text-200",
+      "bbox": [
+        855.6,
+        586,
+        562,
+        34
+      ],
+      "geometry": "rect",
+      "text": "เลือกระดับการปรับปรุงโดยอัตโนมัติ",
+      "textPreview": "เลือกระดับการปรับปรุงโดยอัตโนมัติ",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 20,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "เลือกระดับการปรับปรุงโดยอัตโนมัติ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "เลือกระดับการปรับปรุงโดยอัตโนมัติ",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เลือกระดับการปรับปรุงโดยอัตโนมัติ",
+              "fontSize": 20,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61sjqlkn",
+      "id": "31",
+      "name": "text-201",
+      "bbox": [
+        855.6,
+        622,
+        562,
+        107
+      ],
+      "geometry": "rect",
+      "text": "พัฒนาวิธีเลือกการตั้งค่าจากข้อมูลและข้อกำหนดภาพ\nให้เหมาะกับประโยชน์และต้นทุนของแต่ละกรณี (§6)",
+      "textPreview": "พัฒนาวิธีเลือกการตั้งค่าจากข้อมูลและข้อกำหนดภาพ | ให้เหมาะกับประโยชน์และต้นทุนของแต่ละกรณี (§6)",
+      "resolvedFontSize": 16.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "พัฒนาวิธีเลือกการตั้งค่าจากข้อมูลและข้อกำหนดภาพ"
+          },
+          {
+            "index": 2,
+            "text": "ให้เหมาะกับประโยชน์และต้นทุนของแต่ละกรณี (§6)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "พัฒนาวิธีเลือกการตั้งค่าจากข้อมูลและข้อกำหนดภาพ",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "พัฒนาวิธีเลือกการตั้งค่าจากข้อมูลและข้อกำหนดภาพ",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ให้เหมาะกับประโยชน์และต้นทุนของแต่ละกรณี (§6)",
+          "resolvedTextStyle": {
+            "fontSize": 16.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ให้เหมาะกับประโยชน์และต้นทุนของแต่ละกรณี (§6)",
+              "fontSize": 16.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/toji10jy",
+      "id": "32",
+      "name": "text-202",
+      "bbox": [
+        86.4,
+        768,
+        1363.2,
+        24
+      ],
+      "geometry": "rect",
+      "text": "ที่มา: ผลทดลอง Table 1 / Figure 4 · แนวทางอนาคต Sections 5–6 (PDF หน้า 4) ยังไม่ได้ทดสอบ",
+      "textPreview": "ที่มา: ผลทดลอง Table 1 / Figure 4 · แนวทางอนาคต Sections 5–6 (PDF หน้า 4) ยังไม่ได้ทดสอบ",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 15,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ที่มา: ผลทดลอง Table 1 / Figure 4 · แนวทางอนาคต Sections 5–6 (PDF หน้า 4) ยังไม่ได้ทดสอบ"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ที่มา: ผลทดลอง Table 1 / Figure 4 · แนวทางอนาคต Sections 5–6 (PDF หน้า 4) ยังไม่ได้ทดสอบ",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ที่มา: ผลทดลอง Table 1 / Figure 4 · แนวทางอนาคต Sections 5–6 (PDF หน้า 4) ยังไม่ได้ทดสอบ",
+              "fontSize": 15,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

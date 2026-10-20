@@ -1,0 +1,86 @@
+{
+  "checkedOn": "2026-09-27",
+  "source": "IEEE Xplore search API (/rest/search), IEEE HTML full-text view, and downloaded PDFs",
+  "access": "No login, no UniNet; PRIMARY is Open Access (CC BY), BACKUPs are IEEE free documents (SPW)",
+  "selected": [
+    {
+      "role": "PRIMARY",
+      "ieeeDocId": "10556381",
+      "doi": "10.1145/3643915.3644093",
+      "title": "Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning",
+      "authors": ["Rustem Dautov", "Erik Johannes Husom"],
+      "affiliation": "SINTEF Digital, Oslo, Norway",
+      "venue": "2024 IEEE/ACM 19th Symposium on Software Engineering for Adaptive and Self-Managing Systems (SEAMS)",
+      "location": "Lisbon, Portugal",
+      "dates": "15-16 April 2024",
+      "pages": "110-121",
+      "citedByIeee": 8,
+      "fullTextViews": 827,
+      "file": "01_original_v2/Paper_III_2_PRIMARY_RaftFL_10556381.pdf",
+      "bytes": 956188,
+      "pdfPages": 12,
+      "sha256": "3d3cc138c066edb8d641b93318ae56206fccd5624146f08f3e68c8c8c278093d",
+      "pdfFindings": {
+        "fig3_reelection_seconds_workers_1_to_10": [1.27, 1.33, 1.46, 1.7, 1.97, 2.25, 2.47, 2.76, 3.13, 3.76],
+        "fig4_baseline_flower_MB_workers_1_to_10": [0.98, 2.15, 3.1, 4.06, 5.02, 5.97, 6.93, 7.88, 8.84, 9.8],
+        "fig4_raft_enhanced_MB_workers_1_to_10": [1.77, 5.17, 7.94, 10.9, 16, 22.6, 29.3, 36.8, 43.9, 49.1],
+        "derived_ratio_raft_over_baseline": [1.81, 2.40, 2.56, 2.68, 3.19, 3.79, 4.23, 4.67, 4.97, 5.01],
+        "figurePage": "PDF page 9 (printed page 118)",
+        "table1Page": "PDF page 5 (printed page 114)",
+        "testbed": "11 Raspberry Pi 3, wireless LAN, Flower + PySyncObj, CNN on CIFAR-10, ~250 kB updates, 1 FL round for traffic",
+        "notes": [
+          "Text says the traffic overhead is 'approx. 5 times'; this holds only at 9-10 workers (1.81x at 1 worker).",
+          "Text says re-election time 'grows slightly'; it rises 2.96x from 1 to 10 workers.",
+          "Section 6.2.1 says 2 to 10 workers were launched, but Fig. 3 also plots 1 worker; standard Raft cannot elect a leader with 1 of 2 nodes left. Not explained in the paper.",
+          "Fig. 4 caption does not state whether the red bars are total traffic or port 5000 only."
+        ]
+      }
+    },
+    {
+      "role": "BACKUP1",
+      "ieeeDocId": "10579526",
+      "doi": "10.1109/SPW63631.2024.00009",
+      "title": "A Performance Analysis for Confidential Federated Learning",
+      "venue": "2024 IEEE Security and Privacy Workshops (SPW)",
+      "dates": "23 May 2024",
+      "pages": "40-47",
+      "file": "00_research_v2/raw/Paper_III_v2_BACKUP1_10579526.pdf",
+      "bytes": 411043,
+      "pdfPages": 8,
+      "sha256": "b3c1cde1ca70d2af1444ef09e3785bc72c6a53236ff51546c68cf6fc25182097",
+      "pdfFindings": {
+        "table3_full_security_over_baseline": {"ResNet18_MNIST": 2.01, "ResNet18_CIFAR10": 2.04, "ResNet18_CIFAR100": 2.20, "MobileNetV3S_MNIST": 1.74, "MobileNetV3S_CIFAR10": 1.61, "MobileNetV3S_CIFAR100": 2.03},
+        "fig3_coefficients": {"Gramine": [0.754, 0.282], "SGX": [0.056, 0.330], "DE": [0.046, 0.040], "TLS": [0.197, 0.133], "order": "ResNet-18, MobileNetV3-Small"},
+        "notes": [
+          "Abstract says overhead is at most 2x; Table 3 shows 2.20x for ResNet-18 on CIFAR-100.",
+          "'About 2.7x' and 'about 5.9x' in Section 5.1 are ratios of coefficients between the two models, not slowdowns."
+        ]
+      }
+    },
+    {
+      "role": "BACKUP2",
+      "ieeeDocId": "10579519",
+      "doi": "10.1109/SPW63631.2024.00030",
+      "title": "SideGuard: Non-Invasive On-Chip Malware Detection in Heterogeneous IoT Systems by Leveraging Side-Channels",
+      "venue": "2024 IEEE Security and Privacy Workshops (SPW)",
+      "dates": "23 May 2024",
+      "pages": "253-259",
+      "file": "00_research_v2/raw/Paper_III_v2_BACKUP2_10579519.pdf",
+      "bytes": 320726,
+      "pdfPages": 7,
+      "sha256": "b946f8360541fef7b3c96efa4dc7017b9e3849be157c17162680384f4f73fae4",
+      "pdfFindings": {
+        "tableI_false_positive_percent": {"bitcount": 1.7, "susan": 4.1, "fft": 3.5, "basicmath": 2.9, "qsort": 3.1, "mean": 3.06},
+        "true_positive_rate": ">99.9%",
+        "tableII_fp_change": {"sameTypeBoardDE1": "+2.7%", "differentBoardZynq": "+0.3%"},
+        "hardware_cost": {"fpgaArea": "<35%", "peakPower_mW": 47, "systemPowerShare": "~3%", "trainingStorage": "<100 bytes"},
+        "notes": ["IEEE HTML abstract shows '> 5 % accuracy'; the PDF says '>95% accuracy'."]
+      }
+    }
+  ],
+  "notSelected": [
+    {"id": "C4", "ieeeDocId": "10579527", "doi": "10.1109/SPW63631.2024.00028", "reason": "Passes gates; next reserve. Small test sets (16 and 144 flows), no baseline system, closed LLM APIs."},
+    {"id": "C5", "ieeeDocId": "11645209", "doi": "10.1109/COMPSAC69091.2026.00359", "reason": "Fails G4: only flash/RAM footprint, no baseline, no throughput or latency."},
+    {"id": "C6", "ieeeDocId": "10554862", "doi": "10.1145/3639478.3640042", "reason": "Fails G4: tool demo, detection accuracy reported in a different paper."}
+  ]
+}

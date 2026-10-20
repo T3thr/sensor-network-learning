@@ -1,0 +1,101 @@
+To reduce the storage and bootstrapping costs for validators
+(whose shard assignments might change periodically), we
+introduce state blocks that are similar to stable checkpoints
+in PBFT [13] and that summarize the entire state of a shard’s
+ledger. To create a state block sbj,e for shard j in epoch e, the
+shard’s validators execute the following steps: At the end of
+e, the shard’s leader stores the UTXOs in an ordered Merkle
+tree and puts the Merkle tree’s root hash in the header of sbj,e.
+Afterwards, the validators run consensus on the header of
+sbj,e (note that each validator can construct the same ordered
+Merkle tree for veriﬁcation) and, if successful, the leader stores
+the approved header in the shard’s ledger making sbj,e the
+genesis block of epoch e + 1. Finally, the body of sbj,e−1
+(UTXOs) can be discarded safely. We keep the regular blocks
+of epoch e, however, until after the end of epoch e+1 for the
+purpose of creating transaction proofs.
+As OmniLedger’s state is split across multiple shards and
+as we store only the state blocks’ headers in a shard’s ledger,
+a client cannot prove the existence of a past transaction to
+another party by presenting an inclusion proof to the block
+where the transaction was committed. We work around this
+by moving the responsibility of storing transactions’ proofs-
+of-existence to the clients of OmniLedger. During epoch
+e + 1 clients can generate proofs-of-existence for transactions
+validated in epoch e using the normal block of epoch e and the
+state block. Such a proof for a given transaction tx contains
+the Merkle tree inclusion proof to the regular block B that
+committed tx in epoch e and a sequence of block headers from
+the state block sbj,e at the end of the epoch to block B. To
+reduce the size of these proofs, state blocks can include several
+multi-hop backpointers to headers of intermediate (regular)
+blocks similarly to skipchains [37].
+Finally, if we naively implement the creation of state blocks,
+it stalls the epoch’s start, hence the transaction processing until
+sbj,e has been appended to the ledger. To avoid this downtime,
+the consistent validators of the shard in epoch e + 1 include
+an empty state-block at the beginning of the epoch as a place-
+holder; and once sbj,e is ready they commit it as a regular
+block, pointing back to the place-holder and sbj,e−1.
+D. Optional Trust-but-Verify Validation
+There exists an inherent trade-off between the number of
+shards (and consequently the size of a shard), throughput
+and latency, as illustrated in Figure 4. A higher number of
+smaller shards results in a better performance but provides less
+resiliency against a more powerful attacker (25%). Because
+the design of OmniLedger favors security over scalability, we
+pessimistically assume an adversary who controls 25% of the
+validators and, accordingly, choose large shards at the cost
+of higher latency but guarantee the ﬁnality of transactions.
+This assumption, however, might not appropriately reﬂect
+the priorities of clients with frequent, latency-sensitive but
+low-value transactions (e.g., checking out at a grocery store,
+buying gas or paying for coffee) and who would like to have
+transactions processed as quickly as possible.
+Fig. 4: Trust-but-Verify Validation Architecture
+In response to the clients’ needs, we augment the intra-
+shard architecture (see Figure 4) by following a “trust but
+verify” model, where optimistic validators process transac-
+tions quickly, providing a provisional but unlikely-to-change
+commitment and core validators subsequently verify again
+the transactions to provide ﬁnality and ensure veriﬁability.
+Optimistic validators follow the usual procedures for deciding
+which transactions are committed in which order; but they
+form much smaller groups, even as small as one validator
+per group. Consequently, they produce smaller blocks with
+real-time latencies but are potentially less secure as the ad-
+versary needs to control a (proportionally) smaller number of
+validators to subvert their operation. As a result, some bad
+transactions might be committed, but ultimately core validators
+verify all provisional commitments, detecting any inconsisten-
+cies and their culprits, which makes it possible to punish rogue
+validators and to compensate the defrauded customers for the
+damages. The trust-but-verify approach strikes a balance for
+processing small transactions in real-time, as validators are
+unlikely to misbehave for small amounts of money.
+At the beginning of an epoch e, all validators assign
+themselves to shards by using the per-epoch randomness, and
+then bootstrap their states from the respective shard’s last state
+block. Then, OmniLedger assigns each validator randomly to
+one of multiple optimistic processing groups or a single core
+processing group. The shard-policy ﬁle speciﬁes the number
+of optimistic and core validators, as well as the number of
+optimistic groups. Finally, in order to guarantee that any mis-
+behavior will be contained inside the shard, it can also deﬁne
+the maximum amount of optimistic validated transactions to
+be equal to the stake or revenue of the validators.
+Transactions are ﬁrst processed by an optimistic group that
+produces optimistically validated blocks. These blocks serve
+as input for re-validation by core validators who run concur-
+rently and combine inputs from multiple optimistic processing
+groups, thus maximizing the system’s throughput (Figure 4).
+Valid transactions are included in a ﬁnalized block that is
+added to the shard’s ledger and are ﬁnally included in the
+state block. However, when core validators detect an inconsis-
+tency, then the respective optimistically validated transaction
+is excluded and the validators who signed the invalid block
+are identiﬁed and held accountable, e.g., by withholding any
+rewards or by excluding them from the system. We remark that
+the exact details of such punishments depend on the incentive
+590
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

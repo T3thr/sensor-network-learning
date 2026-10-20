@@ -1,0 +1,43 @@
+{
+  "style": "formal-academic",
+  "originalWords": 835,
+  "totalWords": 835,
+  "plannedSeconds": 295,
+  "slides": [
+    {
+      "slide": 1,
+      "words": 66,
+      "seconds": 25
+    },
+    {
+      "slide": 2,
+      "words": 110,
+      "seconds": 40
+    },
+    {
+      "slide": 3,
+      "words": 133,
+      "seconds": 45
+    },
+    {
+      "slide": 4,
+      "words": 125,
+      "seconds": 45
+    },
+    {
+      "slide": 5,
+      "words": 164,
+      "seconds": 60
+    },
+    {
+      "slide": 6,
+      "words": 103,
+      "seconds": 35
+    },
+    {
+      "slide": 7,
+      "words": 134,
+      "seconds": 45
+    }
+  ]
+}

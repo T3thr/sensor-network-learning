@@ -1,0 +1,149 @@
+Input: Fingerprints: 𝐹 ∈ 𝐼𝑅𝑛×𝑘 , number of sensors: 𝑛,
+sub-sequence length: 𝑙, overlap: 𝑜
+Output: Cluster layout 𝐶 = {𝑐 1, 𝑐 2, . . . , 𝑐𝑔 }
+Initialize 𝑑 = 𝑘−𝑜
+𝑙−𝑜
+Initialize 𝑝𝑚𝑎𝑥 = max # of patterns in sub-sequence
+Initialize 𝑖𝑡𝑒𝑟𝑚𝑎𝑥 = max # of iterations
+Initialize the center of clusters randomly
+foreach 𝑗 ∈ {1, 2, . . . , 𝑑 } do
+foreach 𝑖 ∈ {1, 2, . . . , 𝑛} do
+Split fingerprint 𝐹𝑖 to obtain sub-sequences 𝑓𝑖 𝑗 ;
+Clustering:
+foreach 𝑖𝑡𝑒𝑟 ∈ {1, 2, . . . , 𝑖𝑡𝑒𝑟𝑚𝑎𝑥 } do
+foreach 𝑖 ∈ {1, 2, . . . , 𝑛} do
+𝑗
+𝑗
+𝑝𝑖 = 𝐴𝑟𝑔𝑚𝑖𝑛𝑥 ∈𝐶 𝐻𝑎𝑚𝑚𝑖𝑛𝑔(𝑓𝑖 , 𝑐𝑒𝑛𝑡𝑒𝑟 (𝑥));
+foreach 𝑥 ∈ {1, 2, . . . , 𝑝𝑚𝑎𝑥 } do
+𝑗 𝑗
+𝑐𝑒𝑛𝑡𝑒𝑟 (𝑥) = 𝑚𝑒𝑎𝑛({𝑓𝑖 |𝑝𝑖 = 𝑥 });
+if no changes in 𝑐𝑒𝑛𝑡𝑒𝑟 (𝑥) then
+break;
+foreach 𝑥 ∈ {1, 2, . . . , 𝑝𝑚𝑎𝑥 } do
+Calculate inter-cluster (𝑂𝐶) metrics;
+𝑗
+𝑗
+if 𝐻𝑎𝑚𝑚𝑖𝑛𝑔(𝐹𝑖 , 𝑐𝑒𝑛𝑡𝑒𝑟 (𝑝𝑖 ) > 𝑂𝐶 then
+𝑗
+𝑗
+Remove 𝐹𝑖 from cluster 𝑝𝑖 ;
+𝑗
+Add 𝐹𝑖 in unclustered nodes;
+𝑗
+Update 𝑝𝑚𝑎𝑥 ;
+if |𝑐𝑖 | < 3 then
+Remove cluster 𝑥;
+𝑗
+Update 𝑝𝑚𝑎𝑥 ;
+Add clusters to pattern histories 𝑃𝑖 ;
+Perform the clustering again on pattern histories 𝑃𝑖 ,
+𝑖 ∈ [1, 𝑛] to associate sensors;
+return Sensors Cluster layout 𝐶 = {𝑐 1, . . . , 𝑐𝑔 }
+
+3.3
+
+Predictive Model
+
+The next module of our methodology is the predictive model that
+predicts the future measurements of sensors according to the clustering layout and history of measurements. We construct a Recurrent Neural Networks (RNN) for each cluster of sensors as the
+predictive model. As it is depicted in 6, our RNN comprises LSTM
+encoder-decoder and dense layers, which encode the features of input sequences of length 𝑙𝑖 and predict the future sequences of length
+𝑙𝑜 based on the encoded features. Sequences of data are derived from
+the input time-series signals using the sliding window technique.
+Afterward, the sequences are scaled through a Min-Max Scaler before being treated by the encoder because input signals come from
+
+Output Layer
+
+Dense Layer (100)
+
+Dropout (0.5)
+
+LSTM Decoder
+
+Encoded
+States
+
+LSTM Encoder
+
+Min-Max Scaler
+
+Time Series Signals
+
+After sensor association, we evaluate the system to ensure that
+there is no standalone sensor which is not clustered. A standalone
+sensor is vulnerable because it is not related to any group of sensors
+that can verify its proper operation. In this case, the anomaly detection still can be applied to the independent sensor individually, but
+the SDA and EA are indistinguishable. The user is warned about
+this vulnerability in sensors and can resolve the issue by adding
+more sensors to the system.
+Algorithm 1: Customized clustering algorithm for extracting patterns in sensor fingerprints and sensor association.
+
+Figure 6: The architecture of RNN used as predictive model.
+multi-modality sensors with different signal ranges. Eventually, we
+have a set of predictive models 𝐷𝑇 = {𝑀1, 𝑀2, . . . , 𝑀𝑔 } where 𝑔 is
+the number of clusters in the system and 𝑀𝑖 represents the model
+for cluster 𝑐𝑖 . Given cluster 𝑐𝑖 that contains 𝑛𝑖 nodes, the model
+𝑀𝑖 takes as input a matrix 𝑋𝑖 ∈ R𝑙𝑖 ×𝑛𝑖 to predict another matrix
+𝑌𝑖 ∈ R𝑛𝑖 ×𝑙𝑜 . On top of predictive models, Multivariate Gaussian
+Estimators are trained to learn the probability of finding a particular error vector. This probability is used to ascertain whether
+the errors between predictions and real measurements correspond
+to the system’s normal behavior, or an anomaly has occurred. A
+multivariate Gaussian distributor 𝐺𝑖 = N (𝜇𝑖 , 𝜎𝑖 ) is fitted on the
+reconstruction error matrix 𝐸𝑖 , which is the difference between
+the real values and predicted values. The parameters 𝜇𝑖 and 𝜎𝑖 are
+computed using Maximum Likelihood Estimation.
+𝜇𝑖 =
+
+3.4
+
+𝑚
+
+𝑚
+
+𝑘=1
+
+𝑘=1
+
+1 Õ 𝑘
+1 Õ 𝑘
+𝑒𝑖 𝑗 = 𝑒 𝑖 𝑗 , 𝜎𝑖 =
+(𝑒 𝑗 − 𝜇 𝑗 )(𝑒 𝑘𝑗 − 𝜇 𝑗 )𝑇
+𝑚
+𝑚
+
+Anomaly Detection
+
+In the training stage, the predictive models and estimator modules
+are periodically used at run-time to infer anomalies. The frequency
+in which anomaly detection is performed can vary depending on
+the system specifications. At the run-time, an input measurement
+𝑥 𝑡 is compared with model prediction 𝑦𝑡 , and the reconstruction
+error 𝑒 𝑡 is calculated. Then, 𝑥 𝑡 classified as anomalous if 𝑝 𝑡 < 𝛼,
+where 𝑝 𝑡 is the probability of obtaining the error vector given by
+the Gaussian estimator 𝐺. 𝛼 is a predefined threshold value, and it
+is tuned to maximize the F-score of the model.
+When anomalous data is discovered, we utilize our consensus
+algorithm to differentiate between EA and SDA. EA occurs as a
+result of an incident in the environment. If the EA causes an anomaly in a sensor signal, the correlated sensors are affected by the
+event and show abnormal changes in their signals. In contrast, SDA
+influences the sensors individually and results in an anomaly in one
+or some of the sensors in a cluster. For each cluster, the consensus
+algorithm inspects the consistency of the sensor behaviors. It uses
+a voting mechanism to check if all sensors in a cluster agree on the
+occurrence of an environmental incident. To account for inertia
+in the physics of the system, we check the consensus in the time
+intervals instead of data points.
+
+3.5
+
+Model Adaptation
+
+Due to the high variation in the IoT system and environment, we
+add the property of aliveness to our method, which means the
+model automatically gets updated to adapt to the system alteration
+and make more accurate predictions. As Figure 3 demonstrates, the
+sensor association, predictive model, and estimator modules are
+trainable. There are two levels of updating the model; i)complete
+
+

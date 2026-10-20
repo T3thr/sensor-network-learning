@@ -1,0 +1,122 @@
+scheme that are out of scope of this paper. Given a minimal
+incentive to misbehave and the quantiﬁable conﬁdence in
+the security of optimistic validation (Figure 5), clients can
+choose, depending on their needs, to take advantage of real-
+time processing with an optimistic assurance of ﬁnality or to
+wait to have their transaction ﬁnalized.
+VI. SECURITY ANALYSIS
+Our contributions are mainly pragmatic rather than theoreti-
+cal and in this section we provide an informal security analysis
+supplementing the arguments in Sections IV and V.
+A. Randomness Creation
+RandHound assumes an honest leader who is responsible
+for coordinating the protocol run and for making the produced
+randomness available to others. In OmniLedger, however, we
+cannot always guarantee that an honest leader will be selected.
+Although a dishonest leader cannot affect the unbiasability of
+the random output, he can choose to withhold the randomness
+if it is not to his liking, thus forcing the protocol to restart.
+We economically disincentivize such behavior and bound the
+bias by the randomized leader-election process.
+The leader-election process is unpredictable as the adversary
+is bound by the usual cryptographic hardness assumptions and
+is unaware of (a) the private keys of the honest validators and
+(b) the input string x to the VRF function. Also, OmniLedger’s
+membership is unpredictable at the moment of private key
+selection and private keys are bound to identities. As a result,
+the adversary has at most m = 1/4 chance per round to
+control the elected leader as he controls at most 25% of all
+nodes. Each time an adversary-controlled leader is elected
+and runs RandHound the adversary can choose to accept the
+random output, and the sharding assignment produced by it,
+or to forfeit it and try again in hopes of a more favorable
+yet still random assignment. Consequently, the probability that
+an adversary controls n consecutive leaders is upper-bounded
+by P [X ≥n] =
+1
+4n < 10−λ. For λ = 6, the adversary
+will control at most 10 consecutive RandHound runs. This
+is an upper bound, as we do not include the exclusion of the
+previous leader from the consecutive elections.
+B. Shard-Size Security
+We previously made the assumption that each shard is
+collectively honest. This assumption holds as long as each
+shard has less than c = ⌊n
+3 ⌋malicious validators, because
+ByzCoinX requires n = 3f + 1 to provide BFT consensus.
+The security of OmniLedger’s validator assignment mech-
+anism is modeled as a random sampling problem with two
+possible outcomes (honest or malicious). Assuming an inﬁnite
+pool of potential validators, we can use the binomial distribu-
+tion (Eq. 1). We can assume random sampling due to Rand-
+Hound’s unpredictability property that guarantees that each
+selection is completely random; this leads to the adversarial
+power of at most m = 0.25.
+P
+
+X ≤⌊n
+3 ⌋
+
+=
+n
+
+k=0
+
+n
+k
+
+mk (1 −m)n−k
+(1)
+Fig. 5: Left: Shard size required for 10−6 system failure prob-
+ability under different adversarial models. Right: Security of
+an optimistic validation group for 12.5% and 25% adversaries.
+To calculate the failure rate of one shard, i.e., the proba-
+bility that a shard is controlled by an adversary, we use the
+cumulative distributions over the shard size n, where X is the
+random variable that represents the number of times we pick a
+malicious node. Figure 5 (right) illustrates the proposed shard
+size, based on the power of the adversary. In a similar fashion
+we calculate the conﬁdence a client can have that an optimistic
+validation group is honest (left).
+C. Epoch Security
+In the last section, we modeled the security of a single
+shard as a random selection process that does, however, not
+correspond to the system’s failure probability within on epoch.
+Instead, the total failure rate can be approximated by the union
+bound over the failure rates of individual shards.
+We argue that, given an adequately large shard size, the
+epoch-failure probability is negligible. We can calculate an
+upper bound on the total-failure probability by permitting the
+adversary to run RandHound multiple times and select the
+output he prefers. This is a stronger assumption than what
+RandHound permits, as the adversary cannot go back to a
+previously computed output if he chose to re-run RandHound.
+An upper bound of the epoch failure event XE is given by
+P [XE] ≤
+l
+
+k=0
+1
+4k · n · P [XS]
+(2)
+where l is the number of consecutive views the adversary
+controls, n is the number of shards and P [XS] is the failure
+probability of one shard as calculated in Section VI-B. For
+l →∞, we get P [XE] ≤4
+3 · n · P [XS]. More concretely, the
+failure probability, given a 12.5%-adversary and 16 shards, is
+4 · 10−5 or one failure in 68.5 years for one-day epochs
+D. Group Communication
+We now show that OmniLedger’s group-communication
+pattern has a high probability of convergence under faults. We
+assume that there are N nodes that are split in
+√
+N groups of
+√
+N nodes each.
+1) Setting the Time-Outs: In order to ensure that the shard
+leader will have enough time to ﬁnd honest group leaders,
+we need to setup the view-change time-outs accordingly.
+OmniLedger achieves this by having two time-outs. The ﬁrst
+591
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

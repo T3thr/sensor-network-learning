@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+  }
+  body {
+    font-family: 'Tahoma', 'Sarabun', 'Leelawadee UI', sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+  }
+  .doc-title {
+    font-size: 22pt;
+    font-weight: bold;
+    text-align: center;
+    color: #173F5F;
+    margin-bottom: 12px;
+  }
+  .meta-container {
+    background: #F4F8FA;
+    border-left: 4px solid #173F5F;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    border-radius: 4px;
+  }
+  .meta-item {
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  .meta-label {
+    font-weight: bold;
+    color: #173F5F;
+  }
+  .section-title {
+    font-size: 13.5pt;
+    font-weight: bold;
+    color: #173F5F;
+    border-bottom: 1.5px solid #173F5F;
+    padding-bottom: 4px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  p {
+    text-align: justify;
+    text-indent: 2.2em;
+    margin-top: 0;
+    margin-bottom: 7px;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .table-container {
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #C5D5E0;
+    padding: 6px 10px;
+  }
+  th {
+    background-color: #173F5F;
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #F7FAFC;
+  }
+  .table-caption {
+    font-size: 8.8pt;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+  }
+  .ref-item {
+    font-size: 9.5pt;
+    margin-left: 1.8em;
+    text-indent: -1.8em;
+    margin-bottom: 4px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+<h1 class='doc-title'>รายงานย่อบทความ Story Validator</h1><div class='meta-item'><span class='meta-label'>ชื่อบทความ:</span> Validating the plot of Interactive Narrative games</div><div class='meta-item'><span class='meta-label'>ผู้เขียน:</span> Carolina Veloso และ Rui Prada</div><div class='meta-item'><span class='meta-label'>งานประชุม:</span> 2021 IEEE Conference on Games (CoG)</div><div class='meta-item'><span class='meta-label'>DOI:</span> 10.1109/CoG52621.2021.9618897</div><div class='meta-item'><span class='meta-label'>ผู้จัดทำ:</span> นายธีรภัทร ภู่ระย้า</div><div class='meta-item'><span class='meta-label'>รหัสนิสิต:</span> 663624</div><div class='meta-item'><span class='meta-label'>รายวิชา:</span> 305432 เครือข่ายเซนเซอร์ (Assignment Paper 2: CPE Senior Project)</div><h2 class='section-title'>บทคัดย่อฉบับแปลและสรุป</h2><p>การสร้างบทสนทนาและโครงเรื่องแบบโต้ตอบ (Interactive Narrative หรือ IN) ในวิดีโอเกมเป็นงานที่มีความซับซ้อนสูงสำหรับนักเขียนบทเกม เนื่องจากการสร้างเรื่องราวที่สามารถรักษาสมดุลระหว่างเจตนารมณ์ของผู้แต่ง (Authorial Intent) กับอิสระในการตัดสินใจของผู้เล่น (Player Agency) จำเป็นต้องอาศัยการทดสอบระบบอย่างละเอียด ทว่าเครื่องมือที่มีอยู่ในปัจจุบันแทบไม่มีระบบช่วยตรวจสอบความถูกต้องของโครงสร้างเส้นเรื่อง ทำให้นักพัฒนาต้องพึ่งพาการทดสอบด้วยมนุษย์จริง (Human Playtesting) ซึ่งใช้เวลาและค่าใช้จ่ายสูง</p><p>บทความนี้นำเสนอ Story Validator ซึ่งเป็นเครื่องมือช่วยตรวจสอบความถูกต้องของโครงเรื่องเกมแบบโต้ตอบในขั้นตอนการพัฒนา โดยมองเนื้อเรื่องเป็นกราฟที่มี Passage เป็นโหนด และ Link เป็นเส้นเชื่อมที่มีเงื่อนไขตัวแปรกำกับ ระบบใช้อัลกอริทึมการค้นหาแบบ Depth-First Search (DFS) ร่วมกับ Heuristic Greedy Search เพื่อจำลองพฤติกรรมผู้เล่นตามโปรไฟล์บุคลิกภาพ (Personas) และประเมินตัวชี้วัดโครงเรื่อง 5 ด้าน ได้แก่ จำนวนเส้นทางทั้งหมด, จุดบังคับผ่าน (Stroke Points), ฉากที่เข้าไม่ถึงและทางตัน (Lost Plot และ Dead-Ends), การเปลี่ยนแปลงของตัวแปรตลอดเส้นทาง และโอกาสในการเข้าถึงฉากจบแต่ละแบบ</p><p>ผู้เขียนได้ทำการทดสอบการใช้งานจริงกับผู้ใช้ 2 กลุ่ม (การศึกษาที่หนึ่ง 5 คน และการศึกษาที่สอง 20 คน) โดยใช้ฉากทดสอบ The Murder Case ที่จงใจใส่จุดบกพร่องของเส้นเรื่องไว้ 5 จุด ผลการทดลองพบว่าผู้ทดสอบ 20 คนสามารถใช้เครื่องมือตรวจหาจุดบกพร่องได้ในเวลาเฉลี่ย 52.3 วินาที และเสนอวิธีแก้ไขในเวลาเฉลี่ย 146.2 วินาที เครื่องมือได้รับคะแนนความง่ายในการใช้งานตามมาตรฐาน System Usability Scale (SUS) สูงถึง 92.4 คะแนน สะท้อนว่าเครื่องมือสามารถช่วยค้นหาและแก้ไขข้อผิดพลาดของโครงเรื่องได้อย่างมีประสิทธิภาพก่อนนำไปทดสอบจริงกับผู้เล่น</p><div class='page-break'></div><h2 class='section-title'>1 ที่มาและปัญหาวิจัย</h2><p>ในเกมที่มีการเล่าเรื่องแบบแตกแขนง (Branching Narrative) เช่น เกมแนว Visual Novel หรือ Interactive Fiction ปัญหาสำคัญทางวิศวกรรมซอฟต์แวร์และการออกแบบเกมคือ <strong>Authorial Intent vs Player Agency</strong> ผู้แต่งต้องการให้ผู้เล่นรับรู้เนื้อเรื่องตามโครงสร้างที่วางไว้ ขณะที่ผู้เล่นต้องการอิสระในการเลือกเส้นทาง ยิ่งตัวเลือกเพิ่มขึ้น จำนวนเส้นทางที่เป็นไปได้จะขยายตัวแบบทวีคูณ (State-Space Explosion) ทำให้นักเขียนไม่สามารถคาดเดาและตรวจสอบทุกเส้นทางได้ด้วยตนเอง</p><p>ผู้เขียนได้ระบุความท้าทายหลัก 4 ประการในการพัฒนา IN:</p><p>1. <strong>การรักษาสมดุลระหว่างเจตนารมณ์ของผู้แต่งกับอิสระของผู้เล่น:</strong> ผู้แต่งต้องมั่นใจว่าทุกทางเลือกยังคงรักษาความสมเหตุสมผลของเนื้อเรื่อง</p><p>2. <strong>การเติบโตแบบทวีคูณของเส้นเรื่อง:</strong> การเพิ่มตัวเลือกเพียงเล็กน้อยทำให้เกิดการแตกแขนงของกราฟเรื่องจนไม่สามารถตรวจสอบด้วยมือได้หมด</p><p>3. <strong>ตัวแปรภายในเกมที่ส่งผลต่อเรื่อง:</strong> ตัวแปรสภาวะ (เช่น ค่าความรู้สึก ความสัมพันธ์ หรือไอเทม) ที่สะสมระหว่างทางจะทำหน้าที่เป็นเงื่อนไขปลดล็อกหรือปิดกั้นทางเลือกในอนาคต หากกำหนดผิดพลาดจะทำให้เกิดบั๊กตรรกะ</p><p>4. <strong>การวัดผลกระทบต่อประสบการณ์ผู้เล่นก่อน Playtest:</strong> เครื่องมือยอดนิยมในปัจจุบัน เช่น Twine หรือ Ren'Py ช่วยเพียงการสร้างเนื้อหา แต่ไม่มีฟังก์ชันการวิเคราะห์เชิงโครงสร้าง (Structural Verification)</p><p>จากผลสำรวจผู้เข้าร่วมการทดลองในบทความ พบว่านักเขียนบทเกมถึง <strong>76% ยังคงใช้โปรแกรมพิมพ์เอกสารทั่วไป</strong> (เช่น Microsoft Word หรือ Google Docs) ในการเขียนบทเกม และประสบปัญหาอย่างหนักในการติดตามค่าตัวแปร, การตรวจหาทางตัน (Dead-Ends), และการที่ผู้เล่นข้ามจุดสำคัญของเรื่องไปโดยไม่ตั้งใจจนเสียอรรถรส</p><h2 class='section-title'>2 วิธีดำเนินการของ Story Validator</h2><p>Story Validator ถูกพัฒนาขึ้นด้วยภาษา Python 3 และ Tkinter GUI เพื่อทำงานร่วมกับโปรเจกต์ที่ส่งออกจากเครื่องมือ Twine ในรูปแบบไฟล์ JSON โดยมีขั้นตอนการประมวลผลหลักดังนี้:</p><p>1. <strong>การแปลงโครงเรื่องเป็นแบบจำลองกราฟ (Graph Modeling):</strong></p><p>ระบบแปลง Passage แต่ละฉากให้เป็นโหนด (Node) และแปลงทางเลือกเชื่อมโยงเป็นเส้นเชื่อม (Link หรือ Directed Edge) โดยแต่ละ Link สามารถผูกเงื่อนไขเชิงตรรกะของตัวแปร (เช่น `<<if $anger > 5>>`) และคำสั่งปรับปรุงค่าตัวแปร (Variable Mutation)</p><p>2. <strong>การสำรวจเส้นทางด้วย Depth-First Search (DFS):</strong></p><p>อัลกอริทึม DFS จะท่องไปตามกราฟเพื่อจำลองการเล่นทุกทางเลือกที่เป็นไปได้ตั้งแต่จุดเริ่มต้นจนถึงฉากจบ พร้อมทั้งบันทึกสถานะของตัวแปรในแต่ละก้าว เพื่อสร้างประวัติการเล่น (Playthrough Trace) อย่างละเอียด</p><p>3. <strong>การประเมินตัวชี้วัดโครงเรื่อง 5 มิติ (Narrative Metrics):</strong></p><p>- <strong>Total Narrative Paths:</strong> จำนวนเส้นทางทั้งหมดที่ผู้เล่นสามารถดำเนินเรื่องได้</p><p>- <strong>Stroke Points:</strong> โหนดหรือฉากที่ทุกเส้นทางในเกมต้องวิ่งผ่าน ใช้ตรวจสอบว่าฉากสำคัญที่ผู้แต่งต้องการให้ทุกคนเห็นถูกบังคับผ่านจริงหรือไม่</p><p>- <strong>Lost Plot & Dead-Ends:</strong> ฉากที่ไม่มีเส้นทางใดเข้าถึงได้ (Unreachable Passages) และฉากที่ทางเลือกขาดหายไปโดยไม่ใช่ฉากจบจริง (Non-terminal Dead-Ends)</p><p>- <strong>Variable Variation Timeline:</strong> การบันทึกและพล็อตแนวโน้มการเปลี่ยนแปลงของตัวแปรตลอดแต่ละเส้นทางในรูปแบบ Dotted Chart เพื่อตรวจจับเงื่อนไขที่ขัดแย้ง</p><p>- <strong>Ending Reaching Percentage:</strong> สัดส่วนความน่าจะเป็นที่แต่ละฉากจบจะถูกพบ เพื่อดูว่าฉากจบใดเข้าถึงยากหรือง่ายเกินไป</p><p>4. <strong>การจำลองพฤติกรรมผู้เล่นด้วย Heuristic Greedy Search:</strong></p><p>เพื่อจำลองพฤติกรรมมนุษย์ที่ไม่รู้โครงสร้างเกมล่วงหน้า ผู้เขียนได้พัฒนาระบบ Persona โดยกำหนดค่าน้ำหนัก (Weights $W$) ให้กับตัวแปรอารมณ์หรือเป้าหมาย (เช่น ผู้เล่นสายก้าวร้าว: น้ำหนักความโกรธสูง) จากนั้นใช้อัลกอริทึม Greedy เลือก Link ที่ให้ผลรวมถ่วงน้ำหนักของตัวแปรสูงสุดในแต่ละทางเลือก</p><h2 class='section-title'>3 การทดลองและผลลัพธ์</h2><p>ผู้เขียนได้สร้างฉากทดสอบชื่อ <strong>"The Murder Case" (TMC)</strong> บน Twine ซึ่งผู้เล่นรับบทเป็นนักสืบที่ต้องสอบปากคำผู้ต้องสงสัยคดีฆาตกรรม โดยมีตัวแปรอารมณ์ 3 ตัว (ความโกรธ, ความสับสน, ความกลัว) มีฉากจบ 3 แบบ, 14 Passages และ 20 เส้นทาง สำหรับการทดสอบจริง ผู้เขียนได้สร้างฉบับบกพร่องชื่อ <strong>"TMC - failed version"</strong> ซึ่งจงใจใส่ข้อผิดพลาดไว้ 5 จุด:</p><p>- <strong>ปัญหาที่ 1:</strong> เส้นทางที่ 7 ไปไม่ถึงฉากจบ (เกิด Dead-End ที่ฉาก Choice 5)</p><p>- <strong>ปัญหาที่ 2:</strong> เส้นทางที่ 8 ไปไม่ถึงฉากจบ (เกิดเงื่อนไขวนซ้ำขัดแย้ง)</p><p>- <strong>ปัญหาที่ 3:</strong> เส้นทางที่ 14 ไปไม่ถึงฉากจบ (เกิด Dead-End ที่ฉาก Choice 5)</p><p>- <strong>ปัญหาที่ 4:</strong> ฉาก Ending 1 ไม่มีเส้นทางใดเข้าถึงได้เลย (Unreachable)</p><p>- <strong>ปัญหาที่ 5:</strong> ฉาก Choice 6 ไม่มีเส้นทางใดเข้าถึงได้เลย (Unreachable)</p><p>การทดลองแบ่งเป็น 2 ระยะ:</p><p>- <strong>User Study 1 (5 คน):</strong> ทดสอบ Usability เบื้องต้น ได้คะแนน SUS เฉลี่ย 83.5 (SD 9.45) ผู้ใช้สะท้อนว่าเครื่องมือยังซับซ้อน ผู้เขียนจึงปรับปรุงระบบโดยเพิ่ม Tooltips, ปุ่ม Print PDF Report, และการดูกราฟตัวแปรหลายตัวพร้อมกัน</p><p>- <strong>User Study 2 (20 คน):</strong> ทดสอบค้นหาและแก้ปัญหาทั้ง 5 จุดใน TMC ผู้เข้าร่วมประกอบด้วยชาย 12 คน หญิง 8 คน โดย 9 คนมีความรู้ด้าน Game Development และ 5 คนเคยใช้ Twine</p><p>ผลการทดลองใน User Study 2 สรุปได้ดังตาราง:</p><p>ผู้เขียนเก็บข้อมูลการทดสอบกับผู้ใช้ 20 คนในสถานการณ์ The Murder Case</p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 48%; text-align: left;">ตัวชี้วัดการประเมิน (Metrics)</th>
+                <th style="width: 32%; text-align: center;">ผลลัพธ์จากการทดลอง (User Study 2)</th>
+                <th style="width: 20%; text-align: center;">ส่วนเบี่ยงเบน (SD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>เวลาเฉลี่ยในการตรวจพบปัญหาทั้ง 5 จุด</td>
+                <td style="text-align: center; font-weight: bold; color: #173F5F;">52.3 วินาที</td>
+                <td style="text-align: center;">22.66 วินาที</td>
+              </tr>
+              <tr>
+                <td>เวลาเฉลี่ยในการเสนอวิธีแก้ไขปัญหา</td>
+                <td style="text-align: center; font-weight: bold; color: #173F5F;">146.2 วินาที</td>
+                <td style="text-align: center;">31.84 วินาที</td>
+              </tr>
+              <tr>
+                <td>อัตราความสำเร็จในการพบปัญหาที่ 1, 3, 4, 5</td>
+                <td style="text-align: center; font-weight: bold; color: #0F9D8B;">100% (20/20 คน)</td>
+                <td style="text-align: center;">-</td>
+              </tr>
+              <tr>
+                <td>อัตราความสำเร็จในการพบปัญหาที่ 2 (Looping)</td>
+                <td style="text-align: center; font-weight: bold; color: #D94C4C;">85% (17/20 คน)</td>
+                <td style="text-align: center;">-</td>
+              </tr>
+              <tr>
+                <td>คะแนนความง่ายในการใช้งาน (SUS Score)</td>
+                <td style="text-align: center; font-weight: bold; color: #173F5F;">92.4 คะแนน (Superior)</td>
+                <td style="text-align: center;">4.76</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-caption">ตารางที่ 1 ผลการประเมินสมรรถนะและความสามารถในการใช้งานจากบทความต้นฉบับ (Section VI-C)</div>
+        </div>
+        <p>ผลชี้ว่าผู้ใช้เกือบทั้งหมดสามารถค้นพบข้อผิดพลาดได้ครบถ้วน โดยผู้ใช้ 3 คนที่พลาดปัญหาที่ 2 เกิดจากการพยายามไล่สายตาดูจากผังต้นไม้แทนที่จะใช้ฟังก์ชันตัวกรอง Lost Plot และมีผู้ใช้ 2 คน (10%) ที่แก้ปัญหาที่ 1 และ 3 ไม่สำเร็จ และ 25% ติดขัดในการแก้ปัญหาที่ 5 คะแนน SUS ที่ 92.4 จัดอยู่ในเกณฑ์ "ดีเลิศอย่างแท้จริง" (Truly Superior Product) ตามเกณฑ์ของ Bangor et al.</p><h2 class='section-title'>4 Contribution ของงาน</h2><p>1. <strong>กรอบตัวชี้วัดการวิเคราะห์เชิงโครงสร้างสำหรับเรื่องเล่าแบบโต้ตอบ (Formal Narrative Metrics):</strong> นิยามคุณสมบัติสำคัญของกราฟเนื้อเรื่องอย่างเป็นรูปธรรม เช่น Stroke Points, Lost Plot, Dead-Ends และ Ending Reachability ซึ่งเปลี่ยนจากการประเมินด้วยความรู้สึกมาเป็นการวัดผลทางคณิตศาสตร์และวิศวกรรม</p><p>2. <strong>เครื่องมือตรวจสอบความถูกต้องแบบอัตโนมัติ (Automated Story Validation Tool):</strong> พัฒนาระบบ Story Validator ที่สามารถนำเข้าไฟล์โครงเรื่อง แปลงเป็นกราฟ และตรวจสอบความสอดคล้องของตัวแปรและเส้นทางได้โดยไม่ต้องพึ่งพามนุษย์มานั่งกดเล่นทีละรอบ</p><p>3. <strong>การจำลองพฤติกรรมผู้เล่นด้วย Heuristic Persona Testing:</strong> การนำค่าน้ำหนักตัวแปรมาร่วมกับ Greedy Search เพื่อจำลองผู้เล่นที่มีลักษณะนิสัยต่างกัน ช่วยให้นักเขียนเห็นว่าผู้เล่นแต่ละกลุ่มจะพบเจอปัญหาในจุดใดบ้างก่อนการปล่อยเกมจริง</p><h2 class='section-title'>5 จุดเด่นของงาน</h2><p>จุดเด่นประการแรกคือ <strong>การแก้ปัญหาที่มีอยู่จริงในอุตสาหกรรม (Practical Industry Relevance)</strong> งานวิจัยนี้ไม่ได้มุ่งเน้นเพียงทฤษฎี แต่เริ่มจากการสำรวจพบว่านักเขียนส่วนใหญ่ขาดเครื่องมือตรวจสอบโครงสร้าง และแก้ปัญหาด้วยการสร้างเครื่องมือที่ใช้งานได้จริง (Usable Tool) ที่มี GUI ชัดเจน</p><p>จุดเด่นประการที่สองคือ <strong>การทดสอบเชิงประจักษ์กับผู้ใช้จริง (Empirical User Evaluation)</strong> แตกต่างจากบทความในสายเดียวกันจำนวนมากที่มักรายงานเพียงสถาปัตยกรรมระบบหรืองานที่ผู้แต่งวิเคราะห์เอง แต่งานนี้นำเสนอการทดสอบกับผู้ใช้ 2 รอบ มีการวัดเวลาในการทำงาน (Task Completion Time), อัตราความสำเร็จในการแก้บั๊ก, และการประเมิน SUS ที่มีนัยสำคัญทางสถิติ</p><p>จุดเด่นประการที่สามคือ <strong>ความตรงกับโครงสร้างสถาปัตยกรรมระบบการเล่าเรื่องเชิงโต้ตอบ (Interactive Narrative Architecture)</strong> บทความนี้จำลอง Passage และ Link ที่ผูกเงื่อนไขตัวแปร ซึ่งตรงกับโครงสร้างข้อมูล JSON ของโหนดและบล็อกในเอนจินเกมการเล่าเรื่องยุคใหม่อย่างสมบูรณ์ ทำให้สามารถนำทฤษฎีและอัลกอริทึมมาประยุกต์ใช้ในการตรวจสอบความถูกต้องของระบบได้อย่างมีประสิทธิภาพ</p><h2 class='section-title'>6 จุดด้อยและข้อจำกัด</h2><p>ข้อจำกัดสำคัญที่สุดคือ <strong>การขาดกลุ่มควบคุมเปรียบเทียบ (No Control Group Baseline):</strong> บทความวัดว่าผู้ใช้ใช้เวลา 52.3 วินาทีในการหาบั๊กเมื่อมีเครื่องมือ แต่ไม่ได้ทำการทดลองเปรียบเทียบว่าหากไม่มีเครื่องมือ (ตรวจสอบด้วยตาเปล่าใน Twine หรืออ่านบท) ผู้ใช้จะใช้เวลาเท่าใด ทำให้ไม่สามารถยืนยันเชิงสถิติได้ว่าเครื่องมือช่วยประหยัดเวลาได้กี่เท่า</p><p>ข้อจำกัดประการที่สองคือ <strong>ปัญหา State-Space Explosion ของ DFS:</strong> การใช้อัลกอริทึม DFS สำรวจทุกเส้นทางจะทำงานได้ดีเฉพาะในเรื่องขนาดเล็ก (เช่น TMC ที่มี 14 Passages และ 20 เส้นทาง) แต่ในนิยายขนาดยาวที่มีหลายร้อยโหนดและมีการวนลูป (Looping Graphs) หรือตัวแปรจำนวนมาก จำนวนเส้นทางจะเพิ่มขึ้นแบบ Exponential บทความไม่ได้รายงานขีดจำกัดสูงสุดของขนาดกราฟหรือเวลาประมวลผล (Computational Complexity)</p><p>ข้อจำกัดประการที่สามคือ <strong>ความครอบคลุมของชุดทดสอบ:</strong> ข้อผิดพลาดทั้ง 5 จุดใน TMC ถูกตรวจจับได้จากฟังก์ชัน Lost Plot เพียงอย่างเดียว การทดลองจึงยังไม่ได้พิสูจน์ประสิทธิภาพของตัวชี้วัด Stroke Points หรือ Ending Distribution ในสถานการณ์ที่มีความซับซ้อนสูง และผู้ทดลองส่วนใหญ่ยังเป็นผู้เล่นเกมทั่วไป ไม่ใช่นักเขียนบทเกมมืออาชีพเต็มตัว</p><h2 class='section-title'>7 ความเห็นและการนำไปประยุกต์ใช้กับโครงงานวิศวกรรมคอมพิวเตอร์</h2><p>บทความนี้มีความเหมาะสมอย่างยิ่งสำหรับนำมาใช้ประกอบการออกแบบและพัฒนาระบบเกมการเล่าเรื่องเชิงโต้ตอบ (Interactive Narrative Platform):</p><p>- <strong>การอ้างอิงในบทที่ 1 (ที่มาและความสำคัญ):</strong> สามารถยกสถิติจากงานวิจัยที่ระบุว่านักเขียนบท 76% ยังใช้ Word และประสบปัญหา Dead-Ends และ Lost Plot เพื่อชี้ให้เห็นถึงความจำเป็นของระบบ Automated Narrative Integrity Verification ในแพลตฟอร์มการสร้างเรื่องราวเชิงโต้ตอบ</p><p>- <strong>การอ้างอิงในบทที่ 2 (ทฤษฎีและงานวิจัยที่เกี่ยวข้อง):</strong> นำทฤษฎี Branching Story Graph, Finite State Machine, และตัวชี้วัด Lost Plot/Dead-Ends มาใช้เป็นรากฐานในการออกแบบอัลกอริทึมของระบบ Moderation และ Validation</p><p>- <strong>การต่อยอดสู่การนำไปใช้จริงในเอนจินเกม:</strong> นำแนวคิด DFS และการจำลองสถานะตัวแปร มาสร้างระบบ Automated Plot Integrity Check เพื่อแจ้งเตือนนักเขียนบททันทีก่อนที่จะกด Publish ตอนหรือฉากขึ้นสู่ระบบ ช่วยป้องกันปัญหาเส้นทางตันได้อย่างมีประสิทธิภาพ</p><h2 class='section-title'>เอกสารอ้างอิง</h2><div class='ref-item'>[1] C. Veloso and R. Prada, “Validating the plot of Interactive Narrative games,” in *2021 IEEE Conference on Games (CoG)*, 2021, pp. 1–8, doi: 10.1109/CoG52621.2021.9618897.</div><div class='ref-item'>[2] A. Bangor, P. T. Kortum, and J. T. Miller, “An empirical evaluation of the system usability scale,” *Intl. Journal of Human–Computer Interaction*, vol. 24, no. 6, pp. 574–594, 2008.</div><div class='ref-item'>[3] M. O. Riedl and V. Bulitko, “Interactive narrative: An intelligent systems approach,” *AI Magazine*, vol. 34, no. 1, pp. 67–67, 2013.</div>
+</body>
+</html>

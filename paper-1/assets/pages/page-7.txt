@@ -1,0 +1,225 @@
+Table 2: Comparison with the state-of-art methods
+
+4.3
+
+Evaluation
+
+We evaluate our methodology using the data collected by the sensor
+layout of Section 4.2.
+4.3.1 Sensor Association Evaluation. One of the contributions
+of our clustering algorithm is the capability to automatically tune
+the number of clusters and remove the ones which lack a sufficient
+number of sensors or have sensors that are far apart regarding the
+hamming distance between their fingerprints. Initially, we set the
+number of clusters to 20 in our system under test, and the algorithm reduces the number to 6. In order to assess the performance of
+sensor association method, Inter-cluster and Intra-cluster distances
+are calculated for all clusters and plotted in Figure 9. The notable
+difference between inter-cluster distance and the intra-cluster distance indicates that related sensors are clustered together, and the
+clusters are well separated from each other.
+Another validation method used is physical intuition, which
+explains the relationships among the associated sensors. For example, co-located sensors experience a similar context. Therefore,
+they are expected to be associated with each other. This intuition
+supports the result of our algorithm in which co-located humidity,
+temperature, and light sensors are clustered together, as it is shown
+in Figure 11. Another intuition behind the fact is that any physical
+process may have multi-modality emissions, and the sensors which
+capture the emission of one incident should be clustered together.
+It explains the clustering of PIR, vibration sensor (accelerometer
+and force), magnetic door switch, and acoustic sensor since they all
+capture the event of entrance through the door. These observations
+0.6
+Distance
+
+0.5
+0.4
+0.3
+0.2
+0.1
+0
+Cluter1 Cluter2 Cluster3 Cluster4 Cluster5 Cluster6
+
+Inter-cluster distance
+
+Intra-cluster distance
+
+All
+clusters
+
+Figure 9: The inter-cluster and intra-cluster distances of sensor clusters.
+
+Method
+IoT-CAD
+[31]
+[28]
+[30]
+
+Base
+Model
+LSTM
+LSTM
+Conv LSTM
+One Class SVM
+
+Context
+Aware
+Yes
+No
+No
+No
+
+Precision
+
+Recall
+
+%92
+%64
+%51
+%89
+
+%56
+%44
+%95
+%25
+
+𝐹 0.5
+score
+%81
+%58
+%56
+%60
+
+𝐹1
+score
+%70
+%52
+%66
+%39
+
+indicate that this strategy is capable of finding relations between
+sensors with similar contextual variations, further confirmed by
+the anomaly detection results in the next section.
+4.3.2 Anomaly Detection Evaluation. The anomaly detection
+model is unsupervised and it is trained only on the normal data
+and evaluated using a validation dataset with synthetic anomalies.
+To analyze the results, True Positives (TP), False Positives (FP),
+and False Negatives (FN ) are counted in the results to compute the
+validation scores. Although the most intuitive performance measure
+is accuracy, which is the ratio of correctly predicted observation
+to the observations, it is not appropriate for unbalanced datasets
+such as anomaly detection where one category representing the
+overwhelming majority of the data points. Therefore, we use the
+Precision(P), Recall(R) and 𝐹 𝛽 𝑠𝑐𝑜𝑟𝑒 as performance metrics.
+𝑃=
+
+𝑃 × 𝑅 × (1 + 𝛽 2 )
+𝑇𝑃
+𝑇𝑃
+,𝑅 =
+, 𝐹 𝛽 𝑠𝑐𝑜𝑟𝑒 =
+𝑇𝑃 + 𝐹𝑃
+𝑇𝑃 + 𝐹𝑁
+𝛽2 × 𝑃 + 𝑅
+
+Recall expresses the ability to find all anomalous observation in a
+dataset while precision expresses the proportion of the observations
+our model labels as anomaly, actually is anomalous. 𝐹 𝛽 𝑠𝑐𝑜𝑟𝑒 is
+the weighted average of precision and recall which provides a
+better intuition toward both key important capability of model. We
+implement the current state-of-art methods for anomaly detection
+in time-series data. Due to importance of precision, 𝐹 0.5 𝑠𝑐𝑜𝑟𝑒 which
+favors precision over recall is calculated for evaluation in addition
+to 𝐹 1 𝑠𝑐𝑜𝑟𝑒. According to the results in Table 2, our methodology
+has the best performance with highest 𝐹 𝑠𝑐𝑜𝑟𝑒𝑠 and precision.
+
+4.4
+
+Robustness
+
+We evaluate the robustness of our methodology by adding three
+different types -pink, Gaussian, and uniform- of noise signals to the
+sensor measurements and observing the performance of the model.
+As Figure 10 indicates, although the precision of anomaly detection
+is decreased as the noise power increases in all models, our model
+is more resilient to noise and maintains the high precision.
+Precision of anomaly detection (%)
+
+wireless network of sensors in which SDR collects the sensor’s data
+and send commands to them. SDR is connected to an edge computing device, a raspberry pi board, which works as a base station and
+gathers all data. The base station contains a Wi-Fi module and links
+the local network of IoT devices to the Internet through a router.
+It provides the system with the capability to be monitored in any
+device which is connected to the internet by looking up the base
+station and logging using the password. The algorithms and anomaly detection model are implemented on a Laptop with 8Gb DDR4
+RAM, and the Intel(R)Core(TM) i5-6300HQ 2.3GHz processor which
+receives the data from base station and do the computations as a
+fog node in the IoT system. A powerful router such as Qotom Mini
+PC Q500G6 has similar capabilities and is capable of running the
+model at the gateway level. Figure 8 demonstrates the components
+of our experimental setup and their connections.
+
+95
+
+Significant
+precision drop
+
+85
+
+Resilient
+to noise
+
+75
+65
+
+Highly
+sensitive
+to noise
+
+55
+45
+35
+0
+
+0.2
+
+0.4
+
+0.6
+
+LSTM - Guassian noise
+ConvLSTM - Guassian noise
+IoT-CAD - Guassian noise
+
+0.8
+
+1
+
+1.2
+
+1.4
+
+Noise energy (Watt/Hz)
+
+1.6
+
+LSTM - Pink noise
+ConvLSTM - Pink noise
+IoT-CAD - Pink noise
+
+1.8
+
+2
+
+2.5
+
+3
+
+5
+
+LSTM - Uniform noise
+ConvLSTM - Uniform noise
+IoT-CAD - Uniform noise
+
+Figure 10: Evaluating the resilience of different models to
+pink, Gaussian, and uniform noise signals.
+
+

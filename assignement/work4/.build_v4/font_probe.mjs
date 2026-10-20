@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {GlobalFonts} from '@napi-rs/canvas';
+import {Presentation} from '@oai/artifact-tool';
+const here=path.dirname(fileURLToPath(import.meta.url));
+GlobalFonts.registerFromPath(path.join(here,'IBMPlexThai-Regular.ttf'));
+GlobalFonts.registerFromPath(path.join(here,'IBMPlexThai-Bold.ttf'));
+console.log(GlobalFonts.families.filter(x=>/Plex/.test(x.family)));
+const p=Presentation.create({slideSize:{width:1536,height:864}});const s=p.slides.add();
+const t=s.shapes.add({geometry:'textbox',position:{left:100,top:100,width:1200,height:200},fill:'none',line:{fill:'none',width:0}});
+t.text='สถาปัตยกรรม Mosaic Publisher\nเวลาเห็นภาพกับเวลาพร้อมโต้ตอบ';
+t.text.style={typeface:'IBM Plex Sans Thai',fontSize:30,bold:true,color:'#0F2D4A',autoFit:'none'};
+const png=await p.export({slide:s,format:'png',scale:1});await fs.writeFile(path.join(here,'font-probe.png'),new Uint8Array(await png.arrayBuffer()));

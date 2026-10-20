@@ -1,0 +1,80 @@
+{
+  "source": "../../01_original/Paper_IV_1_PRIMARY_PublishTimeOpt_11298742.pdf",
+  "source_sha256": "c8b6a79fc42049b38009ff4d818a69c4cc3236ff22b87bf6a18fd8b86cdb3593",
+  "pdf_page_count": 5,
+  "page_locator": "PDF page index 1-5; supplied file has no printed proceedings page numbers",
+  "author_copy_match": "../../00_research/evidence/authorcopy_publishtime_11298742.pdf",
+  "author_copy_sha256": "c8b6a79fc42049b38009ff4d818a69c4cc3236ff22b87bf6a18fd8b86cdb3593",
+  "figures": [
+    {
+      "file": "figures/fig1-publish-time-overview.png",
+      "source_pdf_page": 1,
+      "crop_points_top_left": [
+        75,
+        120,
+        543,
+        275
+      ],
+      "dpi": 400,
+      "width_px": 2600,
+      "height_px": 861,
+      "sha256": "0dd62ec3d914cd467fa31c5a3aaec7af49a73ceb58f4c8d15f2cb84395a8e27d"
+    },
+    {
+      "file": "figures/fig2-evaluation-visualizations.png",
+      "source_pdf_page": 3,
+      "crop_points_top_left": [
+        316,
+        588,
+        559,
+        711
+      ],
+      "dpi": 400,
+      "width_px": 1350,
+      "height_px": 683,
+      "sha256": "38a703b4c94688a2e9354d571de1c3dad34ce19f0951c1a9368d6871256d5e83"
+    },
+    {
+      "file": "figures/fig3-ttr-tta.png",
+      "source_pdf_page": 4,
+      "crop_points_top_left": [
+        54,
+        49,
+        542,
+        197
+      ],
+      "dpi": 400,
+      "width_px": 2711,
+      "height_px": 822,
+      "sha256": "ba979ab52a0afa5b0a25c8d0a804fc5367a4e5d5040a1595f0c1237451ddd9a2"
+    },
+    {
+      "file": "figures/fig4-latency-breakdown.png",
+      "source_pdf_page": 4,
+      "crop_points_top_left": [
+        53,
+        226,
+        315,
+        312
+      ],
+      "dpi": 400,
+      "width_px": 1456,
+      "height_px": 477,
+      "sha256": "1f296cd367974399c66af69c02b950f6e53ff0132a966a1f1886d1bb04538069"
+    },
+    {
+      "file": "figures/table1-metric-changes.png",
+      "source_pdf_page": 4,
+      "crop_points_top_left": [
+        329,
+        225,
+        542,
+        269
+      ],
+      "dpi": 400,
+      "width_px": 1183,
+      "height_px": 244,
+      "sha256": "f39d7825ca9873f51891b89a089af071aad2d3b6232465319b1f1c74a3692e96"
+    }
+  ]
+}

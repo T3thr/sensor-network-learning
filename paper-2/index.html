@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Paper II: Story Validator (Interactive Narrative Validation) · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260928b">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20260928b">
+  <script src="../assets/js/header-component.js?v=20261007"></script>
+</head>
+
+<body data-paper="story-validator">
+
+  <!-- ═══════════ Unified Standardized Header Component ═══════════ -->
+  <site-header data-page="paper-2" data-base="../"></site-header>
+
+  <!-- ═══════════ Chapter Layout (Sidebar + Main Content) ═══════════ -->
+  <div class="chapter-container">
+
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญบทเรียน</span>
+          <span class="sidebar-badge-pill" style="background: var(--purple); color: white;">Paper II</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse" style="background: var(--purple);"></span>
+          <span class="pin-label" id="sidebar-live-section">1. อภิธานศัพท์และคำอ่าน</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Nav for Story Validator -->
+      <ul class="sidebar-nav" id="sidebar-list-story-validator">
+        <li><a href="#sec1" class="sidebar-link active">1. อภิธานศัพท์และคำอ่าน</a></li>
+        <li><a href="#sec2" class="sidebar-link">2. ที่มา ความสำคัญ และตำราอ้างอิง</a></li>
+        <li><a href="#sec3" class="sidebar-link">3. ปัญหาวิจัย: 5 ความผิดพลาดโครงเรื่อง</a></li>
+        <li><a href="#sec4" class="sidebar-link">4. สถาปัตยกรรม Story Validator 4 ขั้น</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link">5. ซิมูเลเตอร์กราฟโครงเรื่อง</a></li>
+        <li><a href="#sec6" class="sidebar-link">6. การทดลองและผลลัพธ์เชิงตัวเลข</a></li>
+        <li><a href="#sec7" class="sidebar-link">7. วิจารณ์เชิงวิชาการ &amp; สถาปัตยกรรม Game Engine</a></li>
+        <li><a href="#sec-rehearsal" class="sidebar-link" style="color: var(--purple); font-weight: 700;">8. ห้องซ้อมบทนำเสนอ 5 นาที ★</a></li>
+        <li><a href="#sec-qna" class="sidebar-link" style="color: var(--accent); font-weight: 700;">9. จำลองตอบคำถามกรรมการ 10 ข้อ ★</a></li>
+        <li><a href="#sec10" class="sidebar-link">10. แบบประเมินความเข้าใจ 5 ข้อ</a></li>
+        <li><a href="#sec11" class="sidebar-link">11. คลังอ้างอิงและ BibTeX</a></li>
+      </ul>
+
+      <div id="sidebar-meta-story-validator" style="margin-top: 24px; padding-top: 16px; border-top: 1.5px solid var(--rule); font-size: 0.82rem; color: var(--ink-muted);">
+        <div>บทความตัวจริง (IEEE CoG 2021):</div>
+        <strong style="color: var(--ink);">Story Validator (8 หน้า)</strong><br>
+        <span>INESC-ID / Univ. of Lisbon · IEEE Xplore</span>
+
+        <!-- Action Card: Open Translation Split View -->
+        <a href="translation.html" class="sidebar-action-card" title="เปิดอ่านบทความแปลไทยฉบับเต็มเทียบเคียงต้นฉบับ 1:1">
+          <span class="action-icon">📖</span>
+          <div class="action-text">
+            <div class="action-title">อ่านเปเปอร์แปลไทย</div>
+            <div class="action-desc">Compare View สปลิตคู่ 8 หน้า</div>
+          </div>
+          <span class="action-arrow">→</span>
+        </a>
+
+        <!-- Modal Quick View Button -->
+        <button class="sidebar-modal-trigger paper-ref-pill" data-page="1" data-paper="story-validator" data-section="Paper II: Story Validator (IEEE CoG 2021) ฉบับเต็ม" title="คลิกเปิดหน้าต่าง Interactive Paper Inspector">
+          <span>📄 เปิดดูเปเปอร์ PDF Quick View</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="chapter-main">
+
+
+      <!-- Course Meta Line -->
+      <div class="course-meta-bar">
+        <div><strong>305432 เครือข่ายเซนเซอร์ (Sensor Networks)</strong> · โครงงานวิศวกรรมคอมพิวเตอร์ (CPE Senior Project) · อ.ตั้ม</div>
+        <div class="paper-selector-container">
+          <span class="badge" style="background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); font-weight: 700;">IEEE CoG 2021 · Open Access</span>
+        </div>
+      </div>
+
+      <h1 class="book-title">Validating the plot of Interactive Narrative games</h1>
+      <div class="subtitle">
+        การตรวจสอบโครงเรื่องเกมแบบโต้ตอบ: ถอดรหัสตั้งแต่ศูนย์ อ้างอิงทฤษฎีสากล จำลองระบบเชิงโต้ตอบ และซ้อมบทนำเสนอ 5 นาทีประกอบหัวข้อโครงงานวิศวกรรมคอมพิวเตอร์ <strong>ด้านแพลตฟอร์มนิยายภาพและเกมเชิงโต้ตอบ (Visual Novel / Interactive Fiction)</strong>
+      </div>
+
+      <!-- Learning Objectives Callout -->
+      <div class="academic-callout" style="border-left-color: var(--purple);">
+        <h3 style="color: var(--purple); margin-bottom: 8px; font-size: 1.12rem;">วัตถุประสงค์การเรียนรู้ประจำบทเรียน (Learning Objectives)</h3>
+        <ol style="margin-left: 20px; line-height: 1.85; font-size: 0.94rem;">
+          <li>เข้าใจความท้าทายระหว่าง <strong>Authorial Intent</strong> (เจตจำนงของผู้แต่ง) และ <strong>Player Agency</strong> (อิสระของผู้เล่น) ที่ก่อให้เกิดการระเบิดของปริภูมิสถานะ (State-Space Explosion)</li>
+          <li>เข้าใจการแปลงโครงเรื่องให้อยู่ในรูป <strong>Directed Graph <em>G = (V, E)</em></strong> และการใช้อัลกอริทึม <strong>Depth-First Search (DFS)</strong> ในการทวนสอบเส้นทางการเล่น</li>
+          <li>สามารถนิยามและวิเคราะห์ตัวชี้วัดโครงเรื่อง 5 มิติ: <strong>Total Paths, Stroke Points, Lost Plot, Dead-Ends</strong> และ <strong>Ending Reachability</strong></li>
+          <li>เข้าใจการเชื่อมโยงเชิงสถาปัตยกรรมแบบ 1:1 สู่เอนจินของเกมและระบบนิยายภาพเชิงโต้ตอบ (Scene Blocks, Conditional Choices, Content Moderation)</li>
+          <li>ฝึกซ้อมบทนำเสนอ 5 นาทีด้วยระบบ Teleprompter และเตรียมรับมือคำถามสอบป้องกันโครงงาน 10 ข้อ</li>
+        </ol>
+      </div>
+
+      <!-- ═══════════ Section 1: Glossary & Phonetics ═══════════ -->
+      <section id="sec1">
+        <h2 class="section-title">
+          1. อภิธานศัพท์และคำอ่านสัทศาสตร์ (Glossary &amp; Phonetics)
+          <button class="paper-ref-pill" data-page="1" data-paper="story-validator" data-section="Section I: Introduction (Terminology)" title="คลิกเปิดดูเปเปอร์ประกอบคำศัพท์">📄 ดูเปเปอร์หน้า 1</button>
+        </h2>
+        <p>
+          เพื่อให้นิสิตวิศวกรรมคอมพิวเตอร์สื่อสารได้อย่างถูกต้องตามหลักสากล ตารางนี้รวบรวมศัพท์เฉพาะ คำอ่านสัทศาสตร์ภาษาไทย นิยามความหมาย และอุปมาในชีวิตจริง:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">คำศัพท์ภาษาอังกฤษ</th>
+                <th style="width: 20%;">คำอ่านสัทศาสตร์</th>
+                <th style="width: 32%;">นิยามทางวิศวกรรมซอฟต์แวร์</th>
+                <th style="width: 26%;">อุปมาในชีวิตจริง / บริบทระบบเกม</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Interactive Narrative (IN)</strong></td>
+                <td>อินเทอร์แอกทิฟ แนร์ระทิฟ</td>
+                <td>โครงเรื่องที่แตกแขนงตามการกระทำและการเลือกของผู้ใช้งาน</td>
+                <td>นิยายภาพแบบเลือกตอบ (Visual Novel / Gamebook)</td>
+              </tr>
+              <tr>
+                <td><strong>Authorial Intent</strong></td>
+                <td>ออเธอเรียล อินเทนต์</td>
+                <td>สาระสำคัญหรือข้อคิดที่ผู้แต่งต้องการส่งมอบให้ถึงผู้เล่นอย่างครบถ้วน</td>
+                <td>ข้อความหลักของเรื่องที่ไม่ควรถูกผู้เล่นข้ามไปโดยไม่รู้ตัว</td>
+              </tr>
+              <tr>
+                <td><strong>Player Agency</strong></td>
+                <td>เพลเยอร์ เอเจนซี</td>
+                <td>ระดับความรู้สึกของอิสระและอำนาจตัดสินใจในการกำหนดชะตากรรม</td>
+                <td>ความรู้สึกว่า "การเลือกของเรามีความหมายต่อจุดจบจริง"</td>
+              </tr>
+              <tr>
+                <td><strong>State-Space Explosion</strong></td>
+                <td>สเตต-สเปซ เอ็กซ์โพลชัน</td>
+                <td>ปรากฏการณ์ที่จำนวนเส้นทางขยายตัวแบบ Exponential จนทดสอบด้วยมือไม่ไหว</td>
+                <td>ทางแยก 10 จุด 2 ทางเลือก เกิดเส้นทางถึง 2<sup>10</sup> = 1,024 เส้นทาง</td>
+              </tr>
+              <tr>
+                <td><strong>Stroke Point</strong></td>
+                <td>สโตรก พอยต์</td>
+                <td>ฉากคอขวดที่ทุกเส้นทางการเล่นสมบูรณ์ต้องวิ่งผ่าน 100%</td>
+                <td>ฉากจุดไคลแมกซ์หรือจุดเฉลยคนร้ายที่ทุกคนต้องเจอ</td>
+              </tr>
+              <tr>
+                <td><strong>Lost Plot</strong></td>
+                <td>ลอสต์ พล็อต</td>
+                <td>ฉากที่ผู้แต่งเขียนไว้ แต่ไม่มีลิงก์ใดชี้ถึงได้ (Unreachable Node)</td>
+                <td>ฉากที่เขียนไว้ฟรี ไม่มีนักอ่านคนไหนได้อ่านจริงในเกม</td>
+              </tr>
+              <tr>
+                <td><strong>Dead-End</strong></td>
+                <td>เดด-เอนด์</td>
+                <td>ฉากที่ไม่มีทางเลือกต่อไปยังฉากจบ ทำให้ผู้เล่นติดค้างกลางเรื่อง</td>
+                <td>บั๊กทางตัน เดินเข้าห้องแล้วไม่มีประตูออกและเกมไม่จบ</td>
+              </tr>
+              <tr>
+                <td><strong>System Usability Scale (SUS)</strong></td>
+                <td>ซิสเต็ม ยูซะบิลิตี สเกล</td>
+                <td>แบบวัดมาตรฐานสากล 10 ข้อสำหรับประเมินความง่ายในการใช้งานซอฟต์แวร์</td>
+                <td>Story Validator ได้คะแนน 92.4 จัดอยู่ในเกรด Truly Superior (A+)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 2: Background & Theory ═══════════ -->
+      <section id="sec2">
+        <h2 class="section-title">
+          2. ที่มา ความสำคัญ และตำราอ้างอิง (Theoretical Context &amp; Motivation)
+          <button class="paper-ref-pill" data-page="2" data-paper="story-validator" data-section="Section II: Related Work (Authoring Tools)" title="คลิกเปิดดูเปเปอร์หน้า 2">📄 ดูเปเปอร์หน้า 2</button>
+        </h2>
+        <p>
+          ในวงการ Interactive Digital Storytelling ปรัชญาคลาสสิกของ <em>Janet Murray (1997)</em> ในหนังสือ <em>"Hamlet on the Holodeck"</em> ระบุไว้ว่า ความท้าทายสูงสุดของสื่อปฏิสัมพันธ์คือความขัดแย้งระหว่าง <strong>เจตจำนงของผู้แต่ง (Authorial Intent)</strong> กับ <strong>อิสระของผู้เล่น (Player Agency)</strong> หากเปิดให้อิสระมากเกินไป เรื่องราวจะกระจัดกระจายและขาดความต่อเนื่อง แต่หากควบคุมเส้นทางมากเกินไป ผู้เล่นจะรู้สึกเหมือนถูกบังคับให้เดินตามราง (Railroading)
+        </p>
+
+        <!-- Theory Callout -->
+        <div class="academic-callout callout-purple">
+          <h4 style="color: var(--purple); margin-bottom: 6px;">ทำไมนิสิตวิศวกรรมคอมพิวเตอร์ต้องศึกษางานวิจัยนี้?</h4>
+          <p style="margin: 0; font-size: 0.94rem; line-height: 1.8;">
+            1. <strong>เปลี่ยนศิลปะให้กลายเป็นคณิตศาสตร์:</strong> นำทฤษฎีกราฟ (Graph Theory) และระเบียบวิธีทวนสอบซอฟต์แวร์ (Formal Verification) มาแก้ปัญหาที่ดูเหมือนเป็นนามธรรม<br>
+            2. <strong>การประหยัดต้นทุนทางวิศวกรรม:</strong> แทนที่จะต้องจ้างคนมานั่งกดทดสอบเล่นเกม (Manual Playtesting) นับร้อยชั่วโมง อัลกอริทึม DFS สามารถตรวจจับบั๊กโครงเรื่องได้ภายใน <strong>52.3 วินาที</strong><br>
+            3. <strong>สอดคล้องกับโจทย์วิศวกรรมซอฟต์แวร์ของเกมเชิงโต้ตอบ 1:1:</strong> ระบบของบทความนี้เป็นพิมพ์เขียวสมบูรณ์แบบสำหรับการเขียนระบบ Moderation และ Content QA ตรวจสอบนิยายภาพและเกมแตกกิ่งก่อนเผยแพร่จริง
+          </p>
+        </div>
+
+        <p style="margin-top: 16px;">
+          สถิติที่น่าตกใจซึ่งถูกรายงานในเปเปอร์ (Veloso &amp; Prada, 2021) คือ: <strong>76% ของนักพัฒนาบทเกมยังคงใช้ Microsoft Word หรือ Google Docs</strong> ในการเขียนบทเกม ทำให้ขาดเครื่องมือในการตรวจจับว่า ตัวแปรที่ตั้งไว้ถูกสะสมอย่างถูกต้องหรือไม่ หรือมีฉากใดบ้างที่เขียนไว้แล้วกลายเป็น Lost Plot ที่ไม่มีผู้เล่นคนใดสามารถเข้าถึงได้
+        </p>
+      </section>
+
+      <!-- ═══════════ Section 3: Research Problem: 5 Plot Bugs ═══════════ -->
+      <section id="sec3">
+        <h2 class="section-title">
+          3. ปัญหาวิจัย: 5 ความผิดพลาดในโครงเรื่อง (5 Injected Plot Bugs)
+          <button class="paper-ref-pill" data-page="6" data-paper="story-validator" data-section="Section V: Evaluation & TMC Failed Version" title="คลิกเปิดดูเปเปอร์หน้า 6">📄 ดูเปเปอร์หน้า 6</button>
+        </h2>
+        <p>
+          ในการทดลอง ผู้วิจัยได้สร้างสถานการณ์ทดสอบชื่อ <strong>The Murder Case (TMC)</strong> บนโปรแกรม Twine ประกอบด้วย 14 Passages, 20 เส้นทาง, 3 ฉากจบ และตัวแปรอารมณ์ 3 ตัว (Anger, Confusion, Fear) จากนั้นได้สร้างฉบับที่มีข้อผิดพลาดจงใจ 5 จุด (TMC - failed version) เพื่อทดสอบความสามารถของระบบ:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 14%;">รหัสข้อผิดพลาด</th>
+                <th style="width: 24%;">ประเภทของบั๊กโครงเรื่อง</th>
+                <th style="width: 32%;">พฤติกรรมความล้มเหลวในเกม</th>
+                <th style="width: 30%;">ผลกระทบต่อผู้เล่นและการตรวจจับ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge" style="background: var(--red); color: white;">ปัญหาที่ 1</span></td>
+                <td><strong>Dead-End (ทางตัน)</strong></td>
+                <td>เส้นทางที่ 7 ขาดช่วง Passage 8 ไม่มีทางเลือกเชื่อมต่อไปยังฉากจบ</td>
+                <td>ผู้เล่นติดค้างในห้องสืบสวน เกมไม่สามารถดำเนินต่อได้</td>
+              </tr>
+              <tr>
+                <td><span class="badge" style="background: var(--orange); color: white;">ปัญหาที่ 2</span></td>
+                <td><strong>Infinite Loop (วงวนไม่รู้จบ)</strong></td>
+                <td>เส้นทางที่ 8 วนลูปกลับไปมาระหว่าง Passage 7 และ Passage 3</td>
+                <td>ผู้เล่นถูกขังในบทสนทนาเดิมซ้ำๆ มนุษย์ 15% พลาดบั๊กนี้หากดูกราฟด้วยตาเปล่า</td>
+              </tr>
+              <tr>
+                <td><span class="badge" style="background: var(--red); color: white;">ปัญหาที่ 3</span></td>
+                <td><strong>Locked Path (เงื่อนไขขัดแย้ง)</strong></td>
+                <td>เส้นทางที่ 14 ทางเลือกถูกล็อกด้วยเงื่อนไขตัวแปรที่เป็นเท็จเสมอ</td>
+                <td>ผู้เล่นไม่สามารถเลือกตัวเลือกที่ปรากฏบนหน้าจอได้</td>
+              </tr>
+              <tr>
+                <td><span class="badge" style="background: var(--red); color: white;">ปัญหาที่ 4</span></td>
+                <td><strong>Lost Plot (ฉากที่ถูกตัดขาด)</strong></td>
+                <td>ฉากจบ Ending 1 (Confession) กลายเป็น Unreachable Node</td>
+                <td>ผู้เล่นไม่มีทางปลดล็อกฉากจบที่ 1 ได้เลย Reachability กลายเป็น 0%</td>
+              </tr>
+              <tr>
+                <td><span class="badge" style="background: var(--orange); color: white;">ปัญหาที่ 5</span></td>
+                <td><strong>Blocked Choice (ทางเลือกปิดตาย)</strong></td>
+                <td>ทางเลือกที่ 6 มีเงื่อนไขขัดแย้งกับประวัติการเล่นในเส้นทางนั้น</td>
+                <td>ตัวเลือกแสดงบนจอแต่คลิกแล้วระบบไม่ยอมให้ผ่าน</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 4: 4-Stage Architecture ═══════════ -->
+      <section id="sec4">
+        <h2 class="section-title">
+          4. สถาปัตยกรรม Story Validator 4 ขั้นตอน (4-Stage Pipeline Architecture)
+          <button class="paper-ref-pill" data-page="3" data-paper="story-validator" data-section="Section III: Architecture (Fig. 1)" title="คลิกเปิดดูเปเปอร์หน้า 3">📄 ดูเปเปอร์หน้า 3</button>
+        </h2>
+        <p>
+          ระบบ Story Validator ทำงานประสานกันผ่านไปป์ไลน์ 4 ขั้นตอนอย่างเป็นระบบ ดังแสดงในแผนภาพ:
+        </p>
+
+        <!-- Pipeline Diagram -->
+        <div class="academic-callout" style="background: var(--paper); border: 1.5px solid var(--rule); margin: 20px 0;">
+          <div style="font-family: var(--font-mono); font-size: 0.88rem; line-height: 1.9; color: var(--ink);">
+            [ไฟล์เนื้อเรื่อง Twine / JSON] ──▶ <strong>1. Extraction Phase</strong> (แยก Passage, Link, Macro)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            [สร้างโมเดลกราฟ G = (V, E)] ──▶ <strong>2. Graph Construction</strong> (Passage เป็น Node, Link เป็น Edge)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            [คำนวณตัวชี้วัด 5 มิติ] ──▶ <strong>3. Validation Engine (DFS)</strong> (ท่องหา Playthrough Traces ทั้งหมด)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            [หน้าจอแสดงผลโต้ตอบ] ──▶ <strong>4. Visual Feedback GUI</strong> (แผนผังต้นไม้ Tree View &amp; Dotted Chart)
+          </div>
+        </div>
+
+        <h3 style="color: var(--ink); margin-top: 24px; font-size: 1.15rem;">นิยามทางคณิตศาสตร์ของตัวชี้วัด 5 มิติ</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
+          <div style="padding: 16px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm);">
+            <div style="font-weight: 700; color: var(--purple); margin-bottom: 6px;">1. Stroke Points (จุดคอขวดวิกฤต)</div>
+            <div style="font-family: var(--font-mono); font-size: 0.86rem; color: var(--ink); margin-bottom: 8px;">
+              ∀ p<sub>k</sub> ∈ P, S ∈ p<sub>k</sub>
+            </div>
+            <div style="font-size: 0.86rem; color: var(--ink-soft); line-height: 1.7;">
+              โหนด <em>S</em> เป็น Stroke Point ก็ต่อเมื่อทุกเส้นทางการเล่นสมบูรณ์ <em>p<sub>k</sub></em> ในเซต <em>P</em> ต้องวิ่งผ่านโหนด <em>S</em> เสมอ
+            </div>
+          </div>
+
+          <div style="padding: 16px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm);">
+            <div style="font-weight: 700; color: var(--red); margin-bottom: 6px;">2. Lost Plot &amp; Dead-Ends</div>
+            <div style="font-family: var(--font-mono); font-size: 0.86rem; color: var(--ink); margin-bottom: 8px;">
+              in-degree(v) = 0 หรือ out-degree(v) = 0
+            </div>
+            <div style="font-size: 0.86rem; color: var(--ink-soft); line-height: 1.7;">
+              <em>Lost Plot:</em> ไม่มีทางเข้าถึงจากโหนดเริ่มต้น<br>
+              <em>Dead-End:</em> โหนดที่ไม่ใช่ฉากจบแต่ไม่มีเส้นเชื่อมต่อไปยังฉากอื่น
+            </div>
+          </div>
+
+          <div style="padding: 16px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm);">
+            <div style="font-weight: 700; color: var(--green); margin-bottom: 6px;">3. Ending Reachability (สัดส่วนฉากจบ)</div>
+            <div style="font-family: var(--font-mono); font-size: 0.86rem; color: var(--ink); margin-bottom: 8px;">
+              Reachability(e<sub>i</sub>) = |Paths to e<sub>i</sub>| ÷ |P|
+            </div>
+            <div style="font-size: 0.86rem; color: var(--ink-soft); line-height: 1.7;">
+              คำนวณความน่าจะเป็นในการเข้าถึงฉากจบแต่ละแบบ ช่วยตรวจสอบว่ามีฉากจบใดที่ยากหรือง่ายเกินไป
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 5: Interactive Simulator ═══════════ -->
+      <section id="sec-simulator">
+        <h2 class="section-title">
+          5. ซิมูเลเตอร์กราฟโครงเรื่องจำลองเชิงโต้ตอบ (Interactive Graph &amp; Lost Plot Simulator)
+          <button class="paper-ref-pill" data-page="5" data-paper="story-validator" data-section="Section IV: GUI & Interactive Tree View" title="คลิกเปิดดูเปเปอร์หน้า 5">📄 ดูเปเปอร์หน้า 5</button>
+        </h2>
+        <p>
+          ทดลองรันระบบตรวจพิสูจน์โครงเรื่องของ The Murder Case (TMC) ได้จริงบนเบราว์เซอร์: เลือกระหว่างฉบับสมบูรณ์ (Clean) กับฉบับมีบั๊ก 5 จุด (Failed) แล้วสั่งรันการตรวจสอบด้วย DFS หรือจำลองพฤติกรรม Persona ผู้เล่น:
+        </p>
+
+        <!-- Simulator Workbench -->
+        <div class="interactive-workbench" style="margin-top: 18px; border: 1.5px solid var(--rule); border-radius: var(--radius-md); background: var(--card-bg); overflow: hidden;">
+          
+          <!-- Workbench Header Controls -->
+          <div style="padding: 14px 18px; background: var(--paper2); border-bottom: 1.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span style="font-weight: 700; font-size: 0.88rem; color: var(--ink);">เลือกโมเดลเนื้อเรื่อง:</span>
+              <div class="view-mode-group">
+                <button type="button" class="btn-mode-pill active" id="sim-mode-clean">✔ TMC Clean Model (สมบูรณ์)</button>
+                <button type="button" class="btn-mode-pill" id="sim-mode-failed">⚠ TMC Failed Model (มีบั๊ก 5 จุด)</button>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <span class="badge" id="sim-status-badge" style="background: var(--green); color: white; padding: 4px 10px;">ฉบับสมบูรณ์ (TMC Clean Model)</span>
+              <button type="button" class="btn btn-secondary" id="sim-btn-reset" style="padding: 4px 10px; font-size: 0.80rem;">↺ รีเซ็ต</button>
+            </div>
+          </div>
+
+          <!-- Action Command Bar -->
+          <div style="padding: 12px 18px; background: var(--paper); border-bottom: 1px solid var(--rule); display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <button type="button" class="btn btn-primary" id="sim-btn-run-dfs" style="background: var(--purple); border-color: var(--purple); padding: 6px 14px; font-size: 0.86rem;">
+              🔍 รันการตรวจสอบด้วย DFS อัตโนมัติ
+            </button>
+            <button type="button" class="btn btn-secondary" id="sim-btn-persona-agg" style="padding: 6px 12px; font-size: 0.84rem;">
+              🎭 จำลอง Aggressive Persona (ก้าวร้าว)
+            </button>
+            <button type="button" class="btn btn-secondary" id="sim-btn-persona-caut" style="padding: 6px 12px; font-size: 0.84rem;">
+              🛡 จำลอง Cautious Persona (รอบคอบ)
+            </button>
+          </div>
+
+          <!-- Summary Alert Box -->
+          <div id="sim-summary-box" style="padding: 12px 18px; border-bottom: 1px solid var(--rule);">
+            <div style="font-size: 0.88rem; color: var(--ink-soft);">
+              คลิกปุ่ม <strong>"รันการตรวจสอบด้วย DFS อัตโนมัติ"</strong> เพื่อเริ่มท่องโครงสร้างกราฟและวัดผล 5 มิติ
+            </div>
+          </div>
+
+          <!-- Metrics Output Dashboard -->
+          <div style="padding: 14px 18px; background: var(--paper); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Total Paths</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--ink);" id="sim-val-paths">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Stroke Point</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--purple);" id="sim-val-stroke">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Lost Plots</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--red);" id="sim-val-lost">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Dead-Ends</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--red);" id="sim-val-deadends">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Reach Ending 1</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--green);" id="sim-val-end1">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Reach Ending 2</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--accent);" id="sim-val-end2">-</div>
+            </div>
+            <div style="padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+              <div style="font-size: 0.76rem; color: var(--ink-muted);">Reach Ending 3</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--ink-soft);" id="sim-val-end3">-</div>
+            </div>
+          </div>
+
+          <!-- Dual Panel: Graph View Left + Trace Log Right -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0; min-height: 380px;">
+            <div style="padding: 16px; border-right: 1px solid var(--rule); overflow-y: auto;" id="sim-graph-canvas">
+              <!-- Rendered dynamically by story-simulator.js -->
+            </div>
+            <div style="padding: 14px; background: var(--paper); display: flex; flex-direction: column;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--ink-muted); margin-bottom: 8px;">
+                บันทึกการท่องโครงเรื่อง (Traversal Trace Log):
+              </div>
+              <div id="sim-trace-log" style="flex: 1; overflow-y: auto; max-height: 360px; font-family: var(--font-mono); font-size: 0.80rem;">
+                <div style="color: var(--ink-muted);">รอการสั่งการรันซิมูเลเตอร์...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 6: Experimental Results ═══════════ -->
+      <section id="sec6">
+        <h2 class="section-title">
+          6. การทดลองและผลลัพธ์เชิงตัวเลข (Experimental Evaluation &amp; Metrics)
+          <button class="paper-ref-pill" data-page="7" data-paper="story-validator" data-section="Section V.E: Results (Table I & Fig. 5)" title="คลิกเปิดดูเปเปอร์หน้า 7">📄 ดูเปเปอร์หน้า 7</button>
+        </h2>
+        <p>
+          ผลลัพธ์เชิงตัวเลขจากการทดสอบจริงกับผู้ใช้ 20 คน (นักพัฒนาเกมและนักเขียนบท) ยืนยันสมรรถนะของ Story Validator ในทุกมิติ:
+        </p>
+
+        <!-- Stats Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0;">
+          <div style="padding: 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+            <div style="font-size: 0.82rem; color: var(--ink-muted);">เวลาตรวจพบบั๊กเฉลี่ย</div>
+            <div style="font-size: 1.60rem; font-weight: 800; color: var(--green);">52.3 s</div>
+            <div style="font-size: 0.78rem; color: var(--ink-soft);">SD = 22.66 s (หาบั๊ก 5 จุด)</div>
+          </div>
+          <div style="padding: 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+            <div style="font-size: 0.82rem; color: var(--ink-muted);">เวลาคิดวิธีแก้ไขเฉลี่ย</div>
+            <div style="font-size: 1.60rem; font-weight: 800; color: var(--accent);">146.2 s</div>
+            <div style="font-size: 0.78rem; color: var(--ink-soft);">SD = 31.84 s (วิเคราะห์ตรรกะ)</div>
+          </div>
+          <div style="padding: 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+            <div style="font-size: 0.82rem; color: var(--ink-muted);">อัตราพบบั๊ก 1, 3, 4, 5</div>
+            <div style="font-size: 1.60rem; font-weight: 800; color: var(--purple);">100%</div>
+            <div style="font-size: 0.78rem; color: var(--ink-soft);">ด้วยฟิลเตอร์ Lost Plot</div>
+          </div>
+          <div style="padding: 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+            <div style="font-size: 0.82rem; color: var(--ink-muted);">คะแนนความพึงพอใจ (SUS)</div>
+            <div style="font-size: 1.60rem; font-weight: 800; color: var(--purple);">92.4 / 100</div>
+            <div style="font-size: 0.78rem; color: var(--ink-soft);">ระดับ Truly Superior (เกรด A+)</div>
+          </div>
+        </div>
+
+        <p style="line-height: 1.85;">
+          <strong>ข้อสังเกตสำคัญจากการทดลอง:</strong> มีผู้ใช้จำนวน 3 คน (15%) ที่พลาดปัญหาที่ 2 (Infinite Loop) เนื่องจากผู้ใช้กลุ่มนี้พยายามกวาดสายตามองแผนผังต้นไม้โดยไม่เปิดฟังก์ชันฟิลเตอร์ของระบบ ซึ่งพิสูจน์ให้เห็นอย่างชัดเจนว่า <em>“ความซับซ้อนของโครงเรื่องเกินกว่าที่มนุษย์จะตรวจสอบด้วยสายตาได้อย่างทั่วถึง”</em>
+        </p>
+      </section>
+
+      <!-- ═══════════ Section 7: Critique & Game Engine Architecture ═══════════ -->
+      <section id="sec7">
+        <h2 class="section-title">
+          7. วิจารณ์เชิงวิชาการและสถาปัตยกรรม Game Engine (Critique &amp; Engine Blueprint)
+          <button class="paper-ref-pill" data-page="8" data-paper="story-validator" data-section="Section VI: Discussion & Engine Blueprint" title="คลิกเปิดดูเปเปอร์หน้า 8">📄 ดูเปเปอร์หน้า 8</button>
+        </h2>
+        
+        <div class="academic-callout" style="border-left-color: var(--accent2); margin-bottom: 20px;">
+          <h4 style="color: var(--accent2); margin-bottom: 6px;">3 ข้อวิจารณ์ทางวิชาการ (Academic Critique ที่ต้องตอบอาจารย์)</h4>
+          <ol style="margin-left: 18px; line-height: 1.85; font-size: 0.92rem;">
+            <li><strong>ขาดกลุ่มควบคุมเปรียบเทียบ (No Control Baseline):</strong> งานวิจัยวัดเพียงเวลาที่ใช้เครื่องมือ (52.3 s) แต่ไม่ได้วัดว่าถ้าให้นักเขียนตรวจบทด้วยมือบน Twine โดยไม่มีเครื่องมือ จะใช้เวลากี่นาที จึงตอบได้เพียงว่าเครื่องมือใช้งานได้จริง แต่ยังพิสูจน์ Speedup Ratio เชิงสถิติไม่ได้</li>
+            <li><strong>ปัญหาการขยายขนาดของ DFS (State Explosion on Large Graphs):</strong> การใช้ All-Paths DFS จะทำงานไม่ได้หากนำไปใช้กับเกมหรือนิยายขนาดยาวที่มีหลายร้อยฉากและมีวงวนจำนวนมาก จำนวนเส้นทางจะระเบิดแบบ Exponential ซึ่งในทางปฏิบัติเราต้องจำกัดความลึก (Depth-Limited Search) หรือใช้ Tarjan's Strongly Connected Components (SCC) แทน</li>
+            <li><strong>ความจำกัดของโจทย์ทดสอบ (Bug Diversity):</strong> บั๊กส่วนใหญ่ใน TMC แก้ได้ด้วย Lost Plot เพียงอย่างเดียว ยังไม่ได้พิสูจน์ความคุ้มค่าของ Stroke Points หรือ Ending Reachability ในการทดลองจริง</li>
+          </ol>
+        </div>
+
+        <h3 style="color: var(--ink); margin-top: 24px; font-size: 1.15rem;">การประยุกต์ใช้ในสถาปัตยกรรม Game Engine และระบบนิยายภาพเชิงโต้ตอบ</h3>
+        <p>
+          สำหรับสถาปัตยกรรมระบบสร้างและเล่นเกมเชิงโต้ตอบ (Visual Novel &amp; Interactive Fiction Engine) องค์ประกอบทางวิศวกรรมในบทความนี้มีความสอดคล้องและสามารถนำไปประยุกต์ใช้ได้โดยตรง:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">องค์ประกอบในเปเปอร์ Story Validator</th>
+                <th style="width: 36%;">สถาปัตยกรรมใน Game Engine &amp; Interactive Fiction</th>
+                <th style="width: 36%;">การนำไปประยุกต์ใช้เชิงวิศวกรรมซอฟต์แวร์</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Passage &amp; Link</strong></td>
+                <td><strong>Story Block &amp; Choice Node</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">เอนจินของเกมจัดการ Scene Block (ฉาก) และ Choice (ทางเลือก)</span></td>
+                <td>ใช้เป็นนิยามโมเดลกราฟระบุทิศทาง <em>G = (V, E)</em> เพื่อสร้างแผนผังโครงเรื่อง</td>
+              </tr>
+              <tr>
+                <td><strong>Guarded Transition</strong></td>
+                <td><strong>Conditional Branch Evaluation</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">ฟังก์ชันตรวจสอบเงื่อนไขตัวแปร (Comparison Logic) ก่อนเปลี่ยนฉาก</span></td>
+                <td>ใช้อธิบายสถาปัตยกรรมตัวแปรเงื่อนไข (Guard Conditions) ของระบบเกมแตกกิ่ง</td>
+              </tr>
+              <tr>
+                <td><strong>Variable State Tracking</strong></td>
+                <td><strong>Runtime Game State Management</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">การติดตามค่าความสัมพันธ์และสถานะตัวแปรแบบไดนามิก</span></td>
+                <td>ใช้เป็นพิมพ์เขียวสำหรับการบันทึก Playthrough Trace และวิวัฒนาการตัวแปร</td>
+              </tr>
+              <tr>
+                <td><strong>Verification Gap in Modern Engines</strong></td>
+                <td><strong>Automated QA &amp; Moderation Service</strong><br><span style="font-size: 0.80rem; color: var(--red); font-weight: 700;">เอนจินส่วนใหญ่ยังขาดระบบตรวจ Dead-end และ Lost Plot!</span></td>
+                <td><strong>พิมพ์เขียวเสริมคุณภาพ:</strong> เพิ่ม Story Validation Engine เข้าไปในระบบ Content QA เพื่อการันตีว่าเกมทุกเรื่องจบได้จริง 100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 8: Presentation Studio ═══════════ -->
+      <section id="sec-rehearsal">
+        <h2 class="section-title">
+          8. สตูดิโอซ้อมบทนำเสนอ 5 นาที (Interactive Presentation Studio)
+          <button class="paper-ref-pill" data-page="1" data-paper="story-validator" data-section="Paper II: Overview" title="คลิกเปิดดูเปเปอร์ประกอบการซ้อม">📄 เปิดดูเปเปอร์ควบคู่การซ้อม</button>
+        </h2>
+        <p>
+          เครื่องมือจำลองเวทีนำเสนอจริง: ควบคุมเวลาถอยหลัง 5:00 นาที, ซิงก์สไลด์ 7 หน้าจากไฟล์นำเสนอจริง, พร้อมสคริปต์ Teleprompter ภาษาไทยที่มีจุดกำหนดจังหวะหยุดหายใจ <code>[สูดหายใจ]</code> และจุดเน้นเสียง:
+        </p>
+
+        <div class="rehearsal-studio">
+          <div class="studio-header">
+            <div class="studio-title">
+              <span>5-Minute Rehearsal Studio</span>
+              <span class="studio-badge" style="background: var(--purple); color: white;">STAGE &amp; TELEPROMPTER</span>
+            </div>
+
+            <!-- Speech Mode Toggle Bar -->
+            <div class="rehearsal-mode-toggle-bar">
+              <div class="mode-label">
+                <span>🎙️ รูปแบบบทพูด:</span>
+              </div>
+              <div class="mode-toggle-pill-group">
+                <button type="button" class="btn-speech-mode active" data-mode="peer" title="บทเพื่อนพูดให้เพื่อนฟังหน้าห้อง - สาระวิชาการล้วน ไม่มีน้ำ อิงเปเปอร์ตรงๆ">
+                  🎓 เพื่อนพูดให้เพื่อนฟัง (Academic Peer)
+                </button>
+                <button type="button" class="btn-speech-mode" data-mode="executive" title="บทนำเสนอแบบบริหารและภาพรวม">
+                  💼 นำเสนอผู้บริหาร (Executive)
+                </button>
+              </div>
+            </div>
+
+            <div class="studio-controls-bar">
+              <div class="timer-display-capsule">
+                <span class="timer-dot" id="studio-timer-dot"></span>
+                <span id="studio-timer">05:00</span>
+              </div>
+              <button class="btn btn-primary" id="studio-play-btn" style="background: var(--purple); border-color: var(--purple);">▶ เริ่มซ้อม</button>
+              <button class="btn btn-secondary" id="studio-reset-btn">↺ รีเซ็ต</button>
+            </div>
+          </div>
+
+          <!-- Timeline 7 Stages -->
+          <div class="studio-timeline">
+            <div class="timeline-segment active" data-stage="0">
+              <span class="seg-time">0:00 - 0:30</span>
+              <span class="seg-title">1. หน้าปก</span>
+            </div>
+            <div class="timeline-segment" data-stage="1">
+              <span class="seg-time">0:30 - 1:15</span>
+              <span class="seg-title">2. ปัญหา &amp; ความท้าทาย</span>
+            </div>
+            <div class="timeline-segment" data-stage="2">
+              <span class="seg-time">1:15 - 2:05</span>
+              <span class="seg-title">3. กราฟ &amp; ตัวชี้วัด</span>
+            </div>
+            <div class="timeline-segment" data-stage="3">
+              <span class="seg-time">2:05 - 2:55</span>
+              <span class="seg-title">4. กรณีศึกษา &amp; Persona</span>
+            </div>
+            <div class="timeline-segment" data-stage="4">
+              <span class="seg-time">2:55 - 3:45</span>
+              <span class="seg-title">5. ผลทดสอบ &amp; SUS</span>
+            </div>
+            <div class="timeline-segment" data-stage="5">
+              <span class="seg-time">3:45 - 4:25</span>
+              <span class="seg-title">6. การประยุกต์ใช้</span>
+            </div>
+            <div class="timeline-segment" data-stage="6">
+              <span class="seg-time">4:25 - 5:00</span>
+              <span class="seg-title">7. ข้อจำกัด &amp; สรุป</span>
+            </div>
+          </div>
+
+          <!-- Workbench Dual Grid -->
+          <div class="studio-workbench-grid">
+
+            <!-- Left: Slide Deck Preview (Real PDF Slide Images) -->
+            <div class="slide-deck-box">
+              <div class="slide-canvas-card" style="padding: 0; overflow: hidden; background: #1a1a2e;">
+                <div class="slide-header" style="padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span class="slide-num-badge" id="slide-num-badge" style="background: var(--purple); color: white;">Slide 1 / 7</span>
+                </div>
+                <img id="slide-real-img" src="assets/slides/slide-1.png" alt="สไลด์นำเสนอหน้า 1" style="width: 100%; display: block; cursor: zoom-in;" onclick="this.requestFullscreen ? this.requestFullscreen() : null">
+              </div>
+
+              <div class="slide-nav-bar">
+                <button class="btn btn-secondary" id="slide-prev-btn" style="padding: 4px 12px; font-size: 0.82rem;">◀ สไลด์ก่อนหน้า</button>
+                <span style="font-size: 0.80rem; color: var(--ink-muted);">คีย์ลัด: Space = เริ่ม/พัก | ◀ ▶ = เปลี่ยนสไลด์</span>
+                <button class="btn btn-secondary" id="slide-next-btn" style="padding: 4px 12px; font-size: 0.82rem;">สไลด์ถัดไป ▶</button>
+              </div>
+            </div>
+
+            <!-- Right: Teleprompter Column -->
+            <div class="teleprompter-box">
+              <div class="teleprompter-header">
+                <span class="prompter-label">TELEPROMPTER (สคริปต์บทพูดภาษาไทย)</span>
+                <span style="font-size: 0.74rem; color: var(--ink-muted);">เป้าหมาย: 5:00 นาทีพอดี</span>
+              </div>
+              <div class="teleprompter-content" id="teleprompter-content">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══════════ Concept Explainer (Teaching UI) ═══════════ -->
+          <div class="concept-explainer" id="concept-explainer" style="margin-top: 24px; border-top: 2px solid var(--purple); padding-top: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <span style="font-size: 1.3rem;">📚</span>
+              <h3 style="margin: 0; font-size: 1.05rem; color: var(--purple); font-weight: 700;">อธิบายเนื้อหาในสไลด์ — เรียนรู้ก่อนนำเสนอ</h3>
+              <span style="font-size: 0.78rem; color: var(--ink-muted); margin-left: auto;">เลื่อนสไลด์ด้านบนเพื่อเปลี่ยนเนื้อหาอธิบาย</span>
+            </div>
+
+            <div id="concept-content">
+              <!-- Dynamically rendered per slide -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 9: Q&A Defense Simulator ═══════════ -->
+      <section id="sec-qna">
+        <h2 class="section-title">
+          9. จำลองตอบคำถามกรรมการ 10 ข้อ (Interactive Q&amp;A Defense Simulator)
+          <button class="paper-ref-pill" data-page="8" data-paper="story-validator" data-section="Section VI: Discussion & Defence" title="คลิกเปิดดูเปเปอร์ประกอบคำถาม">📄 ดูเปเปอร์ประกอบ</button>
+        </h2>
+        <p>
+          คัดสรรคำถามยอดฮิตที่คณะกรรมการสอบโครงงานวิศวกรรมคอมพิวเตอร์และอาจารย์ผู้สอนมักจะซักถาม พร้อมธงคำตอบเชิงลึก เหตุผล และจุดอ้างอิงในสไลด์:
+        </p>
+
+        <div class="qna-defense-workbench">
+          <!-- Filter Buttons -->
+          <div class="qna-filter-bar" style="margin-bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-filter active" data-category="all">ทั้งหมด (10 ข้อ)</button>
+            <button class="btn-filter" data-category="method">ระเบียบวิธีวิจัย &amp; ทฤษฎี</button>
+            <button class="btn-filter" data-category="results">ผลลัพธ์ &amp; ตัวเลขสถิติ</button>
+            <button class="btn-filter" data-category="engineering-app">การประยุกต์ใช้เชิงวิศวกรรม</button>
+            <button class="btn-filter" data-category="critique">ข้อจำกัด &amp; ปัญหาของงาน</button>
+            <button class="btn btn-secondary" id="qna-random-btn" style="margin-left: auto; padding: 4px 10px; font-size: 0.80rem;">🎲 สุ่มคำถาม</button>
+          </div>
+
+          <div class="qna-card-deck">
+            <!-- Q1 -->
+            <div class="qna-card" data-category="method">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q1</span>
+                <span class="qna-q-text">ทำไมถึงเลือกใช้ Depth-First Search (DFS) ในการท่องกราฟ แทนที่จะเป็น Breadth-First Search (BFS)?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> เช็กว่าเข้าใจคุณสมบัติของ Graph Algorithm และธรรมชาติของเกมหรือไม่
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> เพราะวัตถุประสงค์ของ Story Validator คือการจำลอง <em>Playthrough Trace</em> ซึ่งก็คือการที่ผู้เล่นหนึ่งคนเล่นตั้งแต่ต้นจนจบเรื่องทีละเส้นทาง DFS เลียนแบบพฤติกรรมการเล่นจริงได้ตรงไปตรงมา โดยเดินลึกไปจนถึงฉากจบ แล้วใช้ Backtracking ถอยกลับมายังทางแยกเพื่อลองเลือกทางเลือกอื่น นอกจากนี้ DFS ใช้หน่วยความจำใน Stack เพียงแค่ <em>O(Depth)</em> ในขณะที่ BFS ต้องเก็บโหนดกว้างในแต่ละชั้นซึ่งสิ้นเปลืองแรมมากกว่าในโครงสร้างที่มีกิ่งแตกแขนงสูงครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 3 (สถาปัตยกรรม) · เปเปอร์ Section III.C หน้า 3</div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="qna-card" data-category="method">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q2</span>
+                <span class="qna-q-text">Lost Plot แตกต่างจาก Dead-End อย่างไรในเชิงทฤษฎีกราฟ?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ตรวจสอบความแม่นยำในการจำแนกประเภทของบั๊กโครงเรื่อง
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> ในเชิงทฤษฎีกราฟ <em>Lost Plot</em> คือโหนดที่มี In-degree เป็น 0 จากมุมมองของโหนดเริ่มต้น หรือมีเงื่อนไขนำเข้าที่เป็นเท็จตลอดเวลา ทำให้ไม่มีทางเดินจาก Root สู่โหนดนั้นได้เลย ผู้เขียนเขียนบทไว้ฟรีไม่มีใครได้เห็น ส่วน <em>Dead-End</em> คือโหนดที่มี Out-degree เป็น 0 ทั้งที่ไม่ใช่โหนดฉากจบ (Not an Ending Node) หรือทางเลือกออกทั้งหมดมีเงื่อนไขที่เป็นไปไม่ได้ ทำให้ผู้เล่นเดินเข้าไปแล้วติดค้าง เกมไม่จบและไปต่อไม่ได้ครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 4 (ตัวชี้วัด 5 มิติ) · เปเปอร์ Section III.D หน้า 4</div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="qna-card" data-category="method">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q3</span>
+                <span class="qna-q-text">Stroke Point คืออะไร และมีประโยชน์อย่างไรต่อการแต่งนิยาย?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ดูว่าเข้าใจคำว่า Authorial Intent หรือไม่
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> Stroke Point คือฉากคอขวดที่ทุกเส้นทางการเล่นสมบูรณ์ต้องวิ่งผ่าน (∀ p<sub>k</sub> ∈ P, S ∈ p<sub>k</sub>) ประโยชน์คือช่วยให้นักเขียนมั่นใจว่า แก่นสารสำคัญของเรื่อง เช่น ฉากเฉลยว่าใครเป็นฆาตกร หรือข้อคิดสำคัญ จะต้องถูกส่งมอบถึงผู้เล่นทุกคน 100% ไม่ว่าผู้เล่นจะเลือกทางเลือกแตกแขนงไปทางไหนก็ตามครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 4 (ตัวชี้วัด 5 มิติ) · เปเปอร์ Section III.D หน้า 4</div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="qna-card" data-category="results">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q4</span>
+                <span class="qna-q-text">ทำไมในการทดลองจึงมีผู้ใช้ 15% (3 คน) พลาดปัญหาที่ 2 (Infinite Loop)?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ทดสอบการอ่านและจับประเด็นการวิเคราะห์เชิงลึกจากผลการทดลอง
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> เพราะผู้ใช้ 3 คนนั้นพยายามใช้สายตากวาดมองผังกราฟต้นไม้ด้วยตนเอง แทนที่จะคลิกเปิดใช้ตัวกรอง (Filter) ของระบบ ซึ่งผู้วิจัยชี้ว่านี่คือข้อพิสูจน์เชิงประจักษ์ว่า เมื่อโครงเรื่องมีความซับซ้อนและการเชื่อมโยงแบบข้ามฉาก สายตามนุษย์มีข้อจำกัดอย่างยิ่งและไม่สามารถมองเห็นวงวนได้ด้วยตาเปล่า จึงจำเป็นต้องพึ่งพาระบบ Automated Detection ครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 5 (การทดลอง) · เปเปอร์ Section V.E หน้า 7</div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="qna-card" data-category="results">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q5</span>
+                <span class="qna-q-text">คะแนน SUS 92.4 มีความหมายอย่างไรในเชิงสถิติศาสตร์และการยอมรับของผู้ใช้?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ดูว่ารู้ที่มาและเกณฑ์มาตรฐานของ System Usability Scale หรือไม่
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> ตามเกณฑ์มาตรฐานของ Bangor et al. (2008) ระบบที่มีคะแนน SUS เกิน 68 ถือว่าผ่านเกณฑ์เฉลี่ย เกิน 80 ถือว่าดีเยี่ยม (Grade A) และหากเกิน 85 คะแนนขึ้นไปจะถูกจัดอยู่ในกลุ่ม <em>"Truly Superior"</em> (Grade A+) คะแนน 92.4 จึงยืนยันว่า UI ของ Story Validator ใช้งานง่ายมาก นักเขียนบทเกมสามารถเข้าใจและตรวจพบบั๊กได้ทันทีโดยไม่ต้องมีความรู้ด้านทฤษฎีกราฟขั้นสูงครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 5 (การทดลอง) · เปเปอร์ Section V.E หน้า 7</div>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="qna-card" data-category="critique">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q6</span>
+                <span class="qna-q-text">จุดอ่อนหรือข้อจำกัดที่ใหญ่ที่สุดของการทดลองในเปเปอร์นี้คืออะไร?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> วัดทักษะ Critical Thinking ว่านิสิตกล้าวิจารณ์งานวิจัยหรือไม่
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> ข้อจำกัดใหญ่ที่สุดคือ <strong>การขาดกลุ่มควบคุมเปรียบเทียบ (No Control Baseline)</strong> ครับ งานนี้วัดเพียงว่าเมื่อใช้ Story Validator แล้ว ผู้ใช้หาบั๊กได้ในเวลาเฉลี่ย 52.3 วินาที แต่ไม่ได้ทดสอบว่าถ้าให้คนกลุ่มเดิมไปนั่งหาบั๊กด้วยมือบนโปรแกรม Twine ปกติ จะใช้เวลาเท่าใด ทำให้ไม่สามารถคำนวณอัตราความเร็วที่เพิ่มขึ้น (Speedup Ratio) ได้อย่างสมบูรณ์ตามหลักระเบียบวิธีวิจัยครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 7 (วิจารณ์เชิงวิชาการ) · เปเปอร์ Section VI หน้า 8</div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="qna-card" data-category="critique">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q7</span>
+                <span class="qna-q-text">ถ้าเกมมีขนาดใหญ่ 500 ฉาก และมีลูปวนไปมา อัลกอริทึม DFS จะเกิดปัญหาอะไร และจะแก้อย่างไร?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ทดสอบความรู้เรื่อง Algorithm Complexity &amp; Scalability
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> จะเกิดปัญหา <em>State-Space Explosion</em> ครับ เพราะจำนวนเส้นทางที่เป็นไปได้จะขยายตัวแบบ Exponential ทำให้ DFS ทำงานไม่สิ้นสุดหรือเกิดสภาวะ Call Stack Overflow ทางแก้ทางวิศวกรรมมี 3 แนวทาง: 1. กำหนดเพดานความลึกสูงสุด (Depth Limit), 2. ใช้ Tarjan's Algorithm หา Strongly Connected Components เพื่อยุบลูปก่อนท่องกราฟ, และ 3. บันทึกแคชสถานะที่เคยไปถึงแล้ว (Memoization) เพื่อไม่สำรวจซ้ำครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 7 (วิจารณ์เชิงวิชาการ) · เปเปอร์ Section VI หน้า 8</div>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="qna-card" data-category="engineering-app">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q8</span>
+                <span class="qna-q-text">งานวิจัยนี้เชื่อมโยงกับสถาปัตยกรรมระบบเกมหรือนิยายภาพเชิงโต้ตอบอย่างไร?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ตรวจสอบความเข้าใจในการนำทฤษฎีไปแมปเข้ากับสถาปัตยกรรมซอฟต์แวร์จริง
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> สถาปัตยกรรมของ Story Validator สามารถแมป 1:1 สู่เอนจินของเกมหรือระบบนิยายภาพเชิงโต้ตอบได้โดยตรงครับ:<br>
+                  1. Passage และ Link ตรงกับ Block และ Choice ของ Scene Graph ในเกมเอนจิน<br>
+                  2. Guarded Transitions ตรงกับคำสั่งตรวจสอบเงื่อนไขตัวแปร ก่อนอนุญาตให้เปลี่ยนฉาก<br>
+                  3. Variable Tracking ตรงกับระบบจัดการ Game State และการบันทึกความก้าวหน้าของผู้เล่น<br>
+                  และช่องว่างสำคัญของระบบสร้างเกมทั่วไปคือ มักตรวจเพียงความครบถ้วนของไฟล์ แต่ยังไม่มีระบบตรวจ Dead-end และ Lost plot เราจึงนำงานนี้มาเป็นพิมพ์เขียวในการสร้าง Verification Engine เสริมในกระบวนการ Quality Assurance ก่อนปล่อยเกมครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 6 (การประยุกต์ใช้ใน Game Engine) · Architecture Mapping</div>
+              </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="qna-card" data-category="engineering-app">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q9</span>
+                <span class="qna-q-text">การนำ Story Validator ไปติดตั้งในระบบ Production จะส่งผลกระทบต่อประสิทธิภาพฝั่ง Server หรือไม่?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ประเมินสถาปัตยกรรมระบบ Web Application และ Performance
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> ไม่กระทบต่อการเล่นของผู้เล่นทั่วไปครับ เพราะเราจะรันกระบวนการนี้เฉพาะในขั้นตอน <em>Publish / Moderation Phase</em> ตอนที่ผู้สร้างกดส่งผลงานอนุมัติขึ้นแพลตฟอร์ม โดยสามารถรันเป็น Background Job แบบ Asynchronous ผ่าน Worker หรือคิวของเซิร์ฟเวอร์ เมื่อผลตรวจผ่าน 100% จึงเปลี่ยนสถานะเกมเป็น Published ผู้เล่นจึงได้เล่นเฉพาะผลงานที่การันตีว่าไม่มีทางตันแน่นอนครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 6 (การประยุกต์ใช้ใน Game Engine) · System Architecture</div>
+              </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="qna-card" data-category="method">
+              <button class="qna-question-btn">
+                <span class="qna-q-num">Q10</span>
+                <span class="qna-q-text">Player Persona Simulation มีประโยชน์ต่างจากการสุ่มเดินเรื่อง (Random Walk) อย่างไร?</span>
+                <span class="qna-q-arrow">▼</span>
+              </button>
+              <div class="qna-answer-body">
+                <div class="qna-intent-box">
+                  <strong>🎯 เจตนาของกรรมการ:</strong> ตรวจสอบความเข้าใจเรื่อง Persona และ Heuristic Search
+                </div>
+                <div class="qna-model-answer">
+                  <strong>ธงคำตอบระดับวิศวกร:</strong> Random Walk สุ่มเลือกทางเลือกด้วยความน่าจะเป็นเท่ากันทุกข้อ ซึ่งไม่สะท้อนพฤติกรรมมนุษย์จริงครับ แต่วิธี Persona ใช้ Heuristic Greedy Search โดยกำหนดค่าน้ำหนักอรรถประโยชน์ เช่น ผู้เล่นสายก้าวร้าวจะชอบเลือกทางเลือกที่เพิ่มค่าความโกรธ (Anger) ทำให้ระบบสามารถจำลองเส้นทางที่ผู้เล่นกลุ่มเป้าหมายเฉพาะจะเดินไปถึง และช่วยให้ตรวจพบบั๊กที่ถูกซ่อนอยู่ในพฤติกรรมการเล่นแบบสุดโต่งได้แม่นยำกว่าการสุ่มครับ
+                </div>
+                <div class="qna-ref-footer">อ้างอิง: สไลด์ที่ 4 (ตัวชี้วัด 5 มิติ) · เปเปอร์ Section IV หน้า 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 10: Comprehension Quiz ═══════════ -->
+      <section id="sec10">
+        <h2 class="section-title">
+          10. แบบประเมินความเข้าใจ 5 ข้อ (Interactive Comprehension Quiz)
+        </h2>
+        <p>
+          ทดสอบความรู้ความเข้าใจเพื่อเตรียมความพร้อมก่อนขึ้นนำเสนอจริง ระบบจะตรวจคำตอบและแสดงคำอธิบายทางวิศวกรรมทันที:
+        </p>
+
+        <div class="quiz-container" id="quiz-paper2">
+          <!-- Quiz Item 1 -->
+          <div class="quiz-card" data-quiz-id="1">
+            <div class="quiz-question">
+              <strong>ข้อที่ 1:</strong> หากนักเขียนบทสร้างฉากหนึ่งขึ้นมา แต่ไม่มีลิงก์ใดๆ จากฉากอื่นชี้มายังฉากนี้เลย ในเชิงทฤษฎีกราฟฉากนี้เรียกว่าอะไร?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option-label">
+                <input type="radio" name="q1" value="A"> A. Stroke Point
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q1" value="B"> B. Dead-End
+              </label>
+              <label class="quiz-option-label" data-correct="true">
+                <input type="radio" name="q1" value="C"> C. Lost Plot
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q1" value="D"> D. Ending Node
+              </label>
+            </div>
+            <div class="quiz-feedback" style="display: none;"></div>
+          </div>
+
+          <!-- Quiz Item 2 -->
+          <div class="quiz-card" data-quiz-id="2">
+            <div class="quiz-question">
+              <strong>ข้อที่ 2:</strong> อัลกอริทึมใดที่ Story Validator ใช้เป็นแกนกลางในการสำรวจทุกเส้นทางการเล่น (Playthrough Traces)?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option-label" data-correct="true">
+                <input type="radio" name="q2" value="A"> A. Depth-First Search (DFS)
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q2" value="B"> B. Breadth-First Search (BFS)
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q2" value="C"> C. Dijkstra's Algorithm
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q2" value="D"> D. Bellman-Ford Algorithm
+              </label>
+            </div>
+            <div class="quiz-feedback" style="display: none;"></div>
+          </div>
+
+          <!-- Quiz Item 3 -->
+          <div class="quiz-card" data-quiz-id="3">
+            <div class="quiz-question">
+              <strong>ข้อที่ 3:</strong> ในการทดลองกับผู้ใช้ 20 คนใน The Murder Case เวลาเฉลี่ยในการตรวจพบบั๊กทั้ง 5 จุดอยู่ที่เท่าใด?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option-label">
+                <input type="radio" name="q3" value="A"> A. 15.6 วินาที
+              </label>
+              <label class="quiz-option-label" data-correct="true">
+                <input type="radio" name="q3" value="B"> B. 52.3 วินาที
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q3" value="C"> C. 146.2 วินาที
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q3" value="D"> D. 300.0 วินาที
+              </label>
+            </div>
+            <div class="quiz-feedback" style="display: none;"></div>
+          </div>
+
+          <!-- Quiz Item 4 -->
+          <div class="quiz-card" data-quiz-id="4">
+            <div class="quiz-question">
+              <strong>ข้อที่ 4:</strong> ข้อใดคือจุดวิจารณ์เชิงวิชาการที่สำคัญที่สุดเกี่ยวกับระเบียบวิธีวิจัยของบทความนี้?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option-label" data-correct="true">
+                <input type="radio" name="q4" value="A"> A. ไม่ได้สร้างกลุ่มควบคุม (Control Group) เพื่อเปรียบเทียบความเร็วกับการตรวจด้วยมือ
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q4" value="B"> B. อัลกอริทึม DFS มีความแม่นยำต่ำกว่าการใช้สายตามนุษย์ตรวจ
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q4" value="C"> C. ไม่สามารถรองรับไฟล์นิยายที่เขียนด้วยภาษาไทยได้
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q4" value="D"> D. ได้คะแนนความพึงพอใจ SUS ต่ำกว่าเกณฑ์มาตรฐาน
+              </label>
+            </div>
+            <div class="quiz-feedback" style="display: none;"></div>
+          </div>
+
+          <!-- Quiz Item 5 -->
+          <!-- Quiz Item 5 -->
+          <div class="quiz-card" data-quiz-id="5">
+            <div class="quiz-question">
+              <strong>ข้อที่ 5:</strong> ในสถาปัตยกรรมระบบสร้างเกมนิยายภาพเชิงโต้ตอบ ส่วนประกอบใดที่ควรนำ Story Validation Engine เข้าไปติดตั้งเสริมเพื่อป้องกันไม่ให้นิยายหรือเกมมีทางตันหลุดรอดสู่ผู้ใช้งาน?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option-label">
+                <input type="radio" name="q5" value="A"> A. Runtime Audio Engine สำหรับเล่นเสียงประกอบ
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q5" value="B"> B. Choice Renderer สำหรับวาดปุ่มกดบนหน้าจอ
+              </label>
+              <label class="quiz-option-label" data-correct="true">
+                <input type="radio" name="q5" value="C"> C. Content QA &amp; Moderation Service ในการตรวจโครงสร้างก่อน Publish
+              </label>
+              <label class="quiz-option-label">
+                <input type="radio" name="q5" value="D"> D. Database Migration Script ในการเพิ่มคอลัมน์
+              </label>
+            </div>
+            <div class="quiz-feedback" style="display: none;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ Section 11: References & BibTeX ═══════════ -->
+      <section id="sec11">
+        <h2 class="section-title">
+          11. คลังอ้างอิงและ BibTeX (References &amp; BibTeX Citation)
+        </h2>
+        <p>
+          ข้อมูลบรรณานุกรมฉบับมาตรฐาน IEEE Format พร้อมโค้ด BibTeX สำหรับคัดลอกไปใส่ในเอกสารรายงานโครงงานวิศวกรรมคอมพิวเตอร์บทที่ 1 และ 2:
+        </p>
+
+        <!-- BibTeX Box -->
+        <div class="bibtex-container" style="background: var(--paper); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 16px; margin: 16px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong style="font-size: 0.86rem; color: var(--ink);">BibTeX: IEEE Conference on Games (CoG 2021)</strong>
+            <button class="btn btn-secondary btn-copy" data-target="bibtex-code-paper2" style="padding: 2px 10px; font-size: 0.78rem;">📋 คัดลอก BibTeX</button>
+          </div>
+          <pre id="bibtex-code-paper2" style="margin: 0; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; color: var(--ink); overflow-x: auto;">
+@inproceedings{veloso2021validating,
+  author    = {Veloso, Carolina and Prada, Rui},
+  booktitle = {2021 IEEE Conference on Games (CoG)},
+  title     = {Validating the plot of Interactive Narrative games},
+  year      = {2021},
+  pages     = {1-8},
+  keywords  = {Interactive narrative; Plot validation; Authoring tools; Graph theory; Playtesting},
+  doi       = {10.1109/CoG52621.2021.9618897},
+  publisher = {IEEE}
+}</pre>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 0.90rem; line-height: 1.8; color: var(--ink-soft);">
+          <strong>รูปแบบการอ้างอิง IEEE ในเล่มรายงาน:</strong><br>
+          [1] C. Veloso and R. Prada, “Validating the plot of Interactive Narrative games,” in <em>2021 IEEE Conference on Games (CoG)</em>, 2021, pp. 1–8, doi: 10.1109/CoG52621.2021.9618897.<br>
+          [2] E. B. Bura et al., “GENEVA: Generative Narrative Graphs for Interactive Storytelling,” in <em>2024 IEEE Conference on Games (CoG)</em>, 2024, pp. 1–8, doi: 10.1109/CoG60054.2024.10645625.<br>
+          [3] J. H. Murray, <em>Hamlet on the Holodeck: The Future of Narrative in Cyberspace</em>. Cambridge, MA: MIT Press, 1997.
+        </div>
+      </section>
+
+      <footer class="page-footer" style="margin-top: 60px; padding-top: 24px; border-top: 1.5px solid var(--rule);">
+        <div>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร · 305432 เครือข่ายเซนเซอร์ (Sensor Networks)</div>
+        <div>เอกสารวิเคราะห์และห้องซ้อมนำเสนอสำหรับโครงงานวิศวกรรมคอมพิวเตอร์ (CPE Senior Project)</div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ═══════════ Interactive PDF Quick View Modal ═══════════ -->
+  <div class="pdf-modal-overlay" id="pdf-modal-overlay">
+    <div class="pdf-modal-container">
+      <header class="pdf-modal-header">
+        <div class="pdf-modal-title">
+          <span class="brand-icon">📄</span>
+          <span class="badge" style="background: var(--purple); color: white;">Paper II: Story Validator (IEEE CoG 2021)</span>
+          <strong id="pdf-modal-target-title" style="margin-left: 8px;">Section I: Introduction</strong>
+        </div>
+
+        <div class="pdf-modal-actions">
+          <div class="view-mode-pill-group">
+            <button class="btn-mode-pill active" id="modal-mode-image-btn" title="โหมดแสดงภาพหน้าความละเอียดสูง">ภาพหน้า (PNG)</button>
+            <button class="btn-mode-pill" id="modal-mode-pdf-btn" title="โหมดเปิดไฟล์เอกสาร PDF ต้นฉบับ">ไฟล์ PDF</button>
+          </div>
+          <a href="../assignement/work2/01_original/Paper_II_1_PRIMARY_StoryValidator_9618897.pdf" target="_blank" class="btn btn-secondary" id="pdf-modal-external-btn" title="เปิดไฟล์ในแท็บใหม่" style="padding: 2px 8px; font-size: 0.76rem;">เปิดภายนอก ↗</a>
+          <button class="btn btn-secondary" id="pdf-modal-fullscreen-btn" title="ขยายเต็มจอ" style="padding: 2px 8px; font-size: 0.76rem;">⛶</button>
+          <button class="modal-close-btn" id="pdf-modal-close-btn" title="ปิดหน้าต่าง">✕</button>
+        </div>
+      </header>
+
+      <!-- Modal Body (Two-Pane: Outline + Page Viewer) -->
+      <div class="pdf-modal-body">
+        <aside class="modal-outline-pane">
+          <div class="modal-outline-header">สารบัญบทความ 8 หน้า (IEEE CoG 2021)</div>
+          <ul class="modal-outline-list">
+            <!-- Dynamically generated -->
+          </ul>
+        </aside>
+
+        <main class="modal-viewer-pane">
+          <div class="modal-page-viewport">
+            <img id="modal-page-img" class="modal-page-img" src="assets/pages/page-1.png" alt="Story Validator Page 1">
+          </div>
+          <iframe id="modal-pdf-iframe" class="modal-pdf-iframe" src="../assignement/work2/01_original/Paper_II_1_PRIMARY_StoryValidator_9618897.pdf#page=1"></iframe>
+        </main>
+      </div>
+
+      <!-- Context Cue Footer -->
+      <div class="modal-cue-bar">
+        <div>
+          <span style="opacity: 0.85; margin-right: 6px;">เป้าหมายการนำเสนอ:</span>
+          <span class="modal-cue-text" id="pdf-modal-context-text">🎯 ปัญหา Authorial Intent vs Player Agency สำหรับสไลด์ 1</span>
+        </div>
+        <div style="font-size: 0.74rem; color: var(--ink-muted);">เคล็ดลับ: ใช้ปุ่มลูกศร ◀ ▶ บนคีย์บอร์ดเพื่อเปลี่ยนหน้าได้ทันที | Esc เพื่อปิด</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="../assets/js/common.js?v=20260928b"></script>
+  <script src="../assets/js/presentation.js"></script>
+  <script src="../assets/js/story-simulator.js"></script>
+  <script src="../assets/js/qna.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Paper I: IoT-CAD (Context-Aware Anomaly Detection) · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel=stylesheet href="../assets/css/style.css?v=20260928b">
+  <link rel=stylesheet href="../assets/css/interactive.css?v=20260928b">
+  <script src="../assets/js/header-component.js?v=20261007"></script>
+</head>
+
+<body>
+
+  <!-- ═══════════ Unified Standardized Header Component ═══════════ -->
+  <site-header data-page="paper-1" data-base="../"></site-header>
+
+  <!-- ═══════════ Chapter Layout (Sidebar + Main Content) ═══════════ -->
+  <div class="chapter-container">
+
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญบทเรียน</span>
+          <span class="sidebar-badge-pill">Paper I</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label" id="sidebar-live-section">1. อภิธานศัพท์และคำอ่าน</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Nav for IoT-CAD -->
+      <ul class="sidebar-nav" id="sidebar-list-iot-cad">
+        <li><a href="#sec1" class="sidebar-link active">1. อภิธานศัพท์และคำอ่าน</a></li>
+        <li><a href="#sec2" class="sidebar-link">2. ที่มา ความสำคัญ และตำราอ้างอิง</a></li>
+        <li><a href="#sec3" class="sidebar-link">3. ปัญหาวิจัย: EA vs SDA</a></li>
+        <li><a href="#sec4" class="sidebar-link">4. สถาปัตยกรรม IoT-CAD 4 ขั้น</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link">5. ซิมูเลเตอร์จำลองระบบ</a></li>
+        <li><a href="#sec6" class="sidebar-link">6. การทดลองและผลลัพธ์</a></li>
+        <li><a href="#sec7" class="sidebar-link">7. วิจารณ์เชิงวิชาการ</a></li>
+        <li><a href="#sec-rehearsal" class="sidebar-link" style="color: var(--accent); font-weight: 700;">8. ห้องซ้อมบทนำเสนอ 5 นาที ★</a></li>
+        <li><a href="#sec-qna" class="sidebar-link" style="color: var(--purple); font-weight: 700;">9. จำลองตอบคำถามอาจารย์ ★</a></li>
+        <li><a href="#sec10" class="sidebar-link">10. แบบประเมินความเข้าใจ</a></li>
+        <li><a href="#sec11" class="sidebar-link">11. คลังอ้างอิงและ BibTeX</a></li>
+      </ul>
+
+      <!-- Sidebar Nav for MCSOA -->
+      <ul class="sidebar-nav" id="sidebar-list-mcsoa" style="display: none;">
+        <li><a href="#sec-mcsoa-1" class="sidebar-link">1. อภิธานศัพท์และคำอ่าน (MCSOA)</a></li>
+        <li><a href="#sec-mcsoa-2" class="sidebar-link">2. บริบท WSNs ในโครงข่ายพลังงาน</a></li>
+        <li><a href="#sec-mcsoa-3" class="sidebar-link">3. โมเดลพลังงานและสมการฟังก์ชันเป้าหมาย</a></li>
+        <li><a href="#sec-mcsoa-4" class="sidebar-link">4. กลไก MCSOA (Tent Map + Spiral)</a></li>
+        <li><a href="#sec-mcsoa-5" class="sidebar-link">5. ซิมูเลเตอร์เปรียบเทียบ GA vs PSO vs MCSOA</a></li>
+        <li><a href="#sec-mcsoa-6" class="sidebar-link">6. ผลการทดลองและตัวเลขสมรรถนะ</a></li>
+        <li><a href="#sec-mcsoa-7" class="sidebar-link">7. วิจารณ์เชิงวิชาการและข้อจำกัด</a></li>
+        <li><a href="#sec-rehearsal" class="sidebar-link" style="color: var(--accent); font-weight: 700;">8. ห้องซ้อมบทนำเสนอ 5 นาที ★</a></li>
+        <li><a href="#sec-mcsoa-qna" class="sidebar-link" style="color: var(--purple); font-weight: 700;">9. จำลองตอบคำถามอาจารย์ ★</a></li>
+        <li><a href="#sec-mcsoa-quiz" class="sidebar-link">10. แบบประเมินความเข้าใจ</a></li>
+        <li><a href="#sec-mcsoa-bib" class="sidebar-link">11. ข้อมูลบรรณานุกรม BibTeX</a></li>
+      </ul>
+
+      <div
+      <div id="sidebar-meta-iot-cad" style="margin-top: 24px; padding-top: 16px; border-top: 1.5px solid var(--rule); font-size: 0.82rem; color: var(--ink-muted);">
+        <div>บทความตัวจริง (ICCAD 2020):</div>
+        <strong style="color: var(--ink);">IoT-CAD (9 หน้า)</strong><br>
+        <span>UC Irvine · IEEE/ACM Xplore</span>
+
+        <!-- Action Card: Open Translation Split View -->
+        <a href="translation.html" class="sidebar-action-card" title="เปิดอ่านบทความแปลไทยฉบับเต็มเทียบเคียงต้นฉบับ 1:1">
+          <span class="action-icon">📖</span>
+          <div class="action-text">
+            <div class="action-title">อ่านเปเปอร์แปลไทย</div>
+            <div class="action-desc">Compare View สปลิตคู่ 9 หน้า</div>
+          </div>
+          <span class="action-arrow">→</span>
+        </a>
+
+        <!-- Modal Quick View Button -->
+        <button class="sidebar-modal-trigger paper-ref-pill" data-page="1" data-section="Paper I: IoT-CAD (ICCAD 2020) ฉบับเต็ม" title="คลิกเปิดหน้าต่าง Interactive Paper Inspector">
+          <span>📄 เปิดดูเปเปอร์ PDF Quick View</span>
+        </button>
+      </div>
+
+      <div id="sidebar-meta-mcsoa" style="display: none; margin-top: 24px; padding-top: 16px; border-top: 1.5px solid var(--rule); font-size: 0.82rem; color: var(--ink-muted);">
+        <div>บทความสำรอง 1 (CACRE 2024):</div>
+        <strong style="color: var(--ink);">MCSOA (5 หน้า)</strong><br>
+        <span>Shihezi Univ. · IEEE Xplore</span>
+
+        <!-- Modal Quick View Button -->
+        <button class="sidebar-modal-trigger paper-ref-pill" data-page="1" data-paper="mcsoa" data-section="Paper I (สำรอง): MCSOA (CACRE 2024)" title="คลิกเปิดหน้าต่าง Interactive Paper Inspector">
+          <span>📄 เปิดดูเปเปอร์ PDF Quick View</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="chapter-main">
+
+
+      <!-- Course Meta Line -->
+      <div class="course-meta-bar">
+        <div><strong>305432 เครือข่ายเซนเซอร์ (Sensor Networks)</strong> · มหาวิทยาลัยนเรศวร (อ.ตั้ม)</div>
+        <div class="paper-selector-container">
+          <label for="paper-select-dropdown" class="paper-select-label">เลือกบทความวิจัย:</label>
+          <select id="paper-select-dropdown" class="paper-select-control">
+            <option value="iot-cad" selected>Paper I (ตัวจริง): IoT-CAD (ICCAD 2020)</option>
+            <option value="mcsoa">Paper I (สำรอง 1): MCSOA (CACRE 2024)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ═══════════ IoT-CAD Subview (Head: Sec 1-7) ═══════════ -->
+      <div id="paper-view-iot-cad-head" class="paper-subview-iot-cad">
+      <h1 class="book-title">IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association
+      </h1>
+      <div class="subtitle">
+        ระบบตรวจจับความผิดปกติที่รู้จำบริบทและปรับตัวได้ในระบบ IoT ผ่านการจัดกลุ่มความสัมพันธ์ของเซนเซอร์:
+        ถอดรหัสตั้งแต่พื้นฐานศูนย์ อ้างอิงตำราสากล จำลองระบบเชิงโต้ตอบ และซ้อมบทนำเสนอ 5 นาทีหน้าชั้นเรียน
+      </div>
+
+      <!-- Learning Objectives Callout -->
+      <div class="academic-callout">
+        <h3 style="color: var(--accent); margin-bottom: 8px; font-size: 1.12rem;">วัตถุประสงค์การเรียนรู้ประจำบทเรียน
+          (Learning Objectives)</h3>
+        <ol style="margin-left: 20px; line-height: 1.85; font-size: 0.94rem;">
+          <li>เข้าใจความแตกต่างเชิงกายภาพระหว่าง <strong>Environmental Anomaly (EA)</strong> และ <strong>Sensing Device
+              Anomaly (SDA)</strong></li>
+          <li>เข้าใจเหตุผลที่การตรวจจับโดยอาศัยเซนเซอร์เพียงตัวเดียวล้มเหลวในการแยกแยะสาเหตุที่แท้จริง</li>
+          <li>อธิบายกลไกการสกัด <strong>Binary Fingerprint</strong> และการจัดกลุ่มด้วย <strong>Hamming Distance
+              Clustering</strong> ได้อย่างถูกต้อง</li>
+          <li>อธิบายการทำงานร่วมกันระหว่าง <strong>LSTM Encoder-Decoder</strong>, <strong>Multivariate Gaussian
+              Estimator</strong>, และ <strong>Spatial-Temporal Consensus Algorithm</strong></li>
+          <li>ตีความผลการทดลองอย่างถูกต้อง: ทำไมตัวเลข <strong>Precision 92%</strong> จึงไม่ใช่ความถูกต้องรวม และทำไม
+            <strong>Recall 56%</strong> จึงเป็นข้อจำกัดสำคัญที่สุด
+          </li>
+          <li>สามารถนำเสนอหน้าชั้นเรียนได้ภายใน <strong>5:00 นาที</strong> อย่างมั่นใจ
+            พร้อมตอบข้อซักถามของคณะกรรมการได้อย่างลึกซึ้ง</li>
+        </ol>
+      </div>
+
+      <!-- ═══════════ ส่วนที่ 1: อภิธานศัพท์และคำอ่าน ═══════════ -->
+      <section id="sec1">
+        <h2 class="section-title">
+          1. อภิธานศัพท์ คำอ่านสัทศาสตร์ และนิยามความหมายทางวิศวกรรม (Nomenclature & Phonetics)
+          <button class="paper-ref-pill" data-page="1" data-section="Section I: Introduction & Nomenclature (หน้า 1)"
+            title="คลิกเปิดดูเปเปอร์ หน้า 1 ประกอบคำศัพท์และบทนำ">📄 เปเปอร์ หน้า 1 (Sec. I)</button>
+        </h2>
+        <p>
+          ในการนำเสนอทางวิชาการ การออกเสียงศัพท์เทคนิคอย่างถูกต้องและแม่นยำจะสร้างความน่าเชื่อถือ
+          ตารางด้านล่างนี้รวบรวมคำศัพท์สำคัญใน Paper_I พร้อมคำอ่านสัทศาสตร์ภาษาไทย ความหมายทางวิศวกรรมคอมพิวเตอร์
+          และการเปรียบเทียบในชีวิตจริง:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">คำศัพท์ภาษาอังกฤษ</th>
+                <th style="width: 20%;">คำอ่านภาษาไทย</th>
+                <th style="width: 38%;">นิยามและความหมายทางวิศวกรรม</th>
+                <th style="width: 20%;">อุปมาในชีวิตจริง</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Context-Aware</strong></td>
+                <td>คอนเท็กซต์-อะแวร์</td>
+                <td>ระบบที่สามารถรับรู้และนำ “บริบทแวดล้อม” รอบตัวมาประกอบการตัดสินใจ ไม่มองข้อมูลโดดเดี่ยว</td>
+                <td>หมอที่วินิจฉัยโรคโดยดูทั้งอุณหภูมิ ชีพจร และผลเลือดประกอบกัน</td>
+              </tr>
+              <tr>
+                <td><strong>Anomaly Detection</strong></td>
+                <td>อะนามะลี ดีเทกชัน</td>
+                <td>การตรวจจับพฤติกรรมหรือข้อมูลที่มีรูปแบบเบี่ยงเบนไปจากภาวะปกติของระบบอย่างมีนัยสำคัญ</td>
+                <td>ยามรักษาความปลอดภัยสังเกตเห็นคนเดินเข้าประตูหลังในยามวิกาล</td>
+              </tr>
+              <tr>
+                <td><strong>Sensor Association</strong></td>
+                <td>เซนเซอร์ อะโซซิเอชัน</td>
+                <td>การวิเคราะห์และจัดกลุ่มเซนเซอร์ที่มีการเปลี่ยนแปลงสัมพันธ์กันทางกายภาพแม้จะวัดคนละหน่วยวัด</td>
+                <td>การจับคู่เซนเซอร์เปิดประตูกับกล้องวงจรปิดหน้าประตู</td>
+              </tr>
+              <tr>
+                <td><strong>Binary Fingerprint</strong></td>
+                <td>ไบนารี ฟิงเกอร์พรินต์</td>
+                <td>การแปลงอัตราการเปลี่ยนแปลงของข้อมูลอนุกรมเวลาเป็นสายบิต (0 และ 1)
+                  เพื่อลดมิติข้อมูลและตัดปัญหาหน่วยวัดต่างกัน</td>
+                <td>การจดแค่ว่าหุ้น “ขึ้น (1)” หรือ “ไม่ขึ้น (0)” ในแต่ละชั่วโมง แทนตัวเลขราคาดิบ</td>
+              </tr>
+              <tr>
+                <td><strong>Hamming Distance</strong></td>
+                <td>แฮมมิง ดิสแทนซ์</td>
+                <td>ระยะห่างทางคณิตศาสตร์ที่นับจำนวนตำแหน่งของบิตที่ต่างกันระหว่างสายบิตสองสายที่มีความยาวเท่ากัน</td>
+                <td>การตรวจข้อสอบปรนัย: นับว่านักเรียนกาคำตอบต่างจากเฉลยกี่ข้อ</td>
+              </tr>
+              <tr>
+                <td><strong>LSTM Encoder-Decoder</strong></td>
+                <td>แอลเอสทีเอ็ม เอนโค้ดเดอร์-ดีโค้ดเดอร์</td>
+                <td>สถาปัตยกรรมโครงข่ายประสาทเทียมแบบวนซ้ำที่บีบอัดลำดับเวลาในอดีต แล้วจำลองสร้างลำดับเวลาถัดไป</td>
+                <td>นักพยากรณ์ที่จำประวัติสภาพอากาศย้อนหลัง 7 วันเพื่อทำนายสภาพอากาศวันพรุ่งนี้</td>
+              </tr>
+              <tr>
+                <td><strong>Reconstruction Error</strong></td>
+                <td>รีคอนสตรักชัน เออร์เรอร์</td>
+                <td>ผลต่างระหว่างค่าจริงที่เซนเซอร์วัดได้ กับค่าปกติที่แบบจำลองทำนายออกมา</td>
+                <td>ความแตกต่างระหว่างเวลาที่รถไฟมาจริง กับเวลาในตารางเดินรถ</td>
+              </tr>
+              <tr>
+                <td><strong>Multivariate Gaussian</strong></td>
+                <td>มัลติวาเรียต เกาส์เซียน</td>
+                <td>การแจกแจงความน่าจะเป็นแบบปกติหลายมิติ ใช้ประเมินโอกาสที่เวกเตอร์ความคลาดเคลื่อนจะเกิดขึ้นในภาวะปกติ
+                </td>
+                <td>การตรวจสุขภาพรวมหลายค่า (ความดัน น้ำตาล ไขมัน) ว่าอยู่ในเกณฑ์ปกติพร้อมกันหรือไม่</td>
+              </tr>
+              <tr>
+                <td><strong>Consensus Algorithm</strong></td>
+                <td>คอนเซนซัส แอลกอริทึม</td>
+                <td>ขั้นตอนวิธีหาฉันทามติหรือข้อสรุปจากเสียงส่วนใหญ่ของสมาชิกในกลุ่มเซนเซอร์ที่มีความสัมพันธ์กัน</td>
+                <td>การลงมติของคณะกรรมการ 3 ใน 4 เสียงเพื่อยืนยันเหตุการณ์</td>
+              </tr>
+              <tr>
+                <td><strong>Environmental Anomaly (EA)</strong></td>
+                <td>เอนไวรอนเมนทัล อะนามะลี</td>
+                <td>ความผิดปกติที่เกิดจากการเปลี่ยนแปลงของสภาพแวดล้อมทางกายภาพจริง (เซนเซอร์ทำงานถูกต้อง)</td>
+                <td>เกิดเพลิงไหม้จริง ทำให้เซนเซอร์ความร้อน ควัน และแสง ส่งสัญญาณพร้อมกัน</td>
+              </tr>
+              <tr>
+                <td><strong>Sensing Device Anomaly (SDA)</strong></td>
+                <td>เซนซิง ดิไวซ์ อะนามะลี</td>
+                <td>ความผิดปกติที่เกิดจากตัวอุปกรณ์เซนเซอร์ชำรุด ลัดวงจร แบตเตอรี่เสื่อม หรือถูกโจมตีทางไซเบอร์</td>
+                <td>ปรอทวัดไข้ปรอทแตก จึงอ่านค่าได้ 100°C ทั้งที่คนไข้ไม่ได้เป็นไข้</td>
+              </tr>
+              <tr>
+                <td><strong>Fog Computing</strong></td>
+                <td>ฟ็อก คอมพิวติง</td>
+                <td>ชั้นสถาปัตยกรรมประมวลผลที่อยู่ระหว่างอุปกรณ์ปลายทาง (Edge) กับเซิร์ฟเวอร์ส่วนกลาง (Cloud)
+                  เพื่อลดความหน่วง</td>
+                <td>สำนักงานสาขาในจังหวัดที่ตัดสินใจงานด่วนได้เองโดยไม่ต้องรอคำสั่งจากสำนักงานใหญ่</td>
+              </tr>
+              <tr>
+                <td><strong>Precision vs Recall</strong></td>
+                <td>พรีซิชัน vs รีคอล</td>
+                <td>Precision = ในบรรดาเหตุการณ์ที่ระบบแจ้งเตือน ถูกจริงกี่ % | Recall = ในบรรดาเหตุการณ์จริงทั้งหมด
+                  ระบบจับได้กี่ %</td>
+                <td>Precision: แจ้งเตือน 100 ครั้ง ถูก 92 ครั้ง | Recall: มีไฟไหม้จริง 100 ครั้ง จับได้ 56 ครั้ง</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 2: ที่มา ความสำคัญ และตำราอ้างอิง ═══════════ -->
+      <section id="sec2">
+        <h2 class="section-title">
+          2. ที่มา ความสำคัญ และตำราอ้างอิงระดับสากล (Origins & Textbook Grounding)
+          <button class="paper-ref-pill" data-page="2"
+            data-section="Section II: System Overview & Threat Model (หน้า 2)"
+            title="คลิกเปิดดูเปเปอร์ หน้า 2 รูป Fig. 2 แสดงภาพรวมระบบ">📄 เปเปอร์ หน้า 2 (Fig. 2)</button>
+        </h2>
+
+        <h3 class="sub-title">2.1 โครงสร้างลำดับชั้น: จาก Sensor สู่ WSN, IoT และ CPS</h3>
+        <p>
+          เพื่อให้เข้าใจบริบทของงานวิจัยอย่างลึกซึ้ง
+          เราต้องมองเห็นภาพรวมของวิศวกรรมคอมพิวเตอร์ที่เชื่อมโยงระหว่างโลกฮาร์ดแวร์กายภาพสู่ระบบดิจิทัล:
+        </p>
+
+        <div class="step-container">
+          <div class="step-card">
+            <span class="step-badge">ลำดับชั้นที่ 1: เซนเซอร์ (Sensors & Transducers)</span>
+            <p>
+              เซนเซอร์คืออุปกรณ์แปลงปรากฏการณ์ทางกายภาพในธรรมชาติ (เช่น อุณหภูมิ แสง ความดัน สารเคมี การสั่นสะเทือน)
+              ให้เป็นสัญญาณไฟฟ้าแอนะล็อกหรือรหัสดิจิทัล คุณลักษณะสำคัญคือ <strong>สัญญาณรบกวน (Noise)</strong>,
+              การเสื่อมสภาพตามกาลเวลา (Sensor Drift), และความไม่สมบูรณ์ของฮาร์ดแวร์
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-badge badge-purple">ลำดับชั้นที่ 2: เครือข่ายเซนเซอร์ไร้สาย (Wireless Sensor Networks -
+              WSN)</span>
+            <p>
+              WSN ประกอบด้วยโหนดเซนเซอร์ขนาดเล็กจำนวนมากที่รวม 4 องค์ประกอบสำคัญ: <em>การตรวจวัด (Sensing)</em>,
+              <em>หน่วยประมวลผลขนาดเล็ก (Computation)</em>, <em>วงรับส่งวิทยุไร้สายกำลังต่ำ (Communication)</em>, และ
+              <em>แหล่งจ่ายพลังงานจำกัด เช่น แบตเตอรี่ (Power Source)</em>
+              โดยโหนดเหล่านี้จะเชื่อมต่อกันเป็นโครงข่ายเพื่อส่งข้อมูลไปยังโหนดรวม (Sink / Gateway)
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-badge badge-amber">ลำดับชั้นที่ 3: อินเทอร์เน็ตของสรรพสิ่ง (Internet of Things -
+              IoT)</span>
+            <p>
+              IoT เป็นกรอบการทำงานที่กว้างกว่า WSN โดยผสาน WSN เข้ากับระบบเครือข่ายอินเทอร์เน็ตสากล สถาปัตยกรรม
+              Edge-Fog-Cloud แพลตฟอร์มการจัดการข้อมูล และแอปพลิเคชันสำหรับผู้ใช้ปลายทาง
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-badge badge-green">ลำดับชั้นที่ 4: ระบบกายภาพไซเบอร์ (Cyber-Physical Systems - CPS)</span>
+            <p>
+              CPS คือระบบที่การคำนวณในโลกไซเบอร์เชื่อมโยงกับการควบคุมในโลกกายภาพแบบสองทิศทาง (Closed-Loop Control):
+              เซนเซอร์วัดค่า ──▶ หน่วยควบคุมประมวลผล ──▶ สั่งการให้อุปกรณ์กลไก (Actuator) กระทำต่อสิ่งแวดล้อมจริง เช่น
+              ระบบปิดวาล์วก๊าซอัตโนมัติ, ระบบเบรกรถยนต์ไร้คนขับ หากเซนเซอร์ถูกหลอกหรืออ่านค่าผิดพลาด Actuator
+              จะสร้างความเสียหายร้ายแรงต่อชีวิตและทรัพย์สินทันที
+            </p>
+          </div>
+        </div>
+
+        <h3 class="sub-title">2.2 ตำราอ้างอิงสากลประกอบบทเรียน (Standard Textbooks)</h3>
+        <p>
+          เนื้อหาใน Paper IoT-CAD วางอยู่บนรากฐานทฤษฎีจากตำราวิชาการระดับสากล 4
+          เล่มหลักที่นิสิตวิศวกรรมคอมพิวเตอร์สามารถใช้อ้างอิง:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th>ตำราอ้างอิงสากล</th>
+                <th>ผู้แต่ง / สำนักพิมพ์</th>
+                <th>บทเรียนที่เชื่อมโยงโดยตรงกับ Paper</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Protocols and Architectures for Wireless Sensor Networks</strong></td>
+                <td>Holger Karl and Andreas Willig (Wiley)</td>
+                <td>บทที่ 1–3 สถาปัตยกรรมโหนดเซนเซอร์, บทที่ 11 โปรโตคอล MAC พลังงานต่ำ (IEEE 802.15.4)
+                  และการประมวลผลข้อมูลภายในเครือข่าย (In-Network Processing)</td>
+              </tr>
+              <tr>
+                <td><strong>Wireless Sensor Networks: An Information Processing Approach</strong></td>
+                <td>Feng Zhao and Leonidas Guibas (Morgan Kaufmann)</td>
+                <td>บทที่ 4–6 การประมวลผลสัญญาณร่วมกัน (Collaborative Signal Processing), ความสัมพันธ์เชิงพื้นที่และเวลา
+                  (Spatial-Temporal Correlation), และการจัดกลุ่มเซนเซอร์</td>
+              </tr>
+              <tr>
+                <td><strong>Internet of Things: A Hands-On Approach</strong></td>
+                <td>Arshdeep Bahga and Vijay Madisetti</td>
+                <td>บทที่ 2–4 สถาปัตยกรรม IoT ระดับ Edge, Fog Gateway (Raspberry Pi),
+                  และการแลกเปลี่ยนข้อมูลผ่านโพรโทคอลไร้สาย</td>
+              </tr>
+              <tr>
+                <td><strong>Deep Learning</strong></td>
+                <td>Ian Goodfellow, Yoshua Bengio, Aaron Courville (MIT Press)</td>
+                <td>บทที่ 10 Sequence Modeling & Recurrent Neural Networks (LSTM), บทที่ 14 Autoencoders สำหรับงาน
+                  Anomaly Detection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-title">2.3 ทำไมนิสิตวิศวกรรมคอมพิวเตอร์ ป.ตรี ต้องเรียนรู้เรื่องนี้?</h3>
+        <div class="academic-callout callout-purple">
+          <p><strong>คุณค่าเชิงวิชาชีพสำหรับวิศวกรคอมพิวเตอร์ (Why It Matters to CPE Undergrads):</strong></p>
+          <ul style="margin-left: 20px; line-height: 1.85; font-size: 0.94rem;">
+            <li><strong>1. รับมือกับข้อมูลในโลกความเป็นจริง (Real-World Dirty Data):</strong> ในห้องเรียน เรามักฝึกโมเดล
+              AI ด้วยข้อมูลคลีนที่สมบูรณ์แบบ แต่ในระบบ IoT จริง เซนเซอร์ราคาถูกมักมี noise สูง แบตเตอรี่อ่อนแล้วค่าแกว่ง
+              หรือสายหลุด วิศวกรคอมพิวเตอร์จึงต้องออกแบบระบบที่ <em>ทนทานต่อความผิดพร่อง (Fault-Tolerant)</em></li>
+            <li><strong>2. ข้อจำกัดด้านทรัพยากรบน Edge/Fog:</strong> ไม่สามารถส่งข้อมูลการวัดทุกจุดขึ้น Cloud
+              ได้เพราะข้อจำกัดด้านแบนด์วิดท์ พลังงาน และ Latency การใช้ Fog Computing เพื่อรันโมเดล LSTM
+              ขนาดย่อมที่ประมวลผลจบใน 0.532 วินาทีคือตัวอย่างการออกแบบระบบสมองกลฝังตัวที่มีประสิทธิภาพ</li>
+            <li><strong>3. ความมั่นคงปลอดภัยระดับกายภาพ (Cyber-Physical Security):</strong>
+              การโจมตีทางไซเบอร์ในยุคปัจจุบันไม่ได้มีเพียงการแฮกฐานข้อมูล แต่รวมถึงการส่งสัญญาณวิทยุปลอมแปลงค่าเซนเซอร์
+              (Sensor Spoofing) เพื่อหลอกให้ระบบควบคุมอัตโนมัติทำงานผิด การใช้ <em>Consensus จากหลายเซนเซอร์</em>
+              จึงเป็นแนวคิดพื้นฐานของระบบคอมพิวเตอร์ที่เชื่อถือได้ (Trustworthy Computing)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 3: ปัญหาวิจัย EA vs SDA ═══════════ -->
+      <section id="sec3">
+        <h2 class="section-title">
+          3. แก่นปัญหาวิจัย: ทำไมเซนเซอร์ตัวเดียวจึงไม่พอ? (The Core Problem)
+          <button class="paper-ref-pill" data-page="1" data-section="Section I: Motivating Scenario Fig. 1 (หน้า 1-2)"
+            title="คลิกเปิดดูรูป Fig. 1 ตัวอย่างไฟไหม้จริง vs เซนเซอร์เสีย">📄 เปเปอร์ หน้า 1 (Fig. 1)</button>
+        </h2>
+        <p>
+          ในระบบเฝ้าระวังแบบดั้งเดิม (Baseline Approaches)
+          อัลกอริทึมมักสร้างโมเดลตรวจจับความผิดปกติให้กับเซนเซอร์แต่ละตัวแยกจากกัน
+          เมื่อเซนเซอร์วัดค่าที่ผิดไปจากค่าเฉลี่ยปกติ ระบบจะทำการแจ้งเตือน (Alert) ทันที แต่วิธีนี้มี
+          <strong>ข้อผิดพลาดพื้นฐานอย่างร้ายแรง (Fundamental Flaw)</strong>:
+        </p>
+
+        <div class="math-display">
+          ค่าอุณหภูมิกระโดดแตะ 45°C ──▶ ? [ สภาพแวดล้อมร้อนขึ้นจริง หรือ เซนเซอร์ชำรุด หรือ ข้อมูลถูกดักแก้กลางทาง? ]
+        </div>
+
+        <p>
+          หากระบบไม่สามารถแยกแยะสาเหตุที่แท้จริงได้ จะเกิดปัญหา 2 รูปแบบที่ส่งผลกระทบอย่างรุนแรง:
+        </p>
+
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div class="academic-callout callout-warning" style="margin: 0;">
+            <h4 style="color: var(--accent2); margin-bottom: 6px;">กรณีเกิดภาวะเตือนภัยลวง (False Alarms & Alarm
+              Fatigue)</h4>
+            <p style="font-size: 0.90rem; line-height: 1.7;">
+              หากเซนเซอร์ตัวเดียวเสื่อมสภาพหรือถูกรบกวน แล้วระบบสั่งอพยพคนทั้งอาคารหรือหยุดสายการผลิตโรงงาน
+              จะสร้างความสูญเสียทางเศรษฐกิจมหาศาล และทำให้เจ้าหน้าที่เกิดภาวะ <em>"Alarm Fatigue"</em>
+              (ชินชากับการเตือนภัยจนไม่สนใจคำเตือนอีกต่อไป)
+            </p>
+          </div>
+
+          <div class="academic-callout callout-danger" style="margin: 0;">
+            <h4 style="color: var(--red); margin-bottom: 6px;">กรณีพลาดเหตุการณ์อันตรายจริง (Missed Critical Hazard)
+            </h4>
+            <p style="font-size: 0.90rem; line-height: 1.7;">
+              หากสภาพแวดล้อมเกิดวิกฤตจริง (เช่น ก๊าซรั่วหรือเพลิงไหม้) แต่ระบบเข้าใจผิดว่าเป็นเพียงเซนเซอร์เสีย
+              จึงเพิกเฉย ไม่แจ้งเตือน จะนำไปสู่ความสูญเสียต่อชีวิตและอาคารสถานที่
+            </p>
+          </div>
+        </div>
+
+        <h3 class="sub-title">3.1 การจำแนกความผิดปกติ 2 รูปแบบของ IoT-CAD</h3>
+        <p>
+          ผู้เขียนบทความ (Yasaei et al., ICCAD 2020) จึงได้นิยามและแยกแยะความผิดปกติออกเป็น 2 ประเภทอย่างชัดเจน:
+        </p>
+        <ul>
+          <li><strong>1. Environmental Anomaly (EA):</strong> สภาพแวดล้อมเปลี่ยนจริง
+            เซนเซอร์หลายตัวที่อยู่ในบริเวณเดียวกันและมีปฏิสัมพันธ์กันทางกายภาพ (เช่น อุณหภูมิ แสง ควัน การสั่นสะเทือน)
+            จะต้องรายงานค่าที่ผิดปกติ <em>สอดคล้องกันเป็นกลุ่ม</em></li>
+          <li><strong>2. Sensing Device Anomaly (SDA):</strong> ตัวเซนเซอร์ชำรุด สายสัญญาณหลุด หรือถูกโจมตีทางไซเบอร์
+            ค่าที่ผิดปกติจะเกิดขึ้น <em>โดดเดี่ยวเฉพาะตัว</em> และขัดแย้งกับแบบแผนของเซนเซอร์พยานตัวอื่นๆ
+            ในบริเวณเดียวกัน</li>
+        </ul>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 4: สถาปัตยกรรม IoT-CAD 4 ขั้น ═══════════ -->
+      <section id="sec4">
+        <h2 class="section-title">
+          4. สถาปัตยกรรมและกลไกการทำงาน 4 ขั้นตอน (IoT-CAD Architecture Pipeline)
+          <button class="paper-ref-pill" data-page="2" data-section="Section II: Overview of IoT-CAD Fig. 2 (หน้า 2)"
+            title="คลิกดูผังระบบ 4 ขั้นตอนในเปเปอร์ หน้า 2">📄 เปเปอร์ หน้า 2 (Fig. 2)</button>
+        </h2>
+        <p>
+          IoT-CAD แก้ปัญหานี้ด้วยสถาปัตยกรรมไปป์ไลน์ 4 ขั้นตอนที่เชื่อมโยงกันอย่างเป็นระบบ:
+        </p>
+
+        <div class="code-block" style="text-align: center; font-size: 0.95rem; font-weight: 700;">
+          ข้อมูลเซนเซอร์ดิบ ──▶ [ขั้น 1: Binary Fingerprint] ──▶ [ขั้น 2: Sensor Clustering] ──▶ [ขั้น 3: LSTM &
+          Gaussian] ──▶ [ขั้น 4: Consensus EA/SDA]
+        </div>
+
+        <div class="step-container">
+          <!-- ขั้นที่ 1 -->
+          <div class="step-card">
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <span class="step-badge">ขั้นที่ 1: การสกัดลายนิ้วมือดิจิทัล (Snapshot & Binary Fingerprint
+                Generation)</span>
+              <button class="paper-ref-pill" data-page="3"
+                data-section="Section III-A: Fingerprint Generation & Eq. 1 (หน้า 3)"
+                title="คลิกดูสมการที่ (1) ในเปเปอร์ หน้า 3">📄 เปเปอร์ หน้า 3 (Eq. 1)</button>
+            </div>
+            <p>
+              เซนเซอร์ในระบบ IoT มีความหลากหลายอย่างยิ่ง (Heterogeneous Sensors) บางตัววัดอุณหภูมิเป็นเซลเซียส (20–40
+              °C), บางตัววัดความสว่างเป็นลักซ์ (0–1000 Lux), บางตัวส่งข้อมูลทุก 1 วินาที ขณะที่บางตัวส่งทุก 10 วินาที
+              จะนำมาเปรียบเทียบกันตรงๆ ไม่ได้
+            </p>
+            <p>
+              <strong>วิธีแก้ของงานวิจัย:</strong>
+            </p>
+            <ol style="margin-left: 20px; line-height: 1.8; font-size: 0.92rem;">
+              <li>กำหนดหน้าต่างเวลา <em>q</em> วินาที นำค่าที่วัดได้มาหาค่าเฉลี่ย (Mean Snapshot) เพื่อลดสัญญาณรบกวน
+              </li>
+              <li>เปรียบเทียบค่าเฉลี่ยของช่วงติดกัน หากอัตราการเปลี่ยนแปลงสัมพัทธ์สูงกว่าค่าขีดเริ่มเปลี่ยน
+                ε<sub>rel</sub> ให้กำหนดบิตเป็น <strong>1</strong> (มีการเปลี่ยนแปลงอย่างมีนัยสำคัญ) หากไม่เกินกำหนดเป็น
+                <strong>0</strong> (เสถียรคงที่)
+              </li>
+            </ol>
+            <div class="math-display">
+              b(t) = 1 หาก |x̄(t) - x̄(t-1)| / x̄(t-1) &gt; ε<sub>rel</sub><br>
+              b(t) = 0 หากการเปลี่ยนแปลงไม่เกินค่าขีดเริ่มเปลี่ยน
+            </div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft);">
+              ผลลัพธ์คือ <strong>Binary Fingerprint</strong> เช่น <code>0011100101</code> ซึ่งเป็นตัวแทน
+              <em>“ทิศทางและรูปแบบการเปลี่ยนแปลง”</em>
+              ทำให้สามารถเปรียบเทียบเซนเซอร์วัดอุณหภูมิกับเซนเซอร์วัดแสงได้โดยไม่ขึ้นกับหน่วยวัด
+            </p>
+          </div>
+
+          <!-- ขั้นที่ 2 -->
+          <div class="step-card">
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <span class="step-badge badge-purple">ขั้นที่ 2: การจัดกลุ่มเซนเซอร์ด้วยระยะห่างแฮมมิง (Sensor Association
+                & Clustering)</span>
+              <button class="paper-ref-pill" data-page="3"
+                data-section="Section III-B: Sensor Association & Clustering (หน้า 3)"
+                title="คลิกดูขั้นตอนการจัดกลุ่มเซนเซอร์ในเปเปอร์ หน้า 3">📄 เปเปอร์ หน้า 3 (Clustering)</button>
+            </div>
+            <p>
+              นำสายบิต Fingerprint มาแบ่งเป็นช่วงย่อย (Subsequences) ที่ทับซ้อนกันได้ จากนั้นใช้ <strong>Hamming
+                Distance</strong> ในการวัดจำนวนบิตที่แตกต่างกัน:
+            </p>
+            <div class="math-display">
+              Fingerprint เซนเซอร์ A: 1 0 1 1 0 1<br>
+              Fingerprint เซนเซอร์ B: 1 0 0 0 0 1<br>
+              ความต่าง (Hamming Distance) = 2 ตำแหน่ง (บิตที่ 3 และ 4 ไม่เหมือนกัน)
+            </div>
+            <p>
+              อัลกอริทึมจะทำการคลัสเตอร์ 2 ระดับเพื่อรวมกลุ่มเซนเซอร์ที่มีประวัติรูปแบบการเปลี่ยนแปลงสอดคล้องกัน
+              (Contextual Association) โดยมี <strong>กฎเหล็กเชิงคณิตศาสตร์</strong>:
+            </p>
+            <div class="academic-callout callout-warning" style="margin: 8px 0;">
+              <strong>เงื่อนไขสมาชิกขั้นต่ำ:</strong> คลัสเตอร์ใดที่มีสมาชิกน้อยกว่า 3 ตัว จะถูกตัดทิ้งหรือไม่นำมาใช้ใน
+              Consensus เพราะหากมีเซนเซอร์เพียง 2 ตัวแล้วค่าขัดแย้งกัน 1 ต่อ 1
+              จะไม่สามารถตัดสินด้วยเสียงข้างมากได้ว่าใครคือตัวที่เสีย
+            </div>
+          </div>
+
+          <!-- ขั้นที่ 3 -->
+          <div class="step-card">
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <span class="step-badge badge-amber">ขั้นที่ 3: แบบจำลองทำนายและตัวประมาณค่าเกาส์เซียน (LSTM Prediction &
+                Gaussian Estimator)</span>
+              <button class="paper-ref-pill" data-page="4"
+                data-section="Section IV-A & IV-B: LSTM Model Fig. 3 & Gaussian (หน้า 4-5)"
+                title="คลิกดูโมเดล LSTM Fig. 3 ในเปเปอร์ หน้า 4">📄 เปเปอร์ หน้า 4 (Fig. 3)</button>
+            </div>
+            <p>
+              สร้างโมเดล <strong>LSTM Encoder-Decoder</strong> แยกประจำแต่ละคลัสเตอร์
+              เพื่อเรียนรู้พฤติกรรมความสัมพันธ์เชิงเวลาของกลุ่มเซนเซอร์ โดย LSTM จะทำนายค่าที่ควรจะเป็นในจังหวะเวลาถัดไป
+            </p>
+            <div class="math-display">
+              Reconstruction Error (e) = | ค่าจริงที่วัดได้ - ค่าที่โมเดล LSTM ทำนาย |
+            </div>
+            <p>
+              จากนั้นใช้ <strong>Multivariate Gaussian Estimator</strong> ในการประเมินว่า เวกเตอร์ความคลาดเคลื่อนนี้
+              มีความน่าจะเป็นที่จะเกิดขึ้นในสภาวะปกติมากน้อยเพียงใด หากความน่าจะเป็นต่ำกว่าค่าขีดเริ่มเปลี่ยน α
+              จะถูกตีตราว่าเป็น <strong>Anomaly</strong>
+            </p>
+          </div>
+
+          <!-- ขั้นที่ 4 -->
+          <div class="step-card">
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <span class="step-badge badge-green">ขั้นที่ 4: อัลกอริทึมฉันทามติและการปรับตัวแบบปรับเปลี่ยน (Consensus &
+                Adaptive Updating)</span>
+              <button class="paper-ref-pill" data-page="5"
+                data-section="Section IV-C & Sec. V: Spatial-Temporal Consensus Algorithm 1 (หน้า 5-6)"
+                title="คลิกดู Algorithm 1 ในเปเปอร์ หน้า 5">📄 เปเปอร์ หน้า 5 (Alg. 1)</button>
+            </div>
+            <p>
+              เมื่อตรวจพบความผิดปกติ อัลกอริทึม <strong>Spatial-Temporal Consensus</strong>
+              จะทำการตรวจสอบสมาชิกทั้งหมดในคลัสเตอร์:
+            </p>
+            <ul>
+              <li>หากสมาชิกส่วนใหญ่ในคลัสเตอร์มีความผิดปกติสอดคล้องกัน ──▶ สรุปเป็น <strong>Environmental Anomaly
+                  (EA)</strong></li>
+              <li>หากมีเพียงบางตัวผิดปกติขัดกับเสียงส่วนใหญ่ ──▶ สรุปเป็น <strong>Sensing Device Anomaly (SDA)</strong>
+                พร้อมระบุหมายเลขโหนดเซนเซอร์ที่ชำรุด</li>
+            </ul>
+            <p>
+              นอกจากนี้ โมเดลยังมีความสามารถแบบ <strong>Adaptive (มีชีวิต aliveness)</strong>: ทำการ Retrain
+              ย่อยเมื่อได้รับข้อมูลปกติใหม่ (Partial Update) และ Re-cluster
+              สร้างโมเดลใหม่ทั้งหมดเมื่อมีการเพิ่ม/ลดเซนเซอร์ในเครือข่าย (Complete Update)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 5: ซิมูเลเตอร์จำลองระบบ ═══════════ -->
+      <section id="sec-simulator">
+        <h2 class="section-title">
+          5. เครื่องมือจำลอง Interactive Sensor Association & Consensus Simulator
+          <button class="paper-ref-pill" data-page="5"
+            data-section="Section IV-C: Algorithm 1 (Spatial-Temporal Consensus) (หน้า 5)"
+            title="คลิกดู Algorithm 1 ฉันทามติในเปเปอร์ หน้า 5">📄 เปเปอร์ หน้า 5 (Consensus Rule)</button>
+        </h2>
+        <p>
+          ทดลองเลือกสถานการณ์จำลองด้านล่าง เพื่อสังเกตการสร้างสายบิต Fingerprint, การประเมิน Reconstruction Error
+          และการโหวต Consensus ของระบบ IoT-CAD:
+        </p>
+
+        <div class="sensor-sim-workbench">
+          <div class="sim-header">
+            <div class="workbench-title">
+              <span>ชุดทดลองจำลองสถานการณ์เครือข่ายเซนเซอร์ 4 โหนด</span>
+              <span class="workbench-badge">INTERACTIVE SIMULATOR</span>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--ink-muted);">คลัสเตอร์: โซนห้องทดลองอัจฉริยะ (Zone A)</div>
+          </div>
+
+          <div class="sim-presets-bar">
+            <span
+              style="font-size: 0.86rem; font-weight: 700; color: var(--ink); margin-right: 6px;">เลือกสถานการณ์:</span>
+            <button class="btn-scenario active" data-scenario="normal">1. สภาพปกติ</button>
+            <button class="btn-scenario" data-scenario="fire">2. ไฟไหม้จริง (EA)</button>
+            <button class="btn-scenario" data-scenario="fault">3. เซนเซอร์เสียตัวเดียว (SDA)</button>
+            <button class="btn-scenario" data-scenario="attack">4. การโจมตีประสานงาน (Attack)</button>
+          </div>
+
+          <div class="sim-node-grid" id="sim-node-grid">
+            <!-- Rendered dynamically by simulator.js -->
+          </div>
+
+          <div class="sim-consensus-result-card">
+            <div>
+              <div id="consensus-explanation" style="font-size: 0.94rem; margin-bottom: 6px; color: var(--ink);">
+                กำลังโหลดข้อมูล...
+              </div>
+              <div id="consensus-rootcause" style="font-size: 0.88rem; color: var(--ink-soft);"></div>
+            </div>
+            <div>
+              <span id="consensus-badge" class="consensus-decision-badge normal">สภาวะปกติ (NORMAL)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 6: การทดลองและผลลัพธ์ ═══════════ -->
+      <section id="sec6">
+        <h2 class="section-title">
+          6. การทดลอง ฮาร์ดแวร์ และการตีความผลลัพธ์อย่างถูกต้อง (Testbed & Metrics)
+          <button class="paper-ref-pill" data-page="7"
+            data-section="Section VI-A: Experimental Setup & 62-Sensor Testbed (หน้า 7)"
+            title="คลิกดู Testbed จริง 62 เซนเซอร์ หน้า 7">📄 เปเปอร์ หน้า 7 (Testbed)</button>
+          <button class="paper-ref-pill" data-page="8"
+            data-section="Section VI-B: Experimental Results Table 2 & 3 (หน้า 8)"
+            title="คลิกดูตารางเปรียบเทียบ Table 2 และ Table 3 ในเปเปอร์ หน้า 8">📄 เปเปอร์ หน้า 8 (Table 2 & 3)</button>
+        </h2>
+
+        <h3 class="sub-title">6.1 สถาปัตยกรรมฮาร์ดแวร์ Testbed จริง</h3>
+        <p>
+          ผู้เขียนไม่ได้ทำการทดลองเพียงบนโปรแกรมจำลอง แต่ได้สร้างระบบทดสอบทางกายภาพจริง (Real-World Testbed) ประกอบด้วย:
+        </p>
+        <ul>
+          <li><strong>62 โหนดเซนเซอร์</strong> วัดค่าครอบคลุม 13 มิติทางกายภาพ (อุณหภูมิ, ความชื้น,
+            แสงช่วงที่ตามองเห็น/อินฟราเรด, แรงกด, การเอียง, ความเร่ง, ตรวจจับคน PIR, แม่เหล็ก, CO₂, CO, ฝุ่นละออง,
+            และเสียง)</li>
+          <li>โหนดฝังตัวใช้ระบบปฏิบัติการ <strong>TinyOS</strong> สื่อสารไร้สายด้วยมาตรฐาน <strong>IEEE
+              802.15.4</strong></li>
+          <li>ใช้บอร์ด <strong>USRP-B210</strong> ทำหน้าที่ Software-Defined Radio (SDR)
+            ในการตรวจจับและวิเคราะห์สัญญาณวิทยุ</li>
+          <li><strong>Raspberry Pi</strong> ทำหน้าที่เป็น Base Station และ Edge Gateway ส่งข้อมูลผ่าน Wi-Fi เข้าสู่ Fog
+            Laptop</li>
+          <li>ประมวลผลบน <strong>Fog Laptop</strong> (Intel Core i5-6300HQ, RAM 8 GB)</li>
+          <li>บันทึกข้อมูลต่อเนื่องเป็นเวลา <strong>8 วัน</strong> รวมการวัดกว่า <strong>2.3 ล้านค่า (2.3M
+              measurements)</strong></li>
+        </ul>
+
+        <h3 class="sub-title">6.2 ตารางเปรียบเทียบประสิทธิภาพ (Table 2 ใน Paper)</h3>
+        <p>
+          ผลการเปรียบเทียบระหว่าง IoT-CAD กับโมเดลตรวจจับความผิดปกติมาตรฐาน:
+        </p>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th>อัลกอริทึม (Method)</th>
+                <th>Context-Aware</th>
+                <th style="text-align: right;">Precision</th>
+                <th style="text-align: right;">Recall</th>
+                <th style="text-align: right;">F₀.₅ Score</th>
+                <th style="text-align: right;">F₁ Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--accent-bg); font-weight: 700;">
+                <td><strong>IoT-CAD (Proposed)</strong></td>
+                <td><strong>มี (Cross-Sensor)</strong></td>
+                <td style="text-align: right; color: var(--green);">92%</td>
+                <td style="text-align: right;">56%</td>
+                <td style="text-align: right; color: var(--accent);">81%</td>
+                <td style="text-align: right; color: var(--accent);">70%</td>
+              </tr>
+              <tr>
+                <td>LSTM Baseline</td>
+                <td>ไม่มี (แยกเดี่ยว)</td>
+                <td style="text-align: right;">64%</td>
+                <td style="text-align: right;">44%</td>
+                <td style="text-align: right;">58%</td>
+                <td style="text-align: right;">52%</td>
+              </tr>
+              <tr>
+                <td>ConvLSTM Baseline</td>
+                <td>ไม่มี (รวมมิติ)</td>
+                <td style="text-align: right;">51%</td>
+                <td style="text-align: right; color: var(--green);">95%</td>
+                <td style="text-align: right;">56%</td>
+                <td style="text-align: right;">66%</td>
+              </tr>
+              <tr>
+                <td>One-Class SVM</td>
+                <td>ไม่มี (สถิติดั้งเดิม)</td>
+                <td style="text-align: right;">89%</td>
+                <td style="text-align: right;">25%</td>
+                <td style="text-align: right;">60%</td>
+                <td style="text-align: right;">39%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-title">6.3 การวิเคราะห์เวลาประมวลผล (Timing Analysis)</h3>
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th>ขั้นตอนการทำงาน (Process Stage)</th>
+                <th>เวลาที่ใช้บน Fog Laptop</th>
+                <th>ลักษณะการทำงาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>สร้าง Binary Fingerprint สำหรับ 62 เซนเซอร์</td>
+                <td>2.98 วินาที</td>
+                <td>Offline / Background Preprocessing</td>
+              </tr>
+              <tr>
+                <td>จัดกลุ่ม Sensor Association (604 clustering runs)</td>
+                <td>10.54 วินาที</td>
+                <td>Offline / Topology Setup</td>
+              </tr>
+              <tr>
+                <td>ฝึกสอนโมเดลเริ่มต้น (Initial Model Training)</td>
+                <td>2472.20 วินาที (~41.2 นาที)</td>
+                <td>Offline Training</td>
+              </tr>
+              <tr style="font-weight: 700;">
+                <td><strong>ตรวจจับความผิดปกติต่อรอบ (Anomaly Detection)</strong></td>
+                <td><strong>0.532 วินาที</strong></td>
+                <td><strong>Real-Time Inference บน Fog Node</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="academic-callout callout-danger">
+          <h4 style="color: var(--red); margin-bottom: 6px;">คำเตือนวิกฤต: ห้ามแปลผลตัวเลข Precision 92% ผิดเด็ดขาด!
+          </h4>
+          <p style="font-size: 0.92rem; line-height: 1.8;">
+            นิสิตมักเผลอตอบอาจารย์ว่า <em>“ระบบมีความแม่นยำ 92%”</em> ซึ่งเป็นคำตอบที่ <strong>ผิด</strong>
+            อย่างร้ายแรง! เพราะ 92% คือค่า <strong>Precision</strong> ซึ่งหมายความว่า <em>“ในบรรดาการแจ้งเตือน Anomaly
+              ที่ระบบส่งออกมา มีความถูกต้อง 92% (มี False Alarm เพียง 8%)”</em><br>
+            แต่ระบบมีค่า <strong>Recall เพียง 56%</strong> ซึ่งหมายความว่า
+            <em>“ในบรรดาเหตุการณ์ผิดปกติที่เกิดขึ้นจริงทั้งหมด ระบบตรวจจับพบเพียง 56% และหลุดรอดไปถึง 44%!”</em>
+            การเข้าใจจุดนี้จะทำให้อาจารย์เห็นว่าเราเข้าใจสถิติจริง ไม่ได้ท่องจำตัวเลข
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 7: วิจารณ์เชิงวิชาการ ═══════════ -->
+      <section id="sec7">
+        <h2 class="section-title">
+          7. การวิจารณ์เชิงวิชาการอย่างลึกซึ้ง (Critical Academic Review)
+          <button class="paper-ref-pill" data-page="8"
+            data-section="Section VI-B & Section VII: Results & Conclusion (หน้า 8-9)"
+            title="คลิกดูข้อจำกัดและการอภิปรายผลในเปเปอร์ หน้า 8-9">📄 เปเปอร์ หน้า 8-9 (Critique)</button>
+        </h2>
+        <p>
+          การพรีเซนต์ระดับยอดเยี่ยมต้องสะท้อนทั้ง <strong>จุดเด่น (Strengths)</strong> และ <strong>ข้อจำกัดเชิงระบบ
+            (Limitations)</strong> เสมือนเป็นนักวิจัยร่วม:
+        </p>
+
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+          <div class="academic-callout callout-success" style="margin: 0;">
+            <h4 style="color: var(--green); margin-bottom: 8px;">จุดเด่นและคุณูปการของงาน (Key Strengths)</h4>
+            <ul style="margin-left: 18px; font-size: 0.88rem; line-height: 1.75;">
+              <li>แก้ปัญหา False Alarm จากสภาพแวดล้อมได้จริงด้วย Cross-Sensor Context</li>
+              <li>แยกการตัดสินใจเป็น 2 ระดับ: ตรวจพบ (Detect) และจำแนกต้นเหตุ (Root Cause EA vs SDA)</li>
+              <li>รองรับเซนเซอร์ต่างชนิดกันด้วยการแปลงเป็น Binary Fingerprint</li>
+              <li>ทดสอบบน Testbed ขนาดใหญ่ 62 เซนเซอร์ 13 มิติทางกายภาพจริง</li>
+              <li>Latency ต่ำเพียง 0.532 วินาทีบน Fog Node ขจัดปัญหาความหน่วงบน Cloud</li>
+            </ul>
+          </div>
+
+          <div class="academic-callout callout-danger" style="margin: 0;">
+            <h4 style="color: var(--red); margin-bottom: 8px;">ข้อจำกัดและความเสี่ยงเชิงระบบ (Limitations & Risks)</h4>
+            <ul style="margin-left: 18px; font-size: 0.88rem; line-height: 1.75;">
+              <li><strong>Recall 56%:</strong> พลาด Anomaly จริงถึง 44% จึงไม่เหมาะกับระบบ Safety-Critical
+                ที่มีเดิมพันสูงมาก</li>
+              <li><strong>Synthetic Anomalies:</strong> ข้อมูลความผิดปกติที่ใช้ประเมินเป็นข้อมูลสังเคราะห์
+                อาจไม่ครอบคลุมการเสียของฮาร์ดแวร์ในโลกจริงทุกรูปแบบ</li>
+              <li><strong>เงื่อนไขเซนเซอร์ ≥ 3 ตัว:</strong> ในบริเวณที่มีเซนเซอร์เบาบาง จะไม่สามารถรัน Consensus ได้
+              </li>
+              <li><strong>ความเสี่ยง Coordinated Attack:</strong> หากผู้โจมตีเจาะโหนดเซนเซอร์เกินกึ่งหนึ่งในคลัสเตอร์ได้
+                Consensus จะถูกหลอกทันที</li>
+              <li><strong>ความเสี่ยง Model Poisoning:</strong> หาก Anomaly หลุดรอดไปในข้อมูลปกติ ระบบ Adaptive Retrain
+                อาจเรียนรู้พฤติกรรมที่ผิดให้กลายเป็นปกติ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 8: ห้องซ้อมบทนำเสนอ 5 นาที ═══════════ -->
+      </div><!-- End #paper-view-iot-cad-head -->
+
+      <!-- ═══════════ MCSOA Subview (Head: Sec 1-7) ═══════════ -->
+      <div id="paper-view-mcsoa-head" class="paper-subview-mcsoa hidden">
+
+        <h1 class="book-title">MCSOA: A Novel High-Reliable Wireless Sensor Networks Routing Optimization Method for Power Internet of Things</h1>
+        <div class="subtitle">
+          การหาเส้นทางที่มีความน่าเชื่อถือสูงในเครือข่ายเซนเซอร์ไร้สายสำหรับระบบสายส่งไฟฟ้า (Power IoT) ด้วยอัลกอริทึมนกนางนวลโกลาหลแบบหลายวัตถุประสงค์ (IEEE CACRE 2024): ถอดรหัสคณิตศาสตร์ 3 วัตถุประสงค์ กลไก Tent Chaotic Map และห้องซ้อมบทนำเสนอ 5 นาที
+        </div>
+
+        <!-- Learning Objectives Callout -->
+        <div class="academic-callout">
+          <h3 style="color: var(--accent); margin-bottom: 8px; font-size: 1.12rem;">วัตถุประสงค์การเรียนรู้ประจำบทเรียน MCSOA (Learning Objectives)</h3>
+          <ol style="margin-left: 20px; line-height: 1.85; font-size: 0.94rem;">
+            <li>เข้าใจสถาปัตยกรรม <strong>Power System Wireless Sensor Networks (PSWSNs)</strong> และปัญหาคอขวด <strong>Energy Hole Problem</strong> เมื่อโหนดใกล้ Base Station ต้องทำหน้าที่ Relay จนแบตเตอรี่หมดก่อนเพื่อน</li>
+            <li>เข้าใจข้อจำกัดของอัลกอริทึมดั้งเดิม (Dijkstra, LEACH, GA, PSO) ที่มักติดหล่ม <strong>Local Optima</strong> และไม่สามารถรักษาสมดุลภาระงาน (Load Balancing) ได้</li>
+            <li>อธิบายแบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์: <strong>Minimizing Transmission Loss</strong>, <strong>Balancing Load Distribution</strong>, และ <strong>Enhancing System Reliability</strong> (สมการ 1–11)</li>
+            <li>เข้าใจกลไกของ <strong>MCSOA</strong>: การใช้ <strong>Tent Chaotic Map</strong> กระจายประชากรเริ่มต้น, <strong>Migration Phase</strong> หลบการชน และ <strong>Attacking Phase</strong> บินวนเกลียว 3 มิติล่าเหยื่อ</li>
+            <li>ตีความผลการจำลองเปรียบเทียบ: ลดพลังงานได้ <strong>16.1%</strong>, ยืดอายุการใช้งานเครือข่าย <strong>15.6%</strong>, และเพิ่มปริมาณรับส่งแพ็กเก็ตสำเร็จ <strong>15.3%</strong></li>
+            <li>สามารถนำเสนอหน้าชั้นเรียนได้ภายใน <strong>5:00 นาที</strong> พร้อมตอบคำถามเจาะลึกของคณะกรรมการได้อย่างมั่นใจ</li>
+          </ol>
+        </div>
+
+        <!-- ═══════════ ส่วนที่ 1: คำศัพท์และคำอ่าน ═══════════ -->
+        <section id="sec-mcsoa-1">
+          <h2 class="section-title">
+            1. อภิธานศัพท์ คำอ่านสัทศาสตร์ และนิยามวิศวกรรม (Nomenclature & Phonetics)
+            <button class="paper-ref-pill" data-page="1" data-section="Section I: Background & Abstract" data-paper="mcsoa">📄 เปเปอร์ หน้า 1 (Sec. I)</button>
+          </h2>
+          <p>
+            รวบรวมคำศัพท์เทคนิคภาษาอังกฤษ คำอ่านโฟเนติกส์ภาษาไทย นิยามความหมายทางวิศวกรรม และการเปรียบเทียบในชีวิตจริงของเปเปอร์ MCSOA:
+          </p>
+
+          <div class="term-table-wrapper">
+            <table class="term-table">
+              <thead>
+                <tr>
+                  <th>คำศัพท์ภาษาอังกฤษ</th>
+                  <th>คำอ่านภาษาไทย</th>
+                  <th>นิยามและความหมายทางวิศวกรรม</th>
+                  <th>อุปมาในชีวิตจริง</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PSWSNs</strong><br><span style="font-size: 0.78rem; color: var(--ink-muted);">Power System Wireless Sensor Networks</span></td>
+                  <td>เพา-เวอร์ ซิส-เตม ไวร์-เลส เซน-เซอร์ เน็ต-เวิร์กส</td>
+                  <td>เครือข่ายเซนเซอร์ไร้สายที่ติดตั้งบนเสาสายส่งไฟฟ้าแรงสูงและสถานีย่อย เพื่อตรวจสอบอุณหภูมิสาย แรงดึง และความปลอดภัย</td>
+                  <td>เหมือนเครือข่ายกล้องและยามเฝ้าระวังตลอดแนวถนนมอเตอร์เวย์ข้ามจังหวัด</td>
+                </tr>
+                <tr>
+                  <td><strong>Energy Hole Problem</strong></td>
+                  <td>เอ็น-เนอร์-จี โฮล พรอบ-เบลม</td>
+                  <td>ปรากฏการณ์ที่โหนดเซนเซอร์บริเวณรอบสถานีฐาน (Base Station) ต้องรับภาระส่งต่อข้อมูล (Relay) จนพลังงานหมดและตายก่อนโหนดรอบนอก</td>
+                  <td>เหมือนถนนทางเข้ากรุงเทพฯ ที่รถติดและถนนพังก่อนถนนสายย่อยในต่างจังหวัด</td>
+                </tr>
+                <tr>
+                  <td><strong>Multi-Objective Fitness</strong></td>
+                  <td>มัล-ติ ออบ-เจก-ทิฟ ฟิต-เนส</td>
+                  <td>ฟังก์ชันเป้าหมายรวมที่ต้องหาจุดสมดุลพร้อมกันหลายด้าน: ลดการสูญเสียพลังงาน, กระจายภาระงาน, และเพิ่มความเสถียรของสัญญาณ</td>
+                  <td>เหมือนการเลือกรถยนต์ที่ต้องประหยัดน้ำมัน วิ่งเร็ว และบรรทุกของได้เยอะในคันเดียว</td>
+                </tr>
+                <tr>
+                  <td><strong>Tent Chaotic Map</strong></td>
+                  <td>เทนต์ เค-อ็อต-ติก แมป</td>
+                  <td>ฟังก์ชันทางคณิตศาสตร์แบบโกลาหล มีรูปทรงคล้ายกระโจม ใช้สร้างลำดับตัวเลขที่กระจายตัวสม่ำเสมอทั่วพื้นที่ค้นหา ไม่กระจุกตัว</td>
+                  <td>เหมือนการโยนเมล็ดพันธุ์พืชแบบกระจายทั่วแปลง แทนที่จะตกลงเป็นกระจุกเดียวกัน</td>
+                </tr>
+                <tr>
+                  <td><strong>Seagull Optimization Algorithm (SOA)</strong></td>
+                  <td>ซี-กัล ออป-ติ-ไม-เซ-ชัน แอล-กอ-ริ-ทึม</td>
+                  <td>อัลกอริทึมเลียนแบบพฤติกรรมธรรมชาติของนกนางนวล: การอพยพเป็นฝูงแบบหลบการชน (Migration) และการบินวนเกลียวโฉบเหยื่อ (Spiral Attack)</td>
+                  <td>เหมือนฝูงนกบินข้ามทวีปหาแหล่งอาหาร แล้ววนสว่านดิ่งลงจับปลาอย่างแม่นยำ</td>
+                </tr>
+                <tr>
+                  <td><strong>Packet Delivery Ratio (PDR)</strong></td>
+                  <td>แพ็ก-เก็ต ดิ-ลิฟ-เวอ-รี เร-โช</td>
+                  <td>สัดส่วนของแพ็กเก็ตข้อมูลที่สถานีฐานได้รับสำเร็จ เทียบกับจำนวนแพ็กเก็ตทั้งหมดที่โหนดเซนเซอร์ส่งออกมา</td>
+                  <td>เหมือนร้อยละของจดหมายส่งด่วนที่ไปรษณีย์ส่งถึงมือผู้รับปลายทางโดยไม่ตกหล่น</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 2: ที่มาและความสำคัญ ═══════════ -->
+        <section id="sec-mcsoa-2">
+          <h2 class="section-title">
+            2. ที่มา ความสำคัญ และบริบทสายส่งไฟฟ้าแรงสูง (Research Context & Power IoT)
+            <button class="paper-ref-pill" data-page="1" data-section="Section I: Research Motivation" data-paper="mcsoa">📄 เปเปอร์ หน้า 1 (Sec. I)</button>
+          </h2>
+          <p>
+            ในระบบโครงข่ายไฟฟ้าอัจฉริยะ (Smart Grid) ยุคใหม่ สายส่งไฟฟ้าแรงสูงและสถานีไฟฟ้าย่อยครอบคลุมพื้นที่ทางภูมิศาสตร์นับร้อยนับพันกิโลเมตร การตรวจสอบความสมบูรณ์เชิงกล เช่น อุณหภูมิสายส่ง การหย่อนตัว (Sagging) และการสั่นไหว จำเป็นต้องพึ่งพาเซนเซอร์ไร้สาย (PSWSNs) ติดตั้งไว้บนยอดเสาไฟฟ้า
+          </p>
+
+          <div class="academic-callout" style="border-left-color: var(--accent);">
+            <h4 style="color: var(--accent); margin-bottom: 6px;">ความท้าทายวิกฤตของ PSWSNs ตามประกาศงานวิจัย</h4>
+            <ul style="margin-left: 18px; line-height: 1.8; font-size: 0.93rem;">
+              <li><strong>เปลี่ยนแบตเตอรี่แทบไม่ได้:</strong> การตัดกระแสไฟฟ้าเพื่อส่งวิศวกรปีนขึ้นไปเปลี่ยนแบตเตอรี่บนเสาไฟฟ้าแรงสูงในป่าเขา มีต้นทุนและความเสี่ยงต่อชีวิตสูงมาก เครือข่ายจึงต้องอยู่รอดด้วยพลังงานที่มีอยู่ให้นานที่สุด</li>
+              <li><strong>สัญญาณรบกวนคลื่นแม่เหล็กไฟฟ้า (EMI):</strong> สนามแม่เหล็กรอบสายส่งไฟฟ้ากำลังสูงทำให้ช่องสัญญาณไร้สายมีความแปรปรวน ส่งผลให้แพ็กเก็ตสูญหายได้ง่ายหากเส้นทางส่งข้อมูลไม่มีความทนทานเพียงพอ</li>
+              <li><strong>ทราฟฟิกแบบหลายทอด (Multi-hop Convergence):</strong> โหนดนับร้อยส่งข้อมูลมุ่งหน้าเข้าหา Base Station เพียงจุดเดียว ทำให้เส้นทางส่งต่อข้อมูลมีภาระงานหนักหน่วงเป็นพิเศษ</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 3: ปัญหาวิจัย Energy Hole ═══════════ -->
+        <section id="sec-mcsoa-3">
+          <h2 class="section-title">
+            3. ปัญหาวิจัยเชิงวิศวกรรม: ทำไมอัลกอริทึมเดิมจึงล้มเหลว? (Energy Hole & Local Optima)
+            <button class="paper-ref-pill" data-page="2" data-section="Section I & II: Problem Formulation" data-paper="mcsoa">📄 เปเปอร์ หน้า 2 (Sec. II)</button>
+          </h2>
+          <p>
+            งานวิจัยเปรียบเทียบให้เห็นชัดเจนว่าทำไมอัลกอริทึมการจัดเส้นทางแบบเดิม เช่น <strong>Dijkstra (Shortest Path)</strong>, <strong>LEACH (Clustering)</strong>, ตลอดจน <strong>Genetic Algorithm (GA)</strong> และ <strong>Particle Swarm Optimization (PSO)</strong> ดั้งเดิม จึงไม่ตอบโจทย์ PSWSNs:
+          </p>
+
+          <div class="comparison-grid">
+            <div class="comp-card" style="border-color: var(--red);">
+              <div style="font-weight: 800; color: var(--red); margin-bottom: 8px;">❌ ข้อจำกัดของ Shortest Path & GA/PSO ดั้งเดิม</div>
+              <ul style="font-size: 0.90rem; line-height: 1.75; margin-left: 16px;">
+                <li><strong>Shortest Path เลือกแต่ทางสั้น:</strong> ส่งผลให้โหนดบนเส้นทางที่สั้นที่สุดถูกใช้งานซ้ำๆ จนแบตหมดภายในไม่กี่ชั่วโมง เกิดรูโหว่พลังงาน (Energy Hole)</li>
+                <li><strong>GA และ PSO ติด Local Optima:</strong> การสุ่มประชากรเริ่มต้นแบบธรรมดาทำให้ติดหล่มคำตอบเฉพาะที่ ไม่สามารถสำรวจเส้นทางใหม่ที่ดีกว่าในโครงข่ายขนาดใหญ่</li>
+                <li><strong>ละเลย Load Balancing:</strong> มุ่งลดเฉพาะผลรวมระยะทาง แต่ไม่ได้คำนึงถึงความแปรปรวนของพลังงานที่เหลืออยู่ในแต่ละโหนด</li>
+              </ul>
+            </div>
+
+            <div class="comp-card" style="border-color: var(--green);">
+              <div style="font-weight: 800; color: var(--green); margin-bottom: 8px;">✅ ทางออกของ MCSOA (CACRE 2024)</div>
+              <ul style="font-size: 0.90rem; line-height: 1.75; margin-left: 16px;">
+                <li><strong>Tent Chaotic Map:</strong> กระจายคำตอบเริ่มต้นแบบโกลาหล สม่ำเสมอ ไม่กระจุกตัว หลุดพ้นจาก Local Optima ได้อย่างรวดเร็ว</li>
+                <li><strong>Multi-objective Fitness:</strong> ผสาน 3 ด้านพร้อมกัน ทั้งลดการสูญเสียพลังงาน, กระจายโหลดให้เท่าเทียม, และรักษาเสถียรภาพของลิงก์</li>
+                <li><strong>Spiral Exploitation:</strong> กลไกบินควงสว่าน 3 มิติ ช่วยปรับแต่งเส้นทางในพื้นที่ที่มีแนวโน้มดีได้อย่างละเอียดแม่นยำ</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 4: แบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์ ═══════════ -->
+        <section id="sec-mcsoa-4">
+          <h2 class="section-title">
+            4. สถาปัตยกรรมแบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์ (Mathematical Model & Constraints)
+            <button class="paper-ref-pill" data-page="2" data-section="Section II: Energy & Fitness Equations" data-paper="mcsoa">📄 เปเปอร์ หน้า 2 (Sec. II-C)</button>
+          </h2>
+          <p>
+            แบบจำลองทางคณิตศาสตร์ที่สมบูรณ์ตามสมการที่ (1) ถึง (11) ของเปเปอร์ MCSOA ประกอบด้วยแบบจำลองพลังงานและฟังก์ชันวัตถุประสงค์ผสม:
+          </p>
+
+          <!-- Formula Box 1: Energy Model -->
+          <div class="formula-card">
+            <div class="formula-badge">แบบจำลองการสูญเสียพลังงาน (First-Order Radio Model)</div>
+            <div class="formula-body">
+              Total Energy = SeEC(data, dist) + ReEC(data)
+              <br><br>
+              SeEC = data × E_elec + data × γ_apx × dist²     (เมื่อ dist < dist₀ : Free Space)
+              <br>
+              SeEC = data × E_elec + data × γ_apy × dist⁴     (เมื่อ dist ≥ dist₀ : Multipath Fading)
+              <br>
+              ReEC = data × E_elec
+            </div>
+            <div class="formula-desc">
+              <strong>ความหมาย:</strong> พลังงานส่ง (SeEC) และรับ (ReEC) ข้อมูลขนาด data บิต ระยะห่าง dist เมตร โดย E_elec คือพลังงานของวงจรอิเล็กทรอนิกส์, γ_apx คือสัมประสิทธิ์ขยายสัญญาณในที่โล่ง (แปรผันตาม d²), และ γ_apy คือสัมประสิทธิ์ขยายสัญญาณเมื่อมีสิ่งกีดขวาง (แปรผันตาม d⁴)
+            </div>
+          </div>
+
+          <!-- Formula Box 2: Multi-Objective Fitness -->
+          <div class="formula-card" style="border-left-color: var(--accent);">
+            <div class="formula-badge" style="background: var(--accent);">ฟังก์ชันวัตถุประสงค์รวม (Composite Multi-Objective Fitness Function)</div>
+            <div class="formula-body">
+              f₁ (Min Transmission Loss) = ∑ (P_ij × R_ij × L_ij)
+              <br>
+              f₂ (Balance Load)          = ∑ (P_i - P_avg)²
+              <br>
+              f₃ (Enhance Reliability)   = ∑ A_ij
+              <br><br>
+              <strong>Fitness Function = w₁ × f₁ + w₂ × f₂ + w₃ × f₃</strong>
+            </div>
+            <div class="formula-desc">
+              <strong>เงื่อนไขบังคับ (Constraints):</strong>
+              <ul style="margin-left: 16px; margin-top: 6px;">
+                <li><strong>Power Flow Balance (Eq. 7):</strong> กำลังไฟฟ้าไหลเข้าและออกจากแต่ละโหนดต้องสมดุล</li>
+                <li><strong>Channel Capacity (Eq. 8):</strong> ปริมาณข้อมูลบนลิงก์ห้ามเกินขีดความสามารถ C_ij</li>
+                <li><strong>Voltage Limits (Eq. 9):</strong> แรงดันโหนดต้องอยู่ในช่วง V_min ≤ V_i ≤ V_max</li>
+                <li><strong>Topology Constraint (Eq. 10):</strong> ลิงก์สื่อสารต้องมีอยู่จริงในกราฟ A_ij = 1</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 5: กลไกอัลกอริทึม MCSOA ═══════════ -->
+        <section id="sec-mcsoa-5">
+          <h2 class="section-title">
+            5. กลไกอัลกอริทึม MCSOA: Tent Chaotic Map & Seagull Dynamics
+            <button class="paper-ref-pill" data-page="3" data-section="Section III: MCSOA Algorithm Mechanics" data-paper="mcsoa">📄 เปเปอร์ หน้า 3 (Sec. III)</button>
+          </h2>
+          <p>
+            โครงสร้างการทำงานทีละขั้นตอนของ MCSOA เพื่อค้นหาเส้นทางที่ดีที่สุด:
+          </p>
+
+          <div class="method-steps">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>การเริ่มต้นประชากรด้วย Tent Chaotic Map</h4>
+                <p>แทนที่จะใช้ Uniform Random ธรรมดา ผู้เขียนใช้ Tent Map ตามสมการ (15): <code>x_{n+1} = 2x_n (เมื่อ x_n < 0.5)</code> หรือ <code>2(1 - x_n) (เมื่อ x_n ≥ 0.5)</code> สร้างตำแหน่งนกเริ่มต้นกระจายตัวทั่ว Search Space เพื่อให้ครอบคลุมและหลากหลาย</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Migration Phase (การสำรวจพื้นที่ระดับโลก - Exploration)</h4>
+                <p>นกนางนวลเคลื่อนที่เข้าหาตำแหน่งคำตอบที่ดีที่สุด <code>x_best</code> โดยปรับระยะทางผ่านพารามิเตอร์ A เพื่อหลีกเลี่ยงการบินชนกับเพื่อนในฝูง ช่วยค้นหาเส้นทางใหม่ๆ ในวงกว้าง</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Attacking Phase (การปรับแต่งคำตอบระดับท้องถิ่น - Exploitation)</h4>
+                <p>นกนางนวลโจมตีเหยื่อด้วยเส้นทางการบินวนเป็นเกลียว 3 มิติ (Spiral Attack) บนพิกัด x, y, z ช่วยให้ค้นหาจุดต่ำสุดของพลังงานในบริเวณคำตอบที่มีความหวังได้อย่างแม่นยำและรวดเร็ว</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Dynamic Pareto Archive & Roulette Wheel Selection</h4>
+                <p>เก็บรวบรวมคำตอบที่เป็น Non-dominated Solutions ไว้ใน Dynamic Archive และใช้วงล้อรูเล็ตต์คัดเลือกโซลูชันที่ดีที่สุดในการส่งผ่านข้อมูลของแต่ละรอบ</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 6: การทดลองและผลลัพธ์ ═══════════ -->
+        <section id="sec-mcsoa-6">
+          <h2 class="section-title">
+            6. การทดลองและผลลัพธ์เชิงตัวเลขเปรียบเทียบกับ GA & PSO
+            <button class="paper-ref-pill" data-page="4" data-section="Section IV: Simulation & Analysis" data-paper="mcsoa">📄 เปเปอร์ หน้า 4 & 5 (Sec. IV)</button>
+          </h2>
+          <p>
+            รายละเอียดสภาพแวดล้อมการทดลองและผลการประเมินประสิทธิภาพในเปเปอร์ MCSOA:
+          </p>
+
+          <div class="academic-callout" style="background: var(--paper2); border: 1.5px solid var(--rule);">
+            <strong>สภาพแวดล้อมจำลอง (Simulation Setup):</strong><br>
+            • ฮาร์ดแวร์: CPU Intel Core i7-10700K @ 3.80GHz, หน่วยความจำ DDR4 32GB<br>
+            • สเกลเครือข่าย: 4 สถานการณ์ ได้แก่ 50, 100, 150, และ 200 โหนดเซนเซอร์<br>
+            • รอบการทดลอง: 300 Iterations ต่อแต่ละสถานการณ์<br>
+            • ตัวเปรียบเทียบมาตรฐาน: Genetic Algorithm (GA) และ Particle Swarm Optimization (PSO)
+          </div>
+
+          <div style="margin-top: 16px;">
+            <table class="term-table">
+              <thead>
+                <tr>
+                  <th>ตัวชี้วัดสมรรถนะ (Key Metrics)</th>
+                  <th>Genetic Algorithm (GA)</th>
+                  <th>Particle Swarm (PSO)</th>
+                  <th>MCSOA (งานวิจัยนี้)</th>
+                  <th>ข้อได้เปรียบของ MCSOA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>การใช้พลังงาน (Energy Consumption)</strong></td>
+                  <td>สูง (ติด Local Optima)</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>ต่ำที่สุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">ลดพลังงานลงอย่างน้อย 16.1% เทียบกับ GA และ 8.4% เทียบกับ PSO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>อายุการใช้งานเครือข่าย (Node Lifespan)</strong></td>
+                  <td>สั้น (โหนดหน้า BS ตายเร็ว)</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>ยาวนานที่สุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">ยืดอายุโหนดได้นานขึ้นอย่างน้อย 15.6% เทียบกับ GA และ 7.8% เทียบกับ PSO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>แพ็กเก็ตถึงสถานีฐาน (PDR ที่ 50 โหนด)</strong></td>
+                  <td>ต่ำกว่า</td>
+                  <td>เกือบเทียบเท่า</td>
+                  <td><strong>สูงสุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">รับแพ็กเก็ตสำเร็จมากกว่า GA 15.3% และมากกว่า PSO 5.2%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>ความเร็วลู่เข้า (Convergence Speed)</strong></td>
+                  <td>ช้า</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>เร็วและแม่นยำ</strong></td>
+                  <td>ไม่ติดหล่มด้วย Tent Chaotic Map และบินวนเกลียวโฉบเข้าหาคำตอบ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 7: วิจารณ์เชิงวิชาการ ═══════════ -->
+        <section id="sec-mcsoa-7">
+          <h2 class="section-title">
+            7. บทวิจารณ์เชิงวิชาการ ข้อจำกัด และคำถามเปิด (Academic Critique & Limitations)
+            <button class="paper-ref-pill" data-page="5" data-section="Section V: Conclusion & Future Work" data-paper="mcsoa">📄 เปเปอร์ หน้า 5 (Sec. V)</button>
+          </h2>
+          <div class="comparison-grid">
+            <div class="comp-card" style="border-color: var(--accent);">
+              <h4 style="color: var(--accent); margin-bottom: 8px;">จุดแข็งทางวิศวกรรม (Engineering Strengths)</h4>
+              <ol style="margin-left: 18px; line-height: 1.8; font-size: 0.90rem;">
+                <li><strong>แก้ปัญหาตรงจุด:</strong> บูรณาการ Multi-objective Fitness ครอบคลุมทั้งพลังงาน โหลด และเสถียรภาพ แก้ Energy Hole ได้อย่างแท้จริง</li>
+                <li><strong>ทฤษฎี Chaos ช่วยหลุดพ้น Local Optima:</strong> Tent Map ช่วยให้ประชากรเริ่มต้นไม่กระจุกตัว จึงเหนือกว่า GA และ PSO อย่างมีนัยสำคัญ</li>
+                <li><strong>เหมาะกับโครงสร้างสายส่งไฟฟ้า:</strong> สอดคล้องกับธรรมชาติของโครงข่ายไฟฟ้าที่มีเสาสายส่งเรียงรายเป็นแนวยาว</li>
+              </ol>
+            </div>
+
+            <div class="comp-card" style="border-color: var(--red);">
+              <h4 style="color: var(--red); margin-bottom: 8px;">ข้อจำกัดที่ควรวิจารณ์ในห้องเรียน (Critical Limitations)</h4>
+              <ol style="margin-left: 18px; line-height: 1.8; font-size: 0.90rem;">
+                <li><strong>ข้อจำกัดของการจำลอง (Simulation-only):</strong> การทดลองทั้งหมดรันบนคอมพิวเตอร์ i7-10700K ยังไม่มีการติดตั้งบอร์ดฮาร์ดแวร์จริงบนเสาสายส่งไฟฟ้า</li>
+                <li><strong>ความซับซ้อนในการคำนวณ:</strong> อัลกอริทึมมีความซับซ้อนสูง โหนดเซนเซอร์ขนาดเล็กไม่สามารถคำนวณเองได้ ต้องส่งให้ Base Station/Gateway เป็นผู้ประมวลผล</li>
+                <li><strong>สัญญาณรบกวนคลื่นแม่เหล็กไฟฟ้า (EMI):</strong> แบบจำลองยังไม่ได้รวมสัญญาณรบกวนคลื่นความถี่สูงจากฟ้าผ่าหรือการสวิตชิ่งของสายส่งไฟฟ้าแรงสูง</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- End #paper-view-mcsoa-head -->
+
+      <section id="sec-rehearsal">
+        <h2 class="section-title">
+          8. สตูดิโอซ้อมบทนำเสนอ 5 นาที (Interactive 5-Minute Presentation Studio)
+          <button class="paper-ref-pill" data-page="1" data-section="Paper I: Overview & Full 9 Pages for Presentation"
+            title="คลิกเปิดดูเปเปอร์ประกอบการซ้อม">📄 เปิดดูเปเปอร์ควบคู่การซ้อม</button>
+        </h2>
+        <p>
+          เครื่องมือจำลองเวทีนำเสนอจริง: ควบคุมเวลาถอยหลัง 5:00 นาที, ซิงก์สไลด์ 5 หน้า, พร้อมสคริปต์ Teleprompter
+          ภาษาไทยที่มีจุดกำหนดจังหวะหยุดหายใจ <code>[สูดหายใจ]</code> และจุดเน้นเสียง:
+        </p>
+
+        <!-- MCSOA Presentation Tips Callout (Shown when MCSOA is active) -->
+        <div id="rehearsal-tips-mcsoa" style="display: none; margin-bottom: 16px;">
+          <div class="academic-callout" style="border-left-color: var(--accent);">
+            <strong style="color: var(--accent);">คำแนะนำในการนำเสนอ MCSOA 5 นาที (IEEE CACRE 2024):</strong><br>
+            • สไลด์ 1 (0:00–0:45): เน้นปัญหา <strong>Energy Hole Problem</strong> บนสายส่งไฟฟ้าแรงสูงที่เปลี่ยนแบตเตอรี่ยาก<br>
+            • สไลด์ 2 (0:45–1:35): อธิบายสมการ 3 วัตถุประสงค์ (ลดสูญเสีย, กระจายโหลด, เพิ่มความน่าเชื่อถือ Eq. 4–11)<br>
+            • สไลด์ 3 (1:35–2:55): เจาะลึกอัลกอริทึม MCSOA (Tent Chaotic Map + Migration หลบการชน + Attacking บินเกลียว)<br>
+            • สไลด์ 4 (2:55–4:05): แสดงตัวเลขเด็ด: <strong>ลดพลังงาน 16.1%</strong>, <strong>ยืดอายุโหนด 15.6%</strong>, <strong>ส่งแพ็กเก็ตเพิ่ม 15.3%</strong><br>
+            • สไลด์ 5 (4:05–5:00): สรุปข้อคิด: <em>“เส้นทางสั้นที่สุด ไม่ใช่เส้นทางที่ดีที่สุดเสมอไปในระบบเซนเซอร์”</em>
+          </div>
+        </div>
+
+        <div class="rehearsal-studio">
+          <div class="studio-header">
+            <div class="studio-title">
+              <span>5-Minute Rehearsal Studio</span>
+              <span class="studio-badge">STAGE &amp; TELEPROMPTER</span>
+            </div>
+
+            <!-- Speech Mode Toggle Bar (Peer-to-Peer vs Executive) -->
+            <div class="rehearsal-mode-toggle-bar">
+              <div class="mode-label">
+                <span>🎙️ รูปแบบบทพูด:</span>
+              </div>
+              <div class="mode-toggle-pill-group">
+                <button type="button" class="btn-speech-mode active" data-mode="peer" title="บทเพื่อนพูดให้เพื่อนฟังหน้าห้อง - สาระวิชาการล้วน ไม่มีน้ำ อิงเปเปอร์ตรงๆ จบใน 5 นาที">
+                  🎓 เพื่อนพูดให้เพื่อนฟัง (Academic Peer)
+                </button>
+                <button type="button" class="btn-speech-mode" data-mode="executive" title="บทนำเสนอแบบบริหารและภาพรวม">
+                  💼 นำเสนอผู้บริหาร (Executive)
+                </button>
+              </div>
+            </div>
+            <div class="studio-controls-bar">
+              <div class="timer-display-capsule">
+                <span class="timer-dot" id="studio-timer-dot"></span>
+                <span id="studio-timer">05:00</span>
+              </div>
+              <button class="btn btn-primary" id="studio-play-btn">▶ เริ่มซ้อม</button>
+              <button class="btn btn-secondary" id="studio-reset-btn">↺ รีเซ็ต</button>
+            </div>
+          </div>
+
+          <!-- Timeline 5 Stages -->
+          <div class="studio-timeline">
+            <div class="timeline-segment active" data-stage="0">
+              <span class="seg-time">0:00 - 0:45</span>
+              <span class="seg-title">1. ปัญหาไฟไหม้/เซนเซอร์เสีย</span>
+            </div>
+            <div class="timeline-segment" data-stage="1">
+              <span class="seg-time">0:45 - 1:35</span>
+              <span class="seg-title">2. เซนเซอร์มีบริบท</span>
+            </div>
+            <div class="timeline-segment" data-stage="2">
+              <span class="seg-time">1:35 - 2:55</span>
+              <span class="seg-title">3. วิธีการ IoT-CAD 4 ขั้น</span>
+            </div>
+            <div class="timeline-segment" data-stage="3">
+              <span class="seg-time">2:55 - 4:05</span>
+              <span class="seg-title">4. การทดลองและผลลัพธ์</span>
+            </div>
+            <div class="timeline-segment" data-stage="4">
+              <span class="seg-time">4:05 - 5:00</span>
+              <span class="seg-title">5. วิจารณ์และสรุป</span>
+            </div>
+          </div>
+
+          <!-- Workbench Dual Grid -->
+          <div class="studio-workbench-grid">
+
+            <!-- Left: Slide Deck Preview -->
+            <div class="slide-deck-box">
+              <div class="slide-canvas-card">
+                <div class="slide-header">
+                  <span class="slide-num-badge" id="slide-num-badge">Slide 1 / 5</span>
+                  <span id="slide-venue-badge" style="font-size: 0.78rem; color: var(--ink-muted);">IEEE/ACM ICCAD 2020</span>
+                </div>
+
+                <div class="slide-title" id="slide-title">ปัญหา: “ไฟไหม้ หรือ Sensor เสีย?”</div>
+
+                <div class="slide-body">
+                  <ul class="slide-bullets" id="slide-bullets">
+                    <!-- Rendered dynamically -->
+                  </ul>
+                  <div class="slide-diagram-mockup" id="slide-diagram">
+                    <!-- Rendered dynamically -->
+                  </div>
+                </div>
+
+                <div class="slide-footer-citation" id="slide-citation">
+                  Yasaei et al., ICCAD 2020, doi: 10.1145/3400302.3415672
+                </div>
+              </div>
+
+              <div class="slide-nav-bar">
+                <button class="btn btn-secondary" id="slide-prev-btn" style="padding: 4px 12px; font-size: 0.82rem;">◀
+                  สไลด์ก่อนหน้า</button>
+                <span style="font-size: 0.80rem; color: var(--ink-muted);">คีย์ลัด: Space = เริ่ม/พัก | ◀ ▶ =
+                  เปลี่ยนสไลด์</span>
+                <button class="btn btn-secondary" id="slide-next-btn"
+                  style="padding: 4px 12px; font-size: 0.82rem;">สไลด์ถัดไป ▶</button>
+              </div>
+            </div>
+
+            <!-- Right: Teleprompter Spoken Script -->
+            <div class="teleprompter-box">
+              <div class="teleprompter-header">
+                <span class="teleprompter-title">สคริปต์บทพูดนำเสนอ (Teleprompter)</span>
+                <div class="teleprompter-speed-control">
+                  <span>อัตราพูดแนะนำ: 130 คำ/นาที</span>
+                </div>
+              </div>
+
+              <div class="teleprompter-content" id="teleprompter-content">
+
+                <!-- Section 0 -->
+                <div class="script-section highlight-current-script" id="script-stage-0">
+                  <p>
+                    <strong>[0:00 - 0:45 · เปิดเรื่องและจุดประกายปัญหา]</strong><br>
+                    สวัสดีครับอาจารย์และเพื่อนๆ ทุกคน <span class="breath-mark">[สูดหายใจ]</span>
+                    วันนี้ผมขอพาทุกท่านมาเจาะลึกบทความวิจัยเรื่อง <em>IoT-CAD: Context-Aware Adaptive Anomaly Detection
+                      in IoT Systems Through Sensor Association</em> จากการประชุมวิชาการ IEEE/ACM ICCAD ปี 2020 ครับ
+                  </p>
+                  <p>
+                    ลองจินตนาการถึงระบบอาคารอัจฉริยะ <span class="breath-mark">[สูดหายใจ]</span> จู่ๆ
+                    เซนเซอร์อุณหภูมิในห้องก็รายงานค่าพุ่งสูงขึ้นผิดปกติ คำถามสำคัญคือ <span
+                      class="highlight-key">“เกิดเพลิงไหม้จริง หรือตัวเซนเซอร์พังหรือถูกแฮกเกอร์โจมตี?”</span>
+                    ถ้าเราตีความผิด ระบบอาจไม่แจ้งเตือนจนเกิดโศกนาฏกรรม หรือส่งสัญญาณเตือนภัยลวงจนคนเลิกเชื่อระบบ
+                    นี่คือโจทย์ตั้งต้นของงานนี้ครับ
+                  </p>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="script-section" id="script-stage-1">
+                  <p>
+                    <strong>[0:45 - 1:35 · Insight และการแยก EA vs SDA]</strong><br>
+                    วิธีเดิมๆ ในอดีตมักจะดูเซนเซอร์แต่ละตัวแยกจากกัน <span class="breath-mark">[สูดหายใจ]</span>
+                    ถ้าค่าต่างจากที่เคยทำนายไว้ ก็ฟันธงว่าเป็น Anomaly ทันที
+                    แต่วิธีนั้นบอกไม่ได้เลยครับว่าต้นเหตุมาจากไหน
+                  </p>
+                  <p>
+                    IoT-CAD จึงเสนอแนวคิดว่า <span class="highlight-key">“เซนเซอร์ไม่ได้อยู่โดดเดี่ยวในโลกจริง”</span>
+                    ถ้าเกิดไฟไหม้จริง อุณหภูมิ แสง และควัน จะต้องเปลี่ยนสอดคล้องกันเป็นกลุ่ม
+                    แต่ถ้าอุณหภูมิกระโดดตัวเดียวโดดๆ ขัดแย้งกับตัวอื่น มีโอกาสสูงมากที่จะเป็นเซนเซอร์เสีย
+                    โดยผู้เขียนนิยามสองกรณีนี้ว่า <span class="highlight-key">Environmental Anomaly (EA)</span> และ
+                    <span class="highlight-key">Sensing Device Anomaly (SDA)</span> ครับ
+                  </p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="script-section" id="script-stage-2">
+                  <p>
+                    <strong>[1:35 - 2:55 · สถาปัตยกรรม 4 ขั้นตอน]</strong><br>
+                    ระบบทำงานผ่าน 4 ขั้นตอนหลักครับ <span class="breath-mark">[สูดหายใจ]</span><br>
+                    ขั้นแรก นำค่าเฉลี่ยในหน้าต่างเวลามาแปลงเป็น <span class="highlight-key">Binary Fingerprint</span>
+                    เพื่อดูแค่ทิศทางการเปลี่ยนเป็น 0 หรือ 1
+                    ทำให้เราเปรียบเทียบเซนเซอร์วัดอุณหภูมิกับเซนเซอร์วัดแสงได้แม้หน่วยวัดจะต่างกันสิ้นเชิง
+                  </p>
+                  <p>
+                    ขั้นที่สอง ใช้ <span class="highlight-key">Hamming Distance</span> วัดจำนวนบิตที่ต่างกัน
+                    แล้วจัดกลุ่มเซนเซอร์ที่มีรูปแบบการเปลี่ยนแปลงคล้ายกัน โดยบังคับว่าต้องมีสมาชิกอย่างน้อย 3
+                    ตัวขึ้นไปเพื่อใช้ในฉันทามติ
+                  </p>
+                  <p>
+                    ขั้นที่สาม ใช้ <span class="highlight-key">LSTM Encoder-Decoder</span> ประจำคลัสเตอร์
+                    ทำนายค่าปกติถัดไป แล้วนำ Reconstruction Error เข้าสู่ <span class="highlight-key">Multivariate
+                      Gaussian Estimator</span> เพื่อคำนวณความน่าจะเป็นว่าค่านี้ผิดปกติหรือไม่
+                  </p>
+                  <p>
+                    และขั้นสุดท้าย ใช้ <span class="highlight-key">Consensus Algorithm</span>
+                    โหวตเสียงข้างมากในคลัสเตอร์: ถ้าผิดปกติพร้อมกันสรุปเป็น EA แต่ถ้าผิดคนเดียวสรุปเป็น SDA
+                    พร้อมทั้งมีระบบ Retrain ปรับตัวอัตโนมัติเมื่อระบบเปลี่ยนแปลงครับ
+                  </p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="script-section" id="script-stage-3">
+                  <p>
+                    <strong>[2:55 - 4:05 · การทดลองและผลลัพธ์]</strong><br>
+                    ผู้เขียนสร้าง Testbed จริงขนาดใหญ่ มีเซนเซอร์ถึง 62 ตัว วัด 13 มิติทางกายภาพ <span
+                      class="breath-mark">[สูดหายใจ]</span> สื่อสารด้วย IEEE 802.15.4 ผ่าน Raspberry Pi ไปประมวลผลบน Fog
+                    Laptop โดยเก็บข้อมูล 8 วัน รวม 2.3 ล้านการวัด
+                  </p>
+                  <p>
+                    ผลลัพธ์คือ IoT-CAD ใช้เวลาตรวจจับเพียง <span class="highlight-key">0.532 วินาทีต่อรอบ</span>
+                    และทำคะแนน <span class="highlight-key">Precision ได้สูงถึง 92%</span>, F1-Score 70% ซึ่งเหนือกว่า
+                    Baseline อื่นๆ ทั้งหมดอย่างชัดเจนครับ
+                  </p>
+                  <p>
+                    <span class="highlight-warn">แต่จุดสำคัญที่ต้องระวังคือ</span> ตัวเลข 92% นี้คือ Precision ไม่ใช่
+                    Accuracy เพราะระบบมีค่า <span class="highlight-warn">Recall อยู่ที่ 56%</span> หมายความว่าในบรรดา
+                    Anomaly ทั้งหมด ระบบยังหลุดรอดไปถึง 44% ครับ
+                  </p>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="script-section" id="script-stage-4">
+                  <p>
+                    <strong>[4:05 - 5:00 · วิจารณ์เชิงวิชาการและสรุป]</strong><br>
+                    จุดแข็งที่สุดของบทความนี้ <span class="breath-mark">[สูดหายใจ]</span>
+                    คือการเปลี่ยนมุมมองจากการถามว่า “ผิดปกติไหม” มาเป็น <span
+                      class="highlight-key">“ทำไมจึงผิดปกติ”</span>
+                    โดยใช้ความสัมพันธ์ของเครือข่ายเซนเซอร์มาเป็นพยานบริบท และทำงานบน Fog Node ได้ใกล้เคียง Real-time
+                  </p>
+                  <p>
+                    อย่างไรก็ดี ข้อจำกัดวิกฤตคือ Recall 56% ยังเสี่ยงสำหรับงาน Safety-Critical, ข้อมูล Anomaly
+                    ที่ใช้ทดสอบยังเป็นข้อมูลสังเคราะห์,
+                    และหากผู้โจมตีสามารถยึดเซนเซอร์ได้พร้อมกันหลายตัวจนกลายเป็นเสียงข้างมาก ก็จะสามารถหลอกระบบ Consensus
+                    ได้ครับ
+                  </p>
+                  <p>
+                    สรุปคือ IoT-CAD พิสูจน์ให้เห็นว่า <span
+                      class="highlight-key">“ความน่าเชื่อถือของระบบไม่ได้มาจากเซนเซอร์ที่แม่นที่สุดเพียงตัวเดียว
+                      แต่มาจากบริบทและความสอดคล้องของเซนเซอร์ทั้งเครือข่าย”</span> ขอบคุณครับ
+                    และพร้อมรับคำถามจากอาจารย์ครับ
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ IoT-CAD Subview (Tail: Sec 9-11) ═══════════ -->
+      <div id="paper-view-iot-cad-tail" class="paper-subview-iot-cad">
+      <!-- ═══════════ ส่วนที่ 9: จำลองตอบคำถามอาจารย์ ═══════════ -->
+      <section id="sec-qna">
+        <h2 class="section-title">
+          9. ระบบจำลองตอบคำถามอาจารย์ (Interactive Q&A Defense Simulator)
+          <button class="paper-ref-pill" data-page="8" data-section="Section VI-B: Defense Metrics & Evidence (หน้า 8)"
+            title="คลิกดูหลักฐานตัวเลขในเปเปอร์ หน้า 8">📄 เปเปอร์ หน้า 8 (หลักฐานตอบ Q&A)</button>
+        </h2>
+        <p>
+          รวบรวม 12 คำถามยอดฮิตที่คณะกรรมการและอาจารย์ผู้สอนมักใช้ซักถามหน้าห้อง พร้อมแนวทางการตอบแบบนักวิจัย และ
+          “กับดักที่ห้ามตอบผิดเด็ดขาด”:
+        </p>
+
+        <div class="qna-defense-workbench">
+          <div class="qna-filter-bar">
+            <span
+              style="font-size: 0.86rem; font-weight: 700; color: var(--ink); margin-right: 4px;">เลือกหมวดหมู่:</span>
+            <button class="btn-filter active" data-category="all">ทั้งหมด (12 ข้อ)</button>
+            <button class="btn-filter" data-category="concept">ภาพรวมและที่มา</button>
+            <button class="btn-filter" data-category="algo">ขั้นตอนอัลกอริทึม</button>
+            <button class="btn-filter" data-category="metrics">ตัวเลขและผลทดลอง</button>
+            <button class="btn-filter" data-category="limits">ข้อจำกัดและการป้องกันตัว</button>
+            <button class="btn btn-primary" id="qna-random-btn"
+              style="margin-left: auto; padding: 4px 12px; font-size: 0.80rem;">🎲 สุ่มคำถามจำลองสอบสด</button>
+          </div>
+
+          <div class="qna-list">
+
+            <!-- ข้อ 1 -->
+            <div class="qna-card" data-category="concept">
+              <button class="qna-question-btn">
+                <span>1. บทความนี้มีจุดแปลกใหม่ (Novelty) เหนืองานวิจัยตรวจจับความผิดปกติทั่วไปอย่างไร?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  งานทั่วไปตรวจจับความผิดปกติเฉพาะอนุกรมเวลาของเซนเซอร์เดี่ยวๆ ทำให้บอกไม่ได้ว่าเกิดอะไรขึ้น แต่ IoT-CAD
+                  นำเสนอ <strong>Context-Aware Anomaly Detection</strong> โดยใช้ลายนิ้วมือบิต (Binary Fingerprint)
+                  มาสร้างความสัมพันธ์ข้ามชนิดเซนเซอร์ และใช้ <strong>Spatial-Temporal Consensus</strong>
+                  แยกแยะได้อย่างชัดเจนระหว่าง Environmental Anomaly (EA) กับ Sensing Device Anomaly (SDA) พร้อมการ
+                  Retrain แบบ Adaptive บนสถาปัตยกรรม Fog Computing ครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Cross-Sensor Context, Spatial-Temporal Consensus, EA
+                  vs SDA, Heterogeneous Modalities</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 2 -->
+            <div class="qna-card" data-category="concept">
+              <button class="qna-question-btn">
+                <span>2. ทำไมเราถึงไม่ใช้เกณฑ์ตัดสินจากเซนเซอร์ตัวเดียว (Single-Sensor Threshold)?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  เพราะค่าที่ผิดปกติของเซนเซอร์ตัวเดียวไม่สามารถแยกแยะได้ว่า สภาพแวดล้อมเปลี่ยนจริง
+                  หรือตัวเซนเซอร์พัง/ช็อต หากตั้งค่าให้ไวจะเกิด Alarm Fatigue หากตั้งไม่ไวจะพลาดเหตุการณ์จริง
+                  การใช้กลุ่มเซนเซอร์พยานในบริเวณใกล้เคียงจะช่วยตรวจสอบความสมเหตุสมผลทางฟิสิกส์ร่วมกันครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Alarm Fatigue, Physical Plausibility, Witness
+                  Redundancy</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 3 -->
+            <div class="qna-card" data-category="algo">
+              <button class="qna-question-btn">
+                <span>3. ทำไมต้องใช้ LSTM แทนที่จะใช้โมเดล Machine Learning แบบดั้งเดิมอย่าง Decision Tree?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  เนื่องจากข้อมูลจากเซนเซอร์ IoT มีมิติของเวลาเป็นหัวใจสำคัญ (Time Series Data)
+                  ค่าปัจจุบันขึ้นอยู่กับแนวโน้มในอดีต LSTM ถูกออกแบบมาเพื่อจัดการ Sequential Dependencies ผ่านวงจรเกต
+                  (Input, Forget, Output Gates)
+                  จึงสามารถเรียนรู้รูปแบบพฤติกรรมปกติในอดีตเพื่อทำนายค่าถัดไปได้อย่างแม่นยำกว่าโมเดลที่มองข้อมูลแบบจุดเดี่ยวๆ
+                  ครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Temporal Dependencies, Time Series, Recurrent
+                  Architecture, Sequence Modeling</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 4 -->
+            <div class="qna-card" data-category="algo">
+              <button class="qna-question-btn">
+                <span>4. ในเมื่อ LSTM ทำนายค่าได้แล้ว ทำไมยังต้องมี Multivariate Gaussian Estimator ซ้อนอีกชั้น?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  LSTM ทำหน้าที่เพียงสร้างค่าทำนาย (Predicted Values) และให้ผลลัพธ์เป็น Reconstruction Error
+                  แต่ยังขาดเกณฑ์ทางสถิติในการตัดสินว่า “Error ขนาดเท่าใดจึงถือว่าผิดปกติ” Multivariate Gaussian
+                  Estimator จะเรียนรู้การแจกแจงความน่าจะเป็นของ Error ในสภาวะปกติของหลายมิติพร้อมกัน และแปลง Error
+                  ใหม่เป็นค่าความน่าจะเป็น เพื่อนำไปเปรียบเทียบกับ Threshold α อย่างมีหลักการทางคณิตศาสตร์ครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Error Distribution, Joint Probability Density,
+                  Thresholding Rule</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 5 -->
+            <div class="qna-card" data-category="algo">
+              <button class="qna-question-btn">
+                <span>5. การแปลงข้อมูลอนุกรมเวลาเป็น Binary Fingerprint ทำให้สูญเสียข้อมูลสำคัญหรือไม่?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  สูญเสียข้อมูลแน่นอนครับ โดยเฉพาะขนาดความรุนแรง (Magnitude) และความถี่ละเอียด
+                  แต่การสูญเสียนี้เป็นการแลกเปลี่ยนที่คุ้มค่า (Trade-off) เพราะจุดประสงค์ของ Fingerprint ใช้เพียงเพื่อ
+                  <strong>จัดกลุ่มความสัมพันธ์ (Sensor Association)</strong> เท่านั้น ไม่ได้ใช้แทนข้อมูลดิบในการพยากรณ์
+                  ประโยชน์ที่ได้กลับมาคือความสามารถในการเปรียบเทียบเซนเซอร์คนละชนิด คนละหน่วยวัด และคนละ Sampling Rate
+                  ได้อย่างทนทานครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Trade-off, Modality Agnostic, Clustering Purpose
+                  Only</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 6 -->
+            <div class="qna-card" data-category="algo">
+              <button class="qna-question-btn">
+                <span>6. งานนี้อ้างว่าเป็น Unsupervised Learning อย่างแท้จริงหรือไม่?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  เป็น Unsupervised ในส่วนของการฝึกโมเดลหลักครับ เพราะฝึกจาก Normal Data ล้วนๆ โดยไม่ต้องมีป้ายกำกับ
+                  (Label) ว่าจุดใดคือ Anomaly แต่ในขั้นตอนการเลือกค่าขีดเริ่มเปลี่ยน α (Calibration) ผู้เขียนยังคงใช้
+                  Validation Data ที่ใส่ Synthetic Anomalies เข้าไปเพื่อหาค่าที่ให้ F-Score สูงสุด
+                  จึงยังมีขั้นตอนการปรับแต่งเกณฑ์โดยผู้พัฒนาครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Semi-Supervised Calibration, Threshold Tuning,
+                  Normal Baseline</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 7 -->
+            <div class="qna-card" data-category="metrics">
+              <button class="qna-question-btn">
+                <span>7. ตัวเลข 92% ในตารางผลการทดลองคือ Accuracy ใช่หรือไม่?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  <strong>ไม่ใช่ครับ!</strong> ตัวเลข 92% คือ <strong>Precision</strong>
+                  หมายความว่าเมื่อระบบส่งสัญญาณเตือน Anomaly ออกมา 100 ครั้ง จะมีความถูกต้องจริง 92 ครั้ง แต่ระบบมีค่า
+                  <strong>Recall เพียง 56%</strong> ซึ่งหมายความว่าในบรรดา Anomaly ที่เกิดขึ้นจริงทั้งหมด
+                  ระบบตรวจจับได้เพียง 56% และหลุดรอดไปถึง 44% ครับ
+                </p>
+                <div class="qna-trap-box">⚠️ กับดักที่ห้ามตอบผิด: ห้ามพูดว่าระบบแม่นยำ 92% โดยเด็ดขาด ต้องย้ำว่าคือ
+                  Precision และแจ้งค่า Recall 56% เสมอ!</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 8 -->
+            <div class="qna-card" data-category="metrics">
+              <button class="qna-question-btn">
+                <span>8. ทำไมผู้เขียนจึงเลือกเน้นรายงานค่า F₀.₅ มากกว่า F₁ หรือ Recall?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  สูตรของ F-Beta ให้น้ำหนัก Precision มากกว่า Recall เมื่อค่า Beta น้อยกว่า 1 (ในที่นี้คือ 0.5)
+                  เพราะโจทย์หลักของอาคารอัจฉริยะและระบบมอนิเตอร์ใน paper มุ่งเน้นการลด False Alarm เพื่อแก้ปัญหา Alarm
+                  Fatigue แต่ในมุมมองวิศวกรรม หากนำไปใช้ในระบบที่มีความเสี่ยงสูงต่อชีวิต (Safety-Critical)
+                  เราจำเป็นต้องปรับเกณฑ์เพื่อให้น้ำหนักกับ Recall มากขึ้นครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: F0.5 Formula, Precision Weighting, False Alarm
+                  Suppression</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 9 -->
+            <div class="qna-card" data-category="metrics">
+              <button class="qna-question-btn">
+                <span>9. เวลาตรวจจับ 0.532 วินาทีถือว่าเป็น “Real-Time” ในทางปฏิบัติได้จริงแค่ไหน?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  ถือว่าเป็น Real-time สำหรับระบบเฝ้าระวังสภาพแวดล้อมในอาคารตามสเปกของ Testbed นี้ ซึ่งส่งข้อมูลทุกๆ
+                  ไม่กี่วินาที แต่จะไม่สามารถเรียกว่า Real-time ได้ในระบบ Hard Real-Time เช่น
+                  การป้องกันมอเตอร์อุตสาหกรรมช็อต หรือระบบเบรกรถยนต์ที่ต้องการ Latency ระดับมิลลิวินาทีครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Soft Real-Time vs Hard Real-Time, Application Domain
+                  Context</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 10 -->
+            <div class="qna-card" data-category="limits">
+              <button class="qna-question-btn">
+                <span>10. ถ้าผู้โจมตีแฮกเกอร์ควบคุมเซนเซอร์พร้อมกันหลายตัว จะเกิดอะไรขึ้นกับ Consensus?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  นี่คือข้อจำกัดสำคัญของ Paper ครับ! หาก Attacker
+                  มีความสามารถระดับสูงในการควบคุมเซนเซอร์เกินกึ่งหนึ่งในคลัสเตอร์ และปลอมแปลงค่าให้อุณหภูมิ แสง และควัน
+                  สูงสอดคล้องกัน Consensus Algorithm จะถูกหลอกว่าเป็น Environmental Anomaly (ไฟไหม้จริง)
+                  ซึ่งอยู่นอกเหนือ Threat Model ดั้งเดิมของ paper ที่สมมติว่าเซนเซอร์เสียแบบสุ่มหรือไม่ประสานงานกันครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Byzantine Fault, Coordinated Attack, Threat Model
+                  Assumption</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 11 -->
+            <div class="qna-card" data-category="limits">
+              <button class="qna-question-btn">
+                <span>11. สถาปัตยกรรม Fog Computing ต่างจาก Edge และ Cloud อย่างไรในงานนี้?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  Edge อยู่ที่ตัวโหนดเซนเซอร์และบอร์ดขนาดเล็ก ซึ่งมีทรัพยากรจำกัดเกินกว่าจะรันโมเดล LSTM ส่วน Cloud
+                  เป็นเซิร์ฟเวอร์ส่วนกลางระยะไกลที่มีความหน่วงและสิ้นเปลืองแบนด์วิดท์ Fog Computing
+                  คือโหนดประมวลผลระดับชุมสายหน้างาน (ในงานนี้ใช้แล็ปท็อปเชื่อมต่อกับ Raspberry Pi Gateway)
+                  ทำหน้าที่รันโมเดลและตัดสิน Consensus ใกล้แหล่งข้อมูล ทำให้ได้ Latency ต่ำเพียง 0.532 วินาทีครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Edge-Fog-Cloud Hierarchy, Local Decision, Bandwidth
+                  Reduction</div>
+              </div>
+            </div>
+
+            <!-- ข้อ 12 -->
+            <div class="qna-card" data-category="limits">
+              <button class="qna-question-btn">
+                <span>12. หากคุณต้องปรับปรุงงานวิจัยนี้ต่อเป็น Senior Project คุณจะพัฒนาจุดใดเป็นอันดับแรก?</span>
+                <span>▼</span>
+              </button>
+              <div class="qna-answer-pane">
+                <p>
+                  ผมจะมุ่งเน้น 2 เรื่องครับ: 1. ปรับปรุงค่า Recall 56% โดยนำโมเดล Graph Neural Network (GNN) หรือ
+                  Transformer มาจับความสัมพันธ์เชิงพื้นที่ที่ซับซ้อนขึ้น และ 2. พัฒนาระบบ Consensus
+                  ให้มีความทนทานต่อการโจมตีแบบ Byzantine (Byzantine-Tolerant Consensus)
+                  เพื่อป้องกันกรณีที่เซนเซอร์หลายตัวถูกโจมตีพร้อมกันครับ
+                </p>
+                <div class="qna-keywords-box">คีย์เวิร์ดที่ต้องพูด: Graph Neural Networks, Byzantine Fault Tolerance,
+                  Recall Improvement</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 10: แบบประเมินความเข้าใจ ═══════════ -->
+      <section id="sec10">
+        <h2 class="section-title">10. แบบประเมินความเข้าใจด้วยตนเอง (Self-Assessment Interactive Quiz)</h2>
+
+        <div class="quiz-card">
+          <div class="quiz-header">
+            <h4>ข้อที่ 1: การจำแนกประเภทความผิดปกติ (Anomaly Classification)</h4>
+            <span class="quiz-points">ทดสอบความเข้าใจ</span>
+          </div>
+          <p>หากในระบบตรวจพบว่าเซนเซอร์วัดอุณหภูมิ, เซนเซอร์วัดแสงอินฟราเรด, และเซนเซอร์วัดควัน
+            รายงานค่าสูงขึ้นผิดปกติพร้อมกันสอดคล้องกับพฤติกรรมในอดีต ระบบ Consensus ของ IoT-CAD จะตัดสินว่าเป็นกรณีใด?
+          </p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">Sensing Device Anomaly (SDA) เพราะมีเซนเซอร์ผิดปกติหลายตัว
+            </div>
+            <div class="quiz-option" data-correct="true">Environmental Anomaly (EA)
+              เพราะเซนเซอร์ที่มีความสัมพันธ์กันตอบสนองสอดคล้องกันทางกายภาพ</div>
+            <div class="quiz-option" data-correct="false">Hardware Short Circuit Fault</div>
+            <div class="quiz-option" data-correct="false">False Alarm จากสัญญาณรบกวนคลื่นวิทยุ</div>
+          </div>
+          <div class="quiz-feedback"
+            data-explanation="ถูกต้องครับ! เมื่อสมาชิกในคลัสเตอร์ที่สัมพันธ์กันมีพฤติกรรมผิดปกติสอดคล้องกัน แปลว่าเกิดเหตุการณ์ทางกายภาพจริงในสิ่งแวดล้อม (EA) เช่น เพลิงไหม้">
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-header">
+            <h4>ข้อที่ 2: เหตุผลของการแปลงเป็น Binary Fingerprint</h4>
+            <span class="quiz-points">ทดสอบความเข้าใจ</span>
+          </div>
+          <p>ประโยชน์หลักของการแปลงการเปลี่ยนแปลงของเซนเซอร์ให้เป็นสายบิต Binary Fingerprint คือข้อใด?</p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">เพื่อเพิ่มความแม่นยำของตัวเลขทศนิยมในการทำนาย</div>
+            <div class="quiz-option" data-correct="false">เพื่อลดความจำของฮาร์ดดิสก์ในการบันทึกข้อมูลระยะยาว</div>
+            <div class="quiz-option" data-correct="true">
+              เพื่อให้สามารถเปรียบเทียบรูปแบบการเปลี่ยนแปลงข้ามชนิดเซนเซอร์ที่มีหน่วยวัดและ Sampling Rate ต่างกันได้
+            </div>
+            <div class="quiz-option" data-correct="false">เพื่อเข้ารหัสป้องกันการดักฟังข้อมูลในอากาศ</div>
+          </div>
+          <div class="quiz-feedback"
+            data-explanation="ถูกต้องครับ! Fingerprint สนใจเพียงทิศทางการเปลี่ยนแปลง (0 หรือ 1) ทำให้เปรียบเทียบอุณหภูมิ (°C) กับแสง (Lux) ได้โดยไม่มีปัญหาเรื่องหน่วยวัด">
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-header">
+            <h4>ข้อที่ 3: เงื่อนไขจำนวนสมาชิกขั้นต่ำของคลัสเตอร์</h4>
+            <span class="quiz-points">ทดสอบความเข้าใจ</span>
+          </div>
+          <p>ทำไมอัลกอริทึมจัดกลุ่มเซนเซอร์ของ IoT-CAD จึงกำหนดให้คลัสเตอร์ต้องมีสมาชิกอย่างน้อย 3 ตัวขึ้นไป?</p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="true">เพราะหากมีเพียง 2 ตัวแล้วค่าขัดแย้งกัน
+              จะไม่สามารถใช้เสียงข้างมาก (Consensus) ตัดสินได้ว่าใครผิด</div>
+            <div class="quiz-option" data-correct="false">เพราะชิป Raspberry Pi ประมวลผลเมทริกซ์ 2x2 ไม่ได้</div>
+            <div class="quiz-option" data-correct="false">เพราะมาตรฐาน IEEE 802.15.4 บังคับให้ส่งข้อมูลทีละ 3 แพ็กเก็ต
+            </div>
+            <div class="quiz-option" data-correct="false">เพื่อให้ตรงกับสมการของเกาส์เซียน 3 มิติ</div>
+          </div>
+          <div class="quiz-feedback"
+            data-explanation="ถูกต้องครับ! การโหวตฉันทามติต้องการเสียงส่วนใหญ่ หากมีเพียง 2 ตัวแล้วผลออกมา 1 ต่อ 1 จะไม่สามารถตัดสินได้ว่าใครเสีย">
+          </div>
+        </div>
+
+        <div class="quiz-card">
+          <div class="quiz-header">
+            <h4>ข้อที่ 4: การแปลความหมายของตัวเลขผลการทดลอง</h4>
+            <span class="quiz-points">ทดสอบความเข้าใจ</span>
+          </div>
+          <p>ผลการทดลองของ IoT-CAD ที่รายงานค่า Precision 92% และ Recall 56% มีความหมายตรงกับข้อใด?</p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">ระบบมีความแม่นยำรวมในการทำงาน 92% และมีความผิดพลาด 56%</div>
+            <div class="quiz-option" data-correct="false">ระบบตรวจจับความผิดปกติจริงได้ครบ 92% ของเหตุการณ์ทั้งหมด</div>
+            <div class="quiz-option" data-correct="true">ในบรรดาการเตือนภัยที่ระบบแจ้งเตือน ถูกต้องจริง 92%
+              แต่จับเหตุการณ์ผิดปกติจริงได้เพียง 56% ของทั้งหมด</div>
+            <div class="quiz-option" data-correct="false">ระบบมีความเชื่อมั่นทางสถิติ 92% ภายใต้ระดับนัยสำคัญ 0.56</div>
+          </div>
+          <div class="quiz-feedback"
+            data-explanation="ถูกต้องครับ! Precision คือสัดส่วนความถูกต้องเมื่อมีการเตือน ส่วน Recall คือสัดส่วนการตรวจจับได้จากเหตุการณ์จริงทั้งหมด">
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ส่วนที่ 11: คลังอ้างอิงและ BibTeX ═══════════ -->
+      <section id="sec11">
+        <h2 class="section-title">11. คลังเอกสาร แหล่งอ้างอิง และ IEEE BibTeX (Official Citations)</h2>
+        <p>
+          ข้อมูลบรรณานุกรมฉบับสมบูรณ์สำหรับใช้อ้างอิงในรายงานและสไลด์นำเสนอตามมาตรฐาน IEEE Style:
+        </p>
+
+        <div class="academic-callout">
+          <p style="font-family: var(--font-mono); font-size: 0.88rem; line-height: 1.8; color: var(--ink);">
+            [1] R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT
+            Systems Through Sensor Association,” in <em>2020 IEEE/ACM International Conference on Computer-Aided Design
+              (ICCAD)</em>, 2020, pp. 1-9, doi: <a href="https://doi.org/10.1145/3400302.3415672" target="_blank"
+              style="color: var(--accent);">10.1145/3400302.3415672</a>.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap;">
+            <button class="btn btn-primary paper-ref-pill" data-page="1"
+              data-section="Paper I: IoT-CAD (ICCAD 2020) Full 9 Pages" style="font-size: 0.84rem;">📖
+              เปิดอ่านเปเปอร์ในหน้าต่าง Modal (9 หน้าครบ)</button>
+            <a href="../raw/Paper_I_1_PRIMARY_IoT-CAD_9256703.pdf" class="btn btn-secondary" target="_blank"
+              style="font-size: 0.84rem;">📄 ดาวน์โหลดไฟล์ PDF ต้นฉบับ (ICCAD 2020)</a>
+            <button class="btn btn-secondary copy-btn" data-copy='@inproceedings{yasaei2020iot,
+  author={Yasaei, Rozhin and Hernandez, Felix and Al Faruque, Mohammad Abdullah},
+  title={IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association},
+  booktitle={2020 IEEE/ACM International Conference On Computer Aided Design (ICCAD)},
+  year={2020},
+  pages={1-9},
+  doi={10.1145/3400302.3415672}
+}' style="font-size: 0.84rem;">📋 คัดลอก IEEE BibTeX</button>
+            <a href="https://ieeexplore.ieee.org/document/9256703/" target="_blank" class="btn btn-secondary"
+              style="font-size: 0.84rem;">🔗 ดูบน IEEE Xplore</a>
+          </div>
+        </div>
+
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 1.5px solid var(--rule);">
+          <a href="../index.html" class="btn btn-secondary">← กลับสู่หน้าหลัก Portal</a>
+          <a href="../paper-2/index.html" class="btn btn-primary">ดูโครงสร้าง Paper II (CPE Project) →</a>
+        </div>
+
+        <footer class="page-footer">
+          <div>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร · 305432 เครือข่ายเซนเซอร์</div>
+          <div>จัดทำเพื่อการเรียนรู้และการนำเสนอทางวิชาการอย่างลึกซึ้ง</div>
+        </footer>
+    </main>
+  </div>
+
+  <!-- Floating Paper Quick Access Button -->
+  <button class="floating-paper-btn" data-page="1" data-section="Paper I: IoT-CAD (Primary Paper)"
+    title="คลิกเปิดดู Paper I ต้นฉบับได้ตลอดเวลา">
+    <span class="paper-icon">📄</span>
+    <span>ดู Paper ต้นฉบับ</span>
+  </button>
+
+  <!-- Dual-Pane Interactive Paper Inspector Modal -->
+  <div class="pdf-modal-overlay" id="pdf-modal-overlay">
+    <div class="pdf-modal-container">
+      <div class="pdf-modal-header">
+        <div class="pdf-modal-title">
+          <span class="badge badge-accent">Paper I: IoT-CAD</span>
+          <span id="pdf-modal-target-title" style="color: var(--ink); font-weight: 700;">Section I: Introduction</span>
+        </div>
+
+        <!-- Stepper & Mode Switcher Toolbar -->
+        <div class="pdf-modal-toolbar">
+          <div class="pdf-page-stepper">
+            <button class="btn-step" id="modal-btn-prev" title="หน้าก่อนหน้า (ลูกศรซ้าย)">◀ ก่อนหน้า</button>
+            <span class="step-indicator" id="modal-step-indicator">1 / 9</span>
+            <button class="btn-step" id="modal-btn-next" title="หน้าถัดไป (ลูกศรขวา)">ถัดไป ▶</button>
+          </div>
+
+          <div style="display: flex; gap: 4px;">
+            <button class="mode-toggle-btn active" id="modal-mode-image-btn"
+              title="โหมดแสดงภาพสไลด์ความคมชัดสูงทันที">📑 ภาพความคมชัดสูง</button>
+            <button class="mode-toggle-btn" id="modal-mode-pdf-btn" title="โหมดแสดงไฟล์ PDF ต้นฉบับ">📄 โหมด PDF
+              Reader</button>
+          </div>
+        </div>
+
+        <div class="pdf-modal-actions">
+          <a href="translation.html" id="modal-split-jump-btn" class="modal-split-jump-btn"
+            title="เปิดอ่านแปลไทยเทียบเคียงแบบ Split View">
+            📖 เปิดอ่านแปลไทย (Compare View) →
+          </a>
+          <button class="pdf-modal-tool-btn" id="pdf-modal-external-btn" title="เปิดไฟล์ PDF ในแท็บใหม่">↗</button>
+          <button class="pdf-modal-tool-btn" id="pdf-modal-fullscreen-btn" title="ขยายเต็มหน้าจอ">⛶</button>
+          <button class="pdf-modal-tool-btn" id="pdf-modal-close-btn" title="ปิดหน้าต่าง (Esc)">✕</button>
+        </div>
+      </div>
+
+      <!-- Dual-Pane Inspector Body -->
+      <div class="pdf-inspector-body">
+        <!-- Left Outline Sidebar -->
+        <aside class="modal-outline-pane">
+          <div class="modal-outline-header">สารบัญบทความ 9 หน้า (IEEE ICCAD 2020)</div>
+          <div class="modal-outline-list">
+            <div class="modal-outline-item active" data-page="1">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.1</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 1 (0:00–0:45)</span>
+              </div>
+              <div class="outline-item-title">Sec. I: บทนำ &amp; ตัวอย่างไฟไหม้จริง vs เซนเซอร์เสีย (Fig. 1)</div>
+            </div>
+
+            <div class="modal-outline-item" data-page="2">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.2</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 2 (0:45–1:35)</span>
+              </div>
+              <div class="outline-item-title">Sec. II: โรงบำบัดน้ำเสีย &amp; นิยาม EA vs SDA และภัยคุกคาม (Fig. 2)</div>
+            </div>
+
+            <div class="modal-outline-item" data-page="3">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.3</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 3 (1:35–2:55)</span>
+              </div>
+              <div class="outline-item-title">Sec. III: สถาปัตยกรรม 4 ขั้น &amp; การสกัด Binary Fingerprint (Fig. 3)
+              </div>
+            </div>
+
+            <div class="modal-outline-item" data-page="4">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.4</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 3 (1:35–2:55)</span>
+              </div>
+              <div class="outline-item-title">Sec. III-B: สูตรสมการที่ (1) &amp; การคลัสเตอร์ด้วย Hamming Distance (Fig.
+                4, 5)</div>
+            </div>
+
+            <div class="modal-outline-item" data-page="5">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.5</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 3 / ซิมูเลเตอร์</span>
+              </div>
+              <div class="outline-item-title">Sec. IV: โมเดล LSTM Autoencoder (Fig. 6) &amp; กฎฉันทามติ Alg. 1</div>
+            </div>
+
+            <div class="modal-outline-item" data-page="6">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.6</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 4 (2:55–4:05)</span>
+              </div>
+              <div class="outline-item-title">Sec. V &amp; VI-A: การปรับตัว Adaptive &amp; ฮาร์ดแวร์ Testbed 62 โหนด
+                (Fig. 7, 8, Table 1)</div>
+            </div>
+
+            <div class="modal-outline-item" data-page="7">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.7</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 4 / ตอบ Q&amp;A</span>
+              </div>
+              <div class="outline-item-title">Sec. VI-B: ผลทดลอง Table 2 (Precision 92% vs Recall 56%) &amp; Fig. 9, 10
+              </div>
+            </div>
+
+            <div class="modal-outline-item" data-page="8">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.8</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 4 (เวลา 0.532s)</span>
+              </div>
+              <div class="outline-item-title">Sec. VI-C: เส้นกราฟพยากรณ์ Fig. 11, 12 &amp; ตารางเวลาประมวลผล Table 3
+              </div>
+            </div>
+
+            <div class="modal-outline-item" data-page="9">
+              <div class="outline-tag-row">
+                <span class="outline-page-num">P.9</span>
+                <span class="outline-slide-tag">🎯 สไลด์ 5 (4:05–5:00)</span>
+              </div>
+              <div class="outline-item-title">Sec. VII: บทสรุป, ข้อจำกัดงานวิจัย &amp; เอกสารอ้างอิง 25 รายการ</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Viewer Pane -->
+        <main class="modal-viewer-pane">
+          <div class="modal-page-viewport">
+            <img id="modal-page-img" class="modal-page-img" src="assets/pages/page-1.png" alt="IoT-CAD Page 1">
+          </div>
+          <iframe id="modal-pdf-iframe" class="modal-pdf-iframe"
+            src="../raw/Paper_I_1_PRIMARY_IoT-CAD_9256703.pdf#page=1"></iframe>
+        </main>
+      </div>
+
+      <!-- Context Cue Footer -->
+      <div class="modal-cue-bar">
+        <div>
+          <span style="opacity: 0.85; margin-right: 6px;">เป้าหมายการนำเสนอ:</span>
+          <span class="modal-cue-text" id="pdf-modal-context-text">🎯 ทำความเข้าใจโจทย์ไฟไหม้จริง vs เซนเซอร์ชำรุด (Fig.
+            1) สำหรับสไลด์ 1</span>
+        </div>
+        <div style="font-size: 0.74rem; color: var(--ink-muted);">เคล็ดลับ: ใช้ปุ่มลูกศร ◀ ▶
+          บนคีย์บอร์ดเพื่อเปลี่ยนหน้าได้ทันที | Esc เพื่อปิด</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="../assets/js/common.js?v=20260928b"></script>
+  <script src="../assets/js/presentation.js"></script>
+  <script src="../assets/js/simulator.js"></script>
+  <script src="../assets/js/qna.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-09-21",
+  "timezone": "Asia/Bangkok",
+  "method": "IEEE Xplore visible browser metadata; abstract-level review only",
+  "fullTextDownloaded": false,
+  "excludedPaperI": [
+    "9256703",
+    "10635077",
+    "9826168"
+  ],
+  "papers": [
+    {
+      "id": "9618897",
+      "rank": "PRIMARY",
+      "title": "Validating the plot of Interactive Narrative games",
+      "authors": "Carolina Veloso; Rui Prada",
+      "year": 2021,
+      "venue": "2021 IEEE Conference on Games (CoG)",
+      "doi": "10.1109/CoG52621.2021.9618897",
+      "contribution": "แบบจำลองและเครื่องมือ Story Validator สำหรับสำรวจสมบัติเส้นเรื่องและหาความไม่สอดคล้อง พร้อมภาพแสดงผล",
+      "data": "Abstract ระบุ user tests แต่ไม่ระบุจำนวนคน ชุดเรื่อง ค่าตัวชี้วัด และผลเชิงตัวเลข",
+      "fit": "สูงมาก: เชื่อมกับ choices, variables และ validation ก่อน publish",
+      "limit": "ต้องตรวจขอบเขตการตรวจและวิธีจัดการวงวน/สถานะจาก Full Text; ยังไม่ทราบว่ารองรับรูปแบบ Tuesday.js ได้เพียงใด",
+      "difficulty": "ปานกลาง: กราฟ การทดสอบ และการประเมินเครื่องมือ",
+      "slide": "เหมาะมาก: ปัญหา → validator → ทดลอง → ข้อจำกัด"
+    },
+    {
+      "id": "10645625",
+      "rank": "BACKUP1",
+      "title": "GENEVA: GENErating and Visualizing branching narratives using LLMs",
+      "authors": "Jorge Leandro; Sudha Rao; Michael Xu; Weijia Xu; Nebojsa Jojic; Chris Brockett; Bill Dolan",
+      "year": 2024,
+      "venue": "2024 IEEE Conference on Games (CoG)",
+      "doi": "10.1109/CoG60054.2024.10645625",
+      "contribution": "ใช้ GPT-4 สร้างเรื่องแตกแขนงและกลับมารวมกัน แล้วแสดงในรูปกราฟตามคำอธิบายและข้อจำกัดของผู้เขียน",
+      "data": "Abstract ระบุสาธิตกับเรื่องที่เป็นที่รู้จัก 4 เรื่อง; ยังไม่ยืนยันชื่อเรื่อง baseline หรือ metrics",
+      "fit": "สูง: การมองภาพรวมกราฟตรงกับ editor; ส่วนสร้างด้วย AI เป็นงานต่อยอด",
+      "limit": "ห้ามตีความการสาธิต 4 เรื่องเป็นหลักฐานว่าลดเวลาหรือข้อผิดพลาดได้โดยทั่วไป",
+      "difficulty": "ปานกลาง: LLM prompting และการแปลงข้อมูลเป็นกราฟ",
+      "slide": "เหมาะ: pipeline สองขั้นเข้าใจง่าย แต่ต้องตรวจความหนักแน่นของผลทดลอง"
+    },
+    {
+      "id": "11274671",
+      "rank": "BACKUP2",
+      "title": "Bring Your Own Story: Generating Interactive Visual Novels with AI",
+      "authors": "Zifan Ye; Menghan Zhang; Pratch Suntichaikul; Satoru Goto; Oki Nakamura; Ruck Thawonmas",
+      "year": 2025,
+      "venue": "2025 IEEE 14th Global Conference on Consumer Electronics (GCCE)",
+      "doi": "10.1109/GCCE65946.2025.11274671",
+      "contribution": "แปลงเรื่องข้อความเป็นฉากและตัวเลือก พร้อมใช้ GPT-4o ต่อเรื่องขณะเล่น และแสดงผลด้วย Unity",
+      "data": "Abstract ไม่ระบุ dataset ขนาดการทดลอง baseline หรือ metrics เชิงตัวเลข",
+      "fit": "สูงในประเภทผลิตภัณฑ์ VN; กลไก AI และ Unity ต่างจาก DivWy ปัจจุบัน",
+      "limit": "ต้องตรวจ latency ความสอดคล้องของเรื่อง การควบคุมโดยนักเขียน และผลประเมินจริง; เป็นคำถามของผู้ประเมิน ไม่ใช่ข้อเสียที่ผู้แต่งยืนยันแล้ว",
+      "difficulty": "ง่ายถึงปานกลาง: pipeline แบ่งฉากและเรียก LLM",
+      "slide": "เหมาะด้านสาธิต แต่ต้องตรวจว่ามีผลทดลองพอสำหรับวิเคราะห์"
+    },
+    {
+      "id": "10645553",
+      "rank": "ไม่เลือก",
+      "title": "Generating Together: Lessons Learned from Developing an Educational Visual Novel with AI Collaboration",
+      "authors": "Samuel Shields; Alexander Calderwood; Shi Johnson-Bey; Noah Wardrip-Fruin; Michael Mateas; Edward Melcer",
+      "year": 2024,
+      "venue": "2024 IEEE Conference on Games (CoG)",
+      "doi": "10.1109/CoG60054.2024.10645553",
+      "contribution": "กรณีศึกษาย้อนทบทวนกระบวนการใช้ generative AI สร้างบทสนทนา ตัวละคร และภาพฉากของ educational VN",
+      "data": "Abstract เป็น postmortem-style case studies; ไม่ระบุขนาดตัวอย่างหรือ benchmark",
+      "fit": "ปานกลางถึงสูงกับ workflow ผลิตเนื้อหา แต่ไม่ตรงการตรวจกราฟเท่า PRIMARY",
+      "limit": "บทเรียนจากกระบวนการพัฒนาไม่เท่ากับผลการทดลองเปรียบเทียบทั่วไป",
+      "difficulty": "ง่ายถึงปานกลาง",
+      "slide": "เล่าได้ดี แต่ contribution เชิงระบบอาจกระจาย"
+    },
+    {
+      "id": "10585502",
+      "rank": "ไม่เลือก",
+      "title": "Anti-Plagiarism Adventure Game: Using Visual Novels for Feasible Game-Based Learning",
+      "authors": "Terence Govender; Johanna Catharina Lubbe; Joan Arnedo-Moreno",
+      "year": 2024,
+      "venue": "2024 IEEE Gaming, Entertainment, and Media Conference (GEM)",
+      "doi": "10.1109/GEM61861.2024.10585502",
+      "contribution": "ประยุกต์ Visual Novel เพื่อเรียนรู้เรื่องการลอกผลงาน และประเมินประสบการณ์/ผลการเรียนรู้",
+      "data": "บทคัดย่อในคลังมหาวิทยาลัยระบุคะแนนทดสอบเพิ่มอย่างมีนัยสำคัญและข้อมูลเชิงคุณภาพ; ยังไม่ทราบ n, effect size และวิธีทดสอบ",
+      "fit": "ปานกลาง: ช่วยกรอบประเมินผู้ใช้ แต่ DivWy ไม่ได้ตั้งเป้าเป็นเกมสอนเรื่อง plagiarism",
+      "limit": "ผลการเรียนรู้เฉพาะเรื่องไม่ใช้ยืนยัน engagement ของแพลตฟอร์มนิยายทั่วไป",
+      "difficulty": "ง่ายถึงปานกลาง โดยต้องเข้าใจสถิติ",
+      "slide": "เหมาะถ้ามีข้อมูลวิธีทดลองครบ"
+    },
+    {
+      "id": "8346298",
+      "rank": "ไม่เลือก",
+      "title": "From hypertext to hyperdimension Neptunia: The future of VR visual novels: The potentials of new technologies for branching-path narrative games",
+      "authors": "Rebecca Crawford; Yuanyuan Chen",
+      "year": 2017,
+      "venue": "2017 23rd International Conference on Virtual System & Multimedia (VSMM)",
+      "doi": "10.1109/VSMM.2017.8346298",
+      "contribution": "วิเคราะห์ศักยภาพการเล่าเรื่องแบบแตกแขนงของ VN และการนำไปสู่ VR",
+      "data": "ส่วน Abstract ที่แสดงกล่าวถึงกรณีเกมและ crowdfunding; ยังไม่ยืนยันการทดลองเชิงวิศวกรรม",
+      "fit": "ปานกลางกับทฤษฎี VN แต่ต่ำกับ implementation เว็บที่ไม่มี VR",
+      "limit": "เน้น VR และบริบทปี 2017 มากกว่าปัญหา editor และ runtime ปัจจุบัน",
+      "difficulty": "ง่ายด้านแนวคิด",
+      "slide": "เล่าได้ แต่ไม่ใช่ตัวเลือกหลักสำหรับ contribution ด้านระบบ"
+    }
+  ]
+}
+

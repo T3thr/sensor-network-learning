@@ -1,0 +1,106 @@
+OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding
+Eleftherios Kokoris-Kogias†, Philipp Jovanovic†, Linus Gasser†, Nicolas Gailly†, Ewa Syta∗, Bryan Ford†
+† ´Ecole Polytechnique F´ed´erale de Lausanne, Switzerland, ∗Trinity College, USA
+Abstract—Designing a secure permissionless distributed ledger
+(blockchain) that performs on par with centralized payment
+processors, such as Visa, is a challenging task. Most existing
+distributed ledgers are unable to scale-out, i.e., to grow their total
+processing capacity with the number of validators; and those that
+do, compromise security or decentralization. We present Om-
+niLedger, a novel scale-out distributed ledger that preserves long-
+term security under permissionless operation. It ensures security
+and correctness by using a bias-resistant public-randomness
+protocol for choosing large, statistically representative shards
+that process transactions, and by introducing an efﬁcient cross-
+shard commit protocol that atomically handles transactions af-
+fecting multiple shards. OmniLedger also optimizes performance
+via parallel intra-shard transaction processing, ledger pruning
+via collectively-signed state blocks, and low-latency “trust-but-
+verify” validation for low-value transactions. An evaluation of
+our experimental prototype shows that OmniLedger’s throughput
+scales linearly in the number of active validators, supporting
+Visa-level workloads and beyond, while conﬁrming typical trans-
+actions in under two seconds.
+I. INTRODUCTION
+The scalability of distributed ledgers (DLs), in both total
+transaction volume and the number of independent partici-
+pants involved in processing them, is a major challenge to
+their mainstream adoption, especially when weighted against
+security and decentralization challenges. Many approaches
+exhibit different security and performance trade-offs [10],
+[11], [21], [32], [40]. Replacing the Nakamoto consensus [36]
+with PBFT [13], for example, can increase throughput while
+decreasing transaction commit latency [1], [32]. These ap-
+proaches still require all validators or consensus group mem-
+bers to redundantly validate and process all transactions,
+hence the system’s total transaction processing capacity does
+not increase with added participants, and, in fact, gradually
+decreases due to increased coordination overheads.
+The proven and obvious approach to building “scale-out”
+databases, whose capacity scales horizontally with the number
+of participants, is by sharding [14], or partitioning the state
+into multiple shards that are handled in parallel by different
+subsets of participating validators. Sharding could beneﬁt
+DLs [15] by reducing the transaction processing load on each
+validator and by increasing the system’s total processing ca-
+pacity proportionally with the number of participants. Existing
+proposals for sharded DLs, however, forfeit permissionless
+decentralization [16], introduce new security assumptions,
+and/or trade performance for security [34], as illustrated in
+Figure 1 and explored in detail in Sections II and IX.
+We introduce OmniLedger, the ﬁrst DL architecture that
+provides “scale-out” transaction processing capacity compet-
+itive with centralized payment-processing systems, such as
+Visa, without compromising security or support for permis-
+Elastico [34]
+Scale-Out
+ByzCoin [32]
+Decentralization
+RSCoin [16]
+Security
+OmniLedger
+Fig. 1: Trade-offs in current DL systems.
+sionless decentralization. To achieve this goal, OmniLedger
+faces three key correctness and security challenges. First,
+OmniLedger must choose statistically representative groups
+of validators periodically via permissionless Sybil-attack-
+resistant foundations such as proof-of-work [36], [38], [32]
+or proof-of-stake [31], [25]. Second, OmniLedger must en-
+sure a negligible probability that any shard is compromised
+across the (long-term) system lifetime via periodically (re-
+)forming shards (subsets of validators to record state and
+process transactions), that are both sufﬁciently large and bias-
+resistant. Third, OmniLedger must correctly and atomically
+handle cross-shard transactions, or transactions that affect the
+ledger state held by two or more distinct shards.
+To choose representative validators via proof-of-work, Om-
+niLedger builds on ByzCoin [32] and Hybrid Consensus [38],
+using a sliding window of recent proof-of-work block miners
+as its validator set. To support the more power-efﬁcient al-
+ternative of apportioning consensus group membership based
+on directly invested stake rather than work, OmniLedger
+builds on Ouroboros [31] and Algorand [25], running a public
+randomness or cryptographic sortition protocol within a prior
+validator group to pick a subsequent validator group from
+the current stakeholder distribution deﬁned in the ledger.
+To ensure that this sampling of representative validators is
+both scalable and strongly bias-resistant, OmniLedger uses
+RandHound [44], a protocol that serves this purpose under
+standard t-of-n threshold assumptions.
+Appropriate use of RandHound provides the basis by which
+OmniLedger addresses the second key security challenge of
+securely assigning validators to shards, and of periodically
+rotating these assignments as the set of validators evolves.
+OmniLedger chooses shards large enough, based on the anal-
+ysis in Section VI, to ensure a negligible probability that any
+shard is ever compromised, even across years of operation.
+Finally, to ensure that transactions either commit or abort
+atomically even when they affect state distributed across multi-
+ple shards (e.g., several cryptocurrency accounts), OmniLedger
+introduces Atomix, a two-phase client-driven “lock/unlock”
+protocol that ensures that clients can either fully commit a
+583
+2018 IEEE Symposium on Security and Privacy
+© 2018, Eleftherios Kokoris-Kogias. Under license to IEEE.
+DOI 10.1109/SP.2018.000-5
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

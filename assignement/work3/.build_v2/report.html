@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><title>Assignment Paper 3 v2: Raft-FL Short Report</title><style>
+@font-face { font-family: "Sarabun Report"; src: url("file:///Applications/Microsoft%20Word.app/Contents/Resources/DFonts/thsarabun.ttf"); font-weight: 400; }
+@font-face { font-family: "Sarabun Report"; src: url("file:///Applications/Microsoft%20Word.app/Contents/Resources/DFonts/thsarabun-bold.ttf"); font-weight: 700; }
+@font-face { font-family: "Sarabun Report"; src: url("file:///Applications/Microsoft%20Word.app/Contents/Resources/DFonts/thsarabun-italic.ttf"); font-weight: 400; font-style: italic; }
+@page { size: A4; margin: 1in 1in 1in 1in; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Sarabun Report", "TH Sarabun New", Tahoma, sans-serif; font-size: 16pt; line-height: 1.6; color: #111827; margin: 0; }
+h1 { font-size: 22pt; line-height: 1.3; text-align: center; color: #0F2D4A; margin: 0 0 14pt; }
+h2 { font-size: 18pt; line-height: 1.35; color: #0F2D4A; margin: 20pt 0 6pt; }
+h3 { font-size: 16pt; line-height: 1.4; color: #0F2D4A; margin: 12pt 0 4pt; }
+.keep > h2:first-child, .keep > h3:first-child { margin-top: 0; }
+.keep { break-inside: avoid; page-break-inside: avoid; }
+.keep.major { margin-top: 20pt; }
+.keep.minor { margin-top: 12pt; }
+.pb { break-before: page; page-break-before: always; margin-top: 0 !important; }
+p { margin: 0 0 6pt; text-align: justify; text-indent: 0.45in; orphans: 2; widows: 2; }
+p.meta { text-indent: 0; text-align: left; line-height: 1.6; margin-bottom: 10pt; }
+p.lead { break-after: avoid; page-break-after: avoid; }
+p.caption { text-indent: 0; text-align: center; font-size: 14pt; line-height: 1.45; color: #374151; margin: 4pt 0 10pt; }
+p.tcaption { text-indent: 0; text-align: left; font-size: 15pt; line-height: 1.45; margin: 8pt 0 4pt; }
+p.figure { text-indent: 0; text-align: center; margin: 8pt 0 2pt; }
+p.figure img { width: 44%; }
+p.eq { text-indent: 0; text-align: center; font-family: "Cambria Math", "Times New Roman", serif; font-size: 12.5pt; line-height: 1.5; margin: 4pt 0 8pt; padding: 5pt 8pt; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; }
+ol, ul { margin: 0 0 8pt; padding-left: 0.45in; }
+li { margin: 0 0 3pt; text-align: justify; padding-left: 2pt; }
+strong { color: #0F172A; }
+table { width: 100%; border-collapse: collapse; margin: 2pt 0 10pt; font-size: 14.5pt; line-height: 1.35; break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+th { background: #0F2D4A; color: #FFFFFF; font-weight: 700; padding: 4pt 8pt; border: 1px solid #0F2D4A; }
+td { padding: 3pt 8pt; border: 1px solid #CBD5E1; vertical-align: top; }
+tr:nth-child(even) td { background: #F1F5F9; }
+sup, sub { font-size: 70%; line-height: 0; }
+.refs p { text-indent: -0.4in; padding-left: 0.4in; text-align: left; font-size: 15pt; line-height: 1.5; margin-bottom: 4pt; }
+</style></head><body><h1 id="รายงานย่อบทความ-raft-fl">รายงานย่อบทความ Raft-FL</h1>
+<div class="keep major" data-heading="1 ข้อมูลผู้จัดทำและระเบียนบทความ"><h2 id="1-ข้อมูลผู้จัดทำและระเบียนบทความ">1 ข้อมูลผู้จัดทำและระเบียนบทความ</h2>
+<p class="meta"><strong>ชื่อบทความ:</strong> Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning<br><strong>ชื่อภาษาไทย:</strong> การใช้โปรโตคอล Raft เพื่อความทนทานต่อความผิดพลาดและการกู้คืนตนเองในการเรียนรู้แบบสหพันธ์<br><strong>ผู้เขียน:</strong> Rustem Dautov และ Erik Johannes Husom (SINTEF Digital ประเทศนอร์เวย์)<br><strong>งานประชุม:</strong> 2024 IEEE/ACM 19th Symposium on Software Engineering for Adaptive and Self-Managing Systems (SEAMS) เมืองลิสบอน ประเทศโปรตุเกส หน้า 110-121<br><strong>IEEE Doc ID:</strong> 10556381 | <strong>DOI:</strong> 10.1145/3643915.3644093<br><strong>ผู้จัดทำ:</strong> นายธีรภัทร์ ภู่ระยา ลำดับที่ 10<br><strong>รหัสนิสิต:</strong> 66362416<br><strong>รายวิชา:</strong> 305432 เครือข่ายเซนเซอร์ (Assignment Paper 3)</p></div>
+<p>บทความนี้เผยแพร่แบบ Open Access ภายใต้สัญญาอนุญาต Creative Commons Attribution 4.0 และดาวน์โหลดจาก IEEE Xplore โดยตรง เนื่องจาก SEAMS เป็นงานประชุมที่ IEEE และ ACM ร่วมกันจัด เลข DOI จึงออกโดย ACM (ขึ้นต้นด้วย 10.1145) ส่วนระเบียนบน IEEE Xplore จัดอยู่ในประเภท IEEE Conferences ภายใต้ IEEE Doc ID 10556381 รายงานฉบับนี้จึงอ้างอิงทั้งสองหมายเลขควบคู่กันเสมอ</p>
+<div class="keep major" data-heading="2 บทคัดย่อฉบับแปลและแรงจูงใจ"><h2 id="2-บทคัดย่อฉบับแปลและแรงจูงใจ">2 บทคัดย่อฉบับแปลและแรงจูงใจ</h2>
+<p>การเรียนรู้แบบสหพันธ์ (Federated Learning: FL) เป็นแนวทางการเรียนรู้ของเครื่องที่ให้อุปกรณ์ปลายทาง เช่น อุปกรณ์ IoT หรือ edge server ฝึกโมเดลด้วยข้อมูลของตนเอง แล้วส่งเฉพาะพารามิเตอร์ของโมเดลไปยังเครื่องกลางที่เรียกว่า aggregator เพื่อรวมเป็นโมเดลเดียว [4] แม้ข้อมูลจะกระจายอยู่ที่ปลายทาง แต่ขั้นตอนการรวมโมเดลยังรวมศูนย์อยู่ที่ aggregator เพียงเครื่องเดียว aggregator จึงเป็นจุดล้มเหลวจุดเดียว (Single Point of Failure: SPOF) ของทั้งระบบ [1] เมื่อเครื่องนี้ดับ การฝึกจะหยุดลงทันทีและความคืบหน้าที่ยังไม่ได้บันทึกจะสูญหาย</p></div>
+<p>ผู้เขียนเสนอให้ทุกโหนดในคลัสเตอร์ FL รันโค้ดชุดเดียวกัน แล้วใช้กลไกการเลือกผู้นำ (Leader Election) และการทำสำเนาบันทึก (Log Replication) ของโปรโตคอลฉันทามติ Raft เป็นตัวตัดสินว่าโหนดใดจะทำหน้าที่ aggregator พร้อมทั้งทำสำเนาสถานะการฝึกไปยังทุกโหนด เมื่อ aggregator ดับ โหนดที่เหลือจะเลือกผู้นำคนใหม่ และผู้นำคนใหม่จะฝึกต่อจากจุดบันทึก (checkpoint) ล่าสุดได้ทันที ต้นแบบพัฒนาบนเฟรมเวิร์ก Flower [3] ร่วมกับไลบรารี PySyncObj และผู้เขียนเปิดเผยซอร์สโค้ดไว้ที่ github.com/SINTEF-9012/raft_flower</p>
+<p>ผู้เขียนทดลองบนคลัสเตอร์ Raspberry Pi 3 จำนวน <strong>11 บอร์ด</strong> ด้วยการฝึก CNN บนชุดข้อมูล CIFAR-10 ผลการทดลองพบว่าโหนดที่เหลือเลือก aggregator ใหม่ได้ทุกครั้งและฝึกต่อจนจบ โดยใช้เวลาเลือกใหม่ <strong>1.27 วินาที</strong> เมื่อมี worker 1 ตัว และ <strong>3.76 วินาที</strong> เมื่อมี worker 10 ตัว สิ่งที่ต้องแลกคือทราฟฟิกเครือข่ายต่อหนึ่งรอบการฝึกที่เพิ่มจาก <strong>0.98 ถึง 9.8 MB</strong> ของ Flower เดิม เป็น <strong>1.77 ถึง 49.1 MB</strong> เมื่อเพิ่ม Raft ผู้เขียนสรุปว่าทราฟฟิกสูงขึ้นประมาณ 5 เท่า แต่เมื่อคำนวณอัตราส่วนจากตัวเลขในกราฟจะได้ <strong>1.8 ถึง 5.0 เท่า</strong> ซึ่งเข้าใกล้ 5 เท่าเฉพาะเมื่อมี worker 9 ถึง 10 ตัว</p>
+<p class="lead">ในเครือข่ายเซนเซอร์และระบบ IoT อุปกรณ์ปลายทางมักเชื่อมต่อได้ไม่ต่อเนื่อง ใช้พลังงานจากแบตเตอรี่ และติดตั้งในจุดที่เข้าไปดูแลได้ยาก ความทนทานของ aggregator จึงเป็นเงื่อนไขสำคัญของการนำ FL ไปใช้งานจริง ผู้เขียนระบุความท้าทายที่ทางแก้ต้องตอบไว้ 3 ประการ ดังนี้</p>
+<ol>
+<li><strong>การพึ่งพา aggregator เครื่องเดียว:</strong> ความล้มเหลวของโหนดกลางเพียงเครื่องเดียว ไม่ว่าจะเกิดจากฮาร์ดแวร์ เครือข่าย หรือเหตุไม่คาดคิด ทำให้กระบวนการเรียนรู้ทั้งหมดหยุดชะงัก (Section 2.1)</li>
+<li><strong>ทางเลือกเดิมหนักเกินไปสำหรับอุปกรณ์ที่ทรัพยากรจำกัด:</strong> gossip learning และ swarm learning ยังซับซ้อนเกินกว่าจะนำไปใช้ซ้ำได้ทั่วไป ส่วน Distributed Ledger Technology (DLT) ใช้พลังประมวลผล พื้นที่จัดเก็บ และพลังงานสูง งานที่ใกล้เคียงที่สุดของ Behera และคณะ [6] ใช้ Raft เลือกผู้นำใหม่ แต่ไม่ทำสำเนาสถานะการฝึก (Section 3)</li>
+<li><strong>ต้องไม่เพิ่มภาระให้ software stack:</strong> ทางแก้ควรผนวกเข้ากับเฟรมเวิร์ก FL ที่ใช้อยู่ได้โดยตรง แทนการพึ่งเครื่องมือภายนอกที่มีขนาดใหญ่ (Section 2.1)</li>
+</ol>
+<div class="keep major pb" data-heading="3 สถาปัตยกรรมและกลไก Raft Self-Recovery"><h2 id="3-สถาปัตยกรรมและกลไก-raft-self-recovery">3 สถาปัตยกรรมและกลไก Raft Self-Recovery</h2></div>
+<div class="keep minor" data-heading="3.1 หลักการทำงานของ Raft"><h3 id="31-หลักการทำงานของ-raft">3.1 หลักการทำงานของ Raft</h3>
+<p class="lead">Raft เป็นอัลกอริทึมฉันทามติที่ Ongaro และ Ousterhout [2] ออกแบบให้เข้าใจง่ายกว่า Paxos บทความสรุปหลักการไว้ใน Section 4.1 และแนะนำให้ศึกษารายละเอียดภายในจากบทความต้นฉบับของ Raft โหนดแต่ละตัวจะอยู่ในสถานะใดสถานะหนึ่งจากสามสถานะ คือ follower, candidate และ leader โดยเวลาถูกแบ่งเป็นช่วงที่เรียกว่า term กลไกสำคัญมีดังนี้</p></div>
+<ol>
+<li><strong>Election timeout:</strong> follower ที่ไม่ได้รับ heartbeat จากผู้นำจนครบเวลาที่สุ่มไว้ จะเปลี่ยนเป็น candidate เพิ่มหมายเลข term และขอคะแนนเสียงจากโหนดอื่น การสุ่มเวลาช่วยลดโอกาสที่หลายโหนดแย่งคะแนนกันจนไม่มีผู้ชนะ (split vote)</li>
+<li><strong>Majority vote:</strong> candidate ที่ได้คะแนนเสียงข้างมากของสมาชิกทั้งหมดจะเป็นผู้นำของ term นั้น</li>
+<li><strong>Heartbeat:</strong> ผู้นำส่งข้อความเป็นระยะเพื่อยืนยันว่ายังทำงานอยู่ เมื่อข้อความขาดหายนานเกิน timeout จะเกิดการเลือกตั้งรอบใหม่</li>
+<li><strong>Log replication:</strong> ผู้นำส่งรายการบันทึก (log entry) ไปยัง follower และถือว่ารายการนั้น commit แล้วเมื่อเสียงข้างมากตอบรับ</li>
+</ol>
+<p class="lead">เงื่อนไขเสียงข้างมากเป็นตัวกำหนดขีดจำกัดความทนทานของคลัสเตอร์ หาก N คือจำนวนสมาชิกทั้งหมด จำนวนเสียงขั้นต่ำ (quorum) และจำนวนโหนดที่ดับพร้อมกันได้มากที่สุดเป็นดังนี้</p>
+<p class="eq">Q = ⌊N / 2⌋ + 1 ,&nbsp;&nbsp;&nbsp; f<sub>max</sub> = ⌊(N − 1) / 2⌋</p>
+<p>โดย Q คือจำนวนเสียงที่ต้องได้เพื่อเลือกผู้นำหรือ commit และ f<sub>max</sub> คือจำนวนโหนดที่ดับพร้อมกันได้โดยระบบยังทำงานต่อ สำหรับคลัสเตอร์ 11 โหนดในการทดลองจะได้ <strong>Q = 6</strong> และ <strong>f<sub>max</sub> = 5</strong> สมการนี้มาจากนิยามของ Raft ซึ่งบทความไม่ได้กล่าวถึงโดยตรง แต่จำเป็นต่อการวิเคราะห์ในหัวข้อที่ 5</p>
+<div class="keep minor" data-heading="3.2 ระดับการกู้คืนตนเอง 5 ระดับ"><h3 id="32-ระดับการกู้คืนตนเอง-5-ระดับ">3.2 ระดับการกู้คืนตนเอง 5 ระดับ</h3>
+<p>ผู้เขียนจัดระดับการกู้คืนตนเองของ FL ตามสิ่งที่ถูกทำสำเนาไว้ใน Table 1 ของบทความ (หน้า 114) และนิยามจุดบันทึก (checkpoint) ว่าเป็นจังหวะที่ aggregator หรือ worker เขียนสถานะปัจจุบันลงในสถานะส่วนกลางที่ทำสำเนาไว้ ดังสรุปในตารางที่ 1</p></div>
+<div class="keep"><p class="tcaption"><strong>ตารางที่ 1</strong> ระดับการกู้คืนตนเองใน FL ด้วย Raft (สรุปจาก Table 1 หน้า 114)</p>
+<table>
+<thead>
+<tr>
+<th align="left">ระดับ</th>
+<th align="left">สิ่งที่ทำสำเนา</th>
+<th align="left">ผลเมื่อ aggregator ดับ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Level 0</td>
+<td align="left">ไม่มี</td>
+<td align="left">ความคืบหน้าสูญหาย ต้องเริ่มใหม่</td>
+</tr>
+<tr>
+<td align="left">Level 1</td>
+<td align="left">พารามิเตอร์บนดิสก์ของ aggregator เดิม</td>
+<td align="left">กู้คืนได้เมื่อเครื่องเดิมกลับมาเท่านั้น</td>
+</tr>
+<tr>
+<td align="left">Level 2</td>
+<td align="left">ไม่มี แต่เลือกผู้นำใหม่ด้วย Raft</td>
+<td align="left">ระบบทำงานต่อ แต่ฝึกใหม่ตั้งแต่ต้น</td>
+</tr>
+<tr>
+<td align="left"><strong>Level 3</strong></td>
+<td align="left"><strong>พารามิเตอร์ที่รวมแล้ว ทำสำเนาไปทุกโหนด</strong></td>
+<td align="left"><strong>ผู้นำใหม่ฝึกต่อจาก checkpoint ล่าสุด</strong></td>
+</tr>
+<tr>
+<td align="left">Level 4</td>
+<td align="left">เพิ่มพารามิเตอร์ของ worker ทุกตัว</td>
+<td align="left">กู้คืนได้ครบที่สุด แต่ส่งข้อมูลซ้ำซ้อนมาก</td>
+</tr>
+</tbody></table></div>
+<p>ผู้เขียนเลือก Level 3 เพราะปัญหาหลักคือ aggregator ที่เป็น SPOF ส่วนความล้มเหลวของ worker มักยอมรับได้ อีกทั้งต้นทุนการสื่อสารในการทำสำเนาสถานะของ worker ทุกตัวสูงเกินกว่าประโยชน์ที่ได้รับ (Section 4.2)</p>
+<div class="keep minor" data-heading="3.3 ขั้นตอนการกู้คืนตนเองบน Flower"><h3 id="33-ขั้นตอนการกู้คืนตนเองบน-flower">3.3 ขั้นตอนการกู้คืนตนเองบน Flower</h3>
+<p>โดยปกติ Flower แยกโค้ดของ server และ client ออกจากกัน แต่เพื่อให้ worker ขึ้นมาทำหน้าที่แทน aggregator ได้ ผู้เขียนจึงรวมตรรกะของทั้งสองบทบาทไว้ในโค้ดชุดเดียว และใช้ PySyncObj ทั้งในการเลือกผู้นำและการทำสำเนาวัตถุระหว่างโหนด ภาพรวมของขั้นตอนการทำงานแสดงในภาพที่ 1</p></div>
+<div class="keep"><p class="figure"><img src="file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/senior-subject/sensor-network/paper-3/assets/v2/figs/fig1.png" alt="ภาพที่ 1 ขั้นตอนการทำงานของโหนดใน Raft-enhanced FL (Fig. 1 ของบทความ หน้า 116)"></p>
+<p class="caption"><strong>ภาพที่ 1</strong> ขั้นตอนการทำงานของโหนด Raft-enhanced FL: ด้านซ้ายคือบทบาท aggregator ด้านขวาคือ worker และคอลัมน์กลางแสดง checkpoint ทั้ง 3 จุด (Fig. 1 หน้า 116)</p></div>
+<p class="lead">ขั้นตอนการกู้คืนตนเองแบ่งได้ 4 ขั้น ดังนี้</p>
+<ol>
+<li><strong>การเลือก aggregator (Leader Election):</strong> ทุกโหนดเริ่มจากการเลือกตั้งของ Raft โหนดที่ชนะจะทำหน้าที่ aggregator ส่วนโหนดที่เหลือเป็น worker</li>
+<li><strong>การตรวจสถานะเดิม (Check State):</strong> aggregator ตรวจว่ามีสถานะที่ทำสำเนาไว้หรือไม่ หากเป็นการกู้คืน สถานะจะประกอบด้วยจำนวนรอบที่ฝึกเสร็จ จำนวนรอบที่เหลือ และพารามิเตอร์ที่รวมล่าสุด</li>
+<li><strong>การบันทึก checkpoint 3 จุด:</strong> หลังตั้งค่าพารามิเตอร์เริ่มต้น หลังรวมผลการฝึก และหลังรวมผลการประเมิน aggregator จะเขียนพารามิเตอร์ลงวัตถุสถานะที่ทำสำเนาได้ (replicated key-value dictionary) ซึ่ง PySyncObj คัดลอกไปยังโหนดอื่นแบบ asynchronous ใน thread แยก</li>
+<li><strong>การตรวจจับความล้มเหลวและฝึกต่อ:</strong> เมื่อจบรอบการฝึกหรือการประเมิน worker จะตรวจว่า aggregator ยังทำงานอยู่หรือไม่ หากไม่ ทุกโหนดจะกลับไปขั้นที่ 1 และ aggregator คนใหม่จะใช้พารามิเตอร์จาก checkpoint ล่าสุดเป็นค่าเริ่มต้น</li>
+</ol>
+<p>ในต้นแบบ ทราฟฟิกของ FL ใช้ port 8080 ส่วนการเลือกผู้นำและการทำสำเนาสถานะของ Raft ใช้ port 5000 จึงวัดปริมาณทราฟฟิกของสองส่วนแยกกันได้ ทั้งนี้ เชิงอรรถใต้ Fig. 2 ระบุว่าแผนภาพลำดับการทำงานละข้อความเลือกตั้งหลายรอบ การตอบรับ และ heartbeat ไว้เพื่อความชัดเจน ปริมาณข้อความจริงจึงมากกว่าที่ปรากฏในภาพ</p>
+<div class="keep major" data-heading="4 การทดลองและผลลัพธ์"><h2 id="4-การทดลองและผลลัพธ์">4 การทดลองและผลลัพธ์</h2>
+<p>ผู้เขียนสร้างคลัสเตอร์ทดลองจาก Raspberry Pi 3 จำนวน <strong>11 บอร์ด</strong> (aggregator 1 ตัว และ worker สูงสุด 10 ตัว) เชื่อมต่อกันผ่านเครือข่ายไร้สายภายใน ทุกบอร์ดใช้ Raspbian Bullseye 64-bit และ Python 3.9 งานที่ใช้ทดสอบคือการฝึก CNN บนชุดข้อมูล CIFAR-10 [7] (ภาพสี 60,000 ภาพ ขนาด 32x32 พิกเซล 10 คลาส) ผลการปรับปรุงโมเดลแต่ละครั้งมีขนาดประมาณ <strong>250 kB</strong> หลังแปลงเป็นข้อมูลสำหรับส่ง (serialise) ระบบที่ใช้เปรียบเทียบ (baseline) คือ Flower PyTorch quick-start tutorial ที่ไม่มี Raft</p></div>
+<p>การทดลองแบ่งเป็น 2 ชุด ชุดแรกคือ <strong>การวัดเวลาเลือก aggregator ใหม่</strong> โดยจงใจปิด aggregator ระหว่างการฝึก แล้ววัดเวลาจนโหนดที่เหลือเลือกผู้นำคนใหม่ได้ ที่จำนวน worker 1 ถึง 10 ตัว ชุดที่สองคือ <strong>การวัดปริมาณทราฟฟิก</strong> โดยใช้เครื่องมือ iftop แยกวัดทราฟฟิกบน port 8080 และ 5000 ในการฝึก 1 รอบ ซึ่งไม่มีโหนดดับระหว่างการวัด ผลของทั้งสองชุดสรุปไว้ในตารางที่ 2</p>
+<div class="keep"><p class="tcaption"><strong>ตารางที่ 2</strong> ผลการทดลองจาก Fig. 3 และ Fig. 4 (หน้า 118) พร้อมอัตราส่วนทราฟฟิกที่คำนวณจากตัวเลขในกราฟ</p>
+<table>
+<thead>
+<tr>
+<th align="center">จำนวน worker</th>
+<th align="center">เวลาเลือกใหม่ (วินาที)</th>
+<th align="center">Flower เดิม (MB)</th>
+<th align="center">เพิ่ม Raft (MB)</th>
+<th align="center">อัตราส่วน (เท่า)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">1.27</td>
+<td align="center">0.98</td>
+<td align="center">1.77</td>
+<td align="center">1.81</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1.33</td>
+<td align="center">2.15</td>
+<td align="center">5.17</td>
+<td align="center">2.40</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1.46</td>
+<td align="center">3.10</td>
+<td align="center">7.94</td>
+<td align="center">2.56</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">1.70</td>
+<td align="center">4.06</td>
+<td align="center">10.9</td>
+<td align="center">2.68</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">1.97</td>
+<td align="center">5.02</td>
+<td align="center">16.0</td>
+<td align="center">3.19</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">2.25</td>
+<td align="center">5.97</td>
+<td align="center">22.6</td>
+<td align="center">3.79</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">2.47</td>
+<td align="center">6.93</td>
+<td align="center">29.3</td>
+<td align="center">4.23</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">2.76</td>
+<td align="center">7.88</td>
+<td align="center">36.8</td>
+<td align="center">4.67</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">3.13</td>
+<td align="center">8.84</td>
+<td align="center">43.9</td>
+<td align="center">4.97</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">3.76</td>
+<td align="center">9.80</td>
+<td align="center">49.1</td>
+<td align="center">5.01</td>
+</tr>
+</tbody></table></div>
+<p>ในทุกการทดลองที่ปิด aggregator โหนดที่เหลือเลือกผู้นำใหม่ได้และฝึกต่อจนจบ เวลาเลือกใหม่เพิ่มจาก <strong>1.27</strong> เป็น <strong>3.76 วินาที</strong> หรือเพิ่มขึ้น <strong>2.96 เท่า</strong> แม้บทความจะบรรยายว่าเวลาเพิ่มขึ้นเพียงเล็กน้อย (grows slightly) แต่ข้อสรุปว่าเลือกใหม่ได้ภายใน 4 วินาทีเมื่อมีไม่เกิน 10 โหนดยังถูกต้อง ผู้เขียนระบุเพิ่มเติมว่าต้องบวกเวลาส่งสถานะให้ aggregator คนใหม่ ซึ่งขึ้นกับขนาดของพารามิเตอร์</p>
+<p>ด้านทราฟฟิก Flower เดิมมีทราฟฟิกเพิ่มแบบเส้นตรงประมาณ <strong>0.97 MB ต่อ worker</strong> หนึ่งตัว ตามโครงสร้างแบบ star ขณะที่ระบบที่เพิ่ม Raft มีทราฟฟิกเพิ่มเร็วกว่าเส้นตรง ทราฟฟิกที่เพิ่มขึ้นต่อ worker หนึ่งตัวขยับจากประมาณ 3 MB ในช่วง 2 ถึง 4 worker เป็นประมาณ 7 MB ในช่วง 6 ถึง 9 worker ผู้เขียนอธิบายว่า Raft ใช้การสื่อสารแบบ mesh ระหว่างการเลือกตั้ง ใช้แบบ star ระหว่างการทำสำเนาสถานะ และมีการส่ง heartbeat อย่างต่อเนื่อง</p>
+<p>บทความรายงานค่าเดียวต่อหนึ่งจุดข้อมูล โดยไม่ระบุจำนวนรอบที่ทำซ้ำ ค่าส่วนเบี่ยงเบนมาตรฐาน (SD) หรือช่วงความเชื่อมั่น ตารางที่ 2 จึงไม่มีคอลัมน์ SD นอกจากนี้ เชิงอรรถ 11 ระบุว่าผู้เขียนไม่ได้รายงานความแม่นยำของโมเดล เพราะไม่ได้แก้ไขตรรกะการฝึก จึงถือว่าความแม่นยำและค่า loss เท่ากับ baseline ข้อความนี้เป็นข้อกล่าวอ้างเชิงเหตุผล ไม่ใช่ผลการวัดในกรณีที่เกิดการกู้คืนจริง</p>
+<div class="keep major" data-heading="5 การวิเคราะห์วิจารณ์เชิงวิศวกรรม"><h2 id="5-การวิเคราะห์วิจารณ์เชิงวิศวกรรม">5 การวิเคราะห์วิจารณ์เชิงวิศวกรรม</h2></div>
+<div class="keep minor" data-heading="5.1 Contribution ของงาน"><h3 id="51-contribution-ของงาน">5.1 Contribution ของงาน</h3>
+<ol>
+<li><strong>กรอบระดับการกู้คืนตนเองสำหรับ FL:</strong> Table 1 แยกการกู้คืนเป็น 5 ระดับตามสิ่งที่ทำสำเนา ช่วยให้ผู้ออกแบบเลือกระดับที่เหมาะกับต้นทุนได้อย่างมีเหตุผล และชี้ว่า Level 3 เป็นจุดที่คุ้มค่าที่สุดสำหรับปัญหา SPOF ของ aggregator</li>
+<li><strong>ต้นแบบที่ผนวกเข้ากับเฟรมเวิร์ก Flower โดยตรง:</strong> แสดงให้เห็นว่าการเพิ่ม Raft เข้าไปใน Flower ทำได้ในระดับโค้ด โดยไม่ต้องใช้ blockchain หรือบริการภายนอก ทุกโหนดรันโค้ดชุดเดียวกัน และผู้เขียนเปิดเผยซอร์สโค้ดให้ทำซ้ำได้</li>
+<li><strong>ผลการวัดบนอุปกรณ์ edge จริง:</strong> วัดเวลาเลือกผู้นำใหม่และทราฟฟิกบน Raspberry Pi ที่เชื่อมต่อผ่าน Wi-Fi ตั้งแต่ 1 ถึง 10 worker ทำให้เห็นข้อแลกเปลี่ยนระหว่างความทนทานกับแบนด์วิดท์เป็นตัวเลขที่ตรวจสอบได้</li>
+</ol></div>
+<div class="keep minor" data-heading="5.2 จุดเด่นของงาน"><h3 id="52-จุดเด่นของงาน">5.2 จุดเด่นของงาน</h3>
+<p>จุดเด่นประการแรกคือ <strong>การแก้ปัญหาตรงจุดด้วยอัลกอริทึมมาตรฐาน</strong> ผู้เขียนไม่ได้คิดโปรโตคอลขึ้นใหม่ แต่ใช้ Raft ซึ่งผ่านการพิสูจน์และใช้งานจริงมาแล้ว ความถูกต้องของกลไกเลือกผู้นำและการ commit จึงอ้างอิงทฤษฎีที่เป็นที่ยอมรับได้</p></div>
+<p>จุดเด่นประการที่สองคือ <strong>การทดลองบนอุปกรณ์จริงพร้อมระบบเปรียบเทียบ</strong> คลัสเตอร์ Raspberry Pi ที่สื่อสารผ่าน Wi-Fi ใกล้เคียงสภาพของเครือข่าย edge มากกว่าการจำลองบนเครื่องเดียว และการแยก port ทำให้เทียบทราฟฟิกกับ Flower เดิมได้ครบทุกจำนวน worker</p>
+<p>จุดเด่นประการที่สามคือ <strong>ความโปร่งใสของงานวิจัย</strong> Section 6.3 ระบุข้อจำกัดของการทดลองไว้เอง 4 ข้อ ได้แก่ โค้ดที่ซ้ำกันทุกโหนด การทดลองแบบไม่มีโหนดดับ (clean run) ข้อมูลที่ดาวน์โหลดไว้ล่วงหน้า และทราฟฟิกที่เพิ่มขึ้น อีกทั้งบทความเผยแพร่แบบ Open Access และเปิดเผยซอร์สโค้ด</p>
+<div class="keep minor" data-heading="5.3 จุดด้อยและข้อจำกัด"><h3 id="53-จุดด้อยและข้อจำกัด">5.3 จุดด้อยและข้อจำกัด</h3>
+<p>ข้อจำกัดสำคัญที่สุดคือ <strong>ข้อแลกเปลี่ยนด้านเครือข่าย</strong> ทราฟฟิกเพิ่มขึ้น 1.8 ถึง 5.0 เท่าและเพิ่มเร็วกว่าเส้นตรงตามจำนวนโหนด ซึ่งขัดกับจุดแข็งของ FL ที่ประหยัดแบนด์วิดท์ ในเครือข่ายเซนเซอร์ที่ใช้แบตเตอรี่ การส่งข้อมูลทางวิทยุเป็นต้นทุนพลังงานหลัก ผลกระทบจึงรุนแรงกว่าในการทดลองบน Raspberry Pi ที่ต่อไฟเลี้ยงตลอดเวลา</p></div>
+<p>ข้อจำกัดประการที่สองคือ <strong>การไม่อภิปรายเงื่อนไข quorum</strong> คลัสเตอร์ 11 โหนดทนการดับพร้อมกันได้ไม่เกิน 5 โหนด แต่บทความกล่าวเพียงว่าเวลาเลือกใหม่รวมจะแปรตามจำนวนครั้งที่ล้ม นอกจากนี้ Fig. 3 มีผลที่ worker 1 ตัว (รวม 2 โหนด) ซึ่งเมื่อปิด aggregator จะเหลือ 1 ใน 2 โหนด และตาม Raft มาตรฐานจะเลือกผู้นำไม่ได้ ขณะที่ Section 6.2.1 ระบุว่าทดลองตั้งแต่ 2 ถึง 10 worker และหน้า 117 ระบุว่าเหลือโหนดเดียวก็กู้คืนสถานะได้ ประเด็นนี้ต้องตรวจสอบจากซอร์สโค้ดก่อนสรุป</p>
+<p>ข้อจำกัดประการที่สามคือ <strong>ชุดข้อมูลและขนาดโมเดล</strong> CIFAR-10 เป็นข้อมูลภาพ ไม่ใช่อนุกรมเวลา (time series) จากเซนเซอร์ และพารามิเตอร์ขนาด 250 kB เล็กกว่าโมเดลที่ใช้งานจริงมาก ผู้เขียนยอมรับว่าเมื่อโมเดลใหญ่ระดับเมกะไบต์และมีโหนดหลักร้อย ภาระทราฟฟิกจะสูงขึ้นอย่างมาก</p>
+<p>ข้อจำกัดประการที่สี่คือ <strong>ขอบเขตการวัดผล</strong> ทราฟฟิกวัดเพียง 1 รอบและไม่มีโหนดดับระหว่างการวัด ไม่มีค่า SD และไม่มีการวัดความแม่นยำหลังการกู้คืน</p>
+<p>ข้อจำกัดประการที่ห้าคือ <strong>ประเภทความล้มเหลวที่รองรับ</strong> Raft รับมือเฉพาะความล้มเหลวแบบหยุดทำงาน (crash fault) ไม่ป้องกัน aggregator ที่ถูกเจาะระบบแล้วส่งพารามิเตอร์ปลอม (Byzantine fault) และบทความยังไม่มีตัวเลขเทียบกับ DLT, gossip learning หรือ Level 1</p>
+<p>ข้อจำกัดประการที่หกคือ <strong>ความคงทนของสถานะ</strong> พารามิเตอร์เก็บในหน่วยความจำเท่านั้น หากทุกโหนดดับพร้อมกัน ความคืบหน้าทั้งหมดจะสูญหาย และต้นแบบใช้ไลบรารี Python ที่ยังไม่ใช่ implementation ระดับ production</p>
+<div class="keep major" data-heading="6 ความเห็นและการนำไปประยุกต์ใช้กับงานจริง"><h2 id="6-ความเห็นและการนำไปประยุกต์ใช้กับงานจริง">6 ความเห็นและการนำไปประยุกต์ใช้กับงานจริง</h2>
+<p class="lead">บทความนี้นำไปใช้ประกอบการออกแบบระบบกระจายที่ต้องทนต่อความผิดพลาดได้ ทั้งในงานเครือข่ายเซนเซอร์และงานแบ็กเอนด์ ดังนี้</p></div>
+<ul>
+<li><strong>การออกแบบเครือข่ายเซนเซอร์:</strong> แทนที่จะให้ทุกโหนดเป็นสมาชิก Raft ควรเลือกเกตเวย์หรือ edge server จำนวนคี่ 3 หรือ 5 เครื่องที่มีไฟเลี้ยงคงที่เป็นสมาชิก Raft และทำหน้าที่ aggregator สำรองกัน ส่วนโหนดเซนเซอร์ทำหน้าที่ FL client วิธีนี้สอดคล้องกับข้อเสนอ selective state replication ใน Section 7.1 และลดทราฟฟิกวิทยุของโหนดที่ใช้แบตเตอรี่</li>
+<li><strong>การเชื่อมโยงกับ Kafka KRaft และ etcd:</strong> etcd ซึ่งเป็นที่เก็บสถานะของ Kubernetes ใช้ Raft โดยตรง และ Apache Kafka โหมด KRaft ใช้ controller quorum ที่อาศัยฉันทามติตระกูล Raft จัดการ metadata แทน ZooKeeper [5] ทั้งสองระบบเขียน log ลงดิสก์ก่อนตอบรับ และแยก quorum ขนาดเล็กออกจาก client จำนวนมาก ซึ่งเป็นแนวทางที่แก้ข้อจำกัดประการที่สองและประการที่หกได้</li>
+<li><strong>การประยุกต์กับ Event-Driven Architecture:</strong> ในงานแบ็กเอนด์ภาษา Go งานที่ต้องมีผู้ทำเพียงรายเดียว เช่น scheduler หรือ consumer ที่ต้องเรียงลำดับเหตุการณ์ ใช้รูปแบบเดียวกับบทความได้ คือเลือกผู้นำด้วย lease หรือ Raft และบันทึก checkpoint ของ offset ไว้ให้ผู้นำคนใหม่ทำงานต่อ</li>
+<li><strong>การอ้างอิงในเล่มโครงงาน:</strong> บทที่ 2 (ทฤษฎีและงานวิจัยที่เกี่ยวข้อง) ใช้ตารางระดับการกู้คืน 5 ระดับและหลักการ quorum เป็นกรอบออกแบบความทนทานของระบบ ส่วนบทที่ 3 (วิธีดำเนินงาน) ใช้วิธีวัดเวลาเลือกผู้นำใหม่และการแยก port วัดทราฟฟิกเป็นแนวทางการทดสอบ โดยเพิ่มการทำซ้ำอย่างน้อย 5 รอบเพื่อรายงานค่า SD</li>
+</ul>
+<div class="refs"><div class="keep major" data-heading="7 เอกสารอ้างอิง"><h2 id="7-เอกสารอ้างอิง">7 เอกสารอ้างอิง</h2>
+<p>[1] R. Dautov and E. J. Husom, &quot;Raft protocol for fault tolerance and self-recovery in federated learning,&quot; in <em>Proc. 2024 IEEE/ACM 19th Symp. Software Engineering for Adaptive and Self-Managing Systems (SEAMS)</em>, Lisbon, Portugal, Apr. 2024, pp. 110-121, doi: 10.1145/3643915.3644093. IEEE Doc ID: 10556381.</p></div>
+<p>[2] D. Ongaro and J. Ousterhout, &quot;In search of an understandable consensus algorithm,&quot; in <em>Proc. 2014 USENIX Annual Technical Conf. (USENIX ATC 14)</em>, Philadelphia, PA, USA, 2014, pp. 305-319.</p>
+<p>[3] D. J. Beutel <em>et al.</em>, &quot;Flower: A friendly federated learning research framework,&quot; arXiv:2007.14390, 2020.</p>
+<p>[4] Q. Yang, Y. Liu, T. Chen, and Y. Tong, &quot;Federated machine learning: Concept and applications,&quot; <em>ACM Trans. Intelligent Systems and Technology</em>, vol. 10, no. 2, pp. 1-19, 2019.</p>
+<p>[5] C. McCabe, &quot;KIP-500: Replace ZooKeeper with a self-managed metadata quorum,&quot; Apache Kafka Improvement Proposals, Apache Software Foundation, 2019. [Online]. Available: <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-500">https://cwiki.apache.org/confluence/display/KAFKA/KIP-500</a></p>
+<p>[6] M. R. Behera <em>et al.</em>, &quot;Federated learning using peer-to-peer network for decentralized orchestration of model weights,&quot; preprint, 2021.</p>
+<p>[7] A. Krizhevsky, &quot;Learning multiple layers of features from tiny images,&quot; M.S. thesis, Univ. of Toronto, Toronto, ON, Canada, 2009.</p></div></body></html>

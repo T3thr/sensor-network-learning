@@ -1,0 +1,256 @@
+Humidity
+sensor real
+value
+Humidity
+sensor
+prediction
+
+Light density (1000 lux)
+
+Humidity (RH)
+
+Light
+sensor
+prediction
+
+Temperature
+sensor real
+value
+
+Complete Update
+
+Similar
+pattern of
+changes
+
+Detecting an
+anomalous
+incident
+
+91.87%
+91.87%
+
+Case 1
+61.70%
+
+89.42%
+89.42%
+
+75
+70
+65
+
+90.26%
+
+Case 3
+
+0% - Model fails to run due to mismatch between model and system.
+0% - Model fails to run due to mismatch between model and system.
+
+60
+0
+
+32
+30
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+Precision of anomaly detection (%)
+
+80
+
+90
+
+100
+
+Figure 12: Analysis of effect of partial and complete update
+on preserving the performance of model.
+
+28
+26
+24
+22
+
+Time
+
+Case Study
+
+As a case study, we analyze a cluster of associated sensors, which
+includes three humidity, temperature, and light sensors located in
+close proximity. As shown in Figure 11, the predicted values are
+very close to the real measurements that indicates the competency
+of our method to learn the normal behavior of sensors and predict
+the future measurements precisely. Furthermore, we observe that
+the pattern of changes in the sensor signals is similar. As the marked
+areas of Figure 11 highlight, any drop in the trend of humidity sensor
+comes with an increase in the trend of other sensors. It confirms the
+correlation among the sensors as the sensor association algorithm
+suggests. We simulate a fire incident in the environment as an EA,
+and the measurements from all sensors show an anomaly.
+
+4.6
+
+No Update
+
+35.51%
+
+Figure 11: The real and predicted values of three correlated
+sensors; light, humidity, and temperature sensors.
+
+4.5
+
+Partial Update
+
+Case 2
+
+3:19
+3:59
+4:39
+5:19
+5:59
+6:39
+7:19
+7:59
+8:39
+9:19
+9:59
+10:39
+11:19
+11:59
+12:39
+13:19
+13:59
+14:39
+15:19
+15:59
+16:39
+17:19
+17:59
+18:39
+19:19
+19:59
+20:39
+21:19
+21:59
+22:39
+23:19
+23:59
+0:39
+1:19
+1:59
+2:39
+
+Temperature
+sensor
+prediction
+
+41
+36
+31
+26
+21
+16
+11
+6
+1
+
+55
+
+Temperature (℃)
+
+Light
+sensor real
+value
+
+Timing Analysis
+
+The timing of method depends on the number of sensors, length
+of time-series signals, and computing platform which is used to
+implement the model. We implement our methodology on a fog
+computing platform and train it on data collected from 62 heterogeneous sensors for 8 days (roughly, 2.3 million data measurements).
+The training stage starts with the fingerprint generation process,
+which is repeated for all sensors (62 times). The sensor association
+process involves 604 times performing clustering to cluster the
+patterns and then sensors. Eventually, the clustering layout and
+sensor measurements are used for training the predictive model in
+an iterative process until the convergence of the model. Although
+the initial training is time-consuming, it occurs once, and the process of anomaly detection on the new measurements using the
+trained model only takes 0.532 seconds, which means it is real-time
+in our system under test. As mentioned in Section3.5, the retraining
+process is triggered under some conditions, but it is faster than
+initial training since it is limited to new data and does not interrupt
+the anomaly detection (Refer to Table 3).
+Table 3: Timing results.
+Process
+Recurrence Time (seconds)
+Fingerprint generation
+62
+2.98
+Training sensor association
+604
+10.54
+Training predictive model
+1
+2472.20
+Anomaly detection
+periodic
+0.532
+
+4.7
+
+Aliveness Assessment
+
+To assess whether updating the model is beneficial for maintaining
+the model’s performance over time, we test it in three scenarios.
+The first and second scenarios simulate the effect of system degradation or environmental variation over time. In this regard, the
+measurements of temperature sensors are increased 5𝑜 C in case 1,
+and 15𝑜 C in case 2 for a day. The third scenario simulates changes
+in the layout of the IoT system by eliminating a sensor.
+The model is initially trained on the original data before the
+occurrence of scenarios and tested with synthesized data from the
+cases. In the tests, we examine the effect of the partial update, complete update, and no update on the precision of the model, refer
+to Figure 12. According to results, the variation in case 1 and 2
+lead to a significant drop in the precision of the model without
+updating while updating the model, effectively preserve the high
+performance because of retraining the predictive model. The third
+case highlights the advantage of the complete update. Any alteration (add or remove) in the number of sensors in the IoT system
+changes the input layer dimension of the neural network. Thus,
+the model cannot perform anomaly detection in case 3 unless the
+sensor association is retrained to update the layout of sensors, and
+the model is reconstructed on the new layout. Results confirm that
+the complete update is successful in maintaining the performance
+despite removing a sensor. Based on this experiment, it can be
+concluded that being adaptive is crucial for the models used for IoT.
+
+5
+
+CONCLUSION
+
+This paper presents a novel context-aware adaptive data-driven
+model for anomaly detection in IoT systems. It generates context
+information by encoding the relations among the IoT sensors and
+clusters the correlated sensors based upon similar patterns, and contextual variation. According to the extracted context, a predictive
+model detects the anomalies, and a consensus-based algorithm determines the type of detected anomalies and pinpoints their source.
+Our proposed methodology can identify the anomalies with a 92%
+precision in real-time on a fog computing platform. Compared with
+other methods, it has higher performance and the capability to update itself to account for variations in the system and environment.
+
+ACKNOWLEDGMENTS
+This research was supported by NSF award CMMI 1739503 and ONR
+award N00014-17-1-2499. Any opinions, findings, and conclusions
+or recommendations expressed in this material are those of the
+authors and do not necessarily reflect views of our funding agencies.
+
+

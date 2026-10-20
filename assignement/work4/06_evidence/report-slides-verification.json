@@ -1,0 +1,112 @@
+{
+  "status": "pass",
+  "report_pdf_pages": 2,
+  "report_size": "A4",
+  "slide_count": 7,
+  "slide_ratio": "16:9",
+  "report_headings_bold_without_numbering": true,
+  "personal_pronouns_absent_from_report_slides_and_notes": true,
+  "closing_slide": {
+    "experimental_findings": "ผลที่ได้จากการทดลอง",
+    "authors_future_work": "แนวทางที่ผู้วิจัยเสนอ",
+    "paper_fidelity": true
+  },
+  "content_page_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "study_scope": "Paper architecture, experiments, limitations, and reader synthesis.",
+  "report_table_pairs_verified_against_source_metrics": 9,
+  "native_slide_table_pairs_verified_against_source_metrics": 9,
+  "speaker_notes": [
+    {
+      "slide": 1,
+      "source_and_doi_present": true,
+      "character_count": 427
+    },
+    {
+      "slide": 2,
+      "source_and_doi_present": true,
+      "character_count": 548
+    },
+    {
+      "slide": 3,
+      "source_and_doi_present": true,
+      "character_count": 664
+    },
+    {
+      "slide": 4,
+      "source_and_doi_present": true,
+      "character_count": 657
+    },
+    {
+      "slide": 5,
+      "source_and_doi_present": true,
+      "character_count": 838
+    },
+    {
+      "slide": 6,
+      "source_and_doi_present": true,
+      "character_count": 565
+    },
+    {
+      "slide": 7,
+      "source_and_doi_present": true,
+      "character_count": 673
+    }
+  ],
+  "source_pdf_unchanged": true,
+  "reference_docx_unchanged": true,
+  "visual_review": {
+    "docx_render_pages": [
+      1,
+      2
+    ],
+    "artifact_slides": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "native_pdf_slides": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "findings_remaining": []
+  },
+  "validation_limits": [
+    "PDF rendering verified with bundled LibreOffice; Microsoft PowerPoint execution not tested.",
+    "4:55 timing is an allocation, not a measured rehearsal.",
+    "TH SarabunPSK PDF glyph mapping limits Thai text extraction; visible report text and DOCX were checked."
+  ],
+  "outputs": {
+    "02_report/Assignment_Paper_4_PublishTimeOpt_Short_Report_TH.docx": {
+      "bytes": 287309,
+      "sha256": "5a13adef56f855f33d6828bcb19a09cf8e015b9ab48c6f947bd25fc94f9274e9"
+    },
+    "02_report/Assignment_Paper_4_PublishTimeOpt_Short_Report_TH.pdf": {
+      "bytes": 131291,
+      "sha256": "58983ebb1c2de3ec40edad93d80e24dc42f998d5dae741f32e21e2bdfa618135"
+    },
+    "03_slides/Assignment_Paper_4_PublishTimeOpt_7_Slides.pptx": {
+      "bytes": 853904,
+      "sha256": "141a09e2a43bdd40d2d602895f22dd6e34216ab9afbb0dec37bdf1cce688cce0"
+    },
+    "03_slides/Assignment_Paper_4_PublishTimeOpt_7_Slides.pdf": {
+      "bytes": 660815,
+      "sha256": "d1362ac53effbd3e2c46e3deeef87c821248cca7e5d0bc05d54389f20ae2fcbf"
+    }
+  }
+}

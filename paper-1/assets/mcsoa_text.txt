@@ -1,0 +1,588 @@
+=== PAGE 1 ===
+MCSOA: A Novel High-Reliable Wireless Sensor 
+Networks Routing Optimization Method for Power 
+Internet of Things 
+1st Jingyi Wei 
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+weijingyi1999@gmail.com 
+ 
+2nd Tao Luo 
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+luotao.chn@outlook.com 
+ 
+3rd Dingyi Jia  
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+j_dingyi1999@163.com  
+4th Yuanjiao Zhu 
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+Z_yuanjiao@163.com 
+ 
+ 
+ 
+ 
+5th Pengwei Ma 
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+jacketluolunzi@gmail.com 
+Jie Zhou* 
+College of Information Science 
+and Technology 
+Shihezi University 
+Shihezi, China 
+jiezhou@shzu.edu.cn 
+*Corresponding author 
+ 
+ 
+ 
+ 
+ 
+ 
+Abstract—In recent years, as the Power Internet of Things 
+continues to advance and improve, the routing requires 
+efficient and reliable optimization methods to ensure stable 
+operation. However, sensor nodes in Wireless Sensor Networks 
+for Power Internet of Things have limited energy and lifespan, 
+making the search for an efficient routing optimization method 
+a critical issue. This paper innovatively proposes a novel high-
+reliable Wireless Sensor Networks routing optimization 
+method for Power Internet of Things—the Multi-Objective 
+Chaotic Seagull Optimization Algorithm (MCSOA). MCSOA 
+integrates chaotic optimization strategies with the Seagull 
+Optimization Algorithm, enable to escape local optima and 
+improving its global search capability. Additionally, it 
+incorporates multi-objective functions to address various key 
+factors in PSWSN routing, including minimizing transmission 
+loss, balancing load distribution, and enhancing system 
+reliability. To evaluate the effectiveness of the optimization 
+method, extensive new experiments were conducted, accurately 
+reflecting real-world power grid operation scenarios. The 
+experimental findings indicate that MCSOA significantly 
+outperforms traditional algorithms like Genetic Algorithm and 
+Particle 
+Swarm 
+Optimization 
+in 
+terms 
+of 
+efficiency. 
+Specifically, MCSOA cuts down energy use by a minimum of 
+16.1% and prolongs the lifespan of the PSWSN by at least 
+15.6%. 
+Keywords—Wireless Sensor Networks, Power Internet of 
+Things, Routing optimization, Seagull Optimization algorithm 
+I. 
+ INTRODUCTION 
+Wireless sensor networks are crucial in the ongoing 
+advancement of the Power Internet of Things. In PIoT, 
+WSNs are utilized for monitoring and managing power 
+distribution, ensuring efficient energy consumption, and 
+preventing system failures. Recently, wireless sensor 
+networks in power systems (PSWSNs) have garnered 
+increasing research interest and attention [1][2]. 
+A key challenge in designing PSWSNs is optimizing the 
+routing process to ensure networks’ high reliability and 
+efficiency[3]. Given that sensor nodes are typically equipped 
+with limited power and lifespan, the routing optimization 
+significantly impacts the overall performance of the network. 
+So, it’s essential to enhance the routing efficiency to 
+maximize the network's reliability and lifespan. In PSWSNs, 
+routing optimization is crucial for enhancing network 
+performance [4][5]. But, determining the best routing paths 
+is an NP-hard problem, which complicates achieving the 
+optimal solution due to the high computational complexity of 
+exhaustive search methods is impractical for real-world 
+applications. Traditional deterministic algorithms often fail 
+to provide effective routing optimization methods in large-
+scale PSWSNs. With the deepening research on swarm 
+intelligence heuristic algorithms, various optimization 
+algorithms have emerged, such as the Genetic Algorithm[6] 
+and Particle Swarm Optimization[7]. However, these routing 
+optimization algorithms, which simulate the intelligent 
+behavior of biological populations, often fall into local 
+optima due to premature convergence when obtaining the 
+optimal routing scheme. This situation can increase network 
+energy consumption and shorten network lifetime. 
+Therefore, this paper innovatively proposes a new high-
+reliability wireless sensor network routing optimization 
+method for the Power Internet of Things, namely the Multi-
+Objective 
+Chaotic 
+Seagull 
+Optimization 
+Algorithm 
+(MCSOA), which significantly extends network lifetime and 
+reduces node energy consumption. Additionally, the 
+introduction of chaotic optimization strategies and seagull 
+optimization algorithms enhances the algorithm's ability to 
+escape local optima, improving global search capabilities. 
+To achieve these goals, this research makes the following 
+contributions: 
+• Firstly, it proposes MCSOA for solving the routing 
+optimization problem in WSNs for the PIoT. M- 
+79
+979-8-3503-5030-2/24/$31.00 ©2024 IEEE
+2024 9th International Conference on Automation, Control and Robotics Engineering (CACRE) | 979-8-3503-5030-2/24/$31.00 ©2024 IEEE | DOI: 10.1109/CACRE62362.2024.10635077
+
+=== PAGE 2 ===
+MMCSOA combines multiple objective functions to 
+address various key factors in the routing of Power 
+Internet of Things Wireless Sensor Networks 
+(PSWSNs), including minimizing transmission loss, 
+balancing load distribution, and improving system 
+reliability, significantly reducing system energy 
+consumption, and effectively extending the lifespan 
+of PSWSNs. 
+• Secondly, MCSOA combines chaotic optimization 
+strategies and seagull optimization algorithms, 
+balancing balancing local and global convergence, 
+thereby improving both accuracy and speed. The 
+global search capability of MCSOA ensures the 
+identification of optimal routing solutions under 
+different conditions of Power System Wireless Sensor 
+Networks. 
+• Finally, 
+extensive 
+simulation 
+experiments 
+are 
+conducted to compare MCSOA with Genetic 
+Algorithm and Particle Swarm Optimization methods 
+in routing optimization of power systems. The 
+experimental results show that MCSOA outperforms 
+GA and PSO, demonstrating superior routing 
+efficiency and system stability. The proposed 
+MCSOA method is not only more powerful but also 
+simpler than existing heuristic algorithms, effectively 
+avoiding local optimization and producing better 
+results. 
+The structure of this paper is as follows: Section 1 covers 
+the research background. Section 2 introduces the 
+innovatively designed PSWSNs model. Section 3 proposes 
+the MCSOA algorithm for PSWSNs. Section 4 compares 
+MCSOA with GA and PSO through simulations. Section 5 
+summarizes the work and outlines future research directions. 
+II. 
+MODEL DEFINITION 
+A. Network model 
+This section introduces a mathematical model for routing 
+optimization in WSNs used in the IoT for power grids. The 
+network structure can be abstracted as a graph represented by 
+Gr(Ve, Ed). Here, Ve denotes the set of all sensor nodes a , 
+where Ve={v1→…→vp→…→va} and Ed represents the set 
+of links between nodes, denoted as Ed={vp→vq}(p≠q) 
+indicating 
+the 
+communication 
+relationships 
+between 
+nodes[8]. 
+B. Energy model 
+The energy consumption of links in PSWSNs includes 
+the energy used for data transmission and reception, with the 
+total energy consumption defined as: 
+ 
+(1) 
+In (1), where: 
+SeEC denotes the energy used for data transmission,  
+ReEC denotes the energy used for data reception. 
+ 
+(2) 
+ 
+(3) 
+In (2) and (3), where: 
+dist represents the communication distance, 
+α stands for data transmission amount, 
+Enele denotes the energy required for transmission and 
+reception circuits, 
+γapx represents the power amplification factor for free-
+space transmission, 
+γapy represents the power amplification factor used for 
+multipath attenuation transmission. 
+C. Objective Functions 
+To achieve the desired optimization goals, we define the 
+following objective functions: 
+a) 
+Minimizing Transmission Losses: 
+ 
+(4) 
+In (4), where: 
+N is the count of nodes in the WSNs for PIoT. 
+Pij is the power transmitted between node i and node j. 
+Rij is the transmission line resistance between nodes i and 
+node j. 
+Lij is the length of the transmission line between node i 
+and node j. 
+b) 
+Balancing Load Distribution: 
+ 
+(5) 
+In (5), where: 
+Pi is the load at node i. 
+ is the average load of the system. 
+c) 
+Enhancing System Reliability: 
+ 
+(6) 
+In (6), where: 
+Aij is the availability of the transmission line between 
+node i and node j. 
+d) 
+Power Flow Constraints: 
+ 
+(7) 
+This ensures that the power flow balance is maintained at 
+each node. 
+e) 
+Capacity Constraints: 
+ 
+(8) 
+In (8), where: 
+Cij is the capacity of the transmission ways between node 
+i and node j. 
+f) 
+Voltage Constraints: 
+ 
+(9) 
+where: 
+Vi is the voltage at node i, and Vmin and Vmax are the 
+minimum and maximum allowable voltages, respectively. 
+80
+
+=== PAGE 3 ===
+g) 
+Network Topology Constraints: 
+ 
+(10) 
+In (10), where: 
+Aij = 1 if there is a transmission line between node i and 
+node j, 
+Aij = 0 otherwise. 
+h) 
+Multi-objective Optimization Fitness Function 
+To evaluate the performance of the proposed MCSOA 
+algorithm, a composite fitness function is used, incorporating 
+the weighted sum of the objective functions: 
+ 
+(11) 
+In (11), where: 
+w1, w2, and w3 are the weights assigned to each objective 
+function, reflecting their relative importance in the 
+optimization process. 
+In summary, the model for routing optimization in 
+Wireless Sensor Networks for Power Internet of Things 
+integrates multiple objectives and constraints to reflect the 
+complex nature of PSWSNs. The proposed MCSOA 
+leverages chaotic maps and seagull optimization algorithm 
+principles to enhance global search capabilities and prevent 
+local optima, offering a robust and efficient solution for 
+routing optimization. 
+ 
+III. 
+MCSOA SOLVES THE TARFET ALLOCATION 
+PROBLEM IN PSMSNS 
+In this section, we introduce the MCSOA to solve the 
+task allocation problem in PSMSNs. The MCSOA leverages 
+the advantages of chaos theory and quantum computing to 
+enhance the optimization performance of the traditional 
+SOA. 
+The Multi-Objective Chaotic Seagull Optimization 
+Algorithm (MCSOA) is an advanced optimization technique 
+inspired by the natural behaviors of seagulls, particularly 
+their migration and attacking patterns. This algorithm 
+integrates chaotic maps and multi-objective optimization 
+principles to enhance the search capabilities and convergence 
+properties of the traditional Seagull Optimization Algorithm 
+(SOA). The MCSOA is designed to solve complex 
+optimization problems by maintaining a balance between 
+exploration and exploitation, ensuring a diverse and 
+convergent set of solutions. 
+Seagulls exhibit distinct behaviors during their migration 
+and 
+hunting 
+processes. 
+These 
+behaviors 
+can 
+be 
+mathematically modeled to create effective optimization 
+strategies: 
+Migration: Seagulls migrate in groups towards regions 
+with abundant resources. This behavior is modeled to 
+represent the exploration phase of the algorithm. 
+Attacking: During hunting, seagulls attack their prey 
+using spiral flight patterns. This behavior is used to simulate 
+the exploitation phase, focusing on refining solutions to 
+achieve optimal results. 
+A. Algorithm Initialization 
+A population of seagulls is initialized with random 
+positions within the search space, where each seagull 
+represents a potential solution to the optimization problem. 
+These positions are distributed to cover the entire search 
+space, ensuring diversity. 
+ 
+ 
+(12) 
+In (12), where: 
+xi is the position of the i-th seagull,  
+rand(0,1) generates a random number between 0 and 1. 
+B. Migration Phase 
+During the migration phase, seagulls adjust their 
+positions based on the best-known positions in the group. 
+This phase ensures global exploration of the search space: 
+ 
+(13) 
+In (13), where: 
+xi(t) is the current position,  
+xbest is the position of the best-performing seagull, 
+α is a scaling factor. 
+C. Attacking Phase 
+In the attacking phase, seagulls perform a spiral flight 
+pattern to refine their search around promising regions. This 
+phase focuses on local exploitation: 
+ 
+(14) 
+In (14), where: 
+β and γ are constants that control the intensity of the 
+search,  
+sin(2π⋅t) introduces a chaotic component to avoid local 
+optima. 
+D. Chaotic Map Integration 
+To enhance the exploration capabilities, MCSOA 
+incorporates chaotic maps, which introduce non-linear 
+dynamics into the search process. Commonly used chaotic 
+maps include the Logistic map and Tent map: 
+ 
+(15) 
+In (15), where: 
+r is the control parameter, 
+xn is the chaotic variable at iteration n. 
+E. Multi-Objective Optimization 
+MCSOA uses a roulette wheel selection method to select 
+efficient archived solutions, mimicking the migration and 
+attacking patterns of seagulls.The fitness of each solution is 
+evaluated based on multiple objectives, ensuring a balance 
+between different performance metrics. 
+F. Algorithm Steps 
+The MCSOA follows the steps outlined below: 
+• Initialization: Initialize the population of seagulls. Set 
+parameters for migration, attacking, and chaotic 
+maps. 
+81
+
+=== PAGE 4 ===
+• Evaluation: Evaluate the fitness of each seagull based 
+on multiple objectives. 
+• Migration Phase: Update positions using the 
+migration model. Incorporate chaotic maps for 
+enhanced exploration. 
+• Attacking Phase: Refine positions using the attacking 
+model. Ensure diversity and convergence.  
+• Update Archive: Store non-dominated solutions in the 
+dynamic archive. Select effective solutions using 
+roulette wheel selection. 
+• Termination: Repeat steps 2-5 until the stopping 
+criterion is met, such as reaching a maximum number 
+of iterations or a convergence threshold. 
+IV. 
+SIMULATION AND RESAULT ANALYSIS 
+This section outlines the simulation setup and results 
+used to assess MCSOA's effectiveness in optimizing routing 
+for PSWSNs. We compared MCSOA with traditional GA 
+and PSO methods using simulations on a computer equipped 
+with an Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz. 
+For our experiments, we considered various scenarios 
+with different numbers of nodes (50, 100, 150, and 200). 
+Each algorithm was executed for 300 iterations in each 
+scenario. Key metrics evaluated included node lifespan, 
+energy consumption, and data packets received by the base 
+station (BS). 
+A. Node Lifespan 
+The lifespan of nodes is a crucial metric in WSNs, as it 
+directly impacts network reliability and maintenance costs. 
+The results for node lifespan across different numbers of 
+nodes are summarized in Fig.1. 
+ 
+ 
+Fig. 1. Simulation Results of Node Lifetime: 50, 100, 150, and 200 nodes 
+ 
+From Fig.1, it is evident that the MCSOA consistently 
+outperforms 
+both 
+GA 
+and 
+PSO 
+across 
+all 
+node 
+configurations. For instance, with 50 nodes, the MCSOA 
+extends the node lifespan by 15.6% compared to GA and by 
+22.6% compared to PSO. This trend continues with larger 
+node counts, demonstrating the effectiveness of MCSOA in 
+enhancing network longevity. 
+B. Energy Consumption 
+Efficient energy usage is essential for the sustainability of 
+WSNs. Fig.2 presents the average energy consumption per 
+node for each algorithm. 
+ 
+ 
+Fig. 2. Simulation Results for Energy Consumption: 50, 100, 150, and 200 
+nodes 
+ 
+As seen in Fig.2, MCSOA demonstrates superior energy 
+efficiency, consuming significantly less energy than both GA 
+and PSO. For example, with 50 nodes, MCSOA reduces 
+energy consumption by 33.3% compared to GA and by 
+16.1% compared to PSO. This reduction in energy usage 
+translates to prolonged operational periods for the network. 
+C. Number of Data Packets Received by the BS 
+The ability of a WSN to transmit data reliably to the BS 
+is critical for its functionality. Fig.3 displays the number of 
+data packets received by the BS for each algorithm. 
+ 
+ 
+Fig. 3. Simulation Results for Number of Data Packets Received by the BS: 
+50, 100, 150, and 200 nodes 
+ 
+82
+
+=== PAGE 5 ===
+Fig.3 illustrates that MCSOA enables the transmission of 
+more data packets to the BS compared to GA and PSO. For 
+instance, with 50 nodes, MCSOA improves data packet 
+reception by 15.3% over GA and by 5.2% over PSO. This 
+improvement ensures more reliable and efficient data 
+communication within the network. 
+The simulation results highlight MCSOA's enhanced 
+performance compared to conventional GA and PSO 
+algorithms. MCSOA not only extends the node lifespan but 
+also optimizes energy consumption and enhances data packet 
+transmission. The incorporation of chaotic mapping and 
+seagull behavior in MCSOA significantly contributes to its 
+ability to explore and exploit the solution space effectively, 
+leading to higher performance metrics across various 
+scenarios. 
+These findings validate the effectiveness of MCSOA in 
+optimizing routing in WSNs for power systems, making it a 
+promising approach for enhancing the reliability and 
+efficiency of such networks. Future work could explore 
+further optimizations and adaptations of MCSOA to different 
+network configurations and environmental conditions. 
+V. 
+CONCLUSIONS 
+In this paper, we proposed the MCSOA for optimizing 
+routing in high-reliability PSWSNs context. The MCSOA 
+integrates chaotic maps with seagull optimization, enhancing 
+the algorithm's capability to prevent getting trapped in local 
+optima and strike a balance between exploration and 
+exploitation. 
+Through extensive simulations and comparative analysis, 
+MCSOA demonstrated superior performance in terms of 
+convergence speed, solution diversity, and reliability when 
+compared to existing algorithms. The chaotic maps 
+incorporated into MCSOA significantly improved the search 
+efficiency and robustness, making it a promising solution for 
+the complex nature of WSNs in power systems. 
+Moreover, the dynamic archive mechanism employed by 
+MCSOA ensures the retention of Pareto optimal solutions, 
+further contributing to the algorithm's effectiveness in multi-
+objective optimization scenarios. The empirical results 
+validated the algorithm's applicability and efficiency in real-
+world PIoT environments. 
+In summary, MCSOA provides a novel and effective 
+approach to routing optimization in PIoT, offering a high-
+reliability solution that meets the stringent requirements of 
+modern power systems. Future work will focus on further 
+refining the algorithm, exploring additional chaotic maps, 
+and expanding its application to other optimization problems 
+in the field of cybersecurity and beyond. 
+ 
+ 
+ 
+ 
+ 
+ 
+ACKNOWLEDGMENT 
+This paper was funded by the project of National Key 
+Research and Development Program of the Corps: Research 
+and application demonstration of information technology 
+based 
+on 
+source-grid-load-storage 
+and 
+multi-energy 
+complementarity, grant number: 2023AB021; National Key 
+Research and Development Program of the Corps: Key 
+Technology Research and Application for High Penetration 
+New Energy Grid Dispatch, grant number: 2023AB010; 
+National Key Research and Development Program of the 
+Corps: Research and application demonstration of key 
+technologies for panoramic monitoring, perception and 
+intelligent control of large-scale distributed photovoltaic 
+bases, grant number: S2023AA5383; National Key Research 
+and Development Program of the Corps: R&D and 
+demonstration of the intelligent supervision platform for the 
+inspection and testing institutions of the Corps based on big 
+data and artificial intelligence, grant number: S2024AB048; 
+Young scientific and technological innovation talents: key 
+technological innovation and application of integrated energy 
+intelligent management and control and precise low-carbon 
+dispatching, grant number: 2023TSYCCx0120; Research on 
+the application of "Internet +" customer service based on the 
+comprehensive energy big data of the XPCC, grant number: 
+KXO0760202. 
+REFERENCES 
+[1] D. Prabhu, R. Alageswaran, and S. M. J. Amali, "Multiple agent 
+based reinforcement learning for energy efficient routing in WSN," 
+Wireless Networks, vol. 29, no. 4, pp. 1787-1797, May 2023. 
+[2] S. Subramani, M. Selvi, S. Kumar, and A. Kannan, "Energy Efficient 
+Clustering Routing Protocol and ACO Algorithm in WSN," in 5th 
+International Conference on Advances in Computing and Data 
+Sciences (ICACDS), MVPSS Karmaveer Adv Baburao Ganpatrao 
+Thakare Coll Engn, Nashik, INDIA, Apr 23-24 2021. 
+[3] M. Wang and H. Fei and D.Jia and F.Wang and M. Yan and Y. Lu 
+and Y. Zhang and J. Zhou, "A New Adaptive Elite Evolutionary 
+Algorithm for Task Allocation of Wireless Agricultural Machinery 
+Sensor Network," 2023 IEEE 11th International Conference on 
+Information, Communication and Networks (ICICN), Xi'an, China, 
+2023, pp. 57-62. 
+[4] M. V. Babu, M. M. Reddy, C. Kumar, R. Ramasamy, and B. 
+Aishwarya, "Swarm Intelligence-Based Clustering and Routing Using 
+AISFOA-NGWO for WSN," in 3rd Congress on Intelligent Systems 
+(CIS), CHRIST, Bengaluru, INDIA, Sep 05-06 2022, vol. 608, in 
+Lecture Notes in Networks and Systems, 2023, pp. 235-248. 
+[5] Q. Zhong, J. Zhou, and Y. Zhang, "A Niche Adaptive Elite 
+Evolutionary Algorithm for the Clustering Optimization of Intelligent 
+Unmanned 
+Agricultural 
+Unmanned 
+Aerial 
+Vehicle 
+Swarm 
+Collaboration Networks," Applied Sciences-Basel, vol. 13, no. 21, 
+Nov 2023. 
+[6] E. Heidari, A. Movaghar, H. Motameni, and B. Barzegar, "A novel 
+approach for clustering and routing in WSN using genetic algorithm 
+and equilibrium optimizer," International Journal of Communication 
+Systems, vol. 35, no. 10, Jul 2022. 
+[7] K. Mishra, P. Sharma, and Ieee, "Improved Cluster Head Selection 
+Using Particle Swarm Optimization and Neural Network in WSN," in 
+5th International Conference on Computing Sciences (ICCS), 
+Phagwara, INDIA, Dec 04-05 2021. 
+[8] C. Q. Li, Y. Liu, J. Xiao, and J. Zhou, "MCEAACO-QSRP: A Novel 
+QoS-Secure Routing Protocol for Industrial Internet of Things," Ieee 
+Internet of Things Journal, vol. 9, no. 19, pp. 18760-18777, Oct 2022.
+83

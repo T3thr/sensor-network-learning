@@ -1,0 +1,119 @@
+IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT
+Systems Through Sensor Association
+Rozhin Yasaei, Felix Hernandez, Mohammad Abdullah Al Faruque
+Department of Electrical Engineering and Computer Science
+University of California, Irvine, California, USA
+{ryasaei,felixh1,alfaruqu}@uci.edu
+
+ABSTRACT
+The deployment of Internet of Things (IoT) devices in cyber-physical
+applications has introduced a new set of vulnerabilities. The new
+security and reliability challenges require a holistic solution due to
+the cross-domain, cross-layer, and interdisciplinary nature of IoT
+systems. However, the majority of works presented in the literature
+primarily focus on the cyber aspect, including the network and
+application layers, and the physical layer is often overlooked.
+In this paper, we utilize IoT sensors that capture the physical
+properties of the system to ensure the integrity of IoT sensors data
+and identify anomalous incidents in the environment. We propose
+an adaptive context-aware anomaly detection method that is optimized to run on a fog computing platform. In this approach, we
+devise a novel sensor association algorithm that generates fingerprints of sensors, clusters them, and extracts the context of the
+system. Based on the contextual information, our predictor model,
+which comprises an Long-Short Term Memory (LSTM) neural network and Gaussian estimator, detects anomalies, and a consensus
+algorithm identifies the source of the anomaly. Furthermore, our
+model updates itself to adapt to the variation in the environment
+and system. The results demonstrate that our model detects the
+anomaly with 92.0% precision in 532ms, which meets the real-time
+constraint of the system under test.
+
+CCS CONCEPTS
+• Computer systems organization → Embedded and cyberphysical systems.
+
+KEYWORDS
+Internet of Things, context, sensor association, anomaly detection,
+recurrent neural networks, LSTM encoder-decoder
+
+1
+
+INTRODUCTION
+
+Over the last decade, IoT has grabbed substantial attention due to
+advancements in computation and communication, and it is utilized
+in many applications such as smart home, automotive, and medical
+aid. The rapid growth of IoT has raised concerns about the security
+and reliability of these systems. There are a tremendous amount
+of work in the literature that focuses on various aspects of IoT
+systems such as communication network [24, 38], hardware security
+[5, 15, 21, 22] or software security [3, 34, 40, 41]. However, the
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+ICCAD ’20, November 2–5, 2020, Virtual Event, USA
+© 2020 Copyright held by the owner/author(s).
+ACM ISBN 978-1-6654-2324-3/20/11. . . $15.00
+https://doi.org/10.1145/3400302.3415672
+
+Closed-loop Control System
+Sensor
+
+Breaking
+control loop
+: Attack
+
+Controller
+
+Environment
+
+Actuator
+
+Monitoring System
+Sensor
+
+Breaking
+control loop
+
+User
+
+Environment
+
+: Fault
+
+Figure 1: Two categories of IoT systems; (a) Closed-loop control system, and (b) Monitoring system.
+physical layer of IoT as a cyber-physical system (CPS) is overlooked.
+To ensure the security of CPS systems, in addition to a bottom-up
+security attitude, a holistic approach is required [8–10, 12].
+The ultimate goal of an IoT system is to control the environment
+and maintain it in the desired state. In order to explain the important
+role of sensors in fulfilling this goal, we categorize IoT systems
+under two categories, as depicted in Figure 1: (i) a closed-loop control
+system, and (ii) a monitoring system. On the one hand, a closed-loop
+control system consists of three major components: (i) sensors; (ii)
+controller; and (iii) actuators (see Figure 1(a)). The sensors monitor
+the system and send the status to the controller, which processes the
+sensor readings, decides how to react, and sends the control signals
+to the actuators to maintain the state of system and environment.
+On the other hand, monitoring systems mainly contain sensors
+that measure numerous parameters in the system and provide the
+user with information to take proper action (see Figure 1(b)). Although a monitoring system cannot directly manipulate the environment, it informs a supervising user of events that happen in
+the system, and the user controls the system manually. Thus, a
+monitoring system is eventually a part of a control loop.
+In both categories, sensors are an essential component of the
+control loop since sensor measurements determine the action that
+is needed to maintain the system in the desired state. Malfunction
+or manipulation of a sensor can break the control loop [4], and
+consequently, disrupt the services offered by the IoT system. Fault
+in a sensor device leads to the appearance of anomalous values in
+its readings, whereas not all anomalies in sensor measurements
+indicate sensor breakage because an unexpected event in the environment may cause an anomaly as well. Observing the possible
+anomalies in an IoT system, we present a classification of anomalies
+which facilitates identification of the anomaly’s source:
+• Environmental Anomaly (EA): The environment is the
+area that surrounds the sensor, and the sensor measures
+its physical properties. Any anomaly in the environment
+affects the measurements of the sensor and disrupts it. An
+EA may occur as a result of malicious activities or unexpected
+incidents in the environment.
+
+

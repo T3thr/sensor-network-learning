@@ -1,0 +1,64 @@
+contain different variables that the author needs to monitor. As the algorithm visits each Passage, it keeps track
+and updates those variables. This is used in the tool to
+display the values of the variables in a given path and to
+trace a timeline of the variable variations through a given
+playthrough.
+The above-mentioned metrics were deﬁned based on our
+personal experience as developers of interactive stories using
+Twine and based on a reﬂection to address the authoring
+problems discussed in section II. The same challenges were
+later reported by the user study’s participants in section VI-D,
+which corroborated our ideas.
+
+Fig. 4. The Story Validator prototype GUI.
+
+V. S TORY VALIDATOR PROTOTYPE
+The implementation of the Story Validator tool follows
+the architecture presented in Figure 3. It is able to load an
+interactive story (in JavaScript Object Notation (JSON) format) created using Twine’s authoring environment. It creates a
+representation of the story as a branching tree that is traversed
+by a Depth-First Search (DPS) based algorithm. It uses a DFS
+algorithm to be greedy in the exploration to explore a given
+story path until the end, as a human player would experience
+the story (i.e., starting at the root Passage and traversing
+through several Passages until reaching an ending point). The
+information collected is presented to the user through the use
+of a graphical interface (GUI), depicted in in Figure 4.
+
+Fig. 5. The Story Validator GUI conceptual structure.
+
+(see Fig. 6). Each one of these conditions will inﬂuence
+different visual aspects of the Dialog Trees (5 and 7) and what
+information is shown on the Log Reports (6 and 8).
+
+Fig. 3. The general architecture of the Story Validator tool.
+
+The prototype was built in Python 3 using tkinter for
+the Graphical User Interface (GUI)1 . The tool’s GUI was
+developed following the conceptual organisation presented in
+Figure 52 .
+Using the Story Validator’s GUI, the user selects (1) a JSON
+story ﬁle to be analysed by the tool. For this analysis, the
+user picks one or more options from a selection of analysis
+conditions (2), based on the metrics deﬁned in section IV
+1 The source code can be found at https://github.com/iv4xr-project/
+in-story-validator
+2 Note that elements 4, 9 and 10 were added only after Phase 1 of user
+testing.
+
+Fig. 6. The panel of analysis conditions.
+
+Additionally, the user can select a story path to analyse in
+detail which will appear on the Path Dialog Tree (7) area.
+As stated previously, this work’s main objective is to support
+game writers by evaluating their game’s narrative and working
+as a debugging tool. Next we will present how we envision
+authors using our prototype tool to identify and solve problems
+present their IN.
+• Keeping track of Passages visited. Often during the
+creation of IN, there is the need to add, change and
+remove Passages and this process can quickly impact the
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════════════
+   305432 เครือข่ายเซนเซอร์ (Sensor Networks)
+   World-Class Mathematical Formatting & Semantic Rendering Stylesheet
+   อิงตามมาตรฐาน MATH_FORMATTING_GUIDE.md
+   Zero-Dollar Policy, Zero-LaTeX, Zero-Gap Radical, Stacked Fractions
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* รากและกรณฑ์แบบไร้รอยต่อ (Seamless Continuous Vinculum Radical) */
+.m-rad {
+  display: inline-flex;
+  align-items: flex-start;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.m-rad-sym {
+  font-family: var(--font-sans);
+  font-size: 1.05em;
+  line-height: 1;
+  margin-right: -0.02em;
+  user-select: none;
+}
+
+.m-rad-body {
+  padding: 0.06em 0.16em 0 0.08em;
+  line-height: 1.12;
+  border-top: max(1.5px, 0.08em) solid currentColor;
+}
+
+/* กรณี Radicand มีความสูงพิเศษ */
+.m-rad-tall {
+  align-items: center;
+  vertical-align: middle;
+}
+
+.m-rad-tall .m-rad-sym {
+  font-size: 1.5em;
+}
+
+/* เศษส่วนซ้อนแนวตั้งพร้อมเส้นคั่นแนวนอน (Stacked Fractions with Horizontal Bar) */
+.m-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0 0.2em;
+  font-size: 0.92em;
+  line-height: 1.2;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.m-num {
+  display: block;
+  padding: 0 0.25em 0.08em;
+  border-bottom: max(1.5px, 0.075em) solid currentColor;
+}
+
+.m-den {
+  display: block;
+  padding: 0.08em 0.25em 0;
+}
+
+.m-frac .m-frac {
+  font-size: 0.86em;
+}
+
+/* Accessibility: ซ่อนเครื่องหมายสแลชสำหรับ Screen Reader */
+.m-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* กล่องสมการแบบบล็อกกึ่งกลาง (Display Equation Box) */
+.m-block {
+  display: block;
+  margin: 16px 0;
+  padding: 14px 20px;
+  background: var(--paper2);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  text-align: center;
+  color: var(--ink);
+}
+
+.m-var {
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+  padding: 0 0.05em;
+}
+
+.m-op {
+  margin: 0 0.25em;
+  color: var(--ink-soft);
+}
+
+.m-unit {
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 0.88em;
+  color: var(--ink-muted);
+  margin-left: 0.35em;
+}

@@ -1,0 +1,162 @@
+[2] M. Al-Bassam, A. Sonnino, S. Bano, D. Hrycyszyn, and G. Danezis.
+Chainspace: A Sharded Smart Contracts Platform.
+arXiv preprint
+arXiv:1708.03778, 2017.
+[3] M. Apostolaki, A. Zohar, and L. Vanbever. Hijacking Bitcoin: Large-
+scale Network Attacks on Cryptocurrencies. 38th IEEE Symposium on
+Security and Privacy, May 2017.
+[4] Bitnodes. Bitcoin Network Snapshot, April 2017.
+[5] Blockchain.info. Blockchain Size, Feb. 2017.
+[6] D. Boneh, B. Lynn, and H. Shacham. Short signatures from the Weil
+pairing. In International Conference on the Theory and Application of
+Cryptology and Information Security, pages 514–532. Springer, 2001.
+[7] J. Bonneau, J. Clark, and S. Goldfeder.
+On Bitcoin as a public
+randomness source. IACR eprint archive, Oct. 2015.
+[8] M. Borge, E. Kokoris-Kogias, P. Jovanovic, N. Gailly, L. Gasser,
+and B. Ford.
+Proof-of-Personhood: Redemocratizing Permissionless
+Cryptocurrencies. In 1st IEEE Security and Privacy On The Blockchain,
+Apr. 2017.
+[9] E. Buchman.
+Tendermint: Byzantine Fault Tolerance in the Age of
+Blockchains, 2016.
+[10] V. Buterin, J. Coleman, and M. Wampler-Doty.
+Notes on Scalable
+Blockchain Protocols (verson 0.3), 2015.
+[11] C. Cachin.
+Architecture of the Hyperledger blockchain fabric.
+In
+Workshop on Distributed Cryptocurrencies and Consensus Ledgers,
+2016.
+[12] C. Cachin, K. Kursawe, and V. Shoup. Random Oracles in Constantino-
+ple: Practical asynchronous Byzantine agreement using cryptography. In
+19th ACM Symposium on Principles of Distributed Computing (PODC),
+July 2000.
+[13] M. Castro and B. Liskov. Practical Byzantine Fault Tolerance. In 3rd
+USENIX Symposium on Operating Systems Design and Implementation
+(OSDI), Feb. 1999.
+[14] J. C. Corbett, J. Dean, M. Epstein, A. Fikes, C. Frost, J. J. Furman,
+S. Ghemawat, A. Gubarev, C. Heiser, P. Hochschild, W. Hsieh, S. Kan-
+thak, E. Kogan, H. Li, A. Lloyd, S. Melnik, D. Mwaura, D. Nagle,
+S. Quinlan, R. Rao, L. Rolig, Y. Saito, M. Szymaniak, C. Taylor,
+R. Wang, and D. Woodford. Spanner: Google’s Globally Distributed
+Database. ACM Trans. Comput. Syst., 31(3):8:1–8:22, Aug. 2013.
+[15] K. Croman, C. Decke, I. Eyal, A. E. Gencer, A. Juels, A. Kosba,
+A. Miller, P. Saxena, E. Shi, E. G. Sirer, D. S. an, and R. Wattenhofer. On
+Scaling Decentralized Blockchains (A Position Paper). In 3rd Workshop
+on Bitcoin and Blockchain Research, 2016.
+[16] G. Danezis and S. Meiklejohn. Centrally Banked Cryptocurrencies. 23rd
+Annual Network & Distributed System Security Symposium (NDSS), Feb.
+2016.
+[17] S. Deetman. Bitcoin Could Consume as Much Electricity as Denmark
+by 2020, May 2016.
+[18] DeterLab Network Security Testbed, September 2012.
+[19] J. R. Douceur. The Sybil Attack. In 1st International Workshop on
+Peer-to-Peer Systems (IPTPS), Mar. 2002.
+[20] E. N. Elnozahy, D. B. Johnson, and W. Zwaenepoel. The Performance of
+Consistent Checkpointing. In 11th Symposium on Reliable Distributed
+Systems, pages 39–47. IEEE, 1992.
+[21] I. Eyal, A. E. Gencer, E. G. Sirer, and R. van Renesse.
+Bitcoin-
+NG: A Scalable Blockchain Protocol. In 13th USENIX Symposium on
+Networked Systems Design and Implementation (NSDI 16), Santa Clara,
+CA, Mar. 2016. USENIX Association.
+[22] M. K. Franklin and H. Zhang. A Framework for Unique Ring Signatures.
+IACR Cryptology ePrint Archive, 2012:577, 2012.
+[23] A. Gervais, G. Karame, S. Capkun, and V. Capkun.
+Is Bitcoin a
+decentralized currency? IEEE security & privacy, 12(3):54–60, 2014.
+[24] A. Gervais, H. Ritzdorf, G. O. Karame, and S. Capkun.
+Tampering
+with the Delivery of Blocks and Transactions in Bitcoin. In 22nd ACM
+SIGSAC Conference on Computer and Communications Security, pages
+692–705. ACM, 2015.
+[25] Y. Gilad, R. Hemo, S. Micali, G. Vlachos, and N. Zeldovich. Algorand:
+Scaling Byzantine Agreements for Cryptocurrencies. Cryptology ePrint
+Archive, Report 2017/454, 2017.
+[26] The Go Programming Language, Sept. 2016.
+[27] R. Guerraoui. Non-blocking atomic commit in asynchronous distributed
+systems with failure detectors.
+Distributed Computing, 15(1):17–25,
+2002.
+[28] T. Hanke and D. Williams.
+Intoducing Random Beascons Using
+Threshold Relay Chains, Sept. 2016.
+[29] E. G. S. Ittay Eyal. It’s Time For a Hard Bitcoin Fork, June 2014.
+[30] I. Keidar and D. Dolev. Increasing the resilience of atomic commit,
+at no additional cost. In Proceedings of the fourteenth ACM SIGACT-
+SIGMOD-SIGART symposium on Principles of database systems, pages
+245–254. ACM, 1995.
+[31] A. Kiayias, A. Russell, B. David, and R. Oliynykov.
+Ouroboros: A
+Provably Secure Proof-of-Stake Blockchain Protocol. Cryptology ePrint
+Archive, Report 2016/889, 2016.
+[32] E. Kokoris-Kogias, P. Jovanovic, N. Gailly, I. Khofﬁ, L. Gasser, and
+B. Ford.
+Enhancing Bitcoin Security and Performance with Strong
+Consistency via Collective Signing. In Proceedings of the 25th USENIX
+Conference on Security Symposium, 2016.
+[33] Y. Lewenberg, Y. Sompolinsky, and A. Zohar. Inclusive block chain
+protocols. In International Conference on Financial Cryptography and
+Data Security, pages 528–547. Springer, 2015.
+[34] L. Luu, V. Narayanan, C. Zheng, K. Baweja, S. Gilbert, and P. Saxena.
+A Secure Sharding Protocol For Open Blockchains. In Proceedings of
+the 2016 ACM SIGSAC Conference on Computer and Communications
+Security, CCS ’16, pages 17–30, New York, NY, USA, 2016. ACM.
+[35] S. Micali, S. Vadhan, and M. Rabin. Veriﬁable Random Functions. In
+Proceedings of the 40th Annual Symposium on Foundations of Computer
+Science, FOCS ’99, pages 120–130. IEEE Computer Society, 1999.
+[36] S. Nakamoto. Bitcoin: A Peer-to-Peer Electronic Cash System, 2008.
+[37] K. Nikitin, E. Kokoris-Kogias, P. Jovanovic, N. Gailly, L. Gasser,
+I. Khofﬁ, J. Cappos, and B. Ford.
+CHAINIAC: Proactive Software-
+Update Transparency via Collectively Signed Skipchains and Veriﬁed
+Builds. In 26th USENIX Security Symposium (USENIX Security 17),
+pages 1271–1287. USENIX Association, 2017.
+[38] R. Pass and E. Shi.
+Hybrid Consensus: Efﬁcient Consensus in the
+Permissionless Model.
+Cryptology ePrint Archive, Report 2016/917,
+2016.
+[39] R. Pass, C. Tech, and L. Seeman. Analysis of the Blockchain Protocol
+in Asynchronous Networks.
+Annual International Conference on the
+Theory and Applications of Cryptographic Techniques (EUROCRYPT),
+2017.
+[40] J. Poon and T. Dryja. The Bitcoin Lightning Network: Scalable Off-
+Chain Instant Payments, Jan. 2016.
+[41] Satoshi.info. Unspent Transaction Output Set, Feb. 2017.
+[42] C. P. Schnorr. Efﬁcient signature generation by smart cards. Journal of
+Cryptology, 4(3):161–174, 1991.
+[43] B. Schoenmakers. A simple publicly veriﬁable secret sharing scheme
+and its application to electronic voting. In IACR International Cryptol-
+ogy Conference (CRYPTO), pages 784–784, 1999.
+[44] E. Syta, P. Jovanovic, E. Kokoris-Kogias, N. Gailly, L. Gasser, I. Khofﬁ,
+M. J. Fischer, and B. Ford. Scalable Bias-Resistant Distributed Random-
+ness. In 38th IEEE Symposium on Security and Privacy, May 2017.
+[45] E. Syta, I. Tamas, D. Visher, D. I. Wolinsky, P. Jovanovic, L. Gasser,
+N. Gailly, I. Khofﬁ, and B. Ford. Keeping Authorities “Honest or Bust”
+with Decentralized Witness Cosigning.
+In 37th IEEE Symposium on
+Security and Privacy, May 2016.
+[46] B. Wiki. Proof of burn , Sept. 2017.
+[47] Wikipedia. Atomic commit, Feb. 2017.
+[48] G. Wood. Ethereum: A Secure Decentralised Generalised Transaction
+Ledger. Ethereum Project Yellow Paper, 2014.
+APPENDIX A
+CENSORSHIP RESISTANCE PROTOCOL
+One issue existing in prior work [32], [34] that OmniLedger
+partially addresses is when a malicious shard leader censors
+transactions. This attack can be undetectable from the rest
+of the shard’s validators. A leader who does not propose a
+transaction is acceptable as far as the state is concerned, but
+this attack can compromise the fairness of the system or be
+used as a coercion tool.
+For this reason, we enable the validators to request trans-
+actions to be committed, because they think the transactions
+are censored. They can either collect those transactions via the
+normal gossiping process or receive a request directly from a
+client. This protocol can be run periodically (e.g., once every
+596
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

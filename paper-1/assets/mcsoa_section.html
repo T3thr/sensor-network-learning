@@ -1,0 +1,490 @@
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!--              VIEW 2: PAPER I BACKUP 1 (MCSOA)              -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <div id="paper-view-mcsoa" class="paper-view-section hidden">
+
+        <!-- Breadcrumb MCSOA -->
+        <div class="breadcrumb">
+          <a href="../index.html">หน้าหลัก Portal</a>
+          <span class="sep">/</span>
+          <span>Paper I (สำรอง 1): Wireless Sensor Networks Routing (MCSOA)</span>
+          <span class="sep">/</span>
+          <span style="color: var(--accent); font-weight: 700;">IEEE CACRE 2024</span>
+        </div>
+
+        <h1 class="book-title">MCSOA: A Novel High-Reliable Wireless Sensor Networks Routing Optimization Method for Power Internet of Things</h1>
+        <div class="subtitle">
+          การหาเส้นทางที่มีความน่าเชื่อถือสูงในเครือข่ายเซนเซอร์ไร้สายสำหรับระบบสายส่งไฟฟ้า (Power IoT) ด้วยอัลกอริทึมนกนางนวลโกลาหลแบบหลายวัตถุประสงค์ (IEEE CACRE 2024): ถอดรหัสคณิตศาสตร์ 3 วัตถุประสงค์ กลไก Tent Chaotic Map และห้องซ้อมบทนำเสนอ 5 นาที
+        </div>
+
+        <!-- Learning Objectives Callout -->
+        <div class="academic-callout">
+          <h3 style="color: var(--accent); margin-bottom: 8px; font-size: 1.12rem;">วัตถุประสงค์การเรียนรู้ประจำบทเรียน MCSOA (Learning Objectives)</h3>
+          <ol style="margin-left: 20px; line-height: 1.85; font-size: 0.94rem;">
+            <li>เข้าใจสถาปัตยกรรม <strong>Power System Wireless Sensor Networks (PSWSNs)</strong> และปัญหาคอขวด <strong>Energy Hole Problem</strong> เมื่อโหนดใกล้ Base Station ต้องทำหน้าที่ Relay จนแบตเตอรี่หมดก่อนเพื่อน</li>
+            <li>เข้าใจข้อจำกัดของอัลกอริทึมดั้งเดิม (Dijkstra, LEACH, GA, PSO) ที่มักติดหล่ม <strong>Local Optima</strong> และไม่สามารถรักษาสมดุลภาระงาน (Load Balancing) ได้</li>
+            <li>อธิบายแบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์: <strong>Minimizing Transmission Loss</strong>, <strong>Balancing Load Distribution</strong>, และ <strong>Enhancing System Reliability</strong> (สมการ 1–11)</li>
+            <li>เข้าใจกลไกของ <strong>MCSOA</strong>: การใช้ <strong>Tent Chaotic Map</strong> กระจายประชากรเริ่มต้น, <strong>Migration Phase</strong> หลบการชน และ <strong>Attacking Phase</strong> บินวนเกลียว 3 มิติล่าเหยื่อ</li>
+            <li>ตีความผลการจำลองเปรียบเทียบ: ลดพลังงานได้ <strong>16.1%</strong>, ยืดอายุการใช้งานเครือข่าย <strong>15.6%</strong>, และเพิ่มปริมาณรับส่งแพ็กเก็ตสำเร็จ <strong>15.3%</strong></li>
+            <li>สามารถนำเสนอหน้าชั้นเรียนได้ภายใน <strong>5:00 นาที</strong> พร้อมตอบคำถามเจาะลึกของคณะกรรมการได้อย่างมั่นใจ</li>
+          </ol>
+        </div>
+
+        <!-- ═══════════ ส่วนที่ 1: คำศัพท์และคำอ่าน ═══════════ -->
+        <section id="sec-mcsoa-1">
+          <h2 class="section-title">
+            1. อภิธานศัพท์ คำอ่านสัทศาสตร์ และนิยามวิศวกรรม (Nomenclature & Phonetics)
+            <button class="paper-ref-pill" data-page="1" data-section="Section I: Background & Abstract" data-paper="mcsoa">📄 เปเปอร์ หน้า 1 (Sec. I)</button>
+          </h2>
+          <p>
+            รวบรวมคำศัพท์เทคนิคภาษาอังกฤษ คำอ่านโฟเนติกส์ภาษาไทย นิยามความหมายทางวิศวกรรม และการเปรียบเทียบในชีวิตจริงของเปเปอร์ MCSOA:
+          </p>
+
+          <div class="term-table-wrapper">
+            <table class="term-table">
+              <thead>
+                <tr>
+                  <th>คำศัพท์ภาษาอังกฤษ</th>
+                  <th>คำอ่านภาษาไทย</th>
+                  <th>นิยามและความหมายทางวิศวกรรม</th>
+                  <th>อุปมาในชีวิตจริง</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>PSWSNs</strong><br><span style="font-size: 0.78rem; color: var(--ink-muted);">Power System Wireless Sensor Networks</span></td>
+                  <td>เพา-เวอร์ ซิส-เตม ไวร์-เลส เซน-เซอร์ เน็ต-เวิร์กส</td>
+                  <td>เครือข่ายเซนเซอร์ไร้สายที่ติดตั้งบนเสาสายส่งไฟฟ้าแรงสูงและสถานีย่อย เพื่อตรวจสอบอุณหภูมิสาย แรงดึง และความปลอดภัย</td>
+                  <td>เหมือนเครือข่ายกล้องและยามเฝ้าระวังตลอดแนวถนนมอเตอร์เวย์ข้ามจังหวัด</td>
+                </tr>
+                <tr>
+                  <td><strong>Energy Hole Problem</strong></td>
+                  <td>เอ็น-เนอร์-จี โฮล พรอบ-เบลม</td>
+                  <td>ปรากฏการณ์ที่โหนดเซนเซอร์บริเวณรอบสถานีฐาน (Base Station) ต้องรับภาระส่งต่อข้อมูล (Relay) จนพลังงานหมดและตายก่อนโหนดรอบนอก</td>
+                  <td>เหมือนถนนทางเข้ากรุงเทพฯ ที่รถติดและถนนพังก่อนถนนสายย่อยในต่างจังหวัด</td>
+                </tr>
+                <tr>
+                  <td><strong>Multi-Objective Fitness</strong></td>
+                  <td>มัล-ติ ออบ-เจก-ทิฟ ฟิต-เนส</td>
+                  <td>ฟังก์ชันเป้าหมายรวมที่ต้องหาจุดสมดุลพร้อมกันหลายด้าน: ลดการสูญเสียพลังงาน, กระจายภาระงาน, และเพิ่มความเสถียรของสัญญาณ</td>
+                  <td>เหมือนการเลือกรถยนต์ที่ต้องประหยัดน้ำมัน วิ่งเร็ว และบรรทุกของได้เยอะในคันเดียว</td>
+                </tr>
+                <tr>
+                  <td><strong>Tent Chaotic Map</strong></td>
+                  <td>เทนต์ เค-อ็อต-ติก แมป</td>
+                  <td>ฟังก์ชันทางคณิตศาสตร์แบบโกลาหล มีรูปทรงคล้ายกระโจม ใช้สร้างลำดับตัวเลขที่กระจายตัวสม่ำเสมอทั่วพื้นที่ค้นหา ไม่กระจุกตัว</td>
+                  <td>เหมือนการโยนเมล็ดพันธุ์พืชแบบกระจายทั่วแปลง แทนที่จะตกลงเป็นกระจุกเดียวกัน</td>
+                </tr>
+                <tr>
+                  <td><strong>Seagull Optimization Algorithm (SOA)</strong></td>
+                  <td>ซี-กัล ออป-ติ-ไม-เซ-ชัน แอล-กอ-ริ-ทึม</td>
+                  <td>อัลกอริทึมเลียนแบบพฤติกรรมธรรมชาติของนกนางนวล: การอพยพเป็นฝูงแบบหลบการชน (Migration) และการบินวนเกลียวโฉบเหยื่อ (Spiral Attack)</td>
+                  <td>เหมือนฝูงนกบินข้ามทวีปหาแหล่งอาหาร แล้ววนสว่านดิ่งลงจับปลาอย่างแม่นยำ</td>
+                </tr>
+                <tr>
+                  <td><strong>Packet Delivery Ratio (PDR)</strong></td>
+                  <td>แพ็ก-เก็ต ดิ-ลิฟ-เวอ-รี เร-โช</td>
+                  <td>สัดส่วนของแพ็กเก็ตข้อมูลที่สถานีฐานได้รับสำเร็จ เทียบกับจำนวนแพ็กเก็ตทั้งหมดที่โหนดเซนเซอร์ส่งออกมา</td>
+                  <td>เหมือนร้อยละของจดหมายส่งด่วนที่ไปรษณีย์ส่งถึงมือผู้รับปลายทางโดยไม่ตกหล่น</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 2: ที่มาและความสำคัญ ═══════════ -->
+        <section id="sec-mcsoa-2">
+          <h2 class="section-title">
+            2. ที่มา ความสำคัญ และบริบทสายส่งไฟฟ้าแรงสูง (Research Context & Power IoT)
+            <button class="paper-ref-pill" data-page="1" data-section="Section I: Research Motivation" data-paper="mcsoa">📄 เปเปอร์ หน้า 1 (Sec. I)</button>
+          </h2>
+          <p>
+            ในระบบโครงข่ายไฟฟ้าอัจฉริยะ (Smart Grid) ยุคใหม่ สายส่งไฟฟ้าแรงสูงและสถานีไฟฟ้าย่อยครอบคลุมพื้นที่ทางภูมิศาสตร์นับร้อยนับพันกิโลเมตร การตรวจสอบความสมบูรณ์เชิงกล เช่น อุณหภูมิสายส่ง การหย่อนตัว (Sagging) และการสั่นไหว จำเป็นต้องพึ่งพาเซนเซอร์ไร้สาย (PSWSNs) ติดตั้งไว้บนยอดเสาไฟฟ้า
+          </p>
+
+          <div class="academic-callout" style="border-left-color: var(--accent);">
+            <h4 style="color: var(--accent); margin-bottom: 6px;">ความท้าทายวิกฤตของ PSWSNs ตามประกาศงานวิจัย</h4>
+            <ul style="margin-left: 18px; line-height: 1.8; font-size: 0.93rem;">
+              <li><strong>เปลี่ยนแบตเตอรี่แทบไม่ได้:</strong> การตัดกระแสไฟฟ้าเพื่อส่งวิศวกรปีนขึ้นไปเปลี่ยนแบตเตอรี่บนเสาไฟฟ้าแรงสูงในป่าเขา มีต้นทุนและความเสี่ยงต่อชีวิตสูงมาก เครือข่ายจึงต้องอยู่รอดด้วยพลังงานที่มีอยู่ให้นานที่สุด</li>
+              <li><strong>สัญญาณรบกวนคลื่นแม่เหล็กไฟฟ้า (EMI):</strong> สนามแม่เหล็กรอบสายส่งไฟฟ้ากำลังสูงทำให้ช่องสัญญาณไร้สายมีความแปรปรวน ส่งผลให้แพ็กเก็ตสูญหายได้ง่ายหากเส้นทางส่งข้อมูลไม่มีความทนทานเพียงพอ</li>
+              <li><strong>ทราฟฟิกแบบหลายทอด (Multi-hop Convergence):</strong> โหนดนับร้อยส่งข้อมูลมุ่งหน้าเข้าหา Base Station เพียงจุดเดียว ทำให้เส้นทางส่งต่อข้อมูลมีภาระงานหนักหน่วงเป็นพิเศษ</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 3: ปัญหาวิจัย Energy Hole ═══════════ -->
+        <section id="sec-mcsoa-3">
+          <h2 class="section-title">
+            3. ปัญหาวิจัยเชิงวิศวกรรม: ทำไมอัลกอริทึมเดิมจึงล้มเหลว? (Energy Hole & Local Optima)
+            <button class="paper-ref-pill" data-page="2" data-section="Section I & II: Problem Formulation" data-paper="mcsoa">📄 เปเปอร์ หน้า 2 (Sec. II)</button>
+          </h2>
+          <p>
+            งานวิจัยเปรียบเทียบให้เห็นชัดเจนว่าทำไมอัลกอริทึมการจัดเส้นทางแบบเดิม เช่น <strong>Dijkstra (Shortest Path)</strong>, <strong>LEACH (Clustering)</strong>, ตลอดจน <strong>Genetic Algorithm (GA)</strong> และ <strong>Particle Swarm Optimization (PSO)</strong> ดั้งเดิม จึงไม่ตอบโจทย์ PSWSNs:
+          </p>
+
+          <div class="comparison-grid">
+            <div class="comp-card" style="border-color: var(--red);">
+              <div style="font-weight: 800; color: var(--red); margin-bottom: 8px;">❌ ข้อจำกัดของ Shortest Path & GA/PSO ดั้งเดิม</div>
+              <ul style="font-size: 0.90rem; line-height: 1.75; margin-left: 16px;">
+                <li><strong>Shortest Path เลือกแต่ทางสั้น:</strong> ส่งผลให้โหนดบนเส้นทางที่สั้นที่สุดถูกใช้งานซ้ำๆ จนแบตหมดภายในไม่กี่ชั่วโมง เกิดรูโหว่พลังงาน (Energy Hole)</li>
+                <li><strong>GA และ PSO ติด Local Optima:</strong> การสุ่มประชากรเริ่มต้นแบบธรรมดาทำให้ติดหล่มคำตอบเฉพาะที่ ไม่สามารถสำรวจเส้นทางใหม่ที่ดีกว่าในโครงข่ายขนาดใหญ่</li>
+                <li><strong>ละเลย Load Balancing:</strong> มุ่งลดเฉพาะผลรวมระยะทาง แต่ไม่ได้คำนึงถึงความแปรปรวนของพลังงานที่เหลืออยู่ในแต่ละโหนด</li>
+              </ul>
+            </div>
+
+            <div class="comp-card" style="border-color: var(--green);">
+              <div style="font-weight: 800; color: var(--green); margin-bottom: 8px;">✅ ทางออกของ MCSOA (CACRE 2024)</div>
+              <ul style="font-size: 0.90rem; line-height: 1.75; margin-left: 16px;">
+                <li><strong>Tent Chaotic Map:</strong> กระจายคำตอบเริ่มต้นแบบโกลาหล สม่ำเสมอ ไม่กระจุกตัว หลุดพ้นจาก Local Optima ได้อย่างรวดเร็ว</li>
+                <li><strong>Multi-objective Fitness:</strong> ผสาน 3 ด้านพร้อมกัน ทั้งลดการสูญเสียพลังงาน, กระจายโหลดให้เท่าเทียม, และรักษาเสถียรภาพของลิงก์</li>
+                <li><strong>Spiral Exploitation:</strong> กลไกบินควงสว่าน 3 มิติ ช่วยปรับแต่งเส้นทางในพื้นที่ที่มีแนวโน้มดีได้อย่างละเอียดแม่นยำ</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 4: แบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์ ═══════════ -->
+        <section id="sec-mcsoa-4">
+          <h2 class="section-title">
+            4. สถาปัตยกรรมแบบจำลองคณิตศาสตร์ 3 วัตถุประสงค์ (Mathematical Model & Constraints)
+            <button class="paper-ref-pill" data-page="2" data-section="Section II: Energy & Fitness Equations" data-paper="mcsoa">📄 เปเปอร์ หน้า 2 (Sec. II-C)</button>
+          </h2>
+          <p>
+            แบบจำลองทางคณิตศาสตร์ที่สมบูรณ์ตามสมการที่ (1) ถึง (11) ของเปเปอร์ MCSOA ประกอบด้วยแบบจำลองพลังงานและฟังก์ชันวัตถุประสงค์ผสม:
+          </p>
+
+          <!-- Formula Box 1: Energy Model -->
+          <div class="formula-card">
+            <div class="formula-badge">แบบจำลองการสูญเสียพลังงาน (First-Order Radio Model)</div>
+            <div class="formula-body">
+              Total Energy = SeEC(data, dist) + ReEC(data)
+              <br><br>
+              SeEC = data × E_elec + data × γ_apx × dist²     (เมื่อ dist < dist₀ : Free Space)
+              <br>
+              SeEC = data × E_elec + data × γ_apy × dist⁴     (เมื่อ dist ≥ dist₀ : Multipath Fading)
+              <br>
+              ReEC = data × E_elec
+            </div>
+            <div class="formula-desc">
+              <strong>ความหมาย:</strong> พลังงานส่ง (SeEC) และรับ (ReEC) ข้อมูลขนาด data บิต ระยะห่าง dist เมตร โดย E_elec คือพลังงานของวงจรอิเล็กทรอนิกส์, γ_apx คือสัมประสิทธิ์ขยายสัญญาณในที่โล่ง (แปรผันตาม d²), และ γ_apy คือสัมประสิทธิ์ขยายสัญญาณเมื่อมีสิ่งกีดขวาง (แปรผันตาม d⁴)
+            </div>
+          </div>
+
+          <!-- Formula Box 2: Multi-Objective Fitness -->
+          <div class="formula-card" style="border-left-color: var(--accent);">
+            <div class="formula-badge" style="background: var(--accent);">ฟังก์ชันวัตถุประสงค์รวม (Composite Multi-Objective Fitness Function)</div>
+            <div class="formula-body">
+              f₁ (Min Transmission Loss) = ∑ (P_ij × R_ij × L_ij)
+              <br>
+              f₂ (Balance Load)          = ∑ (P_i - P_avg)²
+              <br>
+              f₃ (Enhance Reliability)   = ∑ A_ij
+              <br><br>
+              <strong>Fitness Function = w₁ × f₁ + w₂ × f₂ + w₃ × f₃</strong>
+            </div>
+            <div class="formula-desc">
+              <strong>เงื่อนไขบังคับ (Constraints):</strong>
+              <ul style="margin-left: 16px; margin-top: 6px;">
+                <li><strong>Power Flow Balance (Eq. 7):</strong> กำลังไฟฟ้าไหลเข้าและออกจากแต่ละโหนดต้องสมดุล</li>
+                <li><strong>Channel Capacity (Eq. 8):</strong> ปริมาณข้อมูลบนลิงก์ห้ามเกินขีดความสามารถ C_ij</li>
+                <li><strong>Voltage Limits (Eq. 9):</strong> แรงดันโหนดต้องอยู่ในช่วง V_min ≤ V_i ≤ V_max</li>
+                <li><strong>Topology Constraint (Eq. 10):</strong> ลิงก์สื่อสารต้องมีอยู่จริงในกราฟ A_ij = 1</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 5: กลไกอัลกอริทึม MCSOA ═══════════ -->
+        <section id="sec-mcsoa-5">
+          <h2 class="section-title">
+            5. กลไกอัลกอริทึม MCSOA: Tent Chaotic Map & Seagull Dynamics
+            <button class="paper-ref-pill" data-page="3" data-section="Section III: MCSOA Algorithm Mechanics" data-paper="mcsoa">📄 เปเปอร์ หน้า 3 (Sec. III)</button>
+          </h2>
+          <p>
+            โครงสร้างการทำงานทีละขั้นตอนของ MCSOA เพื่อค้นหาเส้นทางที่ดีที่สุด:
+          </p>
+
+          <div class="method-steps">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>การเริ่มต้นประชากรด้วย Tent Chaotic Map</h4>
+                <p>แทนที่จะใช้ Uniform Random ธรรมดา ผู้เขียนใช้ Tent Map ตามสมการ (15): <code>x_{n+1} = 2x_n (เมื่อ x_n < 0.5)</code> หรือ <code>2(1 - x_n) (เมื่อ x_n ≥ 0.5)</code> สร้างตำแหน่งนกเริ่มต้นกระจายตัวทั่ว Search Space เพื่อให้ครอบคลุมและหลากหลาย</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Migration Phase (การสำรวจพื้นที่ระดับโลก - Exploration)</h4>
+                <p>นกนางนวลเคลื่อนที่เข้าหาตำแหน่งคำตอบที่ดีที่สุด <code>x_best</code> โดยปรับระยะทางผ่านพารามิเตอร์ A เพื่อหลีกเลี่ยงการบินชนกับเพื่อนในฝูง ช่วยค้นหาเส้นทางใหม่ๆ ในวงกว้าง</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Attacking Phase (การปรับแต่งคำตอบระดับท้องถิ่น - Exploitation)</h4>
+                <p>นกนางนวลโจมตีเหยื่อด้วยเส้นทางการบินวนเป็นเกลียว 3 มิติ (Spiral Attack) บนพิกัด x, y, z ช่วยให้ค้นหาจุดต่ำสุดของพลังงานในบริเวณคำตอบที่มีความหวังได้อย่างแม่นยำและรวดเร็ว</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Dynamic Pareto Archive & Roulette Wheel Selection</h4>
+                <p>เก็บรวบรวมคำตอบที่เป็น Non-dominated Solutions ไว้ใน Dynamic Archive และใช้วงล้อรูเล็ตต์คัดเลือกโซลูชันที่ดีที่สุดในการส่งผ่านข้อมูลของแต่ละรอบ</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 6: การทดลองและผลลัพธ์ ═══════════ -->
+        <section id="sec-mcsoa-6">
+          <h2 class="section-title">
+            6. การทดลองและผลลัพธ์เชิงตัวเลขเปรียบเทียบกับ GA & PSO
+            <button class="paper-ref-pill" data-page="4" data-section="Section IV: Simulation & Analysis" data-paper="mcsoa">📄 เปเปอร์ หน้า 4 & 5 (Sec. IV)</button>
+          </h2>
+          <p>
+            รายละเอียดสภาพแวดล้อมการทดลองและผลการประเมินประสิทธิภาพในเปเปอร์ MCSOA:
+          </p>
+
+          <div class="academic-callout" style="background: var(--paper2); border: 1.5px solid var(--rule);">
+            <strong>สภาพแวดล้อมจำลอง (Simulation Setup):</strong><br>
+            • ฮาร์ดแวร์: CPU Intel Core i7-10700K @ 3.80GHz, หน่วยความจำ DDR4 32GB<br>
+            • สเกลเครือข่าย: 4 สถานการณ์ ได้แก่ 50, 100, 150, และ 200 โหนดเซนเซอร์<br>
+            • รอบการทดลอง: 300 Iterations ต่อแต่ละสถานการณ์<br>
+            • ตัวเปรียบเทียบมาตรฐาน: Genetic Algorithm (GA) และ Particle Swarm Optimization (PSO)
+          </div>
+
+          <div style="margin-top: 16px;">
+            <table class="term-table">
+              <thead>
+                <tr>
+                  <th>ตัวชี้วัดสมรรถนะ (Key Metrics)</th>
+                  <th>Genetic Algorithm (GA)</th>
+                  <th>Particle Swarm (PSO)</th>
+                  <th>MCSOA (งานวิจัยนี้)</th>
+                  <th>ข้อได้เปรียบของ MCSOA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>การใช้พลังงาน (Energy Consumption)</strong></td>
+                  <td>สูง (ติด Local Optima)</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>ต่ำที่สุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">ลดพลังงานลงอย่างน้อย 16.1% เทียบกับ GA และ 8.4% เทียบกับ PSO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>อายุการใช้งานเครือข่าย (Node Lifespan)</strong></td>
+                  <td>สั้น (โหนดหน้า BS ตายเร็ว)</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>ยาวนานที่สุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">ยืดอายุโหนดได้นานขึ้นอย่างน้อย 15.6% เทียบกับ GA และ 7.8% เทียบกับ PSO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>แพ็กเก็ตถึงสถานีฐาน (PDR ที่ 50 โหนด)</strong></td>
+                  <td>ต่ำกว่า</td>
+                  <td>เกือบเทียบเท่า</td>
+                  <td><strong>สูงสุด</strong></td>
+                  <td><span style="color: var(--green); font-weight: 700;">รับแพ็กเก็ตสำเร็จมากกว่า GA 15.3% และมากกว่า PSO 5.2%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>ความเร็วลู่เข้า (Convergence Speed)</strong></td>
+                  <td>ช้า</td>
+                  <td>ปานกลาง</td>
+                  <td><strong>เร็วและแม่นยำ</strong></td>
+                  <td>ไม่ติดหล่มด้วย Tent Chaotic Map และบินวนเกลียวโฉบเข้าหาคำตอบ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 7: วิจารณ์เชิงวิชาการ ═══════════ -->
+        <section id="sec-mcsoa-7">
+          <h2 class="section-title">
+            7. บทวิจารณ์เชิงวิชาการ ข้อจำกัด และคำถามเปิด (Academic Critique & Limitations)
+            <button class="paper-ref-pill" data-page="5" data-section="Section V: Conclusion & Future Work" data-paper="mcsoa">📄 เปเปอร์ หน้า 5 (Sec. V)</button>
+          </h2>
+          <div class="comparison-grid">
+            <div class="comp-card" style="border-color: var(--accent);">
+              <h4 style="color: var(--accent); margin-bottom: 8px;">จุดแข็งทางวิศวกรรม (Engineering Strengths)</h4>
+              <ol style="margin-left: 18px; line-height: 1.8; font-size: 0.90rem;">
+                <li><strong>แก้ปัญหาตรงจุด:</strong> บูรณาการ Multi-objective Fitness ครอบคลุมทั้งพลังงาน โหลด และเสถียรภาพ แก้ Energy Hole ได้อย่างแท้จริง</li>
+                <li><strong>ทฤษฎี Chaos ช่วยหลุดพ้น Local Optima:</strong> Tent Map ช่วยให้ประชากรเริ่มต้นไม่กระจุกตัว จึงเหนือกว่า GA และ PSO อย่างมีนัยสำคัญ</li>
+                <li><strong>เหมาะกับโครงสร้างสายส่งไฟฟ้า:</strong> สอดคล้องกับธรรมชาติของโครงข่ายไฟฟ้าที่มีเสาสายส่งเรียงรายเป็นแนวยาว</li>
+              </ol>
+            </div>
+
+            <div class="comp-card" style="border-color: var(--red);">
+              <h4 style="color: var(--red); margin-bottom: 8px;">ข้อจำกัดที่ควรวิจารณ์ในห้องเรียน (Critical Limitations)</h4>
+              <ol style="margin-left: 18px; line-height: 1.8; font-size: 0.90rem;">
+                <li><strong>ข้อจำกัดของการจำลอง (Simulation-only):</strong> การทดลองทั้งหมดรันบนคอมพิวเตอร์ i7-10700K ยังไม่มีการติดตั้งบอร์ดฮาร์ดแวร์จริงบนเสาสายส่งไฟฟ้า</li>
+                <li><strong>ความซับซ้อนในการคำนวณ:</strong> อัลกอริทึมมีความซับซ้อนสูง โหนดเซนเซอร์ขนาดเล็กไม่สามารถคำนวณเองได้ ต้องส่งให้ Base Station/Gateway เป็นผู้ประมวลผล</li>
+                <li><strong>สัญญาณรบกวนคลื่นแม่เหล็กไฟฟ้า (EMI):</strong> แบบจำลองยังไม่ได้รวมสัญญาณรบกวนคลื่นความถี่สูงจากฟ้าผ่าหรือการสวิตชิ่งของสายส่งไฟฟ้าแรงสูง</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 8: ห้องซ้อมบทนำเสนอ 5 นาที (MCSOA) ═══════════ -->
+        <section id="sec-mcsoa-rehearsal">
+          <h2 class="section-title">
+            8. สตูดิโอซ้อมบทนำเสนอ 5 นาที สำหรับเปเปอร์ MCSOA
+            <button class="paper-ref-pill" data-page="1" data-section="MCSOA 5-Minute Presentation" data-paper="mcsoa">📄 ดูเปเปอร์ MCSOA</button>
+          </h2>
+          <p>
+            ใช้เครื่องมือควบคุมเวลา 5:00 นาทีเดียวกัน โดยระบบจะสลับสไลด์ 5 หน้าและสคริปต์ Teleprompter ภาษาไทยสำหรับเปเปอร์ MCSOA โดยเฉพาะ:
+          </p>
+
+          <div class="academic-callout" style="border-left-color: var(--accent); margin-bottom: 16px;">
+            <strong>คำแนะนำในการนำเสนอ MCSOA 5 นาที:</strong><br>
+            • สไลด์ 1 (0:00-0:45): เน้นปัญหา <strong>Energy Hole</strong> บนสายส่งไฟฟ้าแรงสูงที่เปลี่ยนแบตเตอรี่ยาก<br>
+            • สไลด์ 2 (0:45-1:35): อธิบายสมการ 3 วัตถุประสงค์ (ลดสูญเสีย, กระจายโหลด, เพิ่มความน่าเชื่อถือ)<br>
+            • สไลด์ 3 (1:35-2:55): เจาะลึกอัลกอริทึม MCSOA (Tent Map + Migration + Spiral Attack)<br>
+            • สไลด์ 4 (2:55-4:05): แสดงตัวเลขเด็ด: <strong>ลดพลังงาน 16.1%</strong>, <strong>ยืดอายุโหนด 15.6%</strong>, <strong>ส่งแพ็กเก็ตเพิ่ม 15.3%</strong><br>
+            • สไลด์ 5 (4:05-5:00): สรุปข้อคิด: <em>“เส้นทางสั้นที่สุด ไม่ใช่เส้นทางที่ดีที่สุดเสมอไปในระบบเซนเซอร์”</em>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 9: จำลองตอบคำถามอาจารย์ ═══════════ -->
+        <section id="sec-mcsoa-qna">
+          <h2 class="section-title">
+            9. คลังจำลองตอบคำถามอาจารย์ 5 ข้อ สำหรับเปเปอร์ MCSOA
+          </h2>
+          <p>
+            แนวคำถามเจาะลึก 5 ข้อที่คณะกรรมการหรืออาจารย์มักตั้งถาม พร้อมธงคำตอบตามเนื้อหาในเปเปอร์:
+          </p>
+
+          <div class="qna-card">
+            <div class="qna-badge">คำถามที่ 1 · ปัญหาวิจัย</div>
+            <h4 style="margin: 8px 0; color: var(--ink);">ทำไม Shortest Path เช่น Dijkstra ถึงทำให้เครือข่ายเซนเซอร์ตายเร็วกว่าปกติ?</h4>
+            <div class="qna-answer" style="margin-top: 8px; font-size: 0.92rem; line-height: 1.8;">
+              <strong>ธงคำตอบ:</strong> เพราะ Dijkstra ค้นหาแต่เส้นทางที่สั้นที่สุดทางกายภาพ ทำให้โหนดที่อยู่บนเส้นทางหลักถูกบังคับให้ส่งต่อข้อมูลตลอดเวลา เกิดปัญหา <em>Energy Hole Problem</em> พลังงานในโหนดนั้นจึงหมดอย่างรวดเร็ว ในขณะที่โหนดรอบนอกยังมีพลังงานเต็ม เมื่อโหนดกลางตาย เครือข่ายก็ถูกตัดขาด ดังนั้นการทำ Routing ใน WSNs จึงต้องมองเรื่อง <strong>Load Balancing</strong> ควบคู่ไปด้วยเสมอครับ
+            </div>
+          </div>
+
+          <div class="qna-card" style="margin-top: 14px;">
+            <div class="qna-badge">คำถามที่ 2 · กลไกอัลกอริทึม</div>
+            <h4 style="margin: 8px 0; color: var(--ink);">Tent Chaotic Map มีข้อดีเหนือกว่าการสุ่มค่า Random ธรรมดาอย่างไรในขั้นตอนเริ่มต้น?</h4>
+            <div class="qna-answer" style="margin-top: 8px; font-size: 0.92rem; line-height: 1.8;">
+              <strong>ธงคำตอบ:</strong> การสุ่มแบบ Uniform Random ทั่วไปมักเกิดการกระจุกตัวของประชากรคำตอบในบางบริเวณ ทำให้ค้นหาไม่ทั่วถึงและหลุดเข้าไปติดหล่ม Local Optima ได้ง่าย แต่ Tent Map ใช้สมการความโกลาหลที่รับประกันว่าค่าตัวเลขจะกระจายตัวสม่ำเสมอทั่วทั้ง Solution Space ตั้งแต่เริ่มต้น ทำให้นกนางนวลสามารถเริ่มสำรวจพื้นที่ได้อย่างทั่วถึงและค้นพบเส้นทางที่ดีกว่าได้รวดเร็วขึ้นครับ
+            </div>
+          </div>
+
+          <div class="qna-card" style="margin-top: 14px;">
+            <div class="qna-badge">คำถามที่ 3 · การประเมินผล</div>
+            <h4 style="margin: 8px 0; color: var(--ink);">ทำไม MCSOA ถึงส่งแพ็กเก็ตข้อมูลถึง Base Station ได้มากกว่า GA และ PSO ถึง 15.3%?</h4>
+            <div class="qna-answer" style="margin-top: 8px; font-size: 0.92rem; line-height: 1.8;">
+              <strong>ธงคำตอบ:</strong> เพราะฟังก์ชันวัตถุประสงค์ข้อที่ 3 (f₃) ของ MCSOA ได้รวมค่า <strong>System Reliability (Link Availability)</strong> เข้าไปในสมการ Fitness ด้วย เมื่อลิงก์ใดมีความเสถียรต่ำหรือโหนดเริ่มมีพลังงานเหลือน้อย อัลกอริทึมจะหลีกเลี่ยงการส่งข้อมูลผ่านลิงก์นั้นทันที ต่างจาก GA และ PSO ที่เน้นเฉพาะการลดพลังงานรวม ส่งผลให้อัตราแพ็กเก็ตตกหล่นระหว่างทางลดลงอย่างชัดเจนครับ
+            </div>
+          </div>
+
+          <div class="qna-card" style="margin-top: 14px;">
+            <div class="qna-badge">คำถามที่ 4 · การนำไปใช้จริง</div>
+            <h4 style="margin: 8px 0; color: var(--ink);">เซนเซอร์ราคาประหยัดบนเสาไฟฟ้ามีพลังประมวลผลต่ำ จะรันอัลกอริทึม MCSOA ไหวหรือไม่?</h4>
+            <div class="qna-answer" style="margin-top: 8px; font-size: 0.92rem; line-height: 1.8;">
+              <strong>ธงคำตอบ:</strong> ไม่ได้ให้โหนดเซนเซอร์รันเองครับ สถาปัตยกรรมของงานนี้ออกแบบให้การคำนวณ MCSOA เกิดขึ้นที่ <strong>Base Station หรือ Edge Gateway</strong> ซึ่งต่อเข้ากับระบบไฟฟ้าหลักและมีหน่วยประมวลผลสูง (เช่น ในการทดลองใช้ CPU Core i7) เมื่อคำนวณตารางเส้นทาง (Routing Table) เสร็จสิ้นแล้ว จึงค่อยส่งค่าน้ำหนักเส้นทางกระจายกลับไปให้โหนดเซนเซอร์ปฏิบัติการครับ
+            </div>
+          </div>
+
+          <div class="qna-card" style="margin-top: 14px;">
+            <div class="qna-badge">คำถามที่ 5 · การต่อยอดโครงงาน</div>
+            <h4 style="margin: 8px 0; color: var(--ink);">หากต้องการนำ MCSOA ไปใช้ในโครงงานวิศวกรรมคอมพิวเตอร์ของเรา จะประยุกต์ใช้อย่างไร?</h4>
+            <div class="qna-answer" style="margin-top: 8px; font-size: 0.92rem; line-height: 1.8;">
+              <strong>ธงคำตอบ:</strong> เราสามารถนำแนวคิด Multi-objective Fitness และ Tent Map ไปประยุกต์ใช้กับเครือข่าย LoRaWAN หรือ ESP-NOW ในระบบสมาร์ตฟาร์มหรือระบบตรวจจับไฟป่าขนาดใหญ่ ซึ่งโหนดเซนเซอร์ต้องส่งต่อข้อมูลแบบ Multi-hop ข้ามภูเขา โดยปรับแต่งค่าน้ำหนัก w₁, w₂, w₃ ให้เข้ากับข้อจำกัดพลังงานจากโซลาร์เซลล์ของโครงงานเราครับ
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 10: แบบทดสอบความเข้าใจ ═══════════ -->
+        <section id="sec-mcsoa-quiz">
+          <h2 class="section-title">
+            10. แบบทดสอบวัดความเข้าใจ 5 ข้อ (Interactive Concept Quiz - MCSOA)
+          </h2>
+          <div class="quiz-container">
+            <div class="quiz-card" data-correct="2">
+              <div class="quiz-num">ข้อที่ 1 / 5</div>
+              <div class="quiz-question">ปัญหา Energy Hole Problem ในเครือข่ายเซนเซอร์ไร้สายมักเกิดขึ้นกับโหนดใดมากที่สุด?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-val="1">โหนดที่อยู่ขอบนอกสุดของเครือข่าย</div>
+                <div class="quiz-option" data-val="2">โหนดที่ตั้งอยู่ใกล้กับ Base Station หรือสถานีฐาน</div>
+                <div class="quiz-option" data-val="3">โหนดที่ส่งข้อมูลด้วยความถี่ต่ำสุด</div>
+                <div class="quiz-option" data-val="4">โหนดที่มีการเคลื่อนที่ตลอดเวลา</div>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-card" data-correct="3" style="margin-top: 14px;">
+              <div class="quiz-num">ข้อที่ 2 / 5</div>
+              <div class="quiz-question">ข้อใดคือประโยชน์หลักของการนำ Tent Chaotic Map มาใช้ในอัลกอริทึม MCSOA?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-val="1">ลดขนาดแพ็กเก็ตข้อมูลลงครึ่งหนึ่ง</div>
+                <div class="quiz-option" data-val="2">ช่วยเข้ารหัสข้อมูลเพื่อความปลอดภัยจากการแฮก</div>
+                <div class="quiz-option" data-val="3">ช่วยกระจายประชากรคำตอบเริ่มต้นอย่างสม่ำเสมอเพื่อหลบหลีก Local Optima</div>
+                <div class="quiz-option" data-val="4">เพิ่มความเร็วของสัญญาณวิทยุในที่โล่ง</div>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-card" data-correct="1" style="margin-top: 14px;">
+              <div class="quiz-num">ข้อที่ 3 / 5</div>
+              <div class="quiz-question">ตามแบบจำลองคณิตศาสตร์ของ MCSOA ฟังก์ชันวัตถุประสงค์ w₂·f₂ ทำหน้าที่อะไร?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-val="1">สร้างความสมดุลของภาระงาน (Load Balancing) โดยลดส่วนต่างกำลังงานของโหนด</div>
+                <div class="quiz-option" data-val="2">ลดจำนวนเสาสายส่งไฟฟ้าแรงสูง</div>
+                <div class="quiz-option" data-val="3">คำนวณการหย่อนตัวของสายไฟฟ้าในฤดูร้อน</div>
+                <div class="quiz-option" data-val="4">เพิ่มความเร็วในการสลับธีมของเว็บเบราว์เซอร์</div>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-card" data-correct="4" style="margin-top: 14px;">
+              <div class="quiz-num">ข้อที่ 4 / 5</div>
+              <div class="quiz-question">ผลการทดลองเปรียบเทียบในเปเปอร์ระบุว่า MCSOA สามารถลดการใช้พลังงานได้ดีกว่า GA อย่างน้อยกี่เปอร์เซ็นต์?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-val="1">5.2%</div>
+                <div class="quiz-option" data-val="2">8.4%</div>
+                <div class="quiz-option" data-val="3">12.0%</div>
+                <div class="quiz-option" data-val="4">16.1%</div>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="quiz-card" data-correct="2" style="margin-top: 14px;">
+              <div class="quiz-num">ข้อที่ 5 / 5</div>
+              <div class="quiz-question">ข้อใดเป็นข้อจำกัดที่แท้จริงของการทดลองในเปเปอร์ MCSOA ที่ผู้เขียนระบุไว้?</div>
+              <div class="quiz-options">
+                <div class="quiz-option" data-val="1">อัลกอริทึมใช้ได้เฉพาะกับเครือข่ายที่มีโหนดไม่เกิน 10 โหนด</div>
+                <div class="quiz-option" data-val="2">ผลการทดลองทั้งหมดยังเป็น Computer Simulation ยังไม่ได้ทดสอบกับเสาสายส่งไฟฟ้าจริง</div>
+                <div class="quiz-option" data-val="3">อัลกอริทึมไม่รองรับการส่งต่อข้อมูลแบบ Multi-hop</div>
+                <div class="quiz-option" data-val="4">ไม่สามารถทำงานร่วมกับ CPU ของคอมพิวเตอร์ได้</div>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════ ส่วนที่ 11: BibTeX & อ้างอิง ═══════════ -->
+        <section id="sec-mcsoa-bib">
+          <h2 class="section-title">
+            11. ข้อมูลอ้างอิงทางวิชาการและ BibTeX (IEEE CACRE 2024)
+          </h2>
+          <div class="bibtex-box">
+            <pre><code>@inproceedings{wei2024mcsoa,
+  author    = {Wei, Jingyi and Luo, Tao and Jia, Dingyi and Zhu, Yuanjiao and Ma, Pengwei and Zhou, Jie},
+  title     = {{MCSOA: A Novel High-Reliable Wireless Sensor Networks Routing Optimization Method for Power Internet of Things}},
+  booktitle = {2024 9th International Conference on Automation, Control and Robotics Engineering (CACRE)},
+  pages     = {80--84},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/CACRE62362.2024.10635077}
+}</code></pre>
+            <button class="btn btn-secondary copy-btn" data-text='@inproceedings{wei2024mcsoa, author={Wei, Jingyi and Luo, Tao and Jia, Dingyi and Zhu, Yuanjiao and Ma, Pengwei and Zhou, Jie}, title={{MCSOA: A Novel High-Reliable Wireless Sensor Networks Routing Optimization Method for Power Internet of Things}}, booktitle={2024 9th International Conference on Automation, Control and Robotics Engineering (CACRE)}, pages={80--84}, year={2024}, publisher={IEEE}, doi={10.1109/CACRE62362.2024.10635077}}'>📋 คัดลอก BibTeX</button>
+          </div>
+        </section>
+
+      </div>

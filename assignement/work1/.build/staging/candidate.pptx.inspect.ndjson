@@ -1,0 +1,100 @@
+{"kind":"deck","id":"pr/oqbnd5","name":"Deck"}
+{"kind":"layout","layoutId":"402d7f5c-bd4e-4005-bcb7-f4d4d573c440","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9e1e3260-1f6c-424d-87af-31b9c8ba5632","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/yodgt9","slide":1,"title":"IoT-CAD","textShapes":5}
+{"kind":"textbox","id":"sh/ozqpk7qp","slide":1,"text":"IoT-CAD","textPreview":"IoT-CAD","textChars":7,"textLines":1,"bbox":[78,128,1120,100]}
+{"kind":"textbox","id":"sh/nyhob2p4","slide":1,"text":"Context-Aware Adaptive Anomaly Detection\nin IoT Systems Through Sensor Association","textPreview":"Context-Aware Adaptive Anomaly Detection | in IoT Systems Through Sensor Association","textChars":82,"textLines":2,"bbox":[82,230,1010,126]}
+{"kind":"textbox","id":"sh/md87ix8j","slide":1,"text":"เมื่อเซนเซอร์รายงานค่าผิดปกติ เกิดเหตุจริง หรือเซนเซอร์เสีย","textPreview":"เมื่อเซนเซอร์รายงานค่าผิดปกติ เกิดเหตุจริง หรือเซนเซอร์เสีย","textChars":59,"textLines":1,"bbox":[82,405,1050,62]}
+{"kind":"textbox","id":"sh/x4z6hc76","slide":1,"text":"[กรอกชื่อ นามสกุล]   [กรอกรหัสนิสิต]\n305432 เครือข่ายเซนเซอร์","textPreview":"[กรอกชื่อ นามสกุล]   [กรอกรหัสนิสิต] | 305432 เครือข่ายเซนเซอร์","textChars":61,"textLines":2,"bbox":[82,555,800,72]}
+{"kind":"textbox","id":"sh/w3qpo7ql","slide":1,"text":"IEEE/ACM ICCAD 2020","textPreview":"IEEE/ACM ICCAD 2020","textChars":19,"textLines":1,"bbox":[940,585,250,30]}
+{"kind":"notes","id":"nt/yodgt9","slide":1,"text":"เวลา 0:00–0:35 เปิดด้วยคำถามว่า หากเซนเซอร์อุณหภูมิรายงานค่าสูง เราจะรู้ได้อย่างไรว่าเกิดไฟจริงหรือเซนเซอร์เสีย บทความนี้เสนอให้ใช้เซนเซอร์อื่นเป็นพยานบริบทแทนการเชื่อเซนเซอร์ตัวเดียว\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/wuwle2","slide":2,"title":"Environmental Anomaly และ Sensing Device Anomaly","textShapes":9}
+{"kind":"textbox","id":"sh/25c329g3","slide":2,"text":"Environmental Anomaly และ Sensing Device Anomaly","textPreview":"Environmental Anomaly และ Sensing Device Anomaly","textChars":48,"textLines":1,"bbox":[72,42,1090,64]}
+{"kind":"textbox","id":"sh/p8nmx4fu","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1180,48,52,36]}
+{"kind":"textbox","id":"sh/bu54zex0","slide":2,"text":"EA","textPreview":"EA","textChars":2,"textLines":1,"bbox":[160,512,120,54]}
+{"kind":"textbox","id":"sh/a9w369gf","slide":2,"text":"หลายเซนเซอร์เปลี่ยนสอดคล้องกัน\nเหตุจากสภาพแวดล้อม","textPreview":"หลายเซนเซอร์เปลี่ยนสอดคล้องกัน | เหตุจากสภาพแวดล้อม","textChars":49,"textLines":2,"bbox":[80,570,300,78]}
+{"kind":"textbox","id":"sh/xwnm1ofq","slide":2,"text":"คำถามของงาน","textPreview":"คำถามของงาน","textChars":11,"textLines":1,"bbox":[498,506,280,42]}
+{"kind":"textbox","id":"sh/cvel8jy5","slide":2,"text":"ค่าผิดปกติมาจากโลกจริง\nหรือมาจากอุปกรณ์","textPreview":"ค่าผิดปกติมาจากโลกจริง | หรือมาจากอุปกรณ์","textChars":39,"textLines":2,"bbox":[475,554,330,82]}
+{"kind":"textbox","id":"sh/ry1knuhg","slide":2,"text":"SDA","textPreview":"SDA","textChars":3,"textLines":1,"bbox":[990,512,120,54]}
+{"kind":"textbox","id":"sh/qds3upgv","slide":2,"text":"บางเซนเซอร์ขัดกับกลุ่ม\nเซนเซอร์เสียหรือถูกโจมตี","textPreview":"บางเซนเซอร์ขัดกับกลุ่ม | เซนเซอร์เสียหรือถูกโจมตี","textChars":47,"textLines":2,"bbox":[900,570,300,78]}
+{"kind":"textbox","id":"sh/cz6dg3el","slide":2,"text":"Figure 2 จาก Yasaei et al., ICCAD 2020","textPreview":"Figure 2 จาก Yasaei et al., ICCAD 2020","textChars":38,"textLines":1,"bbox":[72,681,1136,22]}
+{"kind":"image","id":"im/5cfyd87i","slide":2,"name":"","alt":"Figure 2: wastewater plant examples of EA and SDA","bbox":[78,126,1124,360]}
+{"kind":"notes","id":"nt/wuwle2","slide":2,"text":"เวลา 0:35–1:20 อธิบาย EA ว่าเป็นเหตุจริงที่ทำให้เซนเซอร์สัมพันธ์กันหลายตัวเปลี่ยนพร้อมกัน ส่วน SDA เกิดที่ตัวอุปกรณ์หรือข้อมูลของอุปกรณ์ จึงมักขัดกับรูปแบบของสมาชิกอื่นในกลุ่ม ภาพนี้เป็น motivational example ของโรงบำบัดน้ำเสียในบทความ\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/gs64oq","slide":3,"title":"วิธีของ IoT-CAD","textShapes":19}
+{"kind":"textbox","id":"sh/epovap87","slide":3,"text":"วิธีของ IoT-CAD","textPreview":"วิธีของ IoT-CAD","textChars":15,"textLines":1,"bbox":[72,42,1090,64]}
+{"kind":"textbox","id":"sh/1sfelkri","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1180,48,52,36]}
+{"kind":"shape","id":"sh/gr6dcfqx","slide":3,"bbox":[70,180,250,280]}
+{"kind":"shape","id":"sh/rmdcfa9g","slide":3,"bbox":[158,142,74,74]}
+{"kind":"textbox","id":"sh/6l4v658v","slide":3,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[158,148,74,56]}
+{"kind":"textbox","id":"sh/tofuhkrm","slide":3,"text":"Binary fingerprint","textPreview":"Binary fingerprint","textChars":18,"textLines":1,"bbox":[92,250,206,60]}
+{"kind":"textbox","id":"sh/sn6d8fq1","slide":3,"text":"เก็บรูปแบบการเปลี่ยน\nไม่ยึดหน่วยวัด","textPreview":"เก็บรูปแบบการเปลี่ยน | ไม่ยึดหน่วยวัด","textChars":35,"textLines":2,"bbox":[92,326,206,96]}
+{"kind":"shape","id":"sh/jydcba9k","slide":3,"bbox":[370,180,250,280]}
+{"kind":"shape","id":"sh/ix4v25sz","slide":3,"bbox":[458,142,74,74]}
+{"kind":"textbox","id":"sh/0r2x8nuh","slide":3,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[458,148,74,56]}
+{"kind":"textbox","id":"sh/1sby1sb2","slide":3,"text":"Sensor association","textPreview":"Sensor association","textChars":18,"textLines":1,"bbox":[392,250,206,60]}
+{"kind":"textbox","id":"sh/epkf6dcr","slide":3,"text":"Hamming distance\nและ clustering","textPreview":"Hamming distance | และ clustering","textChars":31,"textLines":2,"bbox":[392,326,206,96]}
+{"kind":"shape","id":"sh/zqtgzitc","slide":3,"bbox":[670,180,250,280]}
+{"kind":"shape","id":"sh/cnix43ul","slide":3,"bbox":[758,142,74,74]}
+{"kind":"textbox","id":"sh/doryx8b6","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[758,148,74,56]}
+{"kind":"textbox","id":"sh/ql0f2dcf","slide":3,"text":"Predictive model","textPreview":"Predictive model","textChars":16,"textLines":1,"bbox":[692,250,206,60]}
+{"kind":"textbox","id":"sh/rm9gvit0","slide":3,"text":"LSTM และ Gaussian\nตรวจ reconstruction error","textPreview":"LSTM และ Gaussian | ตรวจ reconstruction error","textChars":43,"textLines":2,"bbox":[692,326,206,96]}
+{"kind":"shape","id":"sh/wjmhg7up","slide":3,"bbox":[970,180,250,280]}
+{"kind":"shape","id":"sh/xkvy9cba","slide":3,"bbox":[1058,142,74,74]}
+{"kind":"textbox","id":"sh/5o76d8zi","slide":3,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1058,148,74,56]}
+{"kind":"textbox","id":"sh/k3yp43ix","slide":3,"text":"Consensus","textPreview":"Consensus","textChars":9,"textLines":1,"bbox":[992,250,206,60]}
+{"kind":"textbox","id":"sh/j2pobyhc","slide":3,"text":"แยก EA กับ SDA\nแล้วปรับแบบจำลอง","textPreview":"แยก EA กับ SDA | แล้วปรับแบบจำลอง","textChars":31,"textLines":2,"bbox":[992,326,206,96]}
+{"kind":"shape","id":"sh/i1g72t0r","slide":3,"bbox":[320,320,50,0]}
+{"kind":"shape","id":"sh/x07698z6","slide":3,"bbox":[620,320,50,0]}
+{"kind":"shape","id":"sh/wzyp03il","slide":3,"bbox":[920,320,50,0]}
+{"kind":"textbox","id":"sh/bypo7yh0","slide":3,"text":"ข้อมูลปกติ","textPreview":"ข้อมูลปกติ","textChars":10,"textLines":1,"bbox":[80,520,180,34]}
+{"kind":"textbox","id":"sh/axw7yt0f","slide":3,"text":"ฝึกแบบ unsupervised แต่ใช้ validation anomalies เพื่อปรับ threshold α","textPreview":"ฝึกแบบ unsupervised แต่ใช้ validation anomalies เพื่อปรับ threshold α","textChars":69,"textLines":1,"bbox":[240,520,920,40]}
+{"kind":"textbox","id":"sh/9wn65oza","slide":3,"text":"ข้อมูลใหม่","textPreview":"ข้อมูลใหม่","textChars":10,"textLines":1,"bbox":[80,578,180,34]}
+{"kind":"textbox","id":"sh/ove5wjip","slide":3,"text":"ทำนายค่าปกติ ตรวจ anomaly ลงมติใน cluster และ retrain เมื่อระบบเปลี่ยน","textPreview":"ทำนายค่าปกติ ตรวจ anomaly ลงมติใน cluster และ retrain เมื่อระบบเปลี่ยน","textChars":70,"textLines":1,"bbox":[240,578,920,48]}
+{"kind":"textbox","id":"sh/e1c36pg7","slide":3,"text":"Yasaei et al., ICCAD 2020 · doi:10.1145/3400302.3415672","textPreview":"Yasaei et al., ICCAD 2020 · doi:10.1145/3400302.3415672","textChars":55,"textLines":1,"bbox":[72,681,1136,22]}
+{"kind":"notes","id":"nt/gs64oq","slide":3,"text":"เวลา 1:20–2:45 อธิบายสี่ขั้นตอน ขั้นแรกแปลงค่าต่างหน่วยเป็นลำดับบิตของการเปลี่ยน ขั้นสองจัดกลุ่มเซนเซอร์ที่มีบริบทร่วม ขั้นสาม LSTM ทำนายพฤติกรรมปกติและ Gaussian ประเมิน error ขั้นสี่ใช้เสียงส่วนใหญ่ในกลุ่มแยก EA กับ SDA พร้อม retrain เมื่อข้อมูลหรือจำนวนเซนเซอร์เปลี่ยน\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/m50r94","slide":4,"title":"Testbed และขอบเขตการทดลอง","textShapes":11}
+{"kind":"textbox","id":"sh/5szq10n2","slide":4,"text":"Testbed และขอบเขตการทดลอง","textPreview":"Testbed และขอบเขตการทดลอง","textChars":25,"textLines":1,"bbox":[72,42,1090,64]}
+{"kind":"textbox","id":"sh/ip87q5or","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1180,48,52,36]}
+{"kind":"textbox","id":"sh/sva9wf6t","slide":4,"text":"62","textPreview":"62","textChars":2,"textLines":1,"bbox":[620,142,190,70]}
+{"kind":"textbox","id":"sh/dwjq5kne","slide":4,"text":"เซนเซอร์","textPreview":"เซนเซอร์","textChars":8,"textLines":1,"bbox":[620,208,190,46]}
+{"kind":"textbox","id":"sh/qt8ru5on","slide":4,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[835,142,190,70]}
+{"kind":"textbox","id":"sh/ru183a58","slide":4,"text":"ตัวแปรทางกายภาพ","textPreview":"ตัวแปรทางกายภาพ","textChars":15,"textLines":1,"bbox":[835,208,190,46]}
+{"kind":"textbox","id":"sh/0ja90f6p","slide":4,"text":"8 วัน","textPreview":"8 วัน","textChars":5,"textLines":1,"bbox":[1050,142,190,70]}
+{"kind":"textbox","id":"sh/1kjq9kna","slide":4,"text":"ข้อมูลปกติ","textPreview":"ข้อมูลปกติ","textChars":10,"textLines":1,"bbox":[1050,208,190,46]}
+{"kind":"textbox","id":"sh/lwjy1wne","slide":4,"text":"ประมาณ 2.3 ล้านค่าการวัด","textPreview":"ประมาณ 2.3 ล้านค่าการวัด","textChars":24,"textLines":1,"bbox":[650,300,540,56]}
+{"kind":"textbox","id":"sh/0vqhsbm9","slide":4,"text":"IEEE 802.15.4 และ Raspberry Pi gateway\nIntel Core i5 และ RAM 8 GB เป็น fog node\nประเมินด้วย synthetic anomalies","textPreview":"IEEE 802.15.4 และ Raspberry Pi gateway | Intel Core i5 และ RAM 8 GB เป็น fog node | ประเมินด้วย synthetic anomalies","textChars":111,"textLines":3,"bbox":[650,390,540,190]}
+{"kind":"textbox","id":"sh/zuhgz65o","slide":4,"text":"Figure 8 และ Section 4.2 จาก Yasaei et al., ICCAD 2020","textPreview":"Figure 8 และ Section 4.2 จาก Yasaei et al., ICCAD 2020","textChars":54,"textLines":1,"bbox":[72,681,1136,22]}
+{"kind":"image","id":"im/yd0z6x8r","slide":4,"name":"","alt":"Figure 8: IoT-CAD experimental testbed","bbox":[70,132,500,470]}
+{"kind":"notes","id":"nt/m50r94","slide":4,"text":"เวลา 2:45–3:35 งานนี้มี testbed จริง 62 เซนเซอร์ 13 ชนิด สื่อสารผ่าน IEEE 802.15.4 และ Raspberry Pi แล้วประมวลผลบนแล็ปท็อปที่ทำหน้าที่ fog node ผู้เขียนเก็บข้อมูลปกติ 8 วันประมาณ 2.3 ล้านค่า แต่ความผิดปกติที่ใช้ประเมินเป็นข้อมูลสังเคราะห์ ซึ่งต้องจำไว้ตอนวิจารณ์\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/52ny1p","slide":5,"title":"ผลเปรียบเทียบ Precision และ Recall","textShapes":8}
+{"kind":"textbox","id":"sh/jitczqlc","slide":5,"text":"ผลเปรียบเทียบ Precision และ Recall","textPreview":"ผลเปรียบเทียบ Precision และ Recall","textChars":34,"textLines":1,"bbox":[72,42,1090,64]}
+{"kind":"textbox","id":"sh/kj2t8v2x","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1180,48,52,36]}
+{"kind":"textbox","id":"sh/6lkba5kn","slide":5,"text":"92%","textPreview":"92%","textChars":3,"textLines":1,"bbox":[920,160,250,72]}
+{"kind":"textbox","id":"sh/7mdc3al8","slide":5,"text":"Precision","textPreview":"Precision","textChars":9,"textLines":1,"bbox":[920,226,250,38]}
+{"kind":"textbox","id":"sh/s7mtcf2t","slide":5,"text":"56%","textPreview":"56%","textChars":3,"textLines":1,"bbox":[920,315,250,72]}
+{"kind":"textbox","id":"sh/t8vu5k3e","slide":5,"text":"Recall","textPreview":"Recall","textChars":6,"textLines":1,"bbox":[920,381,250,38]}
+{"kind":"textbox","id":"sh/u94vepkz","slide":5,"text":"แจ้งแล้วมักถูก\nแต่ยังพลาด anomaly จริง 44%","textPreview":"แจ้งแล้วมักถูก | แต่ยังพลาด anomaly จริง 44%","textChars":42,"textLines":2,"bbox":[885,485,330,96]}
+{"kind":"textbox","id":"sh/fadc7a1k","slide":5,"text":"Table 2 จาก Yasaei et al., ICCAD 2020","textPreview":"Table 2 จาก Yasaei et al., ICCAD 2020","textChars":37,"textLines":1,"bbox":[72,681,1136,22]}
+{"kind":"chart","id":"ch/9g76l0rm","slide":5,"name":"","chartType":"bar","bbox":[70,145,760,450]}
+{"kind":"notes","id":"nt/52ny1p","slide":5,"text":"เวลา 3:35–4:30 IoT-CAD ให้ precision 92 เปอร์เซ็นต์ ซึ่งสูงสุดในชุดเปรียบเทียบ และ F1 เท่ากับ 70 เปอร์เซ็นต์ แต่ recall มีเพียง 56 เปอร์เซ็นต์ อย่าพูดว่าโมเดลตรวจได้ถูกต้อง 92 เปอร์เซ็นต์ทุกกรณี ความหมายที่ถูกคือ เมื่อระบบแจ้งเตือน ส่วนใหญ่แจ้งถูก แต่ยังพลาด anomaly จริง 44 เปอร์เซ็นต์ในชุดประเมิน\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/817hl3","slide":6,"title":"Contribution และความเกี่ยวข้องกับ AI","textShapes":9}
+{"kind":"textbox","id":"sh/h0n6x8ji","slide":6,"text":"Contribution และความเกี่ยวข้องกับ AI","textPreview":"Contribution และความเกี่ยวข้องกับ AI","textChars":36,"textLines":1,"bbox":[72,42,1090,64]}
+{"kind":"textbox","id":"sh/uxw72t0r","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1180,48,52,36]}
+{"kind":"textbox","id":"sh/vy5ovy1c","slide":6,"text":"Contribution ของผู้เขียน","textPreview":"Contribution ของผู้เขียน","textChars":24,"textLines":1,"bbox":[78,142,510,44]}
+{"kind":"textbox","id":"sh/8vep0jil","slide":6,"text":"จัดกลุ่มเซนเซอร์ต่างชนิดจาก contextual variation\nใช้ consensus แยก EA กับ SDA และระบุต้นทาง\nปรับโมเดลเมื่อสภาพแวดล้อมหรือโหนดเปลี่ยน","textPreview":"จัดกลุ่มเซนเซอร์ต่างชนิดจาก contextual variation | ใช้ consensus แยก EA กับ SDA และระบุต้นทาง | ปรับโมเดลเมื่อสภาพแวดล้อมหรือโหนดเปลี่ยน","textChars":132,"textLines":3,"bbox":[78,205,540,275]}
+{"kind":"textbox","id":"sh/9wn6toj6","slide":6,"text":"เหตุผลที่ยังมี impact","textPreview":"เหตุผลที่ยังมี impact","textChars":21,"textLines":1,"bbox":[690,142,500,44]}
+{"kind":"textbox","id":"sh/m9c7y90v","slide":6,"text":"AI ที่รับข้อมูลจากโลกจริงต้องรู้ว่า\nข้อมูลจากเซนเซอร์น่าเชื่อถือหรือไม่","textPreview":"AI ที่รับข้อมูลจากโลกจริงต้องรู้ว่า | ข้อมูลจากเซนเซอร์น่าเชื่อถือหรือไม่","textChars":71,"textLines":2,"bbox":[690,215,500,110]}
+{"kind":"textbox","id":"sh/7ulore10","slide":6,"text":"Sensor integrity ก่อนการตัดสินใจ\nConcept drift และการปรับโมเดล\nEdge AI ที่ประมวลผลใกล้หน้างาน","textPreview":"Sensor integrity ก่อนการตัดสินใจ | Concept drift และการปรับโมเดล | Edge AI ที่ประมวลผลใกล้หน้างาน","textChars":93,"textLines":3,"bbox":[690,365,470,185]}
+{"kind":"textbox","id":"sh/srypcni5","slide":6,"text":"LSTM ไม่ใช่โมเดลใหม่ล่าสุด แต่โจทย์ยังไม่ล้าสมัย","textPreview":"LSTM ไม่ใช่โมเดลใหม่ล่าสุด แต่โจทย์ยังไม่ล้าสมัย","textChars":48,"textLines":1,"bbox":[230,600,820,44]}
+{"kind":"textbox","id":"sh/ts7q5sza","slide":6,"text":"Yasaei et al., ICCAD 2020 · doi:10.1145/3400302.3415672","textPreview":"Yasaei et al., ICCAD 2020 · doi:10.1145/3400302.3415672","textChars":55,"textLines":1,"bbox":[72,681,1136,22]}
+{"kind":"notes","id":"nt/817hl3","slide":6,"text":"เวลา 4:30–5:25 Contribution หลักมีสามข้อ ได้แก่ sensor association ที่รองรับหลาย modality, consensus ที่บอกชนิดและต้นทางของ anomaly และ adaptive model ที่รองรับการเปลี่ยนระบบ ในยุค AI คุณค่าอยู่ที่ความน่าเชื่อถือของข้อมูลก่อน AI ตัดสินใจ รวมถึง concept drift และ edge deployment ไม่ได้อยู่ที่การใช้ LSTM ว่าใหม่ที่สุด\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}
+{"kind":"slide","id":"sl/xdd8k1","slide":7,"title":"ข้อจำกัดที่ต้องพูดให้ชัด","textShapes":8}
+{"kind":"textbox","id":"sh/i98v2dwb","slide":7,"text":"ข้อจำกัดที่ต้องพูดให้ชัด","textPreview":"ข้อจำกัดที่ต้องพูดให้ชัด","textChars":24,"textLines":1,"bbox":[76,48,900,58]}
+{"kind":"textbox","id":"sh/5cjexsvm","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1180,52,52,36]}
+{"kind":"textbox","id":"sh/kbad4ne1","slide":7,"text":"Recall 56% ยังต่ำสำหรับเหตุที่ false negative มีต้นทุนสูง\nข้อมูล anomaly เป็น synthetic และเก็บข้อมูลปกติ 8 วัน\nต้องมีเซนเซอร์สัมพันธ์กันอย่างน้อย 3 ตัว\nCoordinated attack และ model poisoning ยังเป็นความเสี่ยง","textPreview":"Recall 56% ยังต่ำสำหรับเหตุที่ false negative มีต้นทุนสูง | ข้อมูล anomaly เป็น synthetic และเก็บข้อมูลปกติ 8 วัน | ต้องมีเซนเซอร์สัมพันธ...","textChars":209,"textLines":4,"bbox":[80,150,700,330]}
+{"kind":"textbox","id":"sh/7e1wz2ds","slide":7,"text":"0.532 s","textPreview":"0.532 s","textChars":7,"textLines":1,"bbox":[900,176,270,80]}
+{"kind":"textbox","id":"sh/6dsv6xw7","slide":7,"text":"เวลาตรวจหนึ่งรอบ\nเฉพาะ testbed ของบทความ","textPreview":"เวลาตรวจหนึ่งรอบ | เฉพาะ testbed ของบทความ","textChars":40,"textLines":2,"bbox":[890,260,290,76]}
+{"kind":"textbox","id":"sh/t0je1cvy","slide":7,"text":"ข้อสรุป","textPreview":"ข้อสรุป","textChars":7,"textLines":1,"bbox":[80,520,170,40]}
+{"kind":"textbox","id":"sh/szax87ed","slide":7,"text":"IoT-CAD ทำให้สัญญาณเตือนมีบริบทมากขึ้น\nแต่หลักฐานยังไม่พอสำหรับระบบ safety-critical","textPreview":"IoT-CAD ทำให้สัญญาณเตือนมีบริบทมากขึ้น | แต่หลักฐานยังไม่พอสำหรับระบบ safety-critical","textChars":83,"textLines":2,"bbox":[80,570,1060,82]}
+{"kind":"textbox","id":"sh/f2lw32do","slide":7,"text":"doi:10.1145/3400302.3415672","textPreview":"doi:10.1145/3400302.3415672","textChars":27,"textLines":1,"bbox":[920,681,290,22]}
+{"kind":"notes","id":"nt/xdd8k1","slide":7,"text":"เวลา 5:25–6:10 วิจารณ์สี่ข้อ Recall 56 เปอร์เซ็นต์ ข้อมูล anomaly สังเคราะห์ ระยะเก็บข้อมูลสั้น และข้อจำกัดของ consensus หากผู้โจมตีควบคุมหลายเซนเซอร์ ปิดด้วยข้อสรุปว่า IoT-CAD ช่วยให้ anomaly detector ใช้บริบททางกายภาพ แต่ต้องมีข้อมูลจริงและการทดสอบด้านความปลอดภัยมากกว่านี้ก่อนใช้ในระบบ safety-critical\n\nSource: R. Yasaei, F. Hernandez, and M. A. Al Faruque, “IoT-CAD,” ICCAD 2020, doi:10.1145/3400302.3415672. IEEE Xplore document 9256703."}

@@ -1,0 +1,111 @@
+to-shard communication. A client who crashes indeﬁnitely is
+equivalent to a client who loses his private key, which prevents
+him from spending the corresponding UTXOs. Furthermore,
+any entity in the system, for example a validator in exchange
+for a fee, can ﬁll in for the client to create an unlock
+transaction, as all necessary information is gossiped.
+To ensure better robustness, we can also assign the shard of
+the smallest-valued input UTXO to be a coordinator respon-
+sible for driving the process of creating unlock transactions.
+Because a shard’s leader might be malicious, f + 1 validators
+of the shard need to send the unlock transaction to guarantee
+that all transactions are eventually unlocked.
+Size of Unlock Transactions: In Atomix, the unlock
+transactions are larger than regular transactions as appropriate
+proofs for input UTXOs need to be included. OmniLedger
+relies on ByzCoinX (a novel BFT-consensus described in
+Section V-A) for processing transactions within each shard.
+When the shard’s validators reach an agreement on a block
+that contains committed transactions, they produce a collec-
+tive signature whose size is independent of the number of
+validators. This important feature enables us to keep Atomix
+proofs (and consequently the unlock transactions) short, even
+though the validity of each transaction is checked against the
+signed blocks of all input UTXOs. If ByzCoinX did not use
+collective signatures, the size of unlock transactions would
+be impractical. For example, for a shard of 100 validators a
+collective signature would only be 77 bytes, whereas a regular
+signature would be 9KB, almost two order’s of magnitude
+larger than the size of a simple transaction (500 bytes).
+V. DESIGN REFINEMENTS FOR PERFORMANCE
+In this section, we introduce the performance sub-protocols
+of OmniLedger. First, we describe a scalable BFT-consensus
+called ByzCoinX that is more robust and more parallelizable
+than ByzCoin. Then, we introduce state-blocks that enable fast
+bootstrapping and decrease storage-costs. Finally, we propose
+an optional trust-but-verify validation step to provide real-time
+latency for low-risk transactions
+A. Fault Tolerance under Byzantine Faults
+The original ByzCoin design offers good scalability, par-
+tially due to the usage of a tree communication pattern.
+Maintaining such communication trees over long time periods
+can be difﬁcult, as they are quite susceptible to faults. In the
+event of a failure, ByzCoin falls back on a more robust all-to-
+all communication pattern, similarly to PBFT. Consequently,
+the consensus’s performance deteriorates signiﬁcantly, which
+the adversary can exploit to hinder the system’s performance.
+To achieve better fault tolerance in OmniLedger, without
+resorting to a PBFT-like all-to-all communication pattern, we
+introduce for ByzCoinX a new communication pattern that
+trades-off some of ByzCoin’s high scalability for robustness,
+by changing the message propagation mechanism within the
+consensus group to resemble a two-level tree. During the
+setup of OmniLedger in an epoch, the generated randomness
+is not only used to assign validators to shards but also to
+assign them evenly to groups within a shard. The number
+of groups g, from which the maximum group size can be
+derived by taking the shard size into account, is speciﬁed
+in the shard policy ﬁle. At the beginning of a ByzCoinX
+roundtrip, the protocol leader randomly selects one of the
+validators in each group to be the group leader responsible for
+managing communication between the protocol leader and the
+respective group members. If a group leader does not reply
+before a predeﬁned timeout, the protocol leader randomly
+chooses another group member to replace the failed leader.
+As soon as the protocol leader receives more than 2
+3 of the
+validators’ acceptances, he proceeds to the next phase of the
+protocol. If the protocol leader fails, all validators initiate a
+PBFT-like view-change procedure.
+B. Parallelizing Block Commitments
+We now show how ByzCoinX parallelizes block commit-
+ments in the UTXO model by carefully analyzing and handling
+dependencies between transactions.
+We observe that transactions that do not conﬂict with each
+other can be committed in different blocks and consequently
+can be safely processed in parallel. To identify conﬂicting
+transactions, we need to analyze the dependencies that are
+possible between transactions. Let txA and txB denote two
+transactions. Then, there are two cases that need to be carefully
+handled: (1) both txA and txB try to spend the same UTXO
+and (2) an UTXO created at the output of txA is spent at
+the input of txB (or vice versa). To address (1) and maintain
+consistency, only one of the two tx can be committed. To
+address (2), txA has to be committed to the ledger before txB,
+i.e., txB has to be in a block that depends (transitively) on the
+block containing txA. All transactions that do not exhibit these
+two properties can be processed safely in parallel. In particular
+we remark that transactions that credit the same address do not
+produce a conﬂict, because they generate different UTXOs
+To capture the concurrent processing of blocks, we adopt a
+block-based directed acyclic graph (blockDAG) [33] as a data
+structure, where every block can have multiple parents. The
+ByzCoinX protocol leader enforces that each pending block
+includes only non-conﬂicting transactions and captures UTXO
+dependencies by adding the hashes of former blocks (i.e.,
+backpointers) upon which a given block’s transactions depend.
+To decrease the number of such hashes, we remark that UTXO
+dependencies are transitive, enabling us to relax the require-
+ment that blocks have to capture all UTXO dependencies
+directly. Instead, a given block can simply add backpointers
+to a set of blocks, transitively capturing all dependencies.
+C. Shard Ledger Pruning
+Now we tackle the issues of an ever-growing ledger and the
+resulting costly bootstrapping of new validators; this is partic-
+ularly urgent for high-throughput DL systems. For example,
+whereas Bitcoin’s blockchain grows by ≈144 MB per day
+and has a total size of about 133 GB, next-generation systems
+with Visa-level throughput (e.g., 4000 tx/sec and 500 B/tx) can
+easily produce over 150 GB per day.
+589
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

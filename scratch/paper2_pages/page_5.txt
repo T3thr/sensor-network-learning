@@ -1,0 +1,112 @@
+dynamic of the story. However, this is not always easy to
+predict as the impact of a Passage can reveal itself only
+in future states.
+Furthermore, a branching narrative will often have several
+narrative paths that the player can take, resulting from
+their choices. For that reason, as the number of possible
+narrative paths grows, it becomes tougher for the author
+to keep track of the Passages that are visited.
+The tool’s algorithm runs through the story by selecting
+different options until it reaches an ending. Then it starts
+a new playthrough and repeats, choosing other options.
+In the end, the Main Dialog Tree (5) displays a tree with
+all the narrative paths that the player can take, giving the
+author a general idea of how the story ﬂows. In order
+to make a more in-depth assessment, the Main Report
+Log (6) displays which Passages are visited in each path.
+Additionally, the user can pick a path to analyse in detail
+(3), which is displayed on the Path Dialog Tree (7).
+• Keep track of endings’ reachability. Depending on the
+choices in dialogue made, the player is led to different
+endings. However, it is difﬁcult for the author to predict
+and monitor the endings’ distribution without it being a
+laborious and time-consuming task. As a design objective,
+the author may want to create certain restrictions on the
+distribution of the endings, such as having an ending
+that is more common to obtain or an ending with only
+one possible path. If the analysis condition Endings Hit
+Percentage is selected, the Main Report Log (6) then
+provides the author with percentages on the likelihood
+of reaching each ending. Besides, on the Main Dialog
+Tree (5), the user can observe the paths’ distribution if
+the analysis condition Number of Paths is selected.
+• Keep track of the story’s variables. In IN, the path
+in which the narrative develops can be dependent on
+different game’s variables. Having variables updating
+depending on the characters or plot state can make the
+interactive story more interesting for the player; however,
+it is difﬁcult for the author to keep track and control those
+values over multiple interactions. The tool can identify
+and keep track of all variables deﬁned by the author
+and their values throughout each path. The user can
+also select which variables they wish to analyse (up to
+three). By selecting the analysis condition Variables Value
+Evolution, the user can observe the value changes of each
+variable. By selecting the analysis condition Variables
+value inside Threshold, the tool highlights the Passages
+where the variables have a value between the MIN and
+MAX values, both deﬁned by the user. The story variables
+are also presented in a dotted chart (4), displaying the
+value’s changes throughout the story.
+• Avoiding Dead-Ends and losing plot. Dead-Ends typically happen due to an error in deﬁning the Passages that
+should come afterwards, meaning they have “entering”
+conditions that are impossible to meet or if the path is an
+“endless” path. The designer must identify these cases,
+as they abruptly stop the player from continuing playing.
+
+However, doing so is difﬁcult due to the combinatorial
+nature of the exploration of the story. Furthermore, it is
+also essential to identify if there are sections in the story
+that are never visited, at the risk of losing important parts
+of the plot. If the user selects the analysis condition Lost
+Plot, the Main Report Log (6) will print out the Passages
+that were never visited and display which paths were not
+able to reach an ending. Additionally, on the Main Dialog
+Tree (5), Passages that are never visited will appear as
+single nodes with no edges connected to them, and on
+the Dialog Trees (5 and 7), Dead-End nodes will take on
+a rectangular shape in oppose to its regular round shape,
+so they are easier to identify for the user.
+A. Emulating personas and playstyles
+As mentioned in section II, the players’ play-styles are
+reﬂected not only in how they act within the plot, but also
+on how they expect the story to respond to their actions.
+The author may want to guarantee that some types of players
+follows a particular trajectory. Therefore, our intent was to
+develop an agent that simulates various playthroughs of the
+game, emulating the behaviour of different players, in order
+to predict user experience and study the story’s output.
+In their work, Stahlke et al. [23] developed a framework,
+named PathOS, that simulates human testing sessions using
+intelligent agents. These agents mimic the behaviour of human players by following a set of heuristics (e.g., curiosity,
+aggression, and completion), that are conﬁgured to reﬂect
+different play-styles. Our work proposes a similar approach,
+by letting the author assign different weights to each of
+the story variables to create different personas that represent
+different playstyles. These personas will have a tendency to
+favour options in the story that have stronger impact in certain
+variables.
+For this, we use an informed Greedy search (see Algorithm
+1) using as heuristic based on the deﬁned weights for the
+“persona” under test. Each story has a set of variables V =
+(v1 , v2 , ..., vn ), where n is the total of story variables, and to
+each of these variables V, the writer assigns weights W =
+(w1 , w2 , ..., wn ). The heuristic then drives the playthrough of
+the story to give preferences to Links that raise the value of
+variables it gives higher weight.
+For example, if we treat the variables as “emotional states”,
+the author may study how the story unfolds given the behavior
+of a more aggressive type of player in their game scenario.
+They can give greater weight to an “angry” variable that depicts the emotion of a character in the story and, consequently,
+drive the algorithm to choose the options that lead to higher
+value to that emotion. By specifying different weights to each
+story variable (e.g., 75% fear, 15% confusion, 5% angry), the
+author creates agents with distinct preferences that play the
+game in different ways.
+It is important to note that since the greedy algorithm does
+not consider the overall problem and always makes a locallyoptimal choice at each step based on the information it has,
+it often does not produce the most optimal solution. However,
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

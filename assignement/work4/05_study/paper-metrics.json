@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "title": "Publish-Time Optimizations for Web-Based Visualizations",
+  "authors": [
+    "Ron Pechuk",
+    "Jeffrey Heer"
+  ],
+  "doi": "10.1109/VIS60296.2025.00051",
+  "ieee_document_id": "11298742",
+  "conference": "2025 IEEE Visualization and Visual Analytics (VIS)",
+  "publication_year": 2025,
+  "proceedings_pages": "226–230",
+  "source_pdf": "../01_original/Paper_IV_1_PRIMARY_PublishTimeOpt_11298742.pdf",
+  "source_sha256": "c8b6a79fc42049b38009ff4d818a69c4cc3236ff22b87bf6a18fd8b86cdb3593",
+  "source_provenance": "Supplied PDF matches the earlier author copy byte-for-byte. Final IEEE-formatted PDF has not been compared.",
+  "page_locator": "PDF pages 1-5; the supplied file has no printed proceedings pagination",
+  "table_1": {
+    "source_pdf_page": 4,
+    "baseline": "none",
+    "unit": "percent_change_relative_to_none",
+    "aggregation": "Mean percentage change across visualizations and dataset sizes",
+    "dispersion": "sigma (standard deviation), not a confidence interval",
+    "label_note": "Table 1 labels the final combined row +most. Section 5 and Figures 3-4 label the final level +prerender. Preserve both source labels.",
+    "rows": [
+      {
+        "source_label": "+prep",
+        "interpretation": "Data preparation and projection",
+        "sc": {
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "ttr": {
+          "mean": -0.6,
+          "sd": 4.0
+        },
+        "tta": {
+          "mean": -1.0,
+          "sd": 2.5
+        }
+      },
+      {
+        "source_label": "+cache",
+        "interpretation": "Preparation plus result caches and materialized aggregates",
+        "sc": {
+          "mean": 21.1,
+          "sd": 29.8
+        },
+        "ttr": {
+          "mean": -16.6,
+          "sd": 1.3
+        },
+        "tta": {
+          "mean": -32.3,
+          "sd": 8.9
+        }
+      },
+      {
+        "source_label": "+most",
+        "interpretation": "Final combined optimization level; evaluation discusses initial pre-rendering with hydration",
+        "sc": {
+          "mean": 21.2,
+          "sd": 29.9
+        },
+        "ttr": {
+          "mean": -83.7,
+          "sd": 2.1
+        },
+        "tta": {
+          "mean": -33.3,
+          "sd": 9.6
+        }
+      }
+    ]
+  },
+  "evaluation": {
+    "source_pdf_page": 4,
+    "specifications": [
+      "airlines",
+      "property",
+      "flights",
+      "gaia",
+      "taxis"
+    ],
+    "dataset_row_counts_from_figure_3": [
+      10000,
+      100000,
+      1000000,
+      10000000
+    ],
+    "cumulative_levels": [
+      "none",
+      "+prep",
+      "+cache",
+      "+prerender"
+    ],
+    "test_environment": {
+      "node": "22.9.0",
+      "computer": "2021 MacBook Pro, 14-inch",
+      "processor": "M1 Pro",
+      "ram_gb": 16,
+      "os": "macOS 15.2",
+      "hosting": "local server",
+      "runtime_database": "DuckDB-WASM"
+    },
+    "figure_3": {
+      "source_pdf_page": 4,
+      "lines": "median time in ms",
+      "shaded_regions": "interquartile ranges",
+      "panels": [
+        "TTR (top)",
+        "TTA (bottom)"
+      ]
+    },
+    "figure_4": {
+      "source_pdf_page": 4,
+      "dataset_rows": 10000000,
+      "aggregation": "Average latency components across visualization specifications",
+      "components": [
+        "Network",
+        "Render",
+        "Hydration",
+        "Activation"
+      ]
+    },
+    "repeated_run_count": null,
+    "repeated_run_count_note": "Not specified in the supplied PDF. Do not treat combinations of conditions as repeated runs."
+  },
+  "publishing_time_difference": {
+    "source": "Section 5, PDF page 4",
+    "mean_ms": 1455.3,
+    "sd_ms": 1779.0,
+    "definition": "Publishing time minus the corresponding unoptimized TTA, averaged across specifications, dataset sizes, and optimizations",
+    "not_total_publishing_time": true
+  },
+  "hydration": {
+    "implemented": "Instantiate interactive components through standard client-side rendering",
+    "source": "Section 4.3, PDF page 3",
+    "observed_cost": "Nearly equivalent to a full client-side render",
+    "observed_cost_source": "Section 5, PDF page 4",
+    "progressive_hydration_evaluated": false,
+    "progressive_hydration_status": "Related work in Section 2.3; finer-grained hydration is future work in Section 5"
+  },
+  "derived_values": [
+    {
+      "name": "Additional mean TTA reduction versus the same none baseline when moving from cache to final combined level",
+      "value": 1.0,
+      "unit": "percentage_points",
+      "calculation": "33.3 - 32.3",
+      "author_of_calculation": "Study preparer",
+      "caution": "Not a 1 percent speedup relative to cache and not proof of statistical significance"
+    }
+  ],
+  "study_scope": "System architecture, measured results, limitations, and reader synthesis of this paper."
+}

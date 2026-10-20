@@ -1,0 +1,112 @@
+10 blocks). We denote N = 3f+ validators exist where at
+most f are dishonest.
+Fig. 12: Anti-censorship mechanism OmniLedger
+The workﬂow (Figure 12), starts
+1⃝with each validator
+proposing a few (e.g 100)
+blinded transactions for anti-
+censorship, which initiates a consensus round. The leader
+should add in the blocks all the proposals, however he can
+censor f of the honest proposers. Nevertheless, he is blind
+on the f inputs he has to add from the honest validators he
+will reach consensus with. Once the round ends, there is a
+list
+2⃝of transactions that are eligible for anti-censorship,
+which is a subset of the proposed. As the transactions are
+blinded, no other validator knows which ones are proposed
+before the end of the consensus. Each validators reveals
+3⃝his
+chosen transactions, the validators check that the transactions
+are valid and run consensus on which ones they expect the
+leader to propose. The leader is then obliged to include
+4⃝the
+transactions that are consistent with the state, otherwise the
+honest validators will cause a view-change [13].
+APPENDIX B
+BREAKING THE NETWORK MODEL
+Although DL protocols that assume a non-static group
+of validators have similar synchrony [34], [36] assumptions,
+in this section we discuss what can happen if the adversary
+manages to break them [3]. In such a case we can detect the
+attack and provide a back-up randomness generation mecha-
+nism which is not expected to scale but guarantees safety even
+in asynchrony.
+Given that RandHound guarantees safety without the need
+for synchrony an adversary manipulates the network can at
+most slow down any validator he does not control, winning
+the leadership all the time. However this does not enable the
+adversary to manipulate RandHound, it just gives him the
+advantage of being able to restart the protocol if he does not
+like the random number. This restart will be visible to the
+network, and the participants can suspect a bias-attempt, when
+multiple consecutive RandHound rounds start to fail.
+OmniLedger can provide a “safety valve” mechanism in
+order to mitigate this problem. When 5 RandHound views fail
+in a row, which under normal circumstances could happen
+with less than 1% probability, the validators switch from
+RandHound to running a fully asynchronous coin-tossing
+protocol [12] that uses Publicly Veriﬁable Secret Sharing [43],
+in order to produce the epoch’s randomness. This protocol
+scales poorly (O(n3)), but it will be run when the network is
+anyway under attack and liveness is not guaranteed, in which
+case safety is more important.
+APPENDIX C
+PROBABILITY OF CROSS-SHARD TRANSACTIONS
+This section explores the limitations cross-shard transac-
+tions pose to the performance of the system. When splitting
+the state into disjoint parts, the common practice [16], [34]
+is to assign UTXOs to shards, based on the ﬁrst bits of their
+hash. For example, one shard manages all UTXOs whose ﬁrst
+bit is 0, and the second shard all UTXOs whose ﬁrst bit is
+1. Then each shard is managed by a group of validators who
+keep the state consistent and commit updates.
+For an intrashard transaction we want all the inputs and
+outputs of the transaction to be assigned at the shame shard.
+The probability of assigning a UTXO in a shard is uniformly
+random from the randomness guarantees of cryptographic hash
+functions. Let m be the total number of shards, n the sum of
+input and output UTXOs and k the number of shards that need
+to participate in the cross-shard validation of the transaction.
+The probability can be calculated as:
+P(n, k, m) =
+⎧
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎩
+1, n = 1, k = 1
+0, n = 1, k̸ = 1
+m−k
+m P(n −1, k −1, m)+
+k
+mP(n −1, k, m), n̸ = 1, k > 0
+(3)
+For a typical transaction with two inputs and one output and
+a three-shard setup, the probability of a transaction being
+intra-shard is P(3, 1, 3) = 3.7%, rendering the assumption
+that transactions touch only one shard [34] problematic. As a
+result if all transactions had this format the expected speed-
+up from an 1-shard to a 4-shard conﬁguration would be
+4 ∗(0.015 + 0.328
+2
++ 0.56
+3
++ 0.09
+4 ) = 1.56 Generalizing this
+we should expect that the speed-up will be lower than the
+one of experiment VIII, depending on the average amount of
+inputs and outputs and the total number of shards.
+APPENDIX D
+ATOMIX FOR STATE-FULL OBJECTS
+The original Atomix protocol in Section IV implements a
+state machine as depicted in Figure 13
+Fig. 13: State-Machine for state-full objects. Pessimistic lock-
+ing is necessary
+To enable the use of such an algorithm in smart contracts
+we need to account on the fact that a smart-contract object
+597
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

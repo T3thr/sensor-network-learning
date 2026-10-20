@@ -1,0 +1,119 @@
+update, which retrains all trainable modules in order, and ii) partial
+update, which only retrains the predictor model. These update
+processes are triggered under three circumstances:
+• Change in the number of sensors in the system (either added
+or removed) triggers complete update.
+• Each time the sensors send data, the anomaly detection
+model first validates the new data. Afterward, partial update is triggered using the new anomaly-free data.
+• If complete update is not provoked during a fixed interval
+of time 𝑡𝑟𝑒𝑡𝑟𝑎𝑖𝑛 , it is triggered automatically. This way, the
+model accounts for changes in the environment, location,
+and placement. This parameter 𝑡𝑟𝑒𝑡𝑟𝑎𝑖𝑛 can be tuned by the
+user, depending on how frequently the system layout is
+changed.
+
+4 RESULTS AND EVALUATION
+4.1 Fog Computing Architecture
+
+Edge
+
+Fog
+
+Cloud
+
+Cloud servers are the common and potent available computation
+resource in IoT systems. However, the bandwidth of network and
+data transmission become a bottleneck due to Rapid expansion of
+IoT nodes and the quantity of data. As a result, fog computing has
+emerged, which provides storage, computation, and application
+services closer to end-user with dense geographical distribution
+[29]. In the fog architecture (Figure 7), the bottom layer comprises a
+heterogeneous network of edge nodes with limited resources. The
+fog nodes in the middle layer collect and process the data from edge
+devices and communicate to the cloud via the internet.
+Our methodology is fog-empowered, and the developed model
+for our target IoT system is implemented on a fog node. For the
+IoT systems with a high density of devices and a massive volume
+of data, our method is scalable, and it still supports fog computing.
+Basically, the LSTM encoder-decoder networks are responsible for
+most of the computation in our method. Thus, instead of training an
+extensive network for the whole system, we construct a small network for each cluster of associated sensors that can be distributed
+between fog nodes. Furthermore, we perform several optimizations
+to meet resource constraints. In the sensor association, we use the
+binary fingerprint instead of time-series signals, which lowers storage usage and complicity. The sliding window technique in LSTM
+network contributes to reducing storage usage as well.
+
+Figure 7: Fog computing hierarchy in IoT systems.
+
+Figure 8: The scaled-down version of experimental setup.
+
+4.2
+
+Experimental Setup
+
+To build and evaluate our methodology, we implement an IoT
+testbed in our laboratory. Our experimental setup consists of an
+Ad-Hoc network of multi-modality IoT sensors, a Software-Defined
+Radio (SDR) connected to an edge computing device, a gateway,
+and a laptop as fog node . For this particular research, we have used
+62 sensors which measure 13 different physical parameters (see
+Table 1). The acoustic sensor is a wide range microphone with two
+right and left channels that captures the sound of the space and its
+output is amplified and recorded by the handy recorder ZOOM-H6.
+The raspberry pi board, which is directly connected to ZOOM-H6,
+collects its data and transmits it over the Internet and this part of
+the system simulates devices such as Google Home or Alexa. The
+other sensors are on the low-power embedded boards operated by
+TinyOS which are equipped with a wireless communication module
+based on IEEE 802.15.4 standard. We have implemented the IEEE
+802.15.4 standard in the SDR device (USRP-B210) and created a
+Table 1: List of sensors in our experimental setup.
+Sensor
+
+Sensor board
+
+# of sensors
+
+Temperature
+Humidity
+Visible light
+Infrared light
+Force and load
+Tilt
+Accelerometer
+Presence detector
+Magnetic
+CO_2
+CO
+Dust
+Acoustic
+
+MTS-CM5000
+MTS-CM5000
+MTS-CM5000
+MTS-CM5000
+MTS-CO1000
+MTS-CO1000
+MTS-CO1000
+MTS-SE1000
+MTS-SE1000
+MTS-AR1000
+MTS-AR1000
+MTS-SH3000
+ZOOM-H6
+
+12
+12
+12
+12
+2
+2
+2
+2
+1
+1
+1
+1
+2
+
+

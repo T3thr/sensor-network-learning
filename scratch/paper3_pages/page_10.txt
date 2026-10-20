@@ -1,0 +1,114 @@
+timeout T1 is used by the shard leader to retry the request
+to non-responsive group members. The second timeout T2 is
+used by the group members to identify a potential failure of a
+shard leader and to initiate a view-change [13]. To ensure that
+the shard leader has enough time to retry his requests, we have
+a ﬁxed ratio of T1 = 0.1T2 . However, if the T2 is triggered,
+then in the new view T2 doubles (as is typical [13]) in order to
+contemplate for increase in the network’s asynchrony, hence
+T1 should double to respect the ratio.
+2) Reaching Consensus: We calculate the probability for
+a group size N = 600 where
+√
+N = 25: Given a popu-
+lation of 600 nodes and a sampling size of 25, we use the
+hypergeometric distribution for our calculation which yields
+a probability of 99.93% that a given group will have less
+than 25 −10 = 15 malicious nodes.
+A union bound over
+25 groups yields a probability of 98.25% that no group will
+have more than 15 malicious nodes. In the worst case, where
+there are exactly 1
+3 malicious nodes in total, we need all of the
+honest validators to reply. For a group that contains exactly 15
+malicious nodes, the shard’s leader will ﬁnd an honest group
+leader (for ByzCoinX) after 10 tries with a probability of
+1 −((15/24)10) = 98.6%. As a result, the total probability
+of failure is 1 −0.986 ∗0.9825 = 0.031.
+We remark that this failure does not constitute a compromise
+of security of OmniLedger. Rather, it represents the probability
+of a failure for the shard leader who is in charge of coordinat-
+ing the shard’s operation. If a shard leader indeed fails, then
+a new shard leader will be elected having 97% probability of
+successfully reaching consensus.
+VII. IMPLEMENTATION
+We implemented OmniLedger and its subprotocols for
+sharding, consensus, and processing of cross-shard transac-
+tions in Go [26]. For sharding, we combined RandHound’s
+code, available on GitHub, with our implementation of a VRF-
+based leader-election mechanism by using a VRF construction
+similar to the one of Franklin and Zhang [22]. Similarly, to
+implement ByzCoinX, we extended ByzCoin’s code, available
+on GitHub as well, by the parallel block commitment mecha-
+nism as introduced in Section V-B. We also implemented the
+Atomix protocol, see Section IV-C, on top of the shards and a
+client that dispatches and veriﬁes cross-shard transactions.
+VIII. EVALUATION
+In this section, we experimentally evaluate our prototype im-
+plementation of OmniLedger. The primary questions we want
+to evaluate concern the overall performance of OmniLedger
+and whether it truly scales out (Section VIII-B), the cost of
+epoch transitions (Section VIII-C), the client-perceived latency
+when committing cross-shard transactions (Section VIII-D),
+and the performance differences between ByzCoinX and Byz-
+Coin with respect to throughput and latency (Section VIII-E).
+A. Experimental Setup
+We ran all our experiments on DeterLab [18] using 60
+physical machines, each equipped with an Intel E5-2420 v2
+Fig. 6: OmniLedger throughput for 1800 hosts, varying shard
+sizes s, and adversarial power f/n.
+TABLE I: OmniLedger transaction conﬁrmation latency in
+seconds for different conﬁgurations with respect to the shard
+size s, adversarial power f/n, and validation types.
+[s, f/n]
+[4, 1%]
+[25, 5%]
+[70, 12.5%]
+[600, 25%]
+Regular val.
+1.38
+5.99
+8.04
+14.52
+1st lvl. val.
+1.38
+1.38
+1.38
+4.48
+2nd lvl. val.
+1.38
+55.89
+41.84
+62.96
+CPU, 24 GB of RAM, and a 10 Gbps network link. To simulate
+a realistic, globally distributed deployment, we restricted the
+bandwidth of all connections between nodes to 20 Mbps and
+impose a latency of 100 ms on all communication links. The
+basis for our experiments was a data set consisting of the ﬁrst
+10, 000 blocks of the Bitcoin blockchain.
+B. OmniLedger Performance
+In this experiment, we evaluate the performance of Om-
+niLedger in terms of throughput and latency in different
+situations: we distinguish the cases where we have a ﬁxed
+shard size and varying adversarial power (in particular 1%,
+5%, 12.5%, and 25%) or the other way round. We also
+distinguish between conﬁgurations with regular or trust-but-
+verify validations where we use 1 MB blocks in the former
+case and 500 KB for optimistically validated blocks and 16 MB
+for ﬁnal blocks in the latter case. In order to provide enough
+transactions for the ﬁnal blocks, for each shard, there are
+32 optimistic validation groups concurrently running; they all
+feed to one core shard, enabling low latency for low-risk
+transactions (Table I) and high throughput of the total system.
+Figure 6 shows OmniLedger’s throughput for 1800 hosts in
+different conﬁgurations and, for comparison, includes the aver-
+age throughput of Visa at ≈4000 tx/sec. Additionally, Table I
+shows the conﬁrmation latency in the above conﬁguration.
+We observe that OmniLedger’s throughput with trust-but-
+verify validation is almost an order of magnitude higher than
+with regular validation, at the cost of a higher latency for high-
+risk transactions that require both validation steps. For low-risk
+transactions, OmniLedger provides an optimistic conﬁrmation
+in a few seconds after the ﬁrst validation step, with less than
+592
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

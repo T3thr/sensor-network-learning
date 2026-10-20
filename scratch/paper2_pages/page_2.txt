@@ -1,0 +1,109 @@
+II. AUTHORING I NTERACTIVE NARRATIVES
+The authoring of interactive stories in video games is an
+overwhelming and complex task for game writers, both in
+narrative design and implementation. We identiﬁed four main
+challenges pertaining to the development of IN:
+1) Authorial intent vs player agency. One of the most
+challenging problems with IN is the necessity to balance
+authorial intent and player agency in the context of
+storytelling [14]. According to Riedl, authorial intent is
+the trajectory that the game writer wishes the player
+to follow, regardless of how the player acts during the
+game. Because IN allows the user to interact freely
+within the story world, users often have the power to
+behave in ways that are inconsistent with the plot. This
+can either prevent the plot from advancing or make the
+player experience the story in ways that the creator did
+not intend.
+2) Narrative exponential growth. As the plot grows in
+complexity and the number of decision points increases,
+the authoring experience will often require substantial
+changes to keep the narrative coherent, which can become overwhelming for the author [15]. Not to mention
+that the impact a choice has may end up only revealing
+itself in future states of the story, which is not always
+easy to predict.
+3) Gameplay variables that affect the story. Besides what
+choices the player makes, the story’s development can be
+based on different variables and status that are updated
+throughout to game. A common example is the “karma
+systems”, which consider the player’s good and evil
+deeds and shape the world around them as they progress.
+In more complex narratives, game variables can become
+challenging to keep track of, and their consequences
+may only unravel in later states in the game, which
+is not always easy for the author to foresee during
+development.
+4) Measuring the impact on user’s experience. The
+player play-styles are reﬂected not only in how they
+interact with the narrative but also in how they expect the
+story to unfold [16]. Due to the complex nature of IN, it
+is difﬁcult for the author to predict the player’s behaviour
+and overall emotional experience. This is challenging to
+predict without prior human playtesting, as it is hard to
+ensure during development.
+III. L ITERATURE R EVIEW
+A. Interactive Drama
+In order to maintain narrative coherency even when the
+player has freedom of choice, some past approaches have
+focused on the idea of integrating real-time Artiﬁcial Intelligence (AI) methods to shape the narrative, allowing players
+to interact with the game freely but, at the same time, making
+sure the narrative still follows a coherent structure. A popular
+example, ﬁrst proposed by Bates [17], is the use of a drama
+manager. A Drama Manager (DM) is an omniscient agent that
+
+monitors the game world and guides the player’s experience
+through the story by searching for possible future plot points
+based on the evaluation of the current game world while still
+allowing the players to interact freely.
+For instance, one of the most famous examples of the
+implementation of a DM is the Mateas and Stern interactive
+drama Façade [18]. Façade uses its DM to monitor and update
+the simulation in real-time in response to text the user inputs
+by selecting the next story beat.
+Like in Façade, Riedl et al. presented the prototype for
+INTALE [19], in which the agents are directed by a DM called
+Automated Story Director. The Automated Story Director
+handles user interactions by maintaining a script of expected
+events and planning out new narrative follow-ups to respond
+to the player’s actions and achieve all concrete narrative goals
+pre-deﬁned by the author.
+The studies mentioned above show that online AI approaches, particularly drama managers, are a popular solution
+to guarantee narrative coherence while allowing the player
+to interact with the game freely. Unfortunately, there has
+been hardly any work done regarding off-line approaches
+that attempt to identify possible narrative problems during
+development and allow the author to validate their narrative
+with different story metrics and predict different playthroughs’
+output.
+B. Authoring Tools
+Since the authoring process remains one of the most signiﬁcant challenges in the development of interactive stories,
+there is a need for tools, toolkits and authoring systems that
+assist game writers in creating their content. Authoring tools
+for IN provide different visual representations and structural
+elements that allow authors to write their creative works.
+With this in mind, we explored some of the existing
+authoring tools currently available for creating IN and their
+limitations, namely Tinderbox [20], Ren’Py [12], FAtiMA
+Toolkit [21] and Twine [11]. Our ﬁndings revealed that these
+authoring systems lacked the proper tools to analyse important
+narrative metrics and identify possible continuity errors. While
+these tools were designed to facilitate the authoring process,
+they nevertheless rely heavily on the author’s diligent and
+methodical eye to predict all gameplay scenarios and possible complications that might arise, making story creation a
+wearing, expensive, and time-consuming process.
+Nonetheless, due to its wide adoption and easy to work
+architecture, we concluded that Twine was the most promising
+candidate for the incorporation of our model, which we will
+describe in the next section.
+Twine is a hypertext-based authoring tool designed to
+facilitate the creation of interactive stories with branching
+narratives. The creation of games with Twine requires only
+two elements: Passages and Links. Passage is the Twine’s
+terminology for the nodes on the story graph that players
+navigate through. Each Passage contains a block of text that
+is shown to the player when they reach that Passage during
+gameplay. Additionally, Passages can also possess one or more
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

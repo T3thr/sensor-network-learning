@@ -1,0 +1,1937 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/p8ioq3",
+    "id": "p8ioq3",
+    "slide": 3,
+    "layoutId": "bd5b7e62-5464-4eff-936e-21daa2dfc1f8",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F8FAFC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1536,
+      "height": 864
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "IBM Plex Sans Thai"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd5b7e62-5464-4eff-936e-21daa2dfc1f8",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y5srqx4j",
+      "id": "1",
+      "name": "shape-41",
+      "bbox": [
+        0,
+        0,
+        1536,
+        91.2
+      ],
+      "geometry": "rect",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l8jalc3a",
+      "id": "2",
+      "name": "text-42",
+      "bbox": [
+        86.4,
+        24,
+        1363.2,
+        52
+      ],
+      "geometry": "rect",
+      "text": "สถาปัตยกรรม Mosaic Publisher",
+      "textPreview": "สถาปัตยกรรม Mosaic Publisher",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 28,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#FFFFFF",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "สถาปัตยกรรม Mosaic Publisher"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "สถาปัตยกรรม Mosaic Publisher",
+          "resolvedTextStyle": {
+            "fontSize": 28,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#FFFFFF",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "สถาปัตยกรรม Mosaic Publisher",
+              "fontSize": 28,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/07a9s7mp",
+      "id": "3",
+      "name": "shape-43",
+      "bbox": [
+        0,
+        820.8,
+        1536,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b2hsfil8",
+      "id": "4",
+      "name": "text-44",
+      "bbox": [
+        86.4,
+        837,
+        1260,
+        20
+      ],
+      "geometry": "rect",
+      "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+      "textPreview": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+      "resolvedFontSize": 14.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 14.67,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+          "resolvedTextStyle": {
+            "fontSize": 14.67,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เอกสารอ้างอิง: Pechuk & Heer, IEEE VIS 2025 (IEEE Doc ID: 11298742)",
+              "fontSize": 14.67,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q18rmd4n",
+      "id": "5",
+      "name": "text-45",
+      "bbox": [
+        1360,
+        835,
+        90,
+        23
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4jahs3y",
+      "id": "6",
+      "name": "shape-46",
+      "bbox": [
+        86.4,
+        130,
+        864,
+        385
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/c3q9onmd",
+      "id": "7",
+      "name": "text-47",
+      "bbox": [
+        118.4,
+        154,
+        800,
+        36
+      ],
+      "geometry": "rect",
+      "text": "สถาปัตยกรรมไปป์ไลน์ช่วงเผยแพร่",
+      "textPreview": "สถาปัตยกรรมไปป์ไลน์ช่วงเผยแพร่",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "สถาปัตยกรรมไปป์ไลน์ช่วงเผยแพร่"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "สถาปัตยกรรมไปป์ไลน์ช่วงเผยแพร่",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "สถาปัตยกรรมไปป์ไลน์ช่วงเผยแพร่",
+              "fontSize": 22,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/6hc3u103",
+      "id": "8",
+      "bbox": [
+        118.4,
+        196,
+        800,
+        255
+      ],
+      "alt": "fig1-publish-time-overview.png",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "565f55aa-f1b5-412b-a64e-481b56c9b1eb",
+        "contentType": "image/png",
+        "byteLength": 458280
+      }
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2d8rid4b",
+      "id": "9",
+      "name": "text-48",
+      "bbox": [
+        118.4,
+        463,
+        800,
+        24
+      ],
+      "geometry": "rect",
+      "text": "Figure 1: การแบ่งกลุ่มงาน 3 ส่วนที่ย้ายไปทำล่วงหน้าก่อนผู้ใช้ส่งคำขอ (หน้า PDF 1)",
+      "textPreview": "Figure 1: การแบ่งกลุ่มงาน 3 ส่วนที่ย้ายไปทำล่วงหน้าก่อนผู้ใช้ส่งคำขอ (หน้า PDF 1)",
+      "resolvedFontSize": 14.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 14.67,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Figure 1: การแบ่งกลุ่มงาน 3 ส่วนที่ย้ายไปทำล่วงหน้าก่อนผู้ใช้ส่งคำขอ (หน้า PDF 1)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Figure 1: การแบ่งกลุ่มงาน 3 ส่วนที่ย้ายไปทำล่วงหน้าก่อนผู้ใช้ส่งคำขอ (หน้า PDF 1)",
+          "resolvedTextStyle": {
+            "fontSize": 14.67,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Figure 1: การแบ่งกลุ่มงาน 3 ส่วนที่ย้ายไปทำล่วงหน้าก่อนผู้ใช้ส่งคำขอ (หน้า PDF 1)",
+              "fontSize": 14.67,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wnulkr2h",
+      "id": "10",
+      "name": "shape-49",
+      "bbox": [
+        86.4,
+        533,
+        864,
+        222
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ho3mdwj2",
+      "id": "11",
+      "name": "text-50",
+      "bbox": [
+        118.4,
+        557,
+        800,
+        36
+      ],
+      "geometry": "rect",
+      "text": "ขั้นตอนการประมวลผลของ Publisher",
+      "textPreview": "ขั้นตอนการประมวลผลของ Publisher",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ขั้นตอนการประมวลผลของ Publisher"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ขั้นตอนการประมวลผลของ Publisher",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ขั้นตอนการประมวลผลของ Publisher",
+              "fontSize": 22,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ulc3ihkb",
+      "id": "12",
+      "name": "shape-51",
+      "bbox": [
+        118.4,
+        596,
+        248,
+        88
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F8FAFC",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vml4bm1w",
+      "id": "13",
+      "name": "text-52",
+      "bbox": [
+        128.4,
+        616,
+        228,
+        56
+      ],
+      "geometry": "rect",
+      "text": "1. วิเคราะห์ AST &\nจำลอง Virtual DOM",
+      "textPreview": "1. วิเคราะห์ AST & | จำลอง Virtual DOM",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1. วิเคราะห์ AST &"
+          },
+          {
+            "index": 2,
+            "text": "จำลอง Virtual DOM"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1. วิเคราะห์ AST &",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "1. วิเคราะห์ AST &",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "จำลอง Virtual DOM",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "จำลอง Virtual DOM",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8julg72l",
+      "id": "14",
+      "name": "shape-53",
+      "bbox": [
+        370.4,
+        640,
+        18,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9k3m9cjq",
+      "id": "15",
+      "name": "flow-arrow-54",
+      "bbox": [
+        384.4,
+        636,
+        8,
+        10
+      ],
+      "rotation": 90,
+      "geometry": "triangle",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mhs3exkf",
+      "id": "16",
+      "name": "shape-55",
+      "bbox": [
+        394.4,
+        596,
+        248,
+        88
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F8FAFC",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7il472l0",
+      "id": "17",
+      "name": "text-56",
+      "bbox": [
+        404.4,
+        616,
+        228,
+        56
+      ],
+      "geometry": "rect",
+      "text": "2. คำนวณคิวรีล่วงหน้า\nผ่าน DuckDB",
+      "textPreview": "2. คำนวณคิวรีล่วงหน้า | ผ่าน DuckDB",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2. คำนวณคิวรีล่วงหน้า"
+          },
+          {
+            "index": 2,
+            "text": "ผ่าน DuckDB"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2. คำนวณคิวรีล่วงหน้า",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2. คำนวณคิวรีล่วงหน้า",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ผ่าน DuckDB",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ผ่าน DuckDB",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sfelsb2p",
+      "id": "18",
+      "name": "shape-57",
+      "bbox": [
+        646.4,
+        640,
+        18,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tgnmlgja",
+      "id": "19",
+      "name": "flow-arrow-58",
+      "bbox": [
+        660.4,
+        636,
+        8,
+        10
+      ],
+      "rotation": 90,
+      "geometry": "triangle",
+      "fillColor": "#0F2D4A",
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1w3m5wbe",
+      "id": "20",
+      "name": "shape-59",
+      "bbox": [
+        670.4,
+        596,
+        248,
+        88
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F8FAFC",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0balcbut",
+      "id": "21",
+      "name": "text-60",
+      "bbox": [
+        680.4,
+        616,
+        228,
+        56
+      ],
+      "geometry": "rect",
+      "text": "3. Rewrite AST &\nสร้าง JS Bundle",
+      "textPreview": "3. Rewrite AST & | สร้าง JS Bundle",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3. Rewrite AST &"
+          },
+          {
+            "index": 2,
+            "text": "สร้าง JS Bundle"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3. Rewrite AST &",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3. Rewrite AST &",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "สร้าง JS Bundle",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "สร้าง JS Bundle",
+              "fontSize": 18,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fa1436t8",
+      "id": "22",
+      "name": "text-61",
+      "bbox": [
+        118.4,
+        705,
+        800,
+        24
+      ],
+      "geometry": "rect",
+      "text": "สรุปกลไกการทำงานจาก Sections 4.1–4.3 (หน้า PDF 3)",
+      "textPreview": "สรุปกลไกการทำงานจาก Sections 4.1–4.3 (หน้า PDF 3)",
+      "resolvedFontSize": 14.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 14.67,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "สรุปกลไกการทำงานจาก Sections 4.1–4.3 (หน้า PDF 3)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "สรุปกลไกการทำงานจาก Sections 4.1–4.3 (หน้า PDF 3)",
+          "resolvedTextStyle": {
+            "fontSize": 14.67,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "สรุปกลไกการทำงานจาก Sections 4.1–4.3 (หน้า PDF 3)",
+              "fontSize": 14.67,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e9s3a1cn",
+      "id": "23",
+      "name": "shape-62",
+      "bbox": [
+        985.6,
+        130,
+        464,
+        625
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#E2E8F0",
+      "lineWidth": 1
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d8jm1wb2",
+      "id": "24",
+      "name": "text-63",
+      "bbox": [
+        1017.6,
+        154,
+        400,
+        36
+      ],
+      "geometry": "rect",
+      "text": "ชิ้นส่วนผลลัพธ์ส่งมอบให้ไคลเอนต์",
+      "textPreview": "ชิ้นส่วนผลลัพธ์ส่งมอบให้ไคลเอนต์",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 22,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ชิ้นส่วนผลลัพธ์ส่งมอบให้ไคลเอนต์"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ชิ้นส่วนผลลัพธ์ส่งมอบให้ไคลเอนต์",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ชิ้นส่วนผลลัพธ์ส่งมอบให้ไคลเอนต์",
+              "fontSize": 22,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s7al8rux",
+      "id": "25",
+      "name": "text-64",
+      "bbox": [
+        1013.6,
+        214,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "1",
+      "textPreview": "1",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "1",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r61kzmtc",
+      "id": "26",
+      "name": "text-65",
+      "bbox": [
+        1049.6,
+        214,
+        372,
+        32
+      ],
+      "geometry": "rect",
+      "text": "ข้อมูลจัดระเบียบพร้อมใช้",
+      "textPreview": "ข้อมูลจัดระเบียบพร้อมใช้",
+      "resolvedFontSize": 19.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 19.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ข้อมูลจัดระเบียบพร้อมใช้"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ข้อมูลจัดระเบียบพร้อมใช้",
+          "resolvedTextStyle": {
+            "fontSize": 19.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ข้อมูลจัดระเบียบพร้อมใช้",
+              "fontSize": 19.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q5s36hcr",
+      "id": "27",
+      "name": "text-66",
+      "bbox": [
+        1049.6,
+        250,
+        372,
+        75
+      ],
+      "geometry": "rect",
+      "text": "กรองเฉพาะคอลัมน์ที่จำเป็นและแปลงข้อมูล\nลดภาระการส่งข้อมูลข้ามเครือข่าย",
+      "textPreview": "กรองเฉพาะคอลัมน์ที่จำเป็นและแปลงข้อมูล | ลดภาระการส่งข้อมูลข้ามเครือข่าย",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "กรองเฉพาะคอลัมน์ที่จำเป็นและแปลงข้อมูล"
+          },
+          {
+            "index": 2,
+            "text": "ลดภาระการส่งข้อมูลข้ามเครือข่าย"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "กรองเฉพาะคอลัมน์ที่จำเป็นและแปลงข้อมูล",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "กรองเฉพาะคอลัมน์ที่จำเป็นและแปลงข้อมูล",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ลดภาระการส่งข้อมูลข้ามเครือข่าย",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ลดภาระการส่งข้อมูลข้ามเครือข่าย",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/54j2xcb6",
+      "id": "28",
+      "name": "shape-67",
+      "bbox": [
+        1013.6,
+        379,
+        408,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/43ql47ul",
+      "id": "29",
+      "name": "text-68",
+      "bbox": [
+        1013.6,
+        400,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "2",
+      "textPreview": "2",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u9ojedsj",
+      "id": "30",
+      "name": "text-69",
+      "bbox": [
+        1049.6,
+        400,
+        372,
+        32
+      ],
+      "geometry": "rect",
+      "text": "ผลคิวรีสำเร็จรูป",
+      "textPreview": "ผลคิวรีสำเร็จรูป",
+      "resolvedFontSize": 19.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 19.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ผลคิวรีสำเร็จรูป"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ผลคิวรีสำเร็จรูป",
+          "resolvedTextStyle": {
+            "fontSize": 19.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ผลคิวรีสำเร็จรูป",
+              "fontSize": 19.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vax07i94",
+      "id": "31",
+      "name": "text-70",
+      "bbox": [
+        1049.6,
+        436,
+        372,
+        75
+      ],
+      "geometry": "rect",
+      "text": "เติมแคชและฐานข้อมูล DuckDB-WASM\nล่วงหน้าผ่าน Mosaic Coordinator",
+      "textPreview": "เติมแคชและฐานข้อมูล DuckDB-WASM | ล่วงหน้าผ่าน Mosaic Coordinator",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "เติมแคชและฐานข้อมูล DuckDB-WASM"
+          },
+          {
+            "index": 2,
+            "text": "ล่วงหน้าผ่าน Mosaic Coordinator"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "เติมแคชและฐานข้อมูล DuckDB-WASM",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "เติมแคชและฐานข้อมูล DuckDB-WASM",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "ล่วงหน้าผ่าน Mosaic Coordinator",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ล่วงหน้าผ่าน Mosaic Coordinator",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gb61gnap",
+      "id": "32",
+      "name": "shape-71",
+      "bbox": [
+        1013.6,
+        565,
+        408,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#E2E8F0",
+      "lineWidth": 0
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hcfi9sru",
+      "id": "33",
+      "name": "text-72",
+      "bbox": [
+        1013.6,
+        586,
+        28,
+        34
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F2D4A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F2D4A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F2D4A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6lojads7",
+      "id": "34",
+      "name": "text-73",
+      "bbox": [
+        1049.6,
+        586,
+        372,
+        32
+      ],
+      "geometry": "rect",
+      "text": "ภาพเริ่มต้นและชุดสคริปต์",
+      "textPreview": "ภาพเริ่มต้นและชุดสคริปต์",
+      "resolvedFontSize": 19.51,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 19.51,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ภาพเริ่มต้นและชุดสคริปต์"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ภาพเริ่มต้นและชุดสคริปต์",
+          "resolvedTextStyle": {
+            "fontSize": 19.51,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ภาพเริ่มต้นและชุดสคริปต์",
+              "fontSize": 19.51,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 35,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/76x03i9s",
+      "id": "35",
+      "name": "text-74",
+      "bbox": [
+        1049.6,
+        622,
+        372,
+        75
+      ],
+      "geometry": "rect",
+      "text": "ส่งภาพเรนเดอร์สำเร็จให้แสดงผลทันที\nพร้อมสคริปต์เปิดการโต้ตอบตามหลัง",
+      "textPreview": "ส่งภาพเรนเดอร์สำเร็จให้แสดงผลทันที | พร้อมสคริปต์เปิดการโต้ตอบตามหลัง",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ส่งภาพเรนเดอร์สำเร็จให้แสดงผลทันที"
+          },
+          {
+            "index": 2,
+            "text": "พร้อมสคริปต์เปิดการโต้ตอบตามหลัง"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ส่งภาพเรนเดอร์สำเร็จให้แสดงผลทันที",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ส่งภาพเรนเดอร์สำเร็จให้แสดงผลทันที",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "พร้อมสคริปต์เปิดการโต้ตอบตามหลัง",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "พร้อมสคริปต์เปิดการโต้ตอบตามหลัง",
+              "fontSize": 16,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 36,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8761cnad",
+      "id": "36",
+      "name": "text-75",
+      "bbox": [
+        86.4,
+        768,
+        1363.2,
+        24
+      ],
+      "geometry": "rect",
+      "text": "ที่มา: Sections 3.2–3.4 และ 4.1–4.3 (หน้า PDF 2–3)",
+      "textPreview": "ที่มา: Sections 3.2–3.4 และ 4.1–4.3 (หน้า PDF 2–3)",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 15,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#64748B",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ที่มา: Sections 3.2–3.4 และ 4.1–4.3 (หน้า PDF 2–3)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ที่มา: Sections 3.2–3.4 และ 4.1–4.3 (หน้า PDF 2–3)",
+          "resolvedTextStyle": {
+            "fontSize": 15,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#64748B",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ที่มา: Sections 3.2–3.4 และ 4.1–4.3 (หน้า PDF 2–3)",
+              "fontSize": 15,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#64748B",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

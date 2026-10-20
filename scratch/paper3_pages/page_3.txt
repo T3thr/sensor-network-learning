@@ -1,0 +1,111 @@
+[25], Proof-of-Burn (PoB) [46] or Proof-of-Personhood [8]
+overcome PoW’s problems and are compatible with ByzCoins
+identity (key-block) blockchain, and in turn with OmniLedger
+E. Prior Sharded Ledgers: Elastico
+OmniLedger builds closely on Elastico [34], that previously
+explored sharding in permissionless ledgers. In every round,
+Elastico uses the least-signiﬁcant bits of the PoW hash to
+distribute miners to different shards. After this setup, every
+shard runs PBFT [13] to reach consensus, and a leader shard
+veriﬁes all the signatures and creates a global block.
+OmniLedger addresses several challenges that Elastico
+leaves unsolved. First, Elastico’s relatively small shards (e.g.,
+100 validators per shard in experiments) yield a high failure-
+probability of 2.76%1 per shard per block under a 25% adver-
+sary, which cannot safely be relaxed in a PoW system [23]. For
+16 shards, the failure probability is 97% over only 6 epochs.
+Second, Elastico’s shard selection is not strongly bias-resistant,
+as miners can selectively discard PoWs to bias results [7].
+Third, Elastico does not ensure transaction atomicity across
+shards, leaving funds in one shard locked forever if another
+shard rejects the transaction. Fourth, the validators constantly
+switch shards, forcing themselves to store the global state,
+which can hinder performance but provides stronger guar-
+antees against adaptive adversaries. Finally, the latency of
+transaction commitment is comparable to Bitcoin (≈10 min.),
+which is far from OmniLedger’s usability goals.
+III. SYSTEM OVERVIEW
+This section presents the system, network and threat models,
+the design goals, and a roadmap towards OmniLedger that
+begins with a strawman design.
+A. System Model
+We assume that there are n validators who process trans-
+actions and ensure the consistency of the system’s state. Each
+validator i has a public / private key pair (pki, ski), and we
+often identify i by pki. Validators are evenly distributed across
+m shards. We assume that the conﬁguration parameters of
+a shard j are summarized in a shard-policy ﬁle. We denote
+by an epoch e the ﬁxed time (e.g., a day) between global
+reconﬁguration events where a new assignment of validators
+to shards is computed. The time during an epoch is counted in
+rounds r that do not have to be consistent between different
+shards. During each round, each shard processes transactions
+collected from clients. We assume that validators can establish
+identities through any Sybil-attack-resistant mechanism and
+commit them to the identity blockchain; to participate in epoch
+e validators have to register in epoch e−1. These identities are
+added into an identity blockchain as described in Section II-D.
+B. Network Model
+For the underlying network, we make the same assumption
+as prior work [31], [34], [36]. Speciﬁcally, we assume that (a)
+the network graph of honest validators is well connected and
+that (b) the communication channels between honest validators
+are synchronous, i.e., that if an honest validator broadcasts a
+1Cumulative binomial distribution (P = 0.25, N = 100, X ≥34)
+message, then all honest validators receive the message within
+a known maximum delay Δ [39]. However, as Δ is in the
+scale of minutes, we cannot use it within epochs as we target
+latencies of seconds. Thus, all protocols inside one epoch
+use the partially synchronous model [13] with optimistic,
+exponentially increasing time-outs, whereas Δ is used for slow
+operations such as identity creation and shard assignment.
+C. Threat Model
+We denote the number of Byzantine validators by f and
+assume, that n = 4f, i.e., at most 25% 2 of the validators
+can be malicious at any given moment, which is similar to
+prior DL’s [21], [32], [34]. These malicious nodes can behave
+arbitrarily, e.g., they might refuse to participate or collude to
+attack the system. The remaining validators are honest and
+faithfully follow the protocol. We further assume that the
+adversary is mildly adaptive [31], [34] on the order of epochs,
+i.e., he can try to corrupt validators, but it takes some time for
+such corruption attempts to actually take effect.
+We further assume that the adversary is computationally
+bounded, that cryptographic primitives are secure, and that
+the computational Difﬁe-Hellman problem is hard.
+D. System Goals
+OmniLedger has the following primary goals with respect
+to decentralization, security, and scalability.
+1) Full decentralization. OmniLedger does not have any
+single points of failure (such as trusted third parties).
+2) Shard robustness. Each shard correctly and continuously
+processes transactions assigned to it.
+3) Secure transactions. Transactions are committed atomi-
+cally or eventually aborted, both within and across shards.
+4) Scale-out. The expected throughput of OmniLedger in-
+creases linearly in the number of participating validators.
+5) Low storage overhead. Validators do not need to store
+the full transaction history but only a periodically computed
+reference point that summarizes a shard’s state.
+6) Low latency. OmniLedger provides low latency for trans-
+action conﬁrmations.
+E. Design Roadmap
+This section introduces SLedger, a strawman DL system that
+we use to outline OmniLedger’s design. Below we describe
+one epoch of SLedger and show how it transitions from epoch
+e −1 to epoch e.
+We start with the secure validator-assignment to shards.
+Permitting the validators to choose the shards they want to
+validate is insecure, as the adversary could focus all his
+validators in one shard. As a result, we need a source of
+randomness to ensure that the validators of one shard will
+be a sample of the overall system and w.h.p. will have the
+same fraction of malicious nodes. SLedger operates a trusted
+randomness beacon that broadcasts a random value rnde to
+all participants in each epoch e. Validators, who want to
+participate in SLedger starting from epoch e, have to ﬁrst
+register to a global identity blockchain. They create their
+identities through a Sybil-attack-resistant mechanism in epoch
+2The system can handle up to 33% −ϵ with degraded performance
+585
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

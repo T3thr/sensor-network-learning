@@ -1,0 +1,137 @@
+REFERENCES
+[1] M. M. Ahemd, M. A. Shah, and A. Wahid. 2017. IoT security: A layered approach for attacks amp; defenses. In 2017 International Conference on Communication Technologies (ComTech). 104–110. https://doi.org/10.1109/COMTECH.
+2017.8065757
+[2] Unai Alegre, Juan Carlos Augusto, and Tony Clark. 2016. Engineering contextaware systems and applications: A survey. Journal of Systems and Software 117
+(2016), 55–83.
+[3] D. Altolini, V. Lakkundi, N. Bui, C. Tapparello, and M. Rossi. 2013. Low power
+link layer security for IoT: Implementation and performance analysis. In 2013
+9th International Wireless Communications and Mobile Computing Conference
+(IWCMC). 919–925. https://doi.org/10.1109/IWCMC.2013.6583680
+[4] Anomadarshi Barua and Mohammad Al Faruque. 2020. Hall Spoofing: A NonInvasive DoS Attack on Grid-Tied Solar Inverter. 29th Usenix Security (2020).
+[5] Ferdinand Brasser, Brahim El Mahjoub, Ahmad-Reza Sadeghi, Christian Wachsmann, and Patrick Koeberl. 2015. TyTAN: tiny trust anchor for tiny devices. In
+2015 52nd ACM/EDAC/IEEE Design Automation Conference (DAC). IEEE, 1–6.
+[6] Markus M Breunig, Hans-Peter Kriegel, Raymond T Ng, and Jörg Sander. 2000.
+LOF: identifying density-based local outliers. In ACM sigmod record, Vol. 29. ACM,
+93–104.
+[7] Sucheta Chauhan and Lovekesh Vig. 2015. Anomaly detection in ECG time
+signals via deep long short-term memory networks. In 2015 IEEE International
+Conference on Data Science and Advanced Analytics (DSAA). IEEE, 1–7.
+[8] Hsin Chung Chen, Mohammad Abdullah Al Faruque, and Pai H Chou. 2016.
+Security and privacy challenges in IoT-based machine-to-machine collaborative
+scenarios. In Proceedings of the Eleventh IEEE/ACM/IFIP International Conference
+on Hardware/Software Codesign and System Synthesis.
+[9] Sujit Rokka Chhetri, Sina Faezi, Arquimedes Canedo, and Mohammad Abdullah Al Faruque. 2019. QUILT: quality inference from living digital twins in
+IoT-enabled manufacturing systems. In Proceedings of the International Conference on Internet of Things Design and Implementation. ACM, 237–248.
+[10] Sujit Rokka Chhetri, Nafiul Rashid, Sina Faezi, and Mohammad Abdullah
+Al Faruque. 2017. Security trends and advances in manufacturing systems in
+the era of industry 4.0. In IEEE/ACM International Conference on Computer-Aided
+Design (ICCAD).
+[11] Andrew Cook, Göksel Mısırlı, and Zhong Fan. 2019. Anomaly Detection for IoT
+Time-Series Data: A Survey. Internet of Things Journal (2019).
+[12] Sina Faezi, Sujit Rokka Chhetri, Arnav Vaibhav Malawade, John Charles Chaput,
+William H Grover, Philip Brisk, and Mohammad Abdullah Al Faruque. 2019. OligoSnoop: A Non-Invasive Side Channel Attack Against DNA Synthesis Machines..
+In NDSS.
+[13] Pavel Filonov, Andrey Lavrentyev, and Artem Vorontsov. 2016. Multivariate
+Industrial Time Series with Cyber-Attack Simulation: Fault Detection Using an
+LSTM-based Predictive Data Model. arXiv:1612.06676 [cs.LG]
+[14] Federico Giannoni, Marco Mancini, and Federico Marinelli. 2018. Anomaly
+Detection Models for IoT Time Series Data. arXiv (2018).
+[15] B. Halak, M. Zwolinski, and M. S. Mispan. 2016. Overview of PUF-based hardware
+security solutions for the internet of things. In 2016 IEEE 59th International
+Midwest Symposium on Circuits and Systems (MWSCAS). 1–4. https://doi.org/10.
+1109/MWSCAS.2016.7870046
+[16] Jun Han, Albert Jin Chung, Manal Kumar Sinha, Madhumitha Harishankar, Shijia
+Pan, Hae Young Noh, Pei Zhang, and Patrick Tague. 2018. Do you feel what I
+hear? Enabling autonomous IoT device pairing using different sensor types. In
+2018 IEEE Symposium on Security and Privacy (SP). IEEE, 836–852.
+[17] Mee Lan Han, Jin Lee, Ah Reum Kang, Sungwook Kang, Jung Kyu Park, and
+Huy Kang Kim. 2015. A Statistical-Based Anomaly Detection Method for Connected Cars in Internet of Things Environment. In Internet of Vehicles - Safe and
+Intelligent Mobility, Ching-Hsien Hsu, Feng Xia, Xingang Liu, and Shangguang
+Wang (Eds.). Springer International Publishing, Cham, 89–97.
+[18] Zengyou He, Xiaofei Xu, and Shengchun Deng. 2003. Discovering cluster-based
+local outliers. Pattern Recognition Letters 24, 9-10 (2003), 1641–1650.
+[19] Sepp Hochreiter and Jürgen Schmidhuber. 1997. Long short-term memory. Neural
+computation 9, 8 (1997), 1735–1780.
+[20] E. Hodo, X. Bellekens, A. Hamilton, P. Dubouilh, E. Iorkyase, C. Tachtatzis,
+and R. Atkinson. 2016. Threat analysis of IoT networks using artificial neural
+network intrusion detection system. In 2016 International Symposium on Networks,
+Computers and Communications (ISNCC). 1–6. https://doi.org/10.1109/ISNCC.
+2016.7746067
+[21] C. Lesjak, H. Bock, D. Hein, and M. Maritsch. 2016. Hardware-secured and
+transparent multi-stakeholder data exchange for industrial IoT. In 2016 IEEE
+14th International Conference on Industrial Informatics (INDIN). 706–713. https:
+//doi.org/10.1109/INDIN.2016.7819251
+[22] Christian Lesjak, Norbert Druml, Rainer Matischek, Thomas Ruprechter, and
+Gerald Holweg. 2016. Security in industrial IoT – quo vadis? e & i Elektrotechnik
+und Informationstechnik 133, 7 (01 Nov 2016), 324–329. https://doi.org/10.1007/
+s00502-016-0428-4
+
+[23] Tao Lin, Tian Guo, and Karl Aberer. 2017. Hybrid Neural Networks for Learning
+the Trend in Time Series. (2017), 2273–2279. https://doi.org/10.24963/ijcai.2017/
+316
+[24] Wei-Chao Lin, Shih-Wen Ke, and Chih-Fong Tsai. 2015. CANN: An intrusion
+detection system based on combining cluster centers and nearest neighbors.
+Knowledge-based systems 78 (2015), 13–21.
+[25] Y. Liu, H. Zheng, X. Feng, and Z. Chen. 2017. Short-term traffic flow prediction
+with Conv-LSTM. In 2017 9th International Conference on Wireless Communications and Signal Processing (WCSP). 1–6. https://doi.org/10.1109/WCSP.2017.
+8171119
+[26] Barthélémy Longueville, Mickaël Gardoni, et al. 2003. A survey of context
+modeling: approaches, theories and use for engineering design researches. In
+DS 31: Proceedings of ICED 03, the 14th International Conference on Engineering
+Design, Stockholm. 437–438.
+[27] YANG Zhihong TU Mengfu LU Jinjun LU Jixiang, ZHANG Qipei and PENG Hui.
+2019. Short-term Load Forecasting Method Based on CNN-LSTM Hybrid Neural
+Network Model. AEPS 43, 8 (2019), 131. https://doi.org/10.7500/AEPS20181012004
+[28] W. Luo, W. Liu, and S. Gao. 2017. Remembering history with convolutional LSTM
+for anomaly detection. In 2017 IEEE International Conference on Multimedia and
+Expo (ICME). 439–444. https://doi.org/10.1109/ICME.2017.8019325
+[29] Lingjuan Lyu, Jiong Jin, Sutharshan Rajasegarar, Xuanli He, and Marimuthu
+Palaniswami. 2017. Fog-empowered anomaly detection in IoT using hyperellipsoidal clustering. Internet of Things Journal (2017).
+[30] Junshui Ma and Simon Perkins. 2003. Time-series novelty detection using oneclass support vector machines. In International Joint Conference on Neural Networks.
+[31] Pankaj Malhotra, Anusha Ramakrishnan, Gaurangi Anand, Lovekesh Vig, Puneet
+Agarwal, and Gautam Shroff. 2016. LSTM-based encoder-decoder for multi-sensor
+anomaly detection. arXiv preprint arXiv:1607.00148 (2016).
+[32] Pankaj Malhotra, Vishnu TV, Anusha Ramakrishnan, Gaurangi Anand, Lovekesh
+Vig, Puneet Agarwal, and Gautam Shroff. 2016. Multi-Sensor Prognostics using an Unsupervised Health Index based on LSTM Encoder-Decoder.
+arXiv:1608.06154 [cs.LG]
+[33] Pankaj Malhotra, Lovekesh Vig, Gautam Shroff, and Puneet Agarwal. 2015. Long
+short term memory networks for anomaly detection in time series. In Proceedings.
+Presses universitaires de Louvain, 89.
+[34] Jonathan M McCune, Yanlin Li, Ning Qu, Zongwei Zhou, Anupam Datta, Virgil Gligor, and Adrian Perrig. 2010. TrustVisor: Efficient TCB reduction and
+attestation. In 2010 IEEE Symposium on Security and Privacy. IEEE, 143–158.
+[35] Markus Miettinen, N Asokan, Thien Duc Nguyen, Ahmad-Reza Sadeghi, and
+Majid Sobhani. 2014. Context-based zero-interaction pairing and key evolution
+for advanced personal devices. In Proceedings of the 2014 ACM SIGSAC Conference
+on Computer and Communications Security. ACM, 880–891.
+[36] Markus Miettinen, Thien Duc Nguyen, Ahmad-Reza Sadeghi, and N Asokan. 2018.
+Revisiting context-based authentication in IoT. In 2018 55th ACM/ESDA/IEEE
+Design Automation Conference (DAC). IEEE, 1–6.
+[37] Yao Qin, Dongjin Song, Haifeng Chen, Wei Cheng, Guofei Jiang, and Garrison
+Cottrell. 2017. A Dual-Stage Attention-Based Recurrent Neural Network for
+Time Series Prediction. arXiv:1704.02971 [cs.LG]
+[38] Shahid Raza, Linus Wallgren, and Thiemo Voigt. 2013. SVELTE: Real-time intrusion detection in the Internet of Things. Ad hoc networks 11, 8 (2013), 2661–2674.
+[39] H. Sedjelmaci, S. M. Senouci, and M. Al-Bahri. 2016. A lightweight anomaly
+detection technique for low-resource IoT devices: A game-theoretic methodology.
+In 2016 IEEE International Conference on Communications (ICC). 1–6. https:
+//doi.org/10.1109/ICC.2016.7510811
+[40] Arvind Seshadri, Mark Luk, and Adrian Perrig. 2008. SAKE: Software Attestation
+for Key Establishment in Sensor Networks. In Distributed Computing in Sensor
+Systems, Sotiris E. Nikoletseas, Bogdan S. Chlebus, David B. Johnson, and Bhaskar
+Krishnamachari (Eds.). Springer Berlin Heidelberg, Berlin, Heidelberg, 372–385.
+[41] Arvind Seshadri, Mark Luk, Adrian Perrig, Leendert van Doorn, and Pradeep K.
+Khosla. 2006. SCUBA: Secure Code Update By Attestation in sensor networks. In
+Workshop on Wireless Security.
+[42] Jiang Wan, Anthony Lopez, and Mohammad Abdullah Al Faruque. 2018. Physical
+layer key generation: Securing wireless communication in automotive cyberphysical systems. ACM Transactions on Cyber-Physical Systems 3, 2 (2018), 13.
+[43] Yuankai Wu and Huachun Tan. 2016. Short-term traffic flow forecasting with spatial-temporal correlation in a hybrid deep learning framework.
+arXiv:1612.01022 [cs.CV]
+[44] Haiyang Yu, Zhihai Wu, Shuqin Wang, Yunpeng Wang, and Xiaolei Ma. 2017.
+Spatiotemporal Recurrent Convolutional Networks for Traffic Prediction in Transportation Networks. Sensors 17, 7 (2017). https://doi.org/10.3390/s17071501
+[45] K. Zhao and L. Ge. 2013. A Survey on the Internet of Things Security. In 2013
+Ninth International Conference on Computational Intelligence and Security. 663–
+667. https://doi.org/10.1109/CIS.2013.145
+[46] Z. Zhao, W. Chen, X. Wu, P. C. Y. Chen, and J. Liu. 2017. LSTM network: a deep
+learning approach for short-term traffic forecast. IET Intelligent Transport Systems
+11, 2 (2017), 68–75. https://doi.org/10.1049/iet-its.2016.0208
+
+

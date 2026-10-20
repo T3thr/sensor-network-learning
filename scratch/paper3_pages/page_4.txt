@@ -1,0 +1,85 @@
+Fig. 2: OmniLedger architecture overview: At the beginning of an epoch e, all validators (shard membership is visualized through the
+different colors) (1) run RandHound to re-assign randomly a certain threshold of validators to new shards and assign new validators who
+registered to the identity blockchain in epoch e −1. Validators ensure (2) consistency of the shards’ ledgers via ByzCoinX while clients
+ensure (3) consistency of their cross-shard transactions via Atomix (here the client spends inputs from shards 1 and 2 and outputs to shard 3).
+e−1 and broadcast them, together with the respective proofs,
+on the gossip network at most Δ before epoch e −1 ends.
+Epoch e begins with a leader, elected using randomness
+rnde−1, who requests from the already registered and active
+validators a (BFT) signature on a block with all identities that
+have been provably established so far. If at least 2
+3 of these
+validators endorse the block, it becomes valid, and the leader
+appends it to the identity blockchain. Afterwards, all registered
+validators take rnde to determine their assignment to one of
+the SLedger’s shards and to bootstrap their internal states from
+the shards’ distributed ledgers. Then, they are ready to start
+processing transactions using ByzCoin. The random shard-
+assignment ensures that the ratio between malicious and honest
+validators in any given shard closely matches the ratio across
+all validators with high probability.
+SLedger already provides a similar functionality to Om-
+niLedger, but it has several signiﬁcant security restrictions.
+First, the randomness beacon is a trusted third party. Second,
+the system stops processing transactions during the global
+reconﬁguration at the beginning of each epoch until enough
+validators have bootstrapped their internal states and third,
+there is no support for cross-shard transactions. SLedger’s
+design also falls short in performance. First, due to ByzCoin’s
+failure handling mechanism, its performance deteriorates when
+validators fail. Second, validators face high storage and boot-
+strapping overheads. Finally, SLedger cannot provide real-time
+conﬁrmation latencies and high throughput.
+To address the security challenges, we introduce Om-
+niLedger’s security design in Section IV:
+1) In Section IV-A, we remove the trusted randomness beacon
+and show how validators can autonomously perform a
+secure sharding by using a combination of RandHound and
+VRF-based leader election via cryptographic sortition.
+2) In Section IV-B, we show how to securely handle the
+validator assignment to shards between epochs while main-
+taining the ability to continuously process transactions.
+3) In Section IV-C, we present Atomix, a novel two-step
+atomic commit protocol for atomically processing cross-
+shard transactions in a Byzantine setting.
+To deal with the performance challenges, we introduce
+OmniLedger’s performance and usability design in Section V:
+4) In Section V-A, we introduce ByzCoinX, a variant of Byz-
+Coin, that utilizes more robust communication patterns to
+efﬁciently process transactions within shards, even if some
+of the validators fail, and that resolves dependencies on the
+transaction level to achieve better block parallelization.
+5) In Section V-C, we introduce state blocks that summarize
+the shards’ states in an epoch and that enable ledger pruning
+to reduce storage and bootstrapping costs for validators.
+6) In Section V-D, we show how to enable optimistic real-
+time transaction conﬁrmations without sacriﬁcing security
+or throughput by utilizing an intra-shard architecture with
+trust-but-verify transaction validation.
+A high-level overview of the (security) architecture of
+OmniLedger is illustrated in Figure 2.
+IV. OMNILEDGER: SECURITY DESIGN
+A. Sharding via Bias-Resistant Distributed Randomness
+To generate a seed for sharding securely without requiring
+a trusted randomness beacon [16] or binding the protocol to
+PoW [34], we rely on a distributed randomness generation
+protocol that is collectively executed by the validators.
+We require that the distributed-randomness generation pro-
+tocol provide unbiasability, unpredictability, third-party veriﬁ-
+ability, and scalability. Multiple proposals exist [7], [28], [44].
+The ﬁrst approach relies on Bitcoin, whereas the other two
+share many parts of the design; we focus on RandHound [44]
+due to better documentation and open-source implementation.
+Because RandHound relies on a leader to orchestrate the
+protocol run, we need an appropriate mechanism to select
+one of the validators for this role. If we use a deterministic
+approach to perform leader election, then an adversary might
+be able to enforce up to f out of n failures in the worst case
+by refusing to run the protocol, resulting in up to 1
+4n failures
+given our threat model. Hence, the selection mechanism must
+be unpredictable and unbiasable, which leads to a chicken-and-
+egg problem as we use RandHound to generate randomness
+with these properties in the ﬁrst place. To overcome this
+586
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

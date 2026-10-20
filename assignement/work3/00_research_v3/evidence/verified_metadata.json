@@ -1,0 +1,27 @@
+{
+  "verified_on": "2026-09-28",
+  "source": "IEEE Xplore xplGlobal.document.metadata + /rest/search records + pdfinfo",
+  "papers": [
+    {"role": "PRIMARY", "ieee_doc_id": "11029790", "doi": "10.1109/ICSE55347.2025.00007",
+     "title": "Prompt-to-SQL Injections in LLM-Integrated Web Applications: Risks and Defenses",
+     "authors": ["Rodrigo Pedro", "Miguel E. Coimbra", "Daniel Castro", "Paulo Carreira", "Nuno Santos"],
+     "venue": "2025 IEEE/ACM 47th International Conference on Software Engineering (ICSE)",
+     "dates": "26 April-6 May 2025", "pages": "1768-1780", "content_type": "Conferences",
+     "isOpenAccess": true, "isFreeDocument": true,
+     "file": "01_original_v3/Paper_III_3_PRIMARY_P2SQL_11029790.pdf", "bytes": 283585, "pdf_pages": 13},
+    {"role": "BACKUP1", "ieee_doc_id": "10554688", "doi": "10.1145/3639477.3639712",
+     "title": "Autonomous Monitors for Detecting Failures Early and Reporting Interpretable Alerts in Cloud Operations",
+     "authors": ["Adha Hrusto", "Per Runeson", "Magnus C Ohlsson"],
+     "venue": "2024 IEEE/ACM 46th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)",
+     "dates": "14-20 April 2024", "pages": "47-57", "content_type": "Conferences",
+     "isOpenAccess": true, "isFreeDocument": true,
+     "file": "00_research_v3/raw/Paper_III_v3_BACKUP1_10554688.pdf", "bytes": 451026, "pdf_pages": 11},
+    {"role": "BACKUP2", "ieee_doc_id": "10554731", "doi": "10.1145/3639477.3639752",
+     "title": "Dynamic Alert Suppression Policy for Noise Reduction in AIOps",
+     "authors": ["Karan Bhukar", "Harshit Kumar", "Seema Nagar", "Pooja Aggarwal", "Rohan Arora", "Ruchi Mahindru", "Amit Paradkar"],
+     "venue": "2024 IEEE/ACM 46th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)",
+     "dates": "14-20 April 2024", "pages": "178-188", "content_type": "Conferences",
+     "isOpenAccess": true, "isFreeDocument": true,
+     "file": "00_research_v3/raw/Paper_III_v3_BACKUP2_10554731.pdf", "bytes": 2351626, "pdf_pages": 11}
+  ]
+}

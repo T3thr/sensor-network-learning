@@ -1,0 +1,375 @@
+{
+  "checkedAt": "2026-09-26",
+  "timezone": "Asia/Bangkok",
+  "method": "IEEE Xplore search page in a browser session without login or institutional access; metadata read from each IEEE document page; full text read from IEEE HTML view; PDF availability checked by requesting stampPDF/getPDF.jsp and confirming HTTP 200, application/pdf and %PDF header",
+  "accessNote": "All six are marked free (isFreeDocument=true) on IEEE Xplore. Downloaded PDFs carry the banner 'Authorized licensed use limited to: IEEE Xplore' (not a university licence).",
+  "doiCheck": "Each DOI returned HTTP 302 from doi.org to its IEEE Xplore document page on 2026-09-26",
+  "citationNote": "ieeeCitedByPapers and fullTextViews are IEEE Xplore snapshot values on 2026-09-26, not permanent figures",
+  "excludedIds": {
+    "paperI": [
+      "9256703",
+      "10635077",
+      "9826168"
+    ],
+    "paperII": [
+      "9618897",
+      "10645625",
+      "11274671"
+    ]
+  },
+  "papers": [
+    {
+      "id": "8418625",
+      "title": "OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding",
+      "authors": [
+        "Eleftherios Kokoris-Kogias (Ècole Polytechnique Fédérale de Lausanne, Switzerland)",
+        "Philipp Jovanovic (Ècole Polytechnique Fédérale de Lausanne, Switzerland)",
+        "Linus Gasser (Ècole Polytechnique Fédérale de Lausanne, Switzerland)",
+        "Nicolas Gailly (Ècole Polytechnique Fédérale de Lausanne, Switzerland)",
+        "Ewa Syta (Trinity College, USA)",
+        "Bryan Ford (Ècole Polytechnique Fédérale de Lausanne, Switzerland)"
+      ],
+      "venue": "2018 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2018",
+      "conferenceDates": "20-24 May 2018",
+      "location": "San Francisco, CA, USA",
+      "pages": "583-598",
+      "doi": "10.1109/SP.2018.000-5",
+      "isbn": "978-1-5386-4353-2",
+      "ieeeCitedByPapers": 1078,
+      "fullTextViews": 17303,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 1772188,
+        "magic": "%PDF-1.4"
+      },
+      "authorKeywords": "blockchain, sharding, distributed ledger, cross shard, decentralization, Byzantine Fault Tolerant, trust but verify, scalable, ByzCoinX, Atomix, ledger pruning, state blocks, randomness",
+      "rank": "PRIMARY",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/8418625/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/8418625/",
+      "downloaded": {
+        "files": [
+          "work3/01_original/Paper_III_1_PRIMARY_OmniLedger_8418625.pdf",
+          "sensor-network/raw/Paper_III_1_PRIMARY_OmniLedger_8418625.pdf"
+        ],
+        "bytes": 1772141,
+        "pdfPages": 16,
+        "sha256": "bbfd73b28036343db48d97b4d7456c886193afd5640dd6458902248e7fb08b32"
+      },
+      "pdfFindings": [
+        "Eq. (1) (p.591): upper summation limit printed as n, which makes the binomial sum equal 1; intended bound is floor(n/3)",
+        "Appendix C (p.597): Eq. (3) coefficient (m-k)/m should be (m-k+1)/m; the 3.7% single-shard case should be about 11.1% (1/9); 1.56x matches 4 UTXOs, not the 3 stated",
+        "Throughput at 1,800 hosts, 12.5% adversary: Introduction (p.584) says 6,000 tps, Section VIII-B (p.593) says 13,000 tps in 25 shards; Fig. 6 (p.592) bar [70, 12.5%] reads about 6,800 tps regular and 19,900 tps trust-but-verify from PDF vector coordinates (log axis 10^0 at y=186.21, 10^7 at y=76.2; Visa line reads about 4,120 as a calibration check)",
+        "Section VIII-B (p.593) says final confirmation of high-risk transactions takes less than one minute; Table I (p.592) shows 62.96 s at [600, 25%]",
+        "Table IV (p.595) lists OmniLedger scale-out as 2,400 validators; the reported experiments stop at 1,800 hosts",
+        "25% adversary at Visa-level throughput (about 4,200 hosts, 7 shards) is an estimate only (p.593); the [600, 25%] setting itself was measured at 1,800 hosts (Fig. 6, Table I)",
+        "Table II (p.593): 12.5% adversary, shard size 70; the cross-shard share of the workload is not reported"
+      ]
+    },
+    {
+      "id": "9833647",
+      "title": "Back to the Drawing Board: A Critical Evaluation of Poisoning Attacks on Production Federated Learning",
+      "authors": [
+        "Virat Shejwalkar (University of Massachusetts, Amherst)",
+        "Amir Houmansadr (University of Massachusetts, Amherst)",
+        "Peter Kairouz (Google Research)",
+        "Daniel Ramage (Google Research)"
+      ],
+      "venue": "2022 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2022",
+      "conferenceDates": "22-26 May 2022",
+      "location": "San Francisco, CA, USA",
+      "pages": "1354-1371",
+      "doi": "10.1109/SP46214.2022.9833647",
+      "isbn": "978-1-6654-1316-9",
+      "ieeeCitedByPapers": 259,
+      "fullTextViews": 6182,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 1177738,
+        "magic": "%PDF-1.6"
+      },
+      "authorKeywords": "poisoning-attacks, production-federated-learning, robust-aggregation-rules",
+      "rank": "BACKUP1",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/9833647/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/9833647/",
+      "downloaded": {
+        "files": [
+          "sensor-network/raw/Paper_III_2_BACKUP1_FL-Poisoning_9833647.pdf"
+        ],
+        "bytes": 1177683,
+        "pdfPages": 18,
+        "sha256": "ff37454b61920276844c796230be90c001fd39ba7e1c29ed8b00ecbb30432a40"
+      }
+    },
+    {
+      "id": "9152619",
+      "rank": "BACKUP2",
+      "title": "Burglars’ IoT Paradise: Understanding and Mitigating Security Risks of General Messaging Protocols on IoT Clouds",
+      "authors": [
+        "Yan Jia (School of Cyber Engineering, Xidian University, China)",
+        "Luyi Xing (Indiana University, Bloomington, USA)",
+        "Yuhang Mao (School of Cyber Engineering, Xidian University, China)",
+        "Dongfang Zhao (Indiana University, Bloomington, USA)",
+        "XiaoFeng Wang (Indiana University, Bloomington, USA)",
+        "Shangru Zhao (School of Cyber Engineering, Xidian University, China)",
+        "Yuqing Zhang (National Computer Network Intrusion Protection Center, University of Chinese Academy of Sciences, China)"
+      ],
+      "venue": "2020 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2020",
+      "conferenceDates": "18-21 May 2020",
+      "location": "San Francisco, CA, USA",
+      "pages": "465-481",
+      "doi": "10.1109/SP40000.2020.00051",
+      "ieeeCitedByPapers": 75,
+      "isFreeDocument": true,
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/9152619/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/9152619/",
+      "downloaded": {
+        "files": [
+          "sensor-network/raw/Paper_III_3_BACKUP2_BurglarsIoT_9152619.pdf"
+        ],
+        "bytes": 10444991,
+        "pdfPages": 17,
+        "sha256": "a1d88009295c108d51b101b3f37c33542ba1943522b1aeff69fa377eab967c85",
+        "downloadedAt": "2026-09-26T19:36:00Z",
+        "note": "PDF has almost no text layer (text drawn as vector paths); Table I and Table II were read from 400 dpi page renders"
+      },
+      "scores": {
+        "prestige": 5,
+        "math": 3,
+        "empirical": 4,
+        "impact": 4,
+        "alignment": 5,
+        "total": 21
+      },
+      "pdfFindings": [
+        "Table I (p.475): at least one weakness exploited on 7 of 8 platforms; Google none exploited (several N/A)",
+        "Table II (p.478): recomputed from raw values, MEM overhead at 8000 clients is 1.16% (printed 0.16%), CPU at 1000 clients is 16.2% (printed 5.52%), CPU at 6000 clients is 7.25% (printed 7.34%)"
+      ]
+    },
+    {
+      "id": "8418651",
+      "rank": "CANDIDATE (next fallback)",
+      "title": "Crowd-GPS-Sec: Leveraging Crowdsourcing to Detect and Localize GPS Spoofing Attacks",
+      "authors": [
+        "Kai Jansen (Ruhr-University Bochum, Germany)",
+        "Matthias Schäfer (University of Kaiserslautern, Germany)",
+        "Daniel Moser (ETH Zurich, Switzerland)",
+        "Vincent Lenders (Armasuisse, Switzerland)",
+        "Christina Pöpper (New York University, Abu Dhabi, United Arab Emirates)",
+        "Jens Schmitt (University of Kaiserslautern, Germany)"
+      ],
+      "venue": "2018 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2018",
+      "conferenceDates": "20-24 May 2018",
+      "location": "San Francisco, CA, USA",
+      "pages": "1018-1031",
+      "doi": "10.1109/SP.2018.00012",
+      "ieeeCitedByPapers": 111,
+      "isFreeDocument": true,
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/8418651/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/8418651/",
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 843446,
+        "magic": "%PDF-1.4"
+      },
+      "scores": {
+        "prestige": 5,
+        "math": 5,
+        "empirical": 4,
+        "impact": 4,
+        "alignment": 3,
+        "total": 21
+      }
+    },
+    {
+      "id": "9519440",
+      "title": "Red Belly: A Secure, Fair and Scalable Open Blockchain",
+      "authors": [
+        "Tyler Crain (University of Sydney, Australia)",
+        "Christopher Natoli (University of Sydney, Australia)",
+        "Vincent Gramoli (University of Sydney and CSIRO, Australia)"
+      ],
+      "venue": "2021 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2021",
+      "conferenceDates": "24-27 May 2021",
+      "location": "San Francisco, CA, USA",
+      "pages": "466-483",
+      "doi": "10.1109/SP40001.2021.00087",
+      "isbn": "978-1-7281-8934-5",
+      "ieeeCitedByPapers": 109,
+      "fullTextViews": 5039,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 1233490,
+        "magic": "%PDF-1.6"
+      },
+      "authorKeywords": "Byzantine, censorship-resistance, scalability",
+      "rank": "CANDIDATE",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/9519440/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/9519440/"
+    },
+    {
+      "id": "9230400",
+      "title": "PESTO: Proactively Secure Distributed Single Sign-On, or How to Trust a Hacked Server",
+      "authors": [
+        "Carsten Baum (Aarhus University, Aarhus, Denmark)",
+        "Tore Frederiksen (The Alexandra Institute, Aarhus, Denmark)",
+        "Julia Hesse (IBM Research - Zurich, Zurich, Switzerland)",
+        "Anja Lehmann (Hasso Plattner Institute University of Potsdam, Potsdam, Germany)",
+        "Avishay Yanai (VMware Research, Herzliya, Israel)"
+      ],
+      "venue": "2020 IEEE European Symposium on Security and Privacy (EuroS&P)",
+      "year": "2020",
+      "conferenceDates": "07-11 September 2020",
+      "location": "Genoa, Italy",
+      "pages": "587-606",
+      "doi": "10.1109/EuroSP48549.2020.00044",
+      "isbn": "978-1-7281-5087-1",
+      "ieeeCitedByPapers": 40,
+      "fullTextViews": 1246,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 483133,
+        "magic": "%PDF-1.4"
+      },
+      "authorKeywords": "",
+      "rank": "CANDIDATE (was BACKUP2 until 2026-09-27)",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/9230400/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/9230400/",
+      "downloaded": {
+        "files": [
+          "sensor-network/raw/Paper_III_CANDIDATE_PESTO_9230400.pdf"
+        ],
+        "bytes": 483095,
+        "pdfPages": 20,
+        "sha256": "cef83833273cda033a535462a8e30a6edf2bddb6acaf1ff46b7cec1f6c58e97b"
+      }
+    },
+    {
+      "id": "7958578",
+      "rank": "CANDIDATE",
+      "title": "IoT Goes Nuclear: Creating a ZigBee Chain Reaction",
+      "authorsAsListedByIEEE": [
+        "Eyal Ronen (Weizmann Institute of Science, Rehovot, Israel)",
+        "Adi Shamir (Dalhousie University, Halifax, Canada)",
+        "Achi-Or Weingarten (Weizmann Institute of Science, Rehovot, Israel)",
+        "Colin O’Flynn (Weizmann Institute of Science, Rehovot, Israel)"
+      ],
+      "metadataNote": "IEEE affiliations for Adi Shamir and Colin O’Flynn appear swapped; check the PDF first page before citing affiliations",
+      "venue": "2017 IEEE Symposium on Security and Privacy (SP)",
+      "year": "2017",
+      "conferenceDates": "22-26 May 2017",
+      "location": "San Jose, CA, USA",
+      "pages": "195-212",
+      "doi": "10.1109/SP.2017.14",
+      "ieeeCitedByPapers": 334,
+      "isFreeDocument": true,
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/7958578/",
+      "doiResolvesTo": "http://ieeexplore.ieee.org/document/7958578/",
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 1743725,
+        "magic": "%PDF-1.4"
+      },
+      "scores": {
+        "prestige": 5,
+        "math": 4,
+        "empirical": 4,
+        "impact": 5,
+        "alignment": 2,
+        "total": 20
+      }
+    },
+    {
+      "id": "7961984",
+      "title": "SoK: Single Sign-On Security — An Evaluation of OpenID Connect",
+      "authors": [
+        "Christian Mainka (Horst Görtz Institute for IT Security, Ruhr University Bochum)",
+        "Vladislav Mladenov (Horst Görtz Institute for IT Security, Ruhr University Bochum)",
+        "Jörg Schwenk (Horst Görtz Institute for IT Security, Ruhr University Bochum)",
+        "Tobias Wich (ecsec GmbH)"
+      ],
+      "venue": "2017 IEEE European Symposium on Security and Privacy (EuroS&P)",
+      "year": "2017",
+      "conferenceDates": "26-28 April 2017",
+      "location": "Paris, France",
+      "pages": "251-266",
+      "doi": "10.1109/EuroSP.2017.32",
+      "isbn": "978-1-5090-5762-7",
+      "ieeeCitedByPapers": 43,
+      "fullTextViews": 5429,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 487564,
+        "magic": "%PDF-1.4"
+      },
+      "authorKeywords": "Single Sign-On, OpenID Connect, Evaluation-as-a-Service, Open Source",
+      "rank": "CANDIDATE",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/7961984/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/7961984/"
+    },
+    {
+      "id": "8424629",
+      "title": "Machine Learning DDoS Detection for Consumer Internet of Things Devices",
+      "authors": [
+        "Rohan Doshi (Department of Computer Science, Princeton University, Princeton, New Jersey, USA)",
+        "Noah Apthorpe (Department of Computer Science, Princeton University, Princeton, New Jersey, USA)",
+        "Nick Feamster (Department of Computer Science, Princeton University, Princeton, New Jersey, USA)"
+      ],
+      "venue": "2018 IEEE Security and Privacy Workshops (SPW)",
+      "year": "2018",
+      "conferenceDates": "24-24 May 2018",
+      "location": "San Francisco, CA, USA",
+      "pages": "29-35",
+      "doi": "10.1109/SPW.2018.00013",
+      "isbn": "978-1-5386-8276-0",
+      "ieeeCitedByPapers": 683,
+      "fullTextViews": 25330,
+      "isFreeDocument": true,
+      "pdfCheckInBrowser": {
+        "status": 200,
+        "type": "application/pdf",
+        "bytes": 731302,
+        "magic": "%PDF-1.4"
+      },
+      "authorKeywords": "Internet of Things, Anomaly Detection, DDoS, Machine Learning, Feature Engineering",
+      "rank": "CANDIDATE",
+      "ieeeUrl": "https://ieeexplore.ieee.org/document/8424629/",
+      "doiResolvesTo": "https://ieeexplore.ieee.org/document/8424629/"
+    }
+  ],
+  "updatedAt": "2026-09-27",
+  "changes": [
+    {
+      "date": "2026-09-27",
+      "change": "Round-3 deep search (28 more queries). PRIMARY and BACKUP1 unchanged. BACKUP2 changed from 9230400 (PESTO) to 9152619 (Burglars IoT Paradise) after the student confirmed in chat."
+    },
+    {
+      "date": "2026-09-27",
+      "change": "PESTO PDF renamed to Paper_III_CANDIDATE_PESTO_9230400.pdf (same SHA-256); MANIFEST.sha256 updated; all 10 files verified."
+    },
+    {
+      "date": "2026-09-27",
+      "change": "Citation fixes in research docs: OmniLedger Appendix C is on printed page 597 (not 598); PESTO Table 1 is on printed page 600 (not 599)."
+    },
+    {
+      "date": "2026-09-27",
+      "change": "Added pdfFindings for 8418625 (Fig. 6 vs 6,000 / 13,000 tps text, Table IV 2,400 validators, precise 25% wording). Research docs 04, 05, 09 updated to match."
+    }
+  ]
+}

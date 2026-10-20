@@ -1,0 +1,609 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zlu3rb",
+    "id": "zlu3rb",
+    "slide": 1,
+    "layoutId": "bd5b7e62-5464-4eff-936e-21daa2dfc1f8",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F8FAFC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1536,
+      "height": 864
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "IBM Plex Sans Thai"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd5b7e62-5464-4eff-936e-21daa2dfc1f8",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "8fc45aa6-97d8-4aa0-b2d9-a6f88bba6c0f",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0v254zyl",
+      "id": "1",
+      "name": "text-1",
+      "bbox": [
+        100,
+        165,
+        1336,
+        36
+      ],
+      "geometry": "rect",
+      "text": "305432 เครือข่ายเซนเซอร์ (Sensor Networks)",
+      "textPreview": "305432 เครือข่ายเซนเซอร์ (Sensor Networks)",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "305432 เครือข่ายเซนเซอร์ (Sensor Networks)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "305432 เครือข่ายเซนเซอร์ (Sensor Networks)",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "305432 เครือข่ายเซนเซอร์ (Sensor Networks)",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zu94buxg",
+      "id": "2",
+      "name": "text-2",
+      "bbox": [
+        100,
+        230,
+        1336,
+        130
+      ],
+      "geometry": "rect",
+      "text": "Publish-Time Optimizations\nfor Web-Based Visualizations",
+      "textPreview": "Publish-Time Optimizations | for Web-Based Visualizations",
+      "resolvedFontSize": 45.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 45.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Publish-Time Optimizations"
+          },
+          {
+            "index": 2,
+            "text": "for Web-Based Visualizations"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Publish-Time Optimizations",
+          "resolvedTextStyle": {
+            "fontSize": 45.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Publish-Time Optimizations",
+              "fontSize": 45.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "for Web-Based Visualizations",
+          "resolvedTextStyle": {
+            "fontSize": 45.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "for Web-Based Visualizations",
+              "fontSize": 45.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/et0n2pgv",
+      "id": "3",
+      "name": "text-3",
+      "bbox": [
+        100,
+        380,
+        1336,
+        40
+      ],
+      "geometry": "rect",
+      "text": "การเพิ่มประสิทธิภาพเว็บแสดงภาพข้อมูลเชิงโต้ตอบด้วยการประมวลผลล่วงหน้าช่วงเผยแพร่",
+      "textPreview": "การเพิ่มประสิทธิภาพเว็บแสดงภาพข้อมูลเชิงโต้ตอบด้วยการประมวลผลล่วงหน้าช่วงเผยแพร่",
+      "resolvedFontSize": 21.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 21.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "การเพิ่มประสิทธิภาพเว็บแสดงภาพข้อมูลเชิงโต้ตอบด้วยการประมวลผลล่วงหน้าช่วงเผยแพร่"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "การเพิ่มประสิทธิภาพเว็บแสดงภาพข้อมูลเชิงโต้ตอบด้วยการประมวลผลล่วงหน้าช่วงเผยแพร่",
+          "resolvedTextStyle": {
+            "fontSize": 21.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "การเพิ่มประสิทธิภาพเว็บแสดงภาพข้อมูลเชิงโต้ตอบด้วยการประมวลผลล่วงหน้าช่วงเผยแพร่",
+              "fontSize": 21.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsrm9kfa",
+      "id": "4",
+      "name": "shape-4",
+      "bbox": [
+        662,
+        450,
+        212,
+        3.5
+      ],
+      "geometry": "rect",
+      "fillColor": "#1E3A8A",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cri50fyp",
+      "id": "5",
+      "name": "text-5",
+      "bbox": [
+        100,
+        500,
+        1336,
+        64
+      ],
+      "geometry": "rect",
+      "text": "Ron Pechuk, Jeffrey Heer\nUniversity of Washington",
+      "textPreview": "Ron Pechuk, Jeffrey Heer | University of Washington",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Ron Pechuk, Jeffrey Heer"
+          },
+          {
+            "index": 2,
+            "text": "University of Washington"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Ron Pechuk, Jeffrey Heer",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Ron Pechuk, Jeffrey Heer",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "University of Washington",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "University of Washington",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rq947ax4",
+      "id": "6",
+      "name": "text-6",
+      "bbox": [
+        100,
+        580,
+        1336,
+        30
+      ],
+      "geometry": "rect",
+      "text": "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230",
+      "textPreview": "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qp0ny5gj",
+      "id": "7",
+      "name": "text-7",
+      "bbox": [
+        100,
+        622,
+        1336,
+        30
+      ],
+      "geometry": "rect",
+      "text": "IEEE Doc ID: 11298742     DOI: 10.1109/VIS60296.2025.00051",
+      "textPreview": "IEEE Doc ID: 11298742     DOI: 10.1109/VIS60296.2025.00051",
+      "resolvedFontSize": 17.33,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17.33,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#475569",
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "IEEE Doc ID: 11298742     DOI: 10.1109/VIS60296.2025.00051"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "IEEE Doc ID: 11298742     DOI: 10.1109/VIS60296.2025.00051",
+          "resolvedTextStyle": {
+            "fontSize": 17.33,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#475569",
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "IEEE Doc ID: 11298742     DOI: 10.1109/VIS60296.2025.00051",
+              "fontSize": 17.33,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#475569",
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/porm5kfy",
+      "id": "8",
+      "name": "text-8",
+      "bbox": [
+        100,
+        708,
+        1336,
+        38
+      ],
+      "geometry": "rect",
+      "text": "นำเสนอโดย นายธีรภัทร ภู่ระย้า     รหัสนิสิต 66362416",
+      "textPreview": "นำเสนอโดย นายธีรภัทร ภู่ระย้า     รหัสนิสิต 66362416",
+      "resolvedFontSize": 18.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 18.67,
+        "typeface": "IBM Plex Sans Thai",
+        "color": "#0F172A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "นำเสนอโดย นายธีรภัทร ภู่ระย้า     รหัสนิสิต 66362416"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "นำเสนอโดย นายธีรภัทร ภู่ระย้า     รหัสนิสิต 66362416",
+          "resolvedTextStyle": {
+            "fontSize": 18.67,
+            "typeface": "IBM Plex Sans Thai",
+            "color": "#0F172A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "นำเสนอโดย นายธีรภัทร ภู่ระย้า     รหัสนิสิต 66362416",
+              "fontSize": 18.67,
+              "typeface": "IBM Plex Sans Thai",
+              "color": "#0F172A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

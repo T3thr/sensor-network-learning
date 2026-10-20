@@ -1,0 +1,68 @@
+/* Paper III Version 2 (Raft-FL, SEAMS 2024): parallel English-Thai translation panel in
+   paper-3/translation.html. Scoped to #p3-panel-v2 so it cannot touch the Version 1 Compare View.
+   Layout: two equal columns (50:50) from 1024 px, one column (English above Thai) below that. */
+/* html already has scroll-padding-top (header + 28px); the extra margin clears the sticky mode bar */
+#p3-panel-v2 .tr2 .tr-row[id], #p3-panel-v2 .tr2 .tr-page { scroll-margin-top: 48px; }
+#p3-panel-v2 .tr2 .chapter-main p, #p3-panel-v2 .tr2 .chapter-main li { line-height: 1.75; }
+
+#p3-panel-v2 .tr-intro { background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 12px 16px; font-size: 0.9rem; line-height: 1.75; color: var(--ink-soft); margin: 12px 0 4px; }
+#p3-panel-v2 .tr-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; margin: 14px 0 0; position: sticky; top: var(--header-height); z-index: 20; background: var(--paper); box-shadow: 0 -16px 0 var(--paper); padding: 10px 0; border-bottom: 1px solid var(--rule); }
+#p3-panel-v2 .tr-mode-group { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+#p3-panel-v2 .tr-mode { padding: 6px 14px; border: 1.5px solid var(--rule); border-radius: 999px; background: var(--card-bg); color: var(--ink-soft); cursor: pointer; font-family: inherit; font-size: 0.86rem; }
+#p3-panel-v2 .tr-mode.active { border-color: var(--accent2); color: var(--accent2); background: var(--accent2-bg); font-weight: 700; }
+#p3-panel-v2 .tr-jump { display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--ink-muted); }
+#p3-panel-v2 .tr-jump select { padding: 5px 10px; font-family: inherit; font-size: 0.84rem; border: 1.5px solid var(--rule); border-radius: var(--radius-sm); background: var(--card-bg); color: var(--ink); max-width: 100%; }
+#p3-panel-v2 .tr-stats { font-size: 0.8rem; color: var(--ink-muted); margin: 8px 0 0; }
+
+#p3-panel-v2 .tr-colhead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin: 14px 0 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; color: var(--ink-muted); text-transform: uppercase; }
+#p3-panel-v2 .tr-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+#p3-panel-v2 .tr-en { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.75; font-family: Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+#p3-panel-v2 .tr-th { color: var(--ink); font-size: 1rem; line-height: 1.9; overflow-wrap: anywhere; }
+#p3-panel-v2 .tr-row h2, #p3-panel-v2 .tr-row h3 { margin: 6px 0 2px; line-height: 1.45; }
+#p3-panel-v2 .tr-row h2 { font-size: 1.22rem; }
+#p3-panel-v2 .tr-row h3 { font-size: 1.05rem; }
+#p3-panel-v2 .tr-h1 h2 { font-size: 1.45rem; }
+#p3-panel-v2 .tr-li .tr-en, #p3-panel-v2 .tr-li .tr-th { padding-left: 16px; border-left: 3px solid var(--rule); }
+#p3-panel-v2 .tr-fn .tr-en, #p3-panel-v2 .tr-fn .tr-th, #p3-panel-v2 .tr-meta .tr-en, #p3-panel-v2 .tr-meta .tr-th { font-size: 0.85rem; color: var(--ink-muted); }
+#p3-panel-v2 .tr-note { display: block; margin-top: 6px; font-size: 0.86rem; color: var(--ink); background: var(--accent2-bg); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 6px; }
+
+#p3-panel-v2 .tr-page { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; margin: 28px 0 4px; padding: 8px 12px; background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-md); font-weight: 700; color: var(--ink); }
+#p3-panel-v2 .tr-page-sub { font-weight: 400; font-size: 0.84rem; color: var(--ink-muted); }
+#p3-panel-v2 .tr-page a { margin-left: auto; font-size: 0.84rem; font-weight: 700; }
+
+#p3-panel-v2 .tr-fig { margin: 16px 0; }
+#p3-panel-v2 .tr-fig .v2-figure { max-width: 760px; margin: 0 auto 6px; }
+#p3-panel-v2 .tr-cap .tr-en, #p3-panel-v2 .tr-cap .tr-th { font-size: 0.88rem; }
+#p3-panel-v2 .tr-table { margin: 16px 0; }
+
+#p3-panel-v2 .tr-analysis { margin: 14px 0; padding: 14px 18px; background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-md); }
+#p3-panel-v2 .tr-analysis-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; margin-bottom: 6px; }
+#p3-panel-v2 .tr-analysis-title { font-weight: 700; color: var(--ink); font-size: 1rem; }
+#p3-panel-v2 .tr-analysis-tag { font-size: 0.78rem; color: var(--ink-muted); }
+#p3-panel-v2 .tr-analysis p { margin: 0; font-size: 0.96rem; line-height: 1.85; color: var(--ink-soft); }
+
+#p3-panel-v2 .tr-refs { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; padding-left: 0; list-style: none; font-family: Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+#p3-panel-v2 .tr-refs li { margin-bottom: 6px; }
+
+/* reading modes */
+#p3-panel-v2 .tr2.mode-th .tr-en, #p3-panel-v2 .tr2.mode-th .c-en { display: none; }
+#p3-panel-v2 .tr2.mode-en .tr-th, #p3-panel-v2 .tr2.mode-en .c-th, #p3-panel-v2 .tr2.mode-en .tr-analysis { display: none; }
+#p3-panel-v2 .tr2.mode-th .tr-row, #p3-panel-v2 .tr2.mode-en .tr-row { grid-template-columns: minmax(0, 1fr); }
+#p3-panel-v2 .tr2.mode-th .tr-colhead, #p3-panel-v2 .tr2.mode-en .tr-colhead { display: none; }
+
+/* tablet and mobile: one column, the original above its translation */
+@media (max-width: 1023px) {
+  #p3-panel-v2 .tr-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  #p3-panel-v2 .tr-colhead { display: none; }
+  #p3-panel-v2 .tr2.mode-both .tr-p .tr-en, #p3-panel-v2 .tr2.mode-both .tr-li .tr-en { background: var(--paper2); border-radius: 6px; padding: 8px 12px; }
+  #p3-panel-v2 .tr2.mode-both .tr-li .tr-en { border-left: 3px solid var(--rule); }
+  #p3-panel-v2 .tr-page a { margin-left: 0; }
+}
+@media (max-width: 720px) {
+  #p3-panel-v2 .tr-controls { position: static; }
+  #p3-panel-v2 .tr2 .tr-row[id], #p3-panel-v2 .tr2 .tr-page { scroll-margin-top: 0; }
+  #p3-panel-v2 .tr-mode-group, #p3-panel-v2 .tr-jump { width: 100%; }
+  #p3-panel-v2 .tr-mode { flex: 1 1 auto; text-align: center; }
+  #p3-panel-v2 .tr-jump select { flex: 1; }
+  #p3-panel-v2 .tr-analysis { padding: 12px 14px; }
+}

@@ -1,0 +1,109 @@
+transaction across shards, or obtain “rejection proofs” to abort
+and unlock state affected by partially completed transactions.
+Besides addressing the above key security challenges, Om-
+niLedger also introduces several performance and scalability
+reﬁnements we found to be instrumental in achieving its
+usability goals. OmniLedger’s consensus protocol, ByzCoinX,
+enhances the PBFT-based consensus in ByzCoin [32] to pre-
+serve performance under Byzantine denial-of-service (DoS)
+attacks, by adopting a more robust group communication
+pattern. To help new or long-ofﬂine miners catch up to the
+current ledger state without having to download the entire
+history, OmniLedger adapts classic distributed checkpointing
+principles [20] to produce consistent, state blocks periodically.
+Finally, to minimize transaction latency in common cases
+such as low-value payments, OmniLedger supports optional
+trust-but-verify validation in which a ﬁrst small tier of val-
+idators processes the transactions quickly and then hands
+them over to a second larger, hence slower, tier that re-
+veriﬁes the correctness of the ﬁrst tier transactions and ensures
+long-term security. This two-level approach ensures that any
+misbehavior within the ﬁrst tier is detected within minutes,
+and can be strongly disincentivized through recourse such as
+loss of deposits. Clients can wait for both tiers to process high-
+value transactions for maximum security or just wait for the
+ﬁrst tier to process low-value transactions.
+To evaluate OmniLedger, we implemented a prototype in
+Go on commodity servers (12-core VMs on Deterlab). Our
+experimental results show that OmniLedger scales linearly in
+the number of validators, yielding a throughput of 6,000 trans-
+actions per second with a 10-second consensus latency (for
+1800 widely-distributed hosts, of which 12.5% are malicious).
+Furthermore, deploying OmniLedger with two-level, trust-but-
+verify validation provides a throughput of 2,250 tps with a
+four-second ﬁrst-tier latency under a 25% adversary. Finally,
+a Bitcoin validator with a month-long stale view of the state
+incurs 40% of the bandwidth, due to state blocks.
+In summary, this paper makes the following contributions:
+• We introduce the ﬁrst DL architecture that provides horizon-
+tal scaling without compromising either long-term security
+or permissionless decentralization.
+• We introduce Atomix, a Atomic Commit protocol, to com-
+mit transactions atomically across shards.
+• We introduce ByzCoinX, a BFT consensus protocol that
+increases performance and robustness to DoS attacks.
+• We introduce state blocks, that are deployed along Om-
+niLedger to minimize storage and update overhead.
+• We introduce two-tier trust-but-verify processing to mini-
+mize the latency of low-value transactions.
+II. BACKGROUND
+A. Scalable Byzantine Consensus in ByzCoin
+OmniLedger builds on the Byzantine consensus scheme in
+ByzCoin [32], because it scales efﬁciently to thousands of
+consensus group members. To make a traditional consensus
+algorithm such as PBFT [13] more scalable, ByzCoin uses
+collective signing or CoSi [45], a scalable cryptographic primi-
+tive that implements multisignatures [42]. ByzCoin distributes
+blocks by using multicast trees for performance, but falls back
+to a less-scalable star topology for fault tolerance. Although
+ByzCoin’s consensus is scalable, its total processing capacity
+does not increase with participation i.e., it does not scale-out.
+B. Transaction Processing and the UTXO model
+Distributed ledgers derive current system state from a
+blockchain, or a sequence of totally ordered blocks that con-
+tain transactions. OmniLedger adopts the unspent transaction
+output (UTXO) model to represent ledger state, due to its
+simplicity and parallelizability. In this model, the outputs of
+a transaction create new UTXOs (and assign them credits),
+and inputs completely “spend” existing UTXOs. During boot-
+strapping, new (full) nodes crawl the entire distributed ledger
+and build a database of valid UTXOs needed to subsequently
+decide whether a new block can be accepted. The UTXO
+model was introduced by Bitcoin [36] but has been widely
+adopted by other distributed ledger systems.
+C. Secure Distributed Randomness Generation
+RandHound [44] is a scalable, secure multi-party compu-
+tation (MPC) protocol that provides unbiasable, decentralized
+randomness in a Byzantine setting. RandHound assumes the
+existence of an externally accountable client that wants to
+obtain provable randomness from a large group of semi-
+trustworthy servers. To produce randomness, RandHound
+splits the group of servers into smaller ones and creates a pub-
+licly veriﬁable commit-then-reveal protocol [43] that employs
+the pigeonhole principle to prove that the ﬁnal random number
+includes the contribution of at least one honest participant, thus
+perfectly randomizing RandHound’s output.
+Cryptographic sortition [25] is used to select a subset of
+validators, according to some per-validator weight function.
+To enable validators to prove that they belong to the selected
+subset, they need a public/private key pair, (pki, ski). Sortition
+is implemented using a veriﬁable random function (VRF) [35]
+that takes an input x and returns a random hash (ℓ-bit long
+string) and a proof π based on ski. The proof π enables anyone
+knowing pki to check that the hash corresponds to x.
+D. Sybil-Resistant Identities
+Unlike permissioned blockchains [16], where the validators
+are known, permissionless blockchains need to deal with the
+potential of Sybil attacks [19] to remain secure. Bitcoin [36]
+suggested the use of Proof-of-Work (PoW), where validators
+(aka miners) create a valid block by performing an expensive
+computation (iterating through a nonce and trying to brute-
+force a hash of a block’s header such that it has a certain
+number of leading zeros). Bitcoin-NG [21] uses this PoW
+technique to enable a Sybil-resistant generation of identities.
+There are certain issues associated with PoW, such as the
+waste of electricity [17] and the fact that it causes recentraliza-
+tion [29] to mining pools. Other approaches for establishing
+Sybil-resistant identities such as Proof-of-Stake (PoS) [31],
+584
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

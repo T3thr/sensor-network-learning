@@ -1,0 +1,242 @@
+{
+  "session_id": "sensor-network-exam-drill",
+  "current_chapter": "Chapter 1: Introduction to WSN and Node Anatomy",
+  "active_turn": "MIMO_TERMINAL",
+  "next_role": "MIMO_TERMINAL",
+  "turn_counter": 11,
+  "last_updated": "2026-10-20T08:40:00Z",
+  "canonical_separation": {
+    "directive": "Only Track1 datacom/ and Track2 lecture 305141 + textbook/wireless-sensor-networks.pdf are exam content",
+    "track1_source": "datacom/ (Forouzan 14 chapters) owned by agent_alpha",
+    "track2_source": "lecture/305141_Chapter01-06.pdf and textbook/wireless-sensor-networks.pdf owned by agent_bravo",
+    "bravo_content_root": "agents-bridge/iot-wsn-track/",
+    "excluded_from_exam_drills": [
+      "assignement/",
+      "paper-1/",
+      "paper-2/",
+      "paper-3/",
+      "paper-4/"
+    ],
+    "exclusion_reason": "Presentation practice materials for 5-minute segments only, not 305432 exam theory"
+  },
+  "tracks": {
+    "datacom_track": {
+      "owner": "agent_alpha",
+      "scope": "Data Communications Forouzan 14 chapters",
+      "focus": "Signals, Shannon/Nyquist, transmission, error control, multiple access foundations"
+    },
+    "iot_wsn_track": {
+      "owner": "agent_bravo",
+      "scope": "IoT architecture and Wireless Sensor Networks textbook 14 chapters",
+      "focus": "Node anatomy, MAC for WSN, routing/dissemination, localization, time sync, IEEE 802.15.4, 6LoWPAN, IoT security",
+      "content_root": "agents-bridge/iot-wsn-track/"
+    }
+  },
+  "agents": {
+    "agent_alpha": {
+      "role": "Distinguished Chair Professor of Data Communications & Lead Academic Architect",
+      "engine": "Gemini 3.8 Flash (High)",
+      "track": "datacom_track",
+      "responsibilities": [
+        "Deep theoretical synthesis and cross-layer connection",
+        "DataCom 14-chapter teaching track",
+        "Interactive Web Simulator and Visual Playground based on DESIGN_SYSTEM.md and WEB_DESIGN_SYSTEM.md",
+        "Exam Defense Lines quality governance"
+      ]
+    },
+    "agent_bravo": {
+      "role": "Field Systems Engineer and IoT/WSN Track Specialist",
+      "engine": "MiMo Terminal Session",
+      "track": "iot_wsn_track",
+      "responsibilities": [
+        "IoT and WSN curriculum authoring and live teaching",
+        "Hardware-focused mental models (CC2420, mote power profiles, MEMS)",
+        "Real-time numerical drills, grading, and trap detection",
+        "Interactive Checklist and Mental Model Summary per chapter"
+      ]
+    }
+  },
+  "curriculum_status": {
+    "datacom_ch01": {
+      "path": "datacom/ch01.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1420,
+      "includes": [
+        "1. Origin and Engineering Genesis (Sneakernet, Cable jungle O(N2))",
+        "2. Technical Glossary with Thai Phonetics (8 core terms)",
+        "3. Theoretical Rigor (5 Components, Simplex/Half/Full-Duplex, Topologies: Mesh, Star, Bus, Ring, LAN/MAN/WAN, Protocol Pillars: Syntax/Semantics/Timing)",
+        "4. 3 Step-by-Step Worked Calculation Examples (N=12 Mesh DC 66 links O(N2), Enterprise 100-workstation Mesh vs Hierarchical Star 97.88% reduction, 6-node Mesh vs Ring 2-hop fault tolerance)",
+        "5. Hardware and Silicon Reality Check (TTL vs RS-232, MAX232 charge pump +-10V, 16550 UART THR/TSR/FIFO, clock drift and framing jitter)",
+        "6. Interactive Component (SVG Topology and Link Budget Visualizer with link failure simulation)",
+        "7. Interactive Mastery Checklist (5 questions with toggle feedback)",
+        "8. Chapter Synthesis (3-column comparison: PC/Server vs WSN)",
+        "9. Cross-Chapter WSN Links (WSN Ch 3, Ch 4, Ch 6, Ch 9)",
+        "Asymptotic Complexity & Big O Notation (Bachmann-Landau, Knuth, N=10,000 WSN RAM crash analysis)"
+      ]
+    },
+    "datacom_ch02": {
+      "path": "datacom/ch02.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1440,
+      "includes": [
+        "1. Origin and Engineering Genesis (Monolithic crisis, ARPANET NCP RFC 33, Vendor lock-in SNA/DECnet, ISO 7498 OSI vs DoD TCP/IP, BSD 4.2 Unix, Apocalypse of the Two Elephants, David Clark rough consensus and running code)",
+        "2. Technical Glossary with Thai Phonetics (8 core terms + Linux sk_buff zero-copy, EUI-48 EEPROM, Ephemeral Port sysctl)",
+        "3. Theoretical Rigor (OSI 7 Layers vs TCP/IP 5 Layers, 4 Addressing Levels: MAC, IP, Port, Specific URL)",
+        "4. 4 Step-by-Step Worked Calculation Examples (Propagation vs Transmission Delay & BDP 3.125 MB on 5,000 km WAN, Header Overhead HTTP 94.93% vs IoT 45.07%, Hop-by-hop MAC mutation across R1/R2, Socket 4-Tuple demultiplexing)",
+        "5. Hardware and Silicon Reality Check (NIC MAC Controller ASIC, PHY chip MII/RGMII, DMA Ring Buffers RX/TX, MSI-X Interrupts, TSO/LRO Checksum Offload)",
+        "6. Interactive Component (Interactive Multi-layer Packet Tracer and Byte-level Header Inspector)",
+        "7. Interactive Mastery Checklist (6 questions with toggle feedback)",
+        "8. Chapter Synthesis (3-column comparison: OSI vs TCP/IP vs WSN Cross-Layer)",
+        "9. Cross-Chapter WSN Links (WSN 6LoWPAN header compression, cross-layer optimization)",
+        "Service Data Unit (SDU), Service Access Point (SAP), Byte Overhead Energy Math (CC2420 1.6704 uJ/byte, 6LoWPAN justification)"
+      ]
+    },
+    "datacom_ch03": {
+      "path": "datacom/ch03.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1434,
+      "includes": [
+        "1. Origin and Engineering Genesis (Joseph Fourier 1807 heat controversy, Lagrange skepticism, Ralph Hartley 1928, Harry Nyquist 1928, Claude Shannon 1948 sphere packing)",
+        "2. Technical Glossary with Thai Phonetics (12 core terms: Attenuation, Decibel, dBm, SNR, Harmonics, Thermal Noise, Shannon Capacity, ISI, Wavelength)",
+        "3. Theoretical Rigor & Math Derivation (Sine waves, Fourier series integral derivation b_n = 4A/npi, Composite bandwidth, Attenuation/Distortion/Noise, dB & dBm formulas, Nyquist Bit Rate & Shannon Channel Capacity)",
+        "4. 4 Step-by-Step Worked Calculation Examples (Multi-stage optical link budget +4.99 dBm = 3.155 mW with 14.99 dB margin, Fourier harmonic bandwidth 1 Mbps vs 10 Mbps and power distribution, Multilevel 16-QAM 75% bandwidth reduction, Unified Shannon-Nyquist 3.1 kHz channel L=64 TCM)",
+        "5. Hardware and Silicon Reality Check (Thermal noise floor k*T = -174 dBm/Hz, CC2420 -105 dBm channel noise floor and -94 dBm sensitivity, ADC quantization noise 6.02N+1.76 dB)",
+        "6. Interactive Component (Interactive Fourier Wave Synthesizer and Gibbs Phenomenon Studio with Dual Time/Freq Canvas)",
+        "7. Interactive Mastery Checklist (6 questions with toggle feedback)",
+        "8. Chapter Synthesis (3-column comparison: Time Domain vs Frequency Domain vs WSN Radio Reality)",
+        "9. Cross-Chapter WSN Links (CC2420 radio, Friis path loss, link margin)",
+        "Dynamic Range (DR) 94 dB, ADC Quantization SNR 6.02N+1.76 dB, LNA/AGC Anti-saturation"
+      ]
+    },
+    "iot_wsn_ch01": {
+      "path": "iot/ch01.html",
+      "status": "DEPLOYED_ACTIVE",
+      "includes": [
+        "1. Origin and Engineering Genesis",
+        "2. Technical Glossary with Thai phonetics",
+        "3. 10 Network Characteristics",
+        "4. Applications",
+        "5. Objectives vs Challenges",
+        "6. Node anatomy and CC2420 power specs",
+        "7. Motes and TinyOS 178 bytes",
+        "8. IEEE 802.15.4, ZigBee, IEEE 1451",
+        "9. Interactive Duty Cycle Energy Lab",
+        "10. Mastery Checklist",
+        "11. Mental Model Summary",
+        "12. Cross-links to datacom/ch01.html"
+      ],
+      "notes": "Student-facing HTML replaces hidden markdown. Markdown at agents-bridge/iot-wsn-track/ch01-introduction.md remains internal outline only."
+    },
+    "datacom_ch04": {
+      "path": "datacom/ch04.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1378,
+      "includes": [
+        "1. Origin & Genesis (Unipolar NRZ crisis: DC component, baseline wandering, clock drift)",
+        "2. Technical Glossary with Thai Phonetics (12 core terms: Line coding, Baud, DC component, Baseline wandering, Self-sync, Manchester, AMI, 4B/5B, B8ZS, PCM, Quantization noise, Delta modulation)",
+        "3. Line Coding Schemes (Unipolar, Polar: NRZ-L/I, RZ, Manchester, Diff Manchester, Bipolar: AMI, Multilevel: 2B1Q)",
+        "4. Block Coding 4B/5B (Fast Ethernet 100BASE-FX, 37.5% bandwidth saving over Manchester)",
+        "5. Scrambling Mechanisms (B8ZS 000VB0VB in T1, HDB3 000V/B00V in E1)",
+        "6. Digitization (PCM Sampling/Quantization/Encoding, SNR_q = 6.02N + 1.76 dB, Delta Modulation Slope Overload vs Granular Noise)",
+        "7. 4 Worked Examples (Baud rate comparison 100 Mbps, G.711 PCM 64 kbps, Delta Modulation step size, B8ZS/HDB3 pulse tracing)",
+        "8. Silicon & Hardware Reality (CMOS P_dyn = C*V^2*f, why WSN avoids Manchester, CDR PLL)",
+        "9. Interactive Simulator (Line Coding Waveform Studio & Bit Analyzer with real-time DC & transition metrics)",
+        "10. Mastery Checklist (6 questions)",
+        "11. Mental Model Synthesis",
+        "12. Cross-Chapter WSN Links (RFID Manchester, RS-485 UART)"
+      ]
+    },
+    "datacom_ch05": {
+      "path": "datacom/ch05.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1251,
+      "includes": [
+        "1. Origin & Genesis (Antenna physics L >= lambda/4: 75 km at 1 kHz vs 3.125 cm at 2.4 GHz)",
+        "2. Technical Glossary with Thai Phonetics (Carrier, ASK, FSK, PSK, O-QPSK, QAM, Constellation Diagram, Carson's Rule)",
+        "3. Digital-to-Analog (ASK/OOK, FSK constant envelope, BPSK, QPSK)",
+        "4. O-QPSK in IEEE 802.15.4 / CC2420 (Q-channel offset T_s/2, elimination of zero-crossing and 180-deg phase flips, non-linear PA Class C/E operation without spectral regrowth)",
+        "5. Constellation & High-Order QAM (Euclidean distance, why WSN rejects 256-QAM: high SNR requirement, PAPR battery drain, complex ADC/DSP)",
+        "6. Analog-to-Analog (AM carrier loss 66.7%, FM Carson's Rule B_FM = 2(beta+1)B)",
+        "7. 4 Worked Examples (16-QAM vs QPSK vs BFSK bandwidth 20 Mbps, d_min proof 16-QAM 4.2 dB over 16-PSK, CC2420 O-QPSK chip rate 2 Mchips/s, FM Carson spectrum 180 kHz)",
+        "8. Silicon Reality (Direct Conversion Zero-IF/Low-IF, PA Saturation P1dB, I/Q imbalance, LO leakage)",
+        "9. Interactive Simulator (Constellation Diagram & Noise Studio in I/Q Plane with live EVM and SER)",
+        "10. Mastery Checklist (6 questions)",
+        "11. Mental Model Synthesis",
+        "12. Cross-Chapter WSN Links (CC2420 O-QPSK, BLE GFSK, LoRa CSS)"
+      ]
+    },
+    "datacom_ch06": {
+      "path": "datacom/ch06.html",
+      "status": "DEPLOYED_ACTIVE",
+      "lines": 1261,
+      "includes": [
+        "1. Origin & Genesis (Economics of link sharing, Hedy Lamarr & George Antheil 1942 frequency hopping torpedo patent)",
+        "2. Technical Glossary with Thai Phonetics (Multiplexing, Guard Band, FDM, WDM, Synchronous TDM, Statistical TDM, Spread Spectrum, FHSS, DSSS, Processing Gain, CDMA, Walsh Code)",
+        "3. FDM, OFDM (Orthogonality Delta f = 1/T_s), WDM/DWDM (CWDM 20nm vs DWDM 0.8nm with EDFA)",
+        "4. TDM Architecture (T1 1.544 Mbps 193 bits vs E1 2.048 Mbps 256 bits, Statistical TDM dynamic allocation & multiplexing gain 3.3x)",
+        "5. Spread Spectrum Fundamentals (Shannon C = B log2(1+S/N) operating below noise floor, FHSS in Bluetooth 79 ch @ 1600 hops/s, DSSS Processing Gain G_p = 10 log10(m))",
+        "6. CDMA & Walsh Orthogonal Vectors (Hadamard matrix, inner product C_i . C_j = 0, Near-Far problem & Closed-loop TPC)",
+        "7. 4 Worked Examples (T1/E1 frame derivation, STDM efficiency 70% saving, CC2420 Processing Gain 9.03 dB and Jamming Margin 4.03 dB, CDMA 3-station Walsh vector decoding)",
+        "8. Silicon Reality (LFSR PN generator, Parallel Correlator ASIC Bank in CC2420)",
+        "9. Interactive Simulator (TDM Synchronous vs Statistical Interleaver & DSSS Code Spreading Studio)",
+        "10. Mastery Checklist (6 questions)",
+        "11. Mental Model Synthesis",
+        "12. Cross-Chapter WSN Links (ZigBee/Wi-Fi coexistence, BLE AFH, LoRa CSS SF7-SF12)"
+      ]
+    }
+  },
+  "navigation_architecture": {
+    "status": "UNIFIED_COURSE_MEGAMENU",
+    "primary_menu": "เลือกเรียนหลักสูตร (2-column mega menu)",
+    "col_left": "Data Communications Forouzan 14 chapters (1-3 Active, 4-6 พร้อมเปิดตัว)",
+    "col_right": "Internet of Things 305141 อ.ตั้ม 6 chapters from lecture/iot/305141_Chapter01-06",
+    "assignments_menu": "separate; 5-minute presentation practice only",
+    "iot_canonical_count": 6,
+    "theme_toggle": "sun/moon SVG working"
+  },
+  "last_grading": {
+    "drill_set": "Concept Check 1",
+    "topics": [
+      "D1-02 attenuation/dBm",
+      "D1-03 Nyquist vs Shannon",
+      "D1-04 path loss multipath"
+    ],
+    "q1_score": "10/10",
+    "q1_answer": "0.1 mW and -10 dBm after 30 dB loss from 100 mW",
+    "q1_verdict": "PASS"
+  },
+  "current_status": "DataCom Ch 1-6 deployed (>1,250 - 1,440 lines each). Scrollspy threshold 140 synced in chapter-layout.js and ch01-06. Mega menu updated to active on Ch 1-6.",
+  "next_action_for_gemini": "Prepare DataCom Ch 7 (Transmission Media: Guided vs Wireless) and Ch 8 (Switching).",
+  "next_action_for_bravo": "Develop iot/ch02.html on shared shell.",
+  "layout_pipeline": {
+    "status": "READY_FOR_DENSE_CONTENT",
+    "reading_scale": {
+      "max_width_px": 1280,
+      "line_height": 1.8,
+      "container_padding": "28px"
+    },
+    "shared_assets": {
+      "css": "assets/css/lesson.css",
+      "js": "assets/js/chapter-layout.js",
+      "tokens_source": "assets/css/style.css"
+    },
+    "scrollspy": "chapter-layout.js with threshold 140 and sidebar-live-section sync",
+    "mobile_sidebar": "sticky horizontal drawer, no content crush",
+    "pages_patched": [
+      "datacom/ch02.html",
+      "datacom/ch03.html"
+    ],
+    "index_status": {
+      "datacom_ch01": "ACTIVE_LINKED",
+      "datacom_ch02": "ACTIVE_LINKED",
+      "datacom_ch03": "ACTIVE_LINKED",
+      "iot_ch01": "ACTIVE_LINKED"
+    }
+  },
+  "iot_wsn_track": {
+    "label": "Internet of Things 305141",
+    "source": "lecture/iot/305141_Chapter01.pdf through Chapter06.pdf",
+    "chapters": 6,
+    "ch01": "iot/ch01.html DEPLOYED_ACTIVE from 305141_Chapter01"
+  }
+}

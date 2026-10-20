@@ -1,0 +1,97 @@
+3) Ability to analyse more than one variable. One of
+the users reported the desire to analyse more than one
+variable at a time. While this did not hinder their ability
+to complete the tasks, their suggestion was noted down.
+Based on the feedback gathered, we improved the prototype
+and added some new features, including:
+The option to test more than one variable simultaneously.
+A “Toggle Tooltips” button, which allows the user to
+hover different elements on the tool’s menu to display
+a short message detailing how each works.
+• A “Print Report” button, which creates a full pdf report
+of the story analysis that the user can access outside the
+tool’s workspace.
+• A dotted chart graph, which displays a timeline with the
+changes in the values of each story variable select for
+analysis throughout the story path selected.
+•
+•
+
+However, the reasoning behind each of these problems is
+unique, and the user needs to make use of the tool in order to
+grasp what exactly is causing each of these issues.
+For example, problems 1 and 3 have a similar cause: both
+reach a Dead-End at the Passage “Choice 5”. Using the Story
+Validator, the user will realize that during the story’s creation,
+the writer did not add any Links leaving Passage “Choice 5”
+and, consequently, the play-through stops abruptly there.
+
+C. User Study 2
+For the second user study we used an improved version of
+the Story Validator that addressed the usability issues found
+in the ﬁrst study and included a few extra features.
+The goal of this study was to test if users were able to use
+the Story Validator to identify problems and various design
+issues in the interactive story (the “TMC - failed version”),
+and suggest possible solutions to the problems they ﬁnd.
+We conducted the test with 20 participants (8 female and
+12 male). Except for one participant, all others admitted they
+played video games either every day (35%) or regularly (60%).
+Nine of the twenty participants said to have some knowledge in
+game development (as Game Programmers, Game Designers
+or Game Writers). Five of those participants were familiar
+with Twine’s authoring tool prior to the test and considered
+themselves to have “Intermediate” expertise.
+The scenario that participants tested had the following
+issues:
+Problem 1: The Path #7 does not reach an Ending.
+Problem 2: The Path #8 does not reach an Ending.
+• Problem 3: The Path #14 does not reach an Ending.
+• Problem 4: The Passage “Ending 1” is never visited.
+• Problem 5: The Passage “Choice 6” is never visited.
+•
+•
+
+All the previous problems can be identiﬁed in the Story
+Validator under the Analysis Condition “Lost Plot”, which
+reveals Passages that can not be visited and Paths that do not
+reach an ending, if existent.
+
+Fig. 8. Analysing problems 1 and 3.
+
+In general, the participants were able to identify the problems, except for three who could not identify problem 2. We
+believe that the reason for the misidentifying of this problem
+was that instead of using the Analysis Condition “Lost Plot”
+to identify the issues within the story, they found them by
+observing the tree displaying the in tool directly. While this
+method is legitimate, none of these 3 participants were able
+to identify and solve problem 2.
+Additionally, two users (10%) could not ﬁnd a solution for
+problems 1 and 3. In turn, problem 5 seemed to be the one that
+was harder to solve for at least ﬁve of the participants (25%).
+For all the other problems, the completion rate is 100%.
+According to the average participant, the task of identifying
+the problems within the narrative was considered relatively
+easier than trying to propose a solution. The results also show
+the time it took users to identify all the problems was 52.3 sec.
+(SD = 22.66), while proposing a solution took, on average,
+146.2 sec. (SD = 31.84). Overall, the time values for both
+ﬁnding and solving problems prove that the tool is efﬁcient and
+that, with a bit of experience with the tool, users can quickly
+use the tool to pinpoint and repair errors in their interactive
+stories.
+In the end, participants gave the Story Validator tool an
+average SUS score of 92.4 (SD = 4.76). These results suggest
+that our system is considered a “truly superior product” [22].
+D. Additional results
+
+Fig. 7. Analysis Condition “Lost Plot” for the “TMC - failed version”.
+
+Before each experiment, we asked the participants, together
+with the demographics questionnaire, their preferred tool to
+write stories for games, and what problems they usually face
+in the task.
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

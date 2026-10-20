@@ -1,0 +1,92 @@
+Fig. 1. A bird’s-eye view of a storyboard in Twine.
+
+tags, which function as labels that add information to the
+Passage but are not visible on the published version of the
+story.
+Similar to branching narratives, where arcs connect nodes to
+each other, Passages are connected through Links, represented
+by an arrow on Twine’s storyboard. To the player, these are
+displayed as points of interaction or decision points. The Links
+can be guarded by variables. Twine has a <<if>> macro,
+which is used to test the current value of the story’s variables.
+These macros will inﬂuence the ﬂow of the story since certain
+Links will only be available to the player if the conditions of
+the <<if>> macros are true.
+Because Twine is designed to develop and publish interactive stories on the Web, all its data is encoded in a single
+HTML ﬁle. However, while HTML is the default hypertext
+output for Twine, we found that exporting Twine’s internal
+XML data in a JSON format would be an added value for
+reasons of simplicity and easier processing. This JSON ﬁle
+contains each Passage’s data, including the Passages’ text,
+name, id, Links, and position on Twine’s storyboard.
+IV. A M ODEL TO T EST I NTERACTIVE NARRATIVES
+We sought out to develop a tool that supports game writers
+in the creation of IN in stages before human playtesting
+by letting the author explicitly test different hypotheses and
+narrative properties to identify possible design mistakes. To
+be useful to authors, such a tool needs to provide insightful
+data on different story metrics and identify design issues that
+a player could encounter during gameplay.
+We take the assumption that the story space can be represented by a traversable graph with nodes (Passages) and edges
+(Links) that can be guarded by variables, and that the tool
+uses a Depth-First Search (DFS) based algorithm to traverse
+all possible narrative paths to gather data. With this in mind,
+we deﬁned the following as useful narrative metrics:
+• Number of paths. Enumeration of all possible traversals
+of the story graph, including the Passages the player visits
+on each narrative path. As a result with get the number of
+visits to each Passage as well and get an idea about which
+parts of the story are probably more often experienced
+by the players. When searching the graph, the algorithm
+begins at the starting node (obtained from the JSON data)
+and explores one Link at a time, adding each Passage
+
+visited to a stack. When it reaches an ending, the total
+number of paths is increased by one, the elements in
+the stack are saved as a path sequence, and we begin
+popping nodes from the stack until we ﬁnd a node with
+an unvisited Link.
+• Endings Hit Percentage. At the end of the game, the
+story reaches different endings, depending on the players’ choices and state variables. The distribution of the
+endings players reach is often a concern of the design. As
+the search algorithm traverses all the paths, it keeps count
+of how many paths reach each ending. It then calculates
+the corresponding hit percentage. To ensure that, the story
+ending nodes need to to be identiﬁed. For example, by
+using the Twine tag system and adding an ENDINGPOINT tag to the Passages that are deﬁned as an ending
+(see Fig. 2).
+
+Fig. 2. Example of an ENDING-POINT tag in Twine.
+
+Stroke Points. Whenever the search algorithm reaches an
+ending, we compare the current path sequence with the
+previous one, intersecting their values to ﬁnd common
+nodes in all paths. Eventually, we can identify which
+Passages are visited in all narrative paths. We named
+these Passages, Stroke Points. These can be part of the
+designer goals, as they can be useful to ensure some parts
+of the story is always conveyed to the player. However,
+it may happen that the author does not want to withdraw
+the player’s ability to choose, in which case Stroke Points
+may become a problem.
+• Lost Plot. Identiﬁes narrative sections that, although included in the story by the author, are never reached in an
+actual playthrough due to some design or implementation
+error, for example, the conditions set in the <<if>>
+macros are never met. Ideally, in a well-constructed interactive story, all Passages should be visited at least once,
+and all paths should reach an ending. As the algorithm
+traverses the story, it keeps track of the Passages visited.
+Eventually, it can identify the existence of Passages
+that are never reached by any possible narrative path.
+Additionally, the iteration of the search may end in DeadEnd, as it stops once it reaches a node without any edges
+(i.e., a Passage without any possible Links). Normally,
+this node is expected to be an ending, but it can also be
+a Dead-End — a non-ending Passage that impedes the
+player from progressing. Therefore, if the end Passage
+does not have an ENDING-POINT tag, it is identiﬁed a
+Dead-End.
+• Evolution of Variables. A branching narrative might
+•
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

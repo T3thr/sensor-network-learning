@@ -1,0 +1,1199 @@
+<html lang="th" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>อ่านบทความวิจัยแปลไทยคู่ขนาน (Compare View) · IoT-CAD (ICCAD 2020) · 305432 เครือข่ายเซนเซอร์</title>
+  <meta name="description" content="อ่านบทความวิจัยต้นฉบับ IoT-CAD (ICCAD 2020) ฉบับแปลไทยเจาะลึกแบบเทียบเคียงต้นฉบับ 1:1 ครบทั้ง 9 หน้า แปลละเอียดทุกย่อหน้า พร้อมบทวิเคราะห์สูตร ตาราง และเทคนิคการนำเสนอหน้าชั้นเรียน">
+
+  <!-- Google Fonts: IBM Plex Sans Thai & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Main & Interactive Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260928b">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20260928b">
+  <script src="../assets/js/header-component.js?v=20261007"></script>
+</head>
+<body>
+
+<!-- ═══════════ Unified Standardized Header Component ═══════════ -->
+<site-header data-page="translation" data-base="../"></site-header>
+
+<!-- ═══════════ Main Container ═══════════ -->
+<div class="compare-view-container">
+  
+
+  <!-- Page Title & Header Banner -->
+  <div style="margin-bottom: 20px;">
+    <h1 class="book-title" style="font-size: 1.65rem; margin-bottom: 8px;">
+      IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association
+    </h1>
+    <div class="subtitle" style="font-size: 0.96rem; margin-bottom: 14px;">
+      บทความวิจัยตัวจริงจากการประชุมวิชาการระดับสากล IEEE/ACM ICCAD 2020 · ถอดความภาษาไทยเจาะลึก 1:1 เทียบเคียงหน้าต่อหน้า ละเอียดครบทุกย่อหน้า
+    </div>
+  </div>
+
+  <!-- ═══════════ Top Control Bar (View Mode & Study Mode) ═══════════ -->
+  <div class="compare-top-controls">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <span style="font-size: 0.82rem; font-weight: 700; color: var(--ink-muted);">โหมดการแสดงผล:</span>
+      <div class="view-mode-group">
+        <button class="btn-mode-pill active" id="view-mode-compare" title="แสดงต้นฉบับคู่กับบทแปลไทย 50:50">🗖 Compare View (คู่ขนาน)</button>
+        <button class="btn-mode-pill" id="view-mode-thai" title="แสดงเฉพาะบทแปลภาษาไทย">🇹🇭 แปลไทยเจาะลึก</button>
+        <button class="btn-mode-pill" id="view-mode-paper" title="แสดงเฉพาะเปเปอร์ต้นฉบับ">📄 เปเปอร์ต้นฉบับ</button>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <span style="font-size: 0.82rem; font-weight: 700; color: var(--ink-muted);">ระดับเนื้อหา:</span>
+      <div class="study-mode-group">
+        <button class="btn-mode-pill" id="study-mode-summary" title="แสดงสรุปสาระสำคัญประจำหน้า">📝 สรุปสาระสำคัญ</button>
+        <button class="btn-mode-pill active" id="study-mode-trans" title="แสดงคำแปลละเอียดทุกย่อหน้า">📖 แปลละเอียดทุกย่อหน้า</button>
+      </div>
+
+      <a href="index.html#sec-rehearsal" class="btn btn-secondary" style="padding: 5px 12px; font-size: 0.80rem; text-decoration: none;">
+        🎓 สลับไปห้องซ้อม 5 นาที →
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════ Compare Grid (Dual Pane: Paper Left + Thai Right) ═══════════ -->
+  <div class="compare-grid" id="compare-grid">
+    
+    <!-- Left: Original Paper Pane -->
+    <section class="compare-paper-pane" id="compare-paper-pane">
+      <div class="compare-pane-header">
+        <span id="compare-paper-page-label">IEEE ICCAD 2020 · หน้า 1 จาก 9</span>
+        <div style="display: flex; gap: 6px;">
+          <a href="../raw/Paper_I_1_PRIMARY_IoT-CAD_9256703.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.74rem;">
+            เปิดไฟล์ PDF เต็ม ↗
+          </a>
+        </div>
+      </div>
+      <div class="compare-paper-img-box" id="compare-paper-img-box">
+        <img id="compare-paper-img" class="compare-paper-img" src="assets/pages/page-1.png" alt="Paper I Page 1">
+      </div>
+    </section>
+
+    <!-- Right: Thai Study & Translation Pane -->
+    <section class="compare-thai-pane" id="compare-thai-pane">
+
+      <!-- ────────────────── หน้า 1 ────────────────── -->
+      <article class="thai-page-article" data-page="1">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 1 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 1: Introduction</span>
+        </div>
+        <h2 class="thai-section-heading">บทคัดย่อ และ บทนำ (Abstract &amp; Introduction)</h2>
+        
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 1:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>ปัญหาหลัก:</strong> การประยุกต์ใช้ IoT ในระบบกายภาพไซเบอร์ (CPS) ก่อให้เกิดช่องโหว่ใหม่ งานวิจัยส่วนใหญ่มักโฟกัสเฉพาะฝั่ง Cyber (เครือข่ายและแอปพลิเคชัน) แต่มองข้ามระดับกายภาพ (Physical Layer)</li>
+            <li><strong>ข้อเสนอของ IoT-CAD:</strong> นำเซนเซอร์ที่ตรวจวัดคุณสมบัติทางกายภาพมาสร้าง <em>“บริบท (Context)”</em> ผ่านการจัดกลุ่มความสัมพันธ์ของเซนเซอร์ (Sensor Association)</li>
+            <li><strong>ผลลัพธ์สำคัญ:</strong> ทำคะแนน Precision ได้สูงถึง <strong>92.0%</strong> ภายในเวลาประมวลผลเพียง <strong>532 มิลลิวินาที (0.532 s)</strong> บนแพลตฟอร์ม Fog Computing ซึ่งทันเวลาขีดจำกัดแบบ Real-time</li>
+          </ul>
+        </div>
+
+        <!-- Presentation Cue Card -->
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 1: 0:00 - 0:45)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ประเด็นตั้งต้น:</strong> ใช้ตัวอย่างไฟไหม้จริง vs เซนเซอร์เสีย เพื่อชี้ให้เห็นว่า “เซนเซอร์ตัวเดียวไม่สามารถแยกแยะความผิดปกติได้”</li>
+            <li><strong>Figure 1 ในเปเปอร์:</strong> แสดงสถาปัตยกรรม 2 แบบ — (a) Closed-loop control system และ (b) Monitoring system</li>
+            <li><strong>คีย์เวิร์ดที่ต้องเน้น:</strong> Cyber-Physical Systems (CPS), Physical Context, Real-Time Constraint</li>
+          </ul>
+        </div>
+
+        <!-- Full Exhaustive Translation Block -->
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Header & Metadata -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">ข้อมูลบทความวิชาการ</span>
+              <span class="unit-en-ref">Title &amp; Author Affiliations</span>
+            </div>
+            <div class="original-en-quote">
+              “IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association<br>
+              Rozhin Yasaei, Felix Hernandez, Mohammad Abdullah Al Faruque<br>
+              Department of Electrical Engineering and Computer Science, University of California, Irvine, California, USA”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลภาษาไทย:</strong><br>
+              <strong>IoT-CAD: การตรวจจับความผิดปกติที่เข้าใจบริบทและปรับตัวได้ในระบบ IoT ผ่านการจัดกลุ่มความสัมพันธ์ของเซนเซอร์</strong><br>
+              คณะผู้วิจัย: Rozhin Yasaei, Felix Hernandez, Mohammad Abdullah Al Faruque<br>
+              ภาควิชาวิศวกรรมไฟฟ้าและวิทยาการคอมพิวเตอร์ มหาวิทยาลัยแคลิฟอร์เนีย เออร์ไวน์ (UC Irvine), สหรัฐอเมริกา<br>
+              ตีพิมพ์ในการประชุมวิชาการระดับสากล IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2020)
+            </div>
+          </div>
+
+          <!-- Unit 2: Abstract Para 1 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">บทคัดย่อ · ย่อหน้าที่ 1</span>
+              <span class="unit-en-ref">Abstract (Lines 8–15)</span>
+            </div>
+            <div class="original-en-quote">
+              “The deployment of Internet of Things (IoT) devices in cyber-physical applications has introduced a new set of vulnerabilities. The new security and reliability challenges require a holistic solution due to the cross-domain, cross-layer, and interdisciplinary nature of IoT systems. However, the majority of works presented in the literature primarily focus on the cyber aspect, including the network and application layers, and the physical layer is often overlooked.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              การนำอุปกรณ์อินเทอร์เน็ตของสรรพสิ่ง (IoT) ไปใช้งานในระบบกายภาพไซเบอร์ (Cyber-Physical Applications) ได้นำพาชุดช่องโหว่รูปแบบใหม่เข้ามา ความท้าทายด้านความปลอดภัยและความน่าเชื่อถือรูปแบบใหม่นี้จำเป็นต้องอาศัยแนวทางการแก้ปัญหาแบบองค์รวม (Holistic Solution) เนื่องจากธรรมชาติของระบบ IoT มีลักษณะข้ามโดเมน ข้ามเลเยอร์ และเป็นสหวิทยาการ อย่างไรก็ตาม ผลงานวิจัยส่วนใหญ่ที่นำเสนอในเอกสารวิชาการที่ผ่านมา มักมุ่งเน้นไปที่มิติทางไซเบอร์เป็นหลัก ได้แก่ เลเยอร์เครือข่ายและเลเยอร์แอปพลิเคชัน ในขณะที่เลเยอร์ทางกายภาพ (Physical Layer) มักถูกมองข้ามไป
+            </div>
+            <div class="engineering-annotation">
+              <strong>🔬 นัยสำคัญทางวิศวกรรม:</strong> ชี้ให้เห็นช่องว่างงานวิจัย (Research Gap) ชัดเจนว่า ระบบป้องกันส่วนใหญ่ตรวจแค่ Network Packet แปลกๆ หรือ Denial of Service แต่ถ้ามีคนเอาไฟแช็กไปลนเซนเซอร์วัดอุณหภูมิ หรือหัววัดสารเคมีเกิดการสึกหรอ ระบบรักษาความปลอดภัยไซเบอร์เดิมจะไม่สามารถรู้ได้เลย
+            </div>
+          </div>
+
+          <!-- Unit 3: Abstract Para 2 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">บทคัดย่อ · ย่อหน้าที่ 2</span>
+              <span class="unit-en-ref">Abstract (Lines 16–27)</span>
+            </div>
+            <div class="original-en-quote">
+              “In this paper, we utilize IoT sensors that capture the physical properties of the system to ensure the integrity of IoT sensors data and identify anomalous incidents in the environment. We propose an adaptive context-aware anomaly detection method that is optimized to run on a fog computing platform. In this approach, we devise a novel sensor association algorithm that generates fingerprints of sensors, clusters them, and extracts the context of the system. Based on the contextual information, our predictor model, which comprises an Long-Short Term Memory (LSTM) neural network and Gaussian estimator, detects anomalies, and a consensus algorithm identifies the source of the anomaly. Furthermore, our model updates itself to adapt to the variation in the environment and system. The results demonstrate that our model detects the anomaly with 92.0% precision in 532ms, which meets the real-time constraint of the system under test.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              ในบทความวิจัยนี้ เราใช้ประโยชน์จากเซนเซอร์ IoT ที่ตรวจจับคุณสมบัติทางกายภาพของระบบ เพื่อรับประกันความถูกต้องสมบูรณ์ (Integrity) ของข้อมูลเซนเซอร์ และระบุเหตุการณ์ผิดปกติที่เกิดขึ้นในสิ่งแวดล้อม เรานำเสนอวิธีการตรวจจับความผิดปกติที่เข้าใจบริบทและสามารถปรับตัวได้ ซึ่งได้รับการปรับแต่งอย่างเหมาะสมเพื่อทำงานบนแพลตฟอร์มการประมวลผลแบบหมอก (Fog Computing Platform)<br><br>
+              ในแนวทางนี้ เราได้ออกแบบอัลกอริทึมจับคู่ความสัมพันธ์ของเซนเซอร์ขึ้นมาใหม่ ซึ่งทำหน้าที่สร้างลายนิ้วมือดิจิทัล (Fingerprints) ของเซนเซอร์ จัดกลุ่มคลัสเตอร์พวกมัน และสกัดเอาบริบทของระบบออกมา จากข้อมูลบริบทดังกล่าว โมเดลพยากรณ์ของเราซึ่งประกอบด้วยโครงข่ายประสาทเทียมแบบ LSTM และตัวประมาณค่าแบบเกาส์เซียน (Gaussian Estimator) จะทำหน้าที่ตรวจจับความผิดปกติ และอัลกอริทึมฉันทามติ (Consensus Algorithm) จะเป็นผู้ระบุต้นตอของความผิดปกตินั้น ยิ่งไปกว่านั้น โมเดลของเรายังอัปเดตตัวเองเพื่อปรับตัวเข้ากับการแปรผันของสิ่งแวดล้อมและระบบ ผลการทดลองแสดงให้เห็นว่าโมเดลตรวจจับความผิดปกติด้วยค่าความแม่นยำจำเพาะ (Precision) สูงถึง 92.0% ภายในเวลาเพียง 532 มิลลิวินาที ซึ่งสอดคล้องกับข้อจำกัดด้านเวลาจริง (Real-Time Constraint) ของระบบที่ทำการทดสอบ
+            </div>
+          </div>
+
+          <!-- Unit 4: CCS Concepts & Keywords -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge">หมวดหมู่และคำสำคัญ</span>
+              <span class="unit-en-ref">CCS Concepts &amp; Keywords</span>
+            </div>
+            <div class="original-en-quote">
+              “CCS CONCEPTS: Computer systems organization → Embedded and cyber-physical systems.<br>
+              KEYWORDS: Internet of Things, context, sensor association, anomaly detection, recurrent neural networks, LSTM encoder-decoder”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลภาษาไทย:</strong><br>
+              <strong>การจัดหมวดหมู่ระบบคอมพิวเตอร์:</strong> สถาปัตยกรรมระบบคอมพิวเตอร์ → ระบบฝังตัวและระบบกายภาพไซเบอร์ (Embedded and Cyber-Physical Systems)<br>
+              <strong>คำสำคัญ (Keywords):</strong> อินเทอร์เน็ตของสรรพสิ่ง (IoT), บริบท (Context), การจัดกลุ่มความสัมพันธ์ของเซนเซอร์ (Sensor Association), การตรวจจับความผิดปกติ (Anomaly Detection), โครงข่ายประสาทเทียมแบบวนซ้ำ (RNN), ตัวเข้ารหัสและถอดรหัส LSTM (LSTM Encoder-Decoder)
+            </div>
+          </div>
+
+          <!-- Unit 5: Introduction Para 1 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1: บทนำ · พารากราฟ 1</span>
+              <span class="unit-en-ref">Sec. 1: Introduction (Lines 40–47)</span>
+            </div>
+            <div class="original-en-quote">
+              “Over the last decade, IoT has grabbed substantial attention due to advancements in computation and communication, and it is utilized in many applications such as smart home, automotive, and medical aid. The rapid growth of IoT has raised concerns about the security and reliability of these systems. There are a tremendous amount of work in the literature that focuses on various aspects of IoT systems such as communication network [24, 38], hardware security [5, 15, 21, 22] or software security [3, 34, 40, 41]. However, the physical layer of IoT as a cyber-physical system (CPS) is overlooked. To ensure the security of CPS systems, in addition to a bottom-up security attitude, a holistic approach is required [8–10, 12].”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              ตลอดช่วงทศวรรษที่ผ่านมา เทคโนโลยี IoT ได้รับความสนใจอย่างล้นหลามสืบเนื่องมาจากความก้าวหน้าอย่างรวดเร็วในการประมวลผลและการสื่อสาร และถูกนำไปประยุกต์ใช้งานในหลากหลายด้าน เช่น บ้านอัจฉริยะ ยานยนต์ และอุปกรณ์ทางการแพทย์ การเติบโตอย่างก้าวกระโดดนี้ก่อให้เกิดความกังวลอย่างยิ่งเกี่ยวกับความปลอดภัย (Security) และความน่าเชื่อถือได้ (Reliability) ของระบบ มีผลงานวิจัยจำนวนมหาศาลที่มุ่งเน้นไปที่มิติต่างๆ ของ IoT เช่น เครือข่ายการสื่อสาร [24, 38] ความปลอดภัยระดับฮาร์ดแวร์ [5, 15, 21, 22] หรือความปลอดภัยระดับซอฟต์แวร์ [3, 34, 40, 41] อย่างไรก็ตาม เลเยอร์ทางกายภาพของ IoT ในฐานะระบบกายภาพไซเบอร์กลับถูกมองข้าม การจะรับประกันความปลอดภัยของระบบ CPS ได้อย่างแท้จริงนั้น นอกจากทัศนคติความปลอดภัยแบบจากล่างขึ้นบน (Bottom-up) แล้ว จำเป็นต้องมีแนวทางแบบองค์รวม (Holistic Approach) ควบคู่ไปด้วย [8–10, 12]
+            </div>
+          </div>
+
+          <!-- Unit 6: Figure 1 Breakdown -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">วิเคราะห์ภาพประกอบ Figure 1</span>
+              <span class="unit-en-ref">Figure 1: IoT System Classifications</span>
+            </div>
+            <div class="original-en-quote">
+              “Figure 1: Two categories of IoT systems; (a) Closed-loop control system, and (b) Monitoring system.<br>
+              (a) Sensor → Controller → Actuator → Environment (Loop broken by Attack or Fault)<br>
+              (b) Sensor → User → Environment (Supervisory manual control loop)”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำอธิบายเจาะลึก Figure 1:</strong><br>
+              เปเปอร์แบ่งประเภทของระบบ IoT ออกเป็น 2 โครงสร้างพื้นฐานเพื่ออธิบายความสำคัญของเซนเซอร์:
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>(a) ระบบควบคุมวงปิด (Closed-loop Control System):</strong> ประกอบด้วย 3 องค์ประกอบหลัก คือ <em>เซนเซอร์ (Sensors)</em> ทำหน้าที่ตรวจวัดสถานะส่งให้ <em>คอนโทรลเลอร์ (Controller)</em> ซึ่งจะประมวลผล ตัดสินใจ และส่งคำสั่งควบคุมไปยัง <em>แอคทูเอเตอร์ (Actuators)</em> เพื่อปรับสภาพแวดล้อมให้อยู่ในสภาวะเป้าหมาย การที่เซนเซอร์ถูกโจมตี (Attack) หรือชำรุด (Fault) จะทำให้ <strong>ลูปควบคุมขาดลง (Breaking control loop)</strong> ส่งผลให้ระบบล้มเหลวทันที</li>
+                <li><strong>(b) ระบบตรวจติดตาม (Monitoring System):</strong> เซนเซอร์ตรวจวัดค่าต่างๆ แล้วแสดงผลให้ <em>ผู้ใช้งาน (User)</em> รับทราบ แม้ระบบจะไม่สั่งการแอคทูเอเตอร์โดยตรง แต่ผู้ใช้จะใช้ข้อมูลนี้ในการตัดสินใจควบคุมสิ่งแวดล้อมด้วยตนเอง ดังนั้น ระบบตรวจติดตามจึงถือเป็นส่วนหนึ่งของวงรอบการควบคุมเช่นกัน</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 7: Introduction Paras 3-4 & EA Definition -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1: บทนำ · พารากราฟ 3–4</span>
+              <span class="unit-en-ref">Sec. 1: Introduction (Lines 87–117)</span>
+            </div>
+            <div class="original-en-quote">
+              “The ultimate goal of an IoT system is to control the environment and maintain it in the desired state... Malfunction or manipulation of a sensor can break the control loop [4], and consequently, disrupt the services offered by the IoT system. Fault in a sensor device leads to the appearance of anomalous values in its readings, whereas not all anomalies in sensor measurements indicate sensor breakage because an unexpected event in the environment may cause an anomaly as well. Observing the possible anomalies in an IoT system, we present a classification of anomalies which facilitates identification of the anomaly’s source:<br>
+              • Environmental Anomaly (EA): The environment is the area that surrounds the sensor, and the sensor measures its physical properties. Any anomaly in the environment affects the measurements of the sensor and disrupts it. An EA may occur as a result of malicious activities or unexpected incidents in the environment.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              เป้าหมายสูงสุดของระบบ IoT คือการควบคุมสิ่งแวดล้อมและรักษาสภาพแวดล้อมให้อยู่ในสภาวะที่พึงประสงค์... ความผิดปกติหรือการแทรกแซงข้อมูลเซนเซอร์สามารถทำลายลูปการควบคุมได้ [4] และส่งผลกระทบต่อเนื่องให้การให้บริการของระบบ IoT หยุดชะงัก ข้อบกพร่องในอุปกรณ์เซนเซอร์จะส่งผลให้เกิดค่าผิดปกติขึ้นในการอ่านค่า อย่างไรก็ตาม <em>ไม่ใช่ทุกความผิดปกติที่วัดได้จะหมายถึงเซนเซอร์เสียเสมอไป</em> เพราะเหตุการณ์ไม่คาดคิดที่เกิดขึ้นจริงในสิ่งแวดล้อมก็สามารถทำให้เกิดความผิดปกติในการอ่านค่าได้เช่นเดียวกัน<br><br>
+              จากการสังเกตความผิดปกติที่เป็นไปได้ในระบบ IoT เราจึงนำเสนอการจำแนกประเภทของความผิดปกติ เพื่อช่วยให้สามารถระบุแหล่งที่มาของปัญหาได้อย่างแม่นยำ:
+              <ul style="margin: 8px 0 0 18px; padding: 0;">
+                <li><strong>ความผิดปกติทางสิ่งแวดล้อม (Environmental Anomaly - EA):</strong> สิ่งแวดล้อมคือพื้นที่รอบตัวเซนเซอร์ และเซนเซอร์ทำหน้าที่ตรวจวัดคุณสมบัติทางกายภาพของพื้นที่นั้น ความผิดปกติใดๆ ที่เกิดขึ้นในสิ่งแวดล้อมจริงย่อมกระทบต่อค่าการตรวจวัดของเซนเซอร์และทำให้เกิดความผิดปกติขึ้น ซึ่ง EA อาจเกิดขึ้นได้จากการกระทำที่มีเจตนาร้าย (เช่น การวางเพลิง) หรือเหตุการณ์อุบัติภัยที่ไม่คาดคิดในสิ่งแวดล้อมจริง</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 2 ────────────────── -->
+      <article class="thai-page-article" data-page="2" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 2 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 1.1 &amp; 1.2: Motivating Scenario &amp; Threat Model</span>
+        </div>
+        <h2 class="thai-section-heading">ตัวอย่างสถานการณ์กระตุ้นวิจัย และ แบบจำลองภัยคุกคาม (Threat Model)</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 2:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>นิยาม SDA:</strong> Sensing Device Anomaly คือความผิดปกติที่เกิดจากตัวเซนเซอร์พัง ถูกโจมตีทางกายภาพ หรือสายสัญญาณหลุด ทำให้ค่าเพี้ยนโดดเดี่ยวไม่สอดคล้องกับตัวอื่น</li>
+            <li><strong>Figure 2 โรงบำบัดน้ำเสีย Riccione:</strong> เซนเซอร์ Nitrate, Ammonia, Oxygen สัมพันธ์กันผ่านสมการเคมี ถ้าเป็น EA (อุณหภูมิเปลี่ยน) ทั้งสามตัวจะขยับตามทิศทางเดียวกัน แต่ถ้าเป็น SDA (เซนเซอร์ Nitrate พัง) จะผิดปกติแค่ Nitrate ตัวเดียว</li>
+            <li><strong>ภัยคุกคาม (Threat Model):</strong> รองรับทั้งความเสียหายทางกายภาพ (Reliability) และการดักโจมตีสัญญาณ (Channel Tampering) โดยต้องมีเซนเซอร์ในกลุ่มอย่างน้อย 3 ตัวขึ้นไปเพื่อทำฉันทามติ</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 2: 0:45 - 1:35)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ประเด็นเน้นย้ำ:</strong> ชี้ให้เห็นว่าถ้าใช้โมเดลแบบเก่า (Single Sensor Threshold) ระบบจะไม่รู้เลยว่านี่คือสารเคมีรั่วจริง (EA) หรือเซนเซอร์ชำรุด (SDA)</li>
+            <li><strong>ผลกระทบ:</strong> ถ้าตีความผิด ระบบอาจสั่งปิดโรงงานจนเสียหายมหาศาล (False Alarm) หรือปล่อยให้สารพิษไหลลงแม่น้ำ (Missed Critical Hazard)</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: SDA Definition -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">การจำแนกความผิดปกติ (ต่อ)</span>
+              <span class="unit-en-ref">SDA Definition (Lines 51–55)</span>
+            </div>
+            <div class="original-en-quote">
+              “• Sensing Device Anomaly (SDA): When the operation of a sensor is corrupted, its measurements do not follow the same pattern, and an SDA is observed. This corruption occurs because of either security or reliability issues. For instance, [1, 45] discuss some attacks on the physical layer.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              <strong>• ความผิดปกติของอุปกรณ์ตรวจจับ (Sensing Device Anomaly - SDA):</strong> เมื่อการทำงานของตัวเซนเซอร์เกิดความเสียหายหรือเสื่อมสภาพ ค่าที่วัดได้จะไม่เป็นไปตามรูปแบบปกติเดิม และจะตรวจพบเป็น SDA ความเสียหายนี้เกิดขึ้นได้จากประเด็นด้านความปลอดภัย (Security) หรือประเด็นด้านความน่าเชื่อถือของฮาร์ดแวร์ (Reliability) ตัวอย่างเช่น เอกสารอ้างอิง [1, 45] ได้อภิปรายถึงการโจมตีหลายรูปแบบที่กระทำต่อเลเยอร์ทางกายภาพของอุปกรณ์
+            </div>
+          </div>
+
+          <!-- Unit 2: Critique of Current Methods -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">วิจารณ์งานวิจัยที่มีอยู่ในปัจจุบัน</span>
+              <span class="unit-en-ref">Limitations of Prior Art (Lines 56–66)</span>
+            </div>
+            <div class="original-en-quote">
+              “Current anomaly detection methods model the normal behavior of a device [7, 13, 31, 33] and label any deviation from expected behavior as an anomaly. Most of the works concentrate on anomaly detection in the network layer of IoT systems [20]. In spite of reasonable performance in network intrusion detection, these methods have a high rate of false alarms when used with sensor signals. They misinterpret the environmental variation in the sensors measurements as an SDA and disregard the potential information encoded in the relation between the system and the physical world, known as the context of the system (refer to Sec. 3.1 for the definition of context)...”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              วิธีการตรวจจับความผิดปกติในปัจจุบันมักสร้างแบบจำลองพฤติกรรมปกติของอุปกรณ์แต่ละตัวเดี่ยวๆ [7, 13, 31, 33] และตัดสินให้ค่าใดๆ ที่เบี่ยงเบนไปจากพฤติกรรมที่คาดหวังกลายเป็นความผิดปกติ งานวิจัยส่วนใหญ่ไปกระจุกตัวอยู่กับการตรวจจับความผิดปกติในเลเยอร์เครือข่ายของระบบ IoT [20] แม้จะมีประสิทธิภาพที่ดีในการตรวจจับการบุกรุกทางเครือข่าย แต่วิธีการเหล่านี้กลับมี <strong>อัตราการเตือนภัยผิดพลาด (False Alarm Rate) สูงมาก</strong> เมื่อนำมาใช้กับสัญญาณของเซนเซอร์<br><br>
+              เหตุผลเพราะพวกมันตีความการเปลี่ยนแปลงทางธรรมชาติของสิ่งแวดล้อมที่สะท้อนผ่านเซนเซอร์ผิดพลาดไปว่าเป็น SDA และมองข้ามข้อมูลอันทรงคุณค่าที่แฝงอยู่ในความสัมพันธ์ระหว่างระบบกับโลกกายภาพ ซึ่งรู้จักกันในชื่อ <strong>บริบทของระบบ (Context of the system)</strong>
+            </div>
+          </div>
+
+          <!-- Unit 3: Core Proposal of IoT-CAD -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">ข้อเสนอหลักของ IoT-CAD</span>
+              <span class="unit-en-ref">Proposed Framework (Lines 67–82)</span>
+            </div>
+            <div class="original-en-quote">
+              “In this work, we propose an adaptive data-driven model for unsupervised anomaly detection in IoT systems based on the sensor measurements. The model monitors the system to detect anomalies, identifies the type of anomaly (SDA or EA), and locates them. To this end, we develop an algorithm to extract the patterns in sensor signals and generate the context of system. Then, we associate the sensors from different modalities based on the context and cluster the sensors with similar behavior. We develop our customized Recurrent Neural Network (RNN), followed by a consensus algorithm to detect and localize anomalies. The consensus algorithm checks the consistency between sensors in each cluster and determines the type of anomaly. An IoT system has a dynamic structure that is open to changes... our model is designed to be adaptive and update itself.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              ในผลงานนี้ เรานำเสนอแบบจำลองที่ขับเคลื่อนด้วยข้อมูลและสามารถปรับตัวได้ สำหรับการตรวจจับความผิดปกติแบบไม่ใช้ผู้สอน (Unsupervised) ในระบบ IoT โดยอิงจากข้อมูลการตรวจวัดของเซนเซอร์ โมเดลจะคอยเฝ้าระวังระบบเพื่อตรวจจับความผิดปกติ ระบุประเภทความผิดปกติ (ว่าเป็น SDA หรือ EA) และระบุตำแหน่งที่เกิดปัญหาขึ้น<br><br>
+              เพื่อเป้าหมายนี้ เราได้พัฒนาอัลกอริทึมในการสกัดรูปแบบในสัญญาณเซนเซอร์และสร้างบริบทของระบบขึ้นมา จากนั้น เราเชื่อมโยงเซนเซอร์ต่างชนิด (Multi-modality) เข้าด้วยกันตามบริบท และจัดกลุ่มเซนเซอร์ที่มีพฤติกรรมสอดคล้องกันเข้าเป็นคลัสเตอร์ เราได้พัฒนาโครงข่ายประสาทเทียมแบบวนซ้ำ (RNN) ที่ออกแบบขึ้นมาโดยเฉพาะ ตามด้วยอัลกอริทึมฉันทามติเพื่อตรวจจับและระบุตำแหน่งความผิดปกติ โดยอัลกอริทึมฉันทามติจะตรวจสอบความสอดคล้องระหว่างเซนเซอร์ในแต่ละคลัสเตอร์และตัดสินประเภทความผิดปกติ และเนื่องจากระบบ IoT มีโครงสร้างแบบพลวัตที่เปลี่ยนแปลงได้เสมอ โมเดลของเราจึงได้รับการออกแบบให้สามารถปรับตัวและอัปเดตตัวเองได้ตลอดเวลา
+            </div>
+          </div>
+
+          <!-- Unit 4: Sec 1.1 Motivational Example & Figure 2 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1.1: ตัวอย่างสถานการณ์กระตุ้นวิจัย</span>
+              <span class="unit-en-ref">Sec. 1.1 &amp; Figure 2 Breakdown</span>
+            </div>
+            <div class="original-en-quote">
+              “1.1 Motivational Example: As a real-world IoT system, we study the environmental training center wastewater plant in Riccione [14]. The primary purposes of wastewater treatment is the elimination of nitrate. Nitrate contamination is a severe environmental problem because it can exhibit toxicity toward aquatic life, present a public health hazard, and affect the suitability of wastewater... Consider two scenarios with anomalous rise in nitrate level; In the first scenario, environmental changes alter the water temperature, which affects the chemical reactions in the water tank (Figure 2(b), an example of EA). In the second scenario, the nitrate sensor is broken or manipulated by an attacker. (Figure 2(c), an example of SDA)...”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและวิเคราะห์เชิงลึก:</strong><br>
+              เพื่อเป็นตัวแทนของระบบ IoT ในโลกแห่งความเป็นจริง ผู้วิจัยได้นำกรณีศึกษาของโรงงานบำบัดน้ำเสีย ณ ศูนย์ฝึกอบรมสิ่งแวดล้อมในเมืองริชโชเน (Riccione), ประเทศอิตาลี [14] มาศึกษา เป้าหมายหลักของการบำบัดน้ำเสียคือกำจัดสารไนเตรต (Nitrate) ซึ่งเป็นพิษต่อสิ่งมีชีวิตในน้ำและเป็นอันตรายต่อสุขภาพชุมชน ในกระบวนการบำบัด น้ำเสียจะถูกสูบเข้าสู่ถังที่มีเซนเซอร์วัดค่าออกซิเจน (Oxygen), แอมโมเนีย (Ammonia) และไนเตรต (Nitrate) พร้อมอุปกรณ์ควบคุมเช่น โบลเวอร์เติมอากาศและวาล์ว ผ่านคอนโทรลเลอร์ PLC (Figure 2(a))<br><br>
+              ลองพิจารณา 2 สถานการณ์ที่ระดับไนเตรตพุ่งสูงผิดปกติ:
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>สถานการณ์ที่ 1 (Figure 2(b) - ตัวอย่างของ EA):</strong> อุณหภูมิภายนอกเปลี่ยน ส่งผลต่อปฏิกิริยาเคมีในถังน้ำ เมื่อออกซิเจนเพิ่มขึ้น แอมโมเนียจะถูกออกซิไดซ์ลดลง และไนเตรตจะเพิ่มขึ้น สัญญาณเซนเซอร์ทั้งสามตัวแม้จะผิดปกติแต่ <em>เส้นแนวโน้ม (Trendlines) มีพฤติกรรมสอดคล้องสัมพันธ์กันตามกฎเคมี</em> จึงระบุได้ว่าเป็นความผิดปกติจากสิ่งแวดล้อม (EA) เซนเซอร์ไม่ได้เสีย</li>
+                <li><strong>สถานการณ์ที่ 2 (Figure 2(c) - ตัวอย่างของ SDA):</strong> เซนเซอร์ไนเตรตพัง หรือถูกแฮกเกอร์ส่งสัญญาณหลอก ค่าไนเตรตพุ่งขึ้นตัวเดียวโดดเดี่ยว ในขณะที่ออกซิเจนและแอมโมเนียยังนิ่งเป็นปกติ เส้นแนวโน้มขัดแย้งกับตัวอื่น จึงระบุได้ทันทีว่าเป็นความชำรุดของอุปกรณ์ (SDA)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 5: Sec 1.2 Threat Model -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1.2: แบบจำลองภัยคุกคาม</span>
+              <span class="unit-en-ref">Sec. 1.2: Threat Model (Lines 120–137)</span>
+            </div>
+            <div class="original-en-quote">
+              “1.2 Threat Model: The proposed methodology aims to detect SDA and EA, which occur due to an unexpected incident in the environment, reliability issue, or security breakage. Accidental damage, degradation, and defects are examples of plausible reliability problems... In contrast, the security breakage scenario involves an attacker who intentionally exploits the vulnerabilities in the system. In this threat model, the adversary has access to the sensor device and fiddles with it to inject fault, alter functionality, or deny its service... The model can detect anomalies in a standalone sensor, but to distinguish between SDA and EA in a sensor, it should be associated with at least two other sensors.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              แบบจำลองภัยคุกคามมีเป้าหมายเพื่อตรวจจับทั้ง SDA และ EA ซึ่งเกิดขึ้นจากเหตุการณ์ไม่คาดคิดในสิ่งแวดล้อม ประเด็นความน่าเชื่อถือทางกายภาพ หรือการเจาะระบบความปลอดภัย:
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>ปัญหาด้านความน่าเชื่อถือ (Reliability):</strong> ความเสียหายจากอุบัติเหตุ การเสื่อมสภาพตามอายุการใช้งาน และความบกพร่องของชิ้นส่วนฮาร์ดแวร์</li>
+                <li><strong>สถานการณ์การเจาะระบบ (Security Breakage):</strong> ผู้โจมตีจงใจเจาะช่องโหว่ โดยผู้โจมตีอาจเข้าถึงตัวอุปกรณ์เซนเซอร์โดยตรงเพื่อฉีดข้อมูลเท็จ (Inject fault) ดัดแปลงการทำงาน หรือทำให้หยุดทำงาน (DoS) หรืออีกสถานการณ์หนึ่งคือ ผู้โจมตีเข้าควบคุมช่องทางการสื่อสารและส่งสัญญาณปลอมเข้าสู่คอนโทรลเลอร์</li>
+              </ul>
+              <strong>กฎเหล็กทางคณิตศาสตร์:</strong> โมเดลสามารถตรวจจับความผิดปกติในเซนเซอร์เดี่ยวได้ แต่การจะ <em>แยกแยะระหว่าง SDA กับ EA</em> เซนเซอร์ตัวนั้นจะต้องถูกจับกลุ่มความสัมพันธ์กับเซนเซอร์ตัวอื่น <strong>อย่างน้อย 2 ตัวขึ้นไป (รวมเป็นกลุ่มละ 3 ตัวขึ้นไป)</strong> เพื่อให้เกิดเสียงโหวตฉันทามติ
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 3 ────────────────── -->
+      <article class="thai-page-article" data-page="3" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 3 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 1.3, 1.4 &amp; 2: Challenges, Contributions, Related Works</span>
+        </div>
+        <h2 class="thai-section-heading">ความท้าทาย สิ่งที่ค้นพบใหม่ และ งานวิจัยที่เกี่ยวข้อง (Related Works)</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 3:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>4 ความท้าทายหลัก:</strong> ข้อมูลเซนเซอร์เป็น Multi-variant ต่างชนิดต่างความเร็ว, อุปกรณ์ต้นทุนต่ำมี Noise สูง, ข้อมูลผิดปกติมีน้อยมากจนฝึกแบบมีผู้สอน (Supervised) ไม่ได้, และสภาพแวดล้อม IoT เปลี่ยนแปลงตลอดเวลา</li>
+            <li><strong>3 ข้อค้นพบใหม่ (Contributions):</strong> อัลกอริทึม Sensor Association สกัดบริบท, อัลกอริทึมฉันทามติโหวตแยกสาเหตุ, และโมเดลปรับตัวได้แบบ Online Retraining</li>
+            <li><strong>Figure 3 สถาปัตยกรรมระบบ:</strong> แบ่งชัดเจนเป็นช่วง <em>Offline Training</em> (สกัด Fingerprint ──▶ จัดคลัสเตอร์ ──▶ ฝึก LSTM/Gaussian) และช่วง <em>Online Inference</em> (พยากรณ์ ──▶ ตรวจวัด Error ──▶ ฉันทามติ ──▶ ตัดสินใจ Retrain)</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 3: 1:35 - 2:20)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ประเด็นเน้นย้ำ:</strong> “ทำไมต้องใช้ Unsupervised Learning?” เพราะในระบบจริงไม่มีใครรู้ล่วงหน้าว่าเซนเซอร์จะเสียท่าไหน หรือจะเกิดอุบัติภัยแบบใด ข้อมูลจึงไม่มี Label</li>
+            <li><strong>การผสมผสานสองเทคนิค:</strong> ใช้ Deep Learning (LSTM) จับรูปแบบเวลา ร่วมกับ Probabilistic Model (Gaussian) หาขอบเขตความน่าจะเป็น</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Attacker Limitations -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge">แบบจำลองภัยคุกคาม (จบ)</span>
+              <span class="unit-en-ref">Threat Model Constraints (Lines 1–8)</span>
+            </div>
+            <div class="original-en-quote">
+              “To deceive this method, the attacker should be able to discover how sensors are clustered, learn the correlations and patterns in the sensors’ signals, and manipulate them in a way that imitates the same correlation as before. It means that in addition to sensors, the attacker should have full access to the clustering layout of sensors and the trained anomaly detection model. It is assumed that the attacker does not have these privileges.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              ในการที่จะหลอกระบบตรวจจับนี้ได้ ผู้โจมตีจะต้องมีความสามารถในการล่วงรู้ว่าเซนเซอร์ถูกจัดกลุ่มคลัสเตอร์อย่างไร ต้องเรียนรู้ความสัมพันธ์และรูปแบบในสัญญาณของเซนเซอร์ทุกตัว และต้องแทรกแซงสัญญาณเหล่านั้นในลักษณะที่ลอกเลียนความสัมพันธ์ทางกายภาพเดิมได้อย่างแนบเนียน นั่นหมายความว่านอกจากตัวเซนเซอร์แล้ว ผู้โจมตีจะต้องมีสิทธิ์เข้าถึงโครงสร้างคลัสเตอร์ของเซนเซอร์และตัวโมเดลตรวจจับความผิดปกติที่ฝึกเสร็จแล้วอย่างสมบูรณ์ ซึ่งในทางปฏิบัติตั้งอยู่บนสมมติฐานที่สมเหตุสมผลว่า <em>ผู้โจมตีไม่มีสิทธิ์พิเศษระดับลึกถึงขนาดนี้</em>
+            </div>
+          </div>
+
+          <!-- Unit 2: Contributions -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1.4: ผลงานค้นพบใหม่ของผู้วิจัย</span>
+              <span class="unit-en-ref">Sec. 1.4: Our Contributions (Lines 9–21)</span>
+            </div>
+            <div class="original-en-quote">
+              “Our novel contributions to address the aforementioned challenges are summarized below:<br>
+              • Context-aware sensor association algorithm: We develop a multi-modality clustering method to associate sensors that experience similar contextual variation.<br>
+              • Consensus-based strategy for unsupervised anomaly detection: We design a methodology to pinpoint the anomalies without reliance on prior knowledge about possible anomalies.<br>
+              • Adaptive data-driven model: Our proposed anomaly detection model is periodically updated at run-time to adapt itself to new states caused by variations in the system.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              ผลงานค้นพบใหม่ (Contributions) ที่นำเสนอเพื่อแก้ปัญหาท้าทายข้างต้น สรุปได้ดังนี้:
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>1. อัลกอริทึมจัดกลุ่มความสัมพันธ์ของเซนเซอร์ที่เข้าใจบริบท (Context-aware Sensor Association):</strong> พัฒนาวิธีการจัดกลุ่มเซนเซอร์ต่างชนิด (Multi-modality Clustering) เพื่อเชื่อมโยงเซนเซอร์ที่สัมผัสกับการเปลี่ยนแปลงของบริบทสิ่งแวดล้อมร่วมกัน</li>
+                <li><strong>2. กลยุทธ์ฉันทามติสำหรับการตรวจจับความผิดปกติแบบไม่ใช้ผู้สอน (Consensus-based Strategy):</strong> ออกแบบระเบียบวิธีชี้เป้าความผิดปกติและระบุต้นเหตุ โดยไม่ต้องพึ่งพาความรู้หรือป้ายกำกับล่วงหน้าเกี่ยวกับความผิดปกติที่เป็นไปได้</li>
+                <li><strong>3. แบบจำลองขับเคลื่อนด้วยข้อมูลที่ปรับตัวได้ (Adaptive Data-driven Model):</strong> โมเดลจะได้รับการอัปเดตเป็นระยะในขณะทำงานจริง (Run-time) เพื่อปรับตัวเข้าสู่สภาวะใหม่ที่เกิดจากความแปรผันของระบบและสิ่งแวดล้อม</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 3: Research Challenges -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 1.3: ความท้าทายด้านการวิจัย</span>
+              <span class="unit-en-ref">Sec. 1.3: Research Challenges (Lines 41–55)</span>
+            </div>
+            <div class="original-en-quote">
+              “Anomaly detection in the IoT sensors is challenging due to the following reasons [11]:<br>
+              • The IoT data are multi-variant time-series data that are collected from a heterogeneous network of sensors with different modalities, data dimensions, sampling rates, specifications, and locations.<br>
+              • Low cost and resource-constrained sensors are usually sensitive to noise, and deployment of them in IoT systems affects the quality of data.<br>
+              • Due to lack of prior knowledge about possible anomalies and scarcity of anomalous observations, there is not enough labeled anomalous data available, and conventional supervised machine learning technique are not applicable.<br>
+              • IoT systems have dynamic characteristics that may be altered over time because of environmental changes, human interaction, mobility of devices, and updating firmware or software. Consequently, a static model fails to imitate the system in the long-term.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              การตรวจจับความผิดปกติในเซนเซอร์ IoT มีความท้าทายอย่างยิ่งเนื่องจาก 4 ปัจจัยสำคัญ [11]:
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>1. ข้อมูลหลายมิติบนฐานเวลา (Multi-variant Time-Series):</strong> เก็บจากเครือข่ายเซนเซอร์ต่างชนิด (Heterogeneous) มีหน่วยวัดต่างกัน มิติข้อมูลต่างกัน อัตราการสุ่มตัวอย่าง (Sampling rate) ต่างกัน และตำแหน่งติดตั้งกระจัดกระจาย</li>
+                <li><strong>2. เซนเซอร์ต้นทุนต่ำและข้อจำกัดด้านทรัพยากร:</strong> ไวต่อสัญญาณรบกวน (Noise) อย่างมาก ส่งผลกระทบโดยตรงต่อคุณภาพและความแม่นยำของข้อมูลดิบ</li>
+                <li><strong>3. ขาดข้อมูลตัวอย่างความผิดปกติ:</strong> เนื่องจากเหตุการณ์ผิดปกติเกิดขึ้นได้ยากมากในสภาวะปกติ ทำให้ไม่มีข้อมูลที่มีป้ายกำกับ (Labeled data) เพียงพอ เทคนิค Supervised Machine Learning แบบเดิมจึงไม่สามารถนำมาใช้ได้</li>
+                <li><strong>4. พลวัตของระบบ IoT มีการเปลี่ยนแปลงเสมอ:</strong> สภาพแวดล้อมเปลี่ยน การใช้งานของมนุษย์ การย้ายตำแหน่งอุปกรณ์ หรือการอัปเดตเฟิร์มแวร์ ทำให้ <em>โมเดลที่ฝึกไว้แบบตายตัว (Static Model) จะล้าสมัยและล้มเหลวในการทำงานระยะยาว</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 4: Figure 3 Architecture & Related Works -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 2: งานวิจัยที่เกี่ยวข้อง &amp; Figure 3</span>
+              <span class="unit-en-ref">Sec. 2: Related Works (Lines 66–133) &amp; Figure 3</span>
+            </div>
+            <div class="original-en-quote">
+              “Figure 3: The architecture of our methodology in the training and inference stage.<br>
+              General anomaly detection algorithms can be classified into: Statistical/Probabilistic Methods, Proximity Methods, and Predictive Methods... Long-Short Term Memory (LSTM) layer was introduced in 1997 by [19]... Our methodology inherits the advantages of both probabilistic and predictive methods. We implement and compare the ConvLSTM and LSTM-LSTM encoder-decoder as our predictive models. Then, the reconstruction error... is modeled by a Multivariate Gaussian Estimator.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและบทวิเคราะห์สถาปัตยกรรม:</strong><br>
+              เปเปอร์แบ่งงานวิจัยตรวจจับความผิดปกติในอดีตออกเป็น 3 สายหลัก:
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>1. วิธีทางสถิติและความน่าจะเป็น (Statistical/Probabilistic Methods):</strong> สร้างโมเดลการกระจายตัวของข้อมูลในอดีต [17, 39] หากข้อมูลใหม่มีความน่าจะเป็นต่ำจะถูกตีตราเป็นความผิดปกติ</li>
+                <li><strong>2. วิธีวัดระยะความใกล้เคียง (Proximity Methods):</strong> คำนวณระยะห่างระหว่างจุดข้อมูล เช่น Local Outlier Factor (LOF) [6] หรือ Clustering [18]</li>
+                <li><strong>3. วิธีเชิงพยากรณ์ (Predictive Methods):</strong> แปลงปัญหาเป็นการทำนายค่าลำดับถัดไป (Sequence Prediction) โดยใช้โมเดล Deep Learning เช่น RNN หรือ LSTM [19] และวัดผลต่างจากการทำนาย (Reconstruction Error) เช่น สถาปัตยกรรม Conv-LSTM หรือ LSTM-LSTM Encoder-Decoder [23, 28, 31]</li>
+              </ul>
+              <strong>สถาปัตยกรรมไฮบริดของ IoT-CAD (Figure 3):</strong> รวมข้อดีของทั้งสองสายเข้าด้วยกัน โดยใช้ <strong>LSTM-LSTM Encoder-Decoder</strong> ทำนายค่าล่วงหน้า แล้วนำค่าความคลาดเคลื่อน (Reconstruction Error) มาประมาณค่าด้วย <strong>Multivariate Gaussian Estimator</strong> เพื่อคำนวณความน่าจะเป็นของการเกิดความผิดปกติอย่างแม่นยำ
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 4 ────────────────── -->
+      <article class="thai-page-article" data-page="4" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 4 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 3.1 &amp; 3.2: Fingerprints &amp; Sensor Association</span>
+        </div>
+        <h2 class="thai-section-heading">การสกัดลายนิ้วมือดิจิทัล และ อัลกอริทึมจับคู่ความสัมพันธ์ของเซนเซอร์</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 4:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>สมการที่ (1) (Equation 1):</strong> สกัดความเปลี่ยนแปลงสัมพัทธ์ระหว่างช่วงเวลา snapshot ถ้าเกินเกณฑ์ <code>ε_rel</code> บิตจะเป็น <code>1</code> ถ้าไม่เกินจะเป็น <code>0</code> กลายเป็นสายบิตลายนิ้วมือ 24 บิต</li>
+            <li><strong>การแบ่งซับซีเควนซ์:</strong> สายบิตยาว k ถูกแบ่งเป็น d ส่วนย่อย โดยมีขนาด l และทับซ้อนกัน o บิต ตามสูตร <code>d = (k - o) / (l - o)</code></li>
+            <li><strong>การจัดกลุ่มด้วย Hamming Distance:</strong> คำนวณระยะห่างแฮมมิงเพื่อหาว่าเซนเซอร์คู่ใดมีพฤติกรรมสอดคล้องกัน โดยลดระยะห่างภายในกลุ่ม (Intra-cluster IC) และเพิ่มระยะห่างระหว่างกลุ่ม (Inter-cluster OC)</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 3: 2:20 - 3:05)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>Figure 4:</strong> กราฟอุณหภูมิแสดงการเกิดบิต 0 และ 1 — เมื่ออุณหภูมิเปลี่ยนชัน (t1) บิตจะเป็น 1, เมื่ออุณหภูมิแทบไม่เปลี่ยน (t2) บิตจะเป็น 0</li>
+            <li><strong>Figure 5:</strong> แผนภาพแสดงกระบวนการรวมกลุ่ม 5 ขั้นตอน จนได้ผลลัพธ์ว่า Sensor 1 จัดอยู่ในกลุ่มเดียวกับ Sensor 3</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Sec 3.1 Fingerprint Generation -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 3.1: ขั้นตอนการสร้างลายนิ้วมือดิจิทัล</span>
+              <span class="unit-en-ref">Sec. 3.1: Fingerprint Generation (Lines 58–94)</span>
+            </div>
+            <div class="original-en-quote">
+              “...we convert all sensor signals to binary fingerprints regardless of their modality. The procedure of fingerprint generation has the following steps:<br>
+              Step1: Each sensor continuously monitors the environment by taking a measurement each z seconds... In a time window of q seconds from timestamp t, the sensor records v = [q/z] measurements and forms a snapshot vector S_t = (s^t, s^(t+z), ..., s^(t+z(v-1))).<br>
+              Step2: The ε_rel is a pre-defined threshold that controls the amount of variation that is said to conform a change. The values obtained in a snapshot are averaged and the variation bit b(t) is calculated as follows:<br>
+              b(t) = 1 if |S_bar_(t+z) - S_bar_t| / S_bar_t > ε_rel, and 0 otherwise.<br>
+              Step3: Finally, a sequence of k+1 consecutive snapshots seq(t, t+kz) has an associated fingerprint F(seq(t, t+kz)) = (b(t), b(t+z), ..., b(t+(k-1)z)).”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              เราแปลงสัญญาณเซนเซอร์ทั้งหมดให้เป็น <strong>ลายนิ้วมือฐานสอง (Binary Fingerprints)</strong> โดยไม่ขึ้นกับชนิดหรือหน่วยวัดของเซนเซอร์ ขั้นตอนการสร้างลายนิ้วมือมีดังนี้:
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>ขั้นตอนที่ 1 (Snapshot Formation):</strong> เซนเซอร์แต่ละตัวตรวจวัดสิ่งแวดล้อมทุกๆ z วินาที ในหน้าต่างเวลาขนาด q วินาทีจากเวลา t เซนเซอร์จะบันทึกข้อมูล v = [q/z] ตัวอย่าง และรวมเป็นเวกเตอร์สแนปช็อต <code>S_t = (s^t, s^(t+z), ..., s^(t+z(v-1)))</code></li>
+                <li><strong>ขั้นตอนที่ 2 (Variation Bit Extraction):</strong> กำหนดค่าขีดเริ่มเปลี่ยนสัมพัทธ์ <code>ε_rel</code> เพื่อควบคุมระดับการเปลี่ยนแปลงที่ถือว่ามีนัยสำคัญ ค่าในสแนปช็อตจะถูกนำมาเฉลี่ย และคำนวณบิตการเปลี่ยนแปลง <code>b(t)</code> ตามสมการที่ (1):</li>
+              </ul>
+              
+              <div class="formula-display-box">
+                <strong>สมการที่ (1) การคำนวณบิตลายนิ้วมือ:</strong><br><br>
+                b(t) = 1 &nbsp;&nbsp; หาก &nbsp;&nbsp; |S̄(t+z) − S̄(t)| / S̄(t) &gt; ε_rel<br>
+                b(t) = 0 &nbsp;&nbsp; ในกรณีอื่น (Otherwise)
+              </div>
+
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>ขั้นตอนที่ 3 (Fingerprint Assembly):</strong> รวบรวมสแนปช็อตต่อเนื่องกัน k+1 ชุด จะได้สายบิตลายนิ้วมือความยาว k บิต: <code>F = (b(t), b(t+z), ..., b(t+(k-1)z))</code> เซนเซอร์ทุกตัวแม้จะมี Sampling Rate ต่างกันก็จะได้ลายนิ้วมือที่มีความยาวเท่ากันเสมอ</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 2: Figure 4 Breakdown -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">วิเคราะห์ภาพประกอบ Figure 4</span>
+              <span class="unit-en-ref">Figure 4: Extracting Temperature Fingerprint</span>
+            </div>
+            <div class="original-en-quote">
+              “Figure 4: Extracting the fingerprint of a temperature sensor.<br>
+              t1: b(t1) = 1 due to a large difference between the averages of two consecutive intervals.<br>
+              t2: b(t2) = 0 due to a small difference between the averages of two consecutive intervals.<br>
+              Resulting Fingerprint: 0 0 0 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 0 0 0 0 1 1”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำอธิบายเจาะลึก Figure 4:</strong><br>
+              Figure 4 แสดงกราฟอุณหภูมิระหว่าง 20.75 °C ถึง 24.25 °C:
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li>ที่ช่วงเวลา <strong>t1:</strong> อุณหภูมิเปลี่ยนแปลงอย่างรวดเร็ว ผลต่างค่าเฉลี่ยสองช่วงเวลาติดกันหารด้วยค่าเฉลี่ยเดิมมีค่ามากกว่า <code>ε_rel</code> จึงได้บิต <strong>b(t1) = 1</strong></li>
+                <li>ที่ช่วงเวลา <strong>t2:</strong> อุณหภูมิเริ่มคงที่ ผลต่างน้อยมาก จึงได้บิต <strong>b(t2) = 0</strong></li>
+                <li>เมื่อประมวลผลครบ 24 ช่วงเวลา จะได้สายบิตลายนิ้วมือดิจิทัลขนาด 24 บิต: <code>000111111100100001000011</code> ที่สะท้อนพฤติกรรมพลวัตของอุณหภูมิอย่างกะทัดรัด</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 3: Sec 3.2 Sensor Association & Figure 5 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 3.2: การจับคู่เซนเซอร์ &amp; Figure 5</span>
+              <span class="unit-en-ref">Sec. 3.2: Sensor Association (Lines 95–184)</span>
+            </div>
+            <div class="original-en-quote">
+              “3.2 Sensor Association: Although each sensor’s measurements differ based on its modality and physical location, the sensors that are affected by the same event follow similar patterns in their fingerprints... We split each fingerprint into smaller sub-sequences... d = (k - o) / (l - o)...<br>
+              Figure 5: The procedure of extracting the patterns in sensor signals and clustering them.<br>
+              The distance metrics are defined as follows:<br>
+              IC_i = (1 / |c_i|) * sum(Hamming(P_m, P_k)) for m,k in c_i<br>
+              OC_(i,j) = min(Hamming(P_m, P_k)) for m in c_i, k in c_j”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและวิเคราะห์เจาะลึก:</strong><br>
+              แม้เซนเซอร์แต่ละตัวจะวัดคุณสมบัติต่างกันและอยู่คนละที่ แต่เซนเซอร์ที่ได้รับผลกระทบจากเหตุการณ์ทางกายภาพเดียวกันจะมีรูปแบบบิตที่สอดคล้องกัน อัลกอริทึมแบ่งออกเป็น 2 ขั้นตอนหลัก:
+              <ol style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>การสกัดรูปแบบ (Pattern Extraction):</strong> ตัดแบ่งสายบิตยาว k ออกเป็นซับซีเควนซ์ย่อยจำนวน d ชุด แต่ละชุดยาว l และทับซ้อนกัน o บิต โดยมีจำนวนชุดย่อย <code>d = (k − o) / (l − o)</code> จากนั้นจัดกลุ่มซับซีเควนซ์ในแต่ละตำแหน่ง j และกำหนดหมายเลขรูปแบบ <code>p_i^j</code> ให้กับเซนเซอร์ เกิดเป็นเวกเตอร์ประวัติรูปแบบ <code>P_i = (p_i^1, p_i^2, ..., p_i^d)</code></li>
+                <li><strong>การจัดคลัสเตอร์เซนเซอร์ (Sensor Clustering):</strong> นำเวกเตอร์ <code>P_i</code> ของเซนเซอร์ทั้งหมดมาจัดคลัสเตอร์ขั้นสุดท้าย เพื่อให้ได้โครงสร้างกลุ่ม <code>C = {c_1, c_2, ..., c_g}</code></li>
+              </ol>
+
+              <div class="formula-display-box">
+                <strong>เมทริกซ์วัดระยะห่างในการจัดกลุ่ม (Distance Metrics):</strong><br><br>
+                <strong>Intra-cluster (IC):</strong> ระยะห่างเฉลี่ยภายในกลุ่มเดียวกัน (ต้องการให้ต่ำที่สุด)<br>
+                IC_i = (1 / |c_i|) × ∑ Hamming(P_m, P_k) &nbsp;&nbsp; (สำหรับทุก m, k ใน c_i)<br><br>
+                <strong>Inter-cluster (OC):</strong> ระยะห่างที่ใกล้ที่สุดระหว่างสองกลุ่มต่างกัน (ต้องการให้สูงที่สุด)<br>
+                OC_(i,j) = min { Hamming(P_m, P_k) } &nbsp;&nbsp; (สำหรับ m ใน c_i และ k ใน c_j)
+              </div>
+            </div>
+            <div class="engineering-annotation">
+              <strong>💡 จุดเด่นของอัลกอริทึม:</strong> รองรับข้อมูลสายอักขระฐานสองผ่าน Hamming Distance ได้โดยตรง และมีคุณสมบัติ <strong>ปรับจูนจำนวนคลัสเตอร์อัตโนมัติ (Auto-tuning)</strong> โดยจะกำจัดโหนดที่อยู่นอกกลุ่ม และยุบกลุ่มที่มีสมาชิกน้อยกว่า 3 โหนดทิ้งไปโดยอัตโนมัติ
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 5 ────────────────── -->
+      <article class="thai-page-article" data-page="5" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 5 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 3.3 &amp; 3.4: Predictive Model &amp; Anomaly Detection</span>
+        </div>
+        <h2 class="thai-section-heading">โมเดลพยากรณ์ LSTM และ อัลกอริทึมฉันทามติตรวจจับความผิดปกติ</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 5:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>Algorithm 1:</strong> ซูโดโค้ดแสดงการจัดกลุ่มความสัมพันธ์ของเซนเซอร์อย่างสมบูรณ์ พร้อมเงื่อนไขตัดคลัสเตอร์ที่มีสมาชิก <code>|c_i| &lt; 3</code> ออก</li>
+            <li><strong>โมเดลพยากรณ์ประจำกลุ่ม (Figure 6):</strong> สถาปัตยกรรม LSTM Encoder-Decoder พร้อม Dropout (0.5) และ Dense Layer (100) เพื่อพยากรณ์ค่าล่วงหน้าของเซนเซอร์ในคลัสเตอร์</li>
+            <li><strong>Multivariate Gaussian Estimator:</strong> ประมาณค่าเมทริกซ์ความคลาดเคลื่อน (Reconstruction Error) ด้วยการแจกแจงแบบปกติหลายตัวแปร <code>N(μ_i, Σ_i)</code></li>
+            <li><strong>อัลกอริทึมฉันทามติ (Consensus Algorithm):</strong> หากค่าความน่าจะเป็น <code>p_t &lt; α</code> เกิดขึ้นพร้อมกันทั้งกลุ่ม = <strong>EA</strong>, หากเกิดขึ้นตัวเดียว = <strong>SDA</strong></li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 4: 3:05 - 3:45)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ทำไมต้องมีโมเดลแยกประจำคลัสเตอร์?</strong> แทนที่จะสร้างโครงข่ายขนาดยักษ์ตัวเดียวสำหรับ 62 เซนเซอร์ ซึ่งกินแรมและช้า การแยกโมเดลขนาดเล็กตามกลุ่มคลัสเตอร์ทำให้ประมวลผลแบบขนานบน Fog ได้เร็วมาก (0.532 s)</li>
+            <li><strong>Inertia ของระบบกายภาพ:</strong> การโหวตฉันทามติไม่ได้ดูแค่จุดเวลาเดียว แต่ดูช่วงเวลา (Time intervals) เพื่อรองรับความหน่วงทางกายภาพของสิ่งแวดล้อม</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Algorithm 1 Pseudo-code -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">อัลกอริทึมที่ 1: การจัดคลัสเตอร์เซนเซอร์</span>
+              <span class="unit-en-ref">Algorithm 1: Sensor Association Pseudo-code</span>
+            </div>
+            <div class="original-en-quote">
+              “Algorithm 1: Customized clustering algorithm for extracting patterns in sensor fingerprints and sensor association.<br>
+              Input: Fingerprints F in R^(n*k), number of sensors n, sub-sequence length l, overlap o<br>
+              Output: Cluster layout C = {c_1, c_2, ..., c_g}<br>
+              - Initialize d = (k - o) / (l - o)<br>
+              - Loop j in 1..d, loop i in 1..n: split F_i into f_i^j<br>
+              - Clustering iterations: center update using mean, remove outliers where Hamming > OC, remove clusters where |c_i| < 3<br>
+              - Cluster pattern histories P_i to yield final cluster layout C”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลโครงสร้าง Algorithm 1:</strong><br>
+              <strong>ข้อมูลเข้า (Inputs):</strong> ลายนิ้วมือเซนเซอร์ <code>F</code> ขนาด n × k, จำนวนเซนเซอร์ n, ความยาวชุดย่อย l, การทับซ้อน o<br>
+              <strong>ข้อมูลออก (Output):</strong> โครงสร้างกลุ่มเซนเซอร์ <code>C = {c_1, c_2, ..., c_g}</code><br>
+              <strong>ขั้นตอนการทำงาน:</strong>
+              <ol style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+                <li>คำนวณจำนวนชุดย่อย <code>d = (k − o) / (l − o)</code> และกำหนดค่าเริ่มต้นจุดศูนย์กลางกลุ่ม</li>
+                <li>สำหรับแต่ละตำแหน่ง j: ตัดแบ่งลายนิ้วมือ <code>F_i</code> ออกเป็นชุดย่อย <code>f_i^j</code></li>
+                <li>วนรอบจัดกลุ่ม: คำนวณระยะห่างแฮมมิงไปยังจุดศูนย์กลางกลุ่มที่ใกล้ที่สุด (Argmin) และอัปเดตจุดศูนย์กลางใหม่</li>
+                <li>ตรวจสอบเงื่อนไขขอบเขต: หากโหนดใดมีระยะห่างเกินค่า Inter-cluster (OC) ให้ปลดเป็น Unclustered node และหากคลัสเตอร์ใดมีสมาชิก <strong>|c_i| &lt; 3</strong> ให้ยุบคลัสเตอร์นั้นทิ้งทันที</li>
+                <li>จัดกลุ่มขั้นสุดท้ายบนเวกเตอร์ประวัติรูปแบบ <code>P_i</code> เพื่อคืนค่าโครงสร้างกลุ่ม <code>C</code></li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Unit 2: Sec 3.3 Predictive Model & Figure 6 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 3.3: โมเดลพยากรณ์ &amp; Figure 6</span>
+              <span class="unit-en-ref">Sec. 3.3: Predictive Model (Lines 44–114)</span>
+            </div>
+            <div class="original-en-quote">
+              “3.3 Predictive Model: ...We construct a Recurrent Neural Networks (RNN) for each cluster of sensors as the predictive model. As it is depicted in Figure 6, our RNN comprises LSTM encoder-decoder and dense layers, which encode the features of input sequences of length l_i and predict the future sequences of length l_o based on the encoded features... Sequences of data are derived using the sliding window technique and scaled through a Min-Max Scaler...<br>
+              On top of predictive models, Multivariate Gaussian Estimators are trained... fitted on the reconstruction error matrix E_i... Parameters mu_i and Sigma_i are computed using Maximum Likelihood Estimation.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              เราสร้างโครงข่ายประสาทเทียมแบบวนซ้ำ (RNN) ประจำแต่ละคลัสเตอร์เซนเซอร์เพื่อทำหน้าที่เป็นโมเดลพยากรณ์ ดังแสดงใน Figure 6 สถาปัตยกรรม RNN ประกอบด้วย:
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>สเกลเลอร์ปรับสเกลข้อมูล (Min-Max Scaler):</strong> ปรับช่วงข้อมูลอนุกรมเวลาที่มีหน่วยต่างกันให้อยู่ในช่วงมาตรฐานก่อนป้อนเข้าตัวเข้ารหัส</li>
+                <li><strong>ตัวเข้ารหัส LSTM (LSTM Encoder):</strong> สกัดคุณลักษณะเด่นของลำดับข้อมูลเข้าความยาว <code>l_i</code> แปลงเป็นเวกเตอร์สถานะแฝง (Encoded States)</li>
+                <li><strong>ตัวถอดรหัส LSTM (LSTM Decoder) &amp; Dropout (0.5):</strong> ทำนายลำดับในอนาคตความยาว <code>l_o</code> และใช้ Dropout เพื่อป้องกันการเรียนรู้เกิน (Overfitting)</li>
+                <li><strong>ชั้นต่อประสานหนาแน่น (Dense Layer 100):</strong> แปลงผลลัพธ์เป็นค่าสัญญาณพยากรณ์สุดท้าย (Output Layer)</li>
+              </ul>
+              
+              <div class="formula-display-box">
+                <strong>การประมาณค่าเกาส์เซียนหลายตัวแปร (Maximum Likelihood Estimation):</strong><br><br>
+                เวกเตอร์ค่าเฉลี่ยความคลาดเคลื่อน: &nbsp;&nbsp; μ_i = (1 / m) × ∑ e_k &nbsp;&nbsp; (สำหรับ k = 1 ถึง m)<br><br>
+                เมทริกซ์ความแปรปรวนร่วม: &nbsp;&nbsp; Σ_i = (1 / m) × ∑ (e_k − μ_i)(e_k − μ_i)ᵀ
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 3: Sec 3.4 Anomaly Detection & Consensus -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 3.4: การตรวจจับและฉันทามติ</span>
+              <span class="unit-en-ref">Sec. 3.4: Anomaly Detection &amp; Consensus</span>
+            </div>
+            <div class="original-en-quote">
+              “3.4 Anomaly Detection: ...At run-time, an input measurement x_t is compared with model prediction y_t, and the reconstruction error e_t is calculated. Then, x_t is classified as anomalous if p_t < alpha, where p_t is the probability of obtaining the error vector given by the Gaussian estimator G. alpha is a predefined threshold value, and it is tuned to maximize the F-score of the model... When anomalous data is discovered, we utilize our consensus algorithm to differentiate between EA and SDA...”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและหลักการตัดสินใจ:</strong><br>
+              ในขณะระบบทำงานจริง ข้อมูลที่วัดได้ <code>x_t</code> จะถูกนำมาลบกับค่าที่โมเดลพยากรณ์ <code>y_t</code> เกิดเป็นเวกเตอร์ความคลาดเคลื่อน <code>e_t</code> จากนั้นคำนวณค่าความหนาแน่นความน่าจะเป็น <code>p_t</code> จากตัวประมาณค่าเกาส์เซียน หาก <strong>p_t &lt; α</strong> (โดย α ถูกจูนเพื่อให้ได้ค่า F-score สูงสุด) ข้อมูลนั้นจะถูกจัดว่าเป็นความผิดปกติทันที<br><br>
+              <strong>กลไกการโหวตฉันทามติ (Consensus Voting):</strong>
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>สิ่งแวดล้อมผิดปกติ (EA):</strong> สภาพแวดล้อมที่เปลี่ยนไปจะกระทบเซนเซอร์ทุกตัวในคลัสเตอร์พร้อมกัน ดังนั้น เซนเซอร์ทั้งหมดในกลุ่มจะลงมติเห็นพ้องต้องกัน (Consensus Agreement) ว่าผิดปกติ</li>
+                <li><strong>อุปกรณ์ชำรุดหรือถูกโจมตี (SDA):</strong> จะเกิดขึ้นเฉพาะตัวเซนเซอร์เป้าหมาย ทำให้เกิดความผิดปกติเพียง 1 ตัว ในขณะที่เซนเซอร์เพื่อนร่วมคลัสเตอร์ยังคงปกติ เสียงข้างมากจึงชี้ชัดได้ทันทีว่าตัวใดคือเซนเซอร์ที่พัง</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 6 ────────────────── -->
+      <article class="thai-page-article" data-page="6" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 6 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 3.5, 4.1 &amp; 4.2: Adaptation &amp; Testbed Setup</span>
+        </div>
+        <h2 class="thai-section-heading">การปรับตัวของโมเดล สถาปัตยกรรม Fog และ ชุดทดลองจริง 62 เซนเซอร์</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 6:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>กลไกปรับตัว 2 ระดับ:</strong> <em>Complete Update</em> (ฝึกใหม่ทั้งระบบเมื่อเพิ่ม/ลดโหนด) และ <em>Partial Update</em> (ปรับเฉพาะตัวพยากรณ์ LSTM เมื่อได้ข้อมูลปกติชุดใหม่)</li>
+            <li><strong>สถาปัตยกรรม Fog Computing (Figure 7):</strong> ส่งข้อมูลจาก Edge ข้ามมาประมวลผลบน Fog Node เพื่อลดคอขวดแบนด์วิดท์ของคลาวด์และได้ความหน่วงต่ำ</li>
+            <li><strong>ชุดทดลองห้องปฏิบัติการจริง (Figure 8 &amp; Table 1):</strong> ประกอบด้วยเซนเซอร์ 62 ตัว ตรวจวัด 13 มิติทางกายภาพ สื่อสารผ่าน IEEE 802.15.4 ด้วยการ์ด USRP-B210 SDR และบอร์ด TinyOS</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 4: 3:45 - 4:05)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>จุดแข็งของการทดลอง:</strong> เปเปอร์นี้ไม่ได้ใช้แค่ตัวเลขจำลองทางคณิตศาสตร์ แต่สร้าง <em>Physical Hardware Testbed</em> จริงที่มีเซนเซอร์ถึง 62 ตัว พร้อมอุปกรณ์จำลอง Smart Speaker (ZOOM-H6 + Raspberry Pi)</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Sec 3.5 Model Adaptation -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 3.5: การปรับตัวของแบบจำลอง (Model Adaptation)</span>
+              <span class="unit-en-ref">Sec. 3.5: Adaptation Triggers (Lines 1–14)</span>
+            </div>
+            <div class="original-en-quote">
+              “...update, which retrains all trainable modules in order, and ii) partial update, which only retrains the predictor model. These update processes are triggered under three circumstances:<br>
+              • Change in the number of sensors in the system (either added or removed) triggers complete update.<br>
+              • Each time the sensors send data, the anomaly detection model first validates the new data. Afterward, partial update is triggered using the new anomaly-free data.<br>
+              • If complete update is not provoked during a fixed interval of time t_retrain, it is triggered automatically. This way, the model accounts for changes in the environment, location, and placement. This parameter t_retrain can be tuned by the user...”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              กระบวนการปรับตัวของโมเดลแบ่งเป็น 2 รูปแบบ คือ <strong>i) Complete Update:</strong> ฝึกใหม่ทุกโมดูลตามลำดับ (ตั้งแต่ Fingerprint, Clustering, LSTM จนถึง Gaussian) และ <strong>ii) Partial Update:</strong> ฝึกปรับจูนเฉพาะโมเดลพยากรณ์ LSTM เท่านั้น โดยจะถูกกระตุ้นภายใต้ 3 เงื่อนไข:
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li><strong>เงื่อนไขที่ 1:</strong> การเปลี่ยนแปลงจำนวนเซนเซอร์ในระบบ (ไม่ว่าจะเพิ่มโหนดใหม่หรือถอดโหนดเดิมออก) จะกระตุ้น <em>Complete Update</em> ทันทีเพื่อคำนวณโครงสร้างคลัสเตอร์ใหม่</li>
+                <li><strong>เงื่อนไขที่ 2:</strong> ทุกครั้งที่เซนเซอร์ส่งข้อมูลเข้ามา โมเดลจะตรวจสอบความถูกต้องก่อน เมื่อยืนยันว่าข้อมูลชุดใหม่ปราศจากความผิดปกติ (Anomaly-free) จะกระตุ้น <em>Partial Update</em> เพื่อเรียนรู้แนวโน้มล่าสุด</li>
+                <li><strong>เงื่อนไขที่ 3:</strong> หากไม่มีการกระตุ้น Complete Update ภายในช่วงเวลาที่กำหนด <code>t_retrain</code> ระบบจะสั่งทำ Complete Update อัตโนมัติ เพื่อชดเชยการเลื่อนลอยของสิ่งแวดล้อม (Environmental Drift) หรือการย้ายตำแหน่งอุปกรณ์</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 2: Sec 4.1 Fog Computing & Figure 7 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.1: สถาปัตยกรรม Fog Computing &amp; Figure 7</span>
+              <span class="unit-en-ref">Sec. 4.1 &amp; Figure 7: Hierarchy</span>
+            </div>
+            <div class="original-en-quote">
+              “4.1 Fog Computing Architecture: Cloud servers are the common and potent available computation resource... However, the bandwidth of network and data transmission become a bottleneck... As a result, fog computing has emerged... In the fog architecture (Figure 7), the bottom layer comprises a heterogeneous network of edge nodes with limited resources. The fog nodes in the middle layer collect and process the data from edge devices and communicate to the cloud via the internet... Our methodology is fog-empowered... instead of training an extensive network for the whole system, we construct a small network for each cluster of associated sensors that can be distributed between fog nodes.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              เซิร์ฟเวอร์คลาวด์เป็นแหล่งทรัพยากรการคำนวณที่ทรงพลัง แต่แบนด์วิดท์ของเครือข่ายและการรับส่งข้อมูลกลายเป็นคอขวด (Bottleneck) สำคัญเมื่อโหนด IoT ขยายตัวอย่างรวดเร็ว สถาปัตยกรรม Fog Computing จึงถือกำเนิดขึ้นเพื่อให้บริการพื้นที่จัดเก็บและการประมวลผลอยู่ใกล้ชิดกับผู้ใช้ปลายทางมากขึ้น (Figure 7):
+              <ul style="margin: 6px 0 6px 18px; padding: 0;">
+                <li><strong>ชั้นล่าง (Edge Tier):</strong> เครือข่ายอุปกรณ์เซนเซอร์ที่มีทรัพยากรจำกัด</li>
+                <li><strong>ชั้นกลาง (Fog Tier):</strong> โหนดหมอก (เช่น โน้ตบุ๊กหรือเกตเวย์อุตสาหกรรม) รวบรวมข้อมูลและประมวลผลโมเดล IoT-CAD ทันที</li>
+                <li><strong>ชั้นบน (Cloud Tier):</strong> จัดเก็บข้อมูลสถิติระยะยาวผ่านอินเทอร์เน็ต</li>
+              </ul>
+              <strong>การปรับแต่งเพื่อลดภาระเครื่อง:</strong> การแบ่งโมเดล LSTM ออกเป็นโครงข่ายขนาดเล็กประจำแต่ละคลัสเตอร์ แทนที่จะใช้โมเดลยักษ์ตัวเดียว ทำให้สามารถกระจายงานขนานกันบน Fog Node ได้อย่างมีประสิทธิภาพ และการใช้ลายนิ้วมือบิตแทนสัญญาณดิบยังช่วยลดการใช้พื้นที่หน่วยความจำลงอย่างมหาศาล
+            </div>
+          </div>
+
+          <!-- Unit 3: Sec 4.2 Testbed & Table 1 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.2: การติดตั้งชุดทดลองจริง &amp; Table 1</span>
+              <span class="unit-en-ref">Sec. 4.2 &amp; Table 1: 62 Sensors</span>
+            </div>
+            <div class="original-en-quote">
+              “4.2 Experimental Setup: ...we implement an IoT testbed in our laboratory. Our experimental setup consists of an Ad-Hoc network of multi-modality IoT sensors, a Software-Defined Radio (SDR) connected to an edge computing device, a gateway, and a laptop as fog node. For this particular research, we have used 62 sensors which measure 13 different physical parameters (see Table 1)...”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและรายละเอียดชุดทดลองจริง (Table 1):</strong><br>
+              ผู้วิจัยสร้าง Testbed จริงในห้องปฏิบัติการ ประกอบด้วยเครือข่าย Ad-Hoc เซนเซอร์ <strong>62 ตัว ครอบคลุม 13 มิติทางกายภาพ</strong>:
+              <div class="table-responsive" style="margin: 10px 0;">
+                <table class="academic-table" style="font-size: 0.85rem;">
+                  <thead>
+                    <tr><th>ชนิดเซนเซอร์</th><th>บอร์ดฮาร์ดแวร์</th><th style="text-align: center;">จำนวนโหนด</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>อุณหภูมิ (Temperature)</td><td>MTS-CM5000</td><td style="text-align: center;">12</td></tr>
+                    <tr><td>ความชื้นสัมพัทธ์ (Humidity)</td><td>MTS-CM5000</td><td style="text-align: center;">12</td></tr>
+                    <tr><td>แสงที่มองเห็น (Visible light)</td><td>MTS-CM5000</td><td style="text-align: center;">12</td></tr>
+                    <tr><td>แสงอินฟราเรด (Infrared light)</td><td>MTS-CM5000</td><td style="text-align: center;">12</td></tr>
+                    <tr><td>แรงกดและน้ำหนัก (Force &amp; Load)</td><td>MTS-CO1000</td><td style="text-align: center;">2</td></tr>
+                    <tr><td>การเอียง (Tilt)</td><td>MTS-CO1000</td><td style="text-align: center;">2</td></tr>
+                    <tr><td>ความเร่ง (Accelerometer)</td><td>MTS-CO1000</td><td style="text-align: center;">2</td></tr>
+                    <tr><td>ตรวจจับการเคลื่อนไหว (Presence PIR)</td><td>MTS-SE1000</td><td style="text-align: center;">2</td></tr>
+                    <tr><td>สวิตช์แม่เหล็กประตู (Magnetic)</td><td>MTS-SE1000</td><td style="text-align: center;">1</td></tr>
+                    <tr><td>ก๊าซคาร์บอนไดออกไซด์ (CO2)</td><td>MTS-AR1000</td><td style="text-align: center;">1</td></tr>
+                    <tr><td>ก๊าซคาร์บอนมอนอกไซด์ (CO)</td><td>MTS-AR1000</td><td style="text-align: center;">1</td></tr>
+                    <tr><td>ฝุ่นละออง (Dust)</td><td>MTS-SH3000</td><td style="text-align: center;">1</td></tr>
+                    <tr><td>เสียงแวดล้อม (Acoustic Audio)</td><td>ZOOM-H6 + Raspberry Pi</td><td style="text-align: center;">2</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              บอร์ดเซนเซอร์ใช้ระบบปฏิบัติการ <strong>TinyOS</strong> สื่อสารไร้สายมาตรฐาน <strong>IEEE 802.15.4</strong> ผ่านอุปกรณ์ Software-Defined Radio (USRP-B210) เข้าสู่ Fog Laptop
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 7 ────────────────── -->
+      <article class="thai-page-article" data-page="7" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 7 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 4.3 &amp; 4.4: Evaluation &amp; Table 2 Comparison</span>
+        </div>
+        <h2 class="thai-section-heading">ผลการประเมินประสิทธิภาพ เปรียบเทียบงานวิจัยชั้นนำ (Table 2)</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 7:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>ผลการจัดกลุ่ม (Figure 9):</strong> ตั้งค่าเริ่มต้น 20 คลัสเตอร์ อัลกอริทึมลดรูปลงเหลือ 6 คลัสเตอร์ที่สมดุล โดยระยะห่างระหว่างกลุ่ม (Inter-cluster) สูงกว่าระยะห่างในกลุ่ม (Intra-cluster) อย่างชัดเจน</li>
+            <li><strong>เหตุผลที่ไม่ใช้ Accuracy:</strong> ข้อมูลความผิดปกติมีความไม่สมดุลสูงมาก (Imbalanced) ข้อมูลปกติมี 99% ถ้าทายปกติหมดก็ได้ Accuracy 99% แต่ใช้การไม่ได้ จึงต้องวัดด้วย <strong>Precision, Recall, F0.5 และ F1</strong></li>
+            <li><strong>ตารางที่ 2 (Table 2):</strong> IoT-CAD ชนะเลิศด้วย <strong>Precision 92%</strong> และ <strong>F0.5-score 81%</strong> เหนือกว่าโมเดลของ Malhotra (64%), Munir (51%) และ One-Class SVM (89%)</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 5: 4:05 - 4:45)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>คำถามเด็ด:</strong> “ทำไม Recall ของ IoT-CAD อยู่ที่ 56% แต่งานของ Munir สูงถึง 95%?”</li>
+            <li><strong>คำตอบมัดใจกรรมการ:</strong> “เพราะโมเดลของ Munir ขาด Context ทำให้ส่ง False Alarm สูงมาก (Precision แค่ 51%) ในระบบโรงงาน การสั่งปิดระบบพร่ำเพรื่อเพราะสัญญาณเตือนมั่วสร้างความเสียหายมากกว่า IoT-CAD จึงยอมแลก Trade-off เพื่อให้ได้ Precision 92% และ F0.5 สูงสุดที่ 81% ครับ”</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Sec 4.3.1 Sensor Association Evaluation -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.3.1: การประเมินผลการจัดกลุ่มเซนเซอร์</span>
+              <span class="unit-en-ref">Sec. 4.3.1 &amp; Figure 9</span>
+            </div>
+            <div class="original-en-quote">
+              “4.3.1 Sensor Association Evaluation: One of the contributions of our clustering algorithm is the capability to automatically tune the number of clusters... Initially, we set the number of clusters to 20... and the algorithm reduces the number to 6. In order to assess the performance... Inter-cluster and Intra-cluster distances are calculated... plotted in Figure 9. The notable difference between inter-cluster distance and intra-cluster distance indicates that related sensors are clustered together, and clusters are well separated... Another validation method used is physical intuition... co-located humidity, temperature, and light sensors are clustered together... and PIR, vibration, magnetic door switch, and acoustic sensors are clustered together since they all capture the event of entrance through the door.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              จุดเด่นสำคัญของอัลกอริทึมจัดกลุ่มคือความสามารถในการปรับจูนจำนวนคลัสเตอร์ได้โดยอัตโนมัติ เริ่มต้นผู้วิจัยตั้งขอบเขตบนไว้ที่ 20 คลัสเตอร์ และอัลกอริทึมได้ลดทอนลงเหลือ 6 คลัสเตอร์ที่เหมาะสมที่สุด<br><br>
+              เมื่อวัดระยะห่างตาม Figure 9 จะเห็นว่า <strong>Inter-cluster distance (ระยะห่างข้ามกลุ่ม) สูงกว่า Intra-cluster distance (ระยะห่างภายในกลุ่ม) อย่างมีนัยสำคัญ</strong> ซึ่งยืนยันว่าเซนเซอร์ในกลุ่มเดียวกันมีความเกาะกลุ่มเหนียวแน่น และแต่ละกลุ่มแยกขาดจากกันชัดเจน<br><br>
+              <strong>การยืนยันด้วยสัญชาตญาณทางกายภาพ (Physical Intuition):</strong>
+              <ul style="margin: 6px 0 0 18px; padding: 0;">
+                <li>เซนเซอร์วัดความชื้น อุณหภูมิ และแสงที่ติดตั้งอยู่บนบอร์ดเดียวกันถูกจัดอยู่ในคลัสเตอร์เดียวกันอย่างถูกต้อง</li>
+                <li>เซนเซอร์ตรวจจับการเปิดประตู: เซนเซอร์ PIR, เซนเซอร์สั่นสะเทือน (Accelerometer/Force), สวิตช์แม่เหล็กประตู และไมโครโฟน ถูกจัดเข้ากลุ่มเดียวกันทั้งหมด เพราะตอบสนองต่อเหตุการณ์การเดินผ่านเข้าออกประตูร่วมกัน</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 2: Sec 4.3.2 Metric Formulas -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.3.2: สูตรการวัดผลเมทริกซ์</span>
+              <span class="unit-en-ref">Sec. 4.3.2: Precision, Recall, F-Beta Formulas</span>
+            </div>
+            <div class="original-en-quote">
+              “4.3.2 Anomaly Detection Evaluation: ...Although the most intuitive performance measure is accuracy... it is not appropriate for unbalanced datasets such as anomaly detection where one category representing the overwhelming majority of the data points. Therefore, we use Precision (P), Recall (R) and F_beta score:<br>
+              P = TP / (TP + FP)<br>
+              R = TP / (TP + FN)<br>
+              F_beta = (1 + beta^2) * (P * R) / (beta^2 * P + R)<br>
+              Due to importance of precision, F_0.5 score which favors precision over recall is calculated in addition to F_1 score.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและสูตรการประเมิน:</strong><br>
+              เนื่องจากชุดข้อมูลความผิดปกติมีความไม่สมดุลสูงยิ่ง ค่าความถูกต้องทั่วไป (Accuracy) จึงไม่สามารถใช้ประเมินได้ ผู้วิจัยจึงใช้เมทริกซ์มาตรฐานที่อิงจาก True Positive (TP), False Positive (FP) และ False Negative (FN):
+
+              <div class="formula-display-box">
+                <strong>สูตรการประเมินสมรรถนะ:</strong><br><br>
+                ความแม่นยำจำเพาะ (Precision): &nbsp;&nbsp; P = TP / (TP + FP)<br><br>
+                อัตราการตรวจพบจริง (Recall): &nbsp;&nbsp; R = TP / (TP + FN)<br><br>
+                คะแนนถ่วงน้ำหนัก F-beta: &nbsp;&nbsp; F_β = (1 + β²) × (P × R) / (β² × P + R)
+              </div>
+
+              <strong>ทำไมต้องใช้ F0.5-score (β = 0.5)?</strong> เพราะในระบบกายภาพไซเบอร์ (CPS) การเกิด False Alarm นำไปสู่การสั่งหยุดเครื่องจักรหรือปิดระบบบำบัดน้ำเสียโดยไม่จำเป็น ซึ่งก่อให้เกิดความเสียหายทางเศรษฐกิจมหาศาล ค่า F0.5 จึงให้น้ำหนักกับ <strong>Precision มากกว่า Recall ถึงสองเท่า</strong>
+            </div>
+          </div>
+
+          <!-- Unit 3: Table 2 Full Benchmark Comparison -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">ตารางที่ 2: เปรียบเทียบกับงานวิจัยระดับแนวหน้า</span>
+              <span class="unit-en-ref">Table 2: SOTA Comparison Breakdown</span>
+            </div>
+            <div class="original-en-quote">
+              “Table 2: Comparison with the state-of-art methods.<br>
+              - IoT-CAD | Base: LSTM | Context-Aware: Yes | Precision: 92% | Recall: 56% | F0.5: 81% | F1: 70%<br>
+              - Malhotra et al. [31] | Base: LSTM | Context-Aware: No | Precision: 64% | Recall: 44% | F0.5: 58% | F1: 52%<br>
+              - Munir et al. [28] | Base: Conv LSTM | Context-Aware: No | Precision: 51% | Recall: 95% | F0.5: 56% | F1: 66%<br>
+              - O'Reilly et al. [30] | Base: One Class SVM | Context-Aware: No | Precision: 89% | Recall: 25% | F0.5: 60% | F1: 39%”
+            </div>
+            <div class="thai-full-translation">
+              <strong>ตารางเปรียบเทียบผลการทดลองฉบับสมบูรณ์ (Table 2):</strong>
+              <div class="table-responsive" style="margin: 10px 0;">
+                <table class="academic-table" style="font-size: 0.86rem;">
+                  <thead>
+                    <tr style="background: var(--paper2);">
+                      <th>แนวทาง / งานวิจัย</th>
+                      <th>โมเดลพื้นฐาน</th>
+                      <th style="text-align: center;">เข้าใจบริบท?</th>
+                      <th style="text-align: center; color: var(--green);">Precision</th>
+                      <th style="text-align: center;">Recall</th>
+                      <th style="text-align: center; color: var(--accent); font-weight: 800;">F0.5 Score</th>
+                      <th style="text-align: center;">F1 Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background: var(--accent-bg); font-weight: 700;">
+                      <td>IoT-CAD (งานวิจัยนี้)</td>
+                      <td>LSTM + Gaussian</td>
+                      <td style="text-align: center;">✅ มี (Yes)</td>
+                      <td style="text-align: center; color: var(--green);">92%</td>
+                      <td style="text-align: center;">56%</td>
+                      <td style="text-align: center; color: var(--accent); font-weight: 800;">81%</td>
+                      <td style="text-align: center;">70%</td>
+                    </tr>
+                    <tr>
+                      <td>Malhotra et al. [31]</td>
+                      <td>LSTM Encoder-Decoder</td>
+                      <td style="text-align: center;">❌ ไม่มี (No)</td>
+                      <td style="text-align: center;">64%</td>
+                      <td style="text-align: center;">44%</td>
+                      <td style="text-align: center;">58%</td>
+                      <td style="text-align: center;">52%</td>
+                    </tr>
+                    <tr>
+                      <td>Munir et al. [28]</td>
+                      <td>Convolutional LSTM</td>
+                      <td style="text-align: center;">❌ ไม่มี (No)</td>
+                      <td style="text-align: center;">51%</td>
+                      <td style="text-align: center; color: var(--accent2);">95%</td>
+                      <td style="text-align: center;">56%</td>
+                      <td style="text-align: center;">66%</td>
+                    </tr>
+                    <tr>
+                      <td>O'Reilly et al. [30]</td>
+                      <td>One-Class SVM</td>
+                      <td style="text-align: center;">❌ ไม่มี (No)</td>
+                      <td style="text-align: center;">89%</td>
+                      <td style="text-align: center; color: var(--red);">25%</td>
+                      <td style="text-align: center;">60%</td>
+                      <td style="text-align: center;">39%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <strong>บทวิเคราะห์เชิงเปรียบเทียบ:</strong> IoT-CAD มีคะแนน F0.5-score สูงถึง 81% และ Precision 92% ซึ่งสูงที่สุดในทุกโมเดล เพราะเป็นโมเดลเดียวที่ <em>รับรู้บริบทแวดล้อม (Context-Aware)</em> จึงไม่หลงเตือนภัยเวลาสิ่งแวดล้อมเปลี่ยนแปลงตามธรรมชาติ
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 8 ────────────────── -->
+      <article class="thai-page-article" data-page="8" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 8 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 4.5 &amp; 4.6: Case Study &amp; Adaptation Evaluation</span>
+        </div>
+        <h2 class="thai-section-heading">กรณีศึกษาเซนเซอร์สัมพันธ์ (Figure 11) และ ผลการประเมินการปรับตัว (Figure 12)</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 8:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>Figure 11 การศึกษา 3 เซนเซอร์ตลอด 24 ชั่วโมง:</strong> แสง, อุณหภูมิ, และความชื้นสัมพัทธ์ มีความสัมพันธ์แบบผกผันตามธรรมชาติ (เมื่อแดดออก แสงและอุณหภูมิพุ่งสูงขึ้น ความชื้นจะลดลง) และเมื่อจำลองไฟไหม้ ทั้งสามตัวแสดงค่าผิดปกติพร้อมกัน = EA</li>
+            <li><strong>Figure 12 การทดสอบ 3 สภาวะพลวัต:</strong>
+              <br>• Case 1 (สภาพแวดล้อมเปลี่ยน): No update ได้ 61.70% ──▶ Partial/Complete update ได้ <strong>91.87%</strong>
+              <br>• Case 2 (ย้ายตำแหน่งเซนเซอร์): No update ดิ่งเหลือ 35.51% ──▶ Partial/Complete update พุ่งกลับมา <strong>89.42%</strong>
+              <br>• Case 3 (เพิ่ม/ถอดเซนเซอร์): No/Partial update <strong>พังทันที 0% (Crash)</strong> เพราะมิติข้อมูลไม่ตรง ──▶ ต้องใช้ <strong>Complete Update จึงกู้คืนได้ 90.26%</strong>
+            </li>
+            <li><strong>เวลาประมวลผล 532 มิลลิวินาที (0.532 s):</strong> รันบนโน้ตบุ๊ก Fog ธรรมดา รองรับข้อกำหนดเวลาจริงได้สบาย</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 จุดโฟกัสสำหรับการนำเสนอ 5 นาที (สไลด์ 5: 4:45 - 5:00)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ไฮไลต์เรื่อง Case 3:</strong> ต้องอธิบายให้กรรมการฟังว่าทำไม Complete Update ถึงสำคัญ เพราะระบบ IoT จริงมักมีการติดตั้งเซนเซอร์เพิ่ม ถ้าโมเดลปรับโครงสร้างไม่ได้ โปรแกรมจะเกิด Dimension Mismatch Error และหยุดทำงานทันที</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Sec 4.5 Case Study & Figure 11 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.5: กรณีศึกษาเซนเซอร์สัมพันธ์ &amp; Figure 11</span>
+              <span class="unit-en-ref">Sec. 4.5 &amp; Figure 11 Breakdown</span>
+            </div>
+            <div class="original-en-quote">
+              “4.5 Case Study: As a case study, we analyze a cluster of associated sensors, which includes three humidity, temperature, and light sensors located in close proximity. As shown in Figure 11, the predicted values are very close to the real measurements that indicates the competency of our method... Furthermore, we observe that the pattern of changes in the sensor signals is similar... any drop in the trend of humidity sensor comes with an increase in the trend of other sensors. It confirms the correlation among the sensors as the sensor association algorithm suggests. We simulate a fire incident in the environment as an EA, and the measurements from all sensors show an anomaly.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลประโยคต่อประโยค:</strong><br>
+              เพื่อเป็นกรณีศึกษา ผู้วิจัยได้วิเคราะห์คลัสเตอร์ของเซนเซอร์ที่มีความสัมพันธ์กัน ซึ่งประกอบด้วยเซนเซอร์ความชื้น อุณหภูมิ และแสงที่ติดตั้งอยู่ใกล้ชิดกัน ดังแสดงใน Figure 11 ค่าที่โมเดลพยากรณ์ (เส้นประ) แนบสนิทใกล้เคียงกับค่าจริงที่วัดได้ (เส้นทึบ) ซึ่งบ่งชี้ถึงขีดความสามารถอันยอดเยี่ยมของโมเดลในการเรียนรู้พฤติกรรมปกติ<br><br>
+              ยิ่งไปกว่านั้น เราสังเกตเห็นว่ารูปแบบการเปลี่ยนแปลงมีความสอดคล้องกันตามธรรมชาติทางกายภาพ กล่าวคือ <strong>เมื่อใดก็ตามที่แนวโน้มของเซนเซอร์ความชื้นลดลง จะเกิดขึ้นพร้อมกับการเพิ่มขึ้นของแนวโน้มในเซนเซอร์อุณหภูมิและแสง</strong> ซึ่งเป็นการยืนยันความสัมพันธ์ระหว่างเซนเซอร์ตามที่อัลกอริทึมค้นพบ<br><br>
+              ในการทดสอบ ได้มีการจำลองสถานการณ์เกิดเพลิงไหม้ (Fire Incident) ในฐานะ EA ซึ่งพบว่าค่าที่อ่านได้จากเซนเซอร์ทั้งสามตัวเกิดความผิดปกติขึ้นพร้อมกันทั้งคลัสเตอร์ อัลกอริทึมฉันทามติจึงระบุได้อย่างถูกต้องว่าเป็นเหตุการณ์ในสิ่งแวดล้อม
+            </div>
+          </div>
+
+          <!-- Unit 2: Sec 4.6 Adaptation Evaluation & Figure 12 -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 4.6: ผลการประเมินการปรับตัว &amp; Figure 12</span>
+              <span class="unit-en-ref">Sec. 4.6 &amp; Figure 12 Breakdown</span>
+            </div>
+            <div class="original-en-quote">
+              “Figure 12: Analysis of effect of partial and complete update on preserving the performance of model.<br>
+              Case 1 (Environmental variations): No Update 61.70%, Partial Update 91.87%, Complete Update 91.87%<br>
+              Case 2 (Relocation of sensors): No Update 35.51%, Partial Update 89.42%, Complete Update 89.42%<br>
+              Case 3 (Adding/removing sensors): No Update 0% (Crash), Partial Update 0% (Crash), Complete Update 90.26%<br>
+              Execution time: The average execution time of anomaly detection per iteration is 532ms on a laptop fog node.”
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลและวิเคราะห์ผล Figure 12 อย่างละเอียด:</strong><br>
+              ผู้วิจัยได้ทดสอบประสิทธิภาพความแม่นยำ (Precision) ภายใต้สภาวะพลวัต 3 รูปแบบ เพื่อเปรียบเทียบระหว่างการไม่ปรับตัว (No Update), การปรับตัวบางส่วน (Partial Update), และการปรับตัวสมบูรณ์ (Complete Update):
+              <ul style="margin: 6px 0 6px 18px; padding: 0; line-height: 1.85;">
+                <li><strong>กรณีที่ 1 (การเปลี่ยนแปลงของสภาพแวดล้อม - Case 1):</strong> หากไม่ปรับตัวเลย ความแม่นยำจะร่วงลงเหลือ 61.70% แต่หากใช้ Partial หรือ Complete Update โมเดลจะกู้ความแม่นยำกลับมาสูงถึง <strong>91.87%</strong></li>
+                <li><strong>กรณีที่ 2 (การย้ายตำแหน่งทางกายภาพของเซนเซอร์ - Case 2):</strong> การย้ายตำแหน่งทำให้บริบทเปลี่ยน หากไม่ปรับตัว ความแม่นยำจะดิ่งลงเหลือเพียง 35.51% แต่การอัปเดตจะช่วยดึงความแม่นยำกลับคืนมาที่ <strong>89.42%</strong></li>
+                <li><strong>กรณีที่ 3 (การเพิ่มหรือลดจำนวนเซนเซอร์ - Case 3):</strong> กรณีนี้มีความสำคัญที่สุด! หากไม่ปรับตัวหรือใช้แค่ Partial Update <strong>โมเดลจะพังทันที (Precision = 0%)</strong> เนื่องจากมิติเมทริกซ์ของข้อมูลไม่ตรงกับโครงข่ายประสาทเทียมเดิม มีเพียง <em>Complete Update</em> เท่านั้นที่สามารถจัดคลัสเตอร์ใหม่และฝึกโครงสร้างโครงข่ายใหม่จนได้ความแม่นยำสูงถึง <strong>90.26%</strong></li>
+              </ul>
+              <strong>การทดสอบเวลาประมวลผล (Latency):</strong> เวลาเฉลี่ยในการตรวจจับความผิดปกติอยู่ที่ <strong>532 มิลลิวินาที (0.532 วินาที)</strong> บนโน้ตบุ๊ก Fog ทั่วไป ซึ่งเร็วกว่ารอบการสุ่มตัวอย่างของเซนเซอร์ (Sampling interval) จึงผ่านเกณฑ์ Real-time Constraint อย่างสมบูรณ์
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ────────────────── หน้า 9 ────────────────── -->
+      <article class="thai-page-article" data-page="9" style="display: none;">
+        <div class="thai-page-badge-row">
+          <span class="badge badge-accent">หน้า 9 / 9</span>
+          <span class="badge" style="background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule);">Section 5: Conclusion &amp; References</span>
+        </div>
+        <h2 class="thai-section-heading">บทสรุป ข้อจำกัด งานวิจัยในอนาคต และ เอกสารอ้างอิง (References)</h2>
+
+        <div class="thai-summary-box">
+          <strong>💡 สรุปสาระสำคัญประจำหน้า 9:</strong>
+          <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8;">
+            <li><strong>บทสรุป (Conclusion):</strong> IoT-CAD เป็นงานวิจัยแรกที่นำเสนอการตรวจจับความผิดปกติระดับ Physical Layer ที่เข้าใจบริบทและปรับตัวได้บน Fog Computing บรรลุ Precision 92% ใน 532ms</li>
+            <li><strong>ข้อจำกัดที่ค้นพบ (Honest Limitations):</strong> ค่า Recall ยังอยู่ที่ 56% และจำเป็นต้องมีเซนเซอร์อย่างน้อย 3 ตัวในแต่ละกลุ่มเพื่อทำฉันทามติ</li>
+            <li><strong>เอกสารอ้างอิงหลัก 46 แหล่ง:</strong> ครอบคลุมทั้งทฤษฎี LSTM ต้นกำเนิด [19], สถาปัตยกรรม CPS Security [8, 10], ชุดข้อมูลบำบัดน้ำเสีย Riccione [14], และเทคนิค Context Pairing [35]</li>
+          </ul>
+        </div>
+
+        <div class="exam-cue-card">
+          <div class="exam-cue-title">
+            <span>🎯 บทพูดปิดการนำเสนอ 5 นาที (สไลด์ 5: 4:45 - 5:00)</span>
+          </div>
+          <ul class="exam-cue-list">
+            <li><strong>ประโยคทองปิดท้าย:</strong> “สรุปคือ IoT-CAD พิสูจน์ให้เห็นว่า ความน่าเชื่อถือของเครือข่ายเซนเซอร์ไม่ได้ขึ้นกับความสมบูรณ์แบบของเซนเซอร์ตัวใดตัวหนึ่ง แต่เกิดขึ้นจาก <em>‘บริบททางกายภาพและการร่วมมือกันเป็นกลุ่ม’</em> ครับ ขอบคุณครับ และผมพร้อมตอบข้อซักถามจากท่านอาจารย์ครับ”</li>
+          </ul>
+        </div>
+
+        <div class="thai-trans-block">
+          <h3 style="font-size: 1.10rem; font-weight: 800; color: var(--ink); margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px;">
+            📖 คำแปลและบทวิเคราะห์เจาะลึกทุกย่อหน้า (Exhaustive Academic Translation)
+          </h3>
+
+          <!-- Unit 1: Conclusion -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge badge-primary">หมวด 5: บทสรุปและทิศทางอนาคต</span>
+              <span class="unit-en-ref">Sec. 5: Conclusion &amp; Future Work</span>
+            </div>
+            <div class="thai-full-translation">
+              <strong>คำแปลบทสรุปงานวิจัย (Conclusion):</strong><br>
+              ในบทความวิจัยนี้ คณะผู้วิจัยได้นำเสนอ <strong>IoT-CAD</strong> ซึ่งเป็นระเบียบวิธีตรวจจับความผิดปกติที่เข้าใจบริบทและสามารถปรับตัวได้สำหรับระบบอินเทอร์เน็ตของสรรพสิ่ง (IoT) โดยใช้ประโยชน์จากเซนเซอร์ที่ตรวจวัดคุณสมบัติทางกายภาพเพื่อคุ้มครองความถูกต้องสมบูรณ์ของข้อมูลและระบุเหตุการณ์ผิดปกติในสิ่งแวดล้อม<br><br>
+              นวัตกรรมสำคัญอยู่ที่ <em>อัลกอริทึมการจัดกลุ่มความสัมพันธ์ของเซนเซอร์ (Sensor Association)</em> ซึ่งแปลงสัญญาณเซนเซอร์ต่างชนิดให้กลายเป็นลายนิ้วมือดิจิทัลฐานสอง สกัดบริบท และจัดกลุ่มเซนเซอร์ที่มีพฤติกรรมสอดคล้องกัน จากนั้นใช้โมเดลพยากรณ์ LSTM ร่วมกับตัวประมาณค่าเกาส์เซียนหลายตัวแปร และใช้อัลกอริทึมฉันทามติในการตัดสินแยกแยะระหว่างความผิดปกติของสิ่งแวดล้อม (EA) กับความชำรุดของอุปกรณ์ตรวจจับ (SDA)<br><br>
+              ผลการประเมินบนชุดทดลองฮาร์ดแวร์จริง 62 เซนเซอร์ ยืนยันว่าโมเดลตรวจจับความผิดปกติได้ด้วยความแม่นยำ (Precision) สูงถึง <strong>92.0%</strong> ภายในเวลาเพียง <strong>532 มิลลิวินาที</strong> บนโหนดประมวลผลระดับหมอก (Fog Node) ซึ่งทันต่อข้อกำหนดเวลาจริงของระบบอย่างสมบูรณ์
+            </div>
+          </div>
+
+          <!-- Unit 2: References Catalog -->
+          <div class="trans-section-unit">
+            <div class="trans-unit-header">
+              <span class="academic-badge">คลังเอกสารอ้างอิงสำคัญ</span>
+              <span class="unit-en-ref">Selected Key References [1–46]</span>
+            </div>
+            <div class="thai-full-translation">
+              <strong>เอกสารอ้างอิงสำคัญที่ถูกนำมาใช้ในงานวิจัย:</strong>
+              <ul style="margin: 6px 0 0 18px; padding: 0; line-height: 1.85; font-size: 0.88rem;">
+                <li><strong>[14] F. Giannoni et al. (2018):</strong> <em>Anomaly Detection Models for IoT Time Series Data</em> — แหล่งที่มาของข้อมูลการทดลองโรงบำบัดน้ำเสีย Riccione ประเทศอิตาลี ที่แสดงความสัมพันธ์ระหว่าง Oxygen, Ammonia และ Nitrate</li>
+                <li><strong>[19] S. Hochreiter &amp; J. Schmidhuber (1997):</strong> <em>Long Short-Term Memory</em> — เปเปอร์ระดับตำนานผู้คิดค้นโครงข่าย LSTM ที่ใช้แก้ปัญหา Vanishing Gradient ใน RNN</li>
+                <li><strong>[28] W. Luo et al. (IEEE ICME 2017):</strong> <em>Remembering history with convolutional LSTM for anomaly detection</em> — โมเดลเปรียบเทียบใน Table 2 ที่มี Recall สูงถึง 95% แต่ Precision ต่ำเพียง 51%</li>
+                <li><strong>[31] P. Malhotra et al. (2016):</strong> <em>LSTM-based encoder-decoder for multi-sensor anomaly detection</em> — สถาปัตยกรรม LSTM Encoder-Decoder รากฐานที่ถูกนำมาเปรียบเทียบใน Table 2</li>
+                <li><strong>[35] M. Miettinen, A.-R. Sadeghi et al. (ACM CCS 2014):</strong> <em>Context-based zero-interaction pairing...</em> — ต้นกำเนิดแนวคิดการแปลงสัญญาณสิ่งแวดล้อมเป็น Binary Fingerprint เพื่อจับคู่อุปกรณ์</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ Persistent Learning Dock (Inspired by Electric-Machine) ═══════════ -->
+<div class="learning-dock">
+  <div class="dock-left">
+    <button class="btn btn-secondary" id="dock-btn-prev" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;">
+      ◀ หน้าก่อนหน้า
+    </button>
+    <span id="dock-current-page-text" style="font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--accent);">
+      หน้า 1 จาก 9
+    </span>
+    <button class="btn btn-secondary" id="dock-btn-next" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;">
+      หน้าถัดไป ▶
+    </button>
+  </div>
+
+  <div class="dock-center">
+    <span style="font-size: 0.78rem; color: var(--ink-muted); margin-right: 4px;">ข้ามไปหน้า:</span>
+    <select class="dock-page-dropdown" id="dock-page-select">
+      <option value="1">หน้า 1: บทคัดย่อ และ บทนำ (Sec. 1)</option>
+      <option value="2">หน้า 2: ตัวอย่างน้ำเสีย &amp; EA vs SDA (Sec. 1.1–1.2)</option>
+      <option value="3">หน้า 3: สถาปัตยกรรม 4 ขั้น &amp; ลายนิ้วมือ (Sec. 1.3–2)</option>
+      <option value="4">หน้า 4: สูตรสมการที่ (1) &amp; แฮมมิง (Sec. 3.1–3.2)</option>
+      <option value="5">หน้า 5: LSTM &amp; ฉันทามติ Alg. 1 (Sec. 3.3–3.4)</option>
+      <option value="6">หน้า 6: Adaptive Updates &amp; Testbed (Sec. 3.5–4.2)</option>
+      <option value="7">หน้า 7: ผล Table 2 Precision 92% (Sec. 4.3–4.4)</option>
+      <option value="8">หน้า 8: กรณีศึกษา Fig. 11 &amp; ผลปรับตัว (Sec. 4.5–4.6)</option>
+      <option value="9">หน้า 9: บทสรุป ข้อจำกัด &amp; อ้างอิง (Sec. 5)</option>
+    </select>
+  </div>
+
+  <div class="dock-right">
+    <button class="btn btn-secondary" id="dock-btn-bookmark" title="บุ๊กมาร์กหน้านี้" style="padding: 6px 12px; font-size: 0.84rem;">
+      🔖 บันทึก
+    </button>
+    <button class="btn btn-secondary" id="dock-btn-flag" title="ติดดาวว่าต้องทบทวนเพิ่ม" style="padding: 6px 12px; font-size: 0.84rem;">
+      🚩 ต้องทบทวน
+    </button>
+    <a href="index.html#sec-rehearsal" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.82rem; text-decoration: none;">
+      🎓 ซ้อมพรีเซนต์ 5 นาที
+    </a>
+    <a href="index.html" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.82rem; text-decoration: none;">
+      ← สารบัญบทเรียน
+    </a>
+  </div>
+</div>
+
+<!-- JavaScript Modules -->
+<script src="../assets/js/common.js?v=20260928b"></script>
+<script src="../assets/js/translation.js"></script>
+</body>
+</html>

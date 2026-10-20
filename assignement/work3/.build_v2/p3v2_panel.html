@@ -1,0 +1,354 @@
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญ Version 2</span>
+          <span class="sidebar-badge-pill" style="background: var(--accent); color: #FFFFFF;">Paper 3-2</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label">Raft-FL · SEAMS 2024</span>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="#v2-sec-overview" class="sidebar-link active">1. ภาพรวมและระเบียนบทความ</a></li>
+        <li><a href="#v2-sec-problem" class="sidebar-link">2. ปัญหา Single Point of Failure</a></li>
+        <li><a href="#v2-sec-raft" class="sidebar-link">3. Raft ใน 3 กลไก</a></li>
+        <li><a href="#v2-sec-arch" class="sidebar-link">4. สถาปัตยกรรมและ Self-Recovery</a></li>
+        <li><a href="#v2-sec-results" class="sidebar-link">5. ผลการทดลอง</a></li>
+        <li><a href="#v2-sec-simulator" class="sidebar-link">6. ซิมูเลเตอร์ Raft Failover</a></li>
+        <li><a href="#v2-sec-critique" class="sidebar-link">7. การวิเคราะห์วิจารณ์</a></li>
+        <li><a href="#v2-sec-rehearsal" class="sidebar-link">8. ห้องซ้อมนำเสนอ 5:00</a></li>
+        <li><a href="#v2-sec-qna" class="sidebar-link">9. คลังคำถาม 15 ข้อ</a></li>
+        <li><a href="#v2-sec-quiz" class="sidebar-link">10. แบบทดสอบ 5 ข้อ</a></li>
+        <li><a href="#v2-sec-docs" class="sidebar-link">11. เอกสาร บทความ และ BibTeX</a></li>
+      </ul>
+      <div class="sidebar-actions">
+        <a href="translation.html?v=2" class="sidebar-action-card">
+          <span class="action-icon" style="font-size: 0.72rem; font-weight: 800;">TH</span>
+          <div class="action-text">
+            <div class="action-title">อ่านบทความแปลไทยคู่ขนาน</div>
+            <div class="action-desc">ต้นฉบับกับคำแปลทีละย่อหน้า 12 หน้า</div>
+          </div>
+          <span class="action-arrow">&rarr;</span>
+        </a>
+        <a href="?v=1" class="sidebar-action-card" data-p3-switch="v1">
+          <span class="action-icon" style="font-size: 0.72rem; font-weight: 800;">v1</span>
+          <div class="action-text">
+            <div class="action-title">ดู Version 1 (OmniLedger)</div>
+            <div class="action-desc">IEEE S&amp;P 2018 (เก็บไว้เป็นประวัติ)</div>
+          </div>
+          <span class="action-arrow">&rarr;</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="chapter-main">
+
+
+      <div class="course-meta-bar">
+        <div><strong>305432 เครือข่ายเซนเซอร์ (Sensor Networks)</strong> · Assignment Paper 3 Version 2 · นายธีรภัทร์ ภู่ระยา 66362416</div>
+        <div class="paper-selector-container">
+          <span class="v2-pill">IEEE Doc ID: 10556381</span>
+          <span class="v2-pill green">Open Access CC BY 4.0</span>
+        </div>
+      </div>
+
+      <h1 class="book-title">Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning</h1>
+      <div class="subtitle">การใช้โปรโตคอล Raft เพื่อความทนทานต่อความผิดพลาดและการกู้คืนตนเองในการเรียนรู้แบบสหพันธ์ · Rustem Dautov, Erik Johannes Husom (SINTEF Digital) · SEAMS 2024</div>
+
+      <!-- 1 -->
+      <section id="v2-sec-overview">
+        <h2 class="section-title">1. ภาพรวมและระเบียนบทความ <button class="v2-page-btn" data-page="1">ดูบทความหน้า 110</button></h2>
+        <p class="v2-lead">บทความแก้ปัญหาที่ aggregator ของ Federated Learning เป็นจุดเดียวที่ดับแล้วระบบหยุด โดยให้ทุกโหนดรันโค้ดชุดเดียวกัน ใช้ Raft เลือก aggregator และสำเนา checkpoint ไปทุกโหนด เมื่อ aggregator ดับ โหนดที่เหลือเลือกผู้นำใหม่และฝึกต่อจาก checkpoint ล่าสุด</p>
+        <div class="v2-stats">
+          <div class="v2-stat"><div class="v">11</div><div class="l">Raspberry Pi 3 ในการทดลอง<br>(1 aggregator + 10 worker)</div></div>
+          <div class="v2-stat"><div class="v green">1.27-3.76 s</div><div class="l">เวลาเลือก aggregator ใหม่<br>ที่ 1 ถึง 10 worker (Fig. 3)</div></div>
+          <div class="v2-stat"><div class="v red">1.8-5.0x</div><div class="l">ทราฟฟิกเทียบ Flower เดิม<br>(คำนวณจาก Fig. 4)</div></div>
+          <div class="v2-stat"><div class="v">Level 3</div><div class="l">ระดับการกู้คืนที่เลือก<br>(Table 1)</div></div>
+        </div>
+        <div class="v2-card">
+          <table class="v2-record">
+            <tr><th>ชื่อบทความ</th><td>Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning</td></tr>
+            <tr><th>ผู้เขียน</th><td>Rustem Dautov, Erik Johannes Husom (SINTEF Digital, Oslo, Norway)</td></tr>
+            <tr><th>งานประชุม</th><td>2024 IEEE/ACM 19th Symposium on Software Engineering for Adaptive and Self-Managing Systems (SEAMS), Lisbon, Portugal, 15-16 เมษายน 2024, หน้า 110-121</td></tr>
+            <tr><th>หมายเลขอ้างอิง</th><td><span class="v2-id">IEEE Doc ID: 10556381</span> · DOI: <a href="https://doi.org/10.1145/3643915.3644093" target="_blank" rel="noopener">10.1145/3643915.3644093</a></td></tr>
+            <tr><th>สิทธิ์</th><td>IEEE Open Access, Creative Commons Attribution 4.0 (ดาวน์โหลดจาก IEEE Xplore โดยตรง 27 ก.ย. 2026)</td></tr>
+            <tr><th>ซอร์สโค้ดของผู้เขียน</th><td><a href="https://github.com/SINTEF-9012/raft_flower" target="_blank" rel="noopener">github.com/SINTEF-9012/raft_flower</a></td></tr>
+          </table>
+          <p class="v2-src">เรื่อง DOI: SEAMS เป็นงานที่ IEEE และ ACM ร่วมจัด DOI จึงออกโดย ACM (10.1145) ส่วนระเบียน IEEE Xplore คือ IEEE Doc ID: 10556381 ประเภท IEEE Conferences ทุกเอกสารของ Version 2 จึงอ้างทั้งสองหมายเลขคู่กัน</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section id="v2-sec-problem">
+        <h2 class="section-title">2. ปัญหา Single Point of Failure <button class="v2-page-btn" data-page="2">ดูบทความหน้า 111</button></h2>
+        <div class="v2-grid-2">
+          <div class="v2-card accent">
+            <h3>Federated Learning ทำงานอย่างไร (Section 2)</h3>
+            <ol>
+              <li>aggregator สร้างโมเดลตั้งต้น</li>
+              <li>worker ฝึกด้วยข้อมูลของตัวเอง ข้อมูลดิบไม่ออกจากเครื่อง</li>
+              <li>worker ส่งเฉพาะพารามิเตอร์ที่เปลี่ยน</li>
+              <li>aggregator รวมพารามิเตอร์ เช่น หาค่าเฉลี่ย</li>
+              <li>ทำซ้ำหลายรอบ</li>
+            </ol>
+          </div>
+          <div class="v2-card hazard">
+            <h3>จุดอ่อน (Section 2.1)</h3>
+            <p>การรวมโมเดลยังอยู่ที่ <strong>aggregator เครื่องเดียว</strong> ถ้าฮาร์ดแวร์เสีย เครือข่ายขาด หรือเหตุไม่คาดคิด การฝึกหยุดทั้งระบบ และความคืบหน้าที่ยังไม่บันทึกหายไป</p>
+            <p>ในเครือข่ายเซนเซอร์ เกตเวย์ที่รวมข้อมูลก็มีจุดอ่อนแบบเดียวกัน</p>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead><tr><th>ทางเลือกเดิม (Section 3)</th><th>ข้อดี</th><th>เหตุผลที่ผู้เขียนไม่เลือก</th></tr></thead>
+            <tbody>
+              <tr><td>Gossip / swarm learning</td><td>ไม่มีจุดกลาง</td><td>ยังใหม่และซับซ้อนเกินกว่าจะใช้ซ้ำได้ทั่วไป</td></tr>
+              <tr><td>Distributed Ledger Technology</td><td>โปร่งใส กันการแก้ไขข้อมูล</td><td>กินพลังประมวลผล พื้นที่ และพลังงานของอุปกรณ์ IoT</td></tr>
+              <tr><td>Behera et al. (Raft)</td><td>เลือก aggregator ใหม่อัตโนมัติ</td><td>ไม่สำเนาสถานะ และเป็นเอกสาร 5 หน้าที่ยังไม่ผ่าน peer review</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="v2-sec-raft">
+        <h2 class="section-title">3. Raft ใน 3 กลไก <button class="v2-page-btn" data-page="4">ดูบทความหน้า 113</button></h2>
+        <p>บทความสรุป Raft ใน Section 4.1 และให้อ่านรายละเอียดจากบทความต้นฉบับของ Ongaro และ Ousterhout (2014) ส่วนนี้อธิบายเท่าที่ต้องใช้ในการนำเสนอ</p>
+        <div class="v2-grid-3">
+          <div class="v2-card accent"><h3>1. Leader Election</h3><p>follower ที่ไม่ได้รับ heartbeat จนหมด <strong>randomised election timeout</strong> จะเป็น candidate เพิ่มเลข <strong>term</strong> และขอคะแนนเสียง ผู้ได้เสียงข้างมากของสมาชิกทั้งหมดเป็น leader</p></div>
+          <div class="v2-card accent"><h3>2. Heartbeat</h3><p>leader ส่งสัญญาณเป็นระยะ ถ้าเงียบนานเกิน timeout จะเกิดการเลือกตั้งรอบใหม่ การสุ่ม timeout ลดโอกาสที่คะแนนเสียงแตก</p></div>
+          <div class="v2-card accent"><h3>3. Log Replication</h3><p>leader ส่ง log entry ให้ follower และถือว่า <strong>commit เมื่อเสียงข้างมากตอบรับ</strong> ในบทความ log คือ checkpoint ของพารามิเตอร์</p></div>
+        </div>
+        <div class="v2-card">
+          <h3>เครื่องคำนวณ Quorum</h3>
+          <div class="v2-inline-controls">
+            <label for="v2-q-n">จำนวนสมาชิกคลัสเตอร์ N = <strong id="v2-q-n-val">11</strong></label>
+            <input type="range" id="v2-q-n" min="1" max="15" value="11">
+          </div>
+          <p id="v2-q-out" class="v2-code"></p>
+          <p class="v2-src">สูตร Q = floor(N/2) + 1 และ f_max = floor((N-1)/2) มาจากนิยามของ Raft ไม่ได้อยู่ในบทความ ใช้เพื่อวิพากษ์จุด 1 worker ใน Fig. 3</p>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="v2-sec-arch">
+        <h2 class="section-title">4. สถาปัตยกรรมและ Self-Recovery <button class="v2-page-btn" data-page="5">ดูบทความหน้า 114</button></h2>
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead><tr><th>ระดับ (Table 1)</th><th>สิ่งที่สำเนา</th><th>ผลเมื่อ aggregator ดับ</th></tr></thead>
+            <tbody>
+              <tr><td>Level 0</td><td>ไม่มี</td><td>ความคืบหน้าหาย</td></tr>
+              <tr><td>Level 1</td><td>พารามิเตอร์บนดิสก์ของ aggregator เดิม</td><td>ต้องรอเครื่องเดิมกลับมา</td></tr>
+              <tr><td>Level 2</td><td>ไม่มี แต่เลือกผู้นำใหม่ด้วย Raft</td><td>ฝึกใหม่จากศูนย์</td></tr>
+              <tr style="background: var(--accent-bg); font-weight: 700;"><td>Level 3 (บทความเลือก)</td><td>พารามิเตอร์ที่รวมแล้วฝั่ง aggregator</td><td>ผู้นำใหม่ฝึกต่อจาก checkpoint ล่าสุด</td></tr>
+              <tr><td>Level 4</td><td>เพิ่มพารามิเตอร์ของ worker ทุกตัว</td><td>ครบที่สุด แต่ส่งข้อมูลซ้ำซ้อนมาก</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="v2-grid-2">
+          <figure class="v2-figure"><img src="assets/v2/figs/fig1.png" alt="Fig. 1 Algorithm of a Raft-enhanced FL node" loading="lazy"><figcaption>Fig. 1: Algorithm of a Raft-enhanced FL node (หน้า 116) checkpoint 1 ถึง 3 อยู่ในคอลัมน์กลาง</figcaption></figure>
+          <figure class="v2-figure"><img src="assets/v2/figs/fig2.png" alt="Fig. 2 Raft-enhanced FL sequence diagram" loading="lazy"><figcaption>Fig. 2: Raft-enhanced FL sequence diagram (หน้า 117) ด้านบนคือ Leader Election ด้านล่างคือ FL + State Replication</figcaption></figure>
+        </div>
+        <div class="v2-card">
+          <h3>Self-Recovery Workflow 4 ขั้น (Section 5.3)</h3>
+          <ol>
+            <li><strong>Leader election:</strong> ทุกโหนดเริ่มจากการเลือกตั้ง ผู้ชนะเป็น aggregator ทุกโหนดมีโค้ดของทั้งสองบทบาท</li>
+            <li><strong>Check state:</strong> aggregator ตรวจสถานะที่สำเนาไว้ (รอบที่ฝึกแล้ว รอบที่เหลือ พารามิเตอร์ล่าสุด)</li>
+            <li><strong>Checkpoint 3 จุด:</strong> หลังตั้งค่าพารามิเตอร์ หลังรวมผลการฝึก และหลังรวมผลการประเมิน เขียนลง replicated key-value ของ PySyncObj ที่คัดลอกแบบ asynchronous</li>
+            <li><strong>Aggregator alive?:</strong> worker ตรวจหลังทุกรอบ ถ้าไม่ตอบ ทุกโหนดกลับไปเลือกตั้ง แล้ว aggregator ใหม่ฝึกต่อจาก checkpoint</li>
+          </ol>
+          <p class="v2-src">เชิงอรรถใต้ Fig. 2 ระบุว่าภาพตัดข้อความเลือกตั้งหลายรอบ การตอบรับ และ heartbeat ออกเพื่อความชัด</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section id="v2-sec-results">
+        <h2 class="section-title">5. ผลการทดลอง <button class="v2-page-btn" data-page="9">ดูบทความหน้า 118</button></h2>
+        <p><strong>Testbed (Section 6.1):</strong> Raspberry Pi 3 จำนวน 11 บอร์ด ผ่าน wireless LAN, CNN บน CIFAR-10, update ประมาณ 250 kB, baseline คือ Flower PyTorch tutorial, วัดทราฟฟิกด้วย iftop แยก port 8080 (FL) และ 5000 (Raft) ใน 1 รอบการฝึก</p>
+        <div class="v2-grid-2">
+          <figure class="v2-figure"><img src="assets/v2/figs/fig3.png" alt="Fig. 3 Aggregator re-election time" loading="lazy"><figcaption>Fig. 3: เวลาเลือก aggregator ใหม่ (วินาที) หน้า 118</figcaption></figure>
+          <figure class="v2-figure"><img src="assets/v2/figs/fig4.png" alt="Fig. 4 Network throughput" loading="lazy"><figcaption>Fig. 4: ทราฟฟิกเครือข่าย 1 รอบ (MB) น้ำเงิน = Flower เดิม แดง = มี Raft หน้า 118</figcaption></figure>
+        </div>
+        <div class="v2-card">
+          <h3>ตัวคำนวณจากตัวเลขใน Fig. 3 และ Fig. 4</h3>
+          <div class="v2-inline-controls">
+            <label for="v2-t-w">จำนวน worker = <strong id="v2-t-w-val">10</strong></label>
+            <input type="range" id="v2-t-w" min="1" max="10" value="10">
+          </div>
+          <div class="v2-bars" id="v2-t-bars"></div>
+          <p id="v2-t-out" style="margin-top: 12px;"></p>
+          <p class="v2-src">ตัวเลขทราฟฟิกและเวลาอ่านจากป้ายบนกราฟใน PDF หน้า 118 อัตราส่วนคำนวณโดยผู้จัดทำ บทความไม่รายงานค่า SD หรือจำนวนรอบที่ทำซ้ำ</p>
+        </div>
+        <div class="v2-warn"><strong>ข้อค้นพบเมื่ออ่านตัวเลขเอง:</strong> บทความเขียนว่าทราฟฟิกเพิ่ม "approx. 5 times" แต่อัตราส่วนจริงเพิ่มจาก 1.81 เท่า (1 worker) เป็น 5.01 เท่า (10 worker) และเขียนว่าเวลาเลือกใหม่ "grows slightly" แต่จริงเพิ่ม 2.96 เท่า ข้อสรุปว่าเลือกใหม่ได้ภายใน 4 วินาทียังถูกต้อง</div>
+      </section>
+
+      <!-- 6 -->
+      <section id="v2-sec-simulator">
+        <h2 class="section-title">6. ซิมูเลเตอร์ Raft Failover ในเครือข่ายเซนเซอร์</h2>
+        <p>แต่ละวงกลมคือเกตเวย์ของเครือข่ายเซนเซอร์ที่เป็นทั้ง FL node และสมาชิก Raft ผู้นำ (leader) ทำหน้าที่ aggregator ส่ง heartbeat และสำเนา checkpoint ทุกครั้งที่จบรอบการฝึก ลองปิด leader แล้วดูโหนดที่เหลือเลือกผู้นำใหม่และฝึกต่อจาก checkpoint หรือปิดโหนดจนต่ำกว่า quorum แล้วดูว่าระบบหยุด คลิกที่โหนดเพื่อปิดหรือเปิดโหนดนั้น</p>
+        <div class="sim-wrap">
+          <div class="sim-stage"><svg id="v2-sim-svg" viewBox="0 0 560 460" role="img" aria-label="Raft failover simulator"></svg></div>
+          <div class="sim-panel">
+            <div class="sim-controls">
+              <button class="btn btn-primary" id="v2-sim-run">เริ่ม</button>
+              <button class="btn btn-secondary" id="v2-sim-crash-leader">ปิด leader</button>
+              <button class="btn btn-secondary" id="v2-sim-crash-random">ปิดโหนดสุ่ม</button>
+              <button class="btn btn-secondary" id="v2-sim-heal">เปิดทุกโหนด</button>
+              <button class="btn btn-secondary" id="v2-sim-reset">รีเซ็ต</button>
+            </div>
+            <div class="v2-inline-controls">
+              <label for="v2-sim-n">จำนวนโหนด <strong id="v2-sim-n-val">5</strong></label>
+              <input type="range" id="v2-sim-n" min="2" max="11" value="5" style="width: 140px;">
+              <label for="v2-sim-speed">ความเร็ว <strong id="v2-sim-speed-val">0.25x</strong></label>
+              <input type="range" id="v2-sim-speed" min="5" max="100" value="25" style="width: 120px;">
+            </div>
+            <div class="sim-kpis">
+              <div class="sim-kpi"><div class="v" id="v2-k-term">0</div><div class="l">term</div></div>
+              <div class="sim-kpi"><div class="v" id="v2-k-leader">-</div><div class="l">leader (aggregator)</div></div>
+              <div class="sim-kpi" id="v2-k-quorum-box"><div class="v" id="v2-k-quorum">-</div><div class="l">โหนดที่ทำงาน / quorum</div></div>
+              <div class="sim-kpi ok"><div class="v" id="v2-k-round">0</div><div class="l">รอบ FL ที่ commit แล้ว</div></div>
+              <div class="sim-kpi"><div class="v" id="v2-k-failover">-</div><div class="l">เวลาเลือกใหม่ล่าสุด (ms จำลอง)</div></div>
+              <div class="sim-kpi"><div class="v" id="v2-k-msgs">0</div><div class="l">ข้อความ Raft ทั้งหมด</div></div>
+            </div>
+            <div class="sim-legend">
+              <span style="--c:#3B82F6">follower</span><span style="--c:#F59E0B">candidate</span><span style="--c:#10B981">leader</span><span style="--c:#64748B">ดับ</span>
+            </div>
+            <div class="sim-log" id="v2-sim-log" aria-live="polite"></div>
+          </div>
+        </div>
+        <p class="v2-src">แบบจำลองเพื่อการเรียนรู้ ใช้กฎของ Raft: election timeout สุ่ม 150 ถึง 300 ms, heartbeat ทุก 60 ms, ชนะเมื่อได้เสียงข้างมากของสมาชิกทั้งหมด และ commit checkpoint เมื่อเสียงข้างมากตอบรับ เวลาในแบบจำลองไม่เทียบกับ 1.27 ถึง 3.76 วินาทีในบทความ ซึ่งรวมเวลาของ Python, Flower และ Wi-Fi บน Raspberry Pi</p>
+      </section>
+
+      <!-- 7 -->
+      <section id="v2-sec-critique">
+        <h2 class="section-title">7. การวิเคราะห์วิจารณ์ <button class="v2-page-btn" data-page="10">ดูบทความหน้า 119</button></h2>
+        <div class="v2-grid-3">
+          <div class="v2-card accent"><h3>คุณูปการ 1</h3><p>กรอบระดับการกู้คืน 5 ระดับ (Table 1) ช่วยเลือกระดับตามต้นทุน</p></div>
+          <div class="v2-card accent"><h3>คุณูปการ 2</h3><p>ต้นแบบบน Flower ที่ทุกโหนดรันโค้ดชุดเดียว ไม่ต้องใช้ blockchain และเปิดซอร์สโค้ด</p></div>
+          <div class="v2-card accent"><h3>คุณูปการ 3</h3><p>ตัวเลขเวลาและทราฟฟิกบน Raspberry Pi จริงที่ 1 ถึง 10 worker</p></div>
+        </div>
+        <div class="v2-grid-2">
+          <div class="v2-card hazard"><h3>ไม่อภิปราย Quorum</h3><p>11 โหนดทนการดับพร้อมกันได้ไม่เกิน 5 โหนด Fig. 3 มีจุด 1 worker (2 โหนด) ซึ่ง Raft มาตรฐานเลือกผู้นำไม่ได้เมื่อเหลือ 1 ใน 2 ขณะที่ Section 6.2.1 เขียนว่าทดลอง 2 ถึง 10 worker และหน้า 117 เขียนว่าเหลือโหนดเดียวก็กู้คืนสถานะได้</p></div>
+          <div class="v2-card hazard"><h3>การวัดแคบ</h3><p>ทราฟฟิกวัด 1 รอบแบบ clean run ไม่มีค่า SD ไม่วัดความแม่นยำหลังกู้คืน (เชิงอรรถ 11 อ้างว่าเท่า baseline โดยไม่ได้วัด) และไม่แยกว่าทราฟฟิกมาจากส่วนใด</p></div>
+          <div class="v2-card hazard"><h3>Dataset</h3><p>CIFAR-10 เป็นภาพ ไม่ใช่ time series จากเซนเซอร์ พารามิเตอร์ 250 kB เล็กกว่าโมเดลจริง ผู้เขียนยอมรับว่าโมเดลระดับ MB จะทำให้ทราฟฟิกหนักขึ้นมาก</p></div>
+          <div class="v2-card hazard"><h3>ขอบเขตความผิดพลาดและความคงทน</h3><p>Raft รับมือเฉพาะ crash fault ไม่กัน aggregator ที่โกง และสถานะอยู่ในหน่วยความจำ ถ้าดับพร้อมกันทั้งคลัสเตอร์ ความคืบหน้าหาย</p></div>
+        </div>
+        <div class="v2-card good">
+          <h3>การเชื่อมโยงกับงานจริง (ความเห็นของผู้จัดทำ)</h3>
+          <ul>
+            <li><strong>เกตเวย์เซนเซอร์:</strong> ให้เกตเวย์ 3 หรือ 5 เครื่องเป็นสมาชิก Raft ส่วนโหนดเซนเซอร์ที่ใช้แบตเตอรี่เป็นเพียง FL client ตรงกับ selective state replication ใน Section 7.1</li>
+            <li><strong>etcd และ Kafka KRaft:</strong> ใช้ฉันทามติตระกูล Raft เหมือนกัน แต่เขียน log ลงดิสก์และใช้ quorum ขนาดเล็ก แก้จุดอ่อนเรื่องดับพร้อมกันและทราฟฟิก</li>
+            <li><strong>Event-driven backend ด้วย Go:</strong> scheduler หรือ ordered consumer ใช้รูปแบบเลือกผู้นำ + checkpoint offset แบบเดียวกัน</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section id="v2-sec-rehearsal">
+        <h2 class="section-title">8. ห้องซ้อมนำเสนอ 5:00</h2>
+        <p>เป้าหมาย 4:45 นาที (ยอมรับ 4:30 ถึง 4:55) กด <strong>เริ่ม</strong> แล้วพูดตามบทใน Teleprompter สไลด์และบทพูดเปลี่ยนตามเวลาอัตโนมัติ ถ้าอยากคุมเองให้เลือกโหมด "เลื่อนเอง" ปุ่มลัด: Space เริ่ม/หยุด, ลูกศรซ้ายขวาเปลี่ยนสไลด์ <span id="v2-st-words" class="v2-src" style="border: none;"></span></p>
+        <div class="st-top">
+          <div>
+            <div class="st-slide"><img id="v2-st-img" src="assets/v2/slides/slide-1.png" alt="สไลด์ที่ 1"></div>
+          </div>
+          <div class="v2-card">
+            <div class="st-clock" id="v2-st-clock">0:00</div>
+            <div class="st-sub">เป้าหมาย 4:45 · เพดาน 5:00 · <span class="st-pace on" id="v2-st-pace">พร้อม</span></div>
+            <div class="sim-controls" style="margin-top: 12px;">
+              <button class="btn btn-primary" id="v2-st-start">เริ่ม</button>
+              <button class="btn btn-secondary" id="v2-st-prev">สไลด์ก่อน</button>
+              <button class="btn btn-secondary" id="v2-st-next">สไลด์ถัดไป</button>
+              <button class="btn btn-secondary" id="v2-st-reset">รีเซ็ต</button>
+            </div>
+            <div class="v2-inline-controls">
+              <label><input type="radio" name="st-mode" value="auto" checked> ตามเวลา</label>
+              <label><input type="radio" name="st-mode" value="manual"> เลื่อนเอง</label>
+              <label><input type="checkbox" id="v2-st-big"> ตัวอักษรใหญ่</label>
+            </div>
+            <div class="st-log" id="v2-st-log"></div>
+          </div>
+        </div>
+        <div class="st-timeline" id="v2-st-timeline"></div>
+        <div class="st-prompter" id="v2-st-prompter"></div>
+      </section>
+
+      <!-- 9 -->
+      <section id="v2-sec-qna">
+        <h2 class="section-title">9. คลังคำถามกรรมการ 15 ข้อ</h2>
+        <p>ตอบบรรทัดสีเขียว (ตอบสั้น) ก่อนภายใน 20 วินาที แล้วขยายด้วยคำตอบเต็มเมื่อถูกถามต่อ ช่องหลักฐานบอกเลขหน้าที่พิมพ์ในบทความ ปุ่ม "สุ่มคำถามซ้อม" จะเปิดคำถามแบบสุ่มพร้อมนับถอยหลัง 20 วินาที</p>
+        <div class="qa-bar" id="v2-qa-bar">
+          <input type="search" id="v2-qa-search" placeholder="ค้นหาคำถาม เช่น quorum, DOI, ทราฟฟิก">
+          <button class="btn btn-secondary" id="v2-qa-drill-btn" style="padding: 6px 12px; font-size: 0.86rem;">สุ่มคำถามซ้อม</button>
+        </div>
+        <div class="qa-drill" id="v2-qa-drill"></div>
+        <div id="v2-qa-list"></div>
+      </section>
+
+      <!-- 10 -->
+      <section id="v2-sec-quiz">
+        <h2 class="section-title">10. แบบทดสอบความเข้าใจ 5 ข้อ</h2>
+        <p>เลือกคำตอบหนึ่งข้อต่อคำถาม ระบบจะแสดงเฉลยและคำอธิบายพร้อมเลขหน้าทันที</p>
+        <div class="quiz-container" id="v2-quiz-v2"></div>
+      </section>
+
+      <!-- 11 -->
+      <section id="v2-sec-docs">
+        <h2 class="section-title">11. เอกสาร บทความ และ BibTeX</h2>
+        <div class="table-responsive">
+          <table class="v2-docs">
+            <tr><th>ชิ้นงาน</th><th>ไฟล์</th></tr>
+            <tr><td>บทความต้นฉบับ (PDF, 12 หน้า)</td><td><a href="../assignement/work3/01_original_v2/Paper_III_2_PRIMARY_RaftFL_10556381.pdf" target="_blank">Paper_III_2_PRIMARY_RaftFL_10556381.pdf</a></td></tr>
+            <tr><td>บทความแปลไทยคู่ขนาน</td><td><a href="translation.html?v=2">translation.html</a></td></tr>
+            <tr><td>รายงานฉบับย่อภาษาไทย (10 หน้า)</td><td><a href="../assignement/work3/02_report_v2/Assignment_Paper_3_v2_Short_Report_TH.pdf" target="_blank">PDF</a> · <a href="../assignement/work3/02_report_v2/Assignment_Paper_3_v2_Short_Report_TH.docx">DOCX</a> · <a href="../assignement/work3/02_report_v2/Assignment_Paper_3_v2_Short_Report_TH.md" target="_blank">Markdown</a></td></tr>
+            <tr><td>สไลด์ 7 หน้า (16:9)</td><td><a href="../assignement/work3/03_slides_v2/Assignment_Paper_3_v2_5-to-8-min.pdf" target="_blank">PDF</a> · <a href="../assignement/work3/03_slides_v2/Assignment_Paper_3_v2_5-to-8-min.pptx">PPTX พร้อม Speaker Notes</a></td></tr>
+            <tr><td>สคริปต์ 5 นาที · โพย Q&amp;A · แผนเวลา</td><td><a href="../assignement/work3/04_presentation_v2/presentation-script-5-min.md" target="_blank">script</a> · <a href="../assignement/work3/04_presentation_v2/qna-cheatsheet.md" target="_blank">qna-cheatsheet</a> · <a href="../assignement/work3/04_presentation_v2/slide-plan.md" target="_blank">slide-plan</a></td></tr>
+            <tr><td>คอร์ส Zero-to-Hero และโค้ด Go</td><td><a href="../assignement/work3/05_study_v2/zero-to-hero-course.md" target="_blank">zero-to-hero-course.md</a> · <a href="../assignement/work3/05_study_v2/code/raftsim/main.go" target="_blank">raftsim/main.go</a></td></tr>
+            <tr><td>หลักฐานและเช็กลิสต์</td><td><a href="../assignement/work3/06_evidence_v2/source-verification.md" target="_blank">source-verification.md</a> · <a href="../assignement/work3/06_evidence_v2/submission-checklist.md" target="_blank">submission-checklist.md</a></td></tr>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 24px;">สไลด์นำเสนอ 7 หน้า (Slide Preview)</h3>
+        <div class="sv" id="v2-slide-viewer">
+          <div class="sv-stage"><img id="v2-sv-img" src="assets/v2/slides/slide-1.png" alt="สไลด์ที่ 1"></div>
+          <div class="sv-bar">
+            <button class="btn btn-secondary" id="v2-sv-prev">สไลด์ก่อน</button>
+            <span class="sv-label" id="v2-sv-label">Slide 1 / 7</span>
+            <button class="btn btn-secondary" id="v2-sv-next">สไลด์ถัดไป</button>
+          </div>
+          <div class="sv-thumbs" id="v2-sv-thumbs"></div>
+        </div>
+
+        <h3 style="margin-top: 24px;">อ่านบทความทีละหน้า</h3>
+        <div class="pv" id="v2-paper-viewer">
+          <div class="pv-page"><img id="v2-pv-img" src="assets/v2/pages/page-1.png" alt="บทความหน้า 110"></div>
+          <div class="pv-side">
+            <div class="sim-controls">
+              <button class="btn btn-secondary" id="v2-pv-prev">หน้าก่อน</button>
+              <button class="btn btn-secondary" id="v2-pv-next">หน้าถัดไป</button>
+            </div>
+            <div class="st-sub" id="v2-pv-label">หน้า 110 (PDF หน้า 1 จาก 12)</div>
+            <div id="v2-pv-jumps"></div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 24px;">BibTeX</h3>
+        <pre class="v2-code" id="v2-bibtex">@inproceedings{dautov2024raft,
+  author    = {Dautov, Rustem and Husom, Erik Johannes},
+  title     = {Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning},
+  booktitle = {2024 IEEE/ACM 19th Symposium on Software Engineering for Adaptive and Self-Managing Systems (SEAMS)},
+  address   = {Lisbon, Portugal},
+  publisher = {IEEE},
+  year      = {2024},
+  pages     = {110--121},
+  doi       = {10.1145/3643915.3644093},
+  note      = {IEEE Xplore Document ID: 10556381}
+}</pre>
+        <button class="btn btn-primary copy-btn" id="v2-bibtex-copy" style="margin-top: 8px;">คัดลอก BibTeX</button>
+        <p class="v2-src">อ้างอิงแบบ IEEE: R. Dautov and E. J. Husom, "Raft protocol for fault tolerance and self-recovery in federated learning," in Proc. 2024 IEEE/ACM 19th Symp. Software Engineering for Adaptive and Self-Managing Systems (SEAMS), Lisbon, Portugal, 2024, pp. 110-121, doi: 10.1145/3643915.3644093. IEEE Doc ID: 10556381.</p>
+      </section>
+
+      <footer class="page-footer" style="margin-top: 40px;">
+        305432 เครือข่ายเซนเซอร์ · Assignment Paper 3 Version 2 · ภาพจากบทความใช้ภายใต้ Creative Commons Attribution 4.0 (Dautov and Husom, SEAMS 2024)
+      </footer>
+    </main>

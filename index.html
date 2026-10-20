@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>305432 เครือข่ายเซนเซอร์ (Sensor Networks) · คลังการค้นคว้าและแพลตฟอร์มการนำเสนอ IEEE</title>
+<link rel="stylesheet" href="assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="assets/css/interactive.css?v=20260928b">
+<script src="assets/js/header-component.js?v=20261007"></script>
+</head>
+<body>
+
+<!-- ═══════════ Unified Standardized Header Component ═══════════ -->
+<site-header data-page="portal" data-base="./"></site-header>
+
+<!-- ═══════════ Main Portal Container ═══════════ -->
+<div class="portal-container">
+  
+  <div class="course-meta-bar">
+    <div><strong>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</strong></div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <span class="academic-badge badge-primary">305432 เครือข่ายเซนเซอร์</span>
+      <span class="academic-badge">ประกาศรายวิชา 2026-07-01 (อ.ตั้ม)</span>
+    </div>
+  </div>
+
+  <h1 class="book-title">แพลตฟอร์มการเรียนรู้และคลังวิชาการเครือข่ายเซนเซอร์และการสื่อสารข้อมูล</h1>
+  <div class="subtitle">
+    ระบบการเรียนรู้และเตรียมสอบระดับเกียรตินิยม บูรณาการหลักสูตรสองแกนขนาน: รากฐานการสื่อสารข้อมูล (Data Communications Forouzan 14 บท) และสถาปัตยกรรมเครือข่ายเซนเซอร์ (WSN &amp; IoT 14 บท) พร้อมเครื่องมือจำลองเชิงโต้ตอบ และคลังซ้อมนำเสนอบทความวิจัย IEEE 4 งานมอบหมาย
+  </div>
+
+  <!-- ═══════════ 1. สถาปัตยกรรมหลักสูตรสองแกนขนาน (Dual-Track Core Curriculum - แหล่งความรู้แกนหลักสำหรับสอบ) ═══════════ -->
+  <section id="sec-dual-track" style="margin-top: 36px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+      <div>
+        <h2 class="section-title" style="margin: 0; padding: 0; border: none;">สถาปัตยกรรมหลักสูตรสองแกนขนาน (Dual-Track Core Curriculum)</h2>
+        <div style="font-size: 0.90rem; color: var(--ink-soft); margin-top: 4px;">
+          แกนความรู้หลักสำหรับการสอบ (Canonical Ground Truth): บูรณาการ Data Communications และ Wireless Sensor Networks ภายใต้การดูแลร่วมกันของ Agent Alpha และ Agent Bravo
+        </div>
+      </div>
+      <span class="academic-badge badge-primary">เนื้อหาออกข้อสอบหลัก</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 20px;">
+      
+      <!-- Track 1 Card: Data Communications Foundations -->
+      <div style="background: var(--card-bg); border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <span class="academic-badge badge-primary" style="font-size: 0.78rem;">Track 1: Data Communications</span>
+          <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-weight: 700;">บทที่ 1-3 พร้อมเรียนรู้</span>
+        </div>
+        <h3 style="color: var(--accent); font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">รากฐานการสื่อสารข้อมูล (Forouzan 14 บท)</h3>
+        <div style="font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 14px;">
+          วิศวกรผู้รับผิดชอบ: <strong>Agent Alpha (Lead Academic Architect)</strong>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; flex: 1;">
+          ครอบคลุมเนื้อหาแกนหลักของสัญญาณแอนะล็อกและดิจิทัล, การวิเคราะห์ฟูเรียร์, การลดทอนและสัญญาณรบกวน, ขีดจำกัดแชนนอนและไนควิสต์, รหัสควบคุมข้อผิดพลาด (CRC, Hamming), ไปจนถึงโปรโตคอลดาต้าลิงก์และการควบคุมการเข้าถึงตัวกลาง (CSMA/CA)
+        </p>
+
+        <!-- Progress Mini-List -->
+        <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 18px; font-size: 0.84rem;">
+          <div style="font-weight: 700; color: var(--ink); margin-bottom: 8px;">สถานะบทเรียน 14 บท:</div>
+          <a href="datacom/ch01.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 1:</strong> Introduction, Topologies, Standards</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <a href="datacom/ch02.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 2:</strong> Network Models (OSI vs TCP/IP)</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <a href="datacom/ch03.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 3:</strong> Data, Signals, Fourier, Impairments</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <a href="datacom/ch04.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 4:</strong> Digital Transmission (Line Coding, PCM)</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <a href="datacom/ch05.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 5:</strong> Analog Transmission (ASK, FSK, O-QPSK)</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <a href="datacom/ch06.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>บทที่ 6:</strong> Multiplexing &amp; Spreading (TDM, DSSS)</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+          <a href="datacom/ch01.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 1
+          </a>
+          <a href="datacom/ch02.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 2
+          </a>
+          <a href="datacom/ch03.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 3
+          </a>
+          <a href="datacom/ch04.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 4
+          </a>
+          <a href="datacom/ch05.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 5
+          </a>
+          <a href="datacom/ch06.html" class="btn btn-primary" style="text-align: center; padding: 8px 6px; font-size: 0.82rem; font-weight: 700;">
+            Ch 6
+          </a>
+        </div>
+      </div>
+
+      <!-- Track 2 Card: Wireless Sensor Networks & IoT Platforms -->
+      <div style="background: var(--card-bg); border: 1.5px solid var(--purple); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <span class="academic-badge" style="background: var(--purple-bg); color: var(--purple); border-color: var(--purple); font-size: 0.78rem;">Track 2: Internet of Things · 305141</span>
+          <span class="unit-tag" style="background: var(--accent2-bg); color: var(--accent2); border-color: var(--accent2); font-weight: 700;">อ.ตั้ม · 6 บท</span>
+        </div>
+        <h3 style="color: var(--purple); font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">อินเทอร์เน็ตของสรรพสิ่ง (IoT)</h3>
+        <div style="font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 14px;">
+          วิศวกรผู้รับผิดชอบ: <strong>Agent Bravo (Lead Frontend Architect)</strong>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; flex: 1;">
+          หลักสูตร 305141 Introduction to Internet of Things: ความหมายและองค์ประกอบ IoT, สถาปัตยกรรมระบบ, วงจรไฟฟ้าและอิเล็กทรอนิกส์, ลอจิกดิจิทัล, Back-end/Web Service/MQTT, และแพลตฟอร์ม Arduino
+        </p>
+
+        <!-- Progress Mini-List -->
+        <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 18px; font-size: 0.84rem;">
+          <div style="font-weight: 700; color: var(--ink); margin-bottom: 8px;">โฟลเดอร์บทเรียน: <code style="font-family: var(--font-mono); font-size: 0.80rem;">iot/</code> (305141 · 6 บท)</div>
+          <a href="iot/ch01.html" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light); color: inherit; text-decoration: none; gap: 10px;">
+            <span><strong>IoT Ch 1:</strong> Introduction, Components, Architecture</span>
+            <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-size: 0.72rem; white-space: nowrap;">Active พร้อมเรียน</span>
+          </a>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule-light);">
+            <span><strong>IoT Ch 2:</strong> System Architectures</span>
+            <span class="unit-tag" style="background: var(--accent2-bg); color: var(--accent2); font-size: 0.72rem; white-space: nowrap;">พร้อมเปิดตัว</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0;">
+            <span><strong>IoT Ch 3-6:</strong> Circuit, Digital Logic, Back-end, Arduino</span>
+            <span class="unit-tag" style="background: var(--accent-bg); color: var(--accent); font-size: 0.72rem; white-space: nowrap;">ตามแผน</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0;">
+            <span><strong>Concept Check 2:</strong> Friis Link Budget &amp; Duty Cycle</span>
+            <span class="unit-tag" style="background: var(--purple-bg); color: var(--purple); font-size: 0.72rem; white-space: nowrap;">รอนิสิตส่งคำตอบ</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="iot/ch01.html" class="btn btn-primary" style="flex: 1; text-align: center; padding: 8px 14px; font-size: 0.88rem; font-weight: 700; background: var(--purple); border-color: var(--purple);">
+            เข้าบทเรียน WSN Ch 1
+          </a>
+          <a href="iot/ch01.html#sec-simulator" class="btn btn-secondary" style="flex: 1; text-align: center; padding: 8px 14px; font-size: 0.88rem; border-color: var(--purple); color: var(--purple); font-weight: 700;">
+            Duty Cycle Simulator
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ 2. คลังงานมอบหมายค้นคว้า IEEE Xplore 4 ฉบับ (Assignments - ส่วนรอง) ═══════════ -->
+  <section id="sec-assignments" style="margin-top: 56px;">
+    
+    <!-- Disclaimer Callout ชัดเจนตามข้อกำหนด -->
+    <div class="academic-callout callout-amber" style="margin-bottom: 24px; border-left: 6px solid var(--accent2);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 6px;">
+        <h3 style="color: var(--accent2); margin: 0; font-size: 1.15rem;">
+          คลังบทความวิจัย IEEE 4 งานมอบหมาย (Specialized Research Presentation Archive)
+        </h3>
+        <span class="unit-tag" style="background: var(--accent2); color: #ffffff; font-weight: 700;">งานมอบหมายซ้อมนำเสนอ 5 นาที</span>
+      </div>
+      <p style="font-size: 0.94rem; line-height: 1.85; margin: 8px 0 0 0; color: var(--ink-soft);">
+        <strong>คำชี้แจงสำคัญทางวิชาการ: ส่วนนี้คืองานมอบหมายค้นคว้าเฉพาะส่วน ไม่ใช่เนื้อหาบรรยายที่ใช้ในการออกข้อสอบ</strong> ตามประกาศของ <strong>อ.ตั้ม (Settha Tangkawanit)</strong> เพื่อฝึกฝนการค้นคว้าบทความ Conference จากฐานข้อมูล IEEE Xplore และการซ้อมนำเสนอแบบปากเปล่า 5 นาที (Oral Presentation) สำหรับการเตรียมตัวสอบวิชา 305432 นิสิตต้องยึดแกนความรู้จากหลักสูตรสองแกนขนาน (Track 1 DataCom และ Track 2 WSN Core) ด้านบนเป็นสำคัญ
+      </p>
+    </div>
+
+    <!-- สรุป 4 งานมอบหมาย 12 บทความ -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px;">
+      <div style="padding: 12px 16px; background: var(--paper2); border-radius: var(--radius-sm); border: 1.5px solid var(--rule);">
+        <div style="font-weight: 800; color: var(--accent); margin-bottom: 4px;">1. Paper I: IoT / Sensor Networks</div>
+        <div style="font-size: 0.86rem; color: var(--ink-soft);">3 บทความ (ตัวจริง 1, สำรอง 2) · <strong>เสร็จสมบูรณ์พร้อมซ้อมนำเสนอ</strong></div>
+      </div>
+      <div style="padding: 12px 16px; background: var(--paper2); border-radius: var(--radius-sm); border: 1.5px solid var(--rule);">
+        <div style="font-weight: 800; color: var(--purple); margin-bottom: 4px;">2. Paper II: CPE Senior Project 1</div>
+        <div style="font-size: 0.86rem; color: var(--ink-soft);">3 บทความ (ตัวจริง 1, สำรอง 2) · จัดเตรียมโครงสร้างรองรับ</div>
+      </div>
+      <div style="padding: 12px 16px; background: var(--paper2); border-radius: var(--radius-sm); border: 1.5px solid var(--rule);">
+        <div style="font-weight: 800; color: var(--accent2); margin-bottom: 4px;">3. Paper III: CPE Senior Project 2</div>
+        <div style="font-size: 0.86rem; color: var(--ink-soft);">3 บทความ (ตัวจริง 1, สำรอง 2) · <strong>เสร็จสมบูรณ์พร้อมใช้งาน</strong></div>
+      </div>
+      <div style="padding: 12px 16px; background: var(--paper2); border-radius: var(--radius-sm); border: 1.5px solid var(--rule);">
+        <div style="font-weight: 800; color: var(--green); margin-bottom: 4px;">4. Paper IV: Publish-Time Optimizations</div>
+        <div style="font-size: 0.86rem; color: var(--ink-soft);">IEEE VIS 2025 · บทเรียน บทแปลคู่ขนาน และห้องซ้อมพร้อมใช้งาน</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- แผนที่ 4 งานมอบหมาย -->
+  <section id="sec-matrix" style="margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">แผนที่สถานะ 4 งานมอบหมาย (Assignment Roadmap Matrix)</h2>
+      <span class="academic-badge badge-primary">รวม 12 บทความ</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 12%;">รหัสงาน</th>
+            <th style="width: 34%;">ขอบเขตหัวข้อและเป้าหมาย</th>
+            <th style="width: 38%;">บทความที่คัดเลือก (ตัวจริง / สำรอง)</th>
+            <th style="width: 16%; text-align: center;">สถานะระบบ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: var(--accent-bg);">
+            <td><strong>Paper_I</strong></td>
+            <td>
+              <strong>IoT หรือ Wireless Sensor Networks</strong><br>
+              <span style="font-size: 0.84rem; color: var(--ink-soft);">เน้น Anomaly Detection, เครือข่ายเซนเซอร์, และความปลอดภัย</span>
+            </td>
+            <td>
+              <strong>ตัวจริง:</strong> IoT-CAD (ICCAD 2020)<br>
+              <span style="font-size: 0.82rem; color: var(--ink-muted);">สำรอง 1: MCSOA (2024) | สำรอง 2: ML-IoT Security (2022)</span>
+            </td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-1/index.html" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.82rem;">บทเรียน &amp; ซ้อมบท</a>
+                <a href="paper-1/translation.html" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.82rem; border-color: var(--accent); color: var(--accent);">แปลไทย Split View</a>
+              </div>
+            </td>
+          </tr>
+          <tr style="background: var(--purple-bg);">
+            <td><strong>Paper_II</strong></td>
+            <td>
+              <strong>โครงงาน CPE Project ชุดที่ 1 (DivWy Platform)</strong><br>
+              <span style="font-size: 0.84rem; color: var(--ink-soft);">การตรวจสอบโครงเรื่องเกม/นิยายแบบโต้ตอบ (Interactive Narrative Validation)</span>
+            </td>
+            <td>
+              <strong>ตัวจริง:</strong> Story Validator (IEEE CoG 2021)<br>
+              <span style="font-size: 0.82rem; color: var(--ink-muted);">สำรอง 1: GENEVA (CoG 2024) | สำรอง 2: Serious Games WSN (2022)</span>
+            </td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-2/index.html" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.82rem; background: var(--purple); border-color: var(--purple);">บทเรียน &amp; ซ้อมบท</a>
+                <a href="paper-2/translation.html" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.82rem; border-color: var(--purple); color: var(--purple);">แปลไทย Split View</a>
+              </div>
+            </td>
+          </tr>
+          <tr style="background: var(--accent2-bg);">
+            <td><strong>Paper_III</strong></td>
+            <td>
+              <strong>โครงงาน CPE Project ชุดที่ 2 (สถาปัตยกรรมระบบกระจายตัว &amp; AI Era)</strong><br>
+              <span style="font-size: 0.84rem; color: var(--ink-soft);">มี 2 เวอร์ชัน: <strong>v1 (OmniLedger 2018)</strong> และ <strong>v2 (Raft-FL, SEAMS 2024) ที่ใช้นำเสนอจริง</strong></span>
+            </td>
+            <td>
+              <div style="margin-bottom: 6px;">
+                <span class="unit-tag" style="background: var(--paper); font-size: 0.76rem;">v1</span> <strong>OmniLedger</strong> (IEEE S&amp;P 2018) · Sharded Consensus
+              </div>
+              <div>
+                <span class="unit-tag" style="background: var(--accent2); color: #fff; font-size: 0.76rem;">v2 (ใช้นำเสนอ)</span> <strong>Raft-FL</strong> (SEAMS 2024, IEEE Doc ID: 10556381) · Raft Self-Recovery for Federated Learning
+              </div>
+            </td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-3/index.html?v=2" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.82rem; background: var(--accent2); border-color: var(--accent2); font-weight: 700;">เข้าสู่ Version 2 (Raft-FL)</a>
+                <a href="paper-3/translation.html?v=2" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.80rem;">แปลไทย v2</a>
+                <a href="paper-3/index.html?v=1" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.80rem;">ดู Version 1 (2018)</a>
+              </div>
+              <div style="font-size: 0.78rem; color: var(--accent2); font-weight: 700; margin-top: 6px;">รองรับทั้ง v1 และ v2</div>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Paper_IV</strong></td>
+            <td><strong>Publish-Time Optimizations for Web-Based Visualizations</strong><br><span style="font-size:0.84rem;color:var(--ink-soft)">Mosaic Publisher · TTR / TTA / Storage Cost</span></td>
+            <td><strong>IEEE VIS 2025</strong><br><span style="font-size:0.82rem">Ron Pechuk และ Jeffrey Heer<br>IEEE Doc ID: 11298742</span></td>
+            <td style="text-align:center"><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><a href="paper-4/index.html" class="btn btn-primary" style="padding:4px 10px;font-size:0.82rem">บทเรียนและห้องซ้อม</a><a href="paper-4/translation.html" class="btn btn-secondary" style="padding:4px 10px;font-size:0.82rem">บทแปลคู่ขนาน</a></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ไฮไลต์บทความตัวจริง Paper I -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">จุดเด่นบทความตัวจริง Paper I: IoT-CAD (ICCAD 2020)</h2>
+      <span class="academic-badge badge-active">พร้อมนำเสนอ 5 นาที</span>
+    </div>
+
+    <div class="academic-callout callout-purple">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 style="color: var(--purple); margin-bottom: 6px; font-size: 1.15rem;">
+            IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association
+          </h3>
+          <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 12px;">
+            ผู้แต่ง: Rozhin Yasaei, Felix Hernandez, Mohammad Abdullah Al Faruque (University of California, Irvine) · IEEE/ACM ICCAD 2020
+          </div>
+        </div>
+        <span class="unit-tag" style="background: var(--purple-bg); color: var(--purple); border-color: var(--purple);">Open Access 9 หน้า</span>
+      </div>
+
+      <p style="font-size: 0.96rem; line-height: 1.85; margin-bottom: 14px;">
+        <strong>แนวคิดในหนึ่งประโยค:</strong> แทนที่จะดูค่าผิดปกติจากเซนเซอร์ตัวเดียวโดดๆ IoT-CAD เรียนรู้ความสัมพันธ์เชิงบริบทของเซนเซอร์ต่างชนิดกัน แล้วใช้ <em>“มติเสียงส่วนใหญ่ในคลัสเตอร์”</em> แยกแยะว่าเหตุการณ์ที่เกิดขึ้นมาจากสิ่งแวดล้อมจริง (Environmental Anomaly - EA เช่น ไฟไหม้) หรือมาจากตัวเซนเซอร์พัง/ถูกโจมตี (Sensing Device Anomaly - SDA)
+      </p>
+
+      <!-- Key Statistics Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 18px 0;">
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ขนาด Testbed จริง</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--ink);">62 โหนด</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">13 มิติทางกายภาพ</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ความแม่นยำจำเพาะ (Precision)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--green);">92%</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ลด False Alarm สูงสุด</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">อัตราตรวจจับจริง (Recall)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--red);">56%</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ข้อจำกัดสำคัญที่สุด</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">เวลาประมวลผลต่อรอบ</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent);">0.532 s</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">Real-Time บน Fog Laptop</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+        <a href="paper-1/index.html" class="btn btn-primary">เข้าสู่บทเรียนเตรียมพรีเซนต์ (Zero-to-Hero)</a>
+        <a href="paper-1/translation.html" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent), var(--purple)); border: none; color: #fff; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);">อ่านเปเปอร์แปลไทย (Compare View 9 หน้า)</a>
+        <a href="paper-1/index.html#sec-rehearsal" class="btn btn-secondary">ซ้อมบทนำเสนอ 5 นาที (Teleprompter)</a>
+        <a href="paper-1/index.html#sec-simulator" class="btn btn-secondary">เปิดซิมูเลเตอร์จำลองระบบ</a>
+        <a href="paper-1/index.html#sec-qna" class="btn btn-secondary">ซ้อมตอบคำถามอาจารย์ 12 ข้อ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ตารางหลักฐาน 3 บทความใน Paper I -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">หลักฐานการค้นคว้าและดาวน์โหลดจาก IEEE Xplore (Paper I)</h2>
+      <span class="academic-badge">อ้างอิง raw/SOURCES.md</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 12%;">สถานะ</th>
+            <th style="width: 32%;">ชื่อบทความวิจัย</th>
+            <th style="width: 22%;">งานประชุม / ปี</th>
+            <th style="width: 20%;">DOI & IEEE Doc</th>
+            <th style="width: 14%; text-align: center;">ไฟล์ต้นฉบับ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="academic-badge badge-active">ตัวจริง</span></td>
+            <td><strong>IoT-CAD: Context-Aware Adaptive Anomaly Detection in IoT Systems Through Sensor Association</strong></td>
+            <td>IEEE/ACM ICCAD 2020</td>
+            <td><a href="https://doi.org/10.1145/3400302.3415672" target="_blank" style="color: var(--accent);">10.1145/3400302.3415672</a></td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-1/translation.html" class="btn btn-primary" style="padding: 2px 8px; font-size: 0.78rem;">แปลไทย</a>
+                <a href="raw/Paper_I_1_PRIMARY_IoT-CAD_9256703.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (9 หน้า)</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 1</span></td>
+            <td><strong>MCSOA: A Novel High-Reliable Wireless Sensor Networks Routing Optimization Method for Power IoT</strong></td>
+            <td>IEEE CACRE 2024</td>
+            <td><a href="https://doi.org/10.1109/CACRE62362.2024.10635077" target="_blank" style="color: var(--accent);">10.1109/CACRE62362.2024.10635077</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_I_2_BACKUP_MCSOA_10635077.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (5 หน้า)</a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 2</span></td>
+            <td><strong>“If Security Is Required”: Engineering and Security Practices for Machine Learning-Based IoT Devices</strong></td>
+            <td>IEEE/ACM SERP4IoT 2022</td>
+            <td><a href="https://doi.org/10.1145/3528227.3528565" target="_blank" style="color: var(--accent);">10.1145/3528227.3528565</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_I_3_BACKUP_ML-IoT-Security_9826168.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (8 หน้า)</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ไฮไลต์บทความตัวจริง Paper II: Story Validator -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">จุดเด่นบทความตัวจริง Paper II: Story Validator (IEEE CoG 2021)</h2>
+      <span class="academic-badge badge-active" style="background: var(--purple); color: white;">โครงงาน CPE Senior Project (DivWy)</span>
+    </div>
+
+    <div class="academic-callout callout-purple">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 style="color: var(--purple); margin-bottom: 6px; font-size: 1.15rem;">
+            Validating the plot of Interactive Narrative games
+          </h3>
+          <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 12px;">
+            ผู้แต่ง: Carolina Veloso, Rui Prada (INESC-ID / University of Lisbon) · 2021 IEEE Conference on Games (CoG)
+          </div>
+        </div>
+        <span class="unit-tag" style="background: var(--purple-bg); color: var(--purple); border-color: var(--purple);">Open Access 8 หน้า</span>
+      </div>
+
+      <p style="font-size: 0.96rem; line-height: 1.85; margin-bottom: 14px;">
+        <strong>แนวคิดในหนึ่งประโยค:</strong> แปลงโครงสร้างนิยาย/เกมแบบโต้ตอบที่มีการแตกกิ่งซับซ้อนให้เป็นระเบียบวิธีทางคณิตศาสตร์แบบระบุกราฟ (Directed Graph) ผสานอัลกอริทึมค้นหาแบบลึก (DFS) และการจำลองพฤติกรรมผู้เล่น (Heuristic Persona Greedy Search) เพื่อตรวจจับบั๊กโครงเรื่อง 5 มิติ ได้แก่ ทางตัน (Dead-ends), พล็อตที่ถูกตัดขาด (Lost plots), จุดคอขวด (Stroke points), ตัวแปรผิดลำดับ (Variable timelines) และการเข้าถึงฉากจบ (Ending reachability)
+      </p>
+
+      <!-- Key Statistics Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 18px 0;">
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">กลุ่มผู้เข้าร่วมทดสอบ</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--ink);">20 คน</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">Game Developers &amp; Story Designers</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">เวลาตรวจพบบั๊กเฉลี่ย</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--green);">52.3 s</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ลดภาระ Playtesting มหาศาล</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">เวลาแก้ไขข้อผิดพลาด</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent);">146.2 s</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">จากระบบ Visual Feedback</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ความพึงพอใจการใช้งาน (SUS)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--purple);">92.4 / 100</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">เกรด A+ ด้าน Usability</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+        <a href="paper-2/index.html" class="btn btn-primary" style="background: var(--purple); border-color: var(--purple);">เข้าสู่บทเรียนเตรียมพรีเซนต์ (Zero-to-Hero)</a>
+        <a href="paper-2/translation.html" class="btn btn-primary" style="background: linear-gradient(135deg, var(--purple), #4F46E5); border: none; color: #fff; box-shadow: 0 4px 12px rgba(109, 40, 217, 0.25);">อ่านเปเปอร์แปลไทย (Compare View 8 หน้า)</a>
+        <a href="paper-2/index.html#sec-rehearsal" class="btn btn-secondary">ซ้อมบทนำเสนอ 5-8 นาที (Teleprompter)</a>
+        <a href="paper-2/index.html#sec-simulator" class="btn btn-secondary">เปิดซิมูเลเตอร์กราฟโครงเรื่อง</a>
+        <a href="paper-2/index.html#sec-qna" class="btn btn-secondary">ซ้อมตอบคำถามกรรมการ 10 ข้อ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ตารางหลักฐาน 3 บทความใน Paper II -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">หลักฐานการค้นคว้าและดาวน์โหลดจาก IEEE Xplore (Paper II · โครงงาน DivWy)</h2>
+      <span class="academic-badge">อ้างอิง raw/SOURCES.md</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 12%;">สถานะ</th>
+            <th style="width: 32%;">ชื่อบทความวิจัย</th>
+            <th style="width: 22%;">งานประชุม / ปี</th>
+            <th style="width: 20%;">DOI &amp; IEEE Doc</th>
+            <th style="width: 14%; text-align: center;">ไฟล์ต้นฉบับ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="academic-badge badge-active" style="background: var(--purple); color: white;">ตัวจริง</span></td>
+            <td><strong>Validating the plot of Interactive Narrative games</strong></td>
+            <td>IEEE CoG 2021</td>
+            <td><a href="https://doi.org/10.1109/CoG52621.2021.9618897" target="_blank" style="color: var(--accent);">10.1109/CoG52621.2021.9618897</a></td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-2/translation.html" class="btn btn-primary" style="padding: 2px 8px; font-size: 0.78rem; background: var(--purple); border-color: var(--purple);">แปลไทย</a>
+                <a href="assignement/work2/01_original/Paper_II_1_PRIMARY_StoryValidator_9618897.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (8 หน้า)</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 1</span></td>
+            <td><strong>GENEVA: Generative Narrative Graphs for Interactive Storytelling</strong></td>
+            <td>IEEE CoG 2024</td>
+            <td><a href="https://doi.org/10.1109/CoG60054.2024.10645625" target="_blank" style="color: var(--accent);">10.1109/CoG60054.2024.10645625</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_II_2_BACKUP_GENEVA_10645625.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (8 หน้า)</a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 2</span></td>
+            <td><strong>A Serious Games Recommendation System for Wireless Sensor Networks Education</strong></td>
+            <td>IEEE/ACM 2022</td>
+            <td><a href="https://doi.org/10.1109/TLT.2022.3168234" target="_blank" style="color: var(--accent);">10.1109/TLT.2022.3168234</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_II_3_BACKUP_SeriousGames_9826085.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (12 หน้า)</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ไฮไลต์บทความตัวจริง Paper III: Version 1 & Version 2 Selector -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">จุดเด่นบทความตัวจริง Paper III (เลือกสลับ Version 1 / Version 2)</h2>
+      <span class="academic-badge badge-active" style="background: var(--accent2); color: white;">โครงงาน CPE Senior Project &amp; Sensor Networks</span>
+    </div>
+
+    <!-- UI แถบสลับเวอร์ชันแบบเรียบง่ายและเป็นมิตร -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; background: var(--paper2); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 10px 16px; margin-bottom: 18px;">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <label for="p3-version-select" style="font-weight: 700; font-size: 0.90rem; color: var(--ink);">เลือกเวอร์ชันบทความ Paper III:</label>
+        <select id="p3-version-select" onchange="switchP3Version(this.value)" style="padding: 6px 14px; font-size: 0.88rem; font-weight: 700; border-radius: var(--radius-sm); border: 1.5px solid var(--rule); background: var(--card-bg); color: var(--ink); cursor: pointer;">
+          <option value="v3" selected>Version 3: [Paper 3-v3] (ปี 2024+ · โครงงานวิศวกรรมคอมพิวเตอร์ &amp; AI Era)</option>
+          <option value="v2">Version 2: Raft-FL (SEAMS 2024 · IEEE Doc ID: 10556381)</option>
+          <option value="v1">Version 1: OmniLedger (IEEE S&amp;P 2018 · Sharded Consensus)</option>
+        </select>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" class="btn btn-primary" onclick="switchP3Version('v3')" id="p3-tab-v3" style="padding: 4px 10px; font-size: 0.82rem; background: var(--accent); border-color: var(--accent); font-weight: 700;">v3 (ปี 2024+)</button>
+        <button type="button" class="btn btn-secondary" onclick="switchP3Version('v2')" id="p3-tab-v2" style="padding: 4px 10px; font-size: 0.82rem;">v2 (Raft-FL)</button>
+        <button type="button" class="btn btn-secondary" onclick="switchP3Version('v1')" id="p3-tab-v1" style="padding: 4px 10px; font-size: 0.82rem;">v1 (2018)</button>
+      </div>
+    </div>
+
+    <!-- ═══════════ Version 3 Card (2024+ CPE Senior Project Domain) ═══════════ -->
+    <div id="p3-v3-callout" class="academic-callout" style="border-left: 4px solid var(--accent); background: var(--card-bg); display: block;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
+            <span class="unit-tag" style="background: var(--accent); color: white; font-weight: 700;">Version 3 ฉบับส่งจริง</span>
+            <span style="font-size: 0.82rem; color: var(--accent); font-weight: 700;">ICSE 2025 · IEEE Doc ID: 11029790</span>
+          </div>
+          <h3 style="color: var(--accent); margin-bottom: 6px; font-size: 1.18rem;">
+            Prompt-to-SQL Injections in LLM-Integrated Web Applications: Risks and Defenses
+          </h3>
+          <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 12px;">
+            R. Pedro, M. E. Coimbra, D. Castro, P. Carreira, N. Santos (INESC-ID / IST, Univ. of Lisbon) · 2025 IEEE/ACM ICSE หน้า 1768-1780 · DOI: 10.1109/ICSE55347.2025.00007 · Open Access
+          </div>
+        </div>
+        <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-weight: 700;">สคริปต์ 4:52 นาที · 828 คำ</span>
+      </div>
+
+      <p style="font-size: 0.96rem; line-height: 1.85; margin-bottom: 14px;">
+        <strong>สาระสำคัญของงานวิจัย:</strong> เมื่อผสาน LLM เข้ากับเว็บแอปพลิเคชันเพื่อแปลงคำถามผู้ใช้เป็น SQL (Text-to-SQL เช่น LangChain) ผู้โจมตีสามารถแทรกพรอมต์หลอกให้สร้างคำสั่งอันตราย เช่น <code>DROP TABLE users</code> หรือขโมยข้อมูลผู้อื่น ผลการทดสอบพบว่า <strong>22 จาก 23 แอปพลิเคชันจริง (95.6%) มีช่องโหว่นี้</strong> ผู้วิจัยจึงเสนอระบบป้องกันชื่อ <strong>LangShield</strong> ที่เพิ่ม Hook ดัก 3 จุด ตรวจจับได้ 100% (เทียบ Rebuff 78%) และลด Latency ลง 56.45% ตรงกับงาน Go, PostgreSQL, Keycloak และ API Security ของนิสิต
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 18px 0;">
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">อัตราตรวจจับ (LLM Guard v3)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--green);">100%</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">เทียบ Baseline Rebuff ได้ 78%</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ความเสี่ยงในแอปจริง (Red Team)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--red);">22 / 23 (95.6%)</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ถูกเจาะระบบฐานข้อมูลสำเร็จ</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ความเร็วการป้องกัน (Latency)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent);">ลดลง 56.45%</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">จาก 147.30 s เหลือ 64.15 s</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ชิ้นงานสำหรับส่งอาจารย์</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--purple);">ครบ 3 รายการ</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">PDF ต้นฉบับ · รายงาน · สไลด์</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
+        <a href="assignement/work3/01_original_v3/Paper_III_3_PRIMARY_P2SQL_11029790.pdf" target="_blank" class="btn btn-primary" style="background: var(--accent); border-color: var(--accent); font-weight: 700;">1. PDF ต้นฉบับ ICSE 2025</a>
+        <a href="assignement/work3/02_report_v3/Assignment_Paper_3_v3_Short_Report_TH.pdf" target="_blank" class="btn btn-primary" style="background: var(--accent); border-color: var(--accent); font-weight: 700;">2. รายงานฉบับย่อ (PDF)</a>
+        <a href="assignement/work3/02_report_v3/Assignment_Paper_3_v3_Short_Report_TH.docx" class="btn btn-secondary">รายงาน (DOCX)</a>
+        <a href="assignement/work3/03_slides_v3/Assignment_Paper_3_v3_5-to-8-min.pdf" target="_blank" class="btn btn-primary" style="background: var(--accent); border-color: var(--accent); font-weight: 700;">3. สไลด์ 7 แผ่น (PDF)</a>
+        <a href="assignement/work3/03_slides_v3/Assignment_Paper_3_v3_5-to-8-min.pptx" class="btn btn-secondary">สไลด์ (PPTX)</a>
+        <a href="paper-3/index.html?v=3" class="btn btn-secondary" style="border-color: var(--accent); color: var(--accent);">เข้าสู่หน้าเว็บ Paper III v3</a>
+      </div>
+    </div>
+
+    <!-- ═══════════ Version 1 Card (OmniLedger 2018) ═══════════ -->
+    <div id="p3-v1-callout" class="academic-callout callout-warning" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
+            <span class="unit-tag" style="background: var(--paper3); color: var(--ink);">Version 1 เดิม</span>
+            <span style="font-size: 0.82rem; color: var(--ink-muted);">IEEE S&amp;P 2018</span>
+          </div>
+          <h3 style="color: var(--accent2); margin-bottom: 6px; font-size: 1.15rem;">
+            OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding
+          </h3>
+          <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 12px;">
+            ผู้แต่ง: Eleftherios Kokoris-Kogias, Philipp Jovanovic, Linus Gasser, Nicolas Gailly, Ewa Syta, Bryan Ford (EPFL &amp; Yale University) : 2018 IEEE Symposium on Security and Privacy (S&amp;P)
+          </div>
+        </div>
+        <span class="unit-tag" style="background: var(--accent2-bg); color: var(--accent2); border-color: var(--accent2);">IEEE S&amp;P 2018 (16 หน้า)</span>
+      </div>
+
+      <p style="font-size: 0.96rem; line-height: 1.85; margin-bottom: 14px;">
+        <strong>แนวคิดในหนึ่งประโยค:</strong> สถาปัตยกรรมบล็อกเชนแบบแบ่งส่วน (Sharding) ระบบแรกของโลกที่บรรลุคุณสมบัติ Scale-out อย่างแท้จริง โดยผสานสุ่มกลุ่มแบบกระจายศูนย์ผ่าน RandHound, ฉันทามติย่อยภายในชาร์ดด้วย ByzCoinX, การทำธุรกรรมข้ามชาร์ดแบบสองเฟสไร้ศูนย์กลาง (Atomix), และการตัดทอนประวัติธุรกรรมด้วย State Blocks เพื่อคงความปลอดภัยภายใต้สัดส่วนผู้ประสงค์ร้ายไม่เกิน 25%
+      </p>
+
+      <!-- Key Statistics Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 18px 0;">
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">อัตราประมวลผลสูงสุด (Max Throughput)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--ink);">9,642 - 13,000 TPS</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ขยายตัวเชิงเส้นตามจำนวนชาร์ด</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">โหนดทดสอบจริง (DeterLab Nodes)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--green);">1,800 โหนด</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">กระจายตัวทั่วโลกเสมือนจริง</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ความเร็วการยืนยันแบบสองระดับ</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent);">1.38 s (Tier 1)</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">62.96 s สำหรับความปลอดภัยสมบูรณ์</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">การประหยัดพื้นที่จัดเก็บข้อมูล</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent2);">&gt; 80% Pruning</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">นวัตกรรม State Blocks สรุปยอด UTXO</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+        <a href="paper-3/index.html?v=1" class="btn btn-primary" style="background: var(--accent2); border-color: var(--accent2);">เข้าสู่บทเรียนเตรียมพรีเซนต์ (Zero-to-Hero v1)</a>
+        <a href="paper-3/translation.html?v=1" class="btn btn-primary" style="background: linear-gradient(135deg, #B45309, #D97706); border: none; color: #fff; box-shadow: 0 4px 12px rgba(180, 83, 9, 0.25);">อ่านเปเปอร์แปลไทย (Compare View 16 หน้า)</a>
+        <a href="paper-3/index.html?v=1#sec-rehearsal" class="btn btn-secondary">ซ้อมบทนำเสนอ (Teleprompter)</a>
+        <a href="paper-3/index.html?v=1#sec-simulator" class="btn btn-secondary">เปิดซิมูเลเตอร์สถาปัตยกรรมชาร์ดดิ้ง</a>
+        <a href="assignement/work3/02_report/Assignment_Paper_3_OmniLedger_Short_Report_TH.pdf" class="btn btn-secondary" style="border-color: var(--accent2); color: var(--accent2);">รายงานสรุปภาษาไทย PDF</a>
+      </div>
+    </div>
+
+    <!-- ═══════════ Version 2 Card (Paper 3-2: Raft-FL, SEAMS 2024) ═══════════ -->
+    <div id="p3-v2-callout" class="academic-callout" style="border-left: 4px solid var(--accent2); background: var(--card-bg);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px; flex-wrap: wrap;">
+            <span class="unit-tag" style="background: var(--accent2); color: #FFFFFF; font-weight: 700;">Version 2 (Paper 3-2) · ใช้นำเสนอจริง</span>
+            <span style="font-size: 0.82rem; color: var(--green); font-weight: 700;">IEEE Doc ID: 10556381 · Open Access CC BY 4.0</span>
+          </div>
+          <h3 style="color: var(--accent2); margin-bottom: 6px; font-size: 1.20rem;">
+            Raft Protocol for Fault Tolerance and Self-Recovery in Federated Learning
+          </h3>
+          <div style="font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 12px;">
+            Rustem Dautov, Erik Johannes Husom (SINTEF Digital) · 2024 IEEE/ACM SEAMS หน้า 110-121 · DOI: 10.1145/3643915.3644093 · จัดทำโดย นายธีรภัทร์ ภู่ระยา รหัสนิสิต 66362416
+          </div>
+        </div>
+        <span class="unit-tag" style="background: var(--green-bg); color: var(--green); border-color: var(--green); font-weight: 700;">สคริปต์ 4:45 นาที · 815 คำ</span>
+      </div>
+
+      <p style="font-size: 0.96rem; line-height: 1.85; margin-bottom: 14px;">
+        <strong>สาระสำคัญ:</strong> aggregator ของ Federated Learning เป็นจุดล้มเหลวจุดเดียว บทความให้ทุกโหนดรันโค้ดชุดเดียวกัน ใช้ Raft เลือก aggregator และสำเนา checkpoint ไปทุกโหนด (Level 3) เมื่อ aggregator ดับ โหนดที่เหลือเลือกผู้นำใหม่และฝึกต่อจาก checkpoint ล่าสุด ทดลองบน Raspberry Pi 3 จำนวน 11 บอร์ด
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 18px 0;">
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">เวลาเลือก aggregator ใหม่ (Fig. 3)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--green);">1.27-3.76 s</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">ที่ 1 ถึง 10 worker</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ทราฟฟิกเทียบ Flower เดิม (Fig. 4)</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--red);">1.8-5.0 เท่า</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">คำนวณจากตัวเลขในกราฟ</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">ชิ้นงานที่ส่ง</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent);">7 สไลด์ · 7 หน้า</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">สไลด์ PPTX/PDF และรายงาน PDF/DOCX</div>
+        </div>
+        <div style="padding: 12px 16px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius-sm); text-align: center;">
+          <div style="font-size: 0.80rem; color: var(--ink-muted);">เตรียมตอบคำถาม</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--purple);">15 Q&amp;A · 5 Quiz</div>
+          <div style="font-size: 0.76rem; color: var(--ink-soft);">พร้อมเลขหน้าในบทความ</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
+        <a href="paper-3/index.html?v=2" class="btn btn-primary" style="background: var(--accent2); border-color: var(--accent2); font-weight: 700;">เข้าสู่หน้าบทเรียนและห้องซ้อม Version 2</a>
+        <a href="paper-3/translation.html?v=2" class="btn btn-secondary" style="border-color: var(--accent2); color: var(--accent2);">อ่านบทความแปลไทยคู่ขนาน</a>
+        <a href="assignement/work3/02_report_v2/Assignment_Paper_3_v2_Short_Report_TH.pdf" class="btn btn-secondary">รายงานฉบับย่อ (PDF)</a>
+        <a href="assignement/work3/03_slides_v2/Assignment_Paper_3_v2_5-to-8-min.pdf" class="btn btn-secondary">สไลด์ 7 หน้า (PDF)</a>
+        <a href="assignement/work3/04_presentation_v2/presentation-script-5-min.md" class="btn btn-secondary">สคริปต์พูด 5 นาที</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function switchP3Version(ver) {
+      var v1Card = document.getElementById('p3-v1-callout');
+      var v2Card = document.getElementById('p3-v2-callout');
+      var v3Card = document.getElementById('p3-v3-callout');
+      var sel = document.getElementById('p3-version-select');
+      var tab1 = document.getElementById('p3-tab-v1');
+      var tab2 = document.getElementById('p3-tab-v2');
+      var tab3 = document.getElementById('p3-tab-v3');
+
+      if (sel) sel.value = ver;
+      if (v1Card) v1Card.style.display = ver === 'v1' ? 'block' : 'none';
+      if (v2Card) v2Card.style.display = ver === 'v2' ? 'block' : 'none';
+      if (v3Card) v3Card.style.display = ver === 'v3' ? 'block' : 'none';
+
+      [tab1, tab2, tab3].forEach(function (tab) {
+        if (!tab) return;
+        var active = tab.id === ('p3-tab-' + ver);
+        tab.className = active ? 'btn btn-primary' : 'btn btn-secondary';
+        tab.style.background = active ? (ver === 'v3' ? 'var(--accent)' : 'var(--accent2)') : '';
+        tab.style.borderColor = active ? (ver === 'v3' ? 'var(--accent)' : 'var(--accent2)') : '';
+        tab.style.fontWeight = active ? '700' : '';
+      });
+    }
+  </script>
+
+  <!-- ตารางหลักฐาน 3 บทความใน Paper III -->
+  <section style="margin-top: 48px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h2 class="section-title" style="margin: 0; padding: 0; border: none;">หลักฐานการค้นคว้าและดาวน์โหลดจาก IEEE Xplore (Paper III : ระบบกระจายตัวและบล็อกเชน)</h2>
+      <span class="academic-badge">อ้างอิง raw/SOURCES_PAPER_III.md</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="academic-table">
+        <thead>
+          <tr>
+            <th style="width: 12%;">สถานะ</th>
+            <th style="width: 32%;">ชื่อบทความวิจัย</th>
+            <th style="width: 22%;">งานประชุม / ปี</th>
+            <th style="width: 20%;">DOI &amp; IEEE Doc</th>
+            <th style="width: 14%; text-align: center;">ไฟล์ต้นฉบับ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="academic-badge badge-active" style="background: var(--accent2); color: white;">ตัวจริง</span></td>
+            <td><strong>OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding</strong></td>
+            <td>IEEE S&amp;P 2018</td>
+            <td><a href="https://doi.org/10.1109/SP.2018.000-5" target="_blank" style="color: var(--accent);">10.1109/SP.2018.000-5</a></td>
+            <td style="text-align: center;">
+              <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
+                <a href="paper-3/translation.html?v=1" class="btn btn-primary" style="padding: 2px 8px; font-size: 0.78rem; background: var(--accent2); border-color: var(--accent2);">แปลไทย</a>
+                <a href="assignement/work3/01_original/Paper_III_1_PRIMARY_OmniLedger_8418625.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (16 หน้า)</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 1</span></td>
+            <td><strong>Back to the Drawing Board: A Critical Evaluation of Poisoning Attacks on Production Federated Learning</strong></td>
+            <td>IEEE S&amp;P 2022</td>
+            <td><a href="https://doi.org/10.1109/SP46214.2022.9833647" target="_blank" style="color: var(--accent);">10.1109/SP46214.2022.9833647</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_III_2_BACKUP1_FL-Poisoning_9833647.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (18 หน้า)</a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="academic-badge">สำรอง 2</span></td>
+            <td><strong>Burglars' IoT Paradise: Understanding and Mitigating Security Risks of General Messaging Protocols on IoT Clouds</strong></td>
+            <td>IEEE S&amp;P 2020</td>
+            <td><a href="https://doi.org/10.1109/SP40000.2020.00051" target="_blank" style="color: var(--accent);">10.1109/SP40000.2020.00051</a></td>
+            <td style="text-align: center;">
+              <a href="raw/Paper_III_3_BACKUP2_BurglarsIoT_9152619.pdf" target="_blank" class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.78rem;">PDF (17 หน้า)</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <div>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร · 305432 เครือข่ายเซนเซอร์ (Sensor Networks)</div>
+    <div>ออกแบบเพื่อสนับสนุนการเรียนรู้และการนำเสนอผลงานทางวิชาการอย่างลึกซึ้ง</div>
+  </footer>
+</div>
+
+<!-- JavaScript Modules -->
+<script src="assets/js/common.js?v=20260928b"></script>
+</body>
+</html>

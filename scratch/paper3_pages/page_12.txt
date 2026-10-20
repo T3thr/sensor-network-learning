@@ -1,0 +1,86 @@
+Fig. 9: ByzCoinX throughput in transactions per second for
+different levels of concurrency.
+TABLE III: ByzCoinX latency in seconds for different con-
+currency levels and data sizes.
+Concurrency
+Data Size
+1
+2
+4
+8
+1 MB
+15.4
+13.5
+12.6
+11.4
+8 MB
+32.2
+27.7
+26.0
+23.2
+32 MB
+61.6
+58.0
+50.1
+50.9
+in performance, meaning that the overhead of the parallel
+consensus outweighs the parallelization beneﬁts, due to the
+constant number of cryptographic operations per block.
+Figure 10 illustrates the scalability of ByzCoin’s [32] tree
+and fall-back ﬂat topology, versus ByzCoinX’s more fault-
+tolerant (group-based) topology and its performance when
+failures occur. As expected the tree topology scales better, but
+only after the consensus is run among more than 600 nodes,
+which assumes an adversary stronger than usual (see Figure 5).
+For a group size below 600, ByzCoinX’s communication
+pattern actually performs better than ByzCoin’s. This is due
+to ByzCoinX’s communication pattern that can be seen as a
+shallow tree where the roundtrip from root to leaves is faster
+than in the tree of ByzCoin. Hence, ByzCoin has a ﬁxed
+branching factor and an increasing depth, whereas ByzCoinX
+has a ﬁxed depth and an increasing branching factor. The effect
+of these two choices leads to better latencies for a few hundred
+nodes for ﬁxed depth. The importance of the group topology,
+however, is that it is more fault tolerant because when failures
+occur the performance is not seriously affected. This is not true
+for ByzCoin; it switches to a ﬂat topology in case of failure
+that does not scale after a few hundred nodes, due to the huge
+branching factor. This experiment was run with 1 MB blocks,
+the non-visible data point is at 300 seconds.
+F. Bandwidth Costs for State Block Bootstrapping
+In this experiment, we evaluate the improvements that state
+blocks offer to new validators during bootstrapping. Recall,
+that during an epoch transition, a new validator ﬁrst crawls
+the identity blockchain, after which he needs to download only
+the latest state block instead of replaying the full blockchain
+Fig. 10: ByzCoinX communication pattern latency.
+Fig. 11: Bootstrap bandwidth consumption with state blocks.
+to create the UTXO state. For this experiment, we recon-
+structed Bitcoin’s blockchain [5], [41] and created a parallel
+OmniLedger blockchain with weekly state blocks.
+Figure 11 depicts the bandwidth overhead of a validator that
+did not follow the state for the ﬁrst 100 days. As we can see,
+the state block approach is better if the validator is outdated
+for more than 19 days or 2736 Bitcoin blocks.
+The beneﬁt might not seem substantial for Bitcoin, but in
+OmniLedger, 2736 blocks are created in less than 8 hours,
+meaning that for one day-long epochs, the state block approach
+is signiﬁcantly better. If a peak throughput is required and
+16 MB blocks are deployed, we expect reduced bandwidth
+consumption close to two orders of magnitude.
+IX. RELATED WORK
+The growing interests in scaling blockchains have produced
+a number of prominent systems that we compare in Table IV.
+ByzCoin [32] is a ﬁrst step to scalable BFT consensus, but
+cannot scale-out. Elastico is the ﬁrst open scale-out DL,
+however, it suffers from performance and security challenges
+that we have already discussed in Section II. RSCoin [16]
+proposes sharding as a scalable approach for centrally banked
+cryptocurrencies. RSCoin relies on a trusted source of random-
+ness for sharding and auditing, making its usage problematic
+in trustless settings. Furthermore, to validate transactions, each
+shard has to coordinate with the client and instead of running
+BFT, RSCoin uses a simple two-phase commit, assuming that
+safety is preserved if the majority of validators is honest. This
+594
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

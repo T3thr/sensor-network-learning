@@ -1,0 +1,151 @@
+TABLE IV: Comparison of Distributed Ledger Systems
+System
+Scale-Out
+Cross-Shard
+State Blocks
+Measured Scalability
+Estimated
+Measured
+Transaction Atomicity
+(# of Validators)
+Time to Fail
+Latency
+RSCoin [16]
+In Permissioned
+Partial
+No
+30
+N/A
+1 sec
+Elastico [34]
+In PoW
+No
+No
+1600
+1 hour
+800 sec
+ByzCoin [32]
+No
+N/A
+No
+1008
+19 years
+40 sec
+Bitcoin-NG [21]
+No
+N/A
+No
+1000
+N/A
+600 sec
+PBFT [9], [11]
+No
+N/A
+No
+16
+N/A
+1 sec
+Nakamoto [36]
+No
+N/A
+No
+4000
+N/A
+600 sec
+OmniLedger
+Yes
+Yes
+Yes
+2400
+68.5 years
+1.5 sec
+approach, however, does not protect from double spending
+attempts by a malicious client colluding with a validator.
+In short, prior solutions [16], [32], [34] achieve only two
+out of the three desired properties; decentralization, long-term
+security, and scale-out, as illustrated in Figure 1. OmniLedger
+overcomes this issue by scaling out, as far as throughput
+is concerned, and by maintaining consistency to the level
+required for safety, without imposing a total order.
+Bitcoin-NG scales Bitcoin without changing the consensus
+algorithm by observing that the PoW process does not have to
+be the same as the transaction validation process; this results
+in two separate timelines: one slow for PoW and one fast
+for transaction validation. Although Bitcoin-NG signiﬁcantly
+increases the throughput of Bitcoin, it is still susceptible to
+the same attacks as Bitcoin [24], [3].
+Other efforts to scale blockchains include: Tendermint [9], a
+protocol similar to PBFT for shard-level consensus that does
+not scale due to its similarities to PBFT, and the Lightning
+Network [40], an off-chain payment protocol for Bitcoin
+(also compatible to OmniLedger); it limits the amount of
+information committed to the blockchain.
+Chainspace [2], enhances RSCoin with a more general
+smart-contract capability. Chainspace also recognizes the need
+for cross-shard atomic commit but devises a rather complicated
+algorithm because it chooses to have the shards run the
+protocol without the use of a client, which increases the
+cross-shard communication. Our approach is synergistic to
+Chainspace, as we focus on an open scalable UTXO style
+DL, whereas Chainspace focuses on sharded smart-contracts
+and small-scale shards that can be deployed only under weak
+adversaries. However, combining OmniLedger and Chainspace
+has great potential to create an open, scalable smart-contract
+platform that provides scalability and security under strong
+adversaries.
+X. LIMITATION AND FUTURE WORK
+OmniLedger is still a proof of concept and has limita-
+tions that we want to address in future work. First, even
+if the epoch bootstrap does not interfere with the normal
+operation, its cost (in the order of minutes) is signiﬁcant.
+We leave to future work the use of advanced cryptography,
+such as BLS [6] for performance improvements. Additionally,
+the actual throughput is dependent on the workload (see
+Appendix C). If all transactions touch all the shards before
+committing, then the system is better off with only one shard.
+We leave to future work the exploration of alternative ways
+of sharding, e.g.using locality measures. Furthermore, we rely
+on the fact that honest validators will detect that transactions
+are unfairly censored and change the leader in the case of
+censorship. But, further anti-censorship guarantees are needed.
+We provide a protocol sketch in Appendix A and leave to
+future work its implementation and further combination with
+secret sharing techniques for providing stronger guarantees.
+Another shortcoming of OmniLedger is that it does not for-
+mally reason around incentives of participants and focus on
+the usual honest or malicious devide, which can be proven
+unrealistic in anonymous open cryptocurrencies. Finally, the
+system is not suitable for highly adaptive adversaries, as the
+bootstrap time of an epoch is substantial and scales only
+moderately, thus leading to the need for day-long epochs.
+XI. CONCLUSION
+OmniLedger is the ﬁrst DL that securely scales-out to offer
+a Visa-level throughput and a latency of seconds while pre-
+serving full decentralization and protecting against a Byzantine
+adversary. OmniLedger achieves this through a novel approach
+consisting of three steps. First, OmniLedger is designed with
+concurrency in mind; both the full system (through sharding)
+and each shard separately (through ByzCoinX) validate trans-
+actions in parallel, maximizing the resource utilization while
+preserving safety. Second, OmniLedger enables any user to
+transact safely with any other user, regardless of the shard they
+use, by deploying Atomix, an algorithm for cross-shard trans-
+actions as well as real-time validation with the introduction
+of a trust-but-verify approach. Finally, OmniLedger enables
+validators to securely and efﬁciently switch between shards,
+without being bound to a single anti-Sybil attack method and
+without stalling between reconﬁguration events.
+We implemented and evaluated OmniLedger and each of
+its sub-components. ByzCoinX improves ByzCoin both in
+performance, with 20% more throughput and 35% less latency,
+and in robustness against failures. Atomix offers a secure
+processing of cross-shard transactions and its overhead is min-
+imal compared to intra-shard consensus. Finally, we evaluated
+the OmniLedger prototype thoroughly and showed that it can
+indeed achieve Visa-level throughput.
+REFERENCES
+[1] I. Abraham, D. Malkhi, K. Nayak, L. Ren, and A. Spiegelman.
+Solidus: An Incentive-compatible Cryptocurrency Based on Permission-
+less Byzantine Consensus. CoRR, abs/1612.02916, 2016.
+595
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

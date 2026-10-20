@@ -1,0 +1,107 @@
+Algorithm 1: Greedy search using heuristic based on
+the deﬁned weights.
+Function Greedy_step(hightest total, passage,
+V , W ):
+/* gather all the passage’s links */
+links = passage.get(”links”)
+for l in links do
+/* see that vnl is the value update */
+/* of the variable n on link l */
+totall = v1l ∗ w1 + v2l ∗ w2 + . . . + vnl ∗ wn
+end
+/* chose link that maximizes the total value */
+/* assume x is the total number of links */
+chosen link = max(totalla , totallb , . . . , totallx )
+/* update highest total value */
+highest total = highest total + chosen link
+/* chose link with highest value to visit */
+next passage = lmax
+/* move to next iteration */
+Greedy step(highest total, next passage, V, W )
+
+we need to remember that, in most cases, the human player
+is also unaware of the overall game-space during gameplay
+and, therefore, makes the choices they believe to be the most
+optimal at each step, based on the information they currently
+have and their player proﬁle. Thus, we believe that a greedy
+algorithm best emulates the human behavior in this scenario.
+VI. E XPERIMENTAL R ESULTS
+The following section presents the methods and results of
+two user studies that were conducted with the intent of: ﬁnding
+out if the tool adequately helps the users identify problems in
+the game story, and determining whether users can operate the
+tool with ease and identify usability issues.
+A. The Scenario
+For the tests we used Twine’s authoring tool to create an
+interactive story, which we named “The Murder Case”.
+The story has the following setting: the player plays a
+detective tasked with solving a murder. The detective’s main
+suspect is brought to the police station for questioning and,
+since existing evidence is not sufﬁcient, the player will need
+a confession. However, there is a catch: the suspect NPC is a
+very wealthy man and upsetting him during questioning will
+lead him to ask for his lawyer and the detective to lose the
+case. Depending on the dialogue choices made when talking
+with the suspect, the player is led to different endings that
+reﬂect their crime-solving skills. To stipulate the effect the
+player’s choices have in the narrative’s unfolding, we attach
+(and update) variables to each dialogue option. These variables
+represent the different emotional states of the suspect NPC:
+anger, confusion, and fear.
+
+The scenario contains 3 different endings (“Good detective”,
+“Lawyered” and “Not enough evidence”), 14 Passages and 20
+possible narrative paths players can take.
+Additionally, we created an alternative version of the story
+with added issues to be used in the User Test 2. This version,
+named “TMC - failed version”, includes 2 Passages that are
+never visited and 3 Dead-Ends.
+B. User Study 1
+In the ﬁrst study, we examined how the users feel about
+the tool’s design and checked its usability. The study was
+conducted with 5 users (3 female and 2 male), ages between 18
+and 24. Most participants admitted they played games either
+regularly (40%) or every day (40%), with some (60%) enjoying games with interactive stories and branching narratives.
+Out of the 5 participants, 3 stated they had knowledge in game
+development, manly working as a Game Programmer and/or
+Game Writer.
+The participants were asked to perform 10 tasks using the
+Story Validator and “The Murder Case” scenario. These tasks
+included calculating the total number of paths, ﬁnding the
+endings’ distribution, studying the story variables’ evolution
+in each path, among others. This version only allowed users
+to test one story variable at a time.
+While the participants completed the tasks, we observed
+their performance and took notes. We used the think-aloud
+method, where participants used the system while continuously
+verbalising their thoughts.
+In general, the participants were able to complete the tasks,
+but some difﬁculties were found in the tasks that required
+checking the values of variables. For example, two participants
+did not complete a task that involved counting the number of
+paths that reached an ending with a variable “anger” = 0,
+while one was not able to ﬁnd Passages in which the variable
+“anger” had values between -4 and -2.
+The participants found the Story Validator tool straightforward and easy to use, giving it an average score of 83.5 (SD
+= 9.45) in the System Usability Scale (SUS). According to a
+study made by Bangor, Kortum, and Miller [22], these results
+suggest that tool has “passable” overall usability.
+In the study, participants also proposed different suggestions
+regarding the tools’ usability, for example:
+1) Help understanding how the tool works. Some users
+noted that the quantity of features was a bit intimidating (“[the tool] is very overwhelming at ﬁrst”).
+It was suggested some form of assistance to explain
+the tool’s functionality (“Once you start clicking some
+checkboxes, you learn pretty quickly how it works [...]
+but having a help button or something similar would
+have helped a lot.”).
+2) Easier to read log report. In cases where multiple
+analysis conditions were selected, users had issues while
+navigating through the log report box and often had to
+keep scrolling up and down to locate what they were
+seeking. Participants noted that if the box was larger it
+would be easier to navigate.
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

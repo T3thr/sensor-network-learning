@@ -1,0 +1,138 @@
+Nitrate sensor
+
+Ammonia sensor
+
+Oxygen sensor
+
+Trendline (moving average)
+
+PLC Controller
+Water
+Source
+
+Changes in trendlines follow similar patterns
+
+Water
+Tank
+Pump
+
+Valve
+
+Oxygen
+Sensor
+Nitrate
+Sensor
+Ammonia Changes in trendlines follow similar patterns
+Sensor
+
+Changes in trendlines follow similar patterns Anomalous changes
+
+are only observed in
+nitrate sensor
+
+Anomalous
+changes still
+follow the
+pattern
+Changes in trendlines follow similar patterns
+
+Blower
+(a) Wastewater plant
+
+(b) Sensors signal in the case of EA
+
+Time
+
+(c) Sensor signals in the case of SDA
+
+Time
+
+Figure 2: (a) Schema of wastewater plant, and synthetic sensors’ signals in the (b) first scenario (EA), (c) second scenario (SDA).
+• Sensing Device Anomaly (SDA): When the operation of
+a sensor is corrupted, its measurements do not follow the
+same pattern, and an SDA is observed. This corruption occurs
+because of either security or reliability issues. For instance,
+[1, 45] discuss some attacks on the physical layer.
+Current anomaly detection methods model the normal behavior
+of a device [7, 13, 31, 33] and label any deviation from expected
+behavior as an anomaly. Most of the works concentrate on anomaly
+detection in the network layer of IoT systems [20]. In spite of reasonable performance in network intrusion detection, these methods
+have a high rate of false alarms when used with sensor signals. They
+misinterpret the environmental variation in the sensors measurements as an SDA and disregard the potential information encoded
+in the relation between the system and the physical world, known
+as the context of the system (refer to Sec. 3.1 for the definition of
+context). Conventionally, context-aware methods are applied to a
+variety of applications [2], and recently, these methods are used to
+secure the authentication of co-located devices [16, 35, 36, 42].
+In this work, we propose an adaptive data-driven model
+for unsupervised anomaly detection in IoT systems based on
+the sensor measurements. The model monitors the system
+to detect anomalies, identifies the type of anomaly (SDA or
+EA), and locates them. To this end, we develop an algorithm to
+extract the patterns in sensor signals and generate the context of
+system. Then, we associate the sensors from different modalities
+based on the context and cluster the sensors with similar behavior.
+We develop our customized Recurrent Neural Network (RNN), followed by a consensus algorithm to detect and localize anomalies.
+The consensus algorithm checks the consistency between sensors
+in each cluster and determines the type of anomaly. An IoT system
+has a dynamic structure that is open to changes, such as adding
+new nodes, removing the existing ones, or updating the framework
+and protocols. In order to address the variation in IoT systems over
+time, our model is designed to be adaptive and update itself.
+
+1.1
+
+Motivational Example
+
+As a real-world IoT system, we study the environmental training
+center wastewater plant in Riccione [14]. The primary purposes of
+wastewater treatment is the elimination of nitrate. Nitrate contamination is a severe environmental problem because it can exhibit
+toxicity toward aquatic life, present a public health hazard, and
+affect the suitability of wastewater. In the treatment process, the
+wastewater is pumped to the tanks, which are equipped with sensors to monitor the concentration of oxygen, ammonia, and nitrate
+
+in the water. The actuators, such as blowers and valves, are controlled by a Programmable Logic Controller to adjust the level of
+chemicals (Figure 2(a)). Given the importance of the nitrate level,
+anomaly detection is applied to detect abnormal changes. Consider
+two scenarios with anomalous rise in nitrate level; In the first scenario, environmental changes alter the water temperature, which
+affects the chemical reactions in the water tank (Figure 2(b), an
+example of EA). In the second scenario, the nitrate sensor is broken
+or manipulated by an attacker. (Figure 2(c), an example of SDA). The
+current anomaly detection methods rely solely on nitrate sensor
+data, whereas the validity of its data is questionable. Thus, they can
+not find the source of anomaly and discriminate EA and SDA.
+A recent study [14] analyzes the sensors of this wastewater plant
+and reveals the correlation between ammonia, oxygen, and nitrate
+sensor data. More specifically, when the rise in oxygen density
+reaches a certain threshold, the ammonia concentration decreases,
+and the nitrate concentration increases. Further investigation reveals the scientific rationale for this correlation; oxygen triggers
+the chemical reaction, which affects the ammonia and nitrate concentration. By considering this relationship, it is possible to validate
+sensor signals. In the first scenario, the incident affects all sensors.
+Despite irregularities in the sensor signals, they are consistent with
+each other. Thus, we can conclude that the integrity of the sensors’
+data is not compromised. In the second scenario, the anomaly in
+the nitrate sensor data is inconsistent with the patterns of other
+sensor signals. It indicates that the cause of the abnormality is fault
+or attack. This type of relationship between sensors in not limited
+to this wastewater plant and it is observed in many IoT systems
+due to the availability of many heterogeneous sensors.
+
+1.2
+
+Threat Model
+
+The proposed methodology aims to detect SDA and EA, which occur
+due to an unexpected incident in the environment, reliability issue,
+or security breakage. Accidental damage, degradation, and defects
+are examples of plausible reliability problems that cause unintended
+device malfunctions. In contrast, the security breakage scenario
+involves an attacker who intentionally exploits the vulnerabilities
+in the system. In this threat model, the adversary has access to the
+sensor device and fiddles with it to inject fault, alter functionality,
+or deny its service. As another possible scenario, the attacker can
+control the communication channel and send faulty signal to the
+controller as sensor measurements. The model can detect anomalies
+in a standalone sensor, but to distinguish between SDA and EA in
+a sensor, it should be associated with at least two other sensors. To
+
+

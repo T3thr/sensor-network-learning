@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 2: สถาปัตยกรรมแบบลำดับชั้นและโมเดลเครือข่าย · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+  <style>
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .phonetic-impl {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--paper2);
+      border-left: 3px solid var(--purple);
+      font-size: 0.86rem;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-xs);
+    }
+    .calc-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-scenario {
+      background: var(--paper2);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+    }
+    .calc-step {
+      margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 2px solid var(--rule);
+    }
+    .calc-step-num {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .layer-box {
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      background: var(--card-bg);
+      transition: all 0.2s ease;
+    }
+    .layer-box:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .layer-num {
+      font-weight: 800;
+      color: var(--accent);
+      margin-right: 8px;
+      font-size: 1.05rem;
+    }
+    .layer-pdu {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      background: var(--paper3);
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .checklist-item {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+    .checklist-q {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .checklist-toggle {
+      background: var(--paper2);
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .checklist-toggle:hover {
+      background: var(--paper3);
+    }
+    .checklist-ans {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--rule);
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+
+    .term-link {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+    .term-link:hover {
+      color: var(--accent-hover);
+      text-decoration-thickness: 2px;
+    }
+
+    /* Packet Inspector Styles */
+    .pkt-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .pkt-row {
+      display: flex;
+      border: 2px solid var(--rule);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .pkt-row:hover {
+      border-color: var(--accent);
+    }
+    .pkt-hdr {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      border-right: 1px solid var(--rule);
+      user-select: none;
+    }
+    .pkt-hdr-eth { background: rgba(59, 130, 246, 0.15); color: #2563eb; width: 22%; }
+    .pkt-hdr-ip { background: rgba(16, 185, 129, 0.15); color: #059669; width: 22%; }
+    .pkt-hdr-tcp { background: rgba(245, 158, 11, 0.15); color: #d97706; width: 22%; }
+    .pkt-hdr-data { background: rgba(139, 92, 246, 0.15); color: #7c3aed; flex: 1; }
+    .pkt-hdr-fcs { background: rgba(239, 68, 68, 0.15); color: #dc2626; width: 12%; }
+    
+    .inspector-pane {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Standardized Header Component -->
+  <site-header data-page="datacom-ch02" data-base="../" data-crumb="DataCom บทที่ 2: สถาปัตยกรรมแบบลำดับชั้นและโมเดลเครือข่าย"></site-header>
+
+  <!-- Chapter Layout (Sidebar + Main Content) -->
+  <div class="chapter-container">
+
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญเนื้อหา</span>
+          <span class="sidebar-badge-pill" style="background: var(--accent); color: #fff;">DataCom 02</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label" id="sidebar-live-section">1. วิกฤตซอฟต์แวร์เสาหินและกำเนิดการแบ่งชั้นหน้าที่</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#sec-genesis" class="sidebar-link active">1. กำเนิดและสงครามโปรโตคอล</a></li>
+        <li><a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และสัทศาสตร์</a></li>
+        <li><a href="#sec-osi-layers" class="sidebar-link">3. โมเดลอ้างอิง OSI 7 เลเยอร์</a></li>
+        <li><a href="#sec-tcpip" class="sidebar-link">4. สถาปัตยกรรม TCP/IP 5 เลเยอร์</a></li>
+        <li><a href="#sec-addressing" class="sidebar-link">5. แอดเดรส 4 ระดับในเครือข่าย</a></li>
+        <li><a href="#sec-worked-examples" class="sidebar-link" style="color: var(--accent); font-weight: 700;">6. ตัวอย่างคำนวณจริง 4 ข้อ</a></li>
+        <li><a href="#sec-silicon" class="sidebar-link">7. กายวิภาคการ์ดแลนและชิปเซต</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link" style="color: var(--purple); font-weight: 700;">8. ซิมูเลเตอร์การห่อหุ้มข้อมูล</a></li>
+        <li><a href="#sec-checklist" class="sidebar-link" style="color: var(--accent2); font-weight: 700;">9. เช็กลิสต์ประเมินตนเอง</a></li>
+        <li><a href="#sec-synthesis" class="sidebar-link">10. สังเคราะห์โมเดลความคิด</a></li>
+        <li><a href="#sec-crosslinks" class="sidebar-link" style="color: var(--green); font-weight: 700;">11. เชื่อมโยงข้ามบทเรียน</a></li>
+      </ul>
+
+      <div style="margin-top: 24px; padding: 14px; background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.82rem; line-height: 1.6;">
+        <div style="font-weight: 800; color: var(--accent); margin-bottom: 4px;">Track 1: Data Communications</div>
+        <div style="color: var(--ink-soft);">อ้างอิง: Data Communications and Networking (Forouzan 4th/5th Ed.) Chapter 2</div>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; gap: 8px;">
+        <a href="ch01.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Ch01</a>
+        <a href="ch03.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch03 →</a>
+      </div>
+    </aside>
+
+    <!-- Main Academic Article Content -->
+    <main class="chapter-content">
+
+      <!-- Hero Header Banner -->
+      <div class="academic-callout" style="background: var(--paper2); border-left: 6px solid var(--accent); margin-bottom: 32px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="academic-badge badge-primary">วิชา 305432 เครือข่ายเซนเซอร์</span>
+          <span class="academic-badge">Track 1: Data Communications Foundations</span>
+          <span class="unit-tag" style="background: var(--card-bg);">บทที่ 2 จาก 14</span>
+        </div>
+        <h1 class="book-title" style="font-size: 1.85rem; margin-bottom: 8px;">สถาปัตยกรรมแบบลำดับชั้นและโมเดลเครือข่าย (Network Models)</h1>
+        <div class="subtitle" style="font-size: 1.02rem; margin-bottom: 0;">
+          การศึกษาหลักการแบ่งชั้นหน้าที่ทางวิศวกรรม (Layered Architecture), ศึกสงครามโปรโตคอลระหว่าง OSI 7 เลเยอร์ และ TCP/IP, กลไกการห่อหุ้มข้อมูล (Encapsulation/Decapsulation), และลำดับชั้นแอดเดรส 4 ระดับพร้อมการจัดการในเคอร์เนลระบบปฏิบัติการ
+        </div>
+      </div>
+
+      <!-- SECTION 1: The Origin & Engineering Genesis -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. The Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">วิกฤตซอฟต์แวร์เสาหินและกำเนิดการแบ่งชั้นหน้าที่ (The Monolithic Crisis &amp; Protocol Wars)</h2>
+
+        <p>
+          ในช่วงปลายทศวรรษที่ 1960 เมื่อโครงการเครือข่ายคอมพิวเตอร์สลับแพ็กเก็ตชุดแรกของโลกอย่าง <strong>ARPANET</strong> ถือกำเนิดขึ้น ซอฟต์แวร์สื่อสารในยุคแรกเริ่มถูกพัฒนาในลักษณะ <strong>สถาปัตยกรรมเสาหินก้อนเดียว (Monolithic Architecture)</strong> ภายใต้โพรโทคอลควบคุมเครือข่ายดั้งเดิมคือ <strong>NCP (Network Control Program ตาม RFC 33 ในปี 1970)</strong> โค้ดทั้งหมดตั้งแต่ตรรกะของแอปพลิเคชัน (เช่น การถ่ายโอนไฟล์หรือเทอร์มินัลเสมือน), การจัดลำดับแพ็กเก็ต, การควบคุมอัตราการไหล, ตลอดจนการสั่งงานบิตควบคุมรีจิสเตอร์ของฮาร์ดแวร์โมเด็มและสายโทรศัพท์ ถูกเขียนหลอมรวมอยู่ภายในฟังก์ชันเดียวกันแบบผูกพันแน่นหนา (Tight Coupling)
+        </p>
+
+        <p>
+          ความพินาศทางวิศวกรรมเกิดขึ้นทันทีเมื่อเทคโนโลยีทางกายภาพเริ่มพัฒนาขึ้นอย่างก้าวกระโดด เมื่อวิศวกรต้องการเปลี่ยนตัวกลางจากสายสัญญาณเช่าโทรศัพท์ 56 kbps ไปเป็นลิงก์สัญญาณดาวเทียม (Satellite Link) หรือเครือข่ายวิทยุแพ็กเก็ต (Packet Radio Network) บรรดาโปรแกรมเมอร์จะต้องรื้อแก้ไขซอฟต์แวร์แอปพลิเคชันใหม่ทั้งหมด เพราะระบบไม่มีการแยกชั้นเชิงนามธรรม (Abstraction Layer) ยิ่งไปกว่านั้น บริษัทยักษ์ใหญ่ด้านคอมพิวเตอร์ในยุคนั้นต่างสร้างระบบสื่อสารเอกสิทธิ์เฉพาะตัว (Proprietary Lock-in) ขึ้นเพื่อผูกขาดลูกค้า เช่น IBM เปิดตัวสถาปัตยกรรม <strong>SNA (Systems Network Architecture)</strong> ในปี 1974, Digital Equipment Corporation (DEC) สร้าง <strong>DECnet</strong> ในปี 1975, และ Xerox พัฒนา <strong>XNS (Xerox Network Systems)</strong> คอมพิวเตอร์ของ IBM ไม่สามารถสื่อสารกับเครื่องของ DEC ได้หากปราศจากกล่องแปลงสัญญาณฮาร์ดแวร์ราคาแพงมหาศาล สภาพการณ์นี้ก่อให้เกิด <em>"สภาวะหอคอยบาเบล (Tower of Babel)"</em> แห่งยุคดิจิทัล
+        </p>
+
+        <div class="academic-callout callout-amber" style="margin: 20px 0;">
+          <strong>กฎทองแห่งการออกแบบวิศวกรรมระบบ (Modularity, Abstraction &amp; Information Hiding):</strong><br>
+          เพื่อแก้ปัญหาวิกฤตความซับซ้อน นักวิทยาศาสตร์คอมพิวเตอร์จึงนำหลักการแบ่งงานแบบลำดับชั้น (Layering Principle) มาบังคับใช้:
+          <ol style="margin: 8px 0 0 20px; line-height: 1.75;">
+            <li><strong>ความเชื่อมแน่นสูงในแต่ละชั้น (High Cohesion):</strong> แต่ละเลเยอร์ได้รับมอบหมายภาระหน้าที่ทางวิศวกรรมอย่างจำเพาะเจาะจงและเป็นอิสระจากชั้นอื่น</li>
+            <li><strong>การซ่อนรายละเอียดภายใน (Information Hiding):</strong> แต่ละชั้นสื่อสารกับชั้นที่อยู่ติดกันผ่านอินเทอร์เฟซมาตรฐาน (Service Access Point: SAP) โดยไม่ต้องล่วงรู้ขั้นตอนวิธีหรือโครงสร้างข้อมูลภายในของเลเยอร์อื่น</li>
+            <li><strong>การผูกพันแบบหลวม (Loose Coupling):</strong> การเปลี่ยนแปลงเทคโนโลยีในชั้นใดชั้นหนึ่งจะไม่ส่งผลกระทบให้ชั้นอื่นต้องแก้ไข เช่น การเปลี่ยนสายเคเบิลทองแดงคู่บิดเกลียว Cat6 เป็นสายใยแก้วนำแสง Single-mode Fiber หรือคลื่นวิทยุ Wi-Fi จะไม่มีผลกระทบต่อเบราว์เซอร์หรือโปรโตคอล HTTP เลยแม้แต่บรรทัดเดียว</li>
+          </ol>
+        </div>
+
+        <p>
+          ในปี 1977 องค์การระหว่างประเทศว่าด้วยการมาตรฐาน (International Organization for Standardization: ISO) ได้จัดตั้งคณะกรรมการขึ้นเพื่อสร้างสถาปัตยกรรมเปิดที่ทุกบริษัททั่วโลกต้องปฏิบัติตาม จนกระทั่งประกาศเป็นมาตรฐาน <strong>ISO 7498</strong> ในปี 1984 ภายใต้ชื่อ <strong>Open Systems Interconnection Reference Model (OSI Model)</strong> กำหนดให้มี 7 เลเยอร์ ทว่าในระหว่างที่คณะกรรมการ ISO กำลังประชุมถกเถียงเรื่องมาตรฐานอย่างเชื่องช้าในห้องประชุมทางการทูต กระทรวงกลาโหมสหรัฐฯ (DARPA) ภายใต้การนำของ <strong>Vinton Cerf</strong> และ <strong>Robert Kahn</strong> ได้ร่วมกันพัฒนาชุดโปรโตคอล <strong>TCP/IP</strong> ขึ้นมาใช้งานจริง และจุดเปลี่ยนสำคัญที่สุดในประวัติศาสตร์เกิดขึ้นเมื่อ <strong>Bill Joy</strong> แห่งมหาวิทยาลัยแคลิฟอร์เนีย เบิร์กลีย์ ได้นำ TCP/IP บรรจุเข้าเป็นส่วนหนึ่งของระบบปฏิบัติการ <strong>4.2BSD UNIX ในปี 1983</strong> พร้อมคิดค้น <strong>Berkeley Sockets API</strong> ทำให้นักวิจัยและมหาวิทยาลัยทั่วโลกได้รับซอฟต์แวร์เครือข่ายที่ใช้งานได้จริง (Running Code) ไปใช้งานฟรี
+        </p>
+
+        <div class="academic-callout" style="background: var(--paper3); border-left: 4px solid var(--purple); margin: 20px 0;">
+          <strong>การล่มสลายของช้างสารสองตัวและปรัชญาของ IETF (The Apocalypse of the Two Elephants):</strong><br>
+          ศาสตราจารย์ Andrew S. Tanenbaum ได้อธิบายเหตุผลที่โมเดล OSI พ่ายแพ้ต่อ TCP/IP ในเชิงพาณิชย์ผ่านทฤษฎี <em>"การเผชิญหน้าของช้างสองตัว"</em>:
+          <p style="margin: 8px 0; font-size: 0.94rem; line-height: 1.7;">
+            ช้างตัวแรกคือ <strong>ช่วงเวลาแห่งการวิจัยและพัฒนา (Standards Elephant)</strong> และช้างตัวที่สองคือ <strong>ช่วงเวลาแห่งการลงทุนติดตั้งใช้งานจริง (Implementation Elephant)</strong> มาตรฐาน OSI ถูกประกาศช้าเกินไป เมื่อมาตรฐานเสร็จสมบูรณ์ องค์กรต่างๆ ทั่วโลกได้ลงทุนติดตั้งระบบ TCP/IP ไปหมดแล้ว และเมื่อซอฟต์แวร์ OSI ถูกสร้างออกมาจริง กลับมีขนาดเทอะทะ ซับซ้อน และทำงานเชื่องช้า
+          </p>
+          <p style="margin: 8px 0; font-size: 0.94rem; line-height: 1.7; font-style: italic; color: var(--accent);">
+            "We reject: kings, presidents, and voting. We believe in: rough consensus and running code."<br>
+            - David Clark, ผู้นำสถาปัตยกรรมอินเทอร์เน็ต (IETF, 1992)
+          </p>
+          <p style="margin: 8px 0 0 0; font-size: 0.92rem; color: var(--ink-soft);">
+            แม้ว่า OSI จะล้มเหลวในตลาดพาณิชย์ แต่อุดมคติของโมเดล OSI กลับชนะอย่างเด็ดขาดในฐานะ <strong>แม่แบบการสอนและการจัดระเบียบความคิดทางวิศวกรรม (Pedagogical Reference Model)</strong> ที่ดีที่สุดในโลกจนถึงปัจจุบัน
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Phonetic Pronunciation & Nomenclature -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary &amp; Phonetics</span>
+        <h2 class="section-title">อภิธานศัพท์เทคนิค สัทศาสตร์ และการประยุกต์ใช้ในระบบจริง (Nomenclature &amp; Phonetics)</h2>
+
+        <p>
+          คำศัพท์เทคนิคมาตรฐานสากลตามข้อกำหนด IEEE/ISO และ RFC ที่นิสิตวิศวกรรมคอมพิวเตอร์ต้องออกเสียงและเข้าใจกลไกการทำงานระดับลึก:
+        </p>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Protocol Data Unit (PDU)
+            <span class="phonetic-pronounce">โปร-โต-คอล ดา-ต้า ยู-นิต</span>
+          </div>
+          <div class="phonetic-desc">
+            หน่วยของข้อมูลที่ถูกส่งผ่านระหว่างเอนทิตีในเลเยอร์เดียวกันบนคนละโฮสต์ (Peer-to-Peer Process) ประกอบด้วยส่วนควบคุม (Header/Trailer) และส่วนข้อมูล (Payload) โดยในแต่ละเลเยอร์จะมีชื่อเรียกจำเพาะ: L7 เรียก Message, L4 เรียก Segment (TCP) หรือ Datagram (UDP), L3 เรียก Packet หรือ Datagram, L2 เรียก Frame, และ L1 เรียก Bit Stream
+          </div>
+          <div class="phonetic-impl">
+            Context: ในเคอร์เนล Linux โครงสร้าง struct sk_buff จะเก็บพอยน์เตอร์ชี้ไปยังจุดเริ่มต้นของ PDU แต่ละระดับเพื่อส่งผ่านระหว่างไดรเวอร์การ์ดแลนและโปรโตคอลสแตก
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Encapsulation &amp; Decapsulation
+            <span class="phonetic-pronounce">เอน-แคป-ซู-เล-ชัน และ ดี-แคป-ซู-เล-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            <strong>Encapsulation:</strong> กระบวนการที่เลเยอร์ด้านบนส่งมอบ PDU ของตนให้แก่เลเยอร์ด้านล่าง โดยเลเยอร์ด้านล่างจะมองข้อมูลนั้นเป็นเพียงเพย์โหลดดิบ (Opaque Data) แล้วนำมาห่อหุ้มด้วยเฮดเดอร์ของตนเอง<br>
+            <strong>Decapsulation:</strong> กระบวนการย้อนกลับที่ฝั่งผู้รับ เมื่อเลเยอร์ด้านล่างตรวจสอบความถูกต้องของเฮดเดอร์ตนเองแล้ว จะทำการแกะ (Strip) เฮดเดอร์ทิ้ง แล้วส่งต่อเฉพาะเพย์โหลดขึ้นไปยังเลเยอร์ด้านบน
+          </div>
+          <div class="phonetic-impl">
+            Context: เคอร์เนลระบบปฏิบัติการใช้ฟังก์ชัน skb_push() เพื่อเลื่อนพอยน์เตอร์ถอยหลังในการเติม Header (Encapsulation) และใช้ skb_pull() เพื่อเลื่อนพอยน์เตอร์ไปข้างหน้าในการปลด Header (Decapsulation) โดยไม่ต้องคัดลอกหน่วยความจำ (Zero-Copy Architecture)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Physical Address (MAC Address / Link Address)
+            <span class="phonetic-pronounce">ฟิ-ซิ-คัล แอด-เดรส / แมค แอด-เดรส</span>
+          </div>
+          <div class="phonetic-desc">
+            ที่อยู่ทางกายภาพระดับฮาร์ดแวร์ ขนาด 48 บิต (6 ไบต์ ตามมาตรฐาน IEEE 802 EUI-48) ถูกบันทึกลงในหน่วยความจำถาวร (EEPROM/OTP ROM) ของการ์ดแลน (NIC) แบ่งเป็น 24 บิตแรกคือรหัสผู้ผลิต (OUI: Organizationally Unique Identifier) และ 24 บิตหลังคือหมายเลขการ์ด ทำหน้าที่ระบุตัวตนบนสายสัญญาณเดียวกันสำหรับ Hop-to-Hop Delivery
+          </div>
+          <div class="phonetic-impl">
+            Context: ตรวจสอบบนระบบปฏิบัติการจริงด้วยคำสั่ง 'ip link show' หรือ 'ethtool -P eth0' การ์ดแลนจะรับเฉพาะเฟรมที่มี Destination MAC ตรงกับตนเอง หรือเป็น Broadcast (FF:FF:FF:FF:FF:FF)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Logical Address (IP Address)
+            <span class="phonetic-pronounce">ลอ-จิ-คัล แอด-เดรส / ไอ-พี แอด-เดรส</span>
+          </div>
+          <div class="phonetic-desc">
+            ที่อยู่เชิงตรรกะระดับโครงข่าย เช่น IPv4 ขนาด 32 บิต (4 ไบต์) หรือ IPv6 ขนาด 128 บิต (16 ไบต์) มีโครงสร้างแบบลำดับชั้น (Hierarchical Addressing) ประกอบด้วย Network ID และ Host ID ทำหน้าที่ระบุตำแหน่งโฮสต์ต้นทางและปลายทางข้ามระบบเครือข่ายอินเทอร์เน็ตสากล (Source-to-Destination / End-to-End Delivery) โดยแอดเดรสนี้จะไม่เปลี่ยนแปลงตลอดการเดินทางผ่านเราเตอร์
+          </div>
+          <div class="phonetic-impl">
+            Context: ถูกเก็บในฟิลด์ saddr และ daddr ภายใน struct iphdr ในเคอร์เนล โดยเราเตอร์จะนำ Destination IP ไปค้นหาตารางเส้นทาง Forwarding Information Base (FIB)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Port Address
+            <span class="phonetic-pronounce">พอร์ต แอด-เดรส</span>
+          </div>
+          <div class="phonetic-desc">
+            หมายเลขระบุโพรเซสหรือบริการเฉพาะภายในเครื่องโฮสต์ ขนาด 16 บิต (มีค่าตั้งแต่ 0 ถึง 65535) ใน Transport Layer แบ่งเป็น 3 กลุ่ม: Well-known Ports (0 ถึง 1023 เช่น HTTP: 80, HTTPS: 443, DNS: 53), Registered Ports (1024 ถึง 49151), และ Dynamic / Private / Ephemeral Ports (49152 ถึง 65535) ทำหน้าที่เป็นจุดส่งต่อข้อมูลระหว่างโปรโตคอลเครือข่ายและแอปพลิเคชัน (Process-to-Process Delivery)
+          </div>
+          <div class="phonetic-impl">
+            Context: ตรวจสอบพอร์ตที่กำลังเปิดรอรับการเชื่อมต่อในเครื่องด้วยคำสั่ง 'ss -tulwn' หรือ 'netstat -tuln'
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Ephemeral Port
+            <span class="phonetic-pronounce">อิ-เฟม-เออ-รัล พอร์ต</span>
+          </div>
+          <div class="phonetic-desc">
+            หมายเลขพอร์ตชั่วคราวอายุสั้นที่เคอร์เนลของระบบปฏิบัติการจัดสรรให้กับโปรแกรมฝั่งไคลเอนต์ขณะเปิดการเชื่อมต่อออกไปภายนอก เมื่อโปรแกรมเสร็จสิ้นภารกิจและปิดการเชื่อมต่อ พอร์ตนี้จะถูกหน่วงเวลาไว้ชั่วครู่ (TIME_WAIT state) ก่อนส่งคืนกลับเข้าสู่พูลพอร์ตว่าง
+          </div>
+          <div class="phonetic-impl">
+            Context: ในเคอร์เนล Linux ช่วงของ Ephemeral Port ถูกกำหนดไว้ในไฟล์ /proc/sys/net/ipv4/ip_local_port_range (โดยทั่วไปมีค่าเริ่มต้น 32768 ถึง 60999)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Socket 4-Tuple &amp; 5-Tuple
+            <span class="phonetic-pronounce">ซ็อก-เก็ต โฟร์-ทัป-เพิล</span>
+          </div>
+          <div class="phonetic-desc">
+            ชุดค่าผสมที่ไม่ซ้ำกันซึ่งระบบปฏิบัติการและอุปกรณ์ไฟร์วอลล์ใช้ระบุการเชื่อมต่อหนึ่งๆ อย่างสมบูรณ์: 4-Tuple ประกอบด้วย {Source IP, Source Port, Destination IP, Destination Port} และเมื่อรวมกับ Protocol (TCP หรือ UDP) จะกลายเป็น 5-Tuple ช่วยให้คอมพิวเตอร์สามารถเปิดหน้าเว็บเดียวกันหลายแท็บพร้อมกันได้โดยข้อมูลไม่ปะปนกัน
+          </div>
+          <div class="phonetic-impl">
+            Context: เคอร์เนลใช้แฮชเทเบิล (Established Socket Hash Table) โดยนำ 4-Tuple มาผ่านฟังก์ชันแฮชเพื่อค้นหาโครงสร้าง struct sock ได้ในความซับซ้อน O(1)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Maximum Transmission Unit (MTU)
+            <span class="phonetic-pronounce">แมก-ซิ-มัม ทรานส์-มิช-ชัน ยู-นิต</span>
+          </div>
+          <div class="phonetic-desc">
+            ขนาดเพย์โหลดสูงสุดของข้อมูลในระดับ Data Link Layer ที่สามารถส่งผ่านสายสัญญาณได้ในหนึ่งเฟรมโดยไม่ต้องตัดแบ่ง สำหรับมาตรฐาน Ethernet มาตรฐานมีค่าเท่ากับ 1,500 ไบต์ หาก IP Packet มีขนาดใหญ่กว่า MTU ของลิงก์ถัดไป เราเตอร์จะต้องทำกระบวนการ IP Fragmentation แยกเป็นแพ็กเก็ตย่อย
+          </div>
+          <div class="phonetic-impl">
+            Context: ในเครือข่ายเซนเซอร์ไร้สาย (IEEE 802.15.4) มีขนาด MTU เพียง 127 ไบต์ จึงจำเป็นต้องมีเลเยอร์พิเศษ 6LoWPAN เพื่อทำ Header Compression และ Fragmentation
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Service Data Unit (SDU)
+            <span class="phonetic-pronounce">เซอร์-วิส ดา-ต้า ยู-นิต</span>
+          </div>
+          <div class="phonetic-desc">
+            หน่วยข้อมูลที่ถูกส่งผ่านข้ามอินเทอร์เฟซในแนวตั้งจากเลเยอร์ด้านบน (Layer N+1) ลงมายังเลเยอร์ด้านล่าง (Layer N) โดยเลเยอร์ N จะมองข้อมูลนี้เป็นเพย์โหลดดิบที่ต้องให้บริการส่งผ่าน จากนั้นจะนำ SDU มาเติมข้อมูลควบคุม Protocol Control Information (PCI หรือ Header) กลายเป็น PDU ของตนเองตามสมการ: <strong>PDU(N) = PCI(N) + SDU(N)</strong> และเมื่อส่งต่อขึ้นข้างบนจะมีความสัมพันธ์แบบสมมาตรคือ <strong>SDU(N) = PDU(N+1)</strong>
+          </div>
+          <div class="phonetic-impl">
+            Context: ในระบบเครือข่ายคอมพิวเตอร์ ข้อมูล HTTP Message คือ SDU ของ Transport Layer เมื่อเติม TCP Header จะกลายเป็น TCP Segment (PDU ของ L4) และ TCP Segment นี้เองจะทำหน้าที่เป็น SDU ให้กับ Network Layer (L3) ต่อไป
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Service Access Point (SAP)
+            <span class="phonetic-pronounce">เซอร์-วิส แอ็ก-เซส พอยต์</span>
+          </div>
+          <div class="phonetic-desc">
+            จุดต่อประสานเชิงตรรกะในแนวตั้ง (Vertical Logical Interface) ตามมาตรฐาน ISO 7498 ที่เลเยอร์ด้านล่าง (Layer N) เปิดไว้เพื่อให้เลเยอร์ด้านบน (Layer N+1) เรียกใช้บริการเครือข่าย ทำหน้าที่เป็นตัวจำแนกมัลติเพล็กซ์ว่าเมื่อปลดเฮดเดอร์แล้ว ข้อมูลควรถูกส่งต่อขึ้นไปยังโปรโตคอลใดในชั้นถัดไป
+          </div>
+          <div class="phonetic-impl">
+            Context: ใน Data Link Layer มีฟิลด์ EtherType (เช่น 0x0800 สำหรับ IPv4, 0x86DD สำหรับ IPv6), ใน Network Layer มีฟิลด์ Protocol (เช่น 6 สำหรับ TCP, 17 สำหรับ UDP), และใน Transport Layer มี Port Number ซึ่งทำหน้าที่เป็น SAP ส่งข้อมูลเข้าสู่ Application Process
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Byte Overhead &amp; Energy Drain
+            <span class="phonetic-pronounce">ไบต์ โอเวอร์เฮด และ เอนเนอร์จี เดรน</span>
+          </div>
+          <div class="phonetic-desc">
+            สัดส่วนของบิตข้อมูลส่วนหัวและส่วนท้าย (Header + Trailer) ที่ระบบต้องส่งผ่านตัวกลางเพื่อควบคุมการสื่อสาร เทียบกับบิตข้อมูลเนื้อหาจริงของผู้ใช้ (User Payload) ในระบบที่มีสายขนาดใหญ่ผลกระทบคือการลดทอน Throughput แต่ในระบบเครือข่ายเซนเซอร์ไร้สาย (WSN) โอเวอร์เฮดทุกไบต์หมายถึงการผลาญพลังงานแบตเตอรี่ของโหนดโดยตรง
+          </div>
+          <div class="phonetic-impl">
+            Context: การส่งข้อมูลคลื่นวิทยุในชิปเซนเซอร์ CC2420 (ไฟเลี้ยง V = 3.0V, กระแสส่ง I_tx = 17.4 mA, บิตเรต 250 kbps) เวลาส่ง 1 ไบต์ (8 บิต) คือ t = 8 / 250,000 = 32 μs พลังงานที่เผาผลาญไปคือ E = V × I × t = 3.0V × 17.4 mA × 32 μs = 1.6704 ไมโครจูล (μJ) ต่อไบต์! เฮดเดอร์ TCP/IP ดั้งเดิม 40 ไบต์จึงกินพลังงานไปถึง 66.8 μJ ต่อแพ็กเก็ต หากส่ง 100,000 ครั้ง จะผลาญพลังงานไป 6.68 จูล ซึ่งเทียบเท่าพลังงานที่ไมโครคอนโทรลเลอร์ใช้เลี้ยงตัวเองในโหมด Deep Sleep ได้นานถึง 4.4 เดือนเต็ม
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: The 7 Layers of OSI -->
+      <section id="sec-osi-layers" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">สถาปัตยกรรมโมเดลอ้างอิง OSI 7 เลเยอร์ (The OSI 7-Layer Reference Model)</h2>
+
+        <p>
+          โมเดลการเชื่อมต่อระบบเปิด (Open Systems Interconnection: OSI) ตามมาตรฐาน ISO 7498 กำหนดกรอบแนวคิดแบบ 7 ลำดับชั้น แต่ละชั้นทำหน้าที่จำเพาะและให้บริการแก่ชั้นที่อยู่เหนือกว่า:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 12%;">เลเยอร์</th>
+                <th style="width: 22%;">ชื่อและ PDU</th>
+                <th style="width: 42%;">หน้าที่หลักทางวิศวกรรม (Core Responsibilities)</th>
+                <th style="width: 24%;">โพรโทคอลและมาตรฐาน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--paper2);">
+                <td><strong>Layer 7</strong></td>
+                <td><strong>Application Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Message</span></td>
+                <td>ทำหน้าที่เป็นจุดต่อประสานระหว่างโปรแกรมประยุกต์ของผู้ใช้กับบริการเครือข่าย จัดการเรื่อง Network Virtual Terminal, การสืบค้นระเบียนชื่อ, บริการโอนย้ายไฟล์ และการแลกเปลี่ยนข้อความระดับสูง</td>
+                <td>HTTP, HTTPS, DNS, SMTP, SSH, MQTT, CoAP (IoT)</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 6</strong></td>
+                <td><strong>Presentation Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Formatted Data</span></td>
+                <td>รับผิดชอบด้านวากยสัมพันธ์ (Syntax) และความหมาย (Semantics) ของข้อมูล ได้แก่:
+                  <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.88rem;">
+                    <li><strong>Translation:</strong> แปลงรหัสอักขระข้ามแพลตฟอร์ม (เช่น EBCDIC สู่ ASCII / UTF-8)</li>
+                    <li><strong>Encryption:</strong> เข้ารหัสและถอดรหัสความปลอดภัย (Cryptography เช่น TLS/AES)</li>
+                    <li><strong>Compression:</strong> บีบอัดข้อมูลเพื่อลดจำนวนบิตที่ต้องส่งผ่านสาย (Deflate, JPEG)</li>
+                  </ul>
+                </td>
+                <td>TLS/SSL, ASN.1, MIME, JSON, Protobuf</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>Layer 5</strong></td>
+                <td><strong>Session Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Dialog Data</span></td>
+                <td>ควบคุมการสนทนาและการแลกเปลี่ยนข้อมูล (Dialog Controller) กำหนดทิศทาง (Half-Duplex หรือ Full-Duplex) และระบบจุดตรวจสอบความสอดคล้อง (Checkpoint Synchronization) หากสายสื่อสารขาดตอน สามารถกู้คืนและส่งต่อเฉพาะข้อมูลหลังเช็กพอยต์ล่าสุดโดยไม่ต้องเริ่มส่งใหม่ตั้งแต่ต้น</td>
+                <td>RPC, NetBIOS, SIP, Sockets API Session Mgmt</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 4</strong></td>
+                <td><strong>Transport Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Segment / Datagram</span></td>
+                <td>รับผิดชอบการส่งข้อมูลระหว่างโพรเซสสู่โพรเซส (Process-to-Process Delivery):
+                  <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.88rem;">
+                    <li><strong>Port Addressing:</strong> กำกับหมายเลขพอร์ตเพื่อส่งเข้าสู่แอปพลิเคชันที่ถูกต้อง</li>
+                    <li><strong>Segmentation &amp; Reassembly:</strong> หั่นข้อมูลขนาดใหญ่เป็นชิ้นย่อยและเรียงลำดับ</li>
+                    <li><strong>Connection Control:</strong> มีทั้งแบบมีสายสัมพันธ์ (TCP) และไร้สายสัมพันธ์ (UDP)</li>
+                    <li><strong>Flow &amp; Error Control:</strong> ควบคุมอัตราการส่งไม่ให้ท่วมเครื่องรับและตรวจซ้ำ (ACK)</li>
+                  </ul>
+                </td>
+                <td>TCP (RFC 793), UDP (RFC 768), SCTP, QUIC</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>Layer 3</strong></td>
+                <td><strong>Network Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Packet / Datagram</span></td>
+                <td>รับผิดชอบการนำพาแพ็กเก็ตจากโฮสต์ต้นทางไปยังโฮสต์ปลายทางข้ามระบบเครือข่ายหลายเครือข่าย (Source-to-Destination / End-to-End Delivery):
+                  <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.88rem;">
+                    <li><strong>Logical Addressing:</strong> กำหนดหมายเลขประจำเครื่องทั่วโลก (IPv4 / IPv6)</li>
+                    <li><strong>Routing:</strong> หาเส้นทางที่สั้นและมีประสิทธิภาพที่สุดผ่านเราเตอร์ (OSPF, BGP)</li>
+                    <li><strong>Packet Forwarding &amp; Fragmentation:</strong> ส่งต่อแพ็กเก็ตและตัดแบ่งตาม MTU</li>
+                  </ul>
+                </td>
+                <td>IPv4 (RFC 791), IPv6 (RFC 8200), ICMP, OSPF, BGP, RPL</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 2</strong></td>
+                <td><strong>Data Link Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Frame</span></td>
+                <td>รับผิดชอบการส่งผ่านเฟรมข้อมูลระหว่างสองโหนดที่เชื่อมต่ออยู่บนสายสัญญาณเดียวกันโดยตรง (Hop-to-Hop / Node-to-Node Delivery):
+                  <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.88rem;">
+                    <li><strong>Framing:</strong> กำหนดจุดเริ่มต้นและจุดสิ้นสุดของข้อมูลด้วยบิตแฟล็กพิเศษ</li>
+                    <li><strong>Physical Addressing:</strong> กำกับที่อยู่ MAC ของการ์ดแลนในแต่ละฮอป</li>
+                    <li><strong>Flow &amp; Error Control:</strong> ตรวจสอบข้อผิดพลาดระดับสายสัญญาณด้วย CRC/FCS</li>
+                    <li><strong>Media Access Control (MAC):</strong> ควบคุมการแย่งใช้ช่องสัญญาณรวม (CSMA/CD, CSMA/CA)</li>
+                  </ul>
+                </td>
+                <td>IEEE 802.3 (Ethernet), IEEE 802.11 (Wi-Fi), PPP, IEEE 802.15.4 MAC</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>Layer 1</strong></td>
+                <td><strong>Physical Layer</strong><br><span style="font-size: 0.80rem; color: var(--ink-muted);">PDU: Bit Stream</span></td>
+                <td>รับผิดชอบการแปลงบิตดิจิทัล 0 และ 1 เป็นสัญญาณกายภาพ (แรงดันไฟฟ้า คลื่นแสง หรือคลื่นวิทยุ) วิ่งผ่านตัวกลาง:
+                  <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.88rem;">
+                    <li><strong>Signal Representation:</strong> การแปลงรหัสสัญญาณทางไฟฟ้า (Line Coding เช่น NRZ, Manchester)</li>
+                    <li><strong>Data Rate:</strong> กำหนดอัตราการส่งบิตต่อวินาที (Bit Rate / Duration)</li>
+                    <li><strong>Bit Synchronization:</strong> ซิงโครไนซ์สัญญาณนาฬิการะหว่างตัวส่งและตัวรับ</li>
+                    <li><strong>Interface Characteristics:</strong> กำหนดพิน รูปร่างหัวต่อ และระดับแรงดันไฟฟ้า</li>
+                  </ul>
+                </td>
+                <td>100BASE-TX, 1000BASE-T, Fiber Optics, 2.4 GHz RF (CC2420 PHY)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4: TCP/IP Protocol Suite -->
+      <section id="sec-tcpip" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">สถาปัตยกรรมชุดโพรโทคอล TCP/IP (The 5-Layer Internet Architecture)</h2>
+
+        <p>
+          ในทางวิศวกรรมเชิงปฏิบัติ ระบบเครือข่ายอินเทอร์เน็ตสากลไม่ได้นำโครงสร้าง 7 ชั้นของ OSI มาใช้งานจริง แต่เลือกใช้ <strong>ชุดโพรโทคอล TCP/IP (TCP/IP Protocol Suite)</strong> ซึ่งมีโครงสร้าง 5 ลำดับชั้นตามหลักการปฏิบัติการ:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--accent); font-size: 1.05rem; margin-bottom: 8px;">1. การยุบรวมชั้นบน (Layers 5, 6, 7 ยุบเป็นหนึ่ง)</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: var(--ink-soft); margin: 0;">
+              ในสถาปัตยกรรม TCP/IP หน้าที่ของ Application, Presentation, และ Session ถูกหลอมรวมอยู่ภายใน <strong>Application Layer</strong> เพียงชั้นเดียว สถาปัตยกรรมเชื่อมั่นในปรัชญา <em>"End-to-End Principle"</em> ว่าการเข้ารหัสข้อมูล (TLS) หรือการแปลโครงสร้างข้อมูล (JSON/Protobuf) ควรเป็นภาระหน้าที่ของแอปพลิเคชันส่วนปลายของผู้ใช้ ไม่ควรให้แกนกลางเครือข่ายมาแทรกแซง
+            </p>
+          </div>
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--purple); font-size: 1.05rem; margin-bottom: 8px;">2. สถาปัตยกรรมนาฬิกาทราย (The Hourglass Model)</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: var(--ink-soft); margin: 0;">
+              TCP/IP มีรูปร่างแคบตรงกลางอย่างโดดเด่น: ใน Network Layer มีโพรโทคอล <strong>IP (Internet Protocol)</strong> เป็นแกนร่วมหนึ่งเดียว (The Narrow Waist) ที่เชื่อมโลกทั้งใบเข้าด้วยกัน โดยด้านล่างสามารถเชื่อมต่อกับเทคโนโลยี Physical/Data Link นับร้อยชนิด (Ethernet, Wi-Fi, 5G, Fiber, 802.15.4) และด้านบนสามารถรองรับแอปพลิเคชันนับล้านชนิดได้อย่างไร้รอยต่อ
+            </p>
+          </div>
+        </div>
+
+        <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px; margin: 24px 0;">
+          <h3 style="font-size: 1.15rem; color: var(--accent); margin-bottom: 12px;">กระบวนการเดินทางของข้อมูล: Encapsulation &amp; Decapsulation</h3>
+          <p style="font-size: 0.94rem; line-height: 1.75; color: var(--ink);">
+            เมื่อผู้ใช้พิมพ์ข้อความหรือกดส่งคำขอในเว็บเบราว์เซอร์ ข้อมูลจะถูกแปลงและห่อหุ้มตามลำดับขั้น:
+          </p>
+          <ol style="margin-left: 20px; font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft);">
+            <li><strong style="color: var(--ink);">Layer 5 (Application):</strong> สร้างข้อความข้อมูลดิบ (User Message) เช่น ข้อความคำขอ <code>GET /index.html HTTP/1.1</code></li>
+            <li><strong style="color: var(--ink);">Layer 4 (Transport):</strong> นำ Message มาห่อหุ้มด้วย <strong>TCP Header</strong> ขนาดขั้นต่ำ 20 ไบต์ (ระบุ Source Port, Destination Port, Sequence Number, Control Flags) กลายเป็น <em>TCP Segment</em></li>
+            <li><strong style="color: var(--ink);">Layer 3 (Network):</strong> นำ TCP Segment มาห่อหุ้มด้วย <strong>IP Header</strong> ขนาดขั้นต่ำ 20 ไบต์ (ระบุ Source IP, Destination IP, Time to Live: TTL, Protocol Number: 0x06 สำหรับ TCP) กลายเป็น <em>IP Packet / Datagram</em></li>
+            <li><strong style="color: var(--ink);">Layer 2 (Data Link):</strong> นำ IP Packet มาห่อหุ้มด้วย <strong>Ethernet Header</strong> ขนาด 14 ไบต์ (ระบุ Source MAC, Destination MAC, EtherType: 0x0800 สำหรับ IPv4) ที่ด้านหน้า และเติม <strong>Frame Check Sequence (FCS/CRC32)</strong> ขนาด 4 ไบต์ ที่ด้านท้าย กลายเป็น <em>Ethernet Frame</em> (ขนาดโอเวอร์เฮดรวมของ L2 คือ 18 ไบต์)</li>
+            <li><strong style="color: var(--ink);">Layer 1 (Physical):</strong> เติมสัญญาณนำร่อง Preamble (7 ไบต์) + Start Frame Delimiter (1 ไบต์) และเว้นช่องว่างระหว่างเฟรม Inter-Packet Gap (12 ไบต์) แล้วแปลงบิตทั้งหมดเป็นสัญญาณคลื่นแม่เหล็กไฟฟ้าหรือพัลส์แสงยิงออกสู่ตัวกลางจริง</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SECTION 5: The Four Levels of Addresses -->
+      <section id="sec-addressing" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">ลำดับชั้นของแอดเดรส 4 ระดับในระบบเครือข่าย (Four Levels of Addressing)</h2>
+
+        <p>
+          ในการส่งผ่านข้อมูลจากกระบวนการหนึ่งในเครื่องต้นทางไปยังกระบวนการหนึ่งในเครื่องปลายทางข้ามอินเทอร์เน็ต ต้องใช้การทำงานประสานกันของแอดเดรส 4 ระดับอย่างเป็นเอกภาพ:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">ระดับแอดเดรส</th>
+                <th style="width: 14%;">ขนาดและรูปแบบ</th>
+                <th style="width: 18%;">เลเยอร์ที่สังกัด</th>
+                <th style="width: 28%;">ขอบเขตการทำงาน (Scope of Delivery)</th>
+                <th style="width: 22%;">โปรโตคอลแปลงแอดเดรส</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--paper2);">
+                <td><strong>1. Physical Address</strong></td>
+                <td>48 บิต (6 ไบต์)<br><span style="font-family: monospace; font-size: 0.82rem;">00:1A:2B:3C:4D:5E</span></td>
+                <td>Data Link Layer (L2)</td>
+                <td><strong>Hop-to-Hop (Link-local):</strong> เปลี่ยนแปลงค่าใหม่ในทุกๆ ฮอปที่ข้ามเราเตอร์</td>
+                <td>Address Resolution Protocol (ARP / NDP)</td>
+              </tr>
+              <tr>
+                <td><strong>2. Logical Address</strong></td>
+                <td>32 บิต (IPv4) / 128 บิต (IPv6)<br><span style="font-family: monospace; font-size: 0.82rem;">192.168.1.100</span></td>
+                <td>Network Layer (L3)</td>
+                <td><strong>End-to-End:</strong> ระบุเครื่องต้นทางและปลายทางข้ามโลก ค่าคงที่ตลอดเส้นทาง</td>
+                <td>Domain Name System (DNS), DHCP</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>3. Port Address</strong></td>
+                <td>16 บิต (จำนวนเต็ม 0-65535)<br><span style="font-family: monospace; font-size: 0.82rem;">Port: 443 (HTTPS)</span></td>
+                <td>Transport Layer (L4)</td>
+                <td><strong>Process-to-Process:</strong> ระบุโพรเซสหรือโปรแกรมเฉพาะเจาะจงภายในเครื่องโฮสต์</td>
+                <td>Socket API (bind / connect)</td>
+              </tr>
+              <tr>
+                <td><strong>4. Specific Address</strong></td>
+                <td>ข้อความสตริงแบบยูนิโค้ด<br><span style="font-family: monospace; font-size: 0.82rem;">user@domain.com</span></td>
+                <td>Application Layer (L7)</td>
+                <td><strong>Application-specific:</strong> ใช้งานในระดับผู้ใช้ เช่น URL, URI, Email Address</td>
+                <td>DNS, URL Resolver, Reverse Proxy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 6: 4 Worked Examples -->
+      <section id="sec-worked-examples" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Step-by-Step Mathematical Derivations</span>
+        <h2 class="section-title">ตัวอย่างโจทย์คำนวณและวิเคราะห์สถาปัตยกรรมจริง 4 ข้อ (Worked Examples)</h2>
+
+        <p>
+          การคำนวณเชิงตัวเลขจริงเพื่อทดสอบความเข้าใจพฤติกรรมทางวิศวกรรมของเครือข่ายและสถาปัตยกรรมแบบลำดับชั้น:
+        </p>
+
+        <!-- EXAMPLE 1 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 2.1: การวิเคราะห์ Propagation Time vs Transmission Time และ Bandwidth-Delay Product (BDP)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            พิจารณาลิงก์สื่อสาร 2 กรณีที่ใช้ส่งแพ็กเก็ตขนาด <code>L = 1,500 ไบต์ (12,000 บิต)</code>:
+            <ul style="margin: 6px 0 0 20px;">
+              <li><strong>กรณี A (Trans-continental Fiber WAN):</strong> อัตราส่งข้อมูล <code>R = 1 Gbps (10⁹ bps)</code> ผ่านสายใยแก้วข้ามทวีประยะทาง <code>d = 5,000 กิโลเมตร</code> (ความเร็วแสงในใยแก้ว <code>v = 2 × 10⁸ เมตร/วินาที</code>)</li>
+              <li><strong>กรณี B (Data Center Copper LAN):</strong> อัตราส่งข้อมูล <code>R = 1 Gbps (10⁹ bps)</code> ผ่านสายทองแดงในห้องเซิร์ฟเวอร์ระยะทาง <code>d = 100 เมตร</code> (ความเร็วสัญญาณ <code>v = 2 × 10⁸ เมตร/วินาที</code>)</li>
+            </ul>
+            จงคำนวณ: (1) Transmission Delay, (2) Propagation Delay, (3) อัตราส่วน Propagation ต่อ Transmission, และ (4) Bandwidth-Delay Product (BDP) พร้อมวิเคราะห์ผลกระทบต่อประสิทธิภาพ Throughput หากใช้โพรโทคอลแบบ Stop-and-Wait
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: คำนวณ Transmission Delay (เวลาในการฉีดบิตลงสายสัญญาณ)</div>
+            <p style="font-size: 0.94rem; line-height: 1.7; margin-bottom: 8px;">
+              เวลาการฉีดข้อมูลขึ้นอยู่กับขนาดแพ็กเก็ต L และอัตราความเร็วของลิงก์ R เท่านั้น ไม่เกี่ยวข้องกับระยะทาง:
+            </p>
+            <div class="m-block">
+              <span class="m-var">t</span><span class="m-sub">trans</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num"><span class="m-var">L</span></span>
+                <span class="m-den"><span class="m-var">R</span></span>
+              </div>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">12,000<span class="m-unit">bits</span></span>
+                <span class="m-den">10<span class="m-sup">9</span><span class="m-unit">bps</span></span>
+              </div>
+              <span class="m-op">=</span>
+              <span class="m-num">0.000012</span><span class="m-unit">วินาที</span>
+              <span class="m-op">=</span>
+              <span class="m-num">12</span><span class="m-unit">ไมโครวินาที (μs)</span>
+            </div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft); margin-top: 4px;">
+              ค่า Transmission Time เท่ากันทั้งกรณี A และ B คือ 12 ไมโครวินาที
+            </p>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: คำนวณ Propagation Delay (เวลาในการเดินทางของคลื่นในตัวกลาง)</div>
+            <p style="font-size: 0.94rem; line-height: 1.7; margin-bottom: 8px;">
+              เวลาเดินทางขึ้นอยู่กับระยะทาง d และความเร็วคลื่น v ในตัวกลาง:
+            </p>
+            <div class="m-block">
+              <span class="m-var">t</span><span class="m-sub">prop, WAN</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num"><span class="m-var">d</span></span>
+                <span class="m-den"><span class="m-var">v</span></span>
+              </div>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">5,000<span class="m-op">×</span>10<span class="m-sup">3</span><span class="m-unit">m</span></span>
+                <span class="m-den">2<span class="m-op">×</span>10<span class="m-sup">8</span><span class="m-unit">m/s</span></span>
+              </div>
+              <span class="m-op">=</span>
+              <span class="m-num">0.025</span><span class="m-unit">วินาที</span>
+              <span class="m-op">=</span>
+              <span class="m-num">25</span><span class="m-unit">มิลลิวินาที (ms)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">25,000</span><span class="m-unit">μs</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-var">t</span><span class="m-sub">prop, LAN</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">100<span class="m-unit">m</span></span>
+                <span class="m-den">2<span class="m-op">×</span>10<span class="m-sup">8</span><span class="m-unit">m/s</span></span>
+              </div>
+              <span class="m-op">=</span>
+              <span class="m-num">0.0000005</span><span class="m-unit">วินาที</span>
+              <span class="m-op">=</span>
+              <span class="m-num">0.5</span><span class="m-unit">ไมโครวินาที (μs)</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: เปรียบเทียบอัตราส่วน Propagation ต่อ Transmission</div>
+            <div class="m-block">
+              <span class="m-text">Ratio (WAN)</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">25,000<span class="m-unit">μs</span></span>
+                <span class="m-den">12<span class="m-unit">μs</span></span>
+              </div>
+              <span class="m-op">≈</span>
+              <span class="m-num">2,083.33</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-text">Ratio (LAN)</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">0.5<span class="m-unit">μs</span></span>
+                <span class="m-den">12<span class="m-unit">μs</span></span>
+              </div>
+              <span class="m-op">≈</span>
+              <span class="m-num">0.0417</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 4: คำนวณ Bandwidth-Delay Product (BDP) และ Throughput</div>
+            <p style="font-size: 0.94rem; line-height: 1.7; margin-bottom: 8px;">
+              BDP หมายถึงปริมาณข้อมูลที่สามารถจุอยู่ในสายสัญญาณขณะกำลังเดินทาง (Bits in flight):
+            </p>
+            <div class="m-block">
+              <span class="m-text">BDP (WAN)</span>
+              <span class="m-op">=</span>
+              <span class="m-var">R</span><span class="m-op">×</span><span class="m-var">t</span><span class="m-sub">prop</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10<span class="m-sup">9</span></span><span class="m-op">×</span><span class="m-num">0.025</span>
+              <span class="m-op">=</span>
+              <span class="m-num">25,000,000</span><span class="m-unit">bits</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">3.125</span><span class="m-unit">Megabytes (MB)</span>
+            </div>
+            <div class="academic-callout callout-amber" style="margin-top: 12px;">
+              <strong>บทวิเคราะห์ทางวิศวกรรม (Engineering Insight):</strong><br>
+              ในกรณี WAN ข้ามทวีป สายเคเบิลใยแก้วมีปริมาณความจุข้อมูลขณะเดินทางถึง <strong>3.125 MB</strong> หากเราใช้โพรโทคอลแบบ Stop-and-Wait (ส่ง 1 แพ็กเก็ต 1.5 KB แล้วหยุดรอการตอบรับ ACK เป็นเวลา Round-Trip Time = 2 × 25 ms = 50 ms):
+              <div class="m-block" style="margin: 8px 0;">
+                <span class="m-text">Throughput</span>
+                <span class="m-op">=</span>
+                <div class="m-frac">
+                  <span class="m-num">12,000<span class="m-unit">bits</span></span>
+                  <span class="m-den">12<span class="m-unit">μs</span><span class="m-op">+</span>50,000<span class="m-unit">μs</span></span>
+                </div>
+                <span class="m-op">≈</span>
+                <span class="m-num">239.94</span><span class="m-unit">kbps</span>
+              </div>
+              ประสิทธิภาพการใช้งานท่อส่ง 1 Gbps จะเหลือเพียง <strong>0.024%</strong> เท่านั้น! นี่คือเหตุผลทางคณิตศาสตร์ที่เลเยอร์ Transport ในเครือข่ายระยะไกลจำเป็นต้องใช้กลไก <strong>TCP Sliding Window (Pipelining)</strong> โดยปรับขนาด Receive Window ให้มีขนาดไม่ต่ำกว่า BDP (3.125 MB) เพื่อส่งข้อมูลอย่างต่อเนื่องโดยไม่ต้องหยุดรอ ACK ทีละตัว
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 2 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 2.2: การวิเคราะห์โอเวอร์เฮดของเฮดเดอร์และประสิทธิภาพสายสัญญาณ (Header Overhead &amp; Wire Efficiency)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            เปรียบเทียบการส่งข้อมูล 2 รูปแบบผ่านเครือข่าย Gigabit Ethernet (1,000 Mbps):
+            <ul style="margin: 6px 0 0 20px;">
+              <li><strong>การส่งข้อมูลเว็บเพจขนาดใหญ่:</strong> แอปพลิเคชันส่งเพย์โหลด HTTP ขนาดเต็มกรอบ <code>MSS = 1,460 ไบต์</code></li>
+              <li><strong>การส่งข้อมูลเซนเซอร์ตรวจวัด (IoT Telemetry):</strong> เซนเซอร์ส่งข้อมูลอุณหภูมิและความชื้นขนาด <code>Payload = 64 ไบต์</code></li>
+            </ul>
+            กำหนดโครงสร้างโปรโตคอลสแตกมาตรฐาน:
+            <ul style="margin: 6px 0 0 20px;">
+              <li>L4 TCP Header: <code>20 ไบต์</code> (เมื่อไม่มีออปชันเสริม)</li>
+              <li>L3 IPv4 Header: <code>20 ไบต์</code> (เมื่อไม่มีออปชันเสริม)</li>
+              <li>L2 Ethernet Frame: Header <code>14 ไบต์</code> + FCS Trailer <code>4 ไบต์</code> (รวม 18 ไบต์)</li>
+              <li>L1 Physical Layer: Preamble (7 ไบต์) + SFD (1 ไบต์) + Inter-Packet Gap (12 ไบต์เทียบเท่า) = <code>20 ไบต์</code></li>
+            </ul>
+            จงคำนวณ: (1) ขนาดข้อมูลทั้งหมดบนสายสัญญาณ (Total Bytes on Wire), (2) สัดส่วนประสิทธิภาพของเพย์โหลด (Payload Efficiency), และ (3) ขีดจำกัดอัตราส่งข้อมูลสุทธิที่แท้จริง (Effective Throughput) บนพอร์ต 1 Gbps
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: คำนวณผลรวมโอเวอร์เฮดของเฮดเดอร์ในทุกระดับชั้น</div>
+            <div class="m-block">
+              <span class="m-text">Overhead</span><span class="m-sub">total</span>
+              <span class="m-op">=</span>
+              <span class="m-num">20</span><span class="m-unit">(L1)</span>
+              <span class="m-op">+</span>
+              <span class="m-num">18</span><span class="m-unit">(L2)</span>
+              <span class="m-op">+</span>
+              <span class="m-num">20</span><span class="m-unit">(L3)</span>
+              <span class="m-op">+</span>
+              <span class="m-num">20</span><span class="m-unit">(L4)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">78</span><span class="m-unit">ไบต์</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: คำนวณขนาดบนสายจริงและประสิทธิภาพเพย์โหลดสำหรับ HTTP 1,460 ไบต์</div>
+            <div class="m-block">
+              <span class="m-text">Wire Size (HTTP)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">1,460</span><span class="m-op">+</span><span class="m-num">78</span>
+              <span class="m-op">=</span>
+              <span class="m-num">1,538</span><span class="m-unit">ไบต์</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-text">Efficiency (HTTP)</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">1,460</span>
+                <span class="m-den">1,538</span>
+              </div>
+              <span class="m-op">×</span>
+              <span class="m-num">100%</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">94.93%</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-text">Effective Throughput</span>
+              <span class="m-op">=</span>
+              <span class="m-num">1,000<span class="m-unit">Mbps</span></span>
+              <span class="m-op">×</span>
+              <span class="m-num">0.94928</span>
+              <span class="m-op">=</span>
+              <span class="m-num">949.28</span><span class="m-unit">Mbps</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: คำนวณขนาดบนสายจริงและประสิทธิภาพเพย์โหลดสำหรับ IoT 64 ไบต์</div>
+            <div class="m-block">
+              <span class="m-text">Wire Size (IoT)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">64</span><span class="m-op">+</span><span class="m-num">78</span>
+              <span class="m-op">=</span>
+              <span class="m-num">142</span><span class="m-unit">ไบต์</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-text">Efficiency (IoT)</span>
+              <span class="m-op">=</span>
+              <div class="m-frac">
+                <span class="m-num">64</span>
+                <span class="m-den">142</span>
+              </div>
+              <span class="m-op">×</span>
+              <span class="m-num">100%</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">45.07%</span>
+            </div>
+            <div class="m-block" style="margin-top: 10px;">
+              <span class="m-text">Effective Throughput</span>
+              <span class="m-op">=</span>
+              <span class="m-num">1,000<span class="m-unit">Mbps</span></span>
+              <span class="m-op">×</span>
+              <span class="m-num">0.45070</span>
+              <span class="m-op">=</span>
+              <span class="m-num">450.70</span><span class="m-unit">Mbps</span>
+            </div>
+            <div class="academic-callout callout-amber" style="margin-top: 12px;">
+              <strong>บทเรียนสำคัญสำหรับเครือข่ายเซนเซอร์ไร้สาย (WSN):</strong><br>
+              เมื่อแพ็กเก็ตมีขนาดเล็ก (เช่น ค่าอุณหภูมิ 64 ไบต์) แบนด์วิดท์และพลังงานของระบบจะสูญเสียไปกับ <strong>โอเวอร์เฮดของเฮดเดอร์ถึง 54.93%</strong> มากกว่าตัวข้อมูลจริงเสียอีก! นี่คือสาเหตุที่เครือข่ายเซนเซอร์พลังงานต่ำต้องปฏิเสธโปรโตคอล TCP/IP ดั้งเดิม แล้วหันไปพึ่งพาโปรโตคอล <strong>6LoWPAN (RFC 6282)</strong> เพื่อบีบอัด IP Header จาก 40 ไบต์ ให้เหลือเพียง 2 ถึง 4 ไบต์ และใช้ <strong>CoAP (Constrained Application Protocol)</strong> บน UDP แทน HTTP บน TCP
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 3 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 2.3: การติดตามการกลายพันธุ์ของแอดเดรสทีละฮอป (Hop-by-Hop MAC Mutation Tracing)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            เครื่องไคลเอนต์ Host A ต้องการส่งข้อมูลไปยังเครื่องเซิร์ฟเวอร์ Host B ข้ามเครือข่ายอินเทอร์เน็ตผ่านเราเตอร์สองตัว (Router R1 และ Router R2) โดยมีแผนผังและแอดเดรสดังนี้:
+            <ul style="margin: 6px 0 0 20px;">
+              <li><strong>Host A:</strong> IP = <code>192.168.1.10</code>, MAC = <code>AA:AA:AA:AA:AA:AA</code></li>
+              <li><strong>Router R1 (Interface 1 ชี้หา Host A):</strong> IP = <code>192.168.1.1</code>, MAC = <code>11:11:11:11:11:11</code></li>
+              <li><strong>Router R1 (Interface 2 ชี้หา R2):</strong> IP = <code>10.0.0.1</code>, MAC = <code>12:12:12:12:12:12</code></li>
+              <li><strong>Router R2 (Interface 1 ชี้หา R1):</strong> IP = <code>10.0.0.2</code>, MAC = <code>21:21:21:21:21:21</code></li>
+              <li><strong>Router R2 (Interface 2 ชี้หา Host B):</strong> IP = <code>172.16.0.1</code>, MAC = <code>22:22:22:22:22:22</code></li>
+              <li><strong>Host B:</strong> IP = <code>172.16.0.50</code>, MAC = <code>BB:BB:BB:BB:BB:BB</code></li>
+            </ul>
+            จงแสดงตารางฟิลด์แอดเดรส {Source IP, Destination IP, Source MAC, Destination MAC} ภายในเฟรมข้อมูล ณ จุดสังเกตในแต่ละช่วงฮอป
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ตารางวิเคราะห์การเปลี่ยนแปลงแอดเดรสในแต่ละช่วงการเดินทาง:</div>
+            <div class="table-responsive" style="margin-top: 10px;">
+              <table class="academic-table">
+                <thead>
+                  <tr>
+                    <th>ช่วงการเดินทาง (Hop)</th>
+                    <th>Source IP (L3)</th>
+                    <th>Destination IP (L3)</th>
+                    <th>Source MAC (L2)</th>
+                    <th>Destination MAC (L2)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: var(--paper2);">
+                    <td><strong>Hop 1:</strong> Host A → R1</td>
+                    <td><code>192.168.1.10</code></td>
+                    <td><code>172.16.0.50</code></td>
+                    <td><code>AA:AA:AA:AA:AA:AA</code></td>
+                    <td><code>11:11:11:11:11:11</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hop 2:</strong> R1 → R2</td>
+                    <td><code>192.168.1.10</code></td>
+                    <td><code>172.16.0.50</code></td>
+                    <td><code>12:12:12:12:12:12</code></td>
+                    <td><code>21:21:21:21:21:21</code></td>
+                  </tr>
+                  <tr style="background: var(--paper2);">
+                    <td><strong>Hop 3:</strong> R2 → Host B</td>
+                    <td><code>192.168.1.10</code></td>
+                    <td><code>172.16.0.50</code></td>
+                    <td><code>22:22:22:22:22:22</code></td>
+                    <td><code>BB:BB:BB:BB:BB:BB</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="academic-callout" style="background: var(--paper3); border-left: 4px solid var(--accent); margin-top: 12px;">
+              <strong>ข้อสรุปเชิงสถาปัตยกรรม (Architectural Invariant):</strong><br>
+              <ol style="margin: 6px 0 0 20px; line-height: 1.75;">
+                <li><strong>Logical IP Address เป็นค่าคงที่ระดับ End-to-End:</strong> Source IP และ Destination IP จะไม่มีการเปลี่ยนแปลงเลยตลอดการเดินทางจาก Host A ถึง Host B (ยกเว้นกรณีมีการทำ NAT)</li>
+                <li><strong>Physical MAC Address มีการกลายพันธุ์ระดับ Hop-to-Hop:</strong> ในแต่ละครั้งที่แพ็กเก็ตผ่านเราเตอร์ เราเตอร์จะแกะเฟรม L2 เดิมทิ้ง และสร้างเฟรม L2 ใหม่ขึ้นมาห่อหุ้ม โดยใส่ Source MAC ของอินเทอร์เฟซขาออกของตน และใส่ Destination MAC ของอุปกรณ์ถัดไปที่สืบค้นได้จากตาราง ARP Cache</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 4 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 2.4: การแยกแยะการเชื่อมต่อพร้อมกันด้วย Socket 4-Tuple (Connection Demultiplexing)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            ผู้ใช้เปิดคอมพิวเตอร์ไคลเอนต์ (IP = <code>192.168.1.100</code>) แล้วเปิดเว็บเบราว์เซอร์ใช้งาน 3 งานพร้อมกัน:
+            <ul style="margin: 6px 0 0 20px;">
+              <li><strong>แท็บที่ 1:</strong> เข้าชมเว็บเซิร์ฟเวอร์ A (IP = <code>203.0.113.10</code>, พอร์ต 443 HTTPS)</li>
+              <li><strong>แท็บที่ 2:</strong> เข้าชมเว็บเซิร์ฟเวอร์ A เดียวกัน (IP = <code>203.0.113.10</code>, พอร์ต 443 HTTPS) เพื่อดาวน์โหลดไฟล์ขนาดใหญ่</li>
+              <li><strong>แท็บที่ 3:</strong> เบราว์เซอร์สืบค้นชื่อโดเมนจาก DNS Server (IP = <code>8.8.8.8</code>, พอร์ต 53 UDP)</li>
+            </ul>
+            จงแสดงโครงสร้าง 4-Tuple ที่เคอร์เนลของระบบปฏิบัติการสร้างขึ้น และอธิบายว่าเมื่อแพ็กเก็ตข้อมูลตอบกลับวิ่งเข้ามาถึงการ์ดแลน เคอร์เนลอาศัยกลไกใดในการส่งข้อมูลเข้าสู่แท็บเบราว์เซอร์ที่ถูกต้องได้อย่างแม่นยำ 100%
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ตารางแจกแจงโครงสร้าง 4-Tuple ใน Socket Table ของระบบปฏิบัติการ:</div>
+            <div class="table-responsive" style="margin-top: 10px;">
+              <table class="academic-table">
+                <thead>
+                  <tr>
+                    <th>เซสชัน / งาน</th>
+                    <th>Source IP</th>
+                    <th>Source Port (Ephemeral)</th>
+                    <th>Destination IP</th>
+                    <th>Destination Port</th>
+                    <th>Protocol</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: var(--paper2);">
+                    <td>แท็บ 1 (เว็บ A)</td>
+                    <td><code>192.168.1.100</code></td>
+                    <td><code>51234</code></td>
+                    <td><code>203.0.113.10</code></td>
+                    <td><code>443</code></td>
+                    <td>TCP</td>
+                  </tr>
+                  <tr>
+                    <td>แท็บ 2 (เว็บ A ดาวน์โหลด)</td>
+                    <td><code>192.168.1.100</code></td>
+                    <td><code>51235</code></td>
+                    <td><code>203.0.113.10</code></td>
+                    <td><code>443</code></td>
+                    <td>TCP</td>
+                  </tr>
+                  <tr style="background: var(--paper2);">
+                    <td>แท็บ 3 (DNS Lookup)</td>
+                    <td><code>192.168.1.100</code></td>
+                    <td><code>58921</code></td>
+                    <td><code>8.8.8.8</code></td>
+                    <td><code>53</code></td>
+                    <td>UDP</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="academic-callout callout-amber" style="margin-top: 12px;">
+              <strong>กลไกการแยกแยะข้อมูลในเคอร์เนล (Demultiplexing Mechanism):</strong><br>
+              แม้ว่าแท็บที่ 1 และแท็บที่ 2 จะเชื่อมต่อไปยังเซิร์ฟเวอร์เครื่องเดียวกัน (Destination IP = 203.0.113.10) และพอร์ตปลายทางเดียวกัน (Destination Port = 443) แต่เคอร์เนลฝั่งไคลเอนต์ได้จัดสรร <strong>Ephemeral Port คนละหมายเลข (51234 และ 51235)</strong> ให้แก่สองโพรเซส<br>
+              เมื่อเซิร์ฟเวอร์ส่งข้อมูลกลับมา แพ็กเก็ตตอบกลับจะมี Destination Port เท่ากับ 51234 หรือ 51235 เคอร์เนลจะนำค่า 4-Tuple ไปผ่านฟังก์ชันแฮชเพื่อดึงพอยน์เตอร์โครงสร้าง <code>struct sock</code> ที่ตรงกัน และส่งข้อมูลเข้าสู่คิวรับบัฟเฟอร์ (Receive Buffer) ของโปรเซสแท็บนั้นโดยไม่มีการชนกันอย่างเด็ดขาด
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: Hardware & Silicon Reality Check -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">4. Hardware &amp; Silicon Reality Check</span>
+        <h2 class="section-title">กายวิภาคการ์ดแลน ชิปเซตควบคุม และหน่วยความจำ DMA (Silicon &amp; Hardware Reality)</h2>
+
+        <p>
+          ในเชิงวิศวกรรมฮาร์ดแวร์ เลเยอร์ทั้ง 7 ไม่ได้เป็นเพียงบล็อกไดอะแกรมบนกระดาษ แต่ถูกแบ่งแยกการทำงานจริงระหว่าง <strong>ชิปเซตฮาร์ดแวร์ (Silicon ASIC)</strong> และ <strong>ซอฟต์แวร์เคอร์เนล (OS Kernel Space)</strong>:
+        </p>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px; margin: 20px 0;">
+          <h3 style="color: var(--accent); font-size: 1.12rem; margin-bottom: 12px;">โครงสร้างสถาปัตยกรรมภายในของการ์ดแลน (NIC Architecture)</h3>
+          <ul style="margin: 0 0 16px 20px; font-size: 0.94rem; line-height: 1.8; color: var(--ink-soft);">
+            <li><strong style="color: var(--ink);">ชิปเซต Physical Transceiver (PHY Chip):</strong> รับผิดชอบ Layer 1 แปลงสัญญาณแอนะล็อกระดับแรงดันไฟฟ้าจากขั้วต่อ RJ-45 หรือพัลส์แสงจากโมดูล SFP+ ให้กลายเป็นบิตดิจิทัลขนาน ส่งต่อไปยังชิป MAC ผ่านอินเทอร์เฟซบัส <strong>MII (Media Independent Interface)</strong> หรือ <strong>RGMII (Reduced Gigabit MII)</strong></li>
+            <li><strong style="color: var(--ink);">ชิป MAC Controller ASIC:</strong> รับผิดชอบ Layer 2 ทำหน้าที่ประมวลผลการคำนวณ CRC32 แบบเรียลไทม์ผ่านวงจรกะรีจิสเตอร์เชิงเส้น (LFSR), ตรวจสอบ Destination MAC ว่าตรงกับฮาร์ดแวร์หรือไม่, และตัดเฟรมส่วนหัวและส่วนท้ายออก</li>
+            <li><strong style="color: var(--ink);">DMA Ring Buffers (หน่วยความจำส่งต่อตรง O(1)):</strong> การ์ดแลนความเร็วสูงไม่รบกวนซีพียูในการคัดลอกข้อมูลทีละไบต์ แต่ใช้สถาปัตยกรรม <strong>Bus Master DMA (Direct Memory Access)</strong> โดยมีตัวชี้คิวแบบวงแหวน (RX Ring Buffer และ TX Ring Buffer) ในแรมของระบบ เมื่อเฟรมเดินทางมาถึง การ์ดแลนจะยิงข้อมูลลงแรมโดยตรงผ่านบัส PCIe แล้วส่งสัญญาณขัดจังหวะ <strong>MSI-X Interrupt</strong> ปลุกซีพียูให้มารับแพ็กเก็ตไปประมวลผลต่อ</li>
+            <li><strong style="color: var(--ink);">Hardware Offloading Engines:</strong> เพื่อให้บรรลุความเร็วระดับสายสัญญาณ (Wire Speed 10 Gbps ถึง 100 Gbps) โดยไม่ทำให้ซีพียูรับภาระหนัก ชิปการ์ดแลนสมัยใหม่มีวงจรคำนวณ Checksum ภายในฮาร์ดแวร์ (Checksum Offload) และวงจรช่วยหั่นท่อนข้อมูล TCP ขนาดยักษ์ 64 KB ให้เป็นขนาด MTU 1,500 ไบต์โดยอัตโนมัติ (TCP Segmentation Offload: TSO)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Interactive Packet Tracer & Inspector Simulator -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">5. Interactive Simulator</span>
+        <h2 class="section-title">ซิมูเลเตอร์การห่อหุ้มและการแยกแยะแพ็กเก็ตระดับไบต์ (Interactive Packet Tracer &amp; Protocol Inspector)</h2>
+
+        <p>
+          ทดลองจำลองกระบวนการห่อหุ้มข้อมูล (Encapsulation) จาก Application Layer ลงสู่สายสัญญาณจริง พร้อมคลิกตรวจสอบโครงสร้างไบต์และฟิลด์ควบคุมภายในแต่ละส่วนหัว:
+        </p>
+
+        <div class="interactive-panel" style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 24px; margin: 20px 0;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; align-items: center;">
+            <label style="font-weight: 700; font-size: 0.94rem;">เลือกรูปแบบข้อมูลจำลอง:</label>
+            <select id="sim-proto-select" class="nav-button" style="padding: 6px 12px; font-size: 0.90rem;">
+              <option value="http">HTTP Web Request (GET /index.html)</option>
+              <option value="coap">IoT CoAP Telemetry (POST /sensor/temp)</option>
+              <option value="dns">DNS Query (A-Record google.com)</option>
+            </select>
+            <button id="btn-encap-step" class="nav-button" style="background: var(--accent); color: #fff; border-color: var(--accent);">
+              ห่อหุ้มข้อมูล (Encapsulate Step)
+            </button>
+            <button id="btn-encap-reset" class="nav-button">
+              รีเซ็ต (Reset)
+            </button>
+          </div>
+
+          <div style="font-size: 0.92rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">
+            สถานะแพ็กเก็ตบนสายสัญญาณ (คลิกที่บล็อกแต่ละชั้นเพื่อดูการผ่าพิสูจน์โครงสร้างไบต์):
+          </div>
+
+          <div class="pkt-container">
+            <div id="pkt-visual-row" class="pkt-row">
+              <div id="blk-eth" class="pkt-hdr pkt-hdr-eth" style="opacity: 0.3;">Ethernet II Header (14B)</div>
+              <div id="blk-ip" class="pkt-hdr pkt-hdr-ip" style="opacity: 0.3;">IPv4 Header (20B)</div>
+              <div id="blk-tcp" class="pkt-hdr pkt-hdr-tcp" style="opacity: 0.3;">TCP Header (20B)</div>
+              <div id="blk-data" class="pkt-hdr pkt-hdr-data">User Payload (Data)</div>
+              <div id="blk-fcs" class="pkt-hdr pkt-hdr-fcs" style="opacity: 0.3;">FCS (4B)</div>
+            </div>
+          </div>
+
+          <div id="inspector-output" class="inspector-pane">
+            <div style="font-weight: 700; color: var(--accent); margin-bottom: 6px;">[Inspector Panel] ข้อมูลของบล็อกที่ถูกเลือก: User Payload</div>
+            <div>ขนาดข้อมูล: 1,460 ไบต์ | เนื้อหา: "GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0..."</div>
+            <div style="color: var(--ink-soft); margin-top: 4px;">คลิกปุ่ม 'ห่อหุ้มข้อมูล' ด้านบนเพื่อเริ่มเติมเฮดเดอร์ของเลเยอร์ถัดไป หรือคลิกที่กล่องเฮดเดอร์แต่ละกล่องเพื่ออ่านฟิลด์ระดับไบนารี</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: Self-Assessment Mastery Checklist -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">6. Self-Assessment Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเชี่ยวชาญตนเอง 6 ข้อ (Mastery Assessment)</h2>
+
+        <p>
+          ทดสอบความเข้าใจแก่นแท้ทางวิศวกรรมของบทเรียนนี้ด้วยตนเอง คลิกปุ่มเพื่อตรวจคำตอบและเหตุผลเชิงลึก:
+        </p>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 1: เหตุใดเราเตอร์จึงสามารถนำพาแพ็กเก็ตข้ามเครือข่ายได้ โดยอาศัยเพียง 3 เลเยอร์ล่าง (Physical, Data Link, Network) โดยไม่ต้องเปิดดูเลเยอร์ Transport หรือ Application?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> ภารกิจหลักของเราเตอร์คือการหาเส้นทางและการส่งต่อแพ็กเก็ต (Path Determination &amp; Packet Forwarding) ข้ามเครือข่าย ซึ่งใช้ข้อมูลเพียง Logical Destination IP Address ที่ระบุอยู่ในส่วนหัวของ Network Layer (Layer 3) เมื่อเราเตอร์ตรวจสอบ IP ปลายทางและเปิดตารางเส้นทาง FIB ทราบอินเทอร์เฟซขาออกแล้ว เราเตอร์จะทำการห่อหุ้มเฟรม Data Link (Layer 2) ใหม่ แล้วส่งออกทางฮาร์ดแวร์ Physical (Layer 1) ทันที การไม่แตะต้องหรือเปิดดูเนื้อหาใน Layer 4 ถึง 7 เป็นไปตามหลักการ <em>Information Hiding</em> และ <em>End-to-End Principle</em> ซึ่งช่วยลดความล่าช้าในการประมวลผล (Processing Latency) ของเราเตอร์ให้เหลือน้อยที่สุด
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 2: หากเครื่องคอมพิวเตอร์ A ส่งข้อมูลไปยังเครื่องคอมพิวเตอร์ B บนเครือข่ายแลนเดียวกันผ่านสวิตช์ L2 ข้อมูลจะเดินทางขึ้นไปถึงเลเยอร์ใดในตัวสวิตช์?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> สวิตช์แลนทั่วไปเป็นอุปกรณ์เลเยอร์ 2 (Data Link Layer Device) สวิตช์จะรับสัญญาณบิตจากสายเคเบิล (Layer 1) ประกอบเป็นเฟรมเพื่ออ่าน Destination MAC Address และตรวจสอบรหัสข้อผิดพลาด CRC32 ใน Layer 2 เพื่อตัดสินใจสลับพอร์ตส่งต่อตามตาราง MAC Address Table จากนั้นจะส่งเฟรมออกทางพอร์ตปลายทางโดย <em>ไม่มีการถอดหรืออ่าน Layer 3 (IP) เลย</em> ดังนั้นข้อมูลจึงเดินทางขึ้นไปสูงสุดเพียง Layer 2 ในตัวสวิตช์เท่านั้น
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 3: ในการคำนวณประสิทธิภาพ Throughput เหตุใด Bandwidth-Delay Product (BDP) จึงเป็นตัวกำหนดขนาดหน้าต่างรับข้อมูล (Receive Window Size) ของ TCP?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> BDP = Bandwidth × Round-Trip Time คือปริมาณข้อมูลสูงสุดที่สามารถเคลื่อนที่อยู่ในสายสัญญาณพร้อมๆ กัน หากขนาดของ TCP Window มีค่าน้อยกว่า BDP เครื่องส่งจะส่งข้อมูลจนเต็มหน้าต่างแล้วจำเป็นต้องหยุดนิ่งเพื่อรอสัญญาณตอบรับ ACK จากเครื่องรับ ทำให้สายสัญญาณความเร็วสูงกลายเป็นท่อว่างเปล่าที่ไม่ได้ใช้งาน การกำหนดให้ Window Size มีขนาดเท่ากับหรือมากกว่า BDP ทำให้เครื่องส่งสามารถฉีดข้อมูลลงท่อได้อย่างต่อเนื่อง 100% เต็มความจุของลิงก์
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 4: ความแตกต่างพื้นฐานระหว่าง Service Access Point (SAP) และ Protocol Data Unit (PDU) คืออะไร?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> SAP คือ <em>จุดประสานงานในแนวตั้ง (Vertical Interface)</em> ระหว่างเลเยอร์ที่อยู่ติดกันบนเครื่องเดียวกัน เช่น จุดที่เลเยอร์ N ให้บริการแก่เลเยอร์ N+1 ส่วน PDU คือ <em>รูปแบบโครงสร้างข้อมูลในแนวนอน (Horizontal Protocol)</em> ที่เลเยอร์ระดับเดียวกันบนคนละเครื่อง (Peer-to-Peer) ใช้สนทนาและสื่อสารระหว่างกันตามข้อกำหนดของโปรโตคอล
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 5: หากแอปพลิเคชันต้องการส่งข้อมูลแบบรวดเร็วที่สุดโดยไม่สนใจว่าแพ็กเก็ตจะตกหล่นหรือไม่ ควรเลือกใช้โปรโตคอลใดใน Transport Layer และเพราะเหตุใด?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> ควรเลือกใช้ <strong>UDP (User Datagram Protocol)</strong> เนื่องจากเป็นโปรโตคอลแบบไร้สายสัมพันธ์ (Connectionless) ไม่มีขั้นตอนการเริ่มจับมือ 3 จังหวะ (Three-way Handshake) ไม่มีกลไกการส่งซ้ำเมื่อแพ็กเก็ตสูญหาย และไม่มีการควบคุมความคับคั่งที่คอยหน่วงเวลา ทำให้มีค่าความล่าช้า (Latency) ต่ำที่สุด เหมาะสำหรับการสื่อสารแบบเรียลไทม์ เช่น วิดีโอสตรีมมิง การสนทนาด้วยเสียง และเซนเซอร์ IoT
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 6: เหตุใดในเครือข่ายเซนเซอร์ไร้สาย (WSN) สถาปัตยกรรม 7 เลเยอร์ของ OSI จึงสร้างปัญหาคอขวดด้านพลังงาน และวิศวกรแก้ปัญหาด้วยวิธีใด?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> สถาปัตยกรรม OSI เพิ่มขนาดโอเวอร์เฮดของเฮดเดอร์ในทุกๆ ชั้น ซึ่งในแพ็กเก็ตเซนเซอร์ที่มีเพย์โหลดขนาดเล็ก (เช่น 10-20 ไบต์) โอเวอร์เฮดนี้จะกินสัดส่วนพลังงานในการส่งคลื่นวิทยุไปมากกว่า 60-70% วิศวกร WSN จึงแก้ปัญหานี้โดยใช้ <strong>การออกแบบข้ามชั้นหน้าที่ (Cross-Layer Optimization)</strong> เช่น ให้เลเยอร์ Routing นำข้อมูลระดับพลังงานคงเหลือของแบตเตอรี่และความแรงของสัญญาณคลื่นวิทยุ (RSSI) จาก Physical Layer มาใช้ตัดสินใจเลือกเส้นทางโดยตรง โดยไม่ผ่านการแยกชั้นอย่างเคร่งครัด
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Synthesis & Mental Model -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">7. Synthesis &amp; Mental Model</span>
+        <h2 class="section-title">สังเคราะห์โมเดลความคิด: เปรียบเทียบ OSI vs TCP/IP vs WSN Cross-Layer</h2>
+
+        <p>
+          ตารางสังเคราะห์เปรียบเทียบแก่นความคิดเพื่อสร้างแผนที่ความรู้ที่สมบูรณ์ในสมองของวิศวกร:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">มิติการเปรียบเทียบ</th>
+                <th style="width: 25%;">โมเดลอ้างอิง OSI (7 เลเยอร์)</th>
+                <th style="width: 25%;">ชุดโพรโทคอล TCP/IP (5 เลเยอร์)</th>
+                <th style="width: 25%;">เครือข่ายเซนเซอร์ WSN / IoT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--paper2);">
+                <td><strong>1. ปรัชญาการออกแบบ</strong></td>
+                <td>ความสมบูรณ์แบบเชิงทฤษฎี แยกหน้าที่เด็ดขาด (Strict Layering)</td>
+                <td>ความเรียบง่ายเชิงปฏิบัติ (Rough consensus and running code)</td>
+                <td>ประหยัดพลังงานเป็นเอกเทศ (Energy-centric Optimization)</td>
+              </tr>
+              <tr>
+                <td><strong>2. จำนวนชั้นและการจัดกลุ่ม</strong></td>
+                <td>7 ชั้น (แยก Application, Presentation, Session อิสระ)</td>
+                <td>5 ชั้น (หลอมรวม 3 ชั้นบนเข้าเป็น Application Layer)</td>
+                <td>4-5 ชั้น ยุบรวมหรือใช้ <strong>Cross-Layer Optimization</strong></td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>3. การจัดการเฮดเดอร์</strong></td>
+                <td>เติมเฮดเดอร์เต็มรูปแบบในทุกชั้น มีขนาดเทอะทะ</td>
+                <td>เฮดเดอร์มาตรฐาน (IPv4: 20B, TCP: 20B)</td>
+                <td>บีบอัดเฮดเดอร์ระดับสูง (6LoWPAN บีบเหลือ 2-4 ไบต์)</td>
+              </tr>
+              <tr>
+                <td><strong>4. การแพร่หลายและสถานะ</strong></td>
+                <td>ล้มเหลวเชิงพาณิชย์ แต่ชนะเด็ดขาดในฐานะ <em>โมเดลเพื่อการสอน</em></td>
+                <td>มาตรฐานโดยพฤตินัย (De facto Standard) ของอินเทอร์เน็ตสากล</td>
+                <td>มาตรฐานแกนหลักของโครงข่าย IoT ยุคใหม่ (IEEE 802.15.4 / ZigBee)</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>5. ขอบเขตการทำงานของสวิตช์/โหนด</strong></td>
+                <td>แยกบริบท End System และ Intermediate Relay ชัดเจน</td>
+                <td>เราเตอร์ดูถึง Layer 3 สวิตช์ดูถึง Layer 2</td>
+                <td>เซนเซอร์โหนดทุกตัวอาจทำหน้าที่เป็นทั้ง Host และ Router (Ad-hoc Mesh)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 11: Curriculum Cross-Links -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">8. Hyperlinked Terminology Network</span>
+        <h2 class="section-title">เครือข่ายเชื่อมโยงความรู้ข้ามบทเรียน (Curriculum Cross-Links)</h2>
+
+        <p>
+          คำศัพท์และมโนทัศน์สำคัญในบทที่ 2 เชื่อมโยงไปยังรากฐานและบทเรียนขั้นสูงในทั้งสองแทร็ก:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--accent); font-size: 1.05rem; margin-bottom: 8px;">เชื่อมโยงภายใน Track 1 (DataCom)</h3>
+            <ul style="margin: 0 0 0 18px; font-size: 0.90rem; line-height: 1.8; color: var(--ink-soft);">
+              <li>ย้อนกลับสู่ <a class="term-link" href="ch01.html#sec-topologies">Topology &amp; Five Components (บทที่ 1)</a> เพื่อดูการวางสายกายภาพ</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch03.html">Data &amp; Signals (บทที่ 3)</a> เพื่อศึกษาฟิสิกส์คลื่นและการวิเคราะห์ฟูเรียร์ใน Physical Layer</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch10.html">Error Detection &amp; Correction (บทที่ 10)</a> เพื่อดูคณิตศาสตร์ CRC32 ใน Ethernet Trailer</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch11.html">Data Link Control (บทที่ 11)</a> เพื่อศึกษา Framing และ Stop-and-Wait vs Sliding Window</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch13.html">Wired LAN: Ethernet (บทที่ 13)</a> เพื่อเจาะลึกโครงสร้างเฟรม IEEE 802.3 MAC</li>
+            </ul>
+          </div>
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--purple); font-size: 1.05rem; margin-bottom: 8px;">เชื่อมโยงข้ามสู่ Track 2 (IoT &amp; WSN Core)</h3>
+            <ul style="margin: 0 0 0 18px; font-size: 0.90rem; line-height: 1.8; color: var(--ink-soft);">
+              <li>เชื่อมสู่ <a class="term-link" href="../iot/ch01.html">Introduction to WSN &amp; Node Anatomy</a> เพื่อดูข้อจำกัดพลังงานของไมโครคอนโทรลเลอร์</li>
+              <li>เชื่อมสู่ <em>WSN Chapter 3: MAC Protocols for Wireless Sensor Networks</em> เพื่อศึกษา S-MAC และ Duty Cycling ที่แหกกฎ OSI</li>
+              <li>เชื่อมสู่ <em>WSN Chapter 6: Network Layer &amp; 6LoWPAN</em> เพื่อดูกลไกการบีบอัด IPv6 Header 40 ไบต์ลงบนเฟรม 802.15.4</li>
+              <li>เชื่อมสู่ <em>WSN Chapter 9: Cross-Layer Design</em> เพื่อศึกษาการแลกเปลี่ยนตัวแปรกำลังส่งและแบตเตอรี่ข้ามเลเยอร์</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px;">
+        <a href="ch01.html" class="btn btn-secondary">← บทก่อนหน้า: บทที่ 1 Introduction</a>
+        <a href="ch03.html" class="btn btn-primary">บทถัดไป: บทที่ 3 Data and Signals →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Toggle answers
+    function toggleAns(btn) {
+      var ans = btn.nextElementSibling;
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        btn.textContent = 'ดูเฉลยและเหตุผลเชิงลึก';
+      } else {
+        ans.style.display = 'block';
+        btn.textContent = 'ซ่อนเฉลย';
+      }
+    }
+
+    // Packet Inspector Logic
+    (function () {
+      var select = document.getElementById('sim-proto-select');
+      var btnStep = document.getElementById('btn-encap-step');
+      var btnReset = document.getElementById('btn-encap-reset');
+      var out = document.getElementById('inspector-output');
+
+      var blkEth = document.getElementById('blk-eth');
+      var blkIp = document.getElementById('blk-ip');
+      var blkTcp = document.getElementById('blk-tcp');
+      var blkData = document.getElementById('blk-data');
+      var blkFcs = document.getElementById('blk-fcs');
+
+      var step = 0; // 0: Data only, 1: +L4, 2: +L3, 3: +L2
+
+      function updateDisplay() {
+        var proto = select.value;
+        if (step === 0) {
+          blkEth.style.opacity = '0.25';
+          blkIp.style.opacity = '0.25';
+          blkTcp.style.opacity = '0.25';
+          blkFcs.style.opacity = '0.25';
+          blkData.style.opacity = '1.0';
+          out.innerHTML = '<div style="font-weight:700; color:var(--accent); margin-bottom:6px;">[Step 0/3] Application Layer: ข้อมูลเพย์โหลดเริ่มต้น</div>' +
+            '<div>ข้อมูลแอปพลิเคชันถูกสร้างขึ้นในหน่วยความจำ ขนาดเพย์โหลด: ' + (proto === 'http' ? '1,460 ไบต์' : (proto === 'coap' ? '64 ไบต์' : '36 ไบต์')) + '</div>' +
+            '<div style="color:var(--ink-soft); margin-top:4px;">กดปุ่ม "ห่อหุ้มข้อมูล" เพื่อให้ระบบส่งเพย์โหลดลงสู่ Transport Layer</div>';
+        } else if (step === 1) {
+          blkEth.style.opacity = '0.25';
+          blkIp.style.opacity = '0.25';
+          blkTcp.style.opacity = '1.0';
+          blkFcs.style.opacity = '0.25';
+          blkData.style.opacity = '1.0';
+          var l4name = proto === 'dns' ? 'UDP Header' : 'TCP Header';
+          var l4port = proto === 'http' ? 'Dest Port: 443 (HTTPS), Src Port: 51234' : (proto === 'coap' ? 'Dest Port: 5683 (CoAP), Src Port: 49152' : 'Dest Port: 53 (DNS), Src Port: 58921');
+          out.innerHTML = '<div style="font-weight:700; color:#d97706; margin-bottom:6px;">[Step 1/3] Transport Layer: เติม ' + l4name + ' (20 ไบต์)</div>' +
+            '<div>ฟิลด์ควบคุม: ' + l4port + ' | Sequence No: 0x3F82A1B0 | ACK No: 0 | Flags: [ACK, PSH]</div>' +
+            '<div style="color:var(--ink-soft); margin-top:4px;">ข้อมูลกลายเป็น <strong>Segment / Datagram</strong> พร้อมส่งมอบต่อให้ Network Layer</div>';
+        } else if (step === 2) {
+          blkEth.style.opacity = '0.25';
+          blkIp.style.opacity = '1.0';
+          blkTcp.style.opacity = '1.0';
+          blkFcs.style.opacity = '0.25';
+          blkData.style.opacity = '1.0';
+          out.innerHTML = '<div style="font-weight:700; color:#059669; margin-bottom:6px;">[Step 2/3] Network Layer: เติม IPv4 Header (20 ไบต์)</div>' +
+            '<div>ฟิลด์ควบคุม: Source IP: 192.168.1.100 → Dest IP: 203.0.113.10 | TTL: 64 | Protocol: ' + (proto === 'dns' ? '17 (UDP)' : '6 (TCP)') + ' | Checksum: 0xB4A2</div>' +
+            '<div style="color:var(--ink-soft); margin-top:4px;">ข้อมูลกลายเป็น <strong>IP Packet (Datagram)</strong> พร้อมถูกส่งต่อไปยังไดรเวอร์การ์ดแลนใน Data Link Layer</div>';
+        } else if (step >= 3) {
+          blkEth.style.opacity = '1.0';
+          blkIp.style.opacity = '1.0';
+          blkTcp.style.opacity = '1.0';
+          blkFcs.style.opacity = '1.0';
+          blkData.style.opacity = '1.0';
+          out.innerHTML = '<div style="font-weight:700; color:#2563eb; margin-bottom:6px;">[Step 3/3] Data Link Layer: เติม Ethernet Header (14B) และ FCS (4B)</div>' +
+            '<div>ฟิลด์ควบคุม: Src MAC: AA:BB:CC:DD:EE:FF → Dest MAC: 11:22:33:44:55:66 (Default Gateway) | EtherType: 0x0800 (IPv4) | CRC32: 0x7E9A12DF</div>' +
+            '<div style="color:var(--ink-soft); margin-top:4px;">เฟรมข้อมูลสมบูรณ์พร้อมฉีดลงสู่ตัวกลางกายภาพ Physical Layer (Layer 1) ผ่านชิป PHY</div>';
+        }
+      }
+
+      btnStep.addEventListener('click', function () {
+        if (step < 3) {
+          step++;
+          updateDisplay();
+        }
+      });
+
+      btnReset.addEventListener('click', function () {
+        step = 0;
+        updateDisplay();
+      });
+
+      select.addEventListener('change', function () {
+        step = 0;
+        updateDisplay();
+      });
+
+      // Click to inspect individual blocks
+      blkEth.addEventListener('click', function () {
+        out.innerHTML = '<div style="font-weight:700; color:#2563eb; margin-bottom:6px;">[Inspector] Layer 2: Ethernet II Header (14 ไบต์)</div>' +
+          '<div>• Preamble & SFD: 8 ไบต์ (ซิงโครไนซ์สัญญาณนาฬิกา)<br>' +
+          '• Destination MAC: 6 ไบต์ (ที่อยู่ของการ์ดแลนหรือเราเตอร์ถัดไป)<br>' +
+          '• Source MAC: 6 ไบต์ (ที่อยู่ของการ์ดแลนเครื่องส่ง)<br>' +
+          '• EtherType: 2 ไบต์ (0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP)</div>';
+      });
+
+      blkIp.addEventListener('click', function () {
+        out.innerHTML = '<div style="font-weight:700; color:#059669; margin-bottom:6px;">[Inspector] Layer 3: IPv4 Header (20 ไบต์)</div>' +
+          '<div>• Version: 4 บิต (0100 = IPv4) | IHL: 4 บิต (0101 = 20 ไบต์)<br>' +
+          '• DSCP/ECN: 8 บิต (Quality of Service)<br>' +
+          '• Total Length: 16 บิต (ขนาดรวมของแพ็กเก็ต L3)<br>' +
+          '• Identification & Flags & Fragment Offset: 32 บิต (ควบคุมการหั่นท่อนแพ็กเก็ต)<br>' +
+          '• TTL (Time to Live): 8 บิต (ป้องกันลูปวนไม่สิ้นสุด)<br>' +
+          '• Protocol: 8 บิต (6 = TCP, 17 = UDP, 1 = ICMP)<br>' +
+          '• Header Checksum: 16 บิต (ตรวจสอบความสมบูรณ์ของเฮดเดอร์)<br>' +
+          '• Source IP: 32 บิต (ต้นทาง) | Destination IP: 32 บิต (ปลายทาง)</div>';
+      });
+
+      blkTcp.addEventListener('click', function () {
+        out.innerHTML = '<div style="font-weight:700; color:#d97706; margin-bottom:6px;">[Inspector] Layer 4: TCP Header (20 ไบต์)</div>' +
+          '<div>• Source Port: 16 บิต (ระบุโพรเซสต้นทาง)<br>' +
+          '• Destination Port: 16 บิต (ระบุบริการปลายทาง)<br>' +
+          '• Sequence Number: 32 บิต (ลำดับไบต์ข้อมูล)<br>' +
+          '• Acknowledgment Number: 32 บิต (ลำดับไบต์ที่รอรับถัดไป)<br>' +
+          '• Data Offset & Reserved: 8 บิต | Flags: 8 บิต (SYN, ACK, FIN, RST, PSH, URG)<br>' +
+          '• Window Size: 16 บิต (ขนาดบัฟเฟอร์รับข้อมูลสำหรับ Flow Control)<br>' +
+          '• Checksum: 16 บิต | Urgent Pointer: 16 บิต</div>';
+      });
+
+      blkData.addEventListener('click', function () {
+        out.innerHTML = '<div style="font-weight:700; color:#7c3aed; margin-bottom:6px;">[Inspector] Layer 5: User Application Payload</div>' +
+          '<div>เนื้อหาข้อมูลที่สร้างโดยซอฟต์แวร์ประยุกต์ เช่น HTTP Request Header, JSON payload, หรือไบนารีข้อมูลเซนเซอร์ ไม่มีการเปลี่ยนแปลงเนื้อหาภายในระหว่างการเดินทางผ่านเครือข่าย</div>';
+      });
+
+      blkFcs.addEventListener('click', function () {
+        out.innerHTML = '<div style="font-weight:700; color:#dc2626; margin-bottom:6px;">[Inspector] Layer 2 Trailer: Frame Check Sequence (FCS / CRC32, 4 ไบต์)</div>' +
+          '<div>รหัสตรวจสอบความผิดพลาดที่สร้างขึ้นโดยฮาร์ดแวร์ชิป MAC โดยนำบิตทั้งหมดตั้งแต่ Destination MAC จนถึงจุดสิ้นสุดของ Data มาเข้าวงจรหารพหุนาม CRC-32 (IEEE 802.3) หากผลลัพธ์ที่เครื่องรับไม่ตรงกัน เฟรมจะถูกโยนทิ้งทันทีในระดับฮาร์ดแวร์</div>';
+      });
+
+      updateDisplay();
+    })();
+  </script>
+</body>
+
+</html>

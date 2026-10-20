@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 6: การรวมสัญญาณและการกระจายแถบความถี่ · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+  <style>
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .phonetic-impl {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--paper2);
+      border-left: 3px solid var(--purple);
+      font-size: 0.86rem;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-xs);
+    }
+    .calc-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-scenario {
+      background: var(--paper2);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .canvas-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .canvas-ctrl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .canvas-box {
+      background: #0f172a;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-top: 14px;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .metric-pill-val {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .code-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.9rem;
+    }
+    .code-table th, .code-table td {
+      border: 1px solid var(--rule);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .code-table th {
+      background: var(--paper2);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .code-table tr:hover {
+      background: var(--paper2);
+    }
+
+    .checklist-item {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .checklist-item:hover {
+      border-color: var(--accent);
+    }
+    .checklist-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .checklist-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist-body {
+      margin-top: 10px;
+      margin-left: 30px;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      display: none;
+    }
+    .checklist-item.checked {
+      background: var(--paper2);
+      border-color: var(--green);
+    }
+    .checklist-item.checked .checklist-body {
+      display: block;
+    }
+
+    .synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+    .synthesis-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .synthesis-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <site-header></site-header>
+
+  <div class="chapter-container">
+
+    <!-- ═══════════════ SIDEBAR NAVIGATION ═══════════════ -->
+    <aside class="chapter-sidebar">
+      <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+        <a href="ch05.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Ch05</a>
+        <a href="ch07.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch07 →</a>
+      </div>
+
+      <div style="font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);">
+        กำลังอ่าน: <span id="sidebar-live-section" style="font-weight: 700; color: var(--accent);">บทนำ</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 4px;">
+        <a href="#sec-genesis" class="sidebar-link active">1. ปฐมบทการรวมสัญญาณและการกระจายคลื่น</a>
+        <a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และสัทศาสตร์</a>
+        <a href="#sec-fdm-wdm" class="sidebar-link">3. การรวมสัญญาณ FDM, OFDM, และ WDM</a>
+        <a href="#sec-tdm-sync-stat" class="sidebar-link">4. สถาปัตยกรรม TDM: Synchronous vs Statistical</a>
+        <a href="#sec-spread-spectrum" class="sidebar-link">5. ทฤษฎีสเปรดสเปกตรัม (FHSS &amp; DSSS)</a>
+        <a href="#sec-cdma-walsh" class="sidebar-link">6. สถาปัตยกรรม CDMA และรหัสวอลช์ (Walsh Codes)</a>
+        <a href="#sec-calculations" class="sidebar-link">7. ตัวอย่างการคำนวณ 4 กรณีศึกษา</a>
+        <a href="#sec-silicon" class="sidebar-link">8. กายวิภาคระดับซิลิคอนและชิปเซนเซอร์</a>
+        <a href="#sec-simulator" class="sidebar-link">9. สตูดิโอจำลอง TDM &amp; DSSS Spreading</a>
+        <a href="#sec-checklist" class="sidebar-link">10. เช็กลิสต์ประเมินความเข้าใจวิศวกรรม</a>
+        <a href="#sec-synthesis" class="sidebar-link">11. สรุปสังเคราะห์โมเดลความคิด 3 มิติ</a>
+        <a href="#sec-crosslinks" class="sidebar-link">12. จุดเชื่อมโยงสู่เครือข่ายเซนเซอร์ (WSN)</a>
+      </nav>
+    </aside>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="chapter-content">
+
+      <!-- Header Banner -->
+      <div style="margin-bottom: 36px;">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">
+          หลักสูตรการสื่อสารข้อมูลและสถาปัตยกรรมเครือข่ายเซนเซอร์ · Data Communications Track
+        </div>
+        <h1 style="font-size: 2.2rem; font-weight: 900; color: var(--ink); line-height: 1.25; margin-bottom: 12px;">
+          บทที่ 6: การรวมสัญญาณและการกระจายแถบความถี่ (Multiplexing &amp; Spreading)
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7;">
+          ศึกษาสองเสาหลักของการบริหารทรัพยากรช่องสัญญาณ: การแชร์สายส่งความเร็วสูงด้วยการรวมสัญญาณ (Multiplexing: FDM, WDM, Synchronous TDM, Statistical TDM)
+          และกลไกสเปรดสเปกตรัม (Spread Spectrum: FHSS และ DSSS) เพื่อสร้างภูมิคุ้มกันต่อการแจมมิ่งและการแทรกสอด
+          เจาะลึกการคำนวณ Processing Gain (G_p), โครงสร้างเฟรม T1/E1, การพิสูจน์เวกเตอร์ตั้งฉาก CDMA,
+          ตลอดจนการประยุกต์ใช้ DSSS ขนาด 32 ชิปในชิปเซนเซอร์ CC2420 (IEEE 802.15.4) และ Frequency Hopping ในบลูทูธ
+        </p>
+      </div>
+
+      <!-- SECTION 1: Genesis -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">ปฐมบททางวิศวกรรม: ความคุ้มค่าทางเศรษฐศาสตร์และการป้องกันการดักฟังสงคราม</h2>
+
+        <p>
+          ในประวัติศาสตร์วิศวกรรมโทรคมนาคม การลากสายเคเบิลทองแดงหรือสายใยแก้วนำแสงข้ามทวีปและข้ามมหาสมุทรมีต้นทุนมหาศาลระดับหลายล้านดอลลาร์ต่อกิโลเมตร
+          หากสายสัญญาณความเร็วสูง 1 เส้น สามารถรับส่งข้อมูลของผู้ใช้ได้เพียงคนเดียว โครงข่ายอินเทอร์เน็ตและโทรศัพท์สากลจะไม่มีวันคุ้มทุนทางเศรษฐศาสตร์ได้เลย
+          นี่คือจุดกำเนิดของ <strong>การรวมสัญญาณ (Multiplexing)</strong>: ศาสตร์แห่งการนำช่องสัญญาณความเร็วต่ำ n ช่อง มาผสมผสานรวมกันเพื่อส่งผ่าน <strong>ลิงก์ความเร็วสูงเส้นเดียว (High-Capacity Shared Link)</strong>
+        </p>
+
+        <p>
+          ในอีกมิติหนึ่ง ณ ช่วงสงครามโลกครั้งที่ 2 กองทัพเรือเผชิญวิกฤตตอร์ปิโดควบคุมด้วยวิทยุถูกข้าศึกปล่อยคลื่นกวนสัญญาณ (Jamming) ที่ความถี่เดียวกันจนตอร์ปิโดเสียทิศทาง
+          ในปี 1942 ดารานักแสดงฮอลลีวูดและนักประดิษฐ์อัจฉริยะ <strong>Hedy Lamarr</strong> ร่วมกับคีตกวี <strong>George Antheil</strong> ได้จดสิทธิบัตรระบบนำวิถีตอร์ปิโดที่ใช้ม้วนกระดาษเจาะรูเปียโนอัตโนมัติในการ <em>กระโดดความถี่สลับไปมาระหว่าง 88 ความถี่พร้อมกันทั้งฝั่งส่งและฝั่งรับ</em>
+          นวัตกรรมนี้คือรากเหง้าของ <strong>สเปรดสเปกตรัม (Spread Spectrum)</strong>: แนวคิดทางวิศวกรรมที่ยอม <em>ขยายแบนด์วิดท์ของสัญญาณให้กว้างกว่าข้อมูลเดิมนับร้อยนับพันเท่า</em> เพื่อแลกกับความลับ ความมั่นคงปลอดภัย และความสามารถในการส่งข้อมูลให้รอดพ้นแม้สัญญาณจะจมอยู่ใต้คลื่นรบกวน ซึ่งกลายมาเป็นหัวใจของ Wi-Fi, บลูทูธ, และเครือข่ายเซนเซอร์ไร้สายในปัจจุบัน
+        </p>
+      </section>
+
+      <!-- SECTION 2: Technical Glossary & Phonetics -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary &amp; Phonetics</span>
+        <h2 class="section-title">อภิธานศัพท์เทคนิค สัทศาสตร์ และการประยุกต์ใช้ในระบบจริง (Nomenclature &amp; Phonetics)</h2>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Multiplexing &amp; Demultiplexing
+            <span class="phonetic-pronounce">มัล-ติ-เพล็ก-ซิง และ ดี-มัล-ติ-เพล็ก-ซิง</span>
+          </div>
+          <div class="phonetic-desc">
+            <strong>Multiplexing (MUX):</strong> กระบวนการทางวิศวกรรมที่รวมสัญญาณจากหลายช่องทางอินพุต (n lines) เข้าเป็นสัญญาณชุดเดียวเพื่อส่งผ่านสื่อกลางทางกายภาพร่วมกันเพียงเส้นเดียว<br>
+            <strong>Demultiplexing (DEMUX):</strong> กระบวนการย้อนกลับที่ฝั่งรับ ซึ่งทำการแยกสัญญาณผสมผสานดังกล่าวออกเป็นช่องสัญญาณเอาต์พุตเดิม (n lines) อย่างถูกต้องแม่นยำ
+          </div>
+          <div class="phonetic-impl">
+            Context: ในเกตเวย์ IoT สตรีมข้อมูลจากเซนเซอร์ 10,000 โหนดจะถูกรวมสัญญาณผ่านลิงก์ใยแก้วนำแสงหรือ 5G ส่งขึ้นสู่คลาวด์เซิร์ฟเวอร์
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Guard Band
+            <span class="phonetic-pronounce">การ์ด แบนด์</span>
+          </div>
+          <div class="phonetic-desc">
+            แถบความถี่ว่างเปล่าที่ถูกเว้นไว้คั่นกลางระหว่างสองช่องสัญญาณที่อยู่ติดกันในระบบ FDM เพื่อป้องกันไม่ให้หางสเปกตรัมของคลื่นล้นไปแทรกสอดข้ามช่องสัญญาณ (Inter-Channel Crosstalk)
+          </div>
+          <div class="phonetic-impl">
+            Context: ช่องสัญญาณเสียงโทรศัพท์ FDM ขนาด 3.1 kHz ถูกจัดสรรช่องสัญญาณจริงกว้าง 4.0 kHz โดยเว้นแถบ Guard Band ไว้ 900 Hz เพื่อป้องกันเสียงรบกวนข้ามคู่สาย
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Frequency-Division Multiplexing (FDM)
+            <span class="phonetic-pronounce">ฟรี-เควน-ซี ดิ-วิ-ชัน มัล-ติ-เพล็ก-ซิง</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการรวมสัญญาณเชิงแอนะล็อก โดยการมอดูเลตแต่ละช่องสัญญาณข้อมูลเข้ากับคลื่นพาห์ที่มีความถี่แตกต่างกัน (f1, f2, ..., fn) เพื่อแบ่งแถบความถี่รวมของสื่อกลางออกเป็นช่องย่อยๆ ที่ทำงานพร้อมกันในเวลาเดียวกัน
+          </div>
+          <div class="phonetic-impl">
+            Context: เป็นรากฐานของระบบเคเบิลทีวี (CATV), การกระจายเสียงวิทยุ AM/FM, และระบบโทรศัพท์โครงข่ายแกนหลักยุคแรก
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Wavelength-Division Multiplexing (WDM)
+            <span class="phonetic-pronounce">เวฟ-เลงธ์ ดิ-วิ-ชัน มัล-ติ-เพล็ก-ซิง</span>
+          </div>
+          <div class="phonetic-desc">
+            การรวมสัญญาณ FDM บนสายใยแก้วนำแสง โดยนำแสงเลเซอร์ที่มีความยาวคลื่น (สี) แตกต่างกัน เช่น ในย่าน 1550 นาโนเมตร มารวมเข้าสู่เส้นใยแก้วเส้นเดียวผ่านปริซึมหรือตัวรวมแสงแบบเลี้ยวเบน
+          </div>
+          <div class="phonetic-impl">
+            Context: Dense WDM (DWDM) สามารถบรรจุสัญญาณแสงได้ถึง 80 ถึง 160 ช่องสัญญาณบนสายใยแก้วเส้นเดียว ให้ความจุรวมเกินกว่า 10 ถึง 40 Terabits ต่อวินาที
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Synchronous TDM
+            <span class="phonetic-pronounce">ซิง-โคร-นัส ที-ดี-เอ็ม</span>
+          </div>
+          <div class="phonetic-desc">
+            การรวมสัญญาณเชิงดิจิทัลโดยการแบ่งเวลาออกเป็นเฟรมรอบ (Frames) และแบ่งแต่ละเฟรมออกเป็นช่วงเวลาสั้นๆ เรียกว่า ไทม์สล็อต (Time Slots) โดยแต่ละช่องสัญญาณอินพุตจะได้รับสล็อตเวลาประจำตัวแบบตายตัวในทุกเฟรม ไม่ว่าช่องสัญญาณนั้นจะมีข้อมูลส่งหรือไม่ก็ตาม
+          </div>
+          <div class="phonetic-impl">
+            Context: ระบบสายสัญญาณดิจิทัล T1 (1.544 Mbps) และ E1 (2.048 Mbps) ใช้ Synchronous TDM ซึ่งหากอุปกรณ์หยุดส่ง ช่องเวลานั้นจะถูกทิ้งว่างเปล่า (Empty Slot) กลายเป็นการสิ้นเปลืองแบนด์วิดท์
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Statistical TDM (Asynchronous TDM)
+            <span class="phonetic-pronounce">สตา-ติส-ติ-คัล ที-ดี-เอ็ม</span>
+          </div>
+          <div class="phonetic-desc">
+            การรวมสัญญาณแบบจัดสรรเวลาตามความต้องการจริง (Dynamic Allocation) โดยจะไม่กันสล็อตว่างไว้ให้โหนดที่อยู่นิ่ง แต่จะจัดสรรสล็อตเวลาให้เฉพาะช่องสัญญาณที่มีข้อมูลรอส่งอยู่ในคิวเท่านั้น โดยแต่ละสล็อตต้องมีเฮดเดอร์ระบุแอดเดรสของช่องทาง
+          </div>
+          <div class="phonetic-impl">
+            Context: เป็นรากฐานของระบบ Packet Switching, โหมดการส่งข้อมูล ATM, และสวิตช์อีเทอร์เน็ต ช่วยประหยัดแบนด์วิดท์สายส่งได้มากกว่า Synchronous TDM ถึง 3-5 เท่า
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Spread Spectrum (SS)
+            <span class="phonetic-pronounce">สเปรด สเปก-ตรัม</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการขยายแถบความถี่ของสัญญาณข้อมูลให้กว้างกว่าแบนด์วิดท์ขั้นต่ำที่ต้องการหลายสิบถึงหลายร้อยเท่า เพื่อแลกกับความสามารถในการต้านทานคลื่นรบกวน (Interference Rejection), ความยากต่อการดักฟัง (Low Probability of Intercept), และการแชร์ความถี่ร่วมกันหลายอุปกรณ์
+          </div>
+          <div class="phonetic-impl">
+            Context: อ้างอิงทฤษฎีแชนนอน C = B × log2(1 + S/N) หากเพิ่ม B ให้กว้างมากๆ ระบบจะสามารถถอดรหัสสัญญาณได้อย่างสมบูรณ์แบบแม้กำลังสัญญาณ S จะจมอยู่ต่ำกว่าระดับสัญญาณรบกวน N (Negative SNR)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Frequency Hopping Spread Spectrum (FHSS)
+            <span class="phonetic-pronounce">ฟรี-เควน-ซี ฮอป-ปิง สเปรด สเปก-ตรัม</span>
+          </div>
+          <div class="phonetic-desc">
+            การกระจายแถบความถี่โดยให้สัญญาณคลื่นพาห์กระโดดเปลี่ยนความถี่ไปตามลำดับสุ่มเทียม (Pseudorandom Sequence) ข้ามช่องความถี่จำนวนมากอย่างรวดเร็ว โดยฝั่งรับต้องมีรหัสสุ่มเทียมที่ซิงโครไนซ์ตรงกันพอดี
+          </div>
+          <div class="phonetic-impl">
+            Context: มาตรฐาน Bluetooth Classic กระโดดความถี่สลับไปมา 79 ช่องสัญญาณในย่าน 2.4 GHz ด้วยความเร็ว 1,600 ครั้งต่อวินาที ทำให้รอดพ้นจากการถูกคลื่น Wi-Fi กวนช่องสัญญาณอย่างสิ้นเชิง
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Direct Sequence Spread Spectrum (DSSS)
+            <span class="phonetic-pronounce">ได-เรกต์ ซี-เควนซ์ สเปรด สเปก-ตรัม</span>
+          </div>
+          <div class="phonetic-desc">
+            การกระจายแถบความถี่โดยนำข้อมูลแต่ละบิตไปคูณ (XOR) เข้ากับลำดับรหัสความเร็วสูง เรียกว่า ชิปซีเควนซ์ (Chip Sequence) ที่มีความถี่ชิปสูงกว่าอัตราบิตเดิมหลายเท่า ทำให้สเปกตรัมของสัญญาณแผ่กว้างออกและมีระดับกำลังงานลดต่ำลงคล้ายสัญญาณรบกวนพื้นหลัง
+          </div>
+          <div class="phonetic-impl">
+            Context: ชิปเซนเซอร์ CC2420 (IEEE 802.15.4) แปลงข้อมูลทุกๆ 4 บิตให้กลายเป็นชิปซีเควนซ์ขนาด 32 ชิป สร้างอัตราการส่งชิป 2.0 Mchips/s ให้กำลังขยายจากการประมวลผล (Processing Gain) สูงถึง 9 dB
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Processing Gain (G_p)
+            <span class="phonetic-pronounce">โปร-เซส-ซิง เกน</span>
+          </div>
+          <div class="phonetic-desc">
+            อัตราส่วนเชิงลอการิทึมระหว่างแบนด์วิดท์ของสัญญาณสเปรดสเปกตรัม (B_ss) ต่อแบนด์วิดท์ของสัญญาณข้อมูลดั้งเดิม (B_data) คำนวณจาก G_p = 10 log10(B_ss / B_data) หรือ 10 log10(R_chip / R_bit) มีหน่วยเป็นเดซิเบล (dB) บ่งบอกถึงอัตราการกดทับสัญญาณรบกวนที่เครื่องรับทำได้
+          </div>
+          <div class="phonetic-impl">
+            Context: เครื่องรับสัญญาณ GPS มี Processing Gain สูงถึง 43 dB ทำให้สามารถดึงสัญญาณดาวเทียมที่แผ่วเบาถึง -130 dBm ขึ้นมาจาก Thermal Noise Floor (-110 dBm) ได้อย่างน่าอัศจรรย์
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Code Division Multiple Access (CDMA)
+            <span class="phonetic-pronounce">โคด ดิ-วิ-ชัน มัล-ติ-เพิล แอ็ก-เซส</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการเข้าถึงช่องสัญญาณหลายทางที่อนุญาตให้อุปกรณ์ทุกตัวสามารถส่งข้อมูลพร้อมกันในเวลาเดียวกันและใช้แถบความถี่เดียวกันทั้งหมด โดยแต่ละอุปกรณ์จะได้รับรหัสเวกเตอร์ตั้งฉาก (Orthogonal Code) เฉพาะตัว เครื่องรับจะใช้การด็อตโปรดักต์ (Dot Product) เพื่อถอดรหัสเฉพาะข้อมูลของสถานีที่ต้องการ
+          </div>
+          <div class="phonetic-impl">
+            Context: เป็นรากฐานของระบบโทรศัพท์เคลื่อนที่ 3G (cdma2000 และ WCDMA) และระบบพิกัดดาวเทียมสากล (GPS / Galileo)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Walsh Code
+            <span class="phonetic-pronounce">วอลช์ โคด</span>
+          </div>
+          <div class="phonetic-desc">
+            ชุดของเวกเตอร์รหัสทางคณิตศาสตร์ที่สร้างขึ้นจากเมทริกซ์ฮาดามาร์ด (Hadamard Matrix) มีคุณสมบัติเด่นคือเป็น เวกเตอร์ตั้งฉากซึ่งกันและกันอย่างสมบูรณ์ (Orthogonal) โดยผลคูณจุดระหว่างรหัสต่างชุดกันจะมีค่าเป็นศูนย์พอดี (C_i · C_j = 0 เมื่อ i ≠ j)
+          </div>
+          <div class="phonetic-impl">
+            Context: เสาสัญญาณ 3G CDMA ใช้รหัส Walsh ขนาด 64 หรือ 128 ชิป เพื่อแยกแยะช่องสัญญาณดาวน์ลิงก์ของผู้ใช้หลายสิบคนในเซลล์เดียวกันโดยไม่เกิดสัญญาณแทรกสอดข้ามผู้ใช้
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: FDM, OFDM, and WDM -->
+      <section id="sec-fdm-wdm" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. FDM, OFDM, &amp; WDM Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรมการรวมสัญญาณ FDM, OFDM, และ WDM</h2>
+
+        <p>
+          การรวมสัญญาณแบ่งออกเป็นสองแนวทางหลักตามธรรมชาติของสัญญาณ:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Frequency-Division Multiplexing (FDM) และโครงสร้างลำดับชั้นเสียง</h3>
+        <p>
+          ในระบบ FDM คลื่นสัญญาณแอนะล็อก n ช่องสัญญาณจะถูกมิกซ์เข้ากับคลื่นพาห์ย่อยที่มีความถี่ต่างกัน โดยต้องเว้นแถบป้องกัน (Guard Band) ไว้ระหว่างช่องสัญญาณ:
+          <br>• แบนด์วิดท์รวมที่ต้องการคือ: <code>B_total ≥ Σ B_i + Σ Guard_Bands</code>
+          <br>ในโครงข่ายโทรศัพท์มาตรฐานของ Bell System ได้กำหนดลำดับชั้น FDM ไว้ดังนี้:
+          <br>• <strong>Voice Channel:</strong> กว้าง 4 kHz (ใช้งานจริง 300-3400 Hz พร้อม Guard Band 900 Hz)
+          <br>• <strong>Group:</strong> รวม 12 ช่องเสียง = 48 kHz (ย่านความถี่ 60 ถึง 108 kHz)
+          <br>• <strong>Supergroup:</strong> รวม 5 Groups (60 ช่องเสียง) = 240 kHz (ย่าน 312 ถึง 552 kHz)
+          <br>• <strong>Mastergroup:</strong> รวม 10 Supergroups (600 ช่องเสียง) = 2.40 MHz (ย่าน 564 ถึง 3084 kHz)
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. Orthogonal Frequency-Division Multiplexing (OFDM)</h3>
+        <p>
+          ใน FDM ดั้งเดิม การเว้น Guard Band ทำให้สูญเสียสเปกตรัมไปถึง 20-30%
+          วิศวกรจึงพัฒนา <strong>OFDM</strong> โดยกำหนดให้ระยะห่างความถี่ระหว่างคลื่นพาห์ย่อย (Subcarrier Spacing: Δf) สัมพันธ์กับคาบเวลาของสัญลักษณ์ข้อมูลพอดี:
+        </p>
+        <div class="m-block">
+          <span class="m-var">Δf</span>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-numr">1</span>
+            <span class="m-denm"><span class="m-var">T</span><span class="m-sub">s</span></span>
+          </div>
+        </div>
+        <p style="font-size: 0.92rem; line-height: 1.7;">
+          ณ จุดกึ่งกลางความถี่สูงสุดของคลื่นพาห์ย่อยตัวหนึ่ง คลื่นพาห์ย่อยตัวอื่นๆ ทั้งหมดจะมีค่าแอมพลิจูดเป็นศูนย์พอดี (Orthogonality Condition)
+          ทำให้คลื่นสามารถวางซ้อนทับกันได้โดยไม่ต้องมี Guard Band ประหยัดสเปกตรัมได้มหาศาล และเป็นหัวใจของ Wi-Fi 6, 5G NR, และมาตรฐานเครือข่ายเซนเซอร์สมาร์ทกริด <strong>IEEE 802.15.4g SUN (Smart Utility Networks)</strong>
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">3. Wavelength-Division Multiplexing (WDM)</h3>
+        <p>
+          WDM คือการประยุกต์ FDM บนแสงเลเซอร์ข้ามสายใยแก้วนำแสง:
+          <br>• <strong>Coarse WDM (CWDM):</strong> มีระยะห่างระหว่างความยาวคลื่นกว้างถึง 20 นาโนเมตร บรรจุได้ 18 ช่องสัญญาณในย่าน 1270 ถึง 1610 nm ต้นทุนต่ำ ไม่ต้องใช้วงจรคุมอุณหภูมิเลเซอร์
+          <br>• <strong>Dense WDM (DWDM):</strong> มีระยะห่างแคบมากเพียง 0.8 นาโนเมตร (100 GHz) หรือ 0.4 นาโนเมตร (50 GHz) ในย่าน C-band (1530-1565 nm) บรรจุได้ถึง 80-160 ช่องสัญญาณ สามารถขยายสัญญาณแสงพร้อมกันทุกช่องได้โดยตรงผ่านแอมพลิฟายเออร์ใยแก้วเจือเออร์เบียม (EDFA)
+        </p>
+      </section>
+
+      <!-- SECTION 4: Synchronous vs Statistical TDM -->
+      <section id="sec-tdm-sync-stat" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">4. TDM Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรม Time-Division Multiplexing (TDM): Synchronous vs Statistical</h2>
+
+        <p>
+          เมื่อข้อมูลอยู่ในรูปดิจิทัล การรวมสัญญาณจะทำใน <strong>โดเมนเวลา (Time Domain)</strong>:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Synchronous TDM และโครงสร้างเฟรม T1 / E1</h3>
+        <p>
+          ใน Synchronous TDM ทุกโหนดจะได้รับจัดสรรสล็อตเวลาขนาดคงที่ในแต่ละเฟรม:
+          <br>• <strong>ระบบสาย T1 (มาตรฐานอเมริกาเหนือ &amp; ญี่ปุ่น):</strong>
+          <br>รวม 24 ช่องสัญญาณเสียง PCM (แต่ละช่องมีขนาด 8 บิต) ต่อหนึ่งเฟรม พร้อมบิตซิงค์เฟรมมิ่ง 1 บิต:
+          <br><code>ความยาวเฟรม T1 = (24 ช่อง × 8 บิต) + 1 บิตเฟรมมิ่ง = 193 บิตต่อเฟรม</code>
+          <br>เนื่องจากสัญญาณเสียงสุ่มตัวอย่าง 8,000 ครั้งต่อวินาที ในหนึ่งวินาทีจึงมี 8,000 เฟรม:
+          <br><code>อัตราข้อมูล T1 = 193 บิต/เฟรม × 8,000 เฟรม/วินาที = 1,544,000 bps = 1.544 Mbps</code>
+          <br>• <strong>ระบบสาย E1 (มาตรฐานยุโรป &amp; สากล):</strong>
+          <br>รวม 32 ไทม์สล็อต สล็อตละ 8 บิต (TS0 ใช้สำหรับควบคุมเฟรมมิ่ง, TS16 ใช้สำหรับสัญญาณควบคุม Signaling, และเหลือ 30 ช่องสำหรับข้อมูลเสียงจริง):
+          <br><code>ความยาวเฟรม E1 = 32 ช่อง × 8 บิต = 256 บิตต่อเฟรม</code>
+          <br><code>อัตราข้อมูล E1 = 256 บิต/เฟรม × 8,000 เฟรม/วินาที = 2,048,000 bps = 2.048 Mbps</code>
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. Statistical TDM (Asynchronous TDM)</h3>
+        <p>
+          จุดอ่อนมหันต์ของ Synchronous TDM คือ <strong>การสูญเปล่าของสล็อตว่าง (Empty Slots)</strong>
+          หากมีผู้ใช้ 24 คน แต่มีคนพูดเพียง 4 คน ช่องเวลาอีก 20 ช่องจะถูกส่งไปแบบว่างเปล่า
+          <br><strong>Statistical TDM</strong> ทำการปฏิวัติโดยให้สล็อตเวลาถูกจัดสรรแบบพลวัต (On-Demand):
+          <br>• ช่องสัญญาณจะถูกสร้างขึ้นเฉพาะเมื่อมีข้อมูลอยู่ในบัฟเฟอร์คิว
+          <br>• แต่ละสล็อตต้องมี <strong>เฮดเดอร์กำกับแอดเดรส (Addressing Overhead)</strong> ขนาดเล็ก (เช่น 2-4 บิต) เพื่อระบุว่าข้อมูลนี้เป็นของอินพุตหมายเลขใด
+          <br>• สามารถรองรับจำนวนเครื่องลูกข่าย (m) ได้มากกว่าจำนวนสล็อตในเฟรม (n) เช่น มีอุปกรณ์ 20 ตัว แต่ใช้สายส่งขนาด 6 สล็อต โดยพึ่งพากฎสถิติว่าอุปกรณ์ทั้งหมดจะไม่ได้ส่งพร้อมกัน (Multiplexing Gain)
+        </p>
+      </section>
+
+      <!-- SECTION 5: Spread Spectrum (FHSS & DSSS) -->
+      <section id="sec-spread-spectrum" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">5. Spread Spectrum Fundamentals</span>
+        <h2 class="section-title">ทฤษฎีสเปรดสเปกตรัม: การแลกเปลี่ยนแบนด์วิดท์เพื่อภูมิคุ้มกันสัญญาณรบกวน (FHSS &amp; DSSS)</h2>
+
+        <p>
+          รากฐานทางคณิตศาสตร์ของ Spread Spectrum มีที่มาจากทฤษฎีบทความจุช่องสัญญาณของแชนนอน (Shannon Channel Capacity Theorem):
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">C</span>
+          <span class="m-op">=</span>
+          <span class="m-var">B</span>
+          <span class="m-op">·</span>
+          log₂
+          <span class="m-op">(</span>
+          1
+          <span class="m-op">+</span>
+          <div class="m-frac">
+            <span class="m-numr"><span class="m-var">S</span></span>
+            <span class="m-denm"><span class="m-var">N</span></span>
+          </div>
+          <span class="m-op">)</span>
+        </div>
+
+        <p style="font-size: 0.94rem; line-height: 1.8;">
+          จากสมการ หากต้องการรักษาความจุ C ให้คงที่ แต่สภาพแวดล้อมมีสัญญาณรบกวนสูงมากจนกำลังสัญญาณ S ต่ำกว่ากำลังสัญญาณรบกวน N มากๆ (S/N &lt;&lt; 1)
+          เราสามารถทำได้โดยการ <strong>ขยายแบนด์วิดท์ B ให้มีขนาดกว้างมหาศาล</strong>
+          เมื่อกระจายพลังงานของสัญญาณออกไปในย่านความถี่ที่กว้างมาก ความหนาแน่นสเปกตรัมของกำลัง (Power Spectral Density) จะลดต่ำลงจนกลมกลืนไปกับสัญญาณรบกวนความร้อน (Thermal Noise Floor) ทำให้ยากต่อการดักจับ และทนทานต่อคลื่นแทรกสอดอย่างที่สุด
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Frequency Hopping Spread Spectrum (FHSS)</h3>
+        <p>
+          สัญญาณจะส่งด้วยแบนด์วิดท์แคบๆ แต่ความถี่ของคลื่นพาห์จะกระโดดเปลี่ยนไปเรื่อยๆ:
+          <br>• ตัวสร้างลำดับสุ่มเทียม (PN Code Generator) จะส่งรหัสไบนารีไปควบคุมตัวสังเคราะห์ความถี่ (Frequency Synthesizer) ให้เปลี่ยนความถี่คลื่นพาห์
+          <br>• <strong>Slow Hopping:</strong> สัญญาณส่งข้อมูลหลายบิตก่อนจะเปลี่ยนความถี่ 1 ครั้ง
+          <br>• <strong>Fast Hopping:</strong> สัญญาณกระโดดเปลี่ยนความถี่หลายครั้งในระหว่างการส่งข้อมูลเพียง 1 บิต
+          <br><strong>ในมาตรฐาน Bluetooth:</strong> มีช่องสัญญาณกว้าง 1 MHz จำนวน 79 ช่อง กระโดดด้วยความเร็ว 1,600 hops/วินาที (อยู่บนความถี่หนึ่งเพียง 625 ไมโครวินาที) หากมีคลื่น Wi-Fi กวนบนช่องใดช่องหนึ่ง สัญญาณจะสูญเสียข้อมูลเพียงเศษเสี้ยวของมิลลิวินาที แล้วกระโดดหนีไปยังช่องที่สะอาดทันที
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. Direct Sequence Spread Spectrum (DSSS) และกลไกชิปใน CC2420</h3>
+        <p>
+          ใน DSSS ข้อมูลแต่ละบิตจะถูกนำไปคูณเข้ากับรหัส <strong>ชิปซีเควนซ์ (Chip Sequence)</strong> ขนาด m ชิป:
+          <br>• อัตราการส่งชิปคือ <code>R_c = m · R_b</code>
+          <br>• <strong>Processing Gain (กำลังขยายจากการประมวลผล):</strong>
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">G</span><span class="m-sub">p</span>
+          <span class="m-op">=</span>
+          10
+          <span class="m-op">·</span>
+          log₁₀
+          <span class="m-op">(</span>
+          <div class="m-frac">
+            <span class="m-numr"><span class="m-var">B</span><span class="m-sub">ss</span></span>
+            <span class="m-denm"><span class="m-var">B</span><span class="m-sub">data</span></span>
+          </div>
+          <span class="m-op">)</span>
+          <span class="m-op">=</span>
+          10
+          <span class="m-op">·</span>
+          log₁₀
+          <span class="m-op">(</span>
+          <span class="m-var">m</span>
+          <span class="m-op">)</span>
+          <span class="m-op">[dB]</span>
+        </div>
+
+        <p style="font-size: 0.94rem; line-height: 1.8;">
+          <strong>กลไกการปราบคลื่นแทรกสอด (Jammer Suppression):</strong>
+          <br>1. ฝั่งส่งนำข้อมูลคูณด้วยรหัส PN Code ทำให้สเปกตรัมขยายกว้างออก
+          <br>2. ระหว่างเดินทาง คลื่นรบกวนแถบแคบ (Narrowband Interference / Wi-Fi) แทรกเข้ามาในช่องสัญญาณ
+          <br>3. ฝั่งรับนำสัญญาณผสมไปคูณด้วยรหัส PN Code เดิมที่ตรงกัน:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;• สัญญาณข้อมูลจริงจะถูก <strong>บีบสเปกตรัมกลับลงมา (Despread)</strong> กลายเป็นสัญญาณเบสแบนด์ดั้งเดิมที่มีระดับกำลังสูงขึ้น G_p dB
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;• แต่สัญญาณรบกวนที่ไม่ได้คูณรหัสมาตั้งแต่แรก กลับถูก <strong>กระจายสเปกตรัมให้แผ่กว้างออกไป (Spreading)</strong> กลายเป็นสัญญาณรบกวนแผ่วเบา
+          <br>4. ฟิลเตอร์กรองความถี่ต่ำของเครื่องรับจะตัดสัญญาณรบกวนส่วนใหญ่ออกไป ทำให้ได้สัญญาณข้อมูลที่คมชัดคืนมาอย่างสมบูรณ์
+        </p>
+      </section>
+
+      <!-- SECTION 6: CDMA and Walsh Codes -->
+      <section id="sec-cdma-walsh" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">6. CDMA Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรม CDMA และคณิตศาสตร์เวกเตอร์ตั้งฉากของรหัสวอลช์ (Walsh Codes)</h2>
+
+        <p>
+          ในระบบ CDMA อุปกรณ์ทุกตัวส่งสัญญาณพร้อมกันบนย่านความถี่เดียวกันทั้งหมด โดยอาศัย <strong>ทฤษฎีเวกเตอร์เชิงเส้น (Linear Vector Space)</strong>:
+          <br>กำหนดให้แต่ละสถานีได้รับเวกเตอร์รหัสชิปเฉพาะตัว C_i ขนาด m ชิ้น โดยมีคุณสมบัติตั้งฉากกัน:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">C</span><span class="m-sub">i</span>
+          <span class="m-op">·</span>
+          <span class="m-var">C</span><span class="m-sub">j</span>
+          <span class="m-op">=</span>
+          0
+          <span class="m-op">(เมื่อ i ≠ j)</span>
+          <span class="m-op">และ</span>
+          <span class="m-var">C</span><span class="m-sub">i</span>
+          <span class="m-op">·</span>
+          <span class="m-var">C</span><span class="m-sub">i</span>
+          <span class="m-op">=</span>
+          <span class="m-var">m</span>
+        </div>
+
+        <p style="font-size: 0.94rem; line-height: 1.8;">
+          <strong>การสร้างรหัสวอลช์ (Walsh Matrix Generation):</strong>
+          <br>สร้างขึ้นจากเมทริกซ์ฮาดามาร์ดแบบเรียกซ้ำ (Recursive Hadamard Matrix):
+          <br><code>H₁ = [ +1 ]</code>
+          <br><code>H₂ = [ [H₁, H₁], [H₁, -H₁] ] = [ [+1, +1], [+1, -1] ]</code>
+          <br><code>H₄ = [ [+1, +1, +1, +1], [+1, -1, +1, -1], [+1, +1, -1, -1], [+1, -1, -1, +1] ]</code>
+          <br>แถวแต่ละแถวของเมทริกซ์ H_m คือรหัสวอลช์ของสถานีแต่ละสถานี ซึ่งรับประกันว่าจะไม่มีการแทรกสอดระหว่างผู้ใช้ (Zero Multiple Access Interference) ในสภาวะที่สัญญาณเดินทางมาถึงพร้อมกันอย่างสมบูรณ์แบบ
+        </p>
+      </section>
+
+      <!-- SECTION 7: Worked Calculation Examples -->
+      <section id="sec-calculations" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">7. Worked Calculation Examples</span>
+        <h2 class="section-title">การพิสูจน์คณิตศาสตร์และตัวอย่างคำนวณจริง 4 กรณีศึกษา (Worked Examples)</h2>
+
+        <!-- Example 6.1 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 6.1: การวิเคราะห์โครงสร้างเฟรม ประสิทธิภาพ และอัตราข้อมูลของระบบสาย T1 และ E1</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> จงแสดงการพิสูจน์โครงสร้างเฟรมทางคณิตศาสตร์ คำนวณหาอัตราข้อมูลรวม (Data Rate) อัตราข้อมูลที่เป็นสารสนเทศจริง (Useful Payload Rate) และค่าร้อยละของโอเวอร์เฮดเฟรมมิ่ง (Framing Overhead Percentage) สำหรับ:
+            <br>1. ระบบสายสัญญาณ T1 (มาตรฐาน ANSI T1.102)
+            <br>2. ระบบสายสัญญาณ E1 (มาตรฐาน ITU-T G.704)
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: วิเคราะห์ระบบสาย T1</strong></p>
+            <div class="math-step">
+              • จำนวนช่องสัญญาณเสียง = 24 ช่อง, แต่ละช่องใช้ตัวอย่างขนาด 8 บิต
+              <br>• บิตข้อมูลต่อเฟรม = 24 × 8 = 192 บิต
+              <br>• บิตควบคุมเฟรมมิ่ง (Framing bit) = 1 บิต
+              <br>• ขนาดรวมต่อหนึ่งเฟรม = 192 + 1 = <strong>193 บิตต่อเฟรม</strong>
+              <br>• ความถี่การสุ่มสัญญาณเสียง = 8,000 เฟรมต่อวินาที
+              <br><code>อัตราข้อมูลรวม T1 = 193 บิต/เฟรม × 8,000 เฟรม/วินาที = 1,544,000 bps = 1.544 Mbps</code>
+              <br><code>อัตราข้อมูลสารสนเทศจริง = 192 × 8,000 = 1,536,000 bps = 1.536 Mbps</code>
+              <br><code>Framing Overhead = (1 / 193) × 100% = 0.518%</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: วิเคราะห์ระบบสาย E1</strong></p>
+            <div class="math-step">
+              • จำนวนสล็อตเวลาต่อเฟรม = 32 สล็อต (TS0 ถึง TS31) แต่ละสล็อตขนาด 8 บิต
+              <br>• ขนาดรวมต่อหนึ่งเฟรม = 32 × 8 = <strong>256 บิตต่อเฟรม</strong>
+              <br><code>อัตราข้อมูลรวม E1 = 256 บิต/เฟรม × 8,000 เฟรม/วินาที = 2,048,000 bps = 2.048 Mbps</code>
+              <br>• สล็อตที่ใช้ส่งข้อมูลผู้ใช้จริงคือ TS1-TS15 และ TS17-TS31 รวม 30 สล็อต (TS0 ใช้สำหรับเฟรมมิ่ง และ TS16 ใช้สำหรับ Signaling):
+              <br><code>อัตราข้อมูลสารสนเทศจริง = 30 สล็อต × 8 บิต × 8,000 = 1,920,000 bps = 1.920 Mbps</code>
+              <br><code>Signaling &amp; Framing Overhead = (2 / 32) × 100% = 6.25%</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 6.2 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 6.2: การคำนวณการประหยัดแบนด์วิดท์และ Multiplexing Gain ใน Statistical TDM</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> ระบบเครือข่ายเซนเซอร์เชื่อมต่อเทอร์มินัลจำนวน 20 ตัวเข้ากับมัลติเพล็กเซอร์ แต่ละเทอร์มินัลมีอัตราส่งข้อมูล 9.6 kbps แต่มีพฤติกรรมการส่งแบบไม่ต่อเนื่อง โดยมีสัดส่วนเวลาที่ส่งข้อมูลจริงเฉลี่ยเพียง 25% ของเวลาทั้งหมด (Activity Factor α = 0.25) จงคำนวณหา:
+            <br>1. แบนด์วิดท์สายส่งที่ต้องการหากใช้ Synchronous TDM
+            <br>2. แบนด์วิดท์สายส่งเฉลี่ยที่ต้องการใน Statistical TDM (สมมติมี Addressing Overhead 20%)
+            <br>3. อัตราการประหยัดแบนด์วิดท์ (Multiplexing Gain)
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณแบนด์วิดท์สำหรับ Synchronous TDM</strong></p>
+            <div class="math-step">
+              Synchronous TDM ต้องกันสล็อตเวลาเต็มพิกัดให้ทุกเทอร์มินัลตลอดเวลา:
+              <br><code>C_sync = 20 เทอร์มินัล × 9.6 kbps = 192.0 kbps</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณแบนด์วิดท์สำหรับ Statistical TDM</strong></p>
+            <div class="math-step">
+              ปริมาณข้อมูลรวมเฉลี่ยที่ถูกสร้างขึ้นจริง:
+              <br><code>Data_avg = 20 × (9.6 kbps × 0.25) = 20 × 2.4 kbps = 48.0 kbps</code>
+              <br>เมื่อรวมเฮดเดอร์กำกับแอดเดรสของสล็อตอีก 20% (Overhead Factor = 1.20):
+              <br><code>C_stat = 48.0 kbps × 1.20 = 57.6 kbps</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: คำนวณ Multiplexing Gain</strong></p>
+            <div class="math-step">
+              <code>Multiplexing Gain = C_sync / C_stat = 192.0 kbps / 57.6 kbps = 3.33 เท่า</code>
+              <br><code>การประหยัดแบนด์วิดท์ = [ (192.0 - 57.6) / 192.0 ] × 100% = 70.0%</code>
+              <br><strong>บทสรุปเชิงวิศวกรรม:</strong> Statistical TDM ช่วยลดขนาดช่องสัญญาณลงได้ถึง <strong>70%</strong> ทำให้สามารถใช้สายส่งความเร็ว 64 kbps เพียงเส้นเดียวรองรับเทอร์มินัล 20 ตัวได้อย่างสบาย
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 6.3 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 6.3: การคำนวณ Processing Gain และ Jamming Margin ของชิปวิทยุเซนเซอร์ CC2420 (IEEE 802.15.4)</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> ชิปเซนเซอร์ CC2420 ส่งข้อมูลด้วยอัตรา N = 250 kbps ในมาตรฐาน IEEE 802.15.4 ข้อมูลทุกๆ 4 บิตจะถูกแปลงเป็นชิปซีเควนซ์ 32 ชิป ส่งผลให้อัตราชิปมีค่าเท่ากับ R_c = 2.0 Mchips/s กำหนดให้วงจรตรวจจับของเครื่องรับต้องการอัตราส่วนพลังงานต่อบิตต่อสัญญาณรบกวนขั้นต่ำ (E_b / N_0) = 3.0 dB เพื่อให้ได้อัตราความผิดพลาดของบิต (BER) ต่ำกว่า 10⁻⁵ และระบบมีความสูญเสียภายใน (System Loss: L_sys) เท่ากับ 2.0 dB จงคำนวณหา:
+            <br>1. ค่ากำลังขยายจากการประมวลผล (Processing Gain: G_p)
+            <br>2. ระยะเผื่อสัญญาณรบกวนแจมมิ่ง (Jamming Margin: M_j)
+            <br>3. อธิบายความหมายเชิงปฏิบัติการของค่า Jamming Margin ที่ได้
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหา Processing Gain (G_p)</strong></p>
+            <div class="math-step">
+              จำนวนชิปต่อ 1 บิตข้อมูล = 32 ชิป / 4 บิต = 8 ชิปต่อบิต:
+              <br><code>G_p = 10 · log₁₀(R_c / R_b) = 10 · log₁₀(2,000,000 / 250,000) = 10 · log₁₀(8) = 10 · 0.9031 = 9.03 dB</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณหา Jamming Margin (M_j)</strong></p>
+            <div class="math-step">
+              Jamming Margin คือระดับกำลังของสัญญาณแจมมิ่งที่ระบบสามารถทนทานได้เหนือกว่ากำลังของสัญญาณข้อมูล:
+              <br><code>M_j = G_p - (E_b / N_0) - L_sys = 9.03 dB - 3.0 dB - 2.0 dB = 4.03 dB</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: อธิบายความหมายเชิงปฏิบัติการ</strong></p>
+            <div class="math-step">
+              ค่า Jamming Margin เท่ากับ <strong>+4.03 dB</strong> หมายความว่า:
+              <br>แม้จะมีคลื่นแทรกสอดแถบแคบ (เช่น สัญญาณบลูทูธหรือ Wi-Fi ที่รั่วเข้ามา) ที่มีระดับกำลังงาน <strong>แรงกว่าสัญญาณของโหนดเซนเซอร์ถึง 2.53 เท่า (+4.03 dB)</strong> ตกลงมาทับในช่องสัญญาณพอดี ชิป CC2420 ก็ยังคงสามารถถอดรหัสบิตข้อมูลออกมาได้อย่างถูกต้องปราศจากความผิดพลาด!
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 6.4 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 6.4: การเข้ารหัสและถอดรหัสแบบเวกเตอร์ตั้งฉาก CDMA ด้วยรหัสวอลช์ (Walsh Matrix Decoding)</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> สถานีส่ง 3 สถานี (A, B, C) แชร์ช่องสัญญาณไร้สายร่วมกันด้วยระบบ CDMA โดยใช้รหัสวอลช์ขนาด 4 ชิปต่อไปนี้:
+            <br>• สถานี A: <code>C_A = [+1, +1, +1, +1]</code>
+            <br>• สถานี B: <code>C_B = [+1, -1, +1, -1]</code>
+            <br>• สถานี C: <code>C_C = [+1, +1, -1, -1]</code>
+            <br>หากในขณะหนึ่ง สถานี A ต้องการส่งบิต <strong>1 (แทนด้วย +1)</strong>, สถานี B ต้องการส่งบิต <strong>0 (แทนด้วย -1)</strong>, และสถานี C ต้องการส่งบิต <strong>1 (แทนด้วย +1)</strong>
+            <br>1. จงหาเวกเตอร์สัญญาณรวม (Composite Signal: S) ที่เดินทางบนช่องสัญญาณ
+            <br>2. แสดงการคำนวณที่เครื่องรับของสถานีฐานในการถอดรหัสข้อมูลของสถานี B ออกมาจากสัญญาณรวม S
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณสัญญาณที่แต่ละสถานีส่งออกสู่อากาศ</strong></p>
+            <div class="math-step">
+              • สัญญาณจากสถานี A = d_A · C_A = (+1) · [+1, +1, +1, +1] = <code>[+1, +1, +1, +1]</code>
+              <br>• สัญญาณจากสถานี B = d_B · C_B = (-1) · [+1, -1, +1, -1] = <code>[-1, +1, -1, +1]</code>
+              <br>• สัญญาณจากสถานี C = d_C · C_C = (+1) · [+1, +1, -1, -1] = <code>[+1, +1, -1, -1]</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: รวมสัญญาณบนช่องสัญญาณ (Linear Superposition)</strong></p>
+            <div class="math-step">
+              สัญญาณรวม S คือผลบวกเชิงเวกเตอร์ของทั้ง 3 สถานี:
+              <br><code>S = S_A + S_B + S_C</code>
+              <br>• ชิปที่ 1: (+1) + (-1) + (+1) = <strong>+1</strong>
+              <br>• ชิปที่ 2: (+1) + (+1) + (+1) = <strong>+3</strong>
+              <br>• ชิปที่ 3: (+1) + (-1) + (-1) = <strong>-1</strong>
+              <br>• ชิปที่ 4: (+1) + (+1) + (-1) = <strong>+1</strong>
+              <br>ดังนั้น สัญญาณรวมบนช่องสัญญาณคือ <code>S = [+1, +3, -1, +1]</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: การถอดรหัสข้อมูลของสถานี B ที่เครื่องรับ</strong></p>
+            <div class="math-step">
+              เครื่องรับนำสัญญาณรวม S ไปทำ Inner Product กับรหัส C_B ของสถานี B:
+              <br><code>Result = S · C_B = (+1)(+1) + (+3)(-1) + (-1)(+1) + (+1)(-1)</code>
+              <br><code>Result = 1 - 3 - 1 - 1 = -4</code>
+              <br>หารด้วยขนาดความยาวของรหัส (m = 4 ชิป):
+              <br><code>d_B = Result / m = -4 / 4 = -1</code>
+              <br>เนื่องจาก d_B = -1 จึงถอดรหัสได้ว่าสถานี B ส่งบิต <strong>0</strong> ออกมาได้อย่างถูกต้องไร้การรบกวนจากสถานี A และ C แม้แต่น้อย!
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Silicon & Hardware Reality Check -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">8. Silicon &amp; Hardware Reality Check</span>
+        <h2 class="section-title">กายวิภาคระดับซิลิคอน: วงจรกำเนิดรหัส LFSR และวงจรคอร์เรเลเตอร์ในชิปเซนเซอร์</h2>
+
+        <p>
+          ในวงจรรวม (IC) ของชิปไร้สาย การสร้างรหัสสเปรดสเปกตรัมต้องอาศัยบล็อกฮาร์ดแวร์ความเร็วสูงที่กินไฟต่ำ:
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">0. ปัญหาใกล้-ไกลในระบบ CDMA และการควบคุมกำลังส่ง (The Near-Far Problem &amp; Power Control)</h3>
+        <p>
+          แม้ว่าในเชิงทฤษฎี รหัสวอลช์จะมีคุณสมบัติตั้งฉากกันอย่างสมบูรณ์ (Orthogonal) ทว่าในสภาพแวดล้อมเครือข่ายเซนเซอร์ไร้สายจริง สัญญาณจากโหนดต่างๆ มักเดินทางมาถึงสถานีฐานด้วยเวลาที่ <em>ไม่พร้อมกันพอดี (Asynchronous Uplink)</em>
+          <br>เมื่อเกิดการเลื่อนเวลาเพียงเศษเสี้ยวของชิป คุณสมบัติการตั้งฉากจะพังทลายลง และเกิด <strong>ปัญหาใกล้-ไกล (Near-Far Problem)</strong>:
+          <br>• หากโหนดเซนเซอร์ A อยู่ห่างจากสถานีฐาน 5 เมตร แต่โหนด B อยู่ห่างออกไป 100 เมตร
+          <br>• ตามกฎ Friis Path Loss สัญญาณจากโหนด A จะเดินทางมาถึงด้วยกำลังที่แรงกว่าสัญญาณจากโหนด B หลายสิบเดซิเบล (แรงกว่านับพันถึงหมื่นเท่า!)
+          <br>• สัญญาณที่แรงมหาศาลของโหนด A จะกลืนกินและบดขยี้สัญญาณของโหนด B จนเครื่องรับไม่สามารถกู้คืนข้อมูลของโหนด B ได้
+          <br><strong>ทางออกทางวิศวกรรม:</strong> ระบบ CDMA และเครือข่ายเซนเซอร์จำเป็นต้องบรรจุวงจร <strong>ควบคุมกำลังส่งแบบวงปิดความเร็วสูง (Closed-Loop Transmit Power Control: TPC)</strong> โดยสถานีฐานจะสั่งให้โหนดใกล้หรี่กำลังส่งลง และสั่งให้โหนดไกลเร่งกำลังส่งขึ้น เพื่อให้สัญญาณจากทุกโหนดเดินทางมาตกกระทบสายอากาศสถานีฐานด้วยระดับกำลังงานที่เท่ากันพอดี
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Linear Feedback Shift Register (LFSR)</h3>
+        <p>
+          รหัสสุ่มเทียม (PN Sequence / m-sequence) ถูกสร้างขึ้นโดยใช้ชุดฟลิปฟล็อปต่อเรียงแถวร่วมกับเกต XOR:
+          <br>• ในบลูทูธและ Wi-Fi วงจร LFSR ขนาด 7 ถึง 15 สเตจ สามารถกำเนิดลำดับบิตสุ่มเทียมที่มีคาบยาวถึง <code>2ⁿ - 1</code> บิตได้โดยใช้พื้นที่ซิลิคอนเพียงไม่กี่ร้อยตารางไมโครเมตร
+          <br>• คุณสมบัติ Autocorrelation ที่ยอดเยี่ยมของรหัสนี้ทำให้เครื่องรับสามารถซิงค์สัญญาณนาฬิกาได้แม้ในสภาพสัญญาณรบกวนสูง
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. วงจรคอร์เรเลเตอร์ฮาร์ดแวร์ (Matched Filter / Correlator ASIC) ใน CC2420</h3>
+        <p>
+          ในชิป TI CC2420 ข้อมูลชิปที่ผ่านการดีมอดูเลต O-QPSK จะถูกส่งเข้าสู่วงจร <strong>Bank of 16 Parallel Correlators</strong>:
+          <br>• แต่ละ Correlator จะทำการเปรียบเทียบชิป 32 ชิปที่รับเข้ามา กับรหัสมาตรฐาน 16 ตัวในตารางรหัส IEEE 802.15.4 พร้อมกันในสัญญาณนาฬิกาเดียว
+          <br>• วงจรจะเลือกสัญลักษณ์ที่มีค่าความสัมพันธ์ (Correlation Peak) สูงสุด แปลงกลับเป็นข้อมูล 4 บิตทันที
+          <br>• การประมวลผลแบบขนานในระดับฮาร์ดแวร์ดิจิทัลนี้ช่วยลดภาระของซีพียู MSP430 ทำให้ไมโครคอนโทรลเลอร์สามารถนอนหลับลึก (Deep Sleep) ได้นานที่สุด
+        </p>
+      </section>
+
+      <!-- SECTION 9: Interactive Simulator -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">9. Interactive Simulator</span>
+        <h2 class="section-title">สตูดิโอจำลอง TDM Frame Interleaver และการกระจายสัญญาณ DSSS (Multiplexing Studio)</h2>
+
+        <p>
+          ทดลองจำลองการรวมเฟรมแบบ Synchronous TDM เปรียบเทียบกับ Statistical TDM หรือทดสอบการกระจายและยุบสัญญาณ DSSS แบบเรียลไทม์:
+        </p>
+
+        <div class="canvas-panel">
+          <div class="canvas-ctrl-grid">
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">โหมดการจำลอง (Simulation Mode):</label>
+              <select id="sim-mode" style="width: 100%; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.95rem; margin-top: 6px; background: var(--card-bg); color: var(--ink);">
+                <option value="tdm-sync" selected>Synchronous TDM (4 แชนแนล)</option>
+                <option value="tdm-stat">Statistical TDM (Dynamic Allocation)</option>
+                <option value="dsss">DSSS Spreading &amp; Despreading</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">สถานะแชนแนล (CH1 - CH4 Activity):</label>
+              <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <label><input type="checkbox" id="ch1-act" checked> CH1</label>
+                <label><input type="checkbox" id="ch2-act"> CH2</label>
+                <label><input type="checkbox" id="ch3-act" checked> CH3</label>
+                <label><input type="checkbox" id="ch4-act"> CH4</label>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-end;">
+              <button id="btn-step-frame" class="btn btn-secondary" style="width: 100%; padding: 8px 14px; font-size: 0.88rem;">สร้างเฟรมถัดไป</button>
+            </div>
+          </div>
+
+          <!-- Real-time Metrics -->
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
+            <div class="metric-pill">
+              ประสิทธิภาพแบนด์วิดท์ (Efficiency): <span id="metric-eff" class="metric-pill-val">50.0%</span>
+            </div>
+            <div class="metric-pill">
+              สล็อตว่างสูญเปล่า (Wasted Slots): <span id="metric-waste" class="metric-pill-val">2 Slots</span>
+            </div>
+            <div class="metric-pill">
+              จำนวนเฟรมที่ส่ง (Transmitted Frames): <span id="metric-frames" class="metric-pill-val">1 Frames</span>
+            </div>
+          </div>
+
+          <div class="canvas-box">
+            <canvas id="canvas-mux" width="800" height="280"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Mastery Checklist -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">10. Interactive Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเข้าใจวิศวกรรม (Mastery Checklist)</h2>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>1. ทำไมระบบสาย T1 จึงมีอัตราข้อมูล 1.544 Mbps ไม่ใช่ 1.536 Mbps?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะนอกจากบิตข้อมูลเสียง 24 ช่อง × 8 บิต = 192 บิตแล้ว ในแต่ละเฟรมจะต้องมีการแทรก <strong>บิตเฟรมมิ่ง (Framing Bit)</strong> เพิ่มอีก 1 บิต เพื่อให้เครื่องรับสามารถล็อกจุดเริ่มต้นของเฟรมได้ ทำให้ขนาดเฟรมรวมเป็น 193 บิต เมื่อคูณกับอัตราการสุ่ม 8,000 เฟรม/วินาที จึงได้ 193 × 8,000 = 1,544,000 bps หรือ 1.544 Mbps พอดี
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>2. ข้อแตกต่างเชิงสถาปัตยกรรมที่สำคัญที่สุดระหว่าง Synchronous TDM กับ Statistical TDM คืออะไร?</span>
+          </div>
+          <div class="checklist-body">
+            Synchronous TDM กันสล็อตเวลาไว้ล่วงหน้าอย่างถาวร ทำให้เกิดสล็อตว่างเปล่าสูญเปล่าเมื่อผู้ใช้ไม่มีข้อมูลส่ง ในขณะที่ Statistical TDM จัดสรรสล็อตเวลาแบบพลวัตเฉพาะเมื่อมีข้อมูลจริงในคิว โดยแลกกับการที่แต่ละสล็อตต้องมีเฮดเดอร์กำกับแอดเดรสของช่องทาง
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>3. ในชิปเซนเซอร์ CC2420 การใช้รหัส DSSS 32 ชิปแทนข้อมูล 4 บิต ให้ประโยชน์อะไร?</span>
+          </div>
+          <div class="checklist-body">
+            ให้อัตราการขยายสัญญาณจากการประมวลผล (Processing Gain) สูงถึง 9.03 dB ทำให้เครื่องรับของเซนเซอร์สามารถรับข้อมูลได้อย่างถูกต้องแม้จะถูกคลื่นวิทยุ Wi-Fi หรือบลูทูธกวนที่มีกำลังแรงกว่าสัญญาณเซนเซอร์ถึง 4 dB
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>4. ตามทฤษฎีแชนนอน เหตุใดการขยายแบนด์วิดท์ใน Spread Spectrum จึงช่วยให้รับสัญญาณใต้ Noise Floor ได้?</span>
+          </div>
+          <div class="checklist-body">
+            จาก C = B log2(1 + S/N) หากเราเพิ่ม B ให้กว้างมากๆ ค่าอัตราส่วน S/N สามารถลดต่ำลงมากจนมีค่าน้อยกว่า 1 (Negative SNR ในหน่วย dB) ได้ โดยที่ความจุช่องสัญญาณ C ยังคงเพียงพอสำหรับการส่งข้อมูล ทำให้สัญญาณสามารถแฝงตัวอยู่ใต้ระดับสัญญาณรบกวนได้อย่างปลอดภัย
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>5. ในระบบ CDMA อะไรคือเงื่อนไขทางคณิตศาสตร์ที่ทำให้สัญญาณของผู้ใช้แต่ละคนไม่แทรกสอดกัน?</span>
+          </div>
+          <div class="checklist-body">
+            รหัสของแต่ละสถานีต้องเป็น <strong>เวกเตอร์ตั้งฉากซึ่งกันและกัน (Orthogonal Vectors)</strong> นั่นคือ ผลคูณจุด (Dot Product) ระหว่างรหัสของสองสถานีใดๆ ต้องมีค่าเท่ากับศูนย์พอดี (C_i · C_j = 0 เมื่อ i ≠ j) ทำให้เครื่องรับสามารถกรองสัญญาณของผู้ใช้อื่นออกไปได้อย่างหมดจด
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>6. ทำไม OFDM จึงสามารถวางช่องสัญญาณย่อยซ้อนทับกันได้โดยไม่ต้องมี Guard Band?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะระยะห่างระหว่างคลื่นพาห์ย่อยถูกเลือกให้เท่ากับ Δf = 1 / T_s พอดี ทำให้จุดยอดสูงสุดของคลื่นพาห์ย่อยตัวหนึ่ง ตรงกับจุดที่คลื่นพาห์ย่อยอื่นๆ ทั้งหมดมีค่าเป็นศูนย์ (Null Point) พอดี จึงไม่มีการรบกวนกันทางคณิตศาสตร์
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: Mental Model Synthesis -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">11. Mental Model Synthesis</span>
+        <h2 class="section-title">สรุปสังเคราะห์และโมเดลความคิด 3 มิติ (Mental Model Synthesis)</h2>
+
+        <div class="synthesis-grid">
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 1: การแบ่งสรรโดเมนเวลา vs ความถี่ vs รหัส</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              • <strong>FDM:</strong> ส่งพร้อมกันตลอดเวลา แต่แบ่งแถบความถี่ (คนละสถานีวิทยุ)
+              <br>• <strong>TDM:</strong> ใช้ความถี่เดียวกันเต็มแบนด์วิดท์ แต่ผลัดกันส่งคนละเวลา (คนละไทม์สล็อต)
+              <br>• <strong>CDMA:</strong> ส่งพร้อมกันในเวลาเดียวกันและใช้ความถี่เดียวกันทั้งหมด แต่ใช้คนละภาษา (คนละรหัสเวกเตอร์ตั้งฉาก)
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 2: ปรัชญาของสเปรดสเปกตรัม</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              ในระบบสื่อสารทั่วไป วิศวกรพยายามบีบแบนด์วิดท์ให้แคบที่สุดเพื่อประหยัดสเปกตรัม แต่ใน Spread Spectrum เราจงใจ <em>เผาผลาญแบนด์วิดท์ทิ้ง</em> เพื่อแลกกับความแข็งแกร่งระดับรถถังหุ้มเกราะต่อสัญญาณรบกวนและการแจมมิ่ง
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 3: ความท้าทายในเครือข่ายเซนเซอร์ IoT</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              ในย่านความถี่เสรี ISM 2.4 GHz ที่เต็มไปด้วย Wi-Fi หลายสิบตัว โหนดเซนเซอร์พลังงานต่ำไม่มีทางส่งสัญญาณแข่งกำลังวัตต์ชนะเราเตอร์ Wi-Fi ได้ การพึ่งพา <strong>DSSS ใน IEEE 802.15.4</strong> และ <strong>FHSS ใน Bluetooth</strong> จึงเป็นเกราะป้องกันทางทฤษฎีเพียงหนึ่งเดียวที่ช่วยให้เครือข่ายเซนเซอร์รอดชีวิตได้
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: Cross-Chapter WSN Links -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">12. Cross-Chapter WSN Links</span>
+        <h2 class="section-title">ป้ายแท็กเชื่อมโยงสู่เครือข่ายเซนเซอร์ไร้สาย (Cross-Chapter WSN Links)</h2>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px;">
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.94rem; line-height: 1.8;">
+            <li>
+              <strong>การอยู่ร่วมกันระหว่าง ZigBee และ Wi-Fi (Coexistence):</strong>
+              ช่องสัญญาณ IEEE 802.15.4 (ช่อง 11-26) กว้าง 2 MHz วางแทรกอยู่ระหว่างช่องสัญญาณ Wi-Fi กว้าง 20-22 MHz ด้วยพลังของ DSSS 9 dB ช่วยให้เซนเซอร์ช่อง 15, 20, และ 26 รอดพ้นจากการรบกวนของช่อง Wi-Fi 1, 6, 11
+            </li>
+            <li>
+              <strong>Bluetooth Adaptive Frequency Hopping (AFH):</strong>
+              โหนดเซนเซอร์บลูทูธฉลาดพอที่จะตรวจวัดอัตราการสูญเสียแพ็กเก็ต (Packet Error Rate) บนแต่ละความถี่ หากตรวจพบว่าช่องความถี่ใดถูก Wi-Fi กวนอย่างต่อเนื่อง ระบบ AFH จะตัดช่องนั้นออกจากตารางกระโดดความถี่โดยอัตโนมัติ
+            </li>
+            <li>
+              <strong>การก้าวกระโดดสู่เทคโนโลยี LoRa CSS:</strong>
+              โมดูลเซนเซอร์ระยะไกล LoRa (Semtech SX1276) ต่อยอดทฤษฎีสเปรดสเปกตรัมไปสู่การกวาดคลื่น Chirp Spread Spectrum (Spreading Factor SF7 ถึง SF12) ทำให้ได้ Processing Gain สูงเกินกว่า 20 dB ส่งสัญญาณทะลุสิ่งกีดขวางได้ไกลนับสิบกิโลเมตร
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px; flex-wrap: wrap; gap: 16px;">
+        <a href="ch05.html" class="btn btn-secondary">← บทก่อนหน้า: บทที่ 5 Analog Transmission</a>
+        <a href="ch07.html" class="btn btn-primary">บทถัดไป: บทที่ 7 Transmission Media →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ═══════════ Embedded Script for Interactive Multiplexing Simulator ═══════════ -->
+  <script>
+    (function () {
+      const simMode = document.getElementById('sim-mode');
+      const btnStep = document.getElementById('btn-step-frame');
+      const ch1 = document.getElementById('ch1-act');
+      const ch2 = document.getElementById('ch2-act');
+      const ch3 = document.getElementById('ch3-act');
+      const ch4 = document.getElementById('ch4-act');
+
+      const canvas = document.getElementById('canvas-mux');
+      const ctx = canvas.getContext('2d');
+
+      const metricEff = document.getElementById('metric-eff');
+      const metricWaste = document.getElementById('metric-waste');
+      const metricFrames = document.getElementById('metric-frames');
+
+      let frameCount = 1;
+
+      function drawSimulation() {
+        const mode = simMode.value;
+        const act = [ch1.checked, ch2.checked, ch3.checked, ch4.checked];
+
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = 280 * dpr;
+        ctx.scale(dpr, dpr);
+
+        const width = rect.width;
+        const height = 280;
+
+        ctx.clearRect(0, 0, width, height);
+
+        if (mode === 'tdm-sync') {
+          // Draw Synchronous TDM Frames
+          ctx.fillStyle = '#f8fafc';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.fillText('สถาปัตยกรรม Synchronous TDM: ทุกแชนแนลได้รับสล็อตประจำตัวแบบตายตัวในแต่ละเฟรม', 20, 26);
+
+          const totalSlots = 4;
+          let activeSlots = 0;
+          act.forEach(a => { if (a) activeSlots++; });
+
+          const eff = ((activeSlots / totalSlots) * 100).toFixed(1);
+          metricEff.textContent = eff + '%';
+          metricWaste.textContent = (totalSlots - activeSlots) + ' Slots';
+          metricFrames.textContent = frameCount + ' Frames';
+
+          // Draw Inputs on left
+          const colors = ['#38bdf8', '#f59e0b', '#10b981', '#ec4899'];
+          for (let i = 0; i < 4; i++) {
+            const y = 60 + i * 45;
+            ctx.fillStyle = act[i] ? colors[i] : '#475569';
+            ctx.fillRect(30, y, 90, 30);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 11px sans-serif';
+            ctx.fillText('CH' + (i + 1) + (act[i] ? ' [DATA]' : ' [IDLE]'), 40, y + 19);
+          }
+
+          // Draw MUX box
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 2;
+          ctx.fillRect(160, 60, 60, 165);
+          ctx.strokeRect(160, 60, 60, 165);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText('MUX', 174, 148);
+
+          // Draw Composite Frame on right
+          const frameX = 260;
+          const frameY = 115;
+          ctx.strokeStyle = '#94a3b8';
+          ctx.strokeRect(frameX, frameY, 440, 50);
+
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '11px monospace';
+          ctx.fillText('เฟรมที่ ' + frameCount + ' (Synchronous Frame: 4 สล็อต)', frameX, frameY - 10);
+
+          for (let i = 0; i < 4; i++) {
+            const sx = frameX + i * 110;
+            if (act[i]) {
+              ctx.fillStyle = colors[i];
+              ctx.fillRect(sx + 2, frameY + 2, 106, 46);
+              ctx.fillStyle = '#ffffff';
+              ctx.font = 'bold 12px sans-serif';
+              ctx.fillText('Slot ' + (i + 1) + ': CH' + (i + 1), sx + 18, frameY + 29);
+            } else {
+              ctx.fillStyle = '#334155';
+              ctx.fillRect(sx + 2, frameY + 2, 106, 46);
+              ctx.fillStyle = '#ef4444';
+              ctx.font = 'bold 11px sans-serif';
+              ctx.fillText('[EMPTY SLOT]', sx + 16, frameY + 29);
+            }
+          }
+        } else if (mode === 'tdm-stat') {
+          // Draw Statistical TDM
+          ctx.fillStyle = '#f8fafc';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.fillText('สถาปัตยกรรม Statistical TDM: สล็อตถูกจัดสรรเฉพาะช่องที่มีข้อมูลจริงพร้อมเฮดเดอร์แอดเดรส', 20, 26);
+
+          const activeList = [];
+          act.forEach((a, idx) => { if (a) activeList.push(idx); });
+
+          const eff = activeList.length > 0 ? '100%' : '0.0%';
+          metricEff.textContent = eff;
+          metricWaste.textContent = '0 Slots (No Waste)';
+          metricFrames.textContent = frameCount + ' Frames';
+
+          const colors = ['#38bdf8', '#f59e0b', '#10b981', '#ec4899'];
+          for (let i = 0; i < 4; i++) {
+            const y = 60 + i * 45;
+            ctx.fillStyle = act[i] ? colors[i] : '#475569';
+            ctx.fillRect(30, y, 90, 30);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 11px sans-serif';
+            ctx.fillText('CH' + (i + 1) + (act[i] ? ' [DATA]' : ' [IDLE]'), 40, y + 19);
+          }
+
+          // MUX box
+          ctx.fillStyle = '#1e293b';
+          ctx.strokeStyle = '#10b981';
+          ctx.lineWidth = 2;
+          ctx.fillRect(160, 60, 60, 165);
+          ctx.strokeRect(160, 60, 60, 165);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText('STDM', 172, 148);
+
+          // Packed Frame
+          const frameX = 260;
+          const frameY = 115;
+          const frameW = Math.max(120, activeList.length * 130);
+          ctx.strokeStyle = '#10b981';
+          ctx.strokeRect(frameX, frameY, frameW, 50);
+
+          ctx.fillStyle = '#10b981';
+          ctx.font = '11px monospace';
+          ctx.fillText('เฟรมรวมแบบพลวัต (Packed Dynamic Frame: ' + activeList.length + ' สล็อตพร้อมแอดเดรส)', frameX, frameY - 10);
+
+          if (activeList.length === 0) {
+            ctx.fillStyle = '#64748b';
+            ctx.font = '12px sans-serif';
+            ctx.fillText('ไม่มีข้อมูลรอส่งในคิว (Link Idle)', frameX + 20, frameY + 29);
+          } else {
+            activeList.forEach((chIdx, slotIdx) => {
+              const sx = frameX + slotIdx * 130;
+              ctx.fillStyle = colors[chIdx];
+              ctx.fillRect(sx + 2, frameY + 2, 126, 46);
+
+              // Address tag
+              ctx.fillStyle = '#0f172a';
+              ctx.fillRect(sx + 6, frameY + 6, 32, 38);
+              ctx.fillStyle = '#ffffff';
+              ctx.font = 'bold 10px monospace';
+              ctx.fillText('ID:' + (chIdx + 1), sx + 9, frameY + 28);
+
+              // Data payload
+              ctx.fillStyle = '#ffffff';
+              ctx.font = 'bold 12px sans-serif';
+              ctx.fillText('Payload Data', sx + 44, frameY + 29);
+            });
+          }
+        } else if (mode === 'dsss') {
+          // Draw DSSS Concept
+          ctx.fillStyle = '#f8fafc';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.fillText('สถาปัตยกรรม DSSS: ข้อมูล 1 บิตถูกคูณด้วยชิปซีเควนซ์ 8 ชิปเพื่อกระจายสเปกตรัม', 20, 26);
+
+          metricEff.textContent = '100% Robust';
+          metricWaste.textContent = 'Jam Margin 4.0 dB';
+          metricFrames.textContent = '8 Chips/Bit';
+
+          // Data Bit
+          ctx.fillStyle = '#38bdf8';
+          ctx.fillRect(40, 70, 160, 40);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 13px monospace';
+          ctx.fillText('Data Bit: [1]', 75, 95);
+
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '22px sans-serif';
+          ctx.fillText('×', 230, 98);
+
+          // PN Sequence
+          ctx.fillStyle = '#f59e0b';
+          ctx.fillRect(270, 70, 220, 40);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText('PN: [1, 0, 1, 1, 0, 0, 1, 0]', 285, 95);
+
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '22px sans-serif';
+          ctx.fillText('=', 520, 98);
+
+          // Transmitted Chip Signal
+          ctx.fillStyle = '#10b981';
+          ctx.fillRect(560, 70, 200, 40);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px monospace';
+          ctx.fillText('DSSS Signal: 8 Chips', 585, 95);
+
+          // Despreading below
+          ctx.fillStyle = '#64748b';
+          ctx.font = '12px sans-serif';
+          ctx.fillText('ฝั่งรับ: คูณด้วย PN Code เดิมอีกครั้ง -> สัญญาณแทรกสอดถูกกระจายออก แต่ข้อมูลบิต [1] ถูกบีบกลับคืนมาอย่างสมบูรณ์', 40, 160);
+
+          // Draw correlation graph bar
+          ctx.fillStyle = '#1e293b';
+          ctx.fillRect(40, 180, 720, 60);
+          ctx.strokeStyle = '#334155';
+          ctx.strokeRect(40, 180, 720, 60);
+
+          ctx.fillStyle = '#10b981';
+          ctx.fillRect(360, 190, 80, 45);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText('Correlation Peak (+8)', 340, 182);
+        }
+      }
+
+      btnStep.addEventListener('click', () => {
+        frameCount++;
+        drawSimulation();
+      });
+
+      simMode.addEventListener('change', drawSimulation);
+      [ch1, ch2, ch3, ch4].forEach(cb => cb.addEventListener('change', drawSimulation));
+      window.addEventListener('resize', drawSimulation);
+
+      drawSimulation();
+    })();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+predicament, we combine RandHound with a VRF-based
+leader election algorithm [44], [25].
+At the beginning of an epoch e, each validator i computes
+a ticket ticketi,e,v = VRFski(“leader” ∥conﬁge ∥v) where
+conﬁge is the conﬁguration containing all properly registered
+validators of epoch e (as stored in the identity blockchain)
+and v is a view counter. Validators then gossip these tickets
+with each other for a time Δ, after which they lock in the
+lowest-value valid ticket they have seen thus far and accept the
+corresponding node as the leader of the RandHound protocol
+run. If the elected node fails to start RandHound within another
+Δ, validators consider the current run as failed and ignore
+this validator for the rest of the epoch, even if he returns
+later on. In this case, the validators increase the view number
+to v + 1 and re-run the lottery. Once the validators have
+successfully completed a run of RandHound and the leader
+has broadcast rnde together with its correctness proof, each of
+the n properly registered validators can ﬁrst verify and then use
+rnde to compute a permutation πe of 1, . . . , n and subdivide
+the result into m approximately equally-sized buckets, thereby
+determining its assignment of nodes to shards.
+Security Arguments: we make the following observations
+to informally argue the security of the above approach. Each
+participant can produce only a single valid ticket per view v
+in a given epoch e, because the VRF-based leader election
+starts only after the valid identities have been ﬁxed in the
+identity blockchain. Furthermore, as the output of a VRF is
+unpredictable as long as the private key ski is kept secret,
+the tickets of non-colluding nodes, hence the outcome of
+the lottery is also unpredictable. The synchrony bound Δ
+guarantees that the ticket of an honest leader is seen by all
+other honest validators. If the adversary wins the lottery, he can
+decide either to comply and run the RandHound protocol or
+to fail, which excludes that particular node from participating
+for the rest of the epoch.
+After a successful run of RandHound, the adversary is the
+ﬁrst to learn the randomness, hence the sharding assignment,
+however his beneﬁt is minimal. The adversary can again either
+decide to cooperate and publish the random value or withhold
+it in the hope of winning the lottery again and obtaining a
+sharding assignment that ﬁts his agenda better. However, the
+probability that an adversary wins the lottery a times in a
+row is upper bounded by the exponentially decreasing term
+(f/n)a. Thus, after only a few re-runs of the lottery, an honest
+node wins with high probability and coordinates the sharding.
+Finally, we remark that an adversary cannot collect random
+values from multiple runs and then choose the one he likes
+best as validators accept only the latest random value that
+matches their view number v.
+In Appendix B, we show how OmniLedger can be extended
+to probabilistically detect that the expected Δ does not hold
+and how it can still remain secure with a fall-back protocol.
+B. Maintaining Operability During Epoch Transitions
+Recall that, in each epoch e, SLedger changes the assign-
+ments of all n validators to shards, which results in an idle
+phase during which the system cannot process transactions
+until enough validators have ﬁnished bootstrapping.
+To maintain operability during transition phases, Om-
+niLedger gradually swaps in new validators to each shard
+per epoch. This enables the remaining operators to continue
+providing service (in the honest scenario) to clients while
+the recently joined validators are bootstrapping. In order to
+achieve this continued operation we can swap-out at most 1
+3
+of the shard’s size (≈
+n
+m), however the bigger the batch is,
+the higher the risk gets that the number of remaining honest
+validators is insufﬁcient to reach consensus and the more stress
+the bootstrapping of new validators causes to the network.
+To balance the chances of a temporary loss of liveness,
+the shard assignment of validators in OmniLedger works as
+follows. First, we ﬁx a parameter k <
+1
+3
+n
+m specifying the
+swap-out batch, i.e., the number of validators that are swapped
+out at a given time. For OmniLedger, we decided to work in
+batches of k = log n
+m. Then for each shard j, we derive a
+seed H(j ∥rnde) to compute a permutation πj,e of the shard’s
+validators, and we specify the permutation of the batches. We
+also compute another seed H(0 ∥rnde) to permute and scatter
+the validators who joined in epoch e and to deﬁne the order
+in which they will do so (again, in batches of size k). After
+deﬁning the random permutations, each batch waits Δ before
+starting to bootstrap in order to spread the load on the network.
+Once a validator is ready, he sends an announcement to the
+shard’s leader who then swaps the validator in.
+Security Arguments: During the transition phase, we
+ensure the safety of the BFT consensus in each shard as
+there are always at least
+2
+3
+n
+m honest validators willing to
+participate in the consensus within each shard. And, as we use
+the epoch’s randomness rnde to pick the permutation of the
+batches, we keep the shards’ conﬁgurations a moving target for
+an adaptive adversary. Finally, as long as there are 2
+3
+n
+m honest
+and up-to-date validators, liveness is guaranteed. Whereas if
+this quorum is breached during transition (the new batch of
+honest validators has not yet updated), the liveness is lost only
+temporarily, until the new validators update.
+C. Cross-Shard Transactions
+To enable value transfer between different shards thereby
+achieving shard interoperability, support for secure cross-shard
+transactions is crucial in any sharded-ledger system. We expect
+that the majority of transactions to be cross-shard in the
+traditional model where UTXOs are randomly assigned to
+shards for processing [16], [34], see Appendix C.
+A simple but inadequate strawman approach to a cross-shard
+transaction, is to concurrently send a transaction to several
+shards for processing because some shards might commit
+the transaction while others might abort. In such a case, the
+UTXOs at the shard who accepted the transactions are lost as
+there is no straightforward way to roll back a half-committed
+transaction, without adding exploitable race conditions.
+To address this issue, we propose a novel Byzantine Shard
+Atomic Commit (Atomix) protocol for atomically processing
+transactions across shards, such that each transaction is either
+587
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

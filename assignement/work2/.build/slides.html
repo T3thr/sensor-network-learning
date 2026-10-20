@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'TH Sarabun New', 'Sarabun', Tahoma, -apple-system, sans-serif;
+    color: #0F172A;
+    background: #E2E8F0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    width: 16in;
+    height: 9in;
+    position: relative;
+    page-break-after: always;
+    background: #F8FAFC;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Work 1 style top banner */
+  .top-banner {
+    height: 0.95in;
+    background: #0F2D4A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.8in;
+    flex-shrink: 0;
+  }
+  .top-banner-title {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.3px;
+  }
+  
+  /* Slide body area */
+  .slide-content {
+    flex: 1;
+    padding: 0.35in 0.8in 0.25in 0.8in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Work 1 style footer */
+  .footer {
+    height: 0.45in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8in;
+    border-top: 1px solid #E2E8F0;
+    font-size: 11pt;
+    color: #64748B;
+    background: #F8FAFC;
+    flex-shrink: 0;
+  }
+  .footer-page {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0F2D4A;
+  }
+
+  /* Clean academic cards */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 0.22in 0.28in;
+  }
+  .card-title {
+    font-size: 14.5pt;
+    font-weight: 700;
+    color: #0F2D4A;
+    margin-bottom: 0.08in;
+  }
+  .card-body {
+    font-size: 12.5pt;
+    color: #334155;
+    line-height: 1.5;
+  }
+  .sub-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.12in 0.18in;
+    margin-bottom: 0.1in;
+  }
+  .sub-card:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Metric summary stat boxes */
+  .metric-box {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 0.18in 0.2in;
+    text-align: center;
+    flex: 1;
+  }
+  .metric-val {
+    font-size: 30pt;
+    font-weight: 700;
+    color: #0F2D4A;
+    line-height: 1.1;
+  }
+  .metric-lbl {
+    font-size: 12pt;
+    color: #64748B;
+    margin-top: 0.04in;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 1: COVER (Exactly matching Work 1 centered layout)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" style="justify-content: center; align-items: center; text-align: center; padding: 0 1.2in; background: #FFFFFF;">
+  <div style="font-size: 18pt; color: #475569; font-weight: 600; margin-bottom: 0.35in;">
+    วิชา 305432 เครือข่ายเซนเซอร์ (Sensor Networks)
+  </div>
+
+  <div style="font-size: 34pt; font-weight: 700; color: #0F2D4A; line-height: 1.25; max-width: 13.5in; margin-bottom: 0.15in;">
+    Story Validator: Validating the Plot of Interactive Narrative Games
+  </div>
+
+  <div style="font-size: 20pt; color: #1E3A8A; font-weight: 600; margin-bottom: 0.35in;">
+    การตรวจสอบโครงเรื่องของเกมแบบโต้ตอบด้วยแบบจำลองกราฟและจำลองพฤติกรรมผู้เล่น
+  </div>
+
+  <div style="width: 1.2in; height: 3.5px; background: #2563EB; border-radius: 2px; margin-bottom: 0.35in;"></div>
+
+  <div style="font-size: 15.5pt; color: #334155; font-weight: 600; margin-bottom: 0.08in;">
+    2021 IEEE Conference on Games (CoG)
+  </div>
+  <div style="font-size: 14.5pt; color: #64748B; margin-bottom: 0.6in;">
+    คณะผู้วิจัย: Carolina Veloso, Rui Prada (INESC-ID &amp; Instituto Superior Técnico, Universidade de Lisboa)
+  </div>
+
+  <div style="font-size: 17.5pt; font-weight: 700; color: #0F2D4A; margin-bottom: 0.06in;">
+    นายธีรภัทร ภู่ระย้า ลำดับที่ 10
+  </div>
+  <div style="font-size: 16pt; color: #475569;">
+    รหัสนิสิต 66362416
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 2: THE CHALLENGES (Slide 1)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">ปัญหาและความท้าทายในการตรวจสอบ Interactive Story</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in;">
+      <!-- Left Column -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-title" style="font-size: 16pt; color: #0F2D4A; margin-bottom: 0.15in;">
+            ความท้าทายหลักของโครงเรื่องแบบแตกแขนง
+          </div>
+          <div class="card-body" style="font-size: 13pt;">
+            <div style="margin-bottom: 0.14in;">
+              • <strong>Authorial Intent vs Player Agency:</strong> การรักษาสมดุลระหว่างสิ่งที่คนแต่งต้องการเล่า กับอิสระในการตัดสินใจของผู้เล่น
+            </div>
+            <div style="margin-bottom: 0.14in;">
+              • <strong>State-Space Explosion:</strong> โครงเรื่องแตกกิ่งก้านสาขาทวีคูณตามทางเลือก จนเกินขีดความสามารถที่จะตรวจสอบด้วยสายตามนุษย์
+            </div>
+            <div style="margin-bottom: 0.14in;">
+              • <strong>Guarded Variables &amp; Logic:</strong> การผูกเงื่อนไขกับตัวแปรสะสม (เช่น ค่าอารมณ์, สกิล) เสี่ยงต่อการเกิดข้อผิดพลาดเชิงตรรกะในเส้นทางที่คาดไม่ถึง
+            </div>
+            <div>
+              • <strong>High Playtesting Cost:</strong> การทดสอบเล่นด้วยคนจริงมีต้นทุนสูง ช้า และไม่ครอบคลุมทุกเส้นทางของเรื่องราว
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div style="display: flex; flex-direction: column; gap: 0.2in;">
+        <div class="card" style="text-align: center; padding: 0.18in;">
+          <img src="/Users/3rapat/student/universty/NU/project/senior/senior-subject/sensor-network/assignement/work2/.build/slide-assets/fig1_twine_storyboard.png" style="width: 100%; max-height: 2.7in; object-fit: contain; border-radius: 6px;" alt="Twine Storyboard">
+          <div style="font-size: 11pt; color: #64748B; margin-top: 0.08in;">
+            ภาพที่ 1: ผังโครงเรื่องแบบ Node &amp; Link ใน Twine ซึ่งซับซ้อนเกินกว่าจะตรวจทานด้วยสายตามนุษย์
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0.18in 0.24in;">
+          <div class="card-title" style="font-size: 14pt; margin-bottom: 0.06in;">ปัญหาการตรวจสอบในทางปฏิบัติ</div>
+          <div class="card-body" style="font-size: 12.5pt;">
+            ผลสำรวจในบทความพบว่า <strong>76% ของนักเขียนบทเกมยังคงใช้ MS Word หรือ Google Docs</strong> ในการร่างบท โดยเครื่องมืออย่าง Twine หรือ Ren'Py ช่วยเพียงการเรียบเรียง แต่ขาดระบบตรวจสอบความถูกต้องเชิงตรรกะแบบอัตโนมัติ ทำให้มักพบ Dead-Ends และ Lost Plot
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">1</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 3: GRAPH MODEL & METRICS (Slide 2 - 2 Distinct Zones, No Cramming!)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">แบบจำลองกราฟและตัวชี้วัดโครงเรื่อง (The Proposed Model &amp; Metrics)</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 0.42fr 0.58fr; gap: 0.35in;">
+      <!-- Zone 1: Graph Representation -->
+      <div style="display: flex; flex-direction: column; gap: 0.18in;">
+        <div style="font-size: 15.5pt; font-weight: 700; color: #0F2D4A;">
+          แบบจำลองโครงเรื่องด้วยกราฟ (Graph Representation)
+        </div>
+
+        <div class="card" style="padding: 0.22in 0.25in;">
+          <div class="card-title" style="font-size: 14.5pt; color: #1E3A8A; margin-bottom: 0.08in;">
+            1. นิยามกราฟระบุทิศทาง G = (V, E)
+          </div>
+          <div class="card-body" style="font-size: 12.5pt;">
+            • <strong>Passage (โหนด V):</strong> แต่ละฉากของเนื้อเรื่อง บรรจุเนื้อหาบทสนทนาและคำสั่งตัวแปร<br>
+            • <strong>Link (เส้นเชื่อม E):</strong> ทางเลือกของผู้เล่น พร้อมเงื่อนไขตัวแปรกำกับ (Guarded Edges)
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0.22in 0.25in;">
+          <div class="card-title" style="font-size: 14.5pt; color: #1E3A8A; margin-bottom: 0.08in;">
+            2. การท่องกราฟด้วย DFS
+          </div>
+          <div class="card-body" style="font-size: 12.5pt;">
+            • ใช้อัลกอริทึม <strong>Depth-First Search (DFS)</strong> เริ่มจากจุดเริ่มต้นและท่องไปจนสุดฉากจบทีละเส้นทาง<br>
+            • รวบรวมร่องรอยการเล่น (Playthrough Traces) ทุกเส้นทางที่เป็นไปได้แบบอัตโนมัติ เพื่อนำไปคำนวณตัวชี้วัด
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone 2: Narrative Metrics -->
+      <div>
+        <div style="font-size: 15.5pt; font-weight: 700; color: #0F2D4A; margin-bottom: 0.18in;">
+          ตัวชี้วัดคุณภาพโครงเรื่อง 5 ด้าน (Narrative Metrics)
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.1in;">
+          <div class="sub-card">
+            <div style="font-size: 13.5pt; font-weight: 700; color: #1E3A8A;">1. Number of Paths (N<sub>paths</sub>)</div>
+            <div style="font-size: 12pt; color: #334155; margin-top: 0.02in;">
+              นับผลรวมของเส้นทางการเล่นที่เป็นไปได้ทั้งหมดตั้งแต่จุดเริ่มต้นจนถึงฉากจบ พร้อมบันทึก Passage ที่แวะผ่าน
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div style="font-size: 13.5pt; font-weight: 700; color: #1E3A8A;">2. Stroke Points (S<sub>points</sub>)</div>
+            <div style="font-size: 12pt; color: #334155; margin-top: 0.02in;">
+              ฉากสำคัญที่ทุกเส้นทางในกราฟต้องไหลผ่าน เพื่อยืนยันว่าผู้เล่นได้รับสารสำคัญตามเจตจำนงของผู้แต่งครบถ้วน
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div style="font-size: 13.5pt; font-weight: 700; color: #1E3A8A;">3. Endings Hit Percentage (P<sub>endings</sub>)</div>
+            <div style="font-size: 12pt; color: #334155; margin-top: 0.02in;">
+              คำนวณสัดส่วนความน่าจะเป็นในการจบแต่ละแบบ และตรวจหาฉากจบที่ไม่สามารถเข้าถึงได้จริง
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div style="font-size: 13.5pt; font-weight: 700; color: #991B1B;">4. Dead-Ends (D<sub>ends</sub>) &amp; Lost Plot (L<sub>plot</sub>)</div>
+            <div style="font-size: 12pt; color: #334155; margin-top: 0.02in;">
+              • <strong>Dead-End:</strong> ฉากที่ดำเนินไปแล้วไม่มีทางเลือกให้ไปต่อจนจบเกม<br>
+              • <strong>Lost Plot:</strong> ฉากที่ไม่สามารถเข้าถึงได้จริงเนื่องจากเงื่อนไขตัวแปรขัดแย้ง
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div style="font-size: 13.5pt; font-weight: 700; color: #1E3A8A;">5. Evolution of Variables (V<sub>evol</sub>)</div>
+            <div style="font-size: 12pt; color: #334155; margin-top: 0.02in;">
+              พล็อต Dotted Chart ติดตามการเปลี่ยนแปลงค่าตัวแปรตลอดเส้นเรื่อง เพื่อตรวจจับค่าหลุดกรอบ (Out-of-range)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">2</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 4: TMC & PERSONAS (Slide 3)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">กรณีศึกษา The Murder Case และการจำลองพฤติกรรมผู้เล่น</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in;">
+      <!-- Left Column: TMC Scenario -->
+      <div style="display: flex; flex-direction: column; gap: 0.18in;">
+        <div class="card">
+          <div class="card-title" style="font-size: 15pt; color: #0F2D4A;">ฉากทดสอบ The Murder Case (TMC)</div>
+          <div class="card-body">
+            บทสนทนาแนวสืบสวนสอบปากคำผู้ต้องสงสัยคดีฆาตกรรม กำกับด้วยตัวแปรอารมณ์ 3 ด้าน: โกรธ (Anger), สับสน (Confusion), และกลัว (Fear)<br><br>
+            <strong>ขนาดบททดสอบ:</strong> 14 Passages · 20 Paths · 3 ฉากจบ
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: #991B1B;">บั๊กทดสอบ 5 จุดที่จงใจฝังไว้ (Injected Defects)</div>
+          <div class="card-body" style="font-size: 12pt;">
+            • <strong>บั๊ก 1 &amp; 3:</strong> เส้นทาง #7 และ #14 เกิด Dead-End ที่ Choice 5<br>
+            • <strong>บั๊ก 2:</strong> เส้นทาง #8 เกิด Loop วนซ้ำไม่รู้จบ<br>
+            • <strong>บั๊ก 4 &amp; 5:</strong> ฉาก Ending 1 และ Choice 6 เข้าไม่ถึง (Lost Plot)
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Player Personas -->
+      <div style="display: flex; flex-direction: column; gap: 0.18in;">
+        <div class="card">
+          <div class="card-title" style="font-size: 15pt; color: #0F2D4A;">การจำลองพฤติกรรมผู้เล่น (Player Personas)</div>
+          <div class="card-body">
+            ใช้อัลกอริทึม Heuristic Greedy Search คำนวณค่าน้ำหนักอารมณ์เพื่อจำลองการตัดสินใจของผู้เล่นแต่ละสไตล์:<br>
+            <div style="font-family: monospace; font-size: 11pt; background: #F1F5F9; padding: 0.08in; border-radius: 6px; margin: 0.08in 0; text-align: center;">
+              Score(L) = &Sigma;<sub>i=1..n</sub> (w<sub>i</sub> &times; v<sub>i</sub>), &nbsp; L* = arg max<sub>L &isin; Links</sub> Score(L)
+            </div>
+            • <strong>Aggressive Persona:</strong> ให้น้ำหนัก Anger = 0.75, Confusion = 0.15, Fear = 0.10<br>
+            • <strong>Paranoid Persona:</strong> ให้น้ำหนัก Fear = 0.70, Confusion = 0.20, Anger = 0.10
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 14pt;">ประโยชน์ในการทดสอบ</div>
+          <div class="card-body" style="font-size: 12.5pt;">
+            ช่วยให้นักเขียนพยากรณ์ได้ว่าผู้เล่นแต่ละกลุ่มจะหลุดเข้าไปเจอบั๊กใดบ้างตามแนวโน้มการตัดสินใจจริง ก่อนเปิดทดสอบเล่นกับผู้ใช้
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">3</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 5: USER EVALUATION & RESULTS (Slide 4 - Clean Titles, No AI Slop)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">ผลการทดสอบกับผู้ใช้และการตรวจจับข้อผิดพลาด</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in;">
+      <!-- Left Column: Tool Analysis -->
+      <div style="display: flex; flex-direction: column; gap: 0.18in;">
+        <div class="card" style="text-align: center; padding: 0.18in;">
+          <img src="/Users/3rapat/student/universty/NU/project/senior/senior-subject/sensor-network/assignement/work2/.build/slide-assets/fig8_problem_analysis.png" style="width: 100%; max-height: 3.0in; object-fit: contain; border-radius: 6px;" alt="Problem Analysis UI">
+          <div style="font-size: 11pt; color: #64748B; margin-top: 0.08in;">
+            ภาพที่ 2: ระบบ Story Validator ชี้ตำแหน่ง Choice 5 ที่เกิดปัญหา Dead-End บนผังต้นไม้
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0.16in 0.22in;">
+          <div class="card-title" style="font-size: 13.5pt; margin-bottom: 0.04in;">การตรวจจับบั๊กในกราฟ</div>
+          <div class="card-body" style="font-size: 12pt;">
+            บั๊กทดสอบที่ 1, 3, 4, 5 ถูกตรวจพบได้ 100% ผ่านตัวกรอง Lost Plot ในทันที โดยชี้ตำแหน่งโหนดที่มีปัญหาได้อย่างแม่นยำ
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: User Study Stats & Findings -->
+      <div style="display: flex; flex-direction: column; gap: 0.18in;">
+        <div style="display: flex; gap: 0.15in;">
+          <div class="metric-box">
+            <div class="metric-val">52.3s</div>
+            <div class="metric-lbl">เวลาตรวจพบบั๊ก (&sigma; = 22.7s)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">146.2s</div>
+            <div class="metric-lbl">เวลาแก้ปัญหา (&sigma; = 31.8s)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color: #059669;">92.4</div>
+            <div class="metric-lbl">คะแนน SUS (Truly Superior)</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 14.5pt; margin-bottom: 0.08in;">ข้อค้นพบจากการทดสอบกับผู้ใช้ 20 คน (Study 2)</div>
+          <div class="card-body" style="font-size: 12.5pt;">
+            • <strong>ความล้มเหลวของการตรวจด้วยตาเปล่า:</strong> ผู้ใช้ 3 คน (15%) ที่ไม่ยอมเปิดตัวกรองอัตโนมัติ หาบั๊กไม่พบเพราะพยายามกวาดสายตาไล่ดูบนแผนผังด้วยตนเอง<br><br>
+            • <strong>ความยากในการแก้ไข:</strong> บั๊กที่ 5 แก้ยากที่สุด (ผู้ใช้ 25% ติดขัด) เนื่องจากเงื่อนไขตัวแปรมีความซับซ้อนซ้อนกันหลายชั้น<br><br>
+            • <strong>การพัฒนาเครื่องมือ:</strong> การเพิ่มระบบ Tooltips และหน้าต่างสรุปรายงาน ช่วยดันคะแนน SUS จาก 83.5 ใน Study 1 ขึ้นเป็น 92.4 ใน Study 2
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">4</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 6: ACADEMIC CONTRIBUTIONS & APPLICATIONS (Slide 5 - Matching Work 1)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">การมีส่วนร่วมทางวิชาการและการประยุกต์ใช้งาน</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in;">
+      <!-- Left Column: Academic Contributions -->
+      <div style="display: flex; flex-direction: column; gap: 0.16in;">
+        <div style="font-size: 15.5pt; font-weight: 700; color: #0F2D4A; margin-bottom: 0.04in;">
+          การมีส่วนร่วมทางวิชาการ (Academic Contributions)
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">1. การนิยามตัวชี้วัดโครงเรื่องด้วยทฤษฎีกราฟ</div>
+          <div class="card-body" style="font-size: 12pt;">
+            แปลงแนวคิดการแต่งเรื่องที่เป็นนามธรรม ให้กลายเป็นตัวชี้วัดเชิงคณิตศาสตร์ (เช่น Stroke Points, Lost Plot, Dead-Ends) ที่โปรแกรมคอมพิวเตอร์คำนวณซ้ำได้อัตโนมัติ
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">2. สถาปัตยกรรมการตรวจพิสูจน์แบบออฟไลน์</div>
+          <div class="card-body" style="font-size: 12pt;">
+            ออกแบบระบบตรวจพิสูจน์กราฟเนื้อเรื่องแบบอัตโนมัติ ช่วยลดภาระและต้นทุนก่อนเข้าสู่ขั้นตอน Human Playtesting
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">3. การจำลองพฤติกรรมผู้เล่นด้วย Persona</div>
+          <div class="card-body" style="font-size: 12pt;">
+            นำ Heuristic Search มาพยากรณ์แนวโน้มการตัดสินใจของผู้เล่นแต่ละกลุ่ม ช่วยค้นหาจุดบกพร่องที่ซ่อนอยู่ตามบุคลิกผู้เล่น
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Applications -->
+      <div style="display: flex; flex-direction: column; gap: 0.16in;">
+        <div style="font-size: 15.5pt; font-weight: 700; color: #0F2D4A; margin-bottom: 0.04in;">
+          การประยุกต์ใช้งานกับเกมเล่าเรื่อง (Applications)
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #0F2D4A;">1. โครงสร้าง Node &amp; Edge ใน Game Engine</div>
+          <div class="card-body" style="font-size: 12pt;">
+            สามารถนำโมเดล Directed Graph ไปเชื่อมต่อกับเอนจินเกมเชิงโต้ตอบยุคใหม่ (เช่น Unity, Unreal Engine) ได้ทันที
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #0F2D4A;">2. การประเมินเงื่อนไขตัวแปรขณะเล่น</div>
+          <div class="card-body" style="font-size: 12pt;">
+            แนวคิด Guarded Edges สอดคล้องกับการตรวจประเมินค่าตัวแปรใน Game Runtime State ก่อนอนุญาตให้ผู้เล่นเลือกเส้นทาง
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #0F2D4A;">3. ระบบตรวจสอบคุณภาพอัตโนมัติใน CI/CD</div>
+          <div class="card-body" style="font-size: 12pt;">
+            ผสานอัลกอริทึม DFS Validation เข้ากับกระบวนการ Continuous Integration เพื่อสแกนหา Dead-Ends ก่อนส่งมอบเกม
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">5</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 7: LIMITATIONS & CONCLUSION (Slide 6 - Pure Work 1 Style, No Slop)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="top-banner">
+    <div class="top-banner-title">ข้อจำกัด และบทสรุป</div>
+  </div>
+
+  <div class="slide-content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35in;">
+      <!-- Left Column: Limitations -->
+      <div style="display: flex; flex-direction: column; gap: 0.16in;">
+        <div style="font-size: 15.5pt; font-weight: 700; color: #991B1B; margin-bottom: 0.04in;">
+          ข้อจำกัดที่ระบุในบทความ (Limitations &amp; Risks)
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #991B1B;">1. ขาดกลุ่มควบคุมเปรียบเทียบ (No Control Baseline)</div>
+          <div class="card-body" style="font-size: 12pt;">
+            บทความวัดเวลาตรวจบั๊กได้ 52.3 วินาที แต่ไม่ได้วัดเทียบกับกลุ่มที่ตรวจด้วยสายตาเปล่าใน Twine จึงยังไม่เห็นความเร็วเปรียบเทียบเชิงสถิติ
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #991B1B;">2. ปัญหา State-Space Explosion ของ DFS</div>
+          <div class="card-body" style="font-size: 12pt;">
+            การท่องทุกเส้นทางด้วย DFS ทำงานได้ดีในเรื่องขนาดเล็ก แต่หากกราฟมีหลายร้อยฉากและมีวงวน (Loops) จำนวนเส้นทางจะพุ่งสูงแบบ Exponential
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #991B1B;">3. ขอบเขตชุดทดสอบมีขนาดเล็ก</div>
+          <div class="card-body" style="font-size: 12pt;">
+            บั๊กทั้ง 5 จุดใน TMC ถูกตรวจพบด้วย Lost Plot เพียงอย่างเดียว ยังไม่ได้พิสูจน์คุณค่าของ Stroke Points หรือตัวแปรที่ซับซ้อนสูงในเกมระดับอุตสาหกรรม
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Conclusion & Future Work -->
+      <div style="display: flex; flex-direction: column; gap: 0.16in;">
+        <div style="font-size: 15.5pt; font-weight: 700; color: #0F2D4A; margin-bottom: 0.04in;">
+          บทสรุปและการประยุกต์ใช้งาน (Conclusion &amp; Applications)
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">1. การยกระดับสู่ Automated QA</div>
+          <div class="card-body" style="font-size: 12pt;">
+            Story Validator วางรากฐานสำคัญของการนำทฤษฎีกราฟและการจำลอง Persona มาตรวจพิสูจน์เกมเล่าเรื่องแบบอัตโนมัติ ช่วยลดต้นทุน Playtesting และรักษาคุณภาพเนื้อเรื่อง
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">2. การเชื่อมต่อ Game Engine เชิงพาณิชย์</div>
+          <div class="card-body" style="font-size: 12pt;">
+            พัฒนาปลั๊กอินเชื่อมต่อไปยัง Unity, Unreal Engine หรือ Visual Novel Engines ยอดนิยม เพื่อให้นักพัฒนาเข้าถึงได้สะดวก
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 13.5pt; color: #1E3A8A;">3. การใช้ AI/LLM ช่วยซ่อมแซมเนื้อเรื่อง</div>
+          <div class="card-body" style="font-size: 12pt;">
+            ประยุกต์ใช้ Large Language Models ร่วมกับกราฟ เพื่อช่วยเสนอแนวทางแก้ไขเงื่อนไขตัวแปรหรือเส้นทางที่ตันโดยอัตโนมัติ
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>เอกสารอ้างอิง: Veloso &amp; Prada, IEEE CoG 2021 (IEEE Xplore: 9618897)</div>
+    <div class="footer-page">6</div>
+  </div>
+</div>
+
+</body>
+</html>

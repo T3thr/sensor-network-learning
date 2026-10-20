@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>IoT บทที่ 1: Introduction to Internet of Things · 305141 อ.ตั้ม</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261020b">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261020b">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261020b">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020b">
+  <script src="../assets/js/header-component.js?v=20261020b"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020b" defer></script>
+  <style>
+    .iot-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .iot-flow-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--purple);
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      text-align: center;
+    }
+
+    .iot-flow-card h4 {
+      color: var(--purple);
+      font-size: 0.95rem;
+      margin: 0 0 8px;
+    }
+
+    .iot-flow-card p {
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .tier-stack {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .tier-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+
+    .tier-row.tier-edge { border-left-color: var(--green); }
+    .tier-row.tier-fog { border-left-color: var(--accent2); }
+    .tier-row.tier-cloud { border-left-color: var(--purple); }
+    .tier-row.tier-user { border-left-color: var(--accent); }
+
+    .tier-label {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .tier-desc {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .req-ladder {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .req-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1.5px solid var(--rule);
+      background: var(--paper2);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .req-chip.lvl-low { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+    .req-chip.lvl-mid { border-color: var(--accent2); color: var(--accent2); background: var(--accent2-bg); }
+    .req-chip.lvl-high { border-color: var(--red); color: var(--red); background: var(--red-bg); }
+
+    .event-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .event-box {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+
+    .event-box h4 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .event-box.trad { border-top: 4px solid var(--accent2); }
+    .event-box.evt { border-top: 4px solid var(--green); }
+
+    @media (max-width: 800px) {
+      .iot-flow { grid-template-columns: repeat(2, 1fr); }
+      .tier-row { grid-template-columns: 1fr; }
+      .event-compare { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <site-header data-page="iot-ch01" data-base="../" data-crumb="IoT บทที่ 1: Introduction to Internet of Things"></site-header>
+
+  <div class="chapter-container">
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญบทที่ 1</span>
+          <span class="sidebar-badge-pill" style="background: var(--purple); color: #fff;">IoT 01</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label" id="sidebar-live-section">1. ที่มาทางประวัติศาสตร์</span>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="#sec-genesis" class="sidebar-link active">1. ที่มาทางประวัติศาสตร์</a></li>
+        <li><a href="#sec-nomenclature" class="sidebar-link">2. นิยามศัพท์และคำอ่าน</a></li>
+        <li><a href="#sec-meaning" class="sidebar-link">3. IoT คืออะไรกันแน่</a></li>
+        <li><a href="#sec-roots" class="sidebar-link">4. รากเหง้า 3 เทคโนโลยี</a></li>
+        <li><a href="#sec-components" class="sidebar-link">5. กายวิภาค 4 องค์ประกอบ</a></li>
+        <li><a href="#sec-architecture" class="sidebar-link">6. สถาปัตยกรรม 3 ชั้น</a></li>
+        <li><a href="#sec-applications" class="sidebar-link">7. แอปพลิเคชันจริง</a></li>
+        <li><a href="#sec-requirements" class="sidebar-link">8. บันได Functional Requirements</a></li>
+        <li><a href="#sec-event" class="sidebar-link">9. Event-Driven Architecture</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link" style="color: var(--purple); font-weight: 700;">10. วิดเจ็ตพลังงานเซนเซอร์ ★</a></li>
+        <li><a href="#sec-security" class="sidebar-link">11. Security และ Privacy</a></li>
+        <li><a href="#sec-checklist" class="sidebar-link" style="color: var(--accent2); font-weight: 700;">12. เช็กลิสต์ประเมินตนเอง ★</a></li>
+        <li><a href="#sec-synthesis" class="sidebar-link">13. Mental Model สรุปบท</a></li>
+        <li><a href="#sec-crosslinks" class="sidebar-link" style="color: var(--green); font-weight: 700;">14. เชื่อมโยง DataCom</a></li>
+      </ul>
+      <div style="margin-top: 24px; padding: 14px; background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.82rem; line-height: 1.6;">
+        <div style="font-weight: 800; color: var(--purple); margin-bottom: 4px;">305141 Introduction to IoT</div>
+        <div style="color: var(--ink-soft);">อ้างอิง: lecture/iot/305141_Chapter01.pdf โดย อ.ตั้ม Settha Tangkawanit</div>
+      </div>
+    </aside>
+
+    <main class="chapter-content">
+      <div class="academic-callout" style="background: var(--paper2); border-left: 6px solid var(--purple); margin-bottom: 32px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="academic-badge" style="background: var(--purple-bg); color: var(--purple); border-color: var(--purple);">305141 Introduction to Internet of Things</span>
+          <span class="academic-badge">Part 1: Overview, Components, Architecture</span>
+          <span class="unit-tag" style="background: var(--card-bg);">บทที่ 1 จาก 6</span>
+        </div>
+        <h1 class="book-title" style="font-size: 1.85rem; margin-bottom: 8px;">บทนำอินเทอร์เน็ตของสรรพสิ่ง: จากตู้เย็นอัจฉริยะสู่ระบบขับเคลื่อนด้วยเหตุการณ์</h1>
+        <div class="subtitle" style="font-size: 1.02rem; margin-bottom: 0;">
+          เข้าใจ IoT ไม่ใช่แค่การต่ออุปกรณ์ขึ้น Internet แต่คือระบบฝังตัวที่ออกแบบมาเพื่อแอปพลิเคชันเฉพาะ มีข้อจำกัดด้านพลังงาน แบนด์วิดท์ และต้องเคารพพลวัตของระบบทางกายภาพ
+        </div>
+      </div>
+
+      <!-- 1 GENESIS -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. Historical Genesis</span>
+        <h2 class="section-title">ที่มาทางประวัติศาสตร์: IoT ไม่ได้เกิดขึ้นในชั่วข้ามคืน</h2>
+        <p>
+          คำว่า Internet of Things กลายเป็นข่าวและกระแสนิยมทางการตลาดอย่างรวดเร็ว
+          แต่เบื้องหลังคำโฆษณา IoT คือเทคโนโลยีที่หยั่งรากลึกจากสามสายงานวิจัยมาก่อนหน้านาน
+          ได้แก่ <strong>Pervasive Information Systems</strong>, <strong>Sensor Networks</strong>, และ <strong>Embedded Computing</strong>
+        </p>
+        <p>
+          หลักสูตร 305141 ของ อ.ตั้ม ย้ำไว้ว่า คำที่อธิบายความจริงของเทคโนโลยีนี้ได้แม่นกว่าคือ
+          <strong>IoT system</strong> ไม่ใช่ Internet of Things ลอยๆ
+          เพราะอุปกรณ์ส่วนใหญ่ถูกเชื่อมเป็นระบบเฉพาะกิจ (purpose-specific systems)
+          ไม่ใช่เครื่องมือเปิดกว้างบนเครือข่ายทั่วโลกเหมือนเบราว์เซอร์หรือพีซี
+        </p>
+        <div class="academic-callout callout-warning">
+          <strong>กับดักข้อสอบ:</strong>
+          ถ้าตอบว่า IoT คือ "อุปกรณ์ทุกอย่างต่อเน็ต" ยังถือว่าเข้าใจไม่ถึงแก่น
+          ระบบ IoT จริงต้องออกแบบเพื่อชุดแอปพลิเคชันหนึ่งหรือหลายแอปที่เกี่ยวข้องกัน
+          และต้องคำนึงถึงพลวัตของระบบทางกายภาพเป็นหลัก
+        </div>
+      </section>
+
+      <!-- 2 GLOSSARY -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary</span>
+        <h2 class="section-title">นิยามศัพท์และคำอ่านสัทศาสตร์ภาษาไทย</h2>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Internet of Things (IoT) <span class="phonetic-pronounce">อิน-เทอร์-เน็ต ออฟ ทิงส์</span></div>
+          <div class="phonetic-desc">วัตถุทางกายภาพที่มีเซนเซอร์ ความสามารถประมวลผล ซอฟต์แวร์ และเทคโนโลยีสื่อสาร เพื่อแลกเปลี่ยนข้อมูลกับอุปกรณ์และระบบอื่นผ่านเครือข่าย</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">IoT System <span class="phonetic-pronounce">ไอ-โอ-ที ซิส-เทม</span></div>
+          <div class="phonetic-desc">ระบบเฉพาะกิจที่รวมอุปกรณ์ เซนเซอร์ แอคชูเอเตอร์ ตัวประมวลผล และเครือข่าย เข้าด้วยกันเพื่อวัตถุประสงค์ที่กำหนดไว้ ไม่ใช่กลุ่มอุปกรณ์อินเทอร์เน็ตแบบไร้ทิศทาง</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Sensor <span class="phonetic-pronounce">เซน-เซอร์</span></div>
+          <div class="phonetic-desc">ตัวตรวจวัดสภาวะทางกายภาพ เช่น อุณหภูมิ ความเร่ง แสง แก๊ส แล้วแปลงเป็นสัญญาณให้ระบบประมวลผล</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Actuator <span class="phonetic-pronounce">แอค-ชู-เอ-เตอร์</span></div>
+          <div class="phonetic-desc">ตัวกระทำที่เปลี่ยนคำสั่งดิจิทัลเป็นผลทางกายภาพ เช่น มอเตอร์ วาล์ว รีเลย์ หลอดไฟ</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">MEMS <span class="phonetic-pronounce">เมมส์</span></div>
+          <div class="phonetic-desc">Microelectromechanical Systems เซนเซอร์จิ๋วราคาถูกกินไฟต่ำ เช่น accelerometer, gyroscope, chemical sensor ซึ่งเป็นเชื้อเพลิงหลักของยุค IoT</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Node / End-Device <span class="phonetic-pronounce">โนด / เอนด์-ดี-ไวซ์</span></div>
+          <div class="phonetic-desc">โหนดปลายทางของเครือข่าย มีเซนเซอร์และ/หรือแอคชูเอเตอร์ ตัวประมวลผล หน่วยความจำ และ network interface</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Hub <span class="phonetic-pronounce">ฮับ</span></div>
+          <div class="phonetic-desc">จุดเชื่อมต่อระดับแรกระหว่างกลุ่มโหนดกับเครือข่ายที่เหลือ มักทำงานด้วย Internet Protocol</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Fog / Edge Processing <span class="phonetic-pronounce">ฟอก / เอดจ์</span></div>
+          <div class="phonetic-desc">การประมวลผลใกล้โหนด เพื่อลด latency และลดปริมาณข้อมูลที่ต้องส่งขึ้นคลาวด์</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Event-Driven <span class="phonetic-pronounce">อี-เวนท์-ดรีฟ-เวิน</span></div>
+          <div class="phonetic-desc">สถาปัตยกรรมที่อ่านค่าเมื่อเกิดเงื่อนไขหรือเหตุการณ์ แทนการสุ่มตัวอย่างเป็นคาบคงที่ตลอดเวลา</div>
+        </div>
+        <div class="phonetic-card">
+          <div class="phonetic-term">Aperiodic Sampling <span class="phonetic-pronounce">เอ-เพ-รี-โอ-ดิก แซม-ปลิง</span></div>
+          <div class="phonetic-desc">การสุ่มตัวอย่างแบบไม่เป็นคาบ ช่วยประหยัดพลังงานและแบนด์วิดท์เมื่อเทียบกับ time-series คงที่</div>
+        </div>
+      </section>
+
+      <!-- 3 MEANING -->
+      <section id="sec-meaning" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. What is IoT</span>
+        <h2 class="section-title">IoT คืออะไรกันแน่: นิยามที่ใช้ในชั้นเรียน</h2>
+        <p>ยังไม่มีนิยามเดียวที่ทุกฝ่ายยอมรับ แต่ในสไลด์ อ.ตั้ม ระบุความเป็นไปได้ไว้ดังนี้:</p>
+        <ul style="line-height: 1.95; color: var(--ink-soft);">
+          <li>อุปกรณ์ทางกายภาพที่เปิดใช้การสื่อสารผ่านเครือข่าย แม้หลายเครื่องจะไม่ได้รัน Internet Protocol โดยตรง</li>
+          <li>Sensor network แบบ soft real-time</li>
+          <li>เครือข่ายไดนามิกของอุปกรณ์ฝังตัวที่พัฒนาต่อเนื่อง</li>
+        </ul>
+        <h3 style="margin-top: 22px; font-size: 1.12rem;">ลักษณะเด่น 2 ประการที่ต้องจำ</h3>
+        <ol style="line-height: 1.95; color: var(--ink-soft);">
+          <li><strong>Designed for one or a set of applications</strong> ไม่ใช่กลุ่มอุปกรณ์อินเทอร์เน็ตที่กระจัดกระจายไร้จุดหมาย</li>
+          <li><strong>Takes into account the dynamics of physical systems</strong> ต้องเคารพพฤติกรรมของโลกจริงที่เปลี่ยนแปลงตลอดเวลา</li>
+        </ol>
+        <p>
+          ระบบ IoT อาจมีเซนเซอร์เป็นหลัก หรือมีแอคชูเอเตอร์จำนวนมากในบางกรณี
+          เป้าหมายร่วมคือประมวลผลสัญญาณและข้อมูลอนุกรมเวลา (time-series)
+        </p>
+      </section>
+
+      <!-- 4 ROOTS -->
+      <section id="sec-roots" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">4. Technology Roots</span>
+        <h2 class="section-title">รากเหง้าสามสาย: Sensor Networks, Embedded Computing, MEMS</h2>
+
+        <h3 style="font-size: 1.08rem;">Traditional Sensor Network vs IoT Sensor Research</h3>
+        <div class="event-compare">
+          <div class="event-box trad">
+            <h4>Traditional Sensor Network</h4>
+            <ul style="margin: 0; padding-left: 18px; color: var(--ink-soft); line-height: 1.7;">
+              <li>เก็บข้อมูลที่อัตราข้อมูลต่ำมาก</li>
+              <li>ส่งข้อมูลดิบไปยังเซิร์ฟเวอร์กลาง</li>
+              <li>ไม่เน้น in-network processing</li>
+              <li>โฟกัสที่การเก็บข้อมูลเป็นหลัก</li>
+            </ul>
+          </div>
+          <div class="event-box evt">
+            <h4>IoT Sensor Research</h4>
+            <ul style="margin: 0; padding-left: 18px; color: var(--ink-soft); line-height: 1.7;">
+              <li>โหนดมีทั้ง sense และ process</li>
+              <li>มีแอคชูเอเตอร์โต้ตอบกลับโลกจริง</li>
+              <li>เน้น edge/fog processing</li>
+              <li>ออกแบบเพื่อแอปพลิเคชันเฉพาะ</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.08rem; margin-top: 20px;">Embedded Computing</h3>
+        <p>
+          เดิมเน้นอุปกรณ์ standalone หรือเครือข่ายที่ผูกกันแน่น เช่น ระบบในยานพาหนะ
+          ขอบเขตหลักคือ consumer electronics กับ cyber-physical systems
+          ทั้งสองเน้นระบบวิศวกรรมที่มีเป้าหมายชัดเจน
+        </p>
+
+        <h3 style="font-size: 1.08rem; margin-top: 20px;">MEMS Sensors</h3>
+        <p>
+          ความพร้อมของเซนเซอร์ MEMS ราคาถูกกินไฟต่ำ เช่น accelerometer, gyroscope, chemical sensor
+          ทำให้แอปพลิเคชัน IoT ขยายออกนอกห้องทดลองและโรงงาน
+          และดันระบบ IoT เข้าสู่งาน signal processing อย่างจริงจัง
+        </p>
+      </section>
+
+      <!-- 5 COMPONENTS -->
+      <section id="sec-components" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">5. System Anatomy</span>
+        <h2 class="section-title">กายวิภาคของระบบ IoT: 4 องค์ประกอบหลัก</h2>
+        <p>ถอดโครงสร้างโหนดและระบบจากสไลด์ Part 1 ได้เป็น 4 องค์ประกอบที่ขาดไม่ได้:</p>
+
+        <div class="iot-flow">
+          <div class="iot-flow-card">
+            <h4>1. Sensing</h4>
+            <p>เซนเซอร์อ่านค่าทางกายภาพ<br>แสง เสียง ความดัน อุณหภูมิ</p>
+          </div>
+          <div class="iot-flow-card">
+            <h4>2. Processing</h4>
+            <p>ไมโครคอนโทรลเลอร์และหน่วยความจำ<br>กรองข้อมูล ตรวจเหตุการณ์</p>
+          </div>
+          <div class="iot-flow-card">
+            <h4>3. Actuating</h4>
+            <p>แอคชูเอเตอร์เปลี่ยนคำสั่งเป็นผลจริง<br>มอเตอร์ วาล์ว รีเลย์</p>
+          </div>
+          <div class="iot-flow-card">
+            <h4>4. Networking</h4>
+            <p>Network interface ส่งข้อมูลและรับคำสั่ง<br>มีทั้งแบบรัน IP และไม่รัน IP</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 22px; font-size: 1.12rem;">องค์ประกอบในภาพรวมของระบบ</h3>
+        <div class="academic-table" style="overflow-x: auto;">
+          <table class="academic-table" style="width: 100%;">
+            <thead>
+              <tr><th>องค์ประกอบ</th><th>หน้าที่</th><th>ข้อสังเกตสำคัญ</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Physical plant / environment</td>
+                <td>ระบบกายภาพที่ IoT โต้ตอบด้วย</td>
+                <td>ใช้คำว่า plant และ environment สลับกันได้ในสไลด์</td>
+              </tr>
+              <tr>
+                <td>Nodes (leaves)</td>
+                <td>โหนดปลายทาง รวม sensor/actuator, processor, memory, network interface</td>
+                <td>บางโหนดรัน Internet Protocol บางโหนดไม่รัน</td>
+              </tr>
+              <tr>
+                <td>Hubs</td>
+                <td>เชื่อมต่อระดับแรกระหว่างโหนดกับเครือข่ายที่เหลือ</td>
+                <td>มักรัน IP</td>
+              </tr>
+              <tr>
+                <td>Fog processors</td>
+                <td>ประมวลผลชุดโหนดและฮับในพื้นที่</td>
+                <td>ลด latency แต่มีพลังคำนวณน้อยกว่าคลาวด์</td>
+              </tr>
+              <tr>
+                <td>Cloud servers</td>
+                <td>ประมวลผลและเก็บข้อมูลขนาดใหญ่</td>
+                <td>มาพร้อมปัญหา system management</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6 ARCHITECTURE -->
+      <section id="sec-architecture" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">6. Three-Tier Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรม 3 ชั้น: Edge Device, Server/Broker, End-User</h2>
+
+        <div class="tier-stack">
+          <div class="tier-row tier-edge">
+            <div class="tier-label">END-DEVICE</div>
+            <div class="tier-desc">
+              ชั้นปลายทาง: Sensor node, Actuator node, Wire/Wireless Sensor Networks
+              ทำหน้าที่วัดค่า ตัดสินใจเบื้องต้น และส่งเฉพาะเหตุการณ์ที่สำคัญ
+            </div>
+          </div>
+          <div class="tier-row tier-fog">
+            <div class="tier-label">FOG / EDGE</div>
+            <div class="tier-desc">
+              ชั้นประมวลผลใกล้ขอบ: Fog/Edge Server, Server/Broker
+              รวมข้อมูลหลายโหนด ลด latency และลดโหลดเครือข่ายก่อนส่งขึ้นคลาวด์
+            </div>
+          </div>
+          <div class="tier-row tier-cloud">
+            <div class="tier-label">CLOUD</div>
+            <div class="tier-desc">
+              ชั้นคลาวด์: Cloud Server, Database, Analytics, Storage
+              ประมวลผลภาพรวม จัดเก็บระยะยาว และให้บริการข้อมูลกับผู้ใช้
+            </div>
+          </div>
+          <div class="tier-row tier-user">
+            <div class="tier-label">END-USER</div>
+            <div class="tier-desc">
+              ชั้นผู้ใช้: Mobile User, Web User, Machine-to-Machine
+              รับการแจ้งเตือน ดูแดชบอร์ด และส่งคำสั่งกลับเข้าระบบ
+            </div>
+          </div>
+        </div>
+
+        <div class="academic-callout callout-purple">
+          <strong>ทำไมต้องกระจายการประมวลผล:</strong>
+          ข้อจำกัดด้านพลังงานและแบนด์วิดท์ผลักให้ต้องประมวลผลใกล้เหตุการณ์
+          การตรวจจับเหตุการณ์ที่ edge ลดทั้งปริมาณข้อมูลในเครือข่ายและพลังงานวิทยุ
+          เพราะการสื่อสารไร้สายกินไฟมากกว่าการคำนวณบนชิปเล็กๆ หลายเท่า
+        </div>
+
+        <h3 style="margin-top: 22px; font-size: 1.12rem;">Cloud, Edge, Fog ต่างกันอย่างไร</h3>
+        <ul style="line-height: 1.9; color: var(--ink-soft);">
+          <li><strong>Edge:</strong> ประมวลผลบนหรือใกล้โหนดมากที่สุด</li>
+          <li><strong>Fog:</strong> ประมวลผลบนเซิร์ฟเวอร์ท้องถิ่นใกล้กลุ่มโหนด</li>
+          <li><strong>Cloud:</strong> ประมวลผลรวมศูนย์บนเซิร์ฟเวอร์ขนาดใหญ่</li>
+        </ul>
+      </section>
+
+      <!-- 7 APPLICATIONS -->
+      <section id="sec-applications" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">7. Applications</span>
+        <h2 class="section-title">แอปพลิเคชันจริงจากสไลด์ อ.ตั้ม</h2>
+        <div class="academic-table" style="overflow-x: auto;">
+          <table class="academic-table" style="width: 100%;">
+            <thead>
+              <tr><th>กลุ่ม</th><th>สิ่งที่ระบบทำ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Smart Industrial</td><td>เฝ้ากระบวนการผลิต คุณภาพสินค้า และสภาพเครื่องจักร</td></tr>
+              <tr><td>Smart Building</td><td>ระบุตำแหน่งคนและสภาวะอาคาร คุม HVAC และไฟ เพื่อลดค่าใช้จ่าย</td></tr>
+              <tr><td>Smart Cities</td><td>เฝ้าจราจรคนและยานพาหนะ ผสานข้อมูลจากอาคารอัจฉริยะ</td></tr>
+              <tr><td>Vehicles</td><td>เครือข่ายเซนเซอร์ในรถ ปรับสมรรถนะ ลดเชื้อเพลิง และมลพิษ</td></tr>
+              <tr><td>Medical and Health Care</td><td>เชื่อมเซนเซอร์ผู้ป่วยทั้งที่บ้าน รถพยาบาล คลินิก และโรงพยาบาล</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 8 REQUIREMENTS -->
+      <section id="sec-requirements" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">8. Functional Requirements</span>
+        <h2 class="section-title">บันไดความซับซ้อนของระบบ: จากเก็บข้อมูลสู่การควบคุม</h2>
+        <p>Use case ช่วยกำหนดข้อกำหนดของระบบ IoT ไล่จากง่ายไปซับซ้อน:</p>
+        <div class="req-ladder">
+          <span class="req-chip lvl-low">1. Sensor Network (เก็บข้อมูล)</span>
+          <span class="req-chip lvl-low">2. Alert System (แจ้งเตือน)</span>
+          <span class="req-chip lvl-mid">3. Analysis System (วิเคราะห์ต่อเนื่อง)</span>
+          <span class="req-chip lvl-mid">4. Reactive System (สั่งแอคชูเอเตอร์)</span>
+          <span class="req-chip lvl-high">5. Control System (ควบคุมด้วย control law)</span>
+        </div>
+        <ul style="line-height: 1.9; color: var(--ink-soft);">
+          <li><strong>Sensor network:</strong> ทำหน้าที่เก็บข้อมูลจากเซนเซอร์อย่างเดียว</li>
+          <li><strong>Alert system:</strong> วิเคราะห์แล้วส่งการแจ้งเตือนเมื่อเข้าเงื่อนไข</li>
+          <li><strong>Analysis system:</strong> วิเคราะห์ต่อเนื่อง รายงานรายชั่วโมง รายวัน หรืออัปเดตสด</li>
+          <li><strong>Reactive system:</strong> วิเคราะห์แล้วสั่งแอคชูเอเตอร์ แต่ยังไม่ใช่ control law เต็มรูปแบบ</li>
+          <li><strong>Control system:</strong> ป้อนข้อมูลเซนเซอร์เข้าอัลกอริทึมควบคุม แล้วสร้างสัญญาณออกให้แอคชูเอเตอร์</li>
+        </ul>
+      </section>
+
+      <!-- 9 EVENT -->
+      <section id="sec-event" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">9. Event-Driven Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรมขับเคลื่อนด้วยเหตุการณ์</h2>
+        <p>
+          หัวใจของ IoT คือ event-driven หรือ aperiodic sampling
+          งานประมวลผลสัญญาณดั้งเดิมและระบบควบคุมมักสมมติว่ามีตัวอย่างเป็นคาบ
+          แต่ time-series คงที่กินทั้งพลังงานที่โหนดและแบนด์วิดท์บนเครือข่ายมากเกินไป
+        </p>
+        <div class="event-compare">
+          <div class="event-box trad">
+            <h4>Traditional periodic</h4>
+            <p style="margin: 0; color: var(--ink-soft); line-height: 1.7;">
+              Read Sensor Values 1, 2, ... N ตามคาบเวลา
+              แม้ค่าจะไม่เปลี่ยนก็ยังส่ง
+              เปลืองทั้งไฟและ bandwidth
+            </p>
+          </div>
+          <div class="event-box evt">
+            <h4>Event-driven</h4>
+            <p style="margin: 0; color: var(--ink-soft); line-height: 1.7;">
+              อยู่ใน Main Task หรือ Idle
+              เมื่อ Sensor Value เกิน threshold จึงส่งค่า
+              ประหยัดพลังงานและเครือข่าย
+            </p>
+          </div>
+        </div>
+        <p>
+          ในที่นี้ event ถูกนิยามกว้างกว่านักจำลองระบบทั่วไป
+          คือถือเป็น time-value sets และยอมรับ stuttering
+          หรือการซ้ำค่าของเหตุการณ์เป็นส่วนหนึ่งของโมเดล เพราะระบบ IoT กระจายศูนย์
+        </p>
+        <div class="academic-callout callout-warning">
+          ข้อควรระวัง: ไม่ใช่ทุกแอปพลิเคชันเหมาะกับ aperiodic acquisition
+          ต้องประเมินลักษณะสัญญาณจริงก่อนเลือกแบบแผนการสุ่มตัวอย่าง
+        </div>
+      </section>
+
+      <!-- 10 SIMULATOR -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">10. Interactive Simulator</span>
+        <h2 class="section-title">วิดเจ็ตจำลองการกินกระแสไฟฟ้าของเซนเซอร์และวิทยุ</h2>
+        <p>
+          ปรับสัดส่วนเวลาทำงานของโหนด แล้วเปรียบเทียบโหมด periodic sampling กับ event-driven
+          รวมถึงผลของการเลือกประมวลผลที่ edge ก่อนส่งขึ้นคลาวด์
+        </p>
+
+        <div class="sim-panel">
+          <div class="sim-controls">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">กระแส TX (mA)</label>
+              <input type="range" id="iot-itx" min="5" max="40" value="17" step="0.5" style="width: 100%; accent-color: var(--red);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--red); font-weight: 700;"><span id="iot-itx-val">17</span> mA</div>
+            </div>
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">กระแส RX (mA)</label>
+              <input type="range" id="iot-irx" min="5" max="40" value="19" step="0.5" style="width: 100%; accent-color: var(--accent2);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--accent2); font-weight: 700;"><span id="iot-irx-val">19</span> mA</div>
+            </div>
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">กระแส Sleep (mA)</label>
+              <input type="range" id="iot-isleep" min="0.005" max="1" value="0.02" step="0.005" style="width: 100%; accent-color: var(--green);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--green); font-weight: 700;"><span id="iot-isleep-val">0.020</span> mA</div>
+            </div>
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">อัตราส่งต่อชั่วโมง (โหมด Periodic)</label>
+              <input type="range" id="iot-rate" min="1" max="60" value="30" step="1" style="width: 100%; accent-color: var(--accent);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--accent); font-weight: 700;"><span id="iot-rate-val">30</span> ครั้ง/ชม.</div>
+            </div>
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">อัตราเกิด Event ต่อชั่วโมง</label>
+              <input type="range" id="iot-event" min="0" max="30" value="2" step="1" style="width: 100%; accent-color: var(--purple);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--purple); font-weight: 700;"><span id="iot-event-val">2</span> ครั้ง/ชม.</div>
+            </div>
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem;">ลดแพ็กเก็ตด้วย Edge Filter (%)</label>
+              <input type="range" id="iot-edge" min="0" max="95" value="0" step="5" style="width: 100%; accent-color: var(--green);">
+              <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--green); font-weight: 700;"><span id="iot-edge-val">0</span> %</div>
+            </div>
+          </div>
+
+          <div class="state-bar" id="iot-state-bar">
+            <div class="seg-tx" id="iot-seg-tx" style="width: 2%;">TX</div>
+            <div class="seg-rx" id="iot-seg-rx" style="width: 2%;">RX</div>
+            <div class="seg-sleep" id="iot-seg-sleep" style="width: 96%;">Sleep</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+            <div class="metric-card">
+              <div class="metric-label">I_avg Periodic</div>
+              <div class="metric-val" id="iot-iavg-periodic">0.20 mA</div>
+              <div class="metric-sub">สุ่มตัวอย่างเป็นคาบคงที่</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">I_avg Event-Driven</div>
+              <div class="metric-val" id="iot-iavg-event" style="color: var(--green);">0.05 mA</div>
+              <div class="metric-sub">ส่งเฉพาะเมื่อเกิด event</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">พลังงานที่ประหยัดได้</div>
+              <div class="metric-val" id="iot-save" style="color: var(--purple);">75%</div>
+              <div class="metric-sub">เทียบ periodic เป็น baseline</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Battery Life (Event-Driven)</div>
+              <div class="metric-val" id="iot-life" style="color: var(--accent);">8.0 ปี</div>
+              <div class="metric-sub">ถ่าน 2500 mAh ใช้ได้ 80%</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary" id="iot-preset-periodic" style="border-color: var(--accent2); color: var(--accent2);">จำลอง Periodic Heavy</button>
+            <button type="button" class="btn btn-secondary" id="iot-preset-event" style="border-color: var(--green); color: var(--green);">จำลอง Event-Driven + Edge</button>
+          </div>
+
+          <div class="academic-callout callout-purple" style="margin-top: 18px;">
+            <strong>อ่านผลอย่างวิศวกร:</strong>
+            กด Periodic Heavy แล้วเทียบกับ Event-Driven + Edge
+            ส่วนต่างของ I_avg คือราคาของการเก็บ time-series ตลอดเวลา
+            และพลังงานที่ edge filter ช่วยประหยัดได้ มาจากการลดการใช้วิทยุซึ่งกินไฟมากกว่าซิลิคอนประมวลผล
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 SECURITY -->
+      <section id="sec-security" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">11. Security and Privacy</span>
+        <h2 class="section-title">ความปลอดภัยและความเป็นส่วนตัวในระบบกายภาพ</h2>
+        <p>
+          Security และ safety เป็นข้อกำหนดหลักของ IoT และไม่ใช่ปัญหาที่แยกจากกันอีกต่อไป
+          เมื่อระบบคำนวณผสานกับระบบกายภาพ งานออกแบบความปลอดภัยของคอมพิวเตอร์
+          ต้องผสานกับงานออกแบบความปลอดภัยของระบบทางกายภาพ
+        </p>
+        <ul style="line-height: 1.9; color: var(--ink-soft);">
+          <li>ฮาร์ดแวร์หลายชิ้นมีฟีเจอร์ความปลอดภัยไม่เพียงพอ</li>
+          <li>ซอฟต์แวร์ออกแบบไม่ดี มีช่องโหว่และรหัสผ่านเริ่มต้น</li>
+          <li>โหนดไม่ปลอดภัยเพียงตัวเดียว สามารถทำลายความปลอดภัยของทั้งระบบ</li>
+          <li>อายุการใช้งานโหนดหลายปี ทำให้ฐานอุปกรณ์ที่ไม่ปลอดภัยอยู่ในสนามนาน</li>
+        </ul>
+        <div class="academic-callout callout-danger">
+          <strong>Privacy</strong> เกี่ยวข้องกับ security แต่ต้องออกแบบเพิ่มทุกชั้น
+          ทั้ง application, network และ device
+          ไม่ใช่แค่ป้องกันข้อมูลถูกขโมย แต่ต้องไม่ให้ข้อมูลที่ดูไม่ส่วนตัว
+          ถูกใช้ลอนุมานข้อมูลที่ส่วนตัวกว่าได้
+        </div>
+      </section>
+
+      <!-- 12 CHECKLIST -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">12. Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเข้าใจวิศวกรรม</h2>
+        <div class="checklist-container">
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">1. เพราะอะไรจึงควรเรียก IoT system มากกว่า Internet of Things ลอยๆ</div>
+              <div class="checklist-feedback">
+                เพราะอุปกรณ์ส่วนใหญ่ถูกจัดเป็นระบบเฉพาะกิจเพื่อแอปพลิเคชันชุดหนึ่ง
+                และต้องคำนึงถึงพลวัตของระบบทางกายภาพ ไม่ใช่การรวมอุปกรณ์อินเทอร์เน็ตแบบไร้จุดหมาย
+              </div>
+            </div>
+          </div>
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">2. ยกกายวิภาค IoT 4 องค์ประกอบ และบอกว่าองค์ประกอบใดเชื่อมกับโลกกายภาพ</div>
+              <div class="checklist-feedback">
+                Sensing, Processing, Actuating, Networking
+                Sensing และ Actuating สัมผัสโลกกายภาพโดยตรง
+                Processing ตัดสินใจ ส่วน Networking แลกเปลี่ยนข้อมูลกับระบบอื่น
+              </div>
+            </div>
+          </div>
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">3. อธิบายสถาปัตยกรรม 3 ชั้น และทำไมจึงต้องมี fog/edge</div>
+              <div class="checklist-feedback">
+                End-Device, Fog/Edge Server, Cloud และ End-User
+                Fog/edge ลด latency และลดการส่งข้อมูลดิบ ซึ่งประหยัดทั้งแบนด์วิดท์และพลังงานวิทยุ
+              </div>
+            </div>
+          </div>
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">4. เปรียบเทียบ periodic sampling กับ event-driven ในแง่พลังงาน</div>
+              <div class="checklist-feedback">
+                Periodic อ่านและส่งเป็นคาบคงที่แม้ค่าไม่เปลี่ยน จึงกินไฟและ bandwidth มาก
+                Event-driven ส่งเมื่อค่าเกินเงื่อนไข จึงประหยัดกว่า แต่ต้องออกแบบ threshold และยอมรับ aperiodic ได้
+              </div>
+            </div>
+          </div>
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">5. ยกตัวอย่าง Functional Requirements 5 ระดับจากง่ายไปยาก</div>
+              <div class="checklist-feedback">
+                Sensor network, Alert system, Analysis system, Reactive system, Control system
+                ยิ่งสูงยิ่งต้องประมวลผลและโต้ตอบกับแอคชูเอเตอร์มากขึ้น
+              </div>
+            </div>
+          </div>
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">6. ทำไม security ของ IoT จึงผูกกับ safety ของระบบกายภาพ</div>
+              <div class="checklist-feedback">
+                เพราะการผสานระบบคำนวณกับระบบกายภาพทำให้ความล้มเหลวทางไซเบอร์ส่งผลต่อความปลอดภัยจริง
+                จึงต้องออกแบบ safe physical system ร่วมกับ secure computer system
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 SYNTHESIS -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">13. Mental Model</span>
+        <h2 class="section-title">โมเดลความคิด 5 ข้อที่ต้องพกออกจากบทนี้</h2>
+        <ol style="line-height: 2; color: var(--ink-soft); font-size: 1.02rem;">
+          <li><strong>IoT is a purpose-built system.</strong> ออกแบบเพื่อแอปพลิเคชันเฉพาะ ไม่ใช่กองอุปกรณ์ออนไลน์</li>
+          <li><strong>Physics matters.</strong> ต้องเคารพพลวัตของระบบกายภาพ ทั้งเวลา พลังงาน และความปลอดภัย</li>
+          <li><strong>Events beat time-series.</strong> เมื่อทรัพยากรจำกัด เหตุการณ์คุ้มกว่าการสุ่มตัวอย่างถี่ตลอดเวลา</li>
+          <li><strong>Compute near the signal.</strong> Edge/fog ลด latency และพลังงานวิทยุ ก่อนส่งขึ้นคลาวด์</li>
+          <li><strong>Security is part of safety.</strong> ระบบไซเบอร์ที่ไม่ปลอดภัยคือระบบกายภาพที่เสี่ยง</li>
+        </ol>
+      </section>
+
+      <!-- 14 CROSS -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">14. Cross-Track Links</span>
+        <h2 class="section-title">เชื่อมโยงกลับสู่ Data Communications</h2>
+        <div class="cross-tag">
+          <div class="cross-tag-target">DataCom Ch 3: Signals and Bandwidth</div>
+          <div class="cross-tag-note">
+            ข้อมูลเซนเซอร์คือสัญญาณและ time-series
+            ข้อจำกัด bandwidth ของเครือข่ายไร้สายคือเหตุผลที่ IoT ต้องเลือกส่งเฉพาะ event
+            อ่านต่อ <a href="../datacom/ch03.html">DataCom บทที่ 3</a>
+          </div>
+        </div>
+        <div class="cross-tag">
+          <div class="cross-tag-target">DataCom: Power vs Communication Cost</div>
+          <div class="cross-tag-note">
+            วิทยุกินไฟมากกว่าการคำนวณบนชิปเล็ก
+            edge processing จึงเป็นการแลกพลังงานประมวลผลกับพลังงานส่งสัญญาณ
+          </div>
+        </div>
+        <div class="cross-tag">
+          <div class="cross-tag-target">DataCom Ch 1-2: Networks and Models</div>
+          <div class="cross-tag-note">
+            Hub และ Cloud ต้องคุยกันด้วยโพรโทคอลและชั้นเครือข่าย
+            บางโหนดไม่รัน IP จึงต้องมี gateway หรือ translation ที่ขอบ
+          </div>
+        </div>
+        <div style="margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="../datacom/ch01.html" class="btn btn-primary" style="padding: 10px 16px;">เปิด DataCom บทที่ 1</a>
+          <a href="../datacom/ch03.html" class="btn btn-secondary" style="padding: 10px 16px;">เปิด DataCom บทที่ 3</a>
+          <a href="../index.html#sec-dual-track" class="btn btn-secondary" style="padding: 10px 16px; border-color: var(--purple); color: var(--purple);">กลับหน้าหลัก</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleCheck(item) {
+      var box = item.querySelector('.checklist-checkbox');
+      if (box) box.checked = !box.checked;
+      item.classList.toggle('checked', box && box.checked);
+    }
+
+    (function () {
+      function $(id) { return document.getElementById(id); }
+
+      function fmt(n, d) { return Number(n).toFixed(d); }
+
+      function recalc() {
+        var itx = parseFloat($('iot-itx').value);
+        var irx = parseFloat($('iot-irx').value);
+        var isleep = parseFloat($('iot-isleep').value);
+        var rate = parseFloat($('iot-rate').value);
+        var events = parseFloat($('iot-event').value);
+        var edge = parseFloat($('iot-edge').value) / 100;
+
+        $('iot-itx-val').textContent = fmt(itx, 1);
+        $('iot-irx-val').textContent = fmt(irx, 1);
+        $('iot-isleep-val').textContent = fmt(isleep, 3);
+        $('iot-rate-val').textContent = String(rate);
+        $('iot-event-val').textContent = String(events);
+        $('iot-edge-val').textContent = String(Math.round(edge * 100));
+
+        // Assume each radio wake costs 20 ms TX + 20 ms RX + rest sleep in the hour
+        var msPerHour = 3600000;
+        var ttx = 20;
+        var trx = 20;
+
+        var txPeriodic = (rate * ttx) / msPerHour;
+        var rxPeriodic = (rate * trx) / msPerHour;
+
+        var rateEvent = events * (1 - edge);
+        var txEvent = (rateEvent * ttx) / msPerHour;
+        var rxEvent = (rateEvent * trx + events * 1 * trx) / msPerHour; // edge filter still reads locally once
+
+        var sleepP = Math.max(0, 1 - txPeriodic - rxPeriodic);
+        var sleepE = Math.max(0, 1 - txEvent - rxEvent);
+
+        var iavgP = txPeriodic * itx + rxPeriodic * irx + sleepP * isleep;
+        var iavgE = txEvent * itx + rxEvent * irx + sleepE * isleep;
+
+        var save = iavgP > 0 ? (1 - (iavgE / iavgP)) * 100 : 0;
+        var hours = iavgE > 0 ? (2500 * 0.8) / iavgE : Infinity;
+        var years = hours / (24 * 365);
+
+        $('iot-iavg-periodic').textContent = fmt(iavgP, 4) + ' mA';
+        $('iot-iavg-event').textContent = fmt(iavgE, 4) + ' mA';
+        $('iot-save').textContent = fmt(save, 1) + '%';
+        $('iot-life').textContent = isFinite(years) ? fmt(years, 1) + ' ปี' : 'ไม่มีที่สิ้นสุด';
+
+        var dtx = Math.min(50, txEvent * 100);
+        var drx = Math.min(50, rxEvent * 100);
+        var dsleep = Math.max(0, 100 - dtx - drx);
+        $('iot-seg-tx').style.width = Math.max(dtx, 1) + '%';
+        $('iot-seg-rx').style.width = Math.max(drx, 1) + '%';
+        $('iot-seg-sleep').style.width = Math.max(dsleep, 1) + '%';
+      }
+
+      ['iot-itx', 'iot-irx', 'iot-isleep', 'iot-rate', 'iot-event', 'iot-edge'].forEach(function (id) {
+        var el = $(id);
+        if (el) {
+          el.addEventListener('input', recalc);
+          el.addEventListener('change', recalc);
+        }
+      });
+
+      $('iot-preset-periodic').addEventListener('click', function () {
+        $('iot-rate').value = 60;
+        $('iot-event').value = 60;
+        $('iot-edge').value = 0;
+        recalc();
+      });
+
+      $('iot-preset-event').addEventListener('click', function () {
+        $('iot-rate').value = 60;
+        $('iot-event').value = 2;
+        $('iot-edge').value = 80;
+        recalc();
+      });
+
+      recalc();
+    })();
+  </script>
+</body>
+
+</html>

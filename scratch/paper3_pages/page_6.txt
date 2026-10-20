@@ -1,0 +1,99 @@
+committed or eventually aborted. The purpose is to ensure
+consistency of transactions between shards, to prevent double
+spending and to prevent unspent funds from being locked
+forever. In distributed computing, this problem is known as
+atomic commit [47] and atomic commit protocols [27], [30]
+are deployed on honest but unreliable processors. Deploying
+such protocols in OmniLedger is unnecessarily complex, be-
+cause the shards are collectively honest, do not crash inﬁnitely,
+and run ByzCoin (that provides BFT consensus). Atomix
+improves the strawman approach with a lock-then-unlock
+process. We intentionally keep the shards’ logic simple and
+make any direct shard-to-shard communication unnecessary by
+tasking the client with the responsibility of driving the unlock
+process while permitting any other party (e.g., validators
+or even other clients) to ﬁll in for the client if a speciﬁc
+transaction stalls after being submitted for processing.
+Atomix uses the UTXO state model, see Section II-B for
+an overview, which enables the following simple and efﬁcient
+three-step protocol, also depicted in Figure 3.
+1) Initialize. A client creates a cross-shard transaction (cross-
+TX for short) whose inputs spend UTXOs of some input
+shards (ISs) and whose outputs create new UTXOs in some
+output shards (OSs). The client gossips the cross-TX and it
+eventually reaches all ISs.
+2) Lock. All input shards associated with a given cross-TX
+proceed as follows. First, to decide whether the inputs can
+be spent, each IS leader validates the transaction within his
+shard. If the transaction is valid, the leader marks within
+the state that the input is spent, logs the transaction in the
+shard’s ledger and gossips a proof-of-acceptance, a signed
+Merkle proof against the block where the transaction is
+included. If the transaction is rejected, the leader creates an
+analogous proof-of-rejection, where a special bit indicates
+an acceptance or rejection. The client can use each IS ledger
+to verify his proofs and that the transaction was indeed
+locked. After all ISs have processed the lock request, the
+client holds enough proofs to either commit the transaction
+or abort it and reclaim any locked funds, but not both.
+3) Unlock. Depending on the outcome of the lock phase, the
+client is able to either commit or abort his transaction.
+a) Unlock to Commit. If all IS leaders issued proofs-
+of-acceptance, then the respective transaction can be
+committed. The client (or any other entity such as an IS
+leader after a time-out) creates and gossips an unlock-to-
+commit transaction that consists of the lock transaction
+and a proof-of-acceptance for each input UTXO. In turn,
+each involved OS validates the transaction and includes
+it in the next block of its ledger in order to update the
+state and enable the expenditure of the new funds.
+b) Unlock to Abort. If, however, even one IS issued a
+proof-of-rejection, then the transaction cannot be commit-
+ted and has to abort. In order to reclaim the funds locked
+in the previous phase, the client (or any other entity)
+must request the involved ISs to unlock that particular
+transaction by gossiping an unlock-to-abort transaction
+Fig. 3: Atomix protocol in OmniLedger.
+that includes (at least) one proof-of-rejection for one of
+the input UTXOs. Upon receiving a request to unlock,
+the ISs’ leaders follow a similar procedure and mark the
+original UTXOs as spendable again.
+We remark that, although the focus of OmniLedger is on
+the UTXO model, Atomix can be extended with a locking
+mechanism for systems where objects are long-lived and hold
+state (e.g., smart contracts [48]), see Appendix D for details.
+Security Arguments: We informally argue the previously
+stated security properties of Atomix, based on the following
+observations. Under our assumptions, shards are honest, do not
+fail, eventually receive all messages and reach BFT consensus.
+Consequently, (1) all shards always faithfully process valid
+transactions; (2) if all input shards issue a proof-of-acceptance,
+then every output shard unlocks to commit; (3) if even one
+input shard issues a proof-of-rejection, then all input shards
+unlocks to abort; and (4) if even one input shard issues a
+proof-of-rejection, then no output shard unlocks to commit.
+In Atomix, each cross-TX eventually commits or aborts.
+Based on (1), each input shard returns exactly one response:
+either a proof-of-acceptance or a proof-of-rejection. Conse-
+quently, if a client has the required number of proofs (one per
+each input UTXO), then the client either only holds proofs-
+of-acceptance (allowing the transaction to be committed as (2)
+holds) or not (forcing the transaction to abort as (3) and (4)
+holds), but not both simultaneously.
+In Atomix, no cross-TX can be spent twice. As shown
+above, cross-shard transactions are atomic and are assigned
+to speciﬁc shards who are solely responsible for them. Based
+on (1), the assigned shards do not process a transaction twice
+and no other shard attempts to unlock to commit.
+In Atomix, if a transaction cannot be committed, then the
+locked funds can be reclaimed. If a transaction cannot be
+committed, then there must exist at least one proof-of-rejection
+issued by an input shard, therefore (3) must hold. Once all
+input shards unlock to abort, the funds become available again.
+We remark that funds are not automatically reclaimed and a
+client or other entity must initiate the unlock to abort process.
+Although this approach poses the risk that if a client crashes
+indeﬁnitely his funds remain locked, it enables a simpliﬁed
+protocol with minimal logic that requires no direct shard-
+588
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

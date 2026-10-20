@@ -1,0 +1,184 @@
+Temperature (℃)
+
+Sensor signal
+
+Step
+
+Average of sensor signal in each time interval
+
+24.25
+23.75
+
+b(𝑡2 )=0 due to a small difference between
+the averages of two consecutive intervals
+
+23.25
+
+1
+
+2
+
+F1 : 0 0 1 1 0 0 1 1 1 0 1 1 0 𝑃1 =(p11 , p12 , … )
+F2 : 0 0 1 1 1 1 1 0 0 1 0 1 1 𝑃2 =(p12 , p22 , … )
+F3 : 0 0 1 1 0 0 1 0 1 0 1 1 0 𝑃3 =(p13 , p23 , … )
+
+3
+
+F1 : 0 0 1 1 0 0 1 1 1 0 1 1 0 𝑃1 =(p11 , p12 , p13 , … )
+F2 : 0 0 1 1 1 1 1 0 0 1 0 1 1 𝑃2 =(p12 , p22 , p32 , … )
+F3 : 0 0 1 1 0 0 1 0 1 0 1 1 0 𝑃3 =(p13 , p23 , p33 , … )
+
+4
+
+F1 : 0 0 1 1 0 0 1 1 1 0 1 1 0 𝑃1 =(p11 , p12 , p13 , p14 )
+F2 : 0 0 1 1 1 1 1 0 0 1 0 1 1 𝑃2 =(p12 , p22 , p32 , p42 )
+F3 : 0 0 1 1 0 0 1 0 1 0 1 1 0 𝑃3 =(p13 , p23 , p33 , p43 )
+
+5
+
+𝑃1 =(p11 , p12 , p13 , p14 ) clustering is performed Results
+Given ൞𝑃2 =(p11 , p22 , p32 , p42 ) : on the sensors pattern
+𝑃3 =(p11 , p12 , p33 , p14 ) histories
+
+22.25
+
+b(𝑡1 )=1 due to a large
+difference between the averages
+of two consecutive intervals
+
+21.25
+20.75
+
+𝑡1
+𝑡2
+Time
+Fingerprint: 0 0 0 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 0 0 0 0 1 1
+
+Figure 4: Extracting the fingerprint of a temperature sensor.
+the strategy presented by Sadeghi et al. in [35], we convert all sensor signals to binary fingerprints regardless of their modality. The
+procedure of fingerprint generation has the following steps:
+Step1: Each sensor continuously monitors the environment
+by taking a measurement each 𝑧 seconds. The value 𝑧 depends
+on the sampling rate of sensor and may vary for different sensors. In a time window of 𝑞 seconds from timestamp 𝑡, the sensor
+records 𝑣 = [𝑞/𝑧] measurements and forms a snapshot vector
+𝑆𝑡 = (𝑠 𝑡 , 𝑠 𝑡 +𝑧 , . . . , 𝑠 𝑡 +𝑧 (𝑣−1) ).
+Step2: The 𝜖𝑟𝑒𝑙 is a pre-defined threshold that controls the
+amount of variation that is said to conform a change. The values obtained in a snapshot are averaged and the variation bit 𝑏 (𝑡)
+is calculated as follows:
+𝑆𝑡 =
+
+
+
+ 1,
+
+1Õ
+𝑠, 𝑏 (𝑡) =
+
+𝑣
+ 0,
+𝑠 ∈𝑆𝑡
+
+
+if 𝑆 𝑡 +𝑧 −𝑆 𝑡 > 𝜖𝑟𝑒𝑙
+𝑆𝑡
+
+o.w.
+
+Step3: Finally, a sequence of 𝑘 +1 consecutive snapshots 𝑠𝑒𝑞(𝑡, 𝑡 +
+𝑘𝑧) = (𝑆 𝑡 , 𝑆 𝑡 +𝑧 , . . . , 𝑆 𝑡 +𝑘𝑧 ), has an associated fingerprint 𝐹 (𝑠𝑒𝑞(𝑡, 𝑡 +
+𝑘𝑧)) = (𝑏 (𝑡), 𝑏 (𝑡 +𝑧), . . . , 𝑏 (𝑡 + (𝑘 − 1)𝑧)). The fingerprints of all the
+sensors with different sampling rates have the same length because
+each snapshot is the average of sensor measurements in a particular
+time interval. Figure 4 illustrates the process of generating the
+fingerprint of a temperature sensor.
+
+3.2
+
+Sensor Association
+
+Although each sensor’s measurements differ based on its modality
+and physical location, the sensors that are affected by the same
+event follow similar patterns in their fingerprints. Based on this observation, we develop a sensor association algorithm that comprises
+two primary steps: I) pattern extraction and II) sensor clustering.
+In the first step, we split each fingerprint into smaller sub-sequences,
+and cluster the sub-sequences of different sensors that have a similar
+binary pattern. For simplicity, assume that 𝐹𝑖 = 𝐹 (𝑠𝑒𝑞(𝑡, 𝑡 + 𝑧𝑘)𝑖 )
+represents the fingerprint of the sensor 𝑖, which is split into 𝑑
+smaller sub-sequences 𝑓𝑖 𝑗 as follows:
+𝐹𝑖 −→ (𝑓𝑖 1, 𝑓𝑖 2, . . . , 𝑓𝑖 𝑑 ), 𝑑 =
+
+𝑘 −𝑜
+𝑙 −𝑜
+
+where 𝑙 and 𝑜 are the hyper parameters that determine the subsequences length and their overlap accordingly. Afterward, our
+clustering algorithm is performed on the sub-sequences of index 𝑗
+(𝑗 ∈ [1, 𝑑]) of all sensors (𝐹 1 𝑗 , 𝐹 2 𝑗 , . . . , 𝐹𝑛 𝑗 ) to group the ones with
+𝑗
+similar binary patterns. Hence, it assign a pattern number 𝑝𝑖 ∈
+𝑗
+{0, 1, ..., 𝑝𝑚𝑎𝑥 } to 𝑓𝑖 𝑗 . Next, the clustering is repeated for index 𝑗 + 1
+and after 𝑑 iterations, all sub-sequences are clustered. Notice that
+
+Extracted pattern
+
+F1 : 0 0 1 1 0 0 1 1 1 0 1 1 0 𝑃1 =(p11 ∗, … )
+F2 : 0 0 1 1 1 1 1 0 0 1 0 1 1 𝑃2 =(p12 ∗, … )
+F3 : 0 0 1 1 0 0 1 0 1 0 1 1 0 𝑃3 =(p13 ∗, … )
+
+22.75
+21.75
+
+Binary fingerprint of sensors
+
+Sensor 1 is
+associated with
+sensor 3
+
+* If and pti have the same color, pti = ptj and both represent the same pattern in the fingerprint.
+** In this example, o=1, l=4, and d=4.
+
+Figure 5: The procedure of extracting the patterns in sensor
+signals and clustering them.
+𝑗
+
+𝑝𝑚𝑎𝑥 which represents the number of clusters for index 𝑗 may vary
+for different index values. Eventually, for each sensor the pattern
+numbers form a pattern history vector 𝑃𝑖 = (𝑝𝑖 1, 𝑝𝑖 2, . . . , 𝑝𝑖 𝑑 ).
+In the second step, one final clustering is performed on the given
+set of sensors pattern history 𝑃𝑖 to determine the sensors cluster
+layout 𝐶 = 𝑐 1, 𝑐 2, ...𝑐𝑔 where 𝑐𝑖 represents a clusters and 𝑔 is the
+number of sensor clusters. The sensors with similar contextual
+variations exhibit the same patterns in many sub-sequences and
+we cluster them together. An example of the sensor association
+procedure is demonstrated in Figure 5. In this example, the final
+clustering group the first and third sensors are grouped together.
+All the mentioned clustering processes are done using our customized clustering algorithm which minimizes the distance between data points in the same cluster, the intra-cluster distance
+(𝐼𝐶), and maximizes the distance among data point of one cluster
+from other cluster data points, the inter-cluster distance (𝑂𝐶). The
+distance matrics are defined as follows:
+1 Õ
+𝐼𝐶 = 𝐼𝐶𝑖 , 𝐼𝐶𝑖 =
+𝐻𝑎𝑚𝑚𝑖𝑛𝑔(𝑃𝑚 , 𝑃𝑘 )
+|𝑐𝑖 |
+𝑚,𝑘 ∈𝑐𝑖
+
+𝑂𝐶 = 𝑂𝐶𝑖,𝑗 , 𝑂𝐶𝑖,𝑗 =
+
+min
+
+𝑚 ∈𝑐𝑖 ,𝑘 ∈𝑐 𝑗
+
+{𝐻𝑎𝑚𝑚𝑖𝑛𝑔(𝑃𝑚 , 𝑃𝑘 )}
+
+Where 𝑐𝑖 and 𝑃𝑚 represents a cluster and the pattern history of
+sensor 𝑚 respectively. Algorithm 1 is a Pseudo-code that elaborates on our clustering algorithm. Our clustering has the following
+properties:
+• It can be applied to data with string type because the distance
+matrics are based on the Hamming distance function, which
+calculates the number of non-matching bits.
+• The number of clusters is automatically tuned. Initially, clustering is performed with an upper bound of the number of
+clusters. Afterward, the algorithm automatically removes the
+nodes which are not close to any cluster and eliminates clusters with two nodes to reach optimum value for the number
+of clusters.
+
+

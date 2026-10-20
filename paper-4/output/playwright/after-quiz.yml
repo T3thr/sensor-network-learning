@@ -1,0 +1,726 @@
+- generic [ref=f2e1]:
+  - link "ข้ามไปเนื้อหา" [ref=f2e2] [cursor=pointer]:
+    - /url: "#pub-main"
+  - banner [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - link "305432 Sensor Networks" [ref=f2e6] [cursor=pointer]:
+        - /url: ../index.html
+        - generic [ref=f2e13]: "305432"
+        - generic [ref=f2e14]: Sensor Networks
+      - navigation "เมนูหลัก" [ref=f2e15]:
+        - list [ref=f2e16]:
+          - listitem [ref=f2e17]:
+            - link "หน้าหลัก Portal" [ref=f2e18] [cursor=pointer]:
+              - /url: ../index.html
+          - listitem [ref=f2e19]:
+            - link "สารบัญค้นคว้า ▾" [ref=f2e20] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f2e21]:
+            - link "แปลเปเปอร์ (5 หน้า)" [ref=f2e22] [cursor=pointer]:
+              - /url: ../paper-4/translation.html
+          - listitem [ref=f2e24]:
+            - link "บทเรียน Paper IV" [ref=f2e25] [cursor=pointer]:
+              - /url: ../paper-4/index.html
+          - listitem [ref=f2e26]:
+            - link "ห้องซ้อมบท" [ref=f2e27] [cursor=pointer]:
+              - /url: ../paper-4/index.html#v4-sec-rehearsal
+          - listitem [ref=f2e28]:
+            - link "ซิมูเลเตอร์" [ref=f2e29] [cursor=pointer]:
+              - /url: ../paper-4/index.html#v4-sec-simulator
+          - listitem [ref=f2e30]:
+            - link "จำลองถาม-ตอบ" [ref=f2e31] [cursor=pointer]:
+              - /url: ../paper-4/index.html#v4-sec-qna
+      - button "เปลี่ยนเป็นโหมดมืด" [ref=f2e33] [cursor=pointer]
+    - generic [ref=f2e37]:
+      - navigation "ตำแหน่งปัจจุบัน" [ref=f2e38]:
+        - list [ref=f2e39]:
+          - listitem [ref=f2e40]:
+            - link "หน้าหลัก Portal" [ref=f2e41] [cursor=pointer]:
+              - /url: ../index.html
+          - listitem [ref=f2e42]:
+            - text: /
+            - generic [ref=f2e43]: "Paper IV: Publish-Time Optimizations (IEEE VIS 2025)"
+      - button "หุบแถบ" [expanded] [ref=f2e44] [cursor=pointer]:
+        - generic [ref=f2e46]: ▲
+  - generic [ref=f2e47]:
+    - complementary [ref=f2e48]:
+      - heading "Paper IV / สารบัญ" [level=2] [ref=f2e49]
+      - navigation "สารบัญบทเรียน" [ref=f2e50]:
+        - link "01 · ภาพรวมและระเบียนบทความ" [ref=f2e51] [cursor=pointer]:
+          - /url: "#v4-sec-overview"
+        - link "02 · อภิธานศัพท์และคำอ่าน" [ref=f2e52] [cursor=pointer]:
+          - /url: "#v4-sec-glossary"
+        - link "03 · ปัญหาความหน่วงของเว็บ" [ref=f2e53] [cursor=pointer]:
+          - /url: "#v4-sec-background"
+        - link "04 · สถาปัตยกรรม Mosaic Publisher" [ref=f2e54] [cursor=pointer]:
+          - /url: "#v4-sec-arch"
+        - link "05 · ภาพล่วงหน้าและ Hydration" [ref=f2e55] [cursor=pointer]:
+          - /url: "#v4-sec-hydration"
+        - link "06 · ผลทดลองและต้นทุนพื้นที่" [ref=f2e56] [cursor=pointer]:
+          - /url: "#v4-sec-results"
+        - link "07 · จำลองการเปิดหน้าเว็บ" [ref=f2e57] [cursor=pointer]:
+          - /url: "#v4-sec-simulator"
+        - link "08 · จุดเด่น ข้อจำกัด และการต่อยอด" [ref=f2e58] [cursor=pointer]:
+          - /url: "#v4-sec-critique"
+        - link "09 · ห้องซ้อมนำเสนอ 5:00" [ref=f2e59] [cursor=pointer]:
+          - /url: "#v4-sec-rehearsal"
+        - link "10 · คลังคำถามสำหรับการนำเสนอ" [ref=f2e60] [cursor=pointer]:
+          - /url: "#v4-sec-qna"
+        - link "11 · แบบทดสอบความเข้าใจ" [ref=f2e61] [cursor=pointer]:
+          - /url: "#v4-sec-quiz"
+        - link "12 · เอกสารและรายการอ้างอิง" [ref=f2e62] [cursor=pointer]:
+          - /url: "#v4-sec-docs"
+      - separator [ref=f2e63]
+      - link "บทแปลคู่ขนาน · 5 หน้า ↗" [ref=f2e64] [cursor=pointer]:
+        - /url: translation.html
+    - main [ref=f2e65]:
+      - region [ref=f2e66]:
+        - generic [ref=f2e67]:
+          - generic [ref=f2e68]:
+            - strong [ref=f2e69]: 305432 เครือข่ายเซนเซอร์
+            - text: นายธีรภัทร ภู่ระย้า · 66362416
+          - generic [ref=f2e70]: "IEEE Doc ID: 11298742"
+          - generic [ref=f2e71]: Open Access · สำเนาผู้แต่ง
+        - generic [ref=f2e72]: PAPER IV / IEEE VIS 2025 / SYSTEMS RESEARCH
+        - heading "Publish-Time Optimizations for Web-Based Visualizations" [level=1] [ref=f2e73]: Publish-Time Optimizationsfor Web-Based Visualizations
+        - paragraph [ref=f2e74]: "การประมวลผลล่วงหน้าช่วงเผยแพร่: ย้ายงานเตรียมข้อมูล ผลคิวรี และภาพเริ่มต้นออกจากช่วงเปิดเว็บ เพื่อลดเวลารอเห็นภาพและเวลาจนพร้อมรับการโต้ตอบ"
+        - generic [ref=f2e75]:
+          - link "อ่านบทแปลคู่ขนาน" [ref=f2e76] [cursor=pointer]:
+            - /url: translation.html
+          - link "เปิดห้องซ้อมนำเสนอ" [ref=f2e77] [cursor=pointer]:
+            - /url: "#v4-sec-rehearsal"
+          - link "IEEE Xplore ↗" [ref=f2e78] [cursor=pointer]:
+            - /url: https://ieeexplore.ieee.org/document/11298742
+        - generic [ref=f2e79]:
+          - generic [ref=f2e80]:
+            - strong [ref=f2e81]: −83.7%
+            - generic [ref=f2e82]: เวลาจนภาพปรากฏครบถ้วนTTR · ค่าเฉลี่ย Table 1
+          - generic [ref=f2e83]:
+            - strong [ref=f2e84]: −33.3%
+            - generic [ref=f2e85]: เวลาจนพร้อมรับการโต้ตอบTTA · ค่าเฉลี่ย Table 1
+          - generic [ref=f2e86]:
+            - strong [ref=f2e87]: +21.2%
+            - generic [ref=f2e88]: ขนาดทรัพยากรที่เผยแพร่SC · ค่าเฉลี่ย Table 1
+          - generic [ref=f2e89]:
+            - strong [ref=f2e90]: 10k–10M
+            - generic [ref=f2e91]: แถวข้อมูล · ภาพ 5 รูปแบบเงื่อนไขทดลอง Figure 3
+        - paragraph [ref=f2e92]: สามอัตราแรกเป็นผลของชุดรวม +most เทียบ none ข้ามรูปแบบภาพและขนาดข้อมูล ไม่ใช่ผลรับรองทุกกรณี
+        - table [ref=f2e94]:
+          - rowgroup [ref=f2e95]:
+            - row [ref=f2e96]:
+              - rowheader "ชื่อบทความ" [ref=f2e97]
+              - cell "Publish-Time Optimizations for Web-Based Visualizations" [ref=f2e98]
+            - row [ref=f2e99]:
+              - rowheader "ผู้แต่ง" [ref=f2e100]
+              - cell "Ron Pechuk และ Jeffrey Heer" [ref=f2e101]
+            - row [ref=f2e102]:
+              - rowheader "สถาบัน" [ref=f2e103]
+              - cell "University of Washington · Interactive Data Lab" [ref=f2e104]
+            - row [ref=f2e105]:
+              - rowheader "งานประชุม" [ref=f2e106]
+              - cell "2025 IEEE Visualization and Visual Analytics (VIS), pp. 226–230" [ref=f2e107]
+            - row [ref=f2e108]:
+              - rowheader "DOI" [ref=f2e109]
+              - cell [ref=f2e110]:
+                - link "10.1109/VIS60296.2025.00051" [ref=f2e111] [cursor=pointer]:
+                  - /url: https://doi.org/10.1109/VIS60296.2025.00051
+            - row [ref=f2e112]:
+              - rowheader "โค้ดของ Mosaic" [ref=f2e113]
+              - cell [ref=f2e114]:
+                - link "github.com/uwdata/mosaic" [ref=f2e115] [cursor=pointer]:
+                  - /url: https://github.com/uwdata/mosaic
+                - text: · คลังต้นฉบับของสถาปัตยกรรม Mosaic
+            - row [ref=f2e116]:
+              - rowheader "ไฟล์ที่ใช้ศึกษา" [ref=f2e117]
+              - cell [ref=f2e118]:
+                - link "สำเนาผู้แต่ง 5 หน้า" [ref=f2e119] [cursor=pointer]:
+                  - /url: ../assignement/work4/01_original/Paper_IV_1_PRIMARY_PublishTimeOpt_11298742.pdf
+                - text: · ไม่ได้เปรียบเทียบรูปแบบกับ PDF ฉบับจัดพิมพ์ IEEE
+        - generic [ref=f2e120]:
+          - article [ref=f2e121]:
+            - heading "คำถามหลักที่ใช้จัดกรอบการอ่าน" [level=3] [ref=f2e122]
+            - list [ref=f2e123]:
+              - listitem [ref=f2e124]: งานส่วนใดควรคำนวณก่อนเปิดเซสชัน?
+              - listitem [ref=f2e125]: แคชกับภาพล่วงหน้าลด TTR และ TTA ต่างกันอย่างไร?
+              - listitem [ref=f2e126]: ความเร็วที่ได้ต้องแลกกับพื้นที่และความสดของข้อมูลเท่าใด?
+            - paragraph [ref=f2e127]: กรอบคำถามจากการอ่าน §1–3; บทความไม่ได้กำหนดหมายเลข RQ
+          - article [ref=f2e128]:
+            - heading "ผลงานหลักของบทความ" [level=3] [ref=f2e129]
+            - list [ref=f2e130]:
+              - listitem [ref=f2e131]: จำแนกการปรับปรุงสามกลุ่ม พร้อมกรอบ TTR / TTA / SC
+              - listitem [ref=f2e132]: สร้าง Mosaic Publisher ให้ใช้ทรัพยากรล่วงหน้าร่วมกับข้อกำหนดเดิม
+              - listitem [ref=f2e133]: ประเมินแบบเพิ่มระดับทีละขั้น บนภาพห้ารูปแบบและข้อมูลหลายขนาด
+            - paragraph [ref=f2e134]: สังเคราะห์จาก Abstract, §3–5 · PDF หน้า 1–4
+      - region [ref=f2e135]:
+        - heading "อภิธานศัพท์และคำอ่าน" [level=2] [ref=f2e136]
+        - paragraph [ref=f2e137]: คำจำกัดความยึดตามบทความ ส่วนอุปมาใช้ประกอบการทำความเข้าใจ ไม่ใช่รายละเอียดการทดลอง
+        - text: ค้นหาชื่อ คำอ่าน หรือนิยาม
+        - searchbox "ค้นหาชื่อ คำอ่าน หรือนิยาม" [ref=f2e138]
+        - paragraph [ref=f2e139]: แสดง 20 จาก 20 คำ
+        - table [ref=f2e141]:
+          - rowgroup [ref=f2e142]:
+            - row [ref=f2e143]:
+              - columnheader "ศัพท์อังกฤษ" [ref=f2e144]
+              - columnheader "คำอ่านภาษาไทย" [ref=f2e145]
+              - columnheader "นิยาม" [ref=f2e146]
+              - columnheader "อุปมา / บริบท" [ref=f2e147]
+          - rowgroup [ref=f2e148]:
+            - row [ref=f2e149]:
+              - cell "Publish-Time Optimization" [ref=f2e150]
+              - cell "พับลิช ไทม์ ออปทิไมเซชัน" [ref=f2e151]
+              - cell "ย้ายงานคำนวณไปทำก่อนเผยแพร่ เพื่อใช้ผลลัพธ์ซ้ำระหว่างหลายเซสชัน" [ref=f2e152]
+              - cell "จัดเตรียมอาหารก่อนเปิดร้าน แทนเริ่มเตรียมเมื่อรับแต่ละคำสั่ง" [ref=f2e153]
+            - row [ref=f2e154]:
+              - cell "Time-to-Render (TTR)" [ref=f2e155]
+              - cell "ไทม์ ทู เรนเดอร์" [ref=f2e156]
+              - cell "เวลาจากการร้องขอหน้าเว็บจนภาพข้อมูลทั้งหมดปรากฏ ไม่ใช่เพียงข้อความแรกบนหน้า" [ref=f2e157]
+              - cell "ชาร์ตและแกนแสดงครบ จึงเริ่มอ่านแนวโน้มได้" [ref=f2e158]
+            - row [ref=f2e159]:
+              - cell "Time-to-Activation (TTA)" [ref=f2e160]
+              - cell "ไทม์ ทู แอ็กทิเวชัน" [ref=f2e161]
+              - cell "เวลาจนระบบพร้อมรับอินพุต เช่น การเลือกหรือการกรองข้อมูล" [ref=f2e162]
+              - cell "ภาพชาร์ตปรากฏแล้ว แต่ต้องรอให้ตัวกรองทำงาน" [ref=f2e163]
+            - row [ref=f2e164]:
+              - cell "Storage Cost (SC)" [ref=f2e165]
+              - cell "สตอเรจ คอสต์" [ref=f2e166]
+              - cell "ขนาดทรัพยากรที่เผยแพร่ รวมผลคำนวณและภาพล่วงหน้า" [ref=f2e167]
+              - cell "พื้นที่เก็บข้อมูลดิบพร้อมแฟ้มผลรวม ไม่ใช่ขนาด RAM สูงสุด" [ref=f2e168]
+            - row [ref=f2e169]:
+              - cell "Abstract Syntax Tree (AST)" [ref=f2e170]
+              - cell "แอบสแตร็กต์ ซินแท็กซ์ ทรี" [ref=f2e171]
+              - cell "โครงสร้างต้นไม้แทนข้อกำหนด YAML เพื่อวิเคราะห์และเปลี่ยนแหล่งข้อมูล" [ref=f2e172]
+              - cell "แผนผังคำสั่งที่แก้จุดอ้างอิงได้โดยไม่แก้ข้อความทุกบรรทัด" [ref=f2e173]
+            - row [ref=f2e174]:
+              - cell "AST Rewriting" [ref=f2e175]
+              - cell "เอเอสที รีไรติง" [ref=f2e176]
+              - cell "แทนคิวรีเตรียมข้อมูลด้วยการอ้างถึงผลลัพธ์ที่คำนวณไว้แล้ว" [ref=f2e177]
+              - cell "เปลี่ยนจากคำสั่งทำผลรวมเป็นชื่อแฟ้มผลรวม" [ref=f2e178]
+            - row [ref=f2e179]:
+              - cell "Virtual DOM" [ref=f2e180]
+              - cell "เวอร์ชวล ดอม" [ref=f2e181]
+              - cell "โครงสร้างจำลองหน้าเว็บที่ Publisher ใช้กระตุ้นอินพุตและตรวจคิวรี" [ref=f2e182]
+              - cell "เวทีจำลองการเลื่อนตัวกรอง ก่อนส่งระบบจริง" [ref=f2e183]
+            - row [ref=f2e184]:
+              - cell "DuckDB" [ref=f2e185]
+              - cell "ดักดีบี" [ref=f2e186]
+              - cell "ฐานข้อมูลเชิงวิเคราะห์ที่ใช้รันคิวรีช่วงเผยแพร่แบบ in-process" [ref=f2e187]
+              - cell "เครื่องคำนวณผลรวมที่ฝังในกระบวนการสร้างเว็บ" [ref=f2e188]
+            - row [ref=f2e189]:
+              - cell "DuckDB-WASM" [ref=f2e190]
+              - cell "ดักดีบี วาซึม" [ref=f2e191]
+              - cell "DuckDB ที่ทำงานผ่าน WebAssembly ในเบราว์เซอร์ เป็นฐานข้อมูลของการทดลอง" [ref=f2e192]
+              - cell "เปิดข้อมูลและรัน SQL ในแท็บเบราว์เซอร์" [ref=f2e193]
+            - row [ref=f2e194]:
+              - cell "Mosaic Coordinator" [ref=f2e195]
+              - cell "โมเซอิก โคออร์ดิเนเตอร์" [ref=f2e196]
+              - cell "ตัวกลางจัดการคิวรี แคช และการประสานหลายมุมมอง" [ref=f2e197]
+              - cell "ตัวประสานชาร์ตหลายใบให้ใช้ข้อมูลและการเลือกเดียวกัน" [ref=f2e198]
+            - row [ref=f2e199]:
+              - cell "Query Cache" [ref=f2e200]
+              - cell "คิวรี แคช" [ref=f2e201]
+              - cell "เก็บผลคิวรีเพื่อหลีกเลี่ยงการประมวลผลซ้ำ โหลดเติมแคชได้ตั้งแต่เริ่มต้น" [ref=f2e202]
+              - cell "สมุดบันทึกผลรวมที่เปิดใช้ได้ทันที" [ref=f2e203]
+            - row [ref=f2e204]:
+              - cell "Pre-aggregated Materialized View" [ref=f2e205]
+              - cell "พรี แอ็กกริเกเต็ด มาเทียไรซ์ด วิว" [ref=f2e206]
+              - cell "ผลรวมที่จัดกลุ่มตามมิติและช่วงการเลือก เก็บจริงเพื่อเร่งคิวรีโต้ตอบ" [ref=f2e207]
+              - cell "ตารางยอดขายแยกช่วงไว้ก่อน แทนสแกนรายการขายทุกครั้ง" [ref=f2e208]
+            - row [ref=f2e209]:
+              - cell "Column Projection" [ref=f2e210]
+              - cell "คอลัมน์ โพรเจกชัน" [ref=f2e211]
+              - cell "เลือกเฉพาะคอลัมน์ที่ภาพข้อมูลต้องใช้ เพื่อลดข้อมูลส่งและหน่วยความจำ" [ref=f2e212]
+              - cell "ส่งเวลาและอุณหภูมิ โดยละคอลัมน์ที่ไม่แสดง" [ref=f2e213]
+            - row [ref=f2e214]:
+              - cell "Pre-rendering" [ref=f2e215]
+              - cell "พรี เรนเดอริง" [ref=f2e216]
+              - cell "สร้างภาพเริ่มต้นช่วงเผยแพร่ ส่ง SVG หรือภาพบิตแมปไปแสดงก่อนรันคอมโพเนนต์" [ref=f2e217]
+              - cell "แผนที่ที่วาดเสร็จแล้ว แทนวาดทุกถนนเมื่อเปิดหน้า" [ref=f2e218]
+            - row [ref=f2e219]:
+              - cell "Client Hydration" [ref=f2e220]
+              - cell "ไคลเอนต์ ไฮเดรชัน" [ref=f2e221]
+              - cell "เริ่มคอมโพเนนต์ฝั่งเบราว์เซอร์เพื่อให้ภาพล่วงหน้ารองรับการโต้ตอบ" [ref=f2e222]
+              - cell "ติดกลไกให้ปุ่มบนแผงที่จัดวางไว้แล้วใช้งานได้" [ref=f2e223]
+            - row [ref=f2e224]:
+              - cell "Progressive Hydration" [ref=f2e225]
+              - cell "โพรเกรสซิฟ ไฮเดรชัน" [ref=f2e226]
+              - cell "แนวทางทยอยเริ่มส่วนโต้ตอบ งานนี้กล่าวในงานที่เกี่ยวข้อง ยังไม่ได้ประเมินวิธีดังกล่าว" [ref=f2e227]
+              - cell "เริ่มเฉพาะส่วนที่จำเป็น ก่อนส่วนที่ยังไม่ถูกใช้งาน" [ref=f2e228]
+            - row [ref=f2e229]:
+              - cell "Cold Start" [ref=f2e230]
+              - cell "โคลด์ สตาร์ต" [ref=f2e231]
+              - cell "ช่วงเริ่มเซสชันที่แคชยังว่าง จึงต้องสร้างผลคำนวณก่อนใช้งาน" [ref=f2e232]
+              - cell "เปิดร้านครั้งแรกก่อนมีอาหารเตรียมไว้" [ref=f2e233]
+            - row [ref=f2e234]:
+              - cell "Brushing and Linking" [ref=f2e235]
+              - cell "บรัชชิง แอนด์ ลิงกิง" [ref=f2e236]
+              - cell "เลือกช่วงข้อมูลในมุมมองหนึ่ง แล้วอัปเดตมุมมองที่เชื่อมกัน" [ref=f2e237]
+              - cell "เลือกช่วงเวลาบนชาร์ต แล้วแผนที่แสดงเฉพาะข้อมูลช่วงนั้น" [ref=f2e238]
+            - row [ref=f2e239]:
+              - cell "Interquartile Range (IQR)" [ref=f2e240]
+              - cell "อินเทอร์ควอร์ไทล์ เรนจ์" [ref=f2e241]
+              - cell "ช่วงระหว่างควอร์ไทล์ที่หนึ่งกับสาม แถบเงาใน Figure 3 ใช้ค่านี้" [ref=f2e242]
+              - cell "ช่วงกึ่งกลาง 50% ของเวลาที่วัด ไม่ใช่ช่วงความเชื่อมั่น" [ref=f2e243]
+            - row [ref=f2e244]:
+              - cell "Incremental Regeneration" [ref=f2e245]
+              - cell "อินคริเมนทัล รีเจเนอเรชัน" [ref=f2e246]
+              - cell "สร้างทรัพยากรใหม่เฉพาะส่วนที่ได้รับผลจากข้อมูลเปลี่ยน เป็นแนวทางวิจัยต่อ" [ref=f2e247]
+              - cell "แก้เฉพาะหน้ารายงานที่ข้อมูลใหม่กระทบ แทนสร้างรายงานทั้งชุด" [ref=f2e248]
+        - paragraph [ref=f2e249]: "ที่มา: §2–4 · PDF หน้า 1–3 · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+      - region [ref=f2e250]:
+        - heading "ปัญหาความหน่วงของเว็บ" [level=2] [ref=f2e251]
+        - paragraph [ref=f2e252]: การเปิดหน้าเว็บครั้งแรกยังต้องจ่ายต้นทุนคำนวณ แม้ระบบมีแคชสำหรับการโต้ตอบครั้งถัดไปแล้ว
+        - generic [ref=f2e253]:
+          - article [ref=f2e254]:
+            - heading "งานกระจุกที่ไคลเอนต์" [level=3] [ref=f2e255]
+            - paragraph [ref=f2e256]: ดาวน์โหลดข้อมูล รันคิวรีรวมกลุ่ม และวาดภาพบนเครื่องผู้ใช้งาน งานหนักขึ้นตามขนาดข้อมูลและจำนวนมุมมอง
+          - article [ref=f2e257]:
+            - heading "แคชยังว่างเมื่อเริ่มเซสชัน" [level=3] [ref=f2e258]
+            - paragraph [ref=f2e259]: แคชรันไทม์ต้องรอคิวรีแรกก่อนมีผลลัพธ์ใช้ซ้ำ การคำนวณช่วงเผยแพร่เตรียมจุดเริ่มต้นที่พร้อมกว่าได้
+          - article [ref=f2e260]:
+            - heading "ความหน่วงขัดจังหวะการวิเคราะห์" [level=3] [ref=f2e261]
+            - paragraph [ref=f2e262]: ภาพปรากฏช้าหรืออินพุตยังไม่ตอบสนองทำให้การสำรวจข้อมูลสะดุด งานที่เกี่ยวข้องรายงานผลต่อพฤติกรรมการวิเคราะห์
+        - paragraph [ref=f2e263]: "ที่มา: §1–2.2 · PDF หน้า 1–2 · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+        - generic [ref=f2e264]:
+          - strong [ref=f2e265]: บริบทเครือข่ายเซนเซอร์ · การตีความต่อยอด
+          - paragraph [ref=f2e266]: แดชบอร์ดประวัติข้อมูล IoT อาจมีข้อมูลหลายล้านจุด การเตรียมผลรวมรายช่วงเวลาและภาพเริ่มต้นทำให้เห็นแนวโน้มก่อนโหลดข้อมูลสำหรับการกรองได้ แต่ข้อมูลสดที่เปลี่ยนถี่ต้องจัดการความสดและคิวรีรันไทม์เพิ่มเติม บทความนี้ไม่ได้ทดลองกับระบบเซนเซอร์
+      - region [ref=f2e267]:
+        - heading "สถาปัตยกรรม Mosaic Publisher" [level=2] [ref=f2e268]
+        - figure [ref=f2e269]:
+          - button "Figure 1 · ย้ายการเตรียมข้อมูล การสร้างทรัพยากรคำนวณ และการวาดภาพไปช่วงเผยแพร่" [ref=f2e270]
+          - generic [ref=f2e271]:
+            - text: Figure 1 · ย้ายการเตรียมข้อมูล การสร้างทรัพยากรคำนวณ และการวาดภาพไปช่วงเผยแพร่ ·
+            - link "อ่านบริบทในต้นฉบับแปล" [ref=f2e272] [cursor=pointer]:
+              - /url: translation.html#page-1
+        - generic [ref=f2e273]:
+          - generic [ref=f2e274]:
+            - text: 01 / DISCOVER
+            - strong [ref=f2e275]: AST และ Virtual DOM
+            - paragraph [ref=f2e276]: อ่าน YAML วิเคราะห์ข้อมูลและมุมมอง จำลองอินพุตเพื่อกระตุ้นคิวรีการโต้ตอบ
+          - generic [ref=f2e277]:
+            - text: 02 / MATERIALIZE
+            - strong [ref=f2e278]: DuckDB คำนวณล่วงหน้า
+            - paragraph [ref=f2e279]: รันคิวรีเตรียมข้อมูล คิวรีเริ่มต้น และคิวรีผลรวม แล้วเก็บผลเป็นทรัพยากรเผยแพร่
+          - generic [ref=f2e280]:
+            - text: 03 / REWRITE & EMIT
+            - strong [ref=f2e281]: ข้อกำหนดและสคริปต์รันไทม์
+            - paragraph [ref=f2e282]: แทนคิวรีเตรียมข้อมูลด้วยผลที่เก็บไว้ สร้างสคริปต์เติมแคช ฐานข้อมูล และเริ่มมุมมองโต้ตอบ
+        - generic [ref=f2e283]:
+          - article [ref=f2e284]:
+            - heading "เส้นทางที่ไม่ต้องแก้ข้อกำหนด" [level=3] [ref=f2e285]
+            - paragraph [ref=f2e286]: Coordinator โหลดผลคิวรีเข้าแคชและผลรวมเข้าฐานข้อมูล แล้วเลือกใช้แทนการคำนวณใหม่ กลไกนี้ใช้การควบคุมคิวรีของ Mosaic
+          - article [ref=f2e287]:
+            - heading "เส้นทางที่ต้องแก้ AST" [level=3] [ref=f2e288]
+            - paragraph [ref=f2e289]: เมื่อเปลี่ยนรูปแบบการเข้าถึงข้อมูล เช่น แทนคิวรีเตรียมข้อมูลด้วยไฟล์สำเร็จรูป Publisher แก้จุดอ้างอิงในข้อกำหนดโดยตรง
+        - paragraph [ref=f2e290]: ต้นฉบับระบุ “ทรัพยากรผลคิวรีที่เผยแพร่ได้” และ JavaScript สำหรับเติมแคช แต่ไม่ได้แจกแจงว่าไฟล์ทั้งหมดเป็น Parquet หรือ Arrow จึงไม่กำหนดนามสกุลเป็นข้อเท็จจริงของการทดลอง
+        - paragraph [ref=f2e291]: "ที่มา: §3.2–3.4, §4.1–4.3 · PDF หน้า 2–3 · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+      - region [ref=f2e292]:
+        - heading "ภาพล่วงหน้าและ Hydration" [level=2] [ref=f2e293]
+        - generic [ref=f2e294]:
+          - article [ref=f2e295]:
+            - heading "มุมมองสถิต" [level=3] [ref=f2e296]
+            - paragraph [ref=f2e297]: ส่งเนื้อหาที่วาดเสร็จ เช่น SVG หรือภาพบิตแมป ไม่มีอินพุตที่ทำงาน จึงไม่ต้องเพิ่มตรรกะรันไทม์เพื่อการโต้ตอบ
+          - article [ref=f2e298]:
+            - heading "มุมมองโต้ตอบ" [level=3] [ref=f2e299]
+            - paragraph [ref=f2e300]: ส่งภาพเริ่มต้นพร้อม JavaScript แล้วเริ่มคอมโพเนนต์ผ่านกระบวนการเรนเดอร์ฝั่งไคลเอนต์ตามปกติ จึงยังมีต้นทุน hydration ก่อนพร้อมรับอินพุต
+        - figure [ref=f2e301]:
+          - button "Figure 4 · องค์ประกอบความหน่วงเฉลี่ยข้ามภาพห้ารูปแบบ ที่ข้อมูล 10 ล้านแถว" [ref=f2e302]
+          - generic [ref=f2e303]:
+            - text: Figure 4 · องค์ประกอบความหน่วงเฉลี่ยข้ามภาพห้ารูปแบบ ที่ข้อมูล 10 ล้านแถว ·
+            - link "อ่านบริบทในต้นฉบับแปล" [ref=f2e304] [cursor=pointer]:
+              - /url: translation.html#page-4
+        - generic [ref=f2e305]:
+          - strong [ref=f2e306]: เห็นภาพเร็วขึ้นมาก แต่ TTA ลดเพิ่มเพียง 1.0 จุดเปอร์เซ็นต์
+          - paragraph [ref=f2e307]: +cache ลด TTA เฉลี่ย 32.3% ส่วนชุดรวมลด 33.3% เมื่อเทียบ none เดียวกัน ผลต่าง 1.0 จุดเปอร์เซ็นต์คำนวณจาก Table 1 ภาพล่วงหน้าตัดงานวาดเริ่มต้น แต่ต้นทุน hydration ยังใกล้การเรนเดอร์เต็มชุด จึงไม่ทำให้พร้อมโต้ตอบทันที
+        - paragraph [ref=f2e308]: Progressive Hydration ปรากฏในงานที่เกี่ยวข้อง (§2.3) ส่วนวิธี hydration ที่ละเอียดขึ้นเป็นข้อเสนอวิจัยต่อ (§5) ไม่ใช่กลไกที่ประเมินแล้วในงานนี้
+        - paragraph [ref=f2e309]: "ที่มา: §4.3, §5, Figure 4, Table 1 · PDF หน้า 3–4 · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+      - region [ref=f2e310]:
+        - heading "ผลทดลองและต้นทุนพื้นที่" [level=2] [ref=f2e311]
+        - figure [ref=f2e312]:
+          - 'button "Figure 2 · Airlines, Property, Flights, Gaia และ Taxis: รูปแบบมุมมองและการเลือกที่แตกต่างกัน" [ref=f2e313]'
+          - generic [ref=f2e314]:
+            - text: "Figure 2 · Airlines, Property, Flights, Gaia และ Taxis: รูปแบบมุมมองและการเลือกที่แตกต่างกัน ·"
+            - link "อ่านบริบทในต้นฉบับแปล" [ref=f2e315] [cursor=pointer]:
+              - /url: translation.html#page-3
+        - figure [ref=f2e316]:
+          - button "Figure 3 · TTR แถวบนและ TTA แถวล่าง เส้นเป็นมัธยฐานมิลลิวินาที แถบเงาเป็น IQR" [ref=f2e317]
+          - generic [ref=f2e318]:
+            - text: Figure 3 · TTR แถวบนและ TTA แถวล่าง เส้นเป็นมัธยฐานมิลลิวินาที แถบเงาเป็น IQR ·
+            - link "อ่านบริบทในต้นฉบับแปล" [ref=f2e319] [cursor=pointer]:
+              - /url: translation.html#page-4
+        - paragraph [ref=f2e320]: "แต่ละระดับเพิ่มการปรับปรุงต่อจากระดับก่อนหน้า: none → +prep → +cache → +prerender ตารางต้นฉบับใช้ชื่อ +most สำหรับชุดรวมขั้นสุดท้าย"
+        - table [ref=f2e322]:
+          - caption [ref=f2e323]: Table 1 · ค่าเฉลี่ยการเปลี่ยนแปลงร้อยละ ± σ เทียบ none
+          - rowgroup [ref=f2e324]:
+            - row [ref=f2e325]:
+              - columnheader "ระดับ" [ref=f2e326]
+              - columnheader "ΔSC (%)" [ref=f2e327]
+              - columnheader "ΔTTR (%)" [ref=f2e328]
+              - columnheader "ΔTTA (%)" [ref=f2e329]
+          - rowgroup [ref=f2e330]:
+            - row [ref=f2e331]:
+              - cell "+prep" [ref=f2e332]
+              - cell "0.0 ± 0.0" [ref=f2e333]
+              - cell "−0.6 ± 4.0" [ref=f2e334]
+              - cell "−1.0 ± 2.5" [ref=f2e335]
+            - row [ref=f2e336]:
+              - cell "+cache" [ref=f2e337]
+              - cell "21.1 ± 29.8" [ref=f2e338]
+              - cell "−16.6 ± 1.3" [ref=f2e339]
+              - cell "−32.3 ± 8.9" [ref=f2e340]
+            - row [ref=f2e341]:
+              - cell "+most" [ref=f2e342]
+              - cell "21.2 ± 29.9" [ref=f2e343]
+              - cell "−83.7 ± 2.1" [ref=f2e344]
+              - cell "−33.3 ± 9.6" [ref=f2e345]
+        - generic [ref=f2e346]:
+          - article [ref=f2e347]:
+            - heading "การชั่งน้ำหนักระหว่างความเร็วกับพื้นที่" [level=3] [ref=f2e348]
+            - paragraph [ref=f2e349]: พื้นที่เพิ่มเฉลี่ย 21.2% แต่ σ สูงถึง 29.9% จึงต้องพิจารณารูปแบบภาพและจำนวนมิติการเลือก แคชที่ไม่ถูกใช้งานอาจเพิ่มต้นทุนโดยไม่ช่วยเวลา
+            - paragraph [ref=f2e350]: SC เป็นขนาดทรัพยากรที่เผยแพร่ ไม่ใช่ค่าการใช้ RAM สูงสุดหรือปริมาณข้อมูลที่ส่งทุกครั้ง
+          - article [ref=f2e351]:
+            - heading "เงื่อนไขการทดลอง" [level=3] [ref=f2e352]
+            - paragraph [ref=f2e353]: MacBook Pro 14 นิ้ว ปี 2021 · M1 Pro · RAM 16GB · macOS 15.2 · Node.js 22.9.0 · local server · DuckDB-WASM
+            - paragraph [ref=f2e354]: บทความไม่ได้ระบุจำนวนรอบทดลองซ้ำ และ Figure 4 จำกัดที่ 10M แถว
+        - paragraph [ref=f2e355]: เวลาเผยแพร่เฉลี่ยยาวกว่า TTA ของกรณีไม่ปรับปรุงที่สอดคล้องกัน 1,455.3 ± 1,779.0 ms ตัวเลขนี้เป็นผลต่างเวลา ไม่ใช่เวลาเผยแพร่ทั้งหมด
+        - paragraph [ref=f2e356]: "ที่มา: §5, Figures 2–4, Table 1 · PDF หน้า 3–4 · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+      - region [ref=f2e357]:
+        - heading "จำลองการเปิดหน้าเว็บ" [level=2] [ref=f2e358]
+        - generic [ref=f2e359]:
+          - generic [ref=f2e360]: แบบจำลองเพื่ออธิบายกลไก · ไม่ใช่ผล benchmark
+          - paragraph [ref=f2e361]: เวลาและ MB คำนวณจากฐานสมมติ แล้วใช้สัดส่วนเฉลี่ยจาก Table 1 แสดงผล ไม่มีข้อมูลดิบรายเงื่อนไขสำหรับสร้าง Figure 3 ซ้ำ แอนิเมชันใช้เวลาย่อส่วน ไม่ใช่เวลารับส่งจริง
+          - generic [ref=f2e362]:
+            - generic [ref=f2e363]:
+              - text: จำนวนแถว
+              - combobox "จำนวนแถว" [ref=f2e364]:
+                - option "10,000" [selected]
+                - option "100,000"
+                - option "1,000,000"
+                - option "10,000,000"
+            - generic [ref=f2e365]:
+              - text: รูปแบบภาพ
+              - combobox "รูปแบบภาพ" [ref=f2e366]:
+                - option "Airlines"
+                - option "Property"
+                - option "Flights"
+                - option "Gaia"
+                - option "Taxis" [selected]
+          - group "ระดับสะสม · ปิดทั้งหมดเป็น Baseline" [ref=f2e367]:
+            - generic [ref=f2e369]:
+              - checkbox "+Data Prep" [ref=f2e370]
+              - text: +Data Prep
+            - generic [ref=f2e371]:
+              - checkbox "+Pre-computed Cache" [ref=f2e372]
+              - text: +Pre-computed Cache
+            - generic [ref=f2e373]:
+              - checkbox "+Pre-rendered Image" [ref=f2e374]
+              - text: +Pre-rendered Image
+          - button "จำลองการโหลด" [ref=f2e375] [cursor=pointer]
+          - button "เลือก Baseline" [ref=f2e376] [cursor=pointer]
+          - generic [ref=f2e377]:
+            - generic [ref=f2e378]:
+              - generic [ref=f2e379]: TTR ประมาณ (ms)
+              - status [ref=f2e380]: "468"
+            - generic [ref=f2e381]:
+              - generic [ref=f2e382]: TTA ประมาณ (ms)
+              - status [ref=f2e383]: "780"
+            - generic [ref=f2e384]:
+              - generic [ref=f2e385]: Storage ประมาณ (MB)
+              - status [ref=f2e386]: "0.40"
+          - paragraph [ref=f2e387]: ระดับ none · เทียบฐานสมมติ TTR 468 ms / TTA 780 ms / SC 0.40 MB
+          - generic "ลำดับงานจำลอง" [ref=f2e388]:
+            - generic [ref=f2e389]: Server Assets
+            - generic [ref=f2e390]: Network Transfer
+            - generic [ref=f2e391]: Render
+            - generic [ref=f2e392]: Hydration / Ready
+          - generic [ref=f2e393]:
+            - generic [ref=f2e394]: Network
+            - generic [ref=f2e395]: Render
+            - generic [ref=f2e396]: Hydration
+          - log "บันทึกการจำลอง" [ref=f2e397]: "[MODEL] taxis · 10,000 rows [MODEL] เวลาและพื้นที่เป็นค่าประมาณจากฐานสมมติ [MODEL] สัดส่วนแท่งเป็นภาพอธิบาย ไม่ใช่ Figure 4 ที่วัดจริง [1/4] Baseline: รอคำนวณที่ไคลเอนต์ [2/4] ส่งทรัพยากรจาก Server ไป Browser [3/4] คิวรีและวาดภาพฝั่ง Browser [4/4] เริ่มคอมโพเนนต์และตัวกลางคิวรี; พร้อมรับอินพุต [DONE] จบการจำลองแบบย่อเวลา"
+          - group [ref=f2e398]:
+            - generic "สมมติฐานและสูตรที่ใช้" [ref=f2e399]
+      - region [ref=f2e400]:
+        - heading "จุดเด่น ข้อจำกัด และการต่อยอด" [level=2] [ref=f2e401]
+        - paragraph [ref=f2e402]: ส่วนนี้แยกข้อวิจารณ์จากการอ่านและบริบทต่อยอดออกจากข้อสรุปที่ผู้วิจัยทดลองไว้
+        - generic [ref=f2e403]:
+          - article [ref=f2e404]:
+            - heading "จุดเด่นสามมิติ" [level=3] [ref=f2e405]
+            - list [ref=f2e406]:
+              - listitem [ref=f2e407]:
+                - strong [ref=f2e408]: "กลไกชัดเจน:"
+                - text: ย้ายงานผ่านข้อกำหนดและตัวกลางคิวรี ตรวจเหตุที่แต่ละระดับช่วยได้
+              - listitem [ref=f2e409]:
+                - strong [ref=f2e410]: "ตัวชี้วัดแยกหน้าที่:"
+                - text: ไม่รวมการมองเห็นและการโต้ตอบเป็นความเร็วค่าเดียว
+              - listitem [ref=f2e411]:
+                - strong [ref=f2e412]: "เปิดเผยต้นทุน:"
+                - text: ประเมินทั้งขนาดข้อมูล ระดับการปรับปรุง และพื้นที่ที่เพิ่ม
+          - article [ref=f2e413]:
+            - heading "ข้อจำกัดและภัยต่อความเที่ยงตรงสี่มิติ" [level=3] [ref=f2e414]
+            - list [ref=f2e415]:
+              - listitem [ref=f2e416]:
+                - strong [ref=f2e417]: "สภาพแวดล้อม:"
+                - text: เครื่องเดียวและ local server ยังไม่ครอบคลุมมือถือหรือ WAN
+              - listitem [ref=f2e418]:
+                - strong [ref=f2e419]: "ข้อมูล:"
+                - text: ตัวอย่างไม่มีงานเตรียมซับซ้อน จึงประเมินประโยชน์ +prep ได้จำกัด
+              - listitem [ref=f2e420]:
+                - strong [ref=f2e421]: "การรายงาน:"
+                - text: ไม่มีจำนวนรอบซ้ำหรือข้อมูลดิบรายเงื่อนไขใน PDF
+              - listitem [ref=f2e422]:
+                - strong [ref=f2e423]: "ความสดและสถานะ:"
+                - text: การสร้างใหม่และจำนวนมิติการเลือกอาจเพิ่มต้นทุน โดยยังไม่มีวิธีเลือกอัตโนมัติที่ประเมินแล้ว
+        - paragraph [ref=f2e424]: "ที่มา: §3–6 · PDF หน้า 2–4; ข้อวิจารณ์จากขอบเขตหลักฐาน · เลขหน้าอ้างตำแหน่งหน้าในไฟล์ PDF ที่ได้รับ"
+        - generic [ref=f2e425]:
+          - article [ref=f2e426]:
+            - heading "แดชบอร์ด IoT" [level=3] [ref=f2e427]
+            - paragraph [ref=f2e428]: ใช้ผลรวมประวัติข้อมูลและภาพเริ่มต้นที่เผยแพร่เป็นรอบ ส่วนข้อมูลสดต้องมีเส้นทางปรับปรุงและตรวจความสอดคล้องเพิ่ม
+          - article [ref=f2e429]:
+            - heading "Edge CDN" [level=3] [ref=f2e430]
+            - paragraph [ref=f2e431]: กระจายทรัพยากรใช้ซ้ำใกล้ผู้ใช้งาน แต่ต้องจัดรุ่นแคชและไม่คาดหวังให้ CDN ลดงาน hydration
+          - article [ref=f2e432]:
+            - heading "In-Browser OLAP" [level=3] [ref=f2e433]
+            - paragraph [ref=f2e434]: ใช้ DuckDB-WASM ร่วมกับผลรวมล่วงหน้าเพื่อลดคิวรีเริ่มต้น ยังต้องประเมินขนาดทรัพยากรและภาระเครื่องปลายทาง
+        - paragraph [ref=f2e435]: สามบริบทเป็นแนวคิดต่อยอด ไม่ใช่ระบบที่ผู้วิจัยทดสอบครบในบทความ · เชื่อมจาก §2.3, §3, §4.1, §6
+      - region [ref=f2e436]:
+        - heading "ห้องซ้อมนำเสนอ 5:00" [level=2] [ref=f2e437]
+        - generic "ห้องซ้อมนำเสนอ" [ref=f2e438]:
+          - generic [ref=f2e439]:
+            - generic [ref=f2e440]:
+              - generic [ref=f2e441]: REHEARSAL / 7 SLIDES
+              - timer "เวลาคงเหลือ" [ref=f2e442]: 5:00
+              - generic [ref=f2e443]: แผนบทพูด 4:55 · เผื่อเวลา 0:05
+            - generic [ref=f2e444]:
+              - button "เริ่มซ้อม" [ref=f2e445] [cursor=pointer]
+              - button "รีเซ็ต" [ref=f2e446] [cursor=pointer]
+          - generic [ref=f2e447]:
+            - button "ข้ามไปสไลด์ 1, 0:00" [pressed] [ref=f2e448] [cursor=pointer]: "1"
+            - button "ข้ามไปสไลด์ 2, 0:25" [ref=f2e449] [cursor=pointer]: "2"
+            - button "ข้ามไปสไลด์ 3, 1:05" [ref=f2e450] [cursor=pointer]: "3"
+            - button "ข้ามไปสไลด์ 4, 1:50" [ref=f2e451] [cursor=pointer]: "4"
+            - button "ข้ามไปสไลด์ 5, 2:35" [ref=f2e452] [cursor=pointer]: "5"
+            - button "ข้ามไปสไลด์ 6, 3:35" [ref=f2e453] [cursor=pointer]: "6"
+            - button "ข้ามไปสไลด์ 7, 4:10" [ref=f2e454] [cursor=pointer]: "7"
+          - generic [ref=f2e455]:
+            - text: ตำแหน่งเวลา ·
+            - status [ref=f2e456]: 0:00
+            - text: / 5:00
+          - slider "ตำแหน่งเวลา · / 5:00" [ref=f2e457]: "0"
+          - generic [ref=f2e458]:
+            - generic [ref=f2e459]:
+              - button "สไลด์ 1 · Publish-Time Optimizations for Web-Based Visualizations" [ref=f2e460]
+              - heading "Publish-Time Optimizations for Web-Based Visualizations" [level=3] [ref=f2e461]
+              - generic [ref=f2e462]:
+                - button "← ก่อนหน้า" [disabled] [ref=f2e463] [cursor=pointer]
+                - generic [ref=f2e464]: 1 / 7
+                - button "ถัดไป →" [ref=f2e465] [cursor=pointer]
+              - paragraph [ref=f2e466]: "เมื่อโฟกัสอยู่ในห้องซ้อม: Space เริ่ม/หยุด · ←/→ เปลี่ยนสไลด์ ปุ่มลัดไม่ทำงานระหว่างแก้ช่องกรอกข้อมูล"
+            - generic [ref=f2e467]:
+              - generic [ref=f2e468]:
+                - generic [ref=f2e469]: ความเร็วเลื่อน
+                - combobox "ความเร็วเลื่อน" [ref=f2e470]:
+                  - option "ปิดการเลื่อน"
+                  - option "0.75×"
+                  - option "1×" [selected]
+                  - option "1.25×"
+                  - option "1.5×"
+                - button "ตัวอักษรใหญ่" [pressed] [ref=f2e471] [cursor=pointer]
+              - generic "บทพูดตามสไลด์" [ref=f2e472]:
+                - paragraph [ref=f2e473]: บทความของ Ron Pechuk และ Jeffrey Heer จาก University of Washington ศึกษาปัญหาที่พบตั้งแต่เปิดเว็บแสดงภาพข้อมูล ภาพยังไม่ปรากฏ และตัวกรองยังไม่พร้อมทำงาน แนวคิดหลักคือย้ายการคำนวณที่ทำซ้ำไปไว้ก่อนเผยแพร่ เพื่อให้การเปิดแต่ละเซสชันเริ่มจากผลลัพธ์ที่เตรียมไว้แล้ว งานนี้ตีพิมพ์ใน IEEE VIS ปี 2025 และใช้ Mosaic เป็นระบบทดลอง
+              - paragraph [ref=f2e474]: ชื่อเรื่องและ Abstract · PDF หน้า 1
+        - table [ref=f2e476]:
+          - rowgroup [ref=f2e477]:
+            - row [ref=f2e478]:
+              - columnheader "สไลด์" [ref=f2e479]
+              - columnheader "ช่วงเวลา" [ref=f2e480]
+              - columnheader "เวลา (s)" [ref=f2e481]
+              - columnheader "จำนวนคำ" [ref=f2e482]
+              - columnheader "บทพูด" [ref=f2e483]
+          - rowgroup [ref=f2e484]:
+            - row [ref=f2e485]:
+              - cell "1 · Publish-Time Optimizations for Web-Based Visualizations" [ref=f2e486]
+              - cell "0:00–0:25" [ref=f2e487]
+              - cell "25" [ref=f2e488]
+              - cell "73" [ref=f2e489]
+              - cell [ref=f2e490]:
+                - button "เปิดบทพูด" [ref=f2e491] [cursor=pointer]
+            - row [ref=f2e492]:
+              - cell "2 · ที่มา ปัญหาความหน่วง และตัวชี้วัด" [ref=f2e493]
+              - cell "0:25–1:05" [ref=f2e494]
+              - cell "40" [ref=f2e495]
+              - cell "121" [ref=f2e496]
+              - cell [ref=f2e497]:
+                - button "เปิดบทพูด" [ref=f2e498] [cursor=pointer]
+            - row [ref=f2e499]:
+              - cell "3 · สถาปัตยกรรม Mosaic Publisher" [ref=f2e500]
+              - cell "1:05–1:50" [ref=f2e501]
+              - cell "45" [ref=f2e502]
+              - cell "131" [ref=f2e503]
+              - cell [ref=f2e504]:
+                - button "เปิดบทพูด" [ref=f2e505] [cursor=pointer]
+            - row [ref=f2e506]:
+              - cell "4 · ภาพล่วงหน้าและต้นทุน Client Hydration" [ref=f2e507]
+              - cell "1:50–2:35" [ref=f2e508]
+              - cell "45" [ref=f2e509]
+              - cell "123" [ref=f2e510]
+              - cell [ref=f2e511]:
+                - button "เปิดบทพูด" [ref=f2e512] [cursor=pointer]
+            - row [ref=f2e513]:
+              - cell "5 · ผลทดลองและการชั่งน้ำหนักทรัพยากร" [ref=f2e514]
+              - cell "2:35–3:35" [ref=f2e515]
+              - cell "60" [ref=f2e516]
+              - cell "152" [ref=f2e517]
+              - cell [ref=f2e518]:
+                - button "เปิดบทพูด" [ref=f2e519] [cursor=pointer]
+            - row [ref=f2e520]:
+              - cell "6 · ผลงานหลักและข้อจำกัดของบทความ" [ref=f2e521]
+              - cell "3:35–4:10" [ref=f2e522]
+              - cell "35" [ref=f2e523]
+              - cell "97" [ref=f2e524]
+              - cell [ref=f2e525]:
+                - button "เปิดบทพูด" [ref=f2e526] [cursor=pointer]
+            - row [ref=f2e527]:
+              - cell "7 · ข้อสรุปและแนวทางวิจัยต่อ" [ref=f2e528]
+              - cell "4:10–4:55" [ref=f2e529]
+              - cell "45" [ref=f2e530]
+              - cell "140" [ref=f2e531]
+              - cell [ref=f2e532]:
+                - button "เปิดบทพูด" [ref=f2e533] [cursor=pointer]
+        - paragraph [ref=f2e534]: จำนวนคำแบ่งด้วย Intl.Segmenter ภาษาไทยเมื่อเบราว์เซอร์รองรับ เวลาแต่ละช่วงเป็นแผน ไม่ใช่เวลาพูดที่วัดจริง การเลื่อนอัตโนมัติไม่ตรวจจับเสียงพูด
+        - group [ref=f2e535]:
+          - generic "บทพูดเต็มทั้งเจ็ดสไลด์" [ref=f2e536]
+      - region [ref=f2e537]:
+        - heading "คลังคำถามสำหรับการนำเสนอ" [level=2] [ref=f2e538]
+        - paragraph [ref=f2e539]: 15 ประเด็น แบ่งตามสถาปัตยกรรม ผลทดลอง และบริบทต่อยอด คำตอบระบุหน้า PDF และแยกข้ออนุมานไว้
+        - generic [ref=f2e540]:
+          - generic [ref=f2e541]: หมวดคำถาม
+          - combobox "หมวดคำถาม" [ref=f2e542]:
+            - option "ทุกหมวด · 15 ข้อ"
+            - option "สถาปัตยกรรมระบบ" [selected]
+            - option "ผลการทดลองและข้อจำกัด"
+            - option "การประยุกต์ใช้งานจริง"
+          - button "ปิดคำตอบทั้งหมด" [ref=f2e543] [cursor=pointer]
+        - generic [ref=f2e544]:
+          - group [ref=f2e545]:
+            - generic "01 · Publisher ย้ายงานใดออกจากเบราว์เซอร์?" [ref=f2e546] [cursor=pointer]
+            - paragraph [ref=f2e547]: ย้ายการเตรียมข้อมูล การสร้างผลคิวรีและผลรวมล่วงหน้า และการวาดภาพเริ่มต้นไปช่วงเผยแพร่ แต่คิวรีหลังการโต้ตอบและการเริ่มคอมโพเนนต์ยังเกิดตอนใช้งาน จึงลดงานเริ่มต้นได้โดยไม่ทำให้ทุกสถานะเป็นภาพสถิต
+            - paragraph [ref=f2e548]: §3–4 · PDF หน้า 2–3
+          - group [ref=f2e549]:
+            - generic "02 · AST กับ Virtual DOM ทำหน้าที่ต่างกันอย่างไร?" [ref=f2e550] [cursor=pointer]
+            - paragraph [ref=f2e551]: AST รองรับการวิเคราะห์และแก้ข้อกำหนด เช่น เปลี่ยนคิวรีเตรียมข้อมูลให้ชี้ไปยังแฟ้มผลลัพธ์ ส่วน Virtual DOM ใช้จำลองอินพุตเพื่อกระตุ้นคิวรีที่เกิดจากปฏิสัมพันธ์ ทั้งสองส่วนจึงแก้ปัญหาคนละด้าน
+            - paragraph [ref=f2e552]: §4.1–4.2 · PDF หน้า 3
+          - group [ref=f2e553]:
+            - generic "03 · แคชผลคิวรีต่างจาก materialized aggregates อย่างไร?" [ref=f2e554] [cursor=pointer]
+            - paragraph [ref=f2e555]: แคชเก็บผลของคิวรีที่ระบุไว้แล้ว ส่วนผลรวมที่เก็บจริงเป็นโครงสร้างข้อมูลสำหรับตอบคิวรีการเลือกและการรวมกลุ่ม ตัวกลางเติมแคชและโหลดผลรวมเข้าฐานข้อมูลก่อนเริ่มใช้งานได้
+            - paragraph [ref=f2e556]: §3.3, §4.3 · PDF หน้า 2–3
+          - group [ref=f2e557]:
+            - generic "04 · DuckDB กับ DuckDB-WASM อยู่ในขั้นตอนใด?" [ref=f2e558] [cursor=pointer]
+            - paragraph [ref=f2e559]: ช่วงเผยแพร่ใช้ DuckDB แบบ in-process สร้างทรัพยากร ไม่ผูกกับตำแหน่งฐานข้อมูลตอนรันไทม์ ส่วนการทดลองใช้ DuckDB-WASM ในเบราว์เซอร์ Mosaic รองรับฐานข้อมูลบนเซิร์ฟเวอร์ได้เช่นกัน แต่ไม่ได้เป็นเงื่อนไขทดลองในงานนี้
+            - paragraph [ref=f2e560]: §4.1, §5 · PDF หน้า 3–4
+          - group [ref=f2e561]:
+            - generic "05 · ภาพล่วงหน้าทำให้ระบบพร้อมโต้ตอบทันทีหรือไม่?" [ref=f2e562] [cursor=pointer]
+            - paragraph [ref=f2e563]: ภาพที่แสดงได้ไม่เท่ากับระบบที่พร้อมรับอินพุต มุมมองโต้ตอบยังต้อง hydration ซึ่งเวอร์ชันที่ทดลองใช้การเริ่มคอมโพเนนต์ผ่านกระบวนการเรนเดอร์ฝั่งไคลเอนต์ตามปกติ และมีต้นทุนใกล้การวาดใหม่ทั้งชุด
+            - paragraph [ref=f2e564]: §4.3, §5, Figure 4 · PDF หน้า 3–4
+      - region [ref=f2e565]:
+        - heading "แบบทดสอบความเข้าใจ" [level=2] [ref=f2e566]
+        - generic [ref=f2e567]:
+          - generic [ref=f2e568]:
+            - group "1. TTR ของบทความสิ้นสุดที่เหตุการณ์ใด?" [ref=f2e569]:
+              - generic [ref=f2e571] [cursor=pointer]:
+                - radio "ข้อความแรกปรากฏ" [ref=f2e572]
+                - generic [ref=f2e573]: ข้อความแรกปรากฏ
+              - generic [ref=f2e574] [cursor=pointer]:
+                - radio "ภาพข้อมูลทั้งหมดปรากฏ" [ref=f2e575]
+                - generic [ref=f2e576]: ภาพข้อมูลทั้งหมดปรากฏ
+              - generic [ref=f2e577] [cursor=pointer]:
+                - radio "การคลิกครั้งแรกตอบกลับ" [ref=f2e578]
+                - generic [ref=f2e579]: การคลิกครั้งแรกตอบกลับ
+              - generic [ref=f2e580] [cursor=pointer]:
+                - radio "ดาวน์โหลดไฟล์ทุกชนิดเสร็จ" [ref=f2e581]
+                - generic [ref=f2e582]: ดาวน์โหลดไฟล์ทุกชนิดเสร็จ
+            - group "2. อะไรเป็นเหตุหลักที่ +prep ช่วยน้อยในชุดทดสอบ?" [ref=f2e583]:
+              - generic [ref=f2e585] [cursor=pointer]:
+                - radio "DuckDB ไม่รองรับ SQL" [ref=f2e586]
+                - generic [ref=f2e587]: DuckDB ไม่รองรับ SQL
+              - generic [ref=f2e588] [cursor=pointer]:
+                - radio "ข้อมูลไม่มีคอลัมน์ส่วนเกินและไม่มีงานเตรียมที่ซับซ้อน" [ref=f2e589]
+                - generic [ref=f2e590]: ข้อมูลไม่มีคอลัมน์ส่วนเกินและไม่มีงานเตรียมที่ซับซ้อน
+              - generic [ref=f2e591] [cursor=pointer]:
+                - radio "ทุกมุมมองเป็นภาพสถิต" [ref=f2e592]
+                - generic [ref=f2e593]: ทุกมุมมองเป็นภาพสถิต
+              - generic [ref=f2e594] [cursor=pointer]:
+                - radio "เครื่องทดสอบไม่มีแคช" [ref=f2e595]
+                - generic [ref=f2e596]: เครื่องทดสอบไม่มีแคช
+            - group "3. Table 1 รายงานผลชุด +most อย่างไร?" [ref=f2e597]:
+              - generic [ref=f2e599] [cursor=pointer]:
+                - radio "TTR −83.7%, TTA −33.3%, SC +21.2%" [ref=f2e600]
+                - generic [ref=f2e601]: TTR −83.7%, TTA −33.3%, SC +21.2%
+              - generic [ref=f2e602] [cursor=pointer]:
+                - radio "TTR −33.3%, TTA −83.7%, SC −21.2%" [ref=f2e603]
+                - generic [ref=f2e604]: TTR −33.3%, TTA −83.7%, SC −21.2%
+              - generic [ref=f2e605] [cursor=pointer]:
+                - radio "แคชอย่างเดียวลด TTR 83.7%" [ref=f2e606]
+                - generic [ref=f2e607]: แคชอย่างเดียวลด TTR 83.7%
+              - generic [ref=f2e608] [cursor=pointer]:
+                - radio "TTA ทุกชุดเท่ากัน" [ref=f2e609]
+                - generic [ref=f2e610]: TTA ทุกชุดเท่ากัน
+            - group "4. 33.3 − 32.3 ต้องใช้หน่วยใดและสรุปได้เพียงใด?" [ref=f2e611]:
+              - generic [ref=f2e613] [cursor=pointer]:
+                - radio "1.0 มิลลิวินาที" [ref=f2e614]
+                - generic [ref=f2e615]: 1.0 มิลลิวินาที
+              - generic [ref=f2e616] [cursor=pointer]:
+                - radio "เร็วขึ้น 1.0% เทียบแคชแน่นอน" [ref=f2e617]
+                - generic [ref=f2e618]: เร็วขึ้น 1.0% เทียบแคชแน่นอน
+              - generic [ref=f2e619] [cursor=pointer]:
+                - radio "ต่าง 1.0 จุดเปอร์เซ็นต์จากฐาน none เดียวกัน" [ref=f2e620]
+                - generic [ref=f2e621]: ต่าง 1.0 จุดเปอร์เซ็นต์จากฐาน none เดียวกัน
+              - generic [ref=f2e622] [cursor=pointer]:
+                - radio "มีนัยสำคัญทางสถิติแน่นอน" [ref=f2e623]
+                - generic [ref=f2e624]: มีนัยสำคัญทางสถิติแน่นอน
+            - group "5. สถานะของ Progressive Hydration ในงานนี้เป็นอย่างไร?" [ref=f2e625]:
+              - generic [ref=f2e627] [cursor=pointer]:
+                - radio "ทดลองแล้วลด TTA 83.7%" [ref=f2e628]
+                - generic [ref=f2e629]: ทดลองแล้วลด TTA 83.7%
+              - generic [ref=f2e630] [cursor=pointer]:
+                - radio "เป็นระบบที่ใช้กับทั้งห้าตัวอย่าง" [ref=f2e631]
+                - generic [ref=f2e632]: เป็นระบบที่ใช้กับทั้งห้าตัวอย่าง
+              - generic [ref=f2e633] [cursor=pointer]:
+                - radio "เป็นงานที่เกี่ยวข้อง ส่วน hydration ที่ละเอียดขึ้นยังเป็นแนวทางวิจัยต่อ" [ref=f2e634]
+                - generic [ref=f2e635]: เป็นงานที่เกี่ยวข้อง ส่วน hydration ที่ละเอียดขึ้นยังเป็นแนวทางวิจัยต่อ
+              - generic [ref=f2e636] [cursor=pointer]:
+                - radio "ใช้แทน DuckDB-WASM" [ref=f2e637]
+                - generic [ref=f2e638]: ใช้แทน DuckDB-WASM
+          - button "ตรวจคำตอบ" [ref=f2e639] [cursor=pointer]
+          - button "เริ่มใหม่" [ref=f2e640] [cursor=pointer]
+          - paragraph [ref=f2e641]: เลือกคำตอบให้ครบ 5 ข้อก่อนตรวจคะแนน
+      - region [ref=f2e642]:
+        - heading "เอกสารและรายการอ้างอิง" [level=2] [ref=f2e643]
+        - generic [ref=f2e644]:
+          - link [ref=f2e645] [cursor=pointer]:
+            - /url: ../assignement/work4/03_slides/Assignment_Paper_4_PublishTimeOpt_7_Slides.pptx
+            - strong [ref=f2e646]: ชุดสไลด์แก้ไขได้
+            - text: PPTX · 7 หน้า · Speaker Notes
+          - link [ref=f2e647] [cursor=pointer]:
+            - /url: ../assignement/work4/03_slides/Assignment_Paper_4_PublishTimeOpt_7_Slides.pdf
+            - strong [ref=f2e648]: ชุดสไลด์สำหรับเปิดอ่าน
+            - text: PDF · 7 หน้า · 16:9
+          - link [ref=f2e649] [cursor=pointer]:
+            - /url: ../assignement/work4/02_report/Assignment_Paper_4_PublishTimeOpt_Short_Report_TH.pdf
+            - strong [ref=f2e650]: รายงานสรุปภาษาไทย
+            - text: PDF · 2 หน้า A4
+          - link [ref=f2e651] [cursor=pointer]:
+            - /url: ../assignement/work4/03_slides/Assignment_Paper_4_PublishTimeOpt_Slide_Structure.md
+            - strong [ref=f2e652]: โครงสไลด์และบทพูด
+            - text: Markdown · เนื้อหาและหลักฐาน
+        - generic [ref=f2e653]:
+          - link "บันทึกข้ออ้างกับหลักฐาน" [ref=f2e654] [cursor=pointer]:
+            - /url: ../assignement/work4/05_study/claim-to-evidence.md
+          - link "ตัวเลขที่ตรวจสอบแล้ว (JSON)" [ref=f2e655] [cursor=pointer]:
+            - /url: ../assignement/work4/05_study/paper-metrics.json
+          - link "ต้นฉบับที่ใช้แปล" [ref=f2e656] [cursor=pointer]:
+            - /url: ../assignement/work4/01_original/Paper_IV_1_PRIMARY_PublishTimeOpt_11298742.pdf
+        - heading "BibTeX" [level=3] [ref=f2e657]
+        - generic [ref=f2e658]: "@inproceedings{pechuk2025publish, author = {Ron Pechuk and Jeffrey Heer}, title = {Publish-Time Optimizations for Web-Based Visualizations}, booktitle = {2025 IEEE Visualization and Visual Analytics (VIS)}, year = {2025}, pages = {226--230}, publisher = {IEEE}, doi = {10.1109/VIS60296.2025.00051} }"
+        - button "คัดลอก BibTeX" [active] [ref=f2e659] [cursor=pointer]
+        - status [ref=f2e660]: คัดลอกแล้ว
+      - generic [ref=f2e661]: เนื้อหาอิง Pechuk & Heer (2025) · DOI 10.1109/VIS60296.2025.00051เลขหน้าในบทเรียนหมายถึง PDF หน้า 1–5 ของสำเนาที่ได้รับ ไม่ใช่เลขหน้าพิมพ์ 226–230บทแปล บทพูด และข้อวิจารณ์จัดทำประกอบการศึกษา ไม่ใช่ข้อความที่ผ่านการรับรองโดยคณะผู้วิจัย

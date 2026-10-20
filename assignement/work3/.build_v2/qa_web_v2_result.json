@@ -1,0 +1,497 @@
+{
+ "date": "2026-09-28T01:15:44.356Z",
+ "pass": 97,
+ "total": 98,
+ "results": [
+  {
+   "name": "default without ?v or saved choice is Version 3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "lesson: ?v=2 opens Version 2",
+   "ok": true,
+   "detail": "{\"v\":\"v2\",\"v1\":false,\"v2\":true,\"search\":\"?v=2\",\"title\":\"Paper III Version 2: Raft-FL (SEAMS 2024) · 305432 เครือข่ายเซนเซอร์\"}"
+  },
+  {
+   "name": "lesson: Version 2 title",
+   "ok": true,
+   "detail": "Paper III Version 2: Raft-FL (SEAMS 2024) · 305432 เครือข่ายเซนเซอร์"
+  },
+  {
+   "name": "lesson: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "lesson: ids are unique across both panels",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "lesson: 94 local links/images resolve",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "lesson: no links to the old v2/ folder",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "header on v2: rehearsal/simulator/Q&A carry ?v=2",
+   "ok": true,
+   "detail": "../index.html # ../paper-1/index.html ../paper-1/translation.html ../paper-2/index.html ../paper-2/translation.html ../paper-3/index.html?v=3 ../paper-3/translation.html?v=3 ../paper-3/index.html?v=2 ../paper-3/translation.html?v=2 ../paper-3/index.html?v=1 ../paper-3/translation.html?v=1 ../paper-4/index.html ../paper-3/translation.html?v=2 ../paper-3/index.html?v=2 ../paper-3/index.html?v=2#sec-rehearsal ../paper-3/index.html?v=2#sec-simulator ../paper-3/index.html?v=2#sec-qna"
+  },
+  {
+   "name": "header on v2: read link -> translation.html?v=2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "header on v2: v2 dropdown item active",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "switcher: dropdown shows Version 1",
+   "ok": true,
+   "detail": "{\"v\":\"v1\",\"v1\":true,\"v2\":false,\"search\":\"?v=1\",\"title\":\"Paper III Version 1: OmniLedger (IEEE S&P 2018) · 305432 เครือข่ายเซนเซอร์\"}"
+  },
+  {
+   "name": "header follows the switch to ?v=1",
+   "ok": true,
+   "detail": "../index.html # ../paper-1/index.html ../paper-1/translation.html ../paper-2/index.html ../paper-2/translation.html ../paper-3/index.html?v=3 ../paper-3/translation.html?v=3 ../paper-3/index.html?v=2 ../paper-3/translation.html?v=2 ../paper-3/index.html?v=1 ../paper-3/translation.html?v=1 ../paper-4/index.html ../paper-3/translation.html?v=1 ../paper-3/index.html?v=1 ../paper-3/index.html?v=1#sec-rehearsal ../paper-3/index.html?v=1#sec-simulator ../paper-3/index.html?v=1#sec-qna"
+  },
+  {
+   "name": "header read label follows the version",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "switcher: tab shows Version 2",
+   "ok": true,
+   "detail": "{\"v\":\"v2\",\"v1\":false,\"v2\":true,\"search\":\"?v=2\",\"title\":\"Paper III Version 2: Raft-FL (SEAMS 2024) · 305432 เครือข่ายเซนเซอร์\"}"
+  },
+  {
+   "name": "switcher: tab state follows",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "switcher: v2 sidebar card switches to Version 1",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "switcher: v1 sidebar card switches to Version 2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "scroll spy: one active link, on the visible sidebar",
+   "ok": true,
+   "detail": "#v2-sec-overview"
+  },
+  {
+   "name": "?v=1 opens Version 1",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "saved choice: reopening without ?v keeps Version 1",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "hash alias: ?v=2#sec-rehearsal lands on the Version 2 rehearsal",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "hash: ?v=1#sec-rehearsal lands on the Version 1 rehearsal",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "hash: ?v=1 with a shared section (#v2-sec-qna) stays on Version 1 and maps to its Q&A",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "hash: a Version 2 only anchor (#v2-sec-raft) switches to Version 2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "simulator: elects a leader and commits rounds",
+   "ok": true,
+   "detail": "{\"now\":1500,\"term\":1,\"committed\":2,\"alive\":5,\"quorum\":3,\"leader\":2,\"lastFailover\":null}"
+  },
+  {
+   "name": "simulator: failover to a new leader, training continues",
+   "ok": true,
+   "detail": "{\"now\":3000,\"term\":2,\"committed\":5,\"alive\":4,\"quorum\":3,\"leader\":1,\"lastFailover\":220}"
+  },
+  {
+   "name": "simulator: 2 of 5 alive -> no leader",
+   "ok": true,
+   "detail": "{\"now\":3000,\"term\":10,\"committed\":1,\"alive\":2,\"quorum\":3,\"leader\":null,\"lastFailover\":null}"
+  },
+  {
+   "name": "simulator: N = 2 cannot re-elect after 1 crash",
+   "ok": false,
+   "detail": "{\"now\":3000,\"term\":5,\"committed\":4,\"alive\":2,\"quorum\":2,\"leader\":2,\"lastFailover\":null}"
+  },
+  {
+   "name": "simulator: SVG drawn in the Version 2 panel",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Q&A: 15 items",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Q&A: category filter works",
+   "ok": true,
+   "detail": "5 visible"
+  },
+  {
+   "name": "Q&A: search works",
+   "ok": true,
+   "detail": "1 visible"
+  },
+  {
+   "name": "Q&A: drill opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "quiz: 5 cards, 4 options each",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "quiz: correct answer shows feedback",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "BibTeX: copy button carries the IEEE Doc ID",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "studio: timer runs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "studio: timeline jumps to slide 5 (light deck)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "studio: teleprompter shows stage 5",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "slide viewer: next moves to slide 3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "slide viewer: 7 thumbnails load",
+   "ok": true,
+   "detail": "1600,1600,1600,1600,1600,1600,1600"
+  },
+  {
+   "name": "paper viewer: jump to page 118",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "traffic calculator: 5 workers -> 3.19x",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "quorum calculator: N = 11 -> Q = 6, f = 5",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "keyboard: Space drives only the Version 2 studio",
+   "ok": true,
+   "detail": " -> "
+  },
+  {
+   "name": "Version 2 widgets: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Version 1: 11 sidebar sections visible",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Version 1: no emoji or old v2 banner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Version 1: Q&A and quiz rendered",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Version 1: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: ?v=2 opens Version 2",
+   "ok": true,
+   "detail": "{\"v\":\"v2\",\"v1\":false,\"v2\":true,\"search\":\"?v=2&page=1&view=compare&study=translation\",\"title\":\"บทความแปลไทย Version 2: Raft-FL (คู่ขนาน 12 หน้า) · 305432 เครือข่ายเซนเซอร์\"}"
+  },
+  {
+   "name": "translation: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: ids are unique across both panels",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: 40 local links/images resolve",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: all rows present",
+   "ok": true,
+   "detail": "{\"rows\":107,\"pages\":11,\"figs\":[1031,1703,984,1021],\"analysis\":5,\"tables\":1,\"refs\":35,\"jump\":11}"
+  },
+  {
+   "name": "translation: page markers 110-119 and 120-121",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: 4 sized figures, 1 table, 35 references",
+   "ok": true,
+   "detail": "{\"rows\":107,\"pages\":11,\"figs\":[1031,1703,984,1021],\"analysis\":5,\"tables\":1,\"refs\":35,\"jump\":11}"
+  },
+  {
+   "name": "translation: 5 analysis blocks (Table 1, Figs 1-4)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: Compare View 50:50 at 1440",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: both columns equal width",
+   "ok": true,
+   "detail": "499 vs 499"
+  },
+  {
+   "name": "translation: Thai only hides the English",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: original only hides Thai and analysis",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation: page jump lands page 118 just below the sticky mode bar",
+   "ok": true,
+   "detail": "top 168, bar ends 117"
+  },
+  {
+   "name": "translation: arrow keys do not drive the hidden Version 1 Compare View",
+   "ok": true,
+   "detail": "1 -> 1, y=21383"
+  },
+  {
+   "name": "translation header: read link active with ?v=2",
+   "ok": true,
+   "detail": "../paper-3/translation.html?v=2 nav-link nav-link-accent active"
+  },
+  {
+   "name": "translation: switch to Version 1 Compare View",
+   "ok": true,
+   "detail": "{\"v\":\"v1\",\"v1\":true,\"v2\":false,\"search\":\"?v=1&page=1&view=compare&study=translation\",\"title\":\"บทความแปลไทย Version 1: OmniLedger (Compare View 16 หน้า) · 305432 เครือข่ายเซนเซอร์\"}"
+  },
+  {
+   "name": "translation Version 1: dock moves to page 2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation ?v=1&page=5&view=thai: Version 1 page 5 in Thai view",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation Version 1: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "translation ?v=2&view=paper: Version 2 original-only mode",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-3/index.html?v=2 at 1440px: no horizontal scroll",
+   "ok": true,
+   "detail": "1440"
+  },
+  {
+   "name": "paper-3/index.html?v=1 at 1440px: no horizontal scroll",
+   "ok": true,
+   "detail": "1440"
+  },
+  {
+   "name": "paper-3/translation.html?v=2 at 1440px: no horizontal scroll",
+   "ok": true,
+   "detail": "1440"
+  },
+  {
+   "name": "paper-3/translation.html?v=1 at 1440px: no horizontal scroll",
+   "ok": true,
+   "detail": "1440"
+  },
+  {
+   "name": "paper-3/index.html?v=2 at 768px: no horizontal scroll",
+   "ok": true,
+   "detail": "768"
+  },
+  {
+   "name": "paper-3/index.html?v=1 at 768px: no horizontal scroll",
+   "ok": true,
+   "detail": "768"
+  },
+  {
+   "name": "paper-3/translation.html?v=2 at 768px: no horizontal scroll",
+   "ok": true,
+   "detail": "768"
+  },
+  {
+   "name": "translation at 768px: one column",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-3/translation.html?v=1 at 768px: no horizontal scroll",
+   "ok": true,
+   "detail": "768"
+  },
+  {
+   "name": "paper-3/index.html?v=2 at 390px: no horizontal scroll",
+   "ok": true,
+   "detail": "390"
+  },
+  {
+   "name": "paper-3/index.html?v=1 at 390px: no horizontal scroll",
+   "ok": true,
+   "detail": "390"
+  },
+  {
+   "name": "paper-3/translation.html?v=2 at 390px: no horizontal scroll",
+   "ok": true,
+   "detail": "390"
+  },
+  {
+   "name": "translation at 390px: one column",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-3/translation.html?v=1 at 390px: no horizontal scroll",
+   "ok": true,
+   "detail": "390"
+  },
+  {
+   "name": "paper-3/index.html?v=2 dark: theme applied, no errors",
+   "ok": true,
+   "detail": "dark "
+  },
+  {
+   "name": "paper-3/translation.html?v=2 dark: theme applied, no errors",
+   "ok": true,
+   "detail": "dark "
+  },
+  {
+   "name": "redirect paper-3/v2/index.html#sec-rehearsal",
+   "ok": true,
+   "detail": "file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/senior-subject/sensor-network/paper-3/index.html?v=2#v2-sec-rehearsal"
+  },
+  {
+   "name": "redirect paper-3/v2/translation.html",
+   "ok": true,
+   "detail": "file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/senior-subject/sensor-network/paper-3/translation.html?v=2&page=1&view=compare&study=translation"
+  },
+  {
+   "name": "index.html: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "portal: Paper III links use the unified pages",
+   "ok": true,
+   "detail": "./paper-3/index.html?v=3 ./paper-3/translation.html?v=3 ./paper-3/index.html?v=2 ./paper-3/translation.html?v=2 ./paper-3/index.html?v=1 ./paper-3/translation.html?v=1 ./paper-3/index.html?v=3 ./paper-3/translation.html?v=3 ./paper-3/index.html?v=2 ./paper-3/translation.html?v=2 ./paper-3/index.html?v=1 ./paper-3/translation.html?v=1 paper-3/index.html?v=2 paper-3/translation.html?v=2 paper-3/index.html?v=1 paper-3/index.html?v=3 paper-3/index.html?v=1 paper-3/translation.html?v=1 paper-3/index.html?v=1#sec-rehearsal paper-3/index.html?v=1#sec-simulator paper-3/index.html?v=2 paper-3/translation.html?v=2 paper-3/translation.html?v=1"
+  },
+  {
+   "name": "portal: switch to v1 card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "portal: switch back to v2 card",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-1/index.html: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-1/translation.html: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-1/translation.html: dock next page works",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-2/index.html: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-2/translation.html: no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "paper-2/translation.html: dock next page works",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

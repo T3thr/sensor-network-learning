@@ -1,0 +1,93 @@
+TABLE II: OmniLedger scale-out throughput in transactions
+per second (tps) for a adversarial power of f/n = 12.5% shard
+size of s = 70, and a varying number of shards m.
+m
+1
+2
+4
+8
+16
+tps
+439
+869
+1674
+3240
+5850
+Fig. 7: Epoch transition latency.
+10% probability that the conﬁrmation was vulnerable to a
+double-spending attack due to a higher-than-average number
+of malicious validators. For high-risk transactions, the latency
+to guarantee ﬁnality is still less than one minute.
+Table II shows the scale-out throughput of OmniLedger with
+a 12.5% adversary, a shard size of 70, and a number of shards
+m between 1 and 16. As we can see, the throughput increases
+almost linearly in the number of shards.
+In Figure 6, with a 12.5% adversary and a total number of
+1800 hosts, we distributed the latter across 25 shards for which
+we measured a throughput of 13, 000 tps corresponding to 3
+times the level of Visa. If we want to maintain OmniLedger’s
+security against a 25% adversary and still achieve the same
+average throughput of Visa, i.e., 4000 tps, then we estimate that
+we need to increase the number of hosts to about 4200 (which
+is less than the number of Bitcoin full nodes [4]) and split them
+into 7 shards. Unfortunately, our experimental platform could
+not handle such a high load, therefore, we mention here only
+an estimated value.
+C. Epoch-Transition Costs
+In this experiment, we evaluate the costs for transitioning
+from an epoch e−1 to epoch e. Recall, that at the end of epoch
+e −1 the new membership conﬁguration is ﬁrst collectively
+signed, then used for the VRF-based leader-election. Once
+the leader is elected, he runs RandHound with a group-size
+of 16 hosts (which is secure for a 25% adversary [44]) and
+broadcasts it to all validators, who then verify the result and
+connect to their peers. We assume that validators already know
+the state of the shard they will be validating. It is important to
+mention that this process is not on the critical path, but occurs
+concurrently with the previous epoch. Once the new groups
+have been setup, the new shard leaders enforce a view-change.
+As we can see in Figure 7, the cost of bootstrapping is
+mainly due to RandHound that takes up more than 70% of
+Fig. 8: Client-perceived, end-to-end latency for cross-shard
+transactions via Atomix.
+the total run time. To estimate the worst-case scenario, we
+refer to our security analysis in Section VI-A and see that,
+even in the case with 1800 hosts, an honest leader is elected
+after 10 RandHound runs with high probability, which takes
+approximately 3 hours. Given an epoch duration of one day,
+this worst-case overhead is acceptable.
+D. Client-Perceived End-to-End Latency with Atomix
+In this experiment we evaluate in different shard conﬁgu-
+rations, the client-perceived, end-to-end latency when using
+Atomix. As shown in Figure 8, the client-perceived latency is
+almost double the value of the consensus latency as there are
+already other blocks waiting to be processed in the common
+case. Consequently, the inclusion of the transaction in a
+block is delayed. This latency increases slightly further when
+multiple shards validate a transaction. The overall end-to-end
+latency would be even higher if a client had to wait for output
+shards to run consensus that, however, is not required.
+If the client
+wants to directly spend the new funds, he
+can batch together the proof-of-acceptance and the expenditure
+transaction in order to respect the input-after-output constraint.
+Overall, the client-perceived end-to-end latency for cross-
+shard transactions is not signiﬁcantly affected when increasing
+the number of shards.
+E. ByzCoinX Performance
+In this experiment, we measure the performance improve-
+ments of ByzCoinX over the original ByzCoin. To have a
+fair comparison, each data-series corresponds to the total
+size of data concurrently in the network, meaning that if
+the concurrency level is 2 then there are 2 blocks of 4 MB
+concurrently, adding to a total of 8 MB, whereas a concurrency
+level of 4 means 4 blocks of 2 MB each.
+In Figures 9 and Table III, we see that there is a 20%
+performance increase when moving from one big block to
+four smaller concurrently running blocks, with a concurrent
+35% decrease in the per-block consensus latency. This can
+be attributed to the higher resource utilization of the system,
+when blocks arrive more frequently for validation. When
+the concurrency further increases, we can see a slight drop
+593
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

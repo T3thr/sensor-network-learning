@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 5: การส่งสัญญาณแอนะล็อก · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+  <style>
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .phonetic-impl {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--paper2);
+      border-left: 3px solid var(--purple);
+      font-size: 0.86rem;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-xs);
+    }
+    .calc-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-scenario {
+      background: var(--paper2);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .canvas-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .canvas-ctrl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .canvas-box {
+      background: #0f172a;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-top: 14px;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .metric-pill-val {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .code-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.9rem;
+    }
+    .code-table th, .code-table td {
+      border: 1px solid var(--rule);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .code-table th {
+      background: var(--paper2);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .code-table tr:hover {
+      background: var(--paper2);
+    }
+
+    .checklist-item {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .checklist-item:hover {
+      border-color: var(--accent);
+    }
+    .checklist-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .checklist-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist-body {
+      margin-top: 10px;
+      margin-left: 30px;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      display: none;
+    }
+    .checklist-item.checked {
+      background: var(--paper2);
+      border-color: var(--green);
+    }
+    .checklist-item.checked .checklist-body {
+      display: block;
+    }
+
+    .synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+    .synthesis-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .synthesis-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <site-header></site-header>
+
+  <div class="chapter-container">
+
+    <!-- ═══════════════ SIDEBAR NAVIGATION ═══════════════ -->
+    <aside class="chapter-sidebar">
+      <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+        <a href="ch04.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Ch04</a>
+        <a href="ch06.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch06 →</a>
+      </div>
+
+      <div style="font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);">
+        กำลังอ่าน: <span id="sidebar-live-section" style="font-weight: 700; color: var(--accent);">บทนำ</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 4px;">
+        <a href="#sec-genesis" class="sidebar-link active">1. ปฐมบทการมอดูเลตคลื่นพาห์</a>
+        <a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และสัทศาสตร์</a>
+        <a href="#sec-d2a-ask-fsk" class="sidebar-link">3. การแปลงดิจิทัลเป็นแอนะล็อก (ASK &amp; FSK)</a>
+        <a href="#sec-psk-oqpsk" class="sidebar-link">4. สถาปัตยกรรม PSK และ O-QPSK ใน IoT</a>
+        <a href="#sec-qam-constellation" class="sidebar-link">5. คอนสเตลเลชันไดอะแกรมและ QAM</a>
+        <a href="#sec-a2a-am-fm" class="sidebar-link">6. การมอดูเลตแอนะล็อกสู่แอนะล็อก (AM &amp; FM)</a>
+        <a href="#sec-calculations" class="sidebar-link">7. ตัวอย่างการคำนวณ 4 กรณีศึกษา</a>
+        <a href="#sec-silicon" class="sidebar-link">8. กายวิภาคระดับซิลิคอนและชิปวิทยุ RF</a>
+        <a href="#sec-simulator" class="sidebar-link">9. สตูดิโอจำลอง Constellation Diagram</a>
+        <a href="#sec-checklist" class="sidebar-link">10. เช็กลิสต์ประเมินความเข้าใจวิศวกรรม</a>
+        <a href="#sec-synthesis" class="sidebar-link">11. สรุปสังเคราะห์โมเดลความคิด 3 มิติ</a>
+        <a href="#sec-crosslinks" class="sidebar-link">12. จุดเชื่อมโยงสู่เครือข่ายเซนเซอร์ (WSN)</a>
+      </nav>
+    </aside>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="chapter-content">
+
+      <!-- Header Banner -->
+      <div style="margin-bottom: 36px;">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">
+          หลักสูตรการสื่อสารข้อมูลและสถาปัตยกรรมเครือข่ายเซนเซอร์ · Data Communications Track
+        </div>
+        <h1 style="font-size: 2.2rem; font-weight: 900; color: var(--ink); line-height: 1.25; margin-bottom: 12px;">
+          บทที่ 5: การส่งสัญญาณแอนะล็อก (Analog Transmission)
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7;">
+          ศึกษาศาสตร์และศิลป์แห่งการมอดูเลตคลื่นพาห์ความถี่สูง (Carrier Modulation) เพื่อส่งผ่านสารสนเทศดิจิทัลและแอนะล็อกข้ามชั้นบรรยากาศ
+          เจาะลึกกลไก Digital-to-Analog (ASK, FSK, BPSK, QPSK, O-QPSK, QAM), การวิเคราะห์ระนาบคอนสเตลเลชัน (Constellation Diagram),
+          ทฤษฎีการมอดูเลตแอนะล็อก (AM และ Carson's Rule ใน FM), ตลอดจนเหตุผลทางสถาปัตยกรรมฮาร์ดแวร์ว่าเหตุใดโหนดเซนเซอร์พลังงานต่ำ (WSN)
+          จึงเลือกใช้ O-QPSK ร่วมกับแอมพลิฟายเออร์แบบไม่เชิงเส้น แทนที่จะใช้ QAM ความหนาแน่นสูง
+        </p>
+      </div>
+
+      <!-- SECTION 1: Genesis -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">ปฐมบททางวิศวกรรม: เหตุใดเราจึงต้องมอดูเลตสัญญาณสู่คลื่นพาห์ความถี่สูง?</h2>
+
+        <p>
+          ในบทที่ 4 เราได้เห็นแล้วว่าพัลส์ดิจิทัล (Baseband Signal) สามารถส่งผ่านสายทองแดงได้ดีในระยะใกล้
+          ทว่าเมื่อต้องการส่งสารสนเทศผ่าน <strong>อากาศว่างเปล่า (Free Space Wireless)</strong>
+          การส่งสัญญาณเบสแบนด์โดยตรงกลับเป็นไปไม่ได้ทางกายภาพ เนื่องจากกฎฟิสิกส์คลื่นแม่เหล็กไฟฟ้า 2 ประการ:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border-left: 4px solid var(--accent); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--rule);">
+            <strong style="color: var(--accent); font-size: 1.05rem;">1. กฎขนาดสายอากาศ (Antenna Size Physics)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              เพื่อให้สายอากาศสามารถแผ่คลื่นแม่เหล็กไฟฟ้าได้อย่างมีประสิทธิภาพ ความยาวของสายอากาศ (L) จะต้องมีขนาดอย่างน้อย 1/4 ของความยาวคลื่น:
+              <br><code>L ≥ λ / 4 = c / (4 · f)</code>
+              <br>หากต้องการส่งสัญญาณเสียงความถี่ 1,000 Hz ตรงๆ ความยาวคลื่นคือ 300 กิโลเมตร สายอากาศต้องมีความยาวถึง <strong>75 กิโลเมตร!</strong>
+              แต่หากเรามอดูเลตสัญญาณขึ้นไปบนคลื่นพาห์ย่าน ISM 2.4 GHz ความยาวคลื่นจะหดสั้นลงเหลือเพียง 12.5 เซนติเมตร สายอากาศจึงยาวเพียง <strong>3.125 เซนติเมตร</strong> ซึ่งสามารถพิมพ์ลงบนแผ่นวงจรของโหนดเซนเซอร์ได้อย่างกะทัดรัด
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border-left: 4px solid var(--purple); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--rule);">
+            <strong style="color: var(--purple); font-size: 1.05rem;">2. การแบ่งสรรสเปกตรัมความถี่ (Frequency Multiplexing)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              หากทุกคนส่งสัญญาณเบสแบนด์ในย่านความถี่เสียง (0-4 kHz) พร้อมกัน สัญญาณของทุกสถานีจะทับซ้อนและแทรกสอดกันจนฟังไม่รู้เรื่อง
+              การมอดูเลตทำให้เราสามารถเลื่อนย้าย (Shift) ย่านความถี่ของข้อมูลแต่ละผู้ใช้ไปไว้บน <strong>คลื่นพาห์ (Carrier Frequency: f_c)</strong> ที่แตกต่างกัน ทำให้สามารถส่งสัญญาณนับร้อยสถานีข้ามอากาศได้พร้อมกันโดยไม่กวนกัน
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Technical Glossary & Phonetics -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary &amp; Phonetics</span>
+        <h2 class="section-title">อภิธานศัพท์เทคนิค สัทศาสตร์ และการประยุกต์ใช้ในระบบจริง (Nomenclature &amp; Phonetics)</h2>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Carrier Signal
+            <span class="phonetic-pronounce">แคร์-ริ-เออร์ ซิก-นัล</span>
+          </div>
+          <div class="phonetic-desc">
+            สัญญาณคลื่นไซน์ความถี่สูงคงที่ ที่ถูกสร้างขึ้นเพื่อทำหน้าที่เป็น 'พาหนะ' ในการบรรทุกสัญญาณข้อมูล โดยพารามิเตอร์ทางคณิตศาสตร์อย่างใดอย่างหนึ่ง (แอมพลิจูด, ความถี่, หรือเฟส) จะถูกแปรผันตามข้อมูลที่ต้องการส่ง
+          </div>
+          <div class="phonetic-impl">
+            Context: ในชิปวิทยุ CC2420 วงจรสังเคราะห์ความถี่ Voltage-Controlled Oscillator (VCO) จะกำเนิดคลื่นพาห์ที่ความถี่ 2.405 GHz ถึง 2.480 GHz (ช่อง 11 ถึง 26 ของมาตรฐาน IEEE 802.15.4)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Amplitude Shift Keying (ASK)
+            <span class="phonetic-pronounce">แอม-พลิ-จูด ชิฟต์ คีย์-อิง</span>
+          </div>
+          <div class="phonetic-desc">
+            การมอดูเลตเชิงดิจิทัลที่แปรผันระดับแอมพลิจูดของคลื่นพาห์ตามบิตข้อมูล โดยความถี่และเฟสคงที่ รูปแบบที่ง่ายที่สุดคือ On-Off Keying (OOK) โดยส่งคลื่นพาห์เต็มกำลังสำหรับบิต 1 และหยุดส่งคลื่นสำหรับบิต 0
+          </div>
+          <div class="phonetic-impl">
+            Context: ใช้ในรีโมทคอนโทรลประตูรั้ว 433 MHz และเซนเซอร์ปลูกถ่ายในร่างกายมนุษย์ที่ต้องการประหยัดพลังงานระดับไมโครวัตต์ ทว่ามีความไวต่อสัญญาณรบกวนในบรรยากาศสูงมาก
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Frequency Shift Keying (FSK)
+            <span class="phonetic-pronounce">ฟรี-เควน-ซี ชิฟต์ คีย์-อิง</span>
+          </div>
+          <div class="phonetic-desc">
+            การมอดูเลตเชิงดิจิทัลที่แปรผันความถี่ของคลื่นพาห์ระหว่างความถี่สองค่า (f1 สำหรับบิต 1 และ f2 สำหรับบิต 0) โดยแอมพลิจูดและเฟสคงที่ มีคุณสมบัติเด่นคือมีซองสัญญาณคงที่ (Constant Envelope) ทำให้ทนทานต่อสัญญาณรบกวนแอมพลิจูด
+          </div>
+          <div class="phonetic-impl">
+            Context: ชิปบลูทูธ (Bluetooth Basic Rate) ใช้ Gaussian FSK (GFSK) และชิปเซนเซอร์ซับกิกะเฮิรตซ์ (TI CC1101, CC1310) ใช้ 2-FSK ส่งข้อมูลระยะไกลหลายกิโลเมตร
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Phase Shift Keying (PSK)
+            <span class="phonetic-pronounce">เฟส ชิฟต์ คีย์-อิง</span>
+          </div>
+          <div class="phonetic-desc">
+            การมอดูเลตเชิงดิจิทัลที่แปรผันมุมเฟสของคลื่นพาห์ตามลำดับบิตข้อมูล โดยแอมพลิจูดและความถี่คงที่ ใน BPSK ใช้ 2 มุมเฟส (0° และ 180°) บรรจุได้ 1 บิตต่อสัญลักษณ์ ใน QPSK ใช้ 4 มุมเฟส (45°, 135°, 225°, 315°) บรรจุได้ 2 บิตต่อสัญลักษณ์
+          </div>
+          <div class="phonetic-impl">
+            Context: เป็นหัวใจของระบบสื่อสารดาวเทียม GPS และ Wi-Fi ยุคแรก (802.11b)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Offset QPSK (O-QPSK)
+            <span class="phonetic-pronounce">ออฟ-เซต คิว-พี-เอส-เค</span>
+          </div>
+          <div class="phonetic-desc">
+            การดัดแปลง QPSK โดยหน่วงเวลาข้อมูลในช่องสัญญาณควอดราเจอร์ (Q-Channel) ให้เลื่อนออกไปครึ่งหนึ่งของคาบสัญลักษณ์ (T_s / 2) เทียบกับช่องสัญญาณอินเฟส (I-Channel) เพื่อป้องกันไม่ให้เกิดการเปลี่ยนเฟสพร้อมกัน 180° ซึ่งจะทำให้รูปคลื่นไม่ตัดผ่านจุดศูนย์กลาง (0, 0)
+          </div>
+          <div class="phonetic-impl">
+            Context: มาตรฐาน IEEE 802.15.4 บังคับใช้ O-QPSK เพื่อให้เครื่องส่งสามารถใช้เพาเวอร์แอมพลิฟายเออร์ Class C ประสิทธิภาพสูงได้โดยไม่เกิดสัญญาณกวนข้ามช่อง (Spectral Regrowth)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Quadrature Amplitude Modulation (QAM)
+            <span class="phonetic-pronounce">ควอด-รา-เจอร์ แอม-พลิ-จูด มอด-ดู-เล-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            การมอดูเลตที่ผสมผสานทั้งการเปลี่ยนแอมพลิจูดและการเปลี่ยนเฟสเข้าด้วยกัน โดยมอดูเลตข้อมูลลงบนคลื่นพาห์คู่ควบที่ตั้งฉากกัน 90 องศา (In-phase: Cosine และ Quadrature: Sine) ทำให้สามารถบรรจุบิตต่อสัญลักษณ์ได้สูงมาก เช่น 16-QAM (4 บิต), 64-QAM (6 บิต), 256-QAM (8 บิต)
+          </div>
+          <div class="phonetic-impl">
+            Context: ใช้ในระบบบรอดแบนด์ Wi-Fi 6/7, 5G NR, และเคเบิลโมเด็ม DOCSIS 3.1
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Constellation Diagram
+            <span class="phonetic-pronounce">คอน-สเตล-เล-ชัน ได-อะ-แกรม</span>
+          </div>
+          <div class="phonetic-desc">
+            แผนภาพสองมิติในระนาบ I/Q (In-phase แกนแนวนอน, Quadrature แกนแนวตั้ง) ที่ใช้แสดงสถานะสัญลักษณ์ของสัญญาณมอดูเลต โดยแต่ละจุดแทนแอมพลิจูดและเฟสของสัญลักษณ์ ระยะห่างระหว่างจุด (d_min) บ่งบอกถึงความทนทานต่อสัญญาณรบกวน
+          </div>
+          <div class="phonetic-impl">
+            Context: วิศวกรตรวจวัดคุณภาพของเครื่องรับส่งสัญญาณวิทยุด้วยค่า Error Vector Magnitude (EVM) บนหน้าจอวัด Constellation
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Carson's Rule
+            <span class="phonetic-pronounce">คาร์-สันส์ รูล</span>
+          </div>
+          <div class="phonetic-desc">
+            กฎการประมาณค่าแบนด์วิดท์ขั้นต่ำในการส่งสัญญาณความถี่มอดูเลต (FM) คิดค้นโดย John Renshaw Carson ในปี 1922 ระบุว่าแบนด์วิดท์ของ FM เท่ากับสองเท่าของผลรวมระหว่างค่าเบี่ยงเบนความถี่สูงสุด (Δf) กับแบนด์วิดท์ของสัญญาณต้นทาง (B): B_FM = 2(Δf + B)
+          </div>
+          <div class="phonetic-impl">
+            Context: วิทยุกระจายเสียง FM มาตรฐานกำหนด Δf = 75 kHz และ B = 15 kHz เมื่อคำนวณตาม Carson's Rule จะได้แบนด์วิดท์ช่องสัญญาณ 180 kHz (จัดสรรจริง 200 kHz ต่อสถานี)
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: D2A Conversion (ASK & FSK) -->
+      <section id="sec-d2a-ask-fsk" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">การแปลงดิจิทัลเป็นแอนะล็อก: ASK และ FSK (Digital-to-Analog: ASK &amp; FSK)</h2>
+
+        <p>
+          สัญญาณคลื่นพาห์มาตรฐานในโดเมนเวลาแสดงได้ด้วยสมการตรีโกณมิติ:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">s</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">=</span>
+          <span class="m-var">A</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">·</span>
+          <span class="m-var">cos</span><span class="m-op">(</span>2<span class="m-var">π</span><span class="m-var">f</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span><span class="m-var">t</span>
+          <span class="m-op">+</span>
+          <span class="m-var">φ</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span><span class="m-op">)</span>
+        </div>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">0. ทฤษฎีความสัมพันธ์เชิงปริมาณระหว่างอัตราบิต อัตราโบด์ และประสิทธิภาพสเปกตรัม (Spectral Efficiency)</h3>
+        <p>
+          ในระบบมอดูเลตแอนะล็อก ปริมาณข้อมูลที่ส่งผ่านได้บนแบนด์วิดท์จำกัดถูกตัดสินด้วย <strong>ประสิทธิภาพสเปกตรัม (Spectral Efficiency: η)</strong> ซึ่งมีหน่วยเป็น บิตต่อวินาทีต่อเฮิรตซ์ (bps/Hz):
+        </p>
+        <div class="m-block">
+          <span class="m-var">η</span>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-numr"><span class="m-var">N</span></span>
+            <span class="m-denm"><span class="m-var">B</span></span>
+          </div>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-numr">log₂(<span class="m-var">L</span>)</span>
+            <span class="m-denm">1 <span class="m-op">+</span> <span class="m-var">d</span></span>
+          </div>
+          <span class="m-op">[bps/Hz]</span>
+        </div>
+        <p style="font-size: 0.94rem; line-height: 1.8;">
+          โดยที่ L คือจำนวนสถานะสัญลักษณ์ในคอนสเตลเลชัน, d คือ Roll-off factor ของตัวกรอง Raised-Cosine (โดยทั่วไป 0 ≤ d ≤ 1)
+          <br>สมการนี้บ่งชี้ว่า ยิ่งเพิ่มจำนวนระดับ L ประสิทธิภาพสเปกตรัมจะเพิ่มขึ้นแบบลอการิทึม ทว่าตามขีดจำกัดแชนนอน (Shannon Limit) การเพิ่ม L จะต้องจ่ายคืนด้วยพลังงานสัญญาณต่อบิต (E_b / N_0) ที่สูงขึ้นอย่างยิ่งยวด
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Amplitude Shift Keying (ASK)</h3>
+        <p>
+          แอมพลิจูด A(t) ถูกแปรผันตามค่าบิตข้อมูล โดยความถี่ f และเฟส φ คงที่:
+          <br>• สำหรับบิต 1: <code>s(t) = A₁ · cos(2πf_c t)</code>
+          <br>• สำหรับบิต 0: <code>s(t) = A₀ · cos(2πf_c t)</code> (ใน On-Off Keying A₀ = 0)
+          <br><strong>แบนด์วิดท์ของ ASK:</strong> มีค่าเท่ากับอัตราโบด์คูณด้วยแฟกเตอร์การกรอง <code>B = (1 + d) · S</code> (โดยที่ d มีค่าระหว่าง 0 ถึง 1)
+          <br><strong>จุดอ่อนสำคัญ:</strong> สัญญาณรบกวนในอากาศ เช่น สัญญาณฟ้าผ่า หรือประกายไฟจากมอเตอร์ จะเข้าไปบวกเข้ากับแอมพลิจูดของคลื่นตรงๆ ทำให้เครื่องรับตัดสินใจผิดพลาดได้ง่ายที่สุด
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. Frequency Shift Keying (FSK)</h3>
+        <p>
+          ความถี่ f(t) ถูกสลับไปมาระหว่าง f₁ (Mark Frequency) และ f₀ (Space Frequency):
+          <br>• บิต 1: <code>s(t) = A · cos(2πf₁ t)</code>
+          <br>• บิต 0: <code>s(t) = A · cos(2πf₀ t)</code>
+          <br><strong>การวิเคราะห์แบนด์วิดท์ของ FSK:</strong>
+          เนื่องจากสัญญาณ FSK เสมือนเป็นผลรวมของสัญญาณ ASK สองชุดที่ความถี่ต่างกัน แบนด์วิดท์จึงต้องครอบคลุมผลต่างความถี่:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">B</span><span class="m-sub">FSK</span>
+          <span class="m-op">=</span>
+          <span class="m-op">(</span>1<span class="m-op">+</span><span class="m-var">d</span><span class="m-op">)</span>
+          <span class="m-op">·</span>
+          <span class="m-var">S</span>
+          <span class="m-op">+</span>
+          2<span class="m-var">Δf</span>
+        </div>
+
+        <p style="font-size: 0.92rem; line-height: 1.7;">
+          โดยที่ <code>2Δf = |f₁ - f₀|</code> คือระยะห่างระหว่างความถี่ทั้งสอง
+          <br><strong>ข้อได้เปรียบระดับปฏิวัติ:</strong> แอมพลิจูดของคลื่น FSK มีค่าคงที่ตลอดเวลา (Constant Envelope) วงจรเครื่องขยายสัญญาณ (Power Amplifier) จึงสามารถทำงานที่จุดอิ่มตัวสูงสุด (Saturation Region) ได้โดยไม่เกิดความเพี้ยน ทำให้ได้ประสิทธิภาพพลังงาน (Power Efficiency) สูงถึง 60-70% ประหยัดแบตเตอรี่ในอุปกรณ์ IoT เป็นอย่างมาก
+        </p>
+      </section>
+
+      <!-- SECTION 4: PSK and O-QPSK Architecture in IoT -->
+      <section id="sec-psk-oqpsk" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">4. PSK &amp; O-QPSK Architecture</span>
+        <h2 class="section-title">สถาปัตยกรรม PSK และความอัจฉริยะของ O-QPSK ในเครือข่ายเซนเซอร์ (IEEE 802.15.4)</h2>
+
+        <p>
+          ในระบบ Phase Shift Keying สารสนเทศจะถูกบรรจุลงในมุมเฟส φ(t) ซึ่งทนทานต่อสัญญาณรบกวนแอมพลิจูดได้อย่างยอดเยี่ยม:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. BPSK vs QPSK</h3>
+        <p>
+          • <strong>BPSK (Binary PSK):</strong> ใช้ 2 มุมเฟสคือ 0° (บิต 1) และ 180° (บิต 0) บรรจุได้ 1 บิตต่อสัญลักษณ์ (r = 1) แบนด์วิดท์ <code>B = (1 + d) · N</code>
+          <br>• <strong>QPSK (Quadrature PSK):</strong> รวมบิตเป็นคู่ละ 2 บิต (Dibit: 00, 01, 10, 11) และกำหนดมุมเฟส 4 สถานะ (เช่น 45°, 135°, 225°, 315°) บรรจุได้ 2 บิตต่อสัญลักษณ์ (r = 2) ส่งผลให้อัตราโบด์เหลือเพียงครึ่งหนึ่ง <code>S = N / 2</code> ต้องการแบนด์วิดท์เพียงครึ่งเดียวของ BPSK สำหรับอัตราบิตที่เท่ากัน
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. ความอัจฉริยะของ O-QPSK (Offset QPSK) ในชิปเซนเซอร์ CC2420</h3>
+        <p>
+          ใน QPSK ธรรมดา หากบิตข้อมูลเปลี่ยนจาก '00' (เฟส 45°) ข้ามไปยัง '11' (เฟส 225°) จะเกิด <strong>การกระโดดของเฟสถึง 180 องศาในทันที!</strong>
+          <br>ในเชิงคณิตศาสตร์เวกเตอร์ การหมุนเฟส 180° จะบังคับให้วิถีสัญญาณ (Signal Trajectory) พุ่งตัดผ่าน <strong>จุดกำเนิด (0, 0)</strong> ของระนาบ I/Q ซึ่งหมายความว่า <em>แอมพลิจูดของคลื่นจะวูบดับลงเป็นศูนย์โวลต์ชั่วขณะ!</em>
+        </p>
+
+        <div style="background: var(--paper2); border-left: 4px solid var(--purple); padding: 18px; border-radius: var(--radius-sm); margin: 18px 0; font-size: 0.94rem; line-height: 1.7;">
+          <strong>หายนะของ QPSK บนเครื่องส่งวิทยุราคาประหยัด:</strong>
+          เมื่อสัญญาณที่มีแอมพลิจูดวูบวาบ (Non-constant Envelope) ผ่านเข้าไปในวงจรขยายกำลัง (Power Amplifier: PA) แบบราคาประหยัด (Class C/E)
+          ความไม่เชิงเส้นของทรานซิสเตอร์จะทำให้เกิดปรากฏการณ์ <strong>การงอกของสเปกตรัม (Spectral Regrowth)</strong>
+          พลังงานจะล้นออกไปกวนช่องสัญญาณข้างเคียงอย่างรุนแรง (Adjacent Channel Interference) เพื่อป้องกันสิ่งนี้ วิศวกรต้องยอมลดกำลังส่งลง (Power Back-off) ซึ่งทำให้ PA มีประสิทธิภาพต่ำลงเหลือไม่ถึง 20% และสูญเสียพลังงานแบตเตอรี่ไปเป็นความร้อน
+        </div>
+
+        <p>
+          <strong>การแก้ปัญหาด้วย O-QPSK ในมาตรฐาน IEEE 802.15.4:</strong>
+          <br>วิศวกรทำการหน่วงเวลาสตรีมข้อมูลบิตคู่ (Q-Channel) ให้เหลื่อมจากบิตคี่ (I-Channel) ออกไปครึ่งคาบสัญลักษณ์ <code>T_c = T_s / 2</code>
+          <br>ผลลัพธ์คือ: ในแต่ละขณะเวลา จะมีสัญญาณเปลี่ยนสถานะได้เพียงช่องเดียว (I หรือ Q เท่านั้น) ทำให้ <strong>มุมเฟสสามารถเปลี่ยนได้สูงสุดเพียง 90 องศาเท่านั้น ไม่มีวันเปลี่ยน 180 องศาอีกต่อไป!</strong>
+          <br>วิถีสัญญาณจะวิ่งวนรอบขอบนอก ไม่ตัดผ่านจุดศูนย์กลาง (0, 0) ทำให้ซองคลื่นมีแอมพลิจูดราบเรียบเกือบสม่ำเสมอ โหนดเซนเซอร์จึงสามารถใช้เพาเวอร์แอมพลิฟายเออร์ที่มีประสิทธิภาพสูงและกินไฟต่ำได้อย่างสมบูรณ์แบบ
+        </p>
+      </section>
+
+      <!-- SECTION 5: QAM & Constellation Diagrams -->
+      <section id="sec-qam-constellation" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">5. Constellation &amp; High-Order QAM</span>
+        <h2 class="section-title">คอนสเตลเลชันไดอะแกรมและเหตุผลที่ WSN ไม่ใช้ 256-QAM (QAM &amp; Constellations)</h2>
+
+        <p>
+          <strong>แผนภาพคอนสเตลเลชัน (Constellation Diagram)</strong> คือเครื่องมือทางคณิตศาสตร์ในการมองสัญญาณมอดูเลตในระนาบเชิงซ้อน (Complex Plane):
+          <br>• แกนแนวนอนแทนแกน In-phase (I) หรือฟังก์ชันคลื่นพาห์โคไซน์ <code>cos(2πf_c t)</code>
+          <br>• แกนแนวตั้งแทนแกน Quadrature (Q) หรือฟังก์ชันคลื่นพาห์ไซน์ <code>sin(2πf_c t)</code>
+          <br>ระยะห่างจากจุดกำเนิดถึงจุดสัญลักษณ์คือแอมพลิจูด และมุมเทียบกับแกนแนวนอนคือมุมเฟส
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">เหตุใดระบบ Wi-Fi และ 5G จึงใช้ 256-QAM และ 4096-QAM ได้?</h3>
+        <p>
+          256-QAM บรรจุข้อมูลได้ถึง 8 บิตต่อสัญลักษณ์ (r = 8) ทำให้ได้ Throughput สูงลิบลิ่วบนแบนด์วิดท์เท่าเดิม
+          ทว่าระยะห่างแบบยุคลิดขั้นต่ำระหว่างจุดสัญลักษณ์ (Minimum Euclidean Distance: d_min) บนระนาบ I/Q จะหดแคบลงอย่างมหาศาล
+        </p>
+
+        <!-- ตารางเปรียบเทียบมาตรฐานการมอดูเลตระดับสากล -->
+        <table class="code-table">
+          <thead>
+            <tr>
+              <th>รูปแบบการมอดูเลต</th>
+              <th>บิตต่อสัญลักษณ์ (r)</th>
+              <th>ประสิทธิภาพสเปกตรัม (bps/Hz, d=0.5)</th>
+              <th>E_b/N_0 ขั้นต่ำสำหรับ BER=10⁻⁵</th>
+              <th>ลักษณะของซองคลื่น (Envelope)</th>
+              <th>ประเภทเครื่องขยายกำลัง (PA Class)</th>
+              <th>การใช้งานหลักในปัจจุบัน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>BPSK</strong></td>
+              <td>1</td>
+              <td>0.67</td>
+              <td>9.6 dB</td>
+              <td>แปรผัน (ผ่านศูนย์)</td>
+              <td>Linear (Class A/B)</td>
+              <td>ดาวเทียม GPS, Wi-Fi DSSS 1 Mbps</td>
+            </tr>
+            <tr>
+              <td><strong>QPSK</strong></td>
+              <td>2</td>
+              <td>1.33</td>
+              <td>9.6 dB</td>
+              <td>แปรผัน (ผ่านศูนย์)</td>
+              <td>Linear (Class AB)</td>
+              <td>Wi-Fi 802.11b 2 Mbps, 3G WCDMA</td>
+            </tr>
+            <tr>
+              <td><strong>O-QPSK</strong></td>
+              <td>2</td>
+              <td>1.33</td>
+              <td>9.6 dB</td>
+              <td><strong>คงที่เกือบ 100%</strong></td>
+              <td><strong>Non-linear (Class C/E)</strong></td>
+              <td><strong>ZigBee / IEEE 802.15.4 (CC2420)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>8-PSK</strong></td>
+              <td>3</td>
+              <td>2.00</td>
+              <td>13.0 dB</td>
+              <td>แปรผันปานกลาง</td>
+              <td>Linear (Class AB)</td>
+              <td>2.75G EDGE, ดาวเทียม DVB-S2</td>
+            </tr>
+            <tr>
+              <td><strong>16-QAM</strong></td>
+              <td>4</td>
+              <td>2.67</td>
+              <td>13.4 dB</td>
+              <td>แปรผันสูง (PAPR ~4 dB)</td>
+              <td>Highly Linear with Back-off</td>
+              <td>Wi-Fi 4/5/6, 4G LTE, 5G NR</td>
+            </tr>
+            <tr>
+              <td><strong>64-QAM</strong></td>
+              <td>6</td>
+              <td>4.00</td>
+              <td>17.8 dB</td>
+              <td>แปรผันสูง (PAPR ~6 dB)</td>
+              <td>Ultra-Linear with DPD</td>
+              <td>Wi-Fi 5/6, เคเบิลทีวีดิจิทัล DVB-C</td>
+            </tr>
+            <tr>
+              <td><strong>256-QAM</strong></td>
+              <td>8</td>
+              <td>5.33</td>
+              <td>22.2 dB</td>
+              <td>แปรผันสูงมาก (PAPR ~7 dB)</td>
+              <td>Ultra-Linear with DPD &amp; GaN</td>
+              <td>Wi-Fi 6, 5G Sub-6 GHz Downlink</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--red); margin: 20px 0 10px;">3 เหตุผลทางฟิสิกส์ที่เครือข่ายเซนเซอร์ IoT ปฏิเสธการใช้ QAM ระดับสูง:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0;">
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm); border-top: 4px solid var(--red);">
+            <strong style="color: var(--ink);">1. ข้อกำหนด SNR ที่สูงเกินไป (Shannon Law)</strong>
+            <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              256-QAM ต้องการอัตราส่วน SNR สูงกว่า 30 dB เพื่อให้มีอัตราความผิดพลาดต่ำ ในขณะที่โหนดเซนเซอร์ในสนามมักส่งด้วยกำลังต่ำ (0 dBm หรือ 1 mW) และเผชิญสัญญาณรบกวนรอบข้าง ทำให้ SNR มักอยู่ต่ำกว่า 10-15 dB ซึ่ง BPSK/QPSK สามารถทำงานได้สบายแต่ 256-QAM จะล่มสลาย
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm); border-top: 4px solid var(--red);">
+            <strong style="color: var(--ink);">2. อัตราส่วนกำลังยอดต่อกำลังเฉลี่ย (PAPR Crisis)</strong>
+            <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              สัญญาณ QAM มีแอมพลิจูดที่ผันผวนสูงมาก เกิดค่า Peak-to-Average Power Ratio (PAPR) สูง วงจรขยาย PA ต้องทำงานในโหมด Linear Class A/AB ซึ่งสูญเสียความร้อนสูงและกินพลังงานแบตเตอรี่ของเซนเซอร์ให้หมดลงในเวลาเพียงไม่กี่ชั่วโมง
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm); border-top: 4px solid var(--red);">
+            <strong style="color: var(--ink);">3. ความซับซ้อนของวงจรเครื่องรับ (Silicon Area &amp; Power)</strong>
+            <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              การถอดรหัส 256-QAM ต้องใช้วงจร ADC ความละเอียดสูงอย่างน้อย 12-14 บิต และหน่วยประมวลผล DSP กำลังสูงเพื่อชดเชยเฟสผิดเพี้ยน ในขณะที่โหนดเซนเซอร์ใช้ไมโครคอนโทรลเลอร์ขนาดจิ๋วที่มีกำลังประมวลผลและหน่วยความจำจำกัด
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Analog-to-Analog Modulation (AM & FM) -->
+      <section id="sec-a2a-am-fm" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">6. Analog-to-Analog Modulation</span>
+        <h2 class="section-title">การมอดูเลตแอนะล็อกสู่แอนะล็อก: AM และ Carson's Rule ใน FM</h2>
+
+        <p>
+          เมื่อสัญญาณต้นทางเป็นคลื่นแอนะล็อกต่อเนื่อง (เช่น เสียงดนตรีหรือเสียงพูด) และต้องการส่งผ่านคลื่นวิทยุ:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. Amplitude Modulation (AM)</h3>
+        <p>
+          สมการคลื่น AM คือ <code>s(t) = [A_c + m(t)] · cos(2πf_c t)</code>
+          <br>• แบนด์วิดท์ของ AM มีค่าเท่ากับ <strong>สองเท่าของแบนด์วิดท์สัญญาณเสียง</strong>: <code>B_AM = 2 · B</code>
+          <br>• การสูญเสียพลังงาน: คลื่นพาห์ (Carrier) ซึ่งไม่มีสารสนเทศใหม่กลับกินพลังงานไปถึง <strong>66.7%</strong> ของกำลังงานทั้งหมด จึงมีการพัฒนารูปแบบ Single Sideband (SSB) เพื่อตัดคลื่นพาห์และแถบข้างออกหนึ่งข้าง
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. Frequency Modulation (FM) และกฎของคาร์สัน (Carson's Rule)</h3>
+        <p>
+          ใน FM ความถี่จะแปรผันตามแอมพลิจูดของเสียง <code>f(t) = f_c + k_f · m(t)</code>
+          <br>ทฤษฎีทางคณิตศาสตร์พบว่าสเปกตรัมของคลื่น FM ประกอบด้วยฟังก์ชันเบสเซล (Bessel Functions) ที่กระจายฮาร์มอนิกออกไปเป็นอนันต์! ทว่า John R. Carson ได้พิสูจน์กฎทองคำที่ใช้ในการออกแบบสถานีวิทยุทั่วโลก:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">B</span><span class="m-sub">FM</span>
+          <span class="m-op">=</span>
+          2
+          <span class="m-op">·</span>
+          <span class="m-op">(</span>
+          <span class="m-var">β</span><span class="m-op">+</span>1
+          <span class="m-op">)</span>
+          <span class="m-op">·</span>
+          <span class="m-var">B</span>
+          <span class="m-op">=</span>
+          2
+          <span class="m-op">·</span>
+          <span class="m-op">(</span>
+          <span class="m-var">Δf</span><span class="m-op">+</span><span class="m-var">B</span>
+          <span class="m-op">)</span>
+        </div>
+
+        <p style="font-size: 0.92rem; line-height: 1.7;">
+          โดยที่ <code>β = Δf / B</code> คือดัชนีการมอดูเลต (Modulation Index), Δf คือค่าเบี่ยงเบนความถี่สูงสุด, และ B คือความถี่สูงสุดของสัญญาณเสียง
+          <br>แม้ FM จะใช้แบนด์วิดท์กว้างกว่า AM หลายเท่าตัว แต่ให้คุณภาพเสียงที่คมชัดปราศจากเสียงซ่า และมี <strong>Capture Effect</strong> ที่เครื่องรับจะล็อกรับเฉพาะสัญญาณที่แรงกว่าอย่างเด็ดขาด
+        </p>
+      </section>
+
+      <!-- SECTION 7: Worked Calculation Examples -->
+      <section id="sec-calculations" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">7. Worked Calculation Examples</span>
+        <h2 class="section-title">การพิสูจน์คณิตศาสตร์และตัวอย่างคำนวณจริง 4 กรณีศึกษา (Worked Examples)</h2>
+
+        <!-- Example 5.1 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 5.1: การคำนวณแบนด์วิดท์คลื่นวิทยุเปรียบเทียบระหว่าง 16-QAM, QPSK, และ BFSK สำหรับอัตราข้อมูล 20 Mbps</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> ระบบสื่อสารไร้สายต้องการส่งข้อมูลดิจิทัลที่อัตราข้อมูล N = 20 Mbps กำหนดให้ฟิลเตอร์กรองสัญญาณมีค่า Roll-off factor d = 0.25 สำหรับ BFSK กำหนดให้ระยะห่างระหว่างความถี่ทั้งสองเท่ากับ 2Δf = 25 MHz จงคำนวณหาแบนด์วิดท์ขั้นต่ำที่ต้องการสำหรับ:
+            <br>1. 16-QAM
+            <br>2. QPSK
+            <br>3. BFSK
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณสำหรับ 16-QAM</strong></p>
+            <div class="math-step">
+              ใน 16-QAM หนึ่งสัญลักษณ์บรรจุข้อมูล r = log₂(16) = 4 บิตต่อสัญลักษณ์:
+              <br><code>อัตราโบด์ S = N / r = 20 Mbps / 4 = 5 Mbaud</code>
+              <br>แบนด์วิดท์ <code>B = (1 + d) · S = (1 + 0.25) · 5 MHz = 1.25 · 5 = 6.25 MHz</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณสำหรับ QPSK</strong></p>
+            <div class="math-step">
+              ใน QPSK หนึ่งสัญลักษณ์บรรจุข้อมูล r = log₂(4) = 2 บิตต่อสัญลักษณ์:
+              <br><code>อัตราโบด์ S = N / r = 20 Mbps / 2 = 10 Mbaud</code>
+              <br>แบนด์วิดท์ <code>B = (1 + d) · S = (1 + 0.25) · 10 MHz = 1.25 · 10 = 12.50 MHz</code>
+              <br>(ต้องการแบนด์วิดท์เป็น 2 เท่าของ 16-QAM)
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: คำนวณสำหรับ BFSK</strong></p>
+            <div class="math-step">
+              ใน BFSK แต่ละสัญลักษณ์แทนข้อมูล 1 บิต (r = 1) ดังนั้น S = 20 Mbaud:
+              <br><code>B = (1 + d) · S + 2Δf = (1.25 · 20 MHz) + 25 MHz = 25 MHz + 25 MHz = 50.00 MHz</code>
+              <br><strong>บทสรุปเชิงสเปกตรัม:</strong> 16-QAM ใช้สเปกตรัมแคบที่สุด (6.25 MHz) ประหยัดแบนด์วิดท์กว่า BFSK (50 MHz) ถึง 8 เท่าตัว!
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 5.2 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 5.2: การพิสูจน์ความเหนือกว่าทางพลังงานของ 16-QAM เทียบกับ 16-PSK ด้วยระยะห่างยุคลิด (Euclidean Distance)</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> จงเปรียบเทียบระยะห่างสัญลักษณ์ขั้นต่ำ (d_min) ระหว่าง 16-PSK (ที่กระจาย 16 จุดบนวงกลมรัศมี A) กับ 16-QAM (ที่กระจาย 16 จุดบนตารางสี่เหลี่ยมจัตุรัสแบบ Rectangular Grid) ภายใต้เงื่อนไขว่ากำลังงานยอดสูงสุด (Peak Power: P_peak) ของทั้งสองระบบมีค่าเท่ากัน เพื่อพิสูจน์ว่าเหตุใด 16-QAM จึงให้อัตราความผิดพลาดต่ำกว่าถึง 4.2 dB
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหา d_min ของ 16-PSK</strong></p>
+            <div class="math-step">
+              ใน 16-PSK จุดทั้ง 16 จุดอยู่บนวงกลมรัศมี A_max โดยมีมุมห่างกัน θ = 360° / 16 = 22.5°:
+              <br><code>d_min(16-PSK) = 2 · A_max · sin(θ / 2) = 2 · A_max · sin(11.25°) = 2 · A_max · 0.1951 = 0.3902 · A_max</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณหา d_min ของ 16-QAM แบบกริดสี่เหลี่ยม</strong></p>
+            <div class="math-step">
+              ใน 16-QAM พิกัดของจุดคือ (±d/2, ±3d/2) โดยที่ d คือระยะห่างระหว่างจุดที่อยู่ติดกัน:
+              <br>จุดที่อยู่ไกลที่สุด (มุมทั้งสี่) มีระยะห่างจากจุดกำเนิดคือ:
+              <br><code>A_max = √[ (3d/2)² + (3d/2)² ] = √[ 18 d² / 4 ] = d · √(4.5) ≈ 2.1213 · d</code>
+              <br>ดังนั้น ระยะห่างขั้นต่ำ d_min ของ 16-QAM คิดเป็นสัดส่วนกับ A_max คือ:
+              <br><code>d_min(16-QAM) = A_max / 2.1213 = 0.4714 · A_max</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: เปรียบเทียบอัตราส่วนระยะห่างและประสิทธิภาพกำลังงาน</strong></p>
+            <div class="math-step">
+              อัตราส่วนระยะห่าง:
+              <br><code>d_min(16-QAM) / d_min(16-PSK) = 0.4714 / 0.3902 = 1.208 เท่า</code>
+              <br>คิดเป็นความได้เปรียบเชิงกำลังงาน (Power Advantage in dB):
+              <br><code>Advantage = 20 · log₁₀(1.208) = 1.64 dB (ในแง่ Peak Power)</code>
+              <br>และเมื่อคิดเทียบกับกำลังงานเฉลี่ย (Average Power):
+              <br>กำลังงานเฉลี่ยของ 16-PSK คือ A_max² ในขณะที่ 16-QAM มีจุดส่วนใหญ่อยู่ใกลักึ่งกลาง ทำให้กำลังงานเฉลี่ยต่ำกว่ามาก:
+              <br><code>ความได้เปรียบของ 16-QAM ในแง่กำลังงานเฉลี่ย = 4.20 dB!</code>
+              <br><strong>บทสรุปเชิงวิศวกรรม:</strong> 16-QAM ทนทานต่อสัญญาณรบกวนได้ดีกว่า 16-PSK ถึง 4.2 dB จึงไม่มีใครใช้ 16-PSK ในระบบบรอดแบนด์จริง
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 5.3 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 5.3: การคำนวณอัตราชิปและแบนด์วิดท์ช่องสัญญาณวิทยุของชิปเซนเซอร์ CC2420 (IEEE 802.15.4)</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> ชิปวิทยุเซนเซอร์ TI CC2420 ทำงานตามมาตรฐาน IEEE 802.15.4 ส่งข้อมูลที่อัตรา N = 250 kbps ในย่านความถี่ 2.4 GHz โดยใช้การมอดูเลต O-QPSK ร่วมกับการกระจายสัญญาณ DSSS ซึ่งแปลงข้อมูลทุกๆ 4 บิตให้กลายเป็นลำดับรหัสชิป (Chip Sequence) ขนาด 32 ชิป จงคำนวณหา:
+            <br>1. อัตราสัญลักษณ์ข้อมูล (Symbol Rate)
+            <br>2. อัตราการส่งชิป (Chip Rate)
+            <br>3. อัตราการมอดูเลตของช่องสัญญาณ I และ Q
+            <br>4. แบนด์วิดท์ Null-to-Null ของสัญญาณวิทยุจริงเทียบกับระยะห่างช่องสัญญาณ 5 MHz
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหาอัตราสัญลักษณ์ข้อมูล</strong></p>
+            <div class="math-step">
+              เนื่องจากข้อมูล 4 บิตรวมกันเป็น 1 สัญลักษณ์ (16 สัญลักษณ์ที่เป็นไปได้):
+              <br><code>Symbol Rate = 250,000 bps / 4 bits/symbol = 62,500 สัญลักษณ์ต่อวินาที (62.5 ksymbols/s)</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณหาอัตราการส่งชิป (Chip Rate)</strong></p>
+            <div class="math-step">
+              แต่ละสัญลักษณ์ถูกแทนที่ด้วย 32 ชิป:
+              <br><code>Chip Rate = 62,500 symbols/s · 32 chips/symbol = 2,000,000 ชิปต่อวินาที = 2.0 Mchips/s</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: คำนวณอัตราการมอดูเลตช่อง I และ Q</strong></p>
+            <div class="math-step">
+              ใน O-QPSK ชิป 2 Mchips/s จะถูกแบ่งออกเป็นชิปคู่เข้าสู่ช่อง I และชิปคี่เข้าสู่ช่อง Q เท่าๆ กัน:
+              <br><code>อัตราชิปในแต่ละช่อง (I หรือ Q) = 2.0 Mchips/s / 2 = 1.0 Mchips/s</code>
+              <br>แต่ละชิปจะถูกขึ้นรูปด้วยคลื่นรูปครึ่งไซน์ (Half-Sine Pulse Shaping) มีคาบเวลา T_c = 1 / 1,000,000 = 1 ไมโครวินาที
+            </div>
+
+            <p><strong>ขั้นตอนที่ 4: คำนวณหาแบนด์วิดท์ Null-to-Null ของช่องสัญญาณ</strong></p>
+            <div class="math-step">
+              แบนด์วิดท์จากจุดศูนย์ถึงจุดศูนย์ตัวแรก (Null-to-Null Bandwidth) ของคลื่น Half-sine เท่ากับ:
+              <br><code>Bandwidth = 2 · (1 / (2 · T_c)) = 1 / T_c = 2.0 MHz</code>
+              <br><strong>บทสรุปเชิงวิศวกรรม:</strong> สัญญาณวิทยุของโหนดเซนเซอร์ใช้แบนด์วิดท์จริง 2.0 MHz มาตรฐาน IEEE 802.15.4 จึงจัดสรรระยะห่างระหว่างช่องสัญญาณไว้ที่ <strong>5 MHz</strong> (เช่น 2405 MHz, 2410 MHz, ...) ทำให้เหลือแถบป้องกัน (Guard Band) กว้างถึง 3.0 MHz ป้องกันการกวนกันระหว่างช่องสัญญาณได้อย่างดีเยี่ยม
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 5.4 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 5.4: การคำนวณสเปกตรัมวิทยุกระจายเสียง FM ตามกฎของคาร์สันเปรียบเทียบกับ AM</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> สถานีวิทยุกระจายเสียง FM ทำการส่งสัญญาณเสียงสเตอริโอที่มีความถี่สูงสุด B = 15 kHz โดยมีข้อกำหนดค่าเบี่ยงเบนความถี่สูงสุดของคลื่นพาห์ Δf = 75 kHz จงคำนวณหา:
+            <br>1. ดัชนีการมอดูเลต (Modulation Index: β)
+            <br>2. แบนด์วิดท์ช่องสัญญาณรวมตามกฎของคาร์สัน (B_FM)
+            <br>3. เปรียบเทียบกับแบนด์วิดท์หากส่งด้วยระบบ AM ที่บรรจุเสียงความถี่เดียวกัน
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหาดัชนีการมอดูเลต (β)</strong></p>
+            <div class="math-step">
+              <code>β = Δf / B = 75 kHz / 15 kHz = 5.0</code>
+              <br>เนื่องจาก β = 5.0 > 1 ระบบนี้จึงจัดเป็น <strong>Wideband FM</strong>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณหาแบนด์วิดท์ช่องสัญญาณ FM ตามกฎคาร์สัน</strong></p>
+            <div class="math-step">
+              <code>B_FM = 2 · (β + 1) · B = 2 · (5 + 1) · 15 kHz = 2 · 6 · 15 kHz = 180 kHz</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: เปรียบเทียบกับระบบ AM</strong></p>
+            <div class="math-step">
+              หากส่งสัญญาณเสียงความถี่ 15 kHz ด้วยระบบ AM แบนด์วิดท์ที่ต้องการคือ:
+              <br><code>B_AM = 2 · B = 2 · 15 kHz = 30 kHz</code>
+              <br><strong>บทสรุปเชิงวิศวกรรม:</strong> FM ใช้แบนด์วิดท์ 180 kHz ซึ่งกว้างกว่า AM (30 kHz) ถึง <strong>6 เท่า!</strong> แต่แลกมาด้วยอัตราส่วน SNR ที่ดีกว่าและปราศจากสัญญาณรบกวนคลื่นแทรก
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Silicon & Hardware Reality Check -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">8. Silicon &amp; Hardware Reality Check</span>
+        <h2 class="section-title">กายวิภาคระดับซิลิคอน: ชิปวิทยุ CC2420, สถาปัตยกรรม Zero-IF, และภาวะภาคขยายอิ่มตัว</h2>
+
+        <p>
+          ในระดับฮาร์ดแวร์ไอซีไร้สาย เช่น ชิป TI CC2420 หรือ Semtech SX1276 การส่งสัญญาณแอนะล็อกเกี่ยวข้องกับวงจรซิลิคอนความแม่นยำสูง:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. สถาปัตยกรรม Direct Conversion (Zero-IF / Low-IF)</h3>
+        <p>
+          ชิปวิทยุเซนเซอร์สมัยใหม่ไม่ใช้วงจรซูเปอร์เฮเทอโรไดน์แบบดั้งเดิมที่ต้องมีแผ่นกรอง IF ขนาดใหญ่ แต่ใช้ <strong>Direct Conversion</strong>:
+          <br>• ในภาครับ: สัญญาณ RF 2.4 GHz จากเสาอากาศจะถูกมิกซ์โดยตรงกับ Local Oscillator (LO) ที่ความถี่เดียวกัน แยกออกเป็นช่องสัญญาณเบสแบนด์ I และ Q ทันที
+          <br>• ช่วยตัดชิ้นส่วนตัวเหนี่ยวนำและฟิลเตอร์ภายนอกออกไป ทำให้ตัวชิปมีขนาดเล็กเพียง 7×7 มิลลิเมตร และต้นทุนต่ำพอที่จะติดตั้งบนโหนดเซนเซอร์ราคาไม่กี่ร้อยบาทได้
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. ภาวะขยายอิ่มตัว (Power Amplifier Saturation &amp; P1dB)</h3>
+        <p>
+          พาวเวอร์แอมพลิฟายเออร์ (PA) ของโหนดเซนเซอร์ถูกออกแบบให้ทำงานใกล้จุด 1 dB Compression Point เพื่อรีดกำลังงานสูงสุด 0 dBm (1 mW) สู่สายอากาศ
+          <br>การที่ O-QPSK ไม่มีจุดตัดผ่านแรงดันศูนย์ ทำให้สัญญาณไม่อิ่มตัวจนเกิดการบวมของสเปกตรัม ชิป CC2420 จึงสามารถส่งข้อมูลได้ระยะทาง 50-100 เมตรด้วยการกินกระแสไฟเพียง 17.4 mA
+        </p>
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">3. ความไม่สมดุลของช่องสัญญาณ I และ Q (I/Q Gain &amp; Phase Imbalance)</h3>
+        <p>
+          ในวงจรมิกเซอร์แยกสัญญาณอนาล็อกบนแผ่นซิลิคอนจริง การแยกคลื่นพาห์ Local Oscillator ให้มีเฟสต่างกัน 90 องศาอย่างสมบูรณ์แบบเป็นเรื่องยากในระดับฟิสิกส์:
+          <br>• <strong>Phase Imbalance (Δθ):</strong> มุมระหว่างแกน I และแกน Q มักคลาดเคลื่อนจาก 90° ไปประมาณ 1° ถึง 3°
+          <br>• <strong>Gain Imbalance (ΔG):</strong> อัตราขยายของวงจรขยายในช่อง I และ Q มักแตกต่างกันประมาณ 0.2 ถึง 0.5 dB
+          <br>ผลลัพธ์คือ: กลุ่มจุดบน Constellation Diagram จะถูกบิดเบี้ยวจากวงกลมหรือสี่เหลี่ยมจัตุรัส กลายสภาพเป็นวงรี (Elliptical Distortion)
+          สำหรับระบบอย่าง O-QPSK หรือ BPSK ความคลาดเคลื่อนระดับนี้ไม่มีผลกระทบต่อการตัดสินใจ แต่สำหรับ 256-QAM ความบิดเบี้ยวเพียง 1° จะทำให้จุดสัญลักษณ์ล้นข้ามเส้นแบ่งเขตตัดสินใจ (Decision Threshold) จนเกิดความผิดพลาดของบิตนับไม่ถ้วน
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">4. ปัญหาการรั่วไหลของออสซิลเลเตอร์และการเลื่อนของแรงดันไฟตรง (LO Leakage &amp; DC Offset)</h3>
+        <p>
+          ในสถาปัตยกรรม Direct Conversion ภาครับจะมีสัญญาณจาก Local Oscillator ความถี่ 2.4 GHz ซึ่งมีกำลังสูง รั่วไหลย้อนกลับออกไปทางขาอินพุตของ LNA หรือสะท้อนจากเสาอากาศกลับเข้ามายังมิกเซอร์ของตัวเอง (Self-Mixing)
+          <br>เนื่องจากคลื่นความถี่เดียวกันคูณกันเองตามหลักตรีโกณมิติ <code>cos(ωt) · cos(ωt) = 0.5 + 0.5 cos(2ωt)</code> จะส่งผลให้เกิด <strong>แรงดันไฟฟ้ากระแสตรง (DC Offset) ก้อนมหึมา</strong> ตกลงตรงกึ่งกลางของสัญญาณเบสแบนด์พอดี!
+          <br>หากเป็นสัญญาณที่มีข้อมูลอยู่ที่ 0 Hz แรงดัน DC Offset นี้จะบดบังข้อมูลจนมิด ชิปวิทยุเซนเซอร์จึงต้องออกแบบวงจร DC Notch Filter หรือใช้การมอดูเลตแบบ Constant Envelope ที่ไม่มีข้อมูลอยู่ที่ความถี่ 0 Hz พอดีเพื่อแก้ปัญหานี้
+        </p>
+      </section>
+
+      <!-- SECTION 9: Interactive Simulator -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">9. Interactive Simulator</span>
+        <h2 class="section-title">สตูดิโอจำลอง Constellation Diagram และการรบกวนของคลื่นสัญญาณ (Constellation Studio)</h2>
+
+        <p>
+          ทดลองปรับเปลี่ยนรูปแบบการมอดูเลตและระดับสัญญาณรบกวน (SNR) เพื่อสังเกตการกระจายตัวของเวกเตอร์สัญญาณในระนาบ I/Q และการคำนวณอัตราความผิดพลาดของสัญลักษณ์ (SER) แบบเรียลไทม์:
+        </p>
+
+        <div class="canvas-panel">
+          <div class="canvas-ctrl-grid">
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">รูปแบบการมอดูเลต (Modulation):</label>
+              <select id="mod-select" style="width: 100%; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.95rem; margin-top: 6px; background: var(--card-bg); color: var(--ink);">
+                <option value="bpsk">BPSK (1 bit/sym)</option>
+                <option value="qpsk" selected>QPSK / O-QPSK (2 bits/sym)</option>
+                <option value="8psk">8-PSK (3 bits/sym)</option>
+                <option value="16qam">16-QAM (4 bits/sym)</option>
+                <option value="64qam">64-QAM (6 bits/sym)</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">อัตราส่วนสัญญาณต่อสัญญาณรบกวน: <span id="snr-val" style="color: var(--accent);">20 dB</span></label>
+              <input type="range" id="snr-slider" min="5" max="35" value="20" step="1" style="width: 100%; margin-top: 10px;">
+            </div>
+
+            <div style="display: flex; align-items: flex-end;">
+              <button id="btn-resample" class="btn btn-secondary" style="width: 100%; padding: 8px 14px; font-size: 0.88rem;">สุ่มกลุ่มตัวอย่างใหม่</button>
+            </div>
+          </div>
+
+          <!-- Real-time Metrics -->
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
+            <div class="metric-pill">
+              ระยะห่างสัญลักษณ์ต่ำสุด (d_min): <span id="metric-dmin" class="metric-pill-val">1.414</span>
+            </div>
+            <div class="metric-pill">
+              เวกเตอร์ความคลาดเคลื่อน (EVM): <span id="metric-evm" class="metric-pill-val">10.0%</span>
+            </div>
+            <div class="metric-pill">
+              อัตราความผิดพลาดสัญลักษณ์ (SER): <span id="metric-ser" class="metric-pill-val">0.00%</span>
+            </div>
+          </div>
+
+          <div class="canvas-box">
+            <canvas id="canvas-constellation" width="600" height="400"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Mastery Checklist -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">10. Interactive Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเข้าใจวิศวกรรม (Mastery Checklist)</h2>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>1. ทำไมสายอากาศของโหนดเซนเซอร์ที่ส่งด้วยความถี่ 2.4 GHz จึงมีขนาดยาวเพียง 3.125 ซม.?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะความยาวคลื่นของคลื่นวิทยุคำนวณจาก λ = c / f = (3 × 10⁸ m/s) / (2.4 × 10⁹ Hz) = 12.5 ซม. ตามหลักการสายอากาศแบบโมโนโพล 1/4 ความยาวคลื่น (Quarter-wave Monopole) ขนาดของสายอากาศที่มีประสิทธิภาพคือ λ / 4 = 12.5 / 4 = 3.125 ซม. พอดี
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>2. ในระนาบ I/Q ทำไม O-QPSK จึงไม่เกิดปัญหาการเปลี่ยนผ่านศูนย์ (Zero-Crossing)?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะข้อมูลในช่อง Q ถูกหน่วงเวลาออกไปครึ่งคาบสัญลักษณ์ (T_s / 2) เทียบกับช่อง I ทำให้ที่ขณะเวลาใดๆ จะมีข้อมูลเปลี่ยนสถานะได้เพียงช่องเดียว (เปลี่ยนเฟสได้สูงสุดเพียง 90°) วิถีของสัญญาณจึงหมุนวนรอบนอก ไม่เคยวิ่งตัดผ่านจุดกำเนิด (0, 0) ทำให้แอมพลิจูดไม่เคยลดวูบเป็นศูนย์
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>3. เหตุใดระบบเซนเซอร์ที่ใช้แบตเตอรี่จึงไม่ใช้ 256-QAM เหมือน Wi-Fi หรือ 5G?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะ 256-QAM มีค่า Peak-to-Average Power Ratio (PAPR) สูงมาก บังคับให้เพาเวอร์แอมพลิฟายเออร์ต้องทำงานในโหมด Linear Class A/AB ซึ่งมีประสิทธิภาพต่ำกว่า 20% สูญเสียพลังงานเป็นความร้อนมหาศาล และต้องการค่า SNR สูงกว่า 30 dB ซึ่งเกินขีดจำกัดของเซนเซอร์สนามที่ส่งด้วยกำลังเพียง 1 mW
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>4. ตามกฎของคาร์สัน แบนด์วิดท์ของสัญญาณ FM ขึ้นอยู่กับตัวแปรใดบ้าง?</span>
+          </div>
+          <div class="checklist-body">
+            ขึ้นอยู่กับ 2 ตัวแปรหลัก คือ ค่าเบี่ยงเบนความถี่สูงสุด (Peak Frequency Deviation: Δf) และความถี่สูงสุดของสัญญาณเสียงต้นทาง (B) ตามสมการ B_FM = 2(Δf + B)
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>5. ในการส่งข้อมูล 20 Mbps ระบบใดใช้แบนด์วิดท์สเปกตรัมแคบที่สุดระหว่าง QPSK กับ 16-QAM?</span>
+          </div>
+          <div class="checklist-body">
+            16-QAM ใช้แบนด์วิดท์แคบกว่าครึ่งหนึ่ง เพราะบรรจุได้ 4 บิตต่อสัญลักษณ์ (r = 4) อัตราโบด์จึงเหลือเพียง 5 Mbaud ต้องการแบนด์วิดท์ 6.25 MHz ในขณะที่ QPSK บรรจุได้ 2 บิตต่อสัญลักษณ์ (r = 2) อัตราโบด์คือ 10 Mbaud ต้องการแบนด์วิดท์ 12.50 MHz
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>6. ข้อได้เปรียบของการมีระยะห่างยุคลิด d_min กว้างใน Constellation Diagram คืออะไร?</span>
+          </div>
+          <div class="checklist-body">
+            ยิ่งระยะ d_min กว้างมากเท่าใด วงจรตัดสินใจของเครื่องรับก็ยิ่งมีระยะเผื่อสัญญาณรบกวน (Noise Margin) สูงขึ้นเท่านั้น ทำให้สัญญาณรบกวนแบบเกาส์เซียน (AWGN) มีโอกาสเตะจุดสัญญาณข้ามเขตตัดสินใจ (Decision Boundary) ได้ยากขึ้น ส่งผลให้อัตราความผิดพลาดของบิต (BER) ต่ำลงอย่างมีนัยสำคัญ
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: Mental Model Synthesis -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">11. Mental Model Synthesis</span>
+        <h2 class="section-title">สรุปสังเคราะห์และโมเดลความคิด 3 มิติ (Mental Model Synthesis)</h2>
+
+        <div class="synthesis-grid">
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 1: ประสิทธิภาพสเปกตรัม vs ความทนทานสัญญาณรบกวน</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              • <strong>BPSK / QPSK:</strong> สเปกตรัมกว้างกว่า แต่จุดคอนสเตลเลชันอยู่ห่างกัน ทนทานต่อสัญญาณรบกวนสูงมาก เหมาะสำหรับระบบวิกฤตและเซนเซอร์ทางไกล
+              <br>• <strong>High-order QAM (16/64/256):</strong> อัดบิตได้มหาศาลบนแบนด์วิดท์จำกัด แต่จุดชิดกันมาก ต้องการช่องสัญญาณที่สะอาดปราศจากสิ่งกีดขวาง
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 2: ฟิสิกส์ของซองสัญญาณ (Envelope Physics)</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              สัญญาณที่มีซองคงที่ (Constant Envelope) เช่น FSK, GFSK, และ O-QPSK คือมิตรแท้ของวิศวกรฮาร์ดแวร์ เพราะสามารถใช้เพาเวอร์แอมพลิฟายเออร์ที่มีประสิทธิภาพพลังงานสูงสุด (>60%) ในทางตรงกันข้าม สัญญาณที่มีการกระเพื่อมของแอมพลิจูดสูง (ASK, QAM) จะบังคับให้ต้องสูญเสียพลังงานแบตเตอรี่ไปเป็นความร้อน
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 3: สถาปัตยกรรมชิปวิทยุเซนเซอร์ (WSN Radio Philosophy)</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              โหนดเซนเซอร์ไม่ได้ต้องการส่งไฟล์วิดีโอ 4K แต่ต้องการส่งข้อมูลขนาด 20-50 ไบต์ให้ถึงปลายทางอย่างแน่นอนที่สุดด้วยพลังงานแบตเตอรี่ที่น้อยที่สุด การเลือกใช้ <strong>O-QPSK ร่วมกับ DSSS</strong> จึงเป็นคำตอบทางวิศวกรรมที่สมบูรณ์แบบที่สุดของชิปเซนเซอร์มาตรฐานสากล
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: Cross-Chapter WSN Links -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">12. Cross-Chapter WSN Links</span>
+        <h2 class="section-title">ป้ายแท็กเชื่อมโยงสู่เครือข่ายเซนเซอร์ไร้สาย (Cross-Chapter WSN Links)</h2>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px;">
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.94rem; line-height: 1.8;">
+            <li>
+              <strong>การมอดูเลตในชิปเซนเซอร์ CC2420 / CC2530 (IEEE 802.15.4):</strong>
+              ใช้ <strong>O-QPSK ที่ความถี่ 2.4 GHz</strong> ส่งสัญญาณอัตราชิป 2.0 Mchips/s มีแบนด์วิดท์ช่องสัญญาณ 2 MHz จัดสรรระยะห่างช่องสัญญาณ 5 MHz ช่วยให้โหนดเซนเซอร์ทำงานร่วมกับ Wi-Fi ได้โดยไม่กวนกัน
+            </li>
+            <li>
+              <strong>การมอดูเลตใน Bluetooth Low Energy (BLE):</strong>
+              ใช้ <strong>Gaussian Frequency Shift Keying (GFSK)</strong> ในย่าน 2.4 GHz โดยมีค่าเบี่ยงเบนความถี่ ±185 kHz การใช้ฟิลเตอร์เกาส์เซียนช่วยบีบแถบความถี่ข้างให้แคบลง ป้องกันสัญญาณกวนช่องติดกัน
+            </li>
+            <li>
+              <strong>การมอดูเลตในโครงข่ายระยะไกล LoRa (Semtech SX1276):</strong>
+              ใช้เทคโนโลยี <strong>Chirp Spread Spectrum (CSS)</strong> ซึ่งเป็นการผสมผสานระหว่างการกวาดความถี่เชิงเส้น (Linear Frequency Chirp) ตามทฤษฎีในบทนี้ เข้ากับการกระจายสเปกตรัมใน <a class="term-link" href="ch06.html">บทที่ 6: Multiplexing &amp; Spreading</a> ทำให้สามารถรับสัญญาณที่จมอยู่ใต้สัญญาณรบกวน (Negative SNR ถึง -20 dB) ได้ไกลกว่า 15 กิโลเมตร
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px; flex-wrap: wrap; gap: 16px;">
+        <a href="ch04.html" class="btn btn-secondary">← บทก่อนหน้า: บทที่ 4 Digital Transmission</a>
+        <a href="ch06.html" class="btn btn-primary">บทถัดไป: บทที่ 6 Multiplexing &amp; Spreading →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ═══════════ Embedded Script for Interactive Constellation Simulator ═══════════ -->
+  <script>
+    (function () {
+      const modSelect = document.getElementById('mod-select');
+      const snrSlider = document.getElementById('snr-slider');
+      const snrVal = document.getElementById('snr-val');
+      const btnResample = document.getElementById('btn-resample');
+      const canvas = document.getElementById('canvas-constellation');
+      const ctx = canvas.getContext('2d');
+
+      const metricDmin = document.getElementById('metric-dmin');
+      const metricEvm = document.getElementById('metric-evm');
+      const metricSer = document.getElementById('metric-ser');
+
+      function getConstellationPoints(scheme) {
+        const pts = [];
+        if (scheme === 'bpsk') {
+          pts.push({ i: -1, q: 0 });
+          pts.push({ i: 1, q: 0 });
+        } else if (scheme === 'qpsk') {
+          const v = 1 / Math.SQRT2;
+          pts.push({ i: v, q: v });
+          pts.push({ i: -v, q: v });
+          pts.push({ i: -v, q: -v });
+          pts.push({ i: v, q: -v });
+        } else if (scheme === '8psk') {
+          for (let k = 0; k < 8; k++) {
+            const angle = (k * Math.PI) / 4;
+            pts.push({ i: Math.cos(angle), q: Math.sin(angle) });
+          }
+        } else if (scheme === '16qam') {
+          const vals = [-3, -1, 1, 3];
+          const norm = Math.sqrt(10); // Normalization factor so avg power = 1
+          for (let r = 0; r < 4; r++) {
+            for (let c = 0; c < 4; c++) {
+              pts.push({ i: vals[r] / norm, q: vals[c] / norm });
+            }
+          }
+        } else if (scheme === '64qam') {
+          const vals = [-7, -5, -3, -1, 1, 3, 5, 7];
+          const norm = Math.sqrt(42);
+          for (let r = 0; r < 8; r++) {
+            for (let c = 0; c < 8; c++) {
+              pts.push({ i: vals[r] / norm, q: vals[c] / norm });
+            }
+          }
+        }
+        return pts;
+      }
+
+      function drawConstellation() {
+        const scheme = modSelect.value;
+        const snrDb = parseFloat(snrSlider.value);
+        snrVal.textContent = snrDb.toFixed(0) + ' dB';
+
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = 400 * dpr;
+        ctx.scale(dpr, dpr);
+
+        const width = rect.width;
+        const height = 400;
+
+        ctx.clearRect(0, 0, width, height);
+
+        const cx = width / 2;
+        const cy = height / 2;
+        const scale = Math.min(cx, cy) * 0.75;
+
+        // Axes
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(cx - scale * 1.2, cy);
+        ctx.lineTo(cx + scale * 1.2, cy);
+        ctx.moveTo(cx, cy - scale * 1.2);
+        ctx.lineTo(cx, cy + scale * 1.2);
+        ctx.stroke();
+
+        // Labels
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '11px sans-serif';
+        ctx.fillText('+Q (Quadrature)', cx + 6, cy - scale * 1.15);
+        ctx.fillText('+I (In-phase)', cx + scale * 1.05, cy - 8);
+
+        const idealPts = getConstellationPoints(scheme);
+
+        // Calculate d_min
+        let minD = Infinity;
+        for (let a = 0; a < idealPts.length; a++) {
+          for (let b = a + 1; b < idealPts.length; b++) {
+            const di = idealPts[a].i - idealPts[b].i;
+            const dq = idealPts[a].q - idealPts[b].q;
+            const dist = Math.sqrt(di * di + dq * dq);
+            if (dist < minD) minD = dist;
+          }
+        }
+
+        // Noise std dev from SNR (SNR = 10^(snrDb / 10), sigma = 1 / sqrt(2 * SNR))
+        const snrLinear = Math.pow(10, snrDb / 10);
+        const sigma = 1 / Math.sqrt(2 * snrLinear);
+
+        // Generate noisy received cloud (AWGN)
+        const samplesPerPoint = Math.max(10, Math.floor(400 / idealPts.length));
+        let errorCount = 0;
+        let totalSamples = 0;
+        let sumSquaredError = 0;
+
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.45)';
+
+        idealPts.forEach(pt => {
+          for (let s = 0; s < samplesPerPoint; s++) {
+            // Box-Muller transform for Gaussian noise
+            const u1 = Math.max(Math.random(), 1e-10);
+            const u2 = Math.random();
+            const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+            const z1 = Math.sqrt(-2.0 * Math.log(u1)) * Math.sin(2.0 * Math.PI * u2);
+
+            const noisyI = pt.i + z0 * sigma;
+            const noisyQ = pt.q + z1 * sigma;
+
+            sumSquaredError += (z0 * sigma) * (z0 * sigma) + (z1 * sigma) * (z1 * sigma);
+            totalSamples++;
+
+            // Decision: find nearest ideal point
+            let nearestDist = Infinity;
+            let nearestIdx = -1;
+            idealPts.forEach((cand, idx) => {
+              const d = Math.hypot(noisyI - cand.i, noisyQ - cand.q);
+              if (d < nearestDist) {
+                nearestDist = d;
+                nearestIdx = idx;
+              }
+            });
+
+            if (idealPts[nearestIdx] !== pt) {
+              errorCount++;
+            }
+
+            const px = cx + noisyI * scale;
+            const py = cy - noisyQ * scale;
+
+            ctx.fillRect(px - 1.5, py - 1.5, 3, 3);
+          }
+        });
+
+        // Draw ideal constellation centers
+        ctx.fillStyle = '#f43f5e';
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1.5;
+        idealPts.forEach(pt => {
+          const px = cx + pt.i * scale;
+          const py = cy - pt.q * scale;
+          ctx.beginPath();
+          ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+        });
+
+        // Metrics display
+        const evm = totalSamples > 0 ? (Math.sqrt(sumSquaredError / totalSamples) * 100).toFixed(1) : '0';
+        const ser = totalSamples > 0 ? ((errorCount / totalSamples) * 100).toFixed(2) : '0';
+
+        metricDmin.textContent = minD.toFixed(3);
+        metricEvm.textContent = evm + '%';
+        metricSer.textContent = ser + '%';
+        metricSer.style.color = parseFloat(ser) === 0 ? 'var(--green)' : 'var(--red)';
+      }
+
+      snrSlider.addEventListener('input', drawConstellation);
+      modSelect.addEventListener('change', drawConstellation);
+      btnResample.addEventListener('click', drawConstellation);
+      window.addEventListener('resize', drawConstellation);
+
+      drawConstellation();
+    })();
+  </script>
+
+</body>
+
+</html>

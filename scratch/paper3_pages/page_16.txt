@@ -1,0 +1,17 @@
+is mutable and can be accessed concurrently for a legitimate
+reason. As a result we need to modify the algorithm in two
+ways: a) the Unlock transactions should be send to both Input
+and Output shards and b) the state machine should have one
+more state as the shards need to wait for conﬁrmation before
+unlocking. This is necessary because there is the chance that
+the (state-full) object will be accessed again and this could
+violate the input-after-output dependency if Atomix decides
+to abort.
+Fig. 14: State-Machine for state-full objects. Pessimistic lock-
+ing is necessary
+In Figure 14, we can see that an object will Lock for a
+speciﬁc transaction (T) and will reject any concurrent T’, until
+T is committed and the new state S’ is logged, or aborted and
+the old state S is open for change again.
+598
+Authorized licensed use limited to: IEEE Xplore. Downloaded on September 26,2026 at 04:02:11 UTC from IEEE Xplore.  Restrictions apply. 

@@ -1,0 +1,98 @@
+{
+  "status": "pass",
+  "verified_date": "2026-10-07",
+  "pages": [
+    "paper-4/index.html",
+    "paper-4/translation.html"
+  ],
+  "counts": {
+    "sections": 12,
+    "glossary_terms": 20,
+    "questions": 15,
+    "quiz_items": 5,
+    "slides": 7,
+    "bilingual_units": 97,
+    "body_and_heading_units": 66,
+    "bibliographic_records": 31,
+    "slide_lessons": 7,
+    "study_term_entries": 49,
+    "teaching_blocks": 40,
+    "slide_self_checks": 23
+  },
+  "responsive_widths": {
+    "index": [
+      320,
+      390,
+      768,
+      1440,
+      1920
+    ],
+    "translation": [
+      390,
+      768,
+      1440
+    ]
+  },
+  "script_plan_seconds": 295,
+  "clock_limit_seconds": 300,
+  "simulator_measured_benchmark": false,
+  "source_pdf_sha256": "c8b6a79fc42049b38009ff4d818a69c4cc3236ff22b87bf6a18fd8b86cdb3593",
+  "checks": [
+    "static asset links",
+    "forbidden text absent in portal source",
+    "cumulative simulator controls and disclosed ratios",
+    "ordered simulation log",
+    "clock start/pause/reset/limit",
+    "automatic slide sync at 25s",
+    "automatic prompter scrolling",
+    "keyboard shortcuts",
+    "persistent large script font",
+    "category filter and accordion",
+    "quiz 1/5 and 5/5 and reset",
+    "BibTeX clipboard",
+    "four main downloads HTTP 200",
+    "parallel language modes and font scaling",
+    "page jump/progress",
+    "complete bibliography in Thai-only mode",
+    "image modal",
+    "dark mode",
+    "no horizontal overflow",
+    "no runtime errors",
+    "slide-specific teaching and exact spoken paragraph sync on all 7 slides",
+    "49-entry term atlas with pronunciation and related-term navigation",
+    "23 slide self-checks and answer accordions",
+    "study tabs pause rehearsal clock",
+    "learning progress persistence",
+    "learning companion download HTTP 200",
+    "PPTX speaker notes match canonical script on all 7 slides",
+    "all card/image/table frames, colors and borders preserved versus previous deck",
+    "content page numbers 1–6; cover unnumbered",
+    "current PDF/PPTX and 7 PNG hashes verified through browser HTTP requests",
+    "visible slides 6–7 contain no การอ่าน wording"
+  ],
+  "file_hashes": {
+    "paper-4/index.html": "ee52c95808edbfa88583e224851a88cafe94101a9168a2c1920f5dfb5565b886",
+    "paper-4/translation.html": "69be7044cc231403c39df701f574d5bbaa2f6f225d7668d6429de6eebfb582cb",
+    "paper-4/assets/css/pubtime.css": "535d0190cb35e87df3d3e9c608031713ef3a0b205a9b38f4adf42e4fa4c99e57",
+    "paper-4/assets/css/translation.css": "38508bf10fb46c470b2d373edeb77b67e6427b20a8e3eda54565300ad19c5f60",
+    "paper-4/assets/js/pubtime-sim.js": "ad55ce0e1d13fb9a9bc87bdc0eb594293b77d30d418aafb6207374b1b499b53d",
+    "paper-4/assets/js/pubtime-page.js": "63d637aeeb53a90662722ea4e12951513fe099eb54b6706a638f1e5427a0722f",
+    "paper-4/assets/js/pubtime-translation.js": "74523bda96e0ff546faaee4b8797fb8ab7e7cd3a3ce1833b5cb9f2315f667e4a",
+    "paper-4/assets/js/pubtime-data.js": "b883daca8116a0a11755c027139ccdea4e26e00a50b1dfd90fe791787849f2f6",
+    "paper-4/assets/js/translation-source.json": "7c442185a132faad04b9295944cbec6616988d8b76ed7c5ec1212b86592d3a07",
+    "paper-4/assets/js/pubtime-lessons.js": "fb4688ebfbe3b854a13cb70d4dd938b7022373ce8093bde70e3419b6e5e4f12a",
+    "paper-4/assets/js/pubtime-study.js": "e9f4d9792d6e5b51779d0baf3e312bf33eb2d7214737c050c14e10e8c9291cdf"
+  },
+  "study_content_sha256": "4e610a4bb74e4edd1b753ca25f8ceea238188abd36a97b5c325c256cb58d5104",
+  "current_pptx_sha256": "141a09e2a43bdd40d2d602895f22dd6e34216ab9afbb0dec37bdf1cce688cce0",
+  "revision": "20261007-wording3",
+  "content_page_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "current_slides_pdf_sha256": "d1362ac53effbd3e2c46e3deeef87c821248cca7e5d0bc05d54389f20ae2fcbf"
+}

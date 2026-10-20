@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 3: ข้อมูลและสัญญาณ · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+  <style>
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .phonetic-impl {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--paper2);
+      border-left: 3px solid var(--purple);
+      font-size: 0.86rem;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-xs);
+    }
+    .calc-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-scenario {
+      background: var(--paper2);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+    }
+    .calc-step {
+      margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 2px solid var(--rule);
+    }
+    .calc-step-num {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .checklist-item {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+    .checklist-q {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .checklist-toggle {
+      background: var(--paper2);
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .checklist-toggle:hover {
+      background: var(--paper3);
+    }
+    .checklist-ans {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--rule);
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+
+    .term-link {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+    .term-link:hover {
+      color: var(--accent-hover);
+      text-decoration-thickness: 2px;
+    }
+
+    /* Fourier Studio Styles */
+    .fourier-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .fourier-box {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .harmonic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      margin: 4px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    .harmonic-pill.active {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Standardized Header Component -->
+  <site-header data-page="datacom-ch03" data-base="../" data-crumb="DataCom บทที่ 3: ข้อมูลและสัญญาณ"></site-header>
+
+  <!-- Chapter Layout (Sidebar + Main Content) -->
+  <div class="chapter-container">
+
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญเนื้อหา</span>
+          <span class="sidebar-badge-pill" style="background: var(--accent); color: #fff;">DataCom 03</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label" id="sidebar-live-section">1. จากโลกแอนะล็อกสู่บิตดิจิทัลและมรดกฟูเรียร์</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#sec-genesis" class="sidebar-link active">1. มรดกฟูเรียร์และทฤษฎีสารสนเทศ</a></li>
+        <li><a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และสัทศาสตร์</a></li>
+        <li><a href="#sec-signals" class="sidebar-link">3. ฟิสิกส์คลื่นไซน์และสัญญาณประกอบ</a></li>
+        <li><a href="#sec-fourier" class="sidebar-link">4. การวิเคราะห์อนุกรมฟูเรียร์</a></li>
+        <li><a href="#sec-impairments" class="sidebar-link">5. ความบกพร่องและคณิตศาสตร์ dB</a></li>
+        <li><a href="#sec-capacity" class="sidebar-link">6. ทฤษฎีขีดจำกัด: ไนควิสต์ vs แชนนอน</a></li>
+        <li><a href="#sec-worked-examples" class="sidebar-link" style="color: var(--accent); font-weight: 700;">7. ตัวอย่างคำนวณจริง 4 ข้อ</a></li>
+        <li><a href="#sec-silicon" class="sidebar-link">8. กายวิภาคซิลิคอนและ Noise Floor</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link" style="color: var(--purple); font-weight: 700;">9. สตูดิโอสังเคราะห์ฟูเรียร์</a></li>
+        <li><a href="#sec-checklist" class="sidebar-link" style="color: var(--accent2); font-weight: 700;">10. เช็กลิสต์ประเมินตนเอง</a></li>
+        <li><a href="#sec-synthesis" class="sidebar-link">11. สังเคราะห์โมเดลความคิด</a></li>
+        <li><a href="#sec-crosslinks" class="sidebar-link" style="color: var(--green); font-weight: 700;">12. เชื่อมโยงข้ามบทเรียน</a></li>
+      </ul>
+
+      <div style="margin-top: 24px; padding-line: 14px; padding: 14px; background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.82rem; line-height: 1.6;">
+        <div style="font-weight: 800; color: var(--accent); margin-bottom: 4px;">Track 1: Data Communications</div>
+        <div style="color: var(--ink-soft);">อ้างอิง: Data Communications and Networking (Forouzan 4th/5th Ed.) Chapter 3</div>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; gap: 8px;">
+        <a href="ch02.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Ch02</a>
+        <a href="ch04.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch04 →</a>
+      </div>
+    </aside>
+
+    <!-- Main Academic Article Content -->
+    <main class="chapter-content">
+
+      <!-- Hero Header Banner -->
+      <div class="academic-callout" style="background: var(--paper2); border-left: 6px solid var(--accent); margin-bottom: 32px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="academic-badge badge-primary">วิชา 305432 เครือข่ายเซนเซอร์</span>
+          <span class="academic-badge">Track 1: Data Communications Foundations</span>
+          <span class="unit-tag" style="background: var(--card-bg);">บทที่ 3 จาก 14</span>
+        </div>
+        <h1 class="book-title" style="font-size: 1.85rem; margin-bottom: 8px;">ข้อมูลและสัญญาณ (Data and Signals)</h1>
+        <div class="subtitle" style="font-size: 1.02rem; margin-bottom: 0;">
+          การศึกษาฟิสิกส์คลื่นและคณิตศาสตร์ของสัญญาณสื่อสาร, การวิเคราะห์อนุกรมฟูเรียร์ (Fourier Analysis), โดเมนเวลาเทียบกับโดเมนความถี่, การเสื่อมสภาพของสัญญาณและคณิตศาสตร์เดซิเบล (dB/dBm), ตลอดจนขีดจำกัดความเร็วสูงสุดของช่องสัญญาณตามกฎของไนควิสต์และแชนนอน
+        </div>
+      </div>
+
+      <!-- SECTION 1: The Origin & Engineering Genesis -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. The Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">จากโลกแอนะล็อกสู่บิตดิจิทัลและมรดกฟูเรียร์ (From Waves to Bits &amp; Information Theory)</h2>
+
+        <p>
+          ในโลกธรรมชาติ ข้อมูลและปรากฏการณ์ทางกายภาพทุกอย่างดำรงอยู่ในรูปแบบ <strong>สัญญาณแอนะล็อกที่มีความต่อเนื่อง (Continuous Analog Signals)</strong> เช่น คลื่นเสียงพูดของมนุษย์ อุณหภูมิในบรรยากาศ หรือความเข้มแสง ทว่าคอมพิวเตอร์และวงจรประมวลผลดิจิทัลกลับสื่อสารด้วย <strong>บิตไม่ต่อเนื่อง (Discrete Digital Bits 0 และ 1)</strong> คำถามพื้นฐานที่สุดในเชิงวิศวกรรมการสื่อสารคือ: <em>เราจะนำข้อมูลดิจิทัลที่เป็นนามธรรม ส่งผ่านตัวกลางทางกายภาพ (สายทองแดง ใยแก้วนำแสง หรือคลื่นวิทยุ) ซึ่งเป็นฟิสิกส์แอนะล็อกได้อย่างไรโดยที่ข้อมูลไม่ถูกทำลาย?</em>
+        </p>
+
+        <p>
+          ในปี 1807 นักคณิตศาสตร์และนักฟิสิกส์ชาวฝรั่งเศส <strong>ฌ็อง-บาติสต์ โฌแซ็ฟ ฟูรีเย (Jean-Baptiste Joseph Fourier)</strong> ได้นำเสนอบทความวิจัยชิ้นประวัติศาสตร์เรื่อง <em>Mémoire sur la propagation de la chaleur dans les corps solides</em> (บทความว่าด้วยการแพร่กระจายความร้อนในวัตถุแข็ง) ต่อสถาบันวิทยาศาสตร์แห่งชาติฝรั่งเศส ฟูรีเยได้ค้นพบความจริงอันน่าทึ่งว่า: <strong>"ฟังก์ชันหรือสัญญาณเป็นคาบใดๆ ก็ตาม ไม่ว่าจะมีรูปร่างเป็นเหลี่ยม หักมุม หรือหยักเพียงใด สามารถแยกย่อยออกเป็นผลรวมของคลื่นไซน์ (Sine Waves) ธรรมดาๆ ที่มีความถี่ แอมพลิจูด และเฟสต่างกันได้อย่างสมบูรณ์"</strong>
+        </p>
+
+        <div class="academic-callout callout-amber" style="margin: 20px 0;">
+          <strong>ข้อถกเถียงประวัติศาสตร์แห่งสถาบันวิทยาศาสตร์ฝรั่งเศส (The Lagrange Controversy):</strong><br>
+          ในเวลานั้น คณะกรรมการผู้ตรวจประเมินผลงานของฟูรีเยประกอบด้วยนักคณิตศาสตร์ระดับตำนานอย่าง <strong>Joseph-Louis Lagrange, Pierre-Simon Laplace, และ Gaspard Monge</strong> โดยเฉพาะลากรองจ์ได้ปฏิเสธผลงานของฟูรีเยอย่างแข็งกร้าว ลากรองจ์เชื่ออย่างฝังหัวว่า <em>"คลื่นไซน์และโคไซน์เป็นฟังก์ชันที่มีความเรียบและต่อเนื่องอย่างสมบูรณ์ (Smooth &amp; Infinitely Differentiable) มันเป็นไปไม่ได้ในทางคณิตศาสตร์ที่ผลรวมของฟังก์ชันเรียบเหล่านี้จะมาประกอบกันจนเกิดเป็นมุมหักศอกฉับพลันแบบคลื่นสี่เหลี่ยมหรือคลื่นฟันปลาที่มีจุดไม่ต่อเนื่อง (Discontinuity) ได้!"</em><br>
+          ความแคลงใจของลากรองจ์ทำให้ผลงานของฟูรีเยถูกระงับการตีพิมพ์นานถึง 15 ปี จนกระทั่งลากรองจ์ถึงแก่กรรม ฟูรีเยจึงสามารถตีพิมพ์ผลงานชิ้นเอก <em>Théorie analytique de la chaleur</em> ในปี 1822 ได้สำเร็จ การค้นพบนี้ได้กลายเป็นรากฐานค้ำจุนระบบโทรคมนาคมสมัยใหม่ เพราะมันพิสูจน์ว่า <strong>สัญญาณพัลส์สี่เหลี่ยมดิจิทัล (Square Wave) แท้จริงแล้วประกอบขึ้นจากคลื่นไซน์แอนะล็อกจำนวนนับไม่ถ้วนรวมตัวกัน!</strong>
+        </div>
+
+        <p>
+          ต่อมาในศตวรรษที่ 20 คณะนักวิจัยแห่ง Bell Telephone Laboratories ได้ร่วมกันวางรากฐานทฤษฎีสารสนเทศ (Information Theory):
+        </p>
+
+        <ul style="margin: 12px 0 20px 24px; font-size: 0.96rem; line-height: 1.8;">
+          <li><strong>ราล์ฟ ฮาร์ตลีย์ (Ralph Hartley, 1928):</strong> ตีพิมพ์บทความ <em>"Transmission of Information"</em> นำเสนอหน่วยวัดสารสนเทศเชิงลอการิทึมเป็นคนแรก และแสดงให้เห็นว่าปริมาณสารสนเทศสูงสุดที่ช่องสัญญาณสามารถส่งได้แปรผันตรงกับผลคูณของแบนด์วิดท์และเวลา</li>
+          <li><strong>แฮร์รี ไนควิสต์ (Harry Nyquist, 1928):</strong> ตีพิมพ์บทความ <em>"Certain Topics in Telegraph Transmission Theory"</em> ค้นพบว่าในช่องสัญญาณในอุดมคติที่ <em>ไร้สัญญาณรบกวน (Noiseless Channel)</em> อัตราการส่งบิตสูงสุดจะถูกจำกัดด้วยความกว้างของแบนด์วิดท์ และจำนวนระดับสัญญาณดิจิทัลที่เครื่องรับสามารถจำแนกได้</li>
+          <li><strong>โคลด แชนนอน (Claude Shannon, 1948):</strong> ตีพิมพ์ผลงานสะท้านโลก <em>"A Mathematical Theory of Communication"</em> ซึ่งก่อกำเนิดสาขาวิชาทฤษฎีสารสนเทศ แชนนอนพิสูจน์ผ่านเรขาคณิตในปริภูมิ N-มิติ (Sphere Packing) ว่าในโลกแห่งความเป็นจริงซึ่งมี <em>สัญญาณรบกวนความร้อน (Thermal Noise)</em> เสมอ ช่องสัญญาณจะมีเพดานความจุทางฟิสิกส์ (Channel Capacity) ที่ไม่อาจก้าวข้ามได้ และหากส่งข้อมูลด้วยอัตราต่ำกว่าความจุนี้ เราจะสามารถลดอัตราความผิดพลาดลงจนเข้าใกล้ศูนย์ได้อย่างสมบูรณ์</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 2: Phonetic Pronunciation & Nomenclature -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary &amp; Phonetics</span>
+        <h2 class="section-title">อภิธานศัพท์เทคนิค สัทศาสตร์ และการประยุกต์ใช้ในระบบจริง (Nomenclature &amp; Phonetics)</h2>
+
+        <p>
+          คำศัพท์เทคนิคมาตรฐานสากลด้านฟิสิกส์สัญญาณและการสื่อสารข้อมูลที่ต้องเข้าใจนิยามและบริบทฮาร์ดแวร์:
+        </p>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Attenuation
+            <span class="phonetic-pronounce">แอท-เทน-นู-เอ-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            การลดทอนกำลังงานของสัญญาณเมื่อเดินทางผ่านตัวกลาง อันเกิดจากความต้านทานโอห์มมิก (Ohmic Resistance) และการดูดซับหรือแผ่กระจายพลังงาน ทำให้แอมพลิจูดของคลื่นลดลงอย่างต่อเนื่องตามระยะทาง วัดในหน่วยเดซิเบล (dB)
+          </div>
+          <div class="phonetic-impl">
+            Context: ในสายใยแก้วนำแสงมาตรฐาน ITU-T G.652 การลดทอนที่ความยาวคลื่น 1,550 nm มีค่าต่ำเพียง 0.2 dB/km ส่วนในสายทองแดง Cat6 ที่ความถี่ 250 MHz มีการลดทอนสูงถึง 32 dB/100m
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Decibel (dB) &amp; dBm
+            <span class="phonetic-pronounce">เด-ซิ-เบล และ ดี-บี-เอ็ม</span>
+          </div>
+          <div class="phonetic-desc">
+            <strong>dB (Decibel):</strong> หน่วยวัดลอการิทึมไร้มิติที่ใช้เปรียบเทียบอัตราส่วนกำลังสองจุด (P₂ / P₁)<br>
+            <strong>dBm (Decibel-milliwatt):</strong> หน่วยวัดระดับกำลังสัมบูรณ์ โดยเทียบกับกำลังอ้างอิง 1 มิลลิวัตต์ (1 mW = 0 dBm, 10 mW = +10 dBm, 100 mW = +20 dBm, 0.1 mW = -10 dBm)
+          </div>
+          <div class="phonetic-impl">
+            Context: ชิปโมดูลวิทยุเซนเซอร์ CC2420 สามารถโปรแกรมกำลังส่ง (TX Power) ในรีจิสเตอร์ TXCTRL ได้ตั้งแต่ 0 dBm (1 mW) ลงไปจนถึง -25 dBm (0.003 mW) เพื่อประหยัดพลังงานแบตเตอรี่
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Signal-to-Noise Ratio (SNR)
+            <span class="phonetic-pronounce">ซิก-นัล ทู นอยส์ เร-ชิ-โอ</span>
+          </div>
+          <div class="phonetic-desc">
+            อัตราส่วนระหว่างกำลังของสัญญาณที่ต้องการส่ง (Signal Power, S) ต่อกำลังของสัญญาณรบกวนที่ไม่พึงประสงค์ (Noise Power, N) ค่า SNR ยิ่งสูงแสดงว่าสัญญาณมีความชัดเจนและมีโอกาสเกิดความผิดพลาดในการถอดรหัสบิตน้อยลง
+          </div>
+          <div class="phonetic-impl">
+            Context: ในทางปฏิบัติ คำนวณในหน่วยเดซิเบลเป็น SNR(dB) = 10 log10(S / N) = Signal(dBm) - Noise(dBm)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Harmonics
+            <span class="phonetic-pronounce">ฮาร์-มอน-นิกส์</span>
+          </div>
+          <div class="phonetic-desc">
+            คลื่นไซน์องค์ประกอบย่อยที่มีความถี่เป็นจำนวนเต็มเท่าของความถี่มูลฐาน (Fundamental Frequency, f₀) เช่น คลื่นความถี่ 3f₀ คือฮาร์มอนิกที่ 3, คลื่นความถี่ 5f₀ คือฮาร์มอนิกที่ 5 โดยคลื่นสี่เหลี่ยมสมมาตรจะมีเฉพาะฮาร์มอนิกลำดับคี่ (Odd Harmonics)
+          </div>
+          <div class="phonetic-impl">
+            Context: การส่งผ่านคลื่นสี่เหลี่ยมดิจิทัลจำเป็นต้องเลือกตัวกลางที่มีแบนด์วิดท์กว้างพอที่จะรองรับได้อย่างน้อยถึงฮาร์มอนิกที่ 3 หรือ 5 มิฉะนั้นคลื่นจะกลายสภาพเป็นคลื่นไซน์มนจนอ่านบิตไม่ออก
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Thermal Noise (Johnson-Nyquist Noise)
+            <span class="phonetic-pronounce">เทอร์-มอล นอยส์</span>
+          </div>
+          <div class="phonetic-desc">
+            สัญญาณรบกวนพื้นหลังทางฟิสิกส์ที่ไม่อาจหลีกเลี่ยงได้ เกิดจากการสั่นไหวและเคลื่อนที่แบบสุ่มของอิเล็กตรอนอิสระภายในตัวนำไฟฟ้าอันเนื่องมาจากพลังงานความร้อน มีคุณสมบัติเป็นสัญญาณรบกวนสีขาว (White Noise) ที่มีความหนาแน่นสเปกตรัมคงที่ในทุกย่านความถี่ คำนวณจาก N = k × T × B
+          </div>
+          <div class="phonetic-impl">
+            Context: ที่อุณหภูมิห้องมาตรฐาน 290 เคลวิน ความหนาแน่นของสัญญาณรบกวนความร้อนมีค่าเท่ากับ -174 dBm/Hz เสมอ
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Shannon Channel Capacity
+            <span class="phonetic-pronounce">แชน-นอน แชน-เนล คะ-แพ-ซิ-ตี</span>
+          </div>
+          <div class="phonetic-desc">
+            ขีดจำกัดความเร็วสูงสุดในเชิงทฤษฎีที่ช่องสัญญาณสื่อสารที่มีสัญญาณรบกวนสามารถส่งผ่านข้อมูลได้โดยมีอัตราความผิดพลาดเข้าใกล้ศูนย์อย่างสมบูรณ์ คำนวณจากสมการ C = B × log₂(1 + SNR)
+          </div>
+          <div class="phonetic-impl">
+            Context: มาตรฐานการมอดูเลตสมัยใหม่ เช่น Wi-Fi 7 (802.11be) ที่ใช้ 4096-QAM ทำงานเข้าใกล้ขีดจำกัดแชนนอนได้ถึงระดับ 90-95% ด้วยการใช้รหัสแก้ข้อผิดพลาด LDPC
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Intersymbol Interference (ISI)
+            <span class="phonetic-pronounce">อิน-เทอร์-ซิม-บอล อิน-เทอร์-เฟีย-เรนซ์</span>
+          </div>
+          <div class="phonetic-desc">
+            การแทรกสอดระหว่างสัญลักษณ์ เกิดจากการที่สัญญาณพัลส์ถูกหน่วงเวลาหรือแผ่กว้างออก (Dispersion) จนขอบหางของพัลส์หนึ่งล้นไปซ้อนทับกับช่วงเวลาของพัลส์ถัดไป ทำให้วงจรตรวจจับระดับแรงดันไฟฟ้าในฝั่งรับตัดสินใจผิดพลาด
+          </div>
+          <div class="phonetic-impl">
+            Context: ในการส่งข้อมูลความเร็วสูง วงจรรับจะต้องมีตัวกรองปรับความเรียบ (Equalizer) หรือใช้พัลส์แบบ Raised-Cosine เพื่อกำจัด ISI ให้จุดตัดเวลาเป็นศูนย์พอดี
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Wavelength (λ)
+            <span class="phonetic-pronounce">เวฟ-เลงธ์</span>
+          </div>
+          <div class="phonetic-desc">
+            ระยะทางทางกายภาพที่คลื่นเคลื่อนที่ไปได้ในตัวกลางในช่วงเวลา 1 คาบการสั่น (T) สัมพันธ์กับความเร็วแสงหรือความเร็วคลื่น v และความถี่ f ตามสมการ λ = v / f
+          </div>
+          <div class="phonetic-impl">
+            Context: สำหรับคลื่นวิทยุ 2.4 GHz ในอากาศ ความยาวคลื่นคือ λ = (3 × 10⁸ m/s) / (2.4 × 10⁹ Hz) = 12.5 เซนติเมตร สายอากาศแบบ 1/4 ความยาวคลื่น (Quarter-wave Monopole) บนบอร์ดเซนเซอร์จึงต้องมีความยาว 3.125 เซนติเมตร
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Dynamic Range (DR)
+            <span class="phonetic-pronounce">ได-นามิก เรนจ์</span>
+          </div>
+          <div class="phonetic-desc">
+            อัตราส่วนเชิงลอการิทึมระหว่างระดับกำลังของสัญญาณที่แรงที่สุดที่ระบบรับหรือประมวลผลได้โดยไม่เกิดความบิดเบือนหรืออิ่มตัว (Clipping / Saturation) ต่อระดับกำลังของสัญญาณที่เบาที่สุดที่ระบบสามารถตรวจจับได้เหนือระดับสัญญาณรบกวนพื้นหลัง (Noise Floor) วัดในหน่วยเดซิเบล (dB) ตามทฤษฎีการแปลงสัญญาณแอนะล็อกเป็นดิจิทัล (ADC) ขนาด N บิต จะมีช่วงไดนามิกในอุดมคติเท่ากับ <strong>DR = 6.02N + 1.76 dB</strong>
+          </div>
+          <div class="phonetic-impl">
+            Context: ชิปวิทยุเซนเซอร์ CC2420 สามารถรับสัญญาณคลื่นวิทยุ 2.4 GHz ได้ตั้งแต่ระดับความไวรับต่ำสุด -94 dBm จนถึงระดับสัญญาณสูงสุดที่รับได้ปลอดภัย 0 dBm คิดเป็นช่วง Dynamic Range กว้างถึง 94 dB ภาคเครื่องรับจึงต้องมีวงจรขยายสัญญาณรบกวนต่ำ (Low Noise Amplifier: LNA) และวงจรควบคุมอัตราขยายอัตโนมัติ (Automatic Gain Control: AGC) เพื่อป้องกันไม่ให้สัญญาณแรงจากอุปกรณ์ Wi-Fi ข้างเคียงอัดเข้ามาจนภาคหน้าของเครื่องรับตาบอด (Receiver Desensitization)
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Sine Waves & Composite Signals -->
+      <section id="sec-signals" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">ฟิสิกส์ของคลื่นไซน์และสัญญาณประกอบ (Sine Waves &amp; Composite Signals)</h2>
+
+        <p>
+          คลื่นไซน์ (Sine Wave) คือรูปแบบพื้นฐานที่สุดของการแกว่งกวัดทางฟิสิกส์ สมการทั่วไปของคลื่นไซน์ในโดเมนเวลาแสดงได้ดังนี้:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">s</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">=</span>
+          <span class="m-var">A</span>
+          <span class="m-op">·</span>
+          <span class="m-var">sin</span><span class="m-op">(</span>2<span class="m-var">π</span><span class="m-var">f</span><span class="m-var">t</span><span class="m-op">+</span><span class="m-var">φ</span><span class="m-op">)</span>
+        </div>
+
+        <p>
+          โดยมีตัวแปรวิศวกรรม 3 มิติที่เป็นอิสระต่อกัน:
+        </p>
+
+        <ul style="margin: 10px 0 20px 24px; font-size: 0.94rem; line-height: 1.8;">
+          <li><strong>1. แอมพลิจูดสูงสุด (Peak Amplitude: A):</strong> ค่าระดับแรงดันไฟฟ้าหรือกำลังงานสูงสุดของคลื่น มีหน่วยเป็นโวลต์ (V) หรือมิลลิวัตต์ (mW)</li>
+          <li><strong>2. ความถี่ (Frequency: f) และคาบเวลา (Period: T):</strong> ความถี่คือจำนวนรอบการสั่นในหนึ่งวินาที มีหน่วยเป็นเฮิรตซ์ (Hz) โดยสัมพันธ์แบบผกผันกับคาบเวลา <code>T = 1 / f</code></li>
+          <li><strong>3. เฟสเริ่มต้น (Phase: φ):</strong> ตำแหน่งเชิงมุมเริ่มต้นของรูปคลื่น ณ เวลา t = 0 เมื่อเทียบกับคลื่นไซน์มาตรฐาน วัดในหน่วยองศา (0° ถึง 360°) หรือเรเดียน (0 ถึง 2π)</li>
+        </ul>
+
+        <p>
+          ในระบบการสื่อสารจริง สัญญาณที่บรรจุข้อมูลไม่เคยเป็นคลื่นไซน์เดี่ยวความถี่เดียว เพราะคลื่นไซน์ความถี่คงที่ไม่บรรจุสารสนเทศใหม่ (Zero Information) ข้อมูลจะเดินทางในรูปของ <strong>สัญญาณประกอบ (Composite Signal)</strong> ซึ่งเกิดจากคลื่นไซน์หลายความถี่รวมตัวกัน แบนด์วิดท์ (Bandwidth: B) ของสัญญาณประกอบจึงถูกนิยามเป็น <em>"ผลต่างระหว่างความถี่สูงสุดและความถี่ต่ำสุดที่มีนัยสำคัญในสัญญาณ"</em>:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">B</span>
+          <span class="m-op">=</span>
+          <span class="m-var">f</span><span class="m-sub">highest</span>
+          <span class="m-op">−</span>
+          <span class="m-var">f</span><span class="m-sub">lowest</span>
+        </div>
+      </section>
+
+      <!-- SECTION 4: Fourier Analysis -->
+      <section id="sec-fourier" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Step-by-Step Mathematical Derivations</span>
+        <h2 class="section-title">การวิเคราะห์อนุกรมฟูเรียร์ของสัญญาณดิจิทัล (Fourier Series Decomposition)</h2>
+
+        <p>
+          พิจารณาสัญญาณพัลส์สี่เหลี่ยมดิจิทัลสมมาตร (Square Wave) ที่มีคาบเวลา T ความถี่มูลฐาน <code>f₀ = 1 / T</code> สลับแรงดันระหว่าง +A และ -A ตามทฤษฎีอนุกรมฟูเรียร์ สัญญาณเป็นคาบ f(t) ใดๆ สามารถกระจายออกมาได้เป็น:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">f</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-num"><span class="m-var">a</span><span class="m-sub">0</span></span>
+            <span class="m-den">2</span>
+          </div>
+          <span class="m-op">+</span>
+          <span class="m-var">Σ</span>
+          <span class="m-op">[</span>
+          <span class="m-var">a</span><span class="m-sub">n</span><span class="m-var">cos</span><span class="m-op">(</span>2<span class="m-var">π</span><span class="m-var">n</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">+</span>
+          <span class="m-var">b</span><span class="m-sub">n</span><span class="m-var">sin</span><span class="m-op">(</span>2<span class="m-var">π</span><span class="m-var">n</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">]</span>
+        </div>
+
+        <p>
+          เนื่องจากคลื่นสี่เหลี่ยมมีคุณสมบัติสมมาตรแบบฟังก์ชันคี่ (Odd Symmetry: <code>f(-t) = -f(t)</code>) และไม่มีระดับแรงดันไฟฟ้ากระแสตรงเฉลี่ย (Zero DC Offset):
+        </p>
+        <ul style="margin: 6px 0 16px 20px; font-size: 0.92rem; line-height: 1.75;">
+          <li>สัมประสิทธิ์ไฟฟ้ากระแสตรง: <code>a₀ = 0</code></li>
+          <li>สัมประสิทธิ์โคไซน์ทั้งหมด: <code>a_n = 0</code> สำหรับทุกค่า n</li>
+          <li>สัมประสิทธิ์ไซน์ <code>b_n</code> จะมีค่าเฉพาะฮาร์โมนิกลำดับคี่ (n = 1, 3, 5, 7, ...) โดยอินทิเกรตได้เป็น:</li>
+        </ul>
+
+        <div class="m-block">
+          <span class="m-var">b</span><span class="m-sub">n</span>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-num">4<span class="m-var">A</span></span>
+            <span class="m-den"><span class="m-var">n</span><span class="m-var">π</span></span>
+          </div>
+          <span class="m-text">สำหรับ n เป็นเลขคี่ (1, 3, 5, 7, ...)</span>
+        </div>
+
+        <p>
+          ดังนั้น รูปคลื่นสี่เหลี่ยมสมบูรณ์จึงประกอบด้วยผลรวมอนันต์ของคลื่นไซน์:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">s</span><span class="m-op">(</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">=</span>
+          <div class="m-frac">
+            <span class="m-num">4<span class="m-var">A</span></span>
+            <span class="m-den"><span class="m-var">π</span></span>
+          </div>
+          <span class="m-op">·</span>
+          <span class="m-op">[</span>
+          <span class="m-var">sin</span><span class="m-op">(</span>2<span class="m-var">π</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">+</span>
+          <div class="m-frac"><span class="m-num">1</span><span class="m-den">3</span></div><span class="m-var">sin</span><span class="m-op">(</span>6<span class="m-var">π</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">+</span>
+          <div class="m-frac"><span class="m-num">1</span><span class="m-den">5</span></div><span class="m-var">sin</span><span class="m-op">(</span>10<span class="m-var">π</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">+</span>
+          <div class="m-frac"><span class="m-num">1</span><span class="m-den">7</span></div><span class="m-var">sin</span><span class="m-op">(</span>14<span class="m-var">π</span><span class="m-var">f</span><span class="m-sub">0</span><span class="m-var">t</span><span class="m-op">)</span>
+          <span class="m-op">+</span>
+          <span class="m-op">...</span>
+          <span class="m-op">]</span>
+        </div>
+
+        <div class="academic-callout" style="background: var(--paper3); border-left: 4px solid var(--purple); margin: 20px 0;">
+          <strong>การกระจายพลังงานและปรากฏการณ์กิบบส์ (Gibbs Phenomenon):</strong><br>
+          <ul style="margin: 8px 0 0 18px; font-size: 0.92rem; line-height: 1.75;">
+            <li><strong>ฮาร์มอนิกที่ 1 (Fundamental):</strong> มีพลังงานสูงถึง <strong>81.06%</strong> ของพลังงานคลื่นสี่เหลี่ยมทั้งหมด</li>
+            <li><strong>บวกฮาร์มอนิกที่ 3:</strong> พลังงานสะสมเพิ่มเป็น <strong>90.06%</strong></li>
+            <li><strong>บวกฮาร์มอนิกที่ 5:</strong> พลังงานสะสมเพิ่มเป็น <strong>93.30%</strong></li>
+            <li><strong>บวกฮาร์มอนิกที่ 9:</strong> พลังงานสะสมเพิ่มเป็น <strong>96.01%</strong></li>
+          </ul>
+          <p style="margin: 8px 0 0 0; font-size: 0.90rem; color: var(--ink-soft);">
+            เมื่อเราตัดตอนอนุกรมฟูเรียร์ให้มีจำนวนพจน์จำกัด ณ จุดที่มีการเปลี่ยนระดับแรงดันไฟฟ้าอย่างเฉียบพลัน (Discontinuity) จะเกิดยอดคลื่นสวิงเกิน (Overshoot) เสมอ โดยยอดสวิงนี้มีค่าคงที่ตามทฤษฎีอยู่ที่ประมาณ <strong>8.95%</strong> เหนือระดับความสูงของคลื่นสี่เหลี่ยม ปรากฏการณ์นี้เรียกว่า <em>ปรากฏการณ์กิบบส์ (Gibbs Phenomenon)</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 5: Impairments & Decibel Math -->
+      <section id="sec-impairments" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">ความบกพร่องในการส่งสัญญาณและคณิตศาสตร์เดซิเบล (Transmission Impairments &amp; dB)</h2>
+
+        <p>
+          เมื่อสัญญาณเดินทางผ่านตัวกลางกายภาพจริง สัญญาณจะประสบกับความเสื่อมสภาพ 3 รูปแบบหลัก:
+        </p>
+
+        <h3 style="font-size: 1.15rem; color: var(--accent); margin: 20px 0 10px;">1. การลดทอนกำลังงานและคณิตศาสตร์เดซิเบล (Attenuation &amp; Decibel)</h3>
+        <p style="font-size: 0.94rem; line-height: 1.75;">
+          เดซิเบล (dB) ถูกคิดค้นขึ้นเพื่อลดทอนความซับซ้อนของการคูณตัวเลขอัตราส่วนกำลังงานที่กว้างมหาศาล ให้กลายเป็นการบวกลบเลขคณิตอย่างง่ายดาย:
+        </p>
+
+        <div class="m-block">
+          <span class="m-text">dB</span>
+          <span class="m-op">=</span>
+          <span class="m-num">10</span>
+          <span class="m-op">·</span>
+          <span class="m-var">log</span><span class="m-sub">10</span>
+          <span class="m-op">(</span>
+          <div class="m-frac">
+            <span class="m-num"><span class="m-var">P</span><span class="m-sub">2</span></span>
+            <span class="m-den"><span class="m-var">P</span><span class="m-sub">1</span></span>
+          </div>
+          <span class="m-op">)</span>
+        </div>
+
+        <p style="font-size: 0.92rem; color: var(--ink-soft);">
+          หาก P₂ &gt; P₁ ค่า dB จะเป็นบวก แสดงถึง <em>การขยายสัญญาณ (Amplification)</em><br>
+          หาก P₂ &lt; P₁ ค่า dB จะเป็นลบ แสดงถึง <em>การลดทอนสัญญาณ (Attenuation / Loss)</em>
+        </p>
+
+        <p style="font-size: 0.94rem; line-height: 1.75; margin-top: 14px;">
+          สำหรับระดับกำลังสัมบูรณ์ในหน่วย <strong>dBm</strong> จะใช้กำลังอ้างอิง P₁ = 1 mW:
+        </p>
+
+        <div class="m-block">
+          <span class="m-text">dBm</span>
+          <span class="m-op">=</span>
+          <span class="m-num">10</span>
+          <span class="m-op">·</span>
+          <span class="m-var">log</span><span class="m-sub">10</span>
+          <span class="m-op">(</span>
+          <div class="m-frac">
+            <span class="m-num"><span class="m-var">P</span><span class="m-text">(mW)</span></span>
+            <span class="m-den">1<span class="m-unit">mW</span></span>
+          </div>
+          <span class="m-op">)</span>
+        </div>
+
+        <h3 style="font-size: 1.15rem; color: var(--purple); margin: 24px 0 10px;">2. การบิดเบือนของรูปคลื่น (Distortion)</h3>
+        <p style="font-size: 0.94rem; line-height: 1.75;">
+          เกิดขึ้นในสัญญาณประกอบ เนื่องจากคลื่นไซน์แต่ละฮาร์มอนิกมีความถี่ต่างกัน เมื่อเดินทางผ่านตัวกลางที่มีสมบัติทางกายภาพ (เช่น ดัชนีหักเหของแสงหรือความจุไฟฟ้าของสายเคเบิล) คลื่นแต่ละความถี่จะมีความเร็วในการแพร่กระจายไม่เท่ากัน (Phase Delay Distortion) ส่งผลให้คลื่นแต่ละฮาร์มอนิกเดินทางไปถึงปลายทางด้วยการเลื่อนเฟสที่ไม่พร้อมเพรียงกัน เมื่อรวมตัวกันใหม่ รูปคลื่นจึงบิดเบี้ยวไปจากเดิม
+        </p>
+
+        <h3 style="font-size: 1.15rem; color: var(--green); margin: 24px 0 10px;">3. สัญญาณรบกวน (Noise)</h3>
+        <p style="font-size: 0.94rem; line-height: 1.75;">
+          พลังงานไฟฟ้าที่ไม่พึงประสงค์ที่แทรกซ้อนเข้ามาในสายสัญญาณ แบ่งออกเป็น 4 ชนิด:
+        </p>
+        <ul style="margin: 6px 0 16px 20px; font-size: 0.92rem; line-height: 1.8;">
+          <li><strong>Thermal Noise:</strong> การเคลื่อนที่ของอิเล็กตรอนตามอุณหภูมิ (N = k·T·B) ไม่สามารถกำจัดได้</li>
+          <li><strong>Intermodulation Noise:</strong> เกิดจากความไม่เป็นเชิงเส้น (Non-linearity) ของเครื่องขยายเสียง ทำให้ความถี่สองความถี่ผสมกันเกิดเป็นความถี่ใหม่แทรกในช่องสัญญาณอื่น</li>
+          <li><strong>Crosstalk:</strong> สัญญาณจากสายเคเบิลคู่ข้างเคียงรั่วไหลข้ามมาด้วยการเหนี่ยวนำแม่เหล็กไฟฟ้า (Inductive Coupling) เช่น เสียงสายซ้อนในระบบโทรศัพท์</li>
+          <li><strong>Impulse Noise:</strong> สัญญาณรบกวนรูปพัลส์หนามแหลมที่เกิดขึ้นฉับพลันจากฟ้าผ่า ประกายไฟสวิตช์ หรือมอเตอร์ไฟฟ้า เป็นศัตรูตัวฉกาจที่ทำลายบล็อกข้อมูลดิจิทัล</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6: Channel Capacity Theorems -->
+      <section id="sec-capacity" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">ทฤษฎีขีดจำกัดความเร็วช่องสัญญาณ: ไนควิสต์และแชนนอน (Nyquist vs Shannon)</h2>
+
+        <p>
+          ในการออกแบบระบบสื่อสารข้อมูล วิศวกรต้องเผชิญกับข้อจำกัด 2 ด้านเสมอ:
+        </p>
+
+        <h3 style="font-size: 1.12rem; color: var(--accent); margin-top: 18px;">1. อัตราบิตไนควิสต์สำหรับช่องสัญญาณไร้สัญญาณรบกวน (Nyquist Bit Rate)</h3>
+        <p style="font-size: 0.94rem; line-height: 1.75;">
+          แฮร์รี ไนควิสต์ พิสูจน์ว่าหากช่องสัญญาณแบนด์วิดท์ B มีความสมบูรณ์แบบไร้สัญญาณรบกวนใดๆ อัตราการส่งบิตสูงสุด (Bit Rate: C) จะขึ้นอยู่กับจำนวนระดับของสัญญาณดิจิทัล (L) เท่านั้น:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">C</span><span class="m-sub">Nyquist</span>
+          <span class="m-op">=</span>
+          <span class="m-num">2</span>
+          <span class="m-op">·</span>
+          <span class="m-var">B</span>
+          <span class="m-op">·</span>
+          <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-var">L</span><span class="m-op">)</span>
+          <span class="m-unit">bps</span>
+        </div>
+
+        <h3 style="font-size: 1.12rem; color: var(--purple); margin-top: 24px;">2. ความจุช่องสัญญาณแชนนอนสำหรับช่องสัญญาณมีสัญญาณรบกวน (Shannon Capacity)</h3>
+        <p style="font-size: 0.94rem; line-height: 1.75;">
+          โคลด แชนนอน พิสูจน์ว่าในช่องสัญญาณจริงที่มีสัญญาณรบกวนความร้อนแบบเกาส์เซียนสีขาว (AWGN) เพดานความจุทางฟิสิกส์สูงสุดถูกกำหนดโดยแบนด์วิดท์ B และอัตราส่วนสัญญาณต่อสัญญาณรบกวน (SNR):
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">C</span><span class="m-sub">Shannon</span>
+          <span class="m-op">=</span>
+          <span class="m-var">B</span>
+          <span class="m-op">·</span>
+          <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span>
+          <span class="m-num">1</span><span class="m-op">+</span><span class="m-var">SNR</span>
+          <span class="m-op">)</span>
+          <span class="m-unit">bps</span>
+        </div>
+
+        <div class="academic-callout callout-amber" style="margin-top: 14px;">
+          <strong>กฎทองแห่งการสังเคราะห์วิศวกรรม (The Unified Rule):</strong><br>
+          สูตรของแชนนอนบอก <strong>ขีดจำกัดสูงสุดทางฟิสิกส์ (Theoretical Upper Bound)</strong> ที่ธรรมชาติอนุญาตให้ส่งได้ ส่วนสูตรของไนควิสต์บอกเราว่า <strong>เราจะต้องออกแบบระดับสัญญาณ L กี่ระดับ</strong> เพื่อที่จะทำความเร็วนั้นให้เกิดขึ้นได้จริงในทางปฏิบัติ!
+        </div>
+      </section>
+
+      <!-- SECTION 7: 4 Worked Examples -->
+      <section id="sec-worked-examples" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Step-by-Step Mathematical Derivations</span>
+        <h2 class="section-title">ตัวอย่างโจทย์คำนวณจริง 4 ข้อพร้อมเฉลยละเอียด (Worked Calculation Examples)</h2>
+
+        <!-- EXAMPLE 1 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 3.1: การคำนวณงบประมาณกำลังงานของลิงก์สื่อสารหลายช่วง (Multi-Stage Link Budget)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            ระบบส่งสัญญาณผ่านสายเคเบิลใยแก้วนำแสงระยะไกล มีโครงสร้างดังนี้:
+            <ul style="margin: 6px 0 0 20px;">
+              <li>เครื่องส่งเลเซอร์ส่งกำลังสัญญาณออก <code>P₁ = 50 มิลลิวัตต์ (mW)</code></li>
+              <li>สายใยแก้วช่วงที่ 1 มีการลดทอนสัญญาณ <code>-18 dB</code></li>
+              <li>ผ่านจุดเชื่อมต่อสาย (Connector &amp; Splice) ลดทอน <code>-2 dB</code></li>
+              <li>ผ่านเครื่องขยายสัญญาณแสง (EDFA Optical Amplifier) มีอัตราขยาย <code>+24 dB</code></li>
+              <li>สายใยแก้วช่วงที่ 2 มีการลดทอนสัญญาณ <code>-16 dB</code></li>
+            </ul>
+            กำหนดให้เครื่องรับแสง (Photodiode Receiver) มีระดับความไวรับสัญญาณต่ำสุด (Receiver Sensitivity) เท่ากับ <code>-10 dBm</code><br>
+            จงคำนวณ: (1) แปลงกำลังส่งต้นทางเป็น dBm, (2) คำนวณกำลังสัญญาณสุทธิปลายทางในหน่วย dBm และมิลลิวัตต์ (mW), และ (3) คำนวณ Signal Margin เหนือความไวรับสัญญาณ
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: แปลงกำลังส่งต้นทาง 50 mW เป็นหน่วยสัมบูรณ์ dBm</div>
+            <div class="m-block">
+              <span class="m-var">P</span><span class="m-sub">1, dBm</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">10</span>
+              <span class="m-op">(</span>
+              <div class="m-frac">
+                <span class="m-num">50<span class="m-unit">mW</span></span>
+                <span class="m-den">1<span class="m-unit">mW</span></span>
+              </div>
+              <span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span><span class="m-op">·</span><span class="m-num">1.69897</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">+16.99</span><span class="m-unit">dBm</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: รวมอัตราขยายและอัตราสูญเสียตลอดเส้นทาง (Algebraic Sum)</div>
+            <div class="m-block">
+              <span class="m-var">P</span><span class="m-sub">rx, dBm</span>
+              <span class="m-op">=</span>
+              <span class="m-num">+16.99</span><span class="m-unit">(Tx)</span>
+              <span class="m-op">−</span>
+              <span class="m-num">18</span><span class="m-unit">(Fiber1)</span>
+              <span class="m-op">−</span>
+              <span class="m-num">2</span><span class="m-unit">(Splice)</span>
+              <span class="m-op">+</span>
+              <span class="m-num">24</span><span class="m-unit">(EDFA)</span>
+              <span class="m-op">−</span>
+              <span class="m-num">16</span><span class="m-unit">(Fiber2)</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-var">P</span><span class="m-sub">rx, dBm</span>
+              <span class="m-op">=</span>
+              <span class="m-num">+16.99</span><span class="m-op">−</span><span class="m-num">12</span>
+              <span class="m-op">=</span>
+              <span class="m-num">+4.99</span><span class="m-unit">dBm</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: แปลงกำลังปลายทางกลับเป็นมิลลิวัตต์ (mW)</div>
+            <div class="m-block">
+              <span class="m-var">P</span><span class="m-sub">rx, mW</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span><span class="m-sup"><span class="m-frac"><span class="m-num">4.99</span><span class="m-den">10</span></span></span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span><span class="m-sup">0.499</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">3.155</span><span class="m-unit">มิลลิวัตต์ (mW)</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 4: คำนวณ Signal Margin เหนือขีดจำกัดเครื่องรับ</div>
+            <div class="m-block">
+              <span class="m-text">Signal Margin</span>
+              <span class="m-op">=</span>
+              <span class="m-var">P</span><span class="m-sub">rx, dBm</span>
+              <span class="m-op">−</span>
+              <span class="m-text">Sensitivity</span><span class="m-sub">dBm</span>
+              <span class="m-op">=</span>
+              <span class="m-num">+4.99</span><span class="m-unit">dBm</span>
+              <span class="m-op">−</span>
+              <span class="m-op">(</span><span class="m-num">−10</span><span class="m-unit">dBm</span><span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">+14.99</span><span class="m-unit">dB</span>
+            </div>
+            <p style="font-size: 0.90rem; color: var(--green); margin-top: 6px; font-weight: 600;">
+              สรุปผลวิศวกรรม: สัญญาณปลายทางมีกำลัง 3.155 mW (+4.99 dBm) ซึ่งสูงกว่าความไวรับสัญญาณ -10 dBm อยู่ถึง 14.99 dB ระบบมีความเสถียรสูงมากและทนทานต่อการเสื่อมสภาพของสายในอนาคตได้อย่างสมบูรณ์
+            </p>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 2 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 3.2: การวิเคราะห์ฮาร์มอนิกฟูเรียร์และแบนด์วิดท์ของกระแสบิต 1 Mbps และ 10 Mbps
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            ระบบดิจิทัลส่งข้อมูลกระแสบิตสลับ 0 และ 1 ต่อเนื่อง (010101...) ด้วยอัตราส่งข้อมูล <code>Bit Rate = 1 Mbps (1,000,000 bps)</code>:<br>
+            (1) จงหาคาบเวลาของหนึ่งบิต (Bit Duration: T_b) และความถี่มูลฐานของสัญญาณ (Fundamental Frequency: f₀)<br>
+            (2) หากตัวกลางสื่อสารทำหน้าที่เป็น Low-Pass Filter จงคำนวณแบนด์วิดท์ขั้นต่ำที่ต้องการ หากต้องการให้สัญญาณผ่านได้ถึงฮาร์มอนิกที่ 1, ฮาร์มอนิกที่ 3, และฮาร์มอนิกที่ 5 พร้อมระบุเปอร์เซ็นต์พลังงานที่คงเหลือ<br>
+            (3) หากเพิ่มอัตราบิตเป็น 10 Mbps แบนด์วิดท์ขั้นต่ำที่ต้องใช้สำหรับฮาร์มอนิกที่ 5 จะมีค่าเท่าใด
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: หาคาบเวลาหนึ่งบิตและความถี่มูลฐาน</div>
+            <p style="font-size: 0.94rem; line-height: 1.7;">
+              ในกระแสบิต 010101... การสลับครบหนึ่งรอบคลื่นสมบูรณ์ (หนึ่งคาบ T) ต้องใช้ข้อมูลจำนวน 2 บิต (บิต 0 หนึ่งบิต และบิต 1 หนึ่งบิต):
+            </p>
+            <div class="m-block">
+              <span class="m-var">T</span><span class="m-sub">b</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">1</span><span class="m-den">1,000,000<span class="m-unit">bps</span></span></div>
+              <span class="m-op">=</span>
+              <span class="m-num">1</span><span class="m-unit">ไมโครวินาที (μs)</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-var">T</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-op">·</span><span class="m-var">T</span><span class="m-sub">b</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-unit">μs</span>
+              <span class="m-op">⇒</span>
+              <span class="m-var">f</span><span class="m-sub">0</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">1</span><span class="m-den"><span class="m-var">T</span></span></div>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">1</span><span class="m-den">2<span class="m-op">×</span>10<span class="m-sup">−6</span><span class="m-unit">s</span></span></div>
+              <span class="m-op">=</span>
+              <span class="m-num">500</span><span class="m-unit">kHz</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: คำนวณแบนด์วิดท์สำหรับฮาร์มอนิกลำดับต่างๆ (ที่ 1 Mbps)</div>
+            <ul style="font-size: 0.94rem; line-height: 1.85; margin: 8px 0 0 20px;">
+              <li><strong>กรณีผ่านเฉพาะฮาร์มอนิกที่ 1 (n = 1):</strong><br>
+                ความถี่สูงสุด = 500 kHz, ความถี่ต่ำสุด = 0 Hz (Baseband)<br>
+                <code>Bandwidth = 500 kHz - 0 = 500 kHz</code> (พลังงานสัญญาณสะสม = 81.06%, รูปร่างคลื่นเป็นไซน์มน)
+              </li>
+              <li><strong>กรณีผ่านถึงฮาร์มอนิกที่ 3 (n = 3):</strong><br>
+                ความถี่ฮาร์มอนิกที่ 3 = 3 × 500 kHz = 1,500 kHz (1.5 MHz)<br>
+                <code>Bandwidth = 1.5 MHz - 0 = 1.5 MHz</code> (พลังงานสัญญาณสะสม = 90.06%, รูปร่างเริ่มมีขอบชัน)
+              </li>
+              <li><strong>กรณีผ่านถึงฮาร์มอนิกที่ 5 (n = 5):</strong><br>
+                ความถี่ฮาร์มอนิกที่ 5 = 5 × 500 kHz = 2,500 kHz (2.5 MHz)<br>
+                <code>Bandwidth = 2.5 MHz - 0 = 2.5 MHz</code> (พลังงานสัญญาณสะสม = 93.30%, สัญญาณสี่เหลี่ยมคมชัดสูง)
+              </li>
+            </ul>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: คำนวณสำหรับกรณีอัตราส่งข้อมูล 10 Mbps</div>
+            <div class="m-block">
+              <span class="m-var">f</span><span class="m-sub">0, 10Mbps</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">10<span class="m-unit">Mbps</span></span><span class="m-den">2</span></div>
+              <span class="m-op">=</span>
+              <span class="m-num">5</span><span class="m-unit">MHz</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-text">Bandwidth (ถึงฮาร์มอนิกที่ 5)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">5</span><span class="m-op">·</span><span class="m-var">f</span><span class="m-sub">0</span>
+              <span class="m-op">=</span>
+              <span class="m-num">5</span><span class="m-op">×</span><span class="m-num">5</span><span class="m-unit">MHz</span>
+              <span class="m-op">=</span>
+              <span class="m-num">25</span><span class="m-unit">MHz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 3 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 3.3: การคำนวณแบนด์วิดท์ขั้นต่ำตามกฎไนควิสต์สำหรับการส่งแบบหลายระดับ (Multilevel Signaling)
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            องค์กรต้องการส่งกระแสข้อมูลดิจิทัลด้วยความเร็ว <code>Data Rate = 24 Mbps</code> ผ่านช่องสัญญาณไร้สัญญาณรบกวน:<br>
+            (1) หากใช้การมอดูเลตแบบไบนารีพื้นฐาน (Binary Signaling: L = 2 ระดับ, 1 บิตต่อสัญลักษณ์) จงหาแบนด์วิดท์ขั้นต่ำตามทฤษฎีไนควิสต์<br>
+            (2) หากเปลี่ยนไปใช้การมอดูเลตแบบ 16-QAM (L = 16 ระดับ, 4 บิตต่อสัญลักษณ์) จงหาแบนด์วิดท์ขั้นต่ำที่ต้องใช้<br>
+            (3) สรุปเปรียบเทียบการประหยัดแบนด์วิดท์ระหว่างสองวิธี
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: คำนวณแบนด์วิดท์กรณี L = 2 ระดับ</div>
+            <div class="m-block">
+              <span class="m-var">C</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-var">B</span><span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-var">L</span><span class="m-op">)</span>
+              <span class="m-op">⇒</span>
+              <span class="m-num">24<span class="m-op">×</span>10<span class="m-sup">6</span></span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-op">·</span><span class="m-var">B</span><span class="m-op">·</span><span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span>2<span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-var">B</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-var">B</span><span class="m-sub">binary</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">24<span class="m-unit">Mbps</span></span><span class="m-den">2</span></div>
+              <span class="m-op">=</span>
+              <span class="m-num">12</span><span class="m-unit">MHz</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: คำนวณแบนด์วิดท์กรณี 16-QAM (L = 16 ระดับ)</div>
+            <div class="m-block">
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span>16<span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">4</span><span class="m-unit">บิต/สัญลักษณ์</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-num">24<span class="m-op">×</span>10<span class="m-sup">6</span></span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-op">·</span><span class="m-var">B</span><span class="m-op">·</span><span class="m-num">4</span>
+              <span class="m-op">=</span>
+              <span class="m-num">8</span><span class="m-var">B</span>
+              <span class="m-op">⇒</span>
+              <span class="m-var">B</span><span class="m-sub">16-QAM</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">24<span class="m-unit">Mbps</span></span><span class="m-den">8</span></div>
+              <span class="m-op">=</span>
+              <span class="m-num">3</span><span class="m-unit">MHz</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: สรุปผลการประหยัดทรัพยากรคลื่นความถี่</div>
+            <p style="font-size: 0.94rem; line-height: 1.7; color: var(--ink);">
+              การเพิ่มจำนวนระดับสัญญาณจาก 2 ระดับเป็น 16 ระดับ ช่วยลดความต้องการแบนด์วิดท์ของช่องสัญญาณลงจาก <strong>12 MHz เหลือเพียง 3 MHz (ประหยัดแบนด์วิดท์ได้ถึง 75%)</strong> อย่างไรก็ตาม ในโลกจริงการเพิ่มระดับสัญญาณ L จะทำให้ระยะห่างระหว่างระดับแรงดันไฟฟ้าแคบลง ส่งผลให้ระบบมีความไวต่อสัญญาณรบกวนมากขึ้น จึงจำเป็นต้องมีค่า SNR ที่สูงขึ้นตามกฎของแชนนอน
+            </p>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 4 -->
+        <div class="calc-card">
+          <div class="calc-title">
+            ตัวอย่างที่ 3.4: การผสานกฎแชนนอนและไนควิสต์เพื่อหาจำนวนระดับสัญญาณในช่องสัญญาณจริง
+          </div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์ทางวิศวกรรม:</strong><br>
+            ช่องสัญญาณโทรศัพท์สายทองแดงแบบแอนะล็อกมีความกว้างแถบความถี่ <code>B = 3.1 kHz (3,100 Hz)</code> มีระดับสัญญาณต่อสัญญาณรบกวน <code>SNR = 35 dB</code>:<br>
+            (1) จงแปลง SNR(dB) เป็นอัตราส่วนเชิงเส้น (Linear SNR)<br>
+            (2) จงคำนวณขีดจำกัดความจุสูงสุดทางทฤษฎีตามสมการแชนนอน (Shannon Capacity: C)<br>
+            (3) หากวิศวกรต้องการส่งข้อมูลด้วยความเร็วมาตรฐานโมเด็ม V.34 คือ <code>33.6 kbps (33,600 bps)</code> จงคำนวณตามสูตรไนควิสต์ว่าต้องใช้วงจรมอดูเลตสัญญาณดิจิทัลที่มีจำนวนระดับสัญญาณ L อย่างน้อยกี่ระดับ
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 1: แปลง SNR(dB) เป็นอัตราส่วนเชิงเส้น</div>
+            <div class="m-block">
+              <span class="m-num">35</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">10</span><span class="m-op">(</span><span class="m-var">SNR</span><span class="m-op">)</span>
+              <span class="m-op">⇒</span>
+              <span class="m-var">SNR</span>
+              <span class="m-op">=</span>
+              <span class="m-num">10</span><span class="m-sup">3.5</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">3,162.28</span>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 2: คำนวณความจุช่องสัญญาณสูงสุดตามกฎแชนนอน</div>
+            <div class="m-block">
+              <span class="m-var">C</span>
+              <span class="m-op">=</span>
+              <span class="m-var">B</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-num">1</span><span class="m-op">+</span><span class="m-num">3,162.28</span><span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">3,100</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-num">3,163.28</span><span class="m-op">)</span>
+            </div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft); margin: 6px 0;">
+              คำนวณ log₂ โดยใช้ฐานสิบ: log₂(3163.28) = log₁₀(3163.28) / log₁₀(2) = 3.50013 / 0.30103 ≈ 11.627 บิต
+            </p>
+            <div class="m-block">
+              <span class="m-var">C</span>
+              <span class="m-op">=</span>
+              <span class="m-num">3,100</span>
+              <span class="m-op">×</span>
+              <span class="m-num">11.627</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">36,043.7</span><span class="m-unit">bps</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">36.04</span><span class="m-unit">kbps</span>
+            </div>
+            <p style="font-size: 0.90rem; color: var(--green); margin-top: 4px;">
+              ผลลัพธ์แชนนอน: เพดานสูงสุดทางฟิสิกส์คือ 36.04 kbps เป้าหมายที่ 33.6 kbps จึงเป็นไปได้จริงทางทฤษฎี (เพราะ 33.6 &lt; 36.04 kbps)
+            </p>
+          </div>
+
+          <div class="calc-step">
+            <div class="calc-step-num">ขั้นตอนที่ 3: คำนวณจำนวนระดับสัญญาณ L ตามสูตรไนควิสต์</div>
+            <div class="m-block">
+              <span class="m-num">33,600</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span>
+              <span class="m-op">·</span>
+              <span class="m-num">3,100</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-var">L</span><span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <span class="m-num">6,200</span>
+              <span class="m-op">·</span>
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-var">L</span><span class="m-op">)</span>
+            </div>
+            <div class="m-block" style="margin-top: 8px;">
+              <span class="m-var">log</span><span class="m-sub">2</span><span class="m-op">(</span><span class="m-var">L</span><span class="m-op">)</span>
+              <span class="m-op">=</span>
+              <div class="m-frac"><span class="m-num">33,600</span><span class="m-den">6,200</span></div>
+              <span class="m-op">≈</span>
+              <span class="m-num">5.419</span>
+              <span class="m-op">⇒</span>
+              <span class="m-var">L</span>
+              <span class="m-op">=</span>
+              <span class="m-num">2</span><span class="m-sup">5.419</span>
+              <span class="m-op">≈</span>
+              <span class="m-num">42.8</span><span class="m-unit">ระดับ</span>
+            </div>
+            <p style="font-size: 0.94rem; line-height: 1.7; margin-top: 8px; color: var(--ink);">
+              เนื่องจากจำนวนระดับสัญญาณดิจิทัลในทางฮาร์ดแวร์ต้องเป็นเลขยกกำลังสอง (2^n) และค่าที่คำนวณได้คือ 42.8 ระดับ เราจึงไม่สามารถใช้ 32 ระดับ (2⁵ = 32) ได้ เพราะความเร็วจะได้เพียง 31 kbps วิศวกรจึง <strong>จำเป็นต้องออกแบบวงจรมอดูเลตที่มีกลุ่มดาวสัญญาณ (Constellation Points) อย่างน้อย L = 64 ระดับ (2⁶ = 64)</strong> เช่น 64-QAM หรือใช้เทคนิค Trellis Coded Modulation (TCM) ร่วมด้วยเพื่อเอาชนะสัญญาณรบกวน
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Hardware & Silicon Reality Check -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">4. Hardware &amp; Silicon Reality Check</span>
+        <h2 class="section-title">กายวิภาคซิลิคอนและสัญญาณรบกวนความร้อน (Thermal Noise Floor &amp; Radio Silicon)</h2>
+
+        <p>
+          ในโลกของวิศวกรระบบฮาร์ดแวร์และเครือข่ายเซนเซอร์ไร้สาย (WSN) สัญญาณรบกวนความร้อน (Thermal Noise Floor) เป็นตัวกำหนดรัศมีการส่งและอายุการใช้งานแบตเตอรี่โดยตรง:
+        </p>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px; margin: 20px 0;">
+          <h3 style="color: var(--accent); font-size: 1.12rem; margin-bottom: 12px;">การคำนวณ Noise Floor ของชิปวิทยุ CC2420 (IEEE 802.15.4 2.4 GHz)</h3>
+          <p style="font-size: 0.94rem; line-height: 1.75; color: var(--ink-soft);">
+            ชิปวิทยุความถี่ 2.4 GHz ที่ใช้งานในเซนเซอร์โหนด (เช่น TelosB / MicaZ) มีความกว้างช่องสัญญาณ <code>B = 2 MHz</code> และมีสัญญาณรบกวนภายในชิป (Noise Figure: NF) ประมาณ <code>6 dB</code>:
+          </p>
+          <div class="m-block" style="margin: 12px 0;">
+            <span class="m-text">Thermal Noise Density (k·T)</span>
+            <span class="m-op">=</span>
+            <span class="m-num">−174</span><span class="m-unit">dBm/Hz (ณ 290 K)</span>
+          </div>
+          <div class="m-block" style="margin: 12px 0;">
+            <span class="m-text">Noise Floor</span>
+            <span class="m-op">=</span>
+            <span class="m-num">−174</span>
+            <span class="m-op">+</span>
+            <span class="m-num">10</span><span class="m-op">·</span><span class="m-var">log</span><span class="m-sub">10</span><span class="m-op">(</span>2<span class="m-op">×</span>10<span class="m-sup">6</span><span class="m-op">)</span>
+            <span class="m-op">+</span>
+            <span class="m-num">6</span><span class="m-unit">dB</span>
+          </div>
+          <div class="m-block" style="margin: 12px 0;">
+            <span class="m-text">Noise Floor</span>
+            <span class="m-op">=</span>
+            <span class="m-num">−174</span><span class="m-op">+</span><span class="m-num">63.01</span><span class="m-op">+</span><span class="m-num">6</span>
+            <span class="m-op">=</span>
+            <span class="m-num">−104.99</span><span class="m-unit">dBm</span>
+            <span class="m-op">≈</span>
+            <span class="m-num">−105</span><span class="m-unit">dBm</span>
+          </div>
+          <p style="font-size: 0.92rem; line-height: 1.75; color: var(--ink); margin-top: 10px;">
+            เมื่อชิป CC2420 ต้องการ SNR ขั้นต่ำประมาณ <code>11 dB</code> ในการถอดรหัสสัญญาณ O-QPSK ให้ได้บิตเรต 250 kbps ระดับความไวรับสัญญาณขั้นต่ำ (Receiver Sensitivity) จึงเท่ากับ <code>-105 dBm + 11 dB = -94 dBm</code> พอดีตามที่ระบุในเอกสาร Datasheet ของ Texas Instruments นี่คือบทพิสูจน์ว่าตัวเลขสเปกของชิปเกิดขึ้นจากกฎฟิสิกส์แชนนอนและสัญญาณรบกวนความร้อนโดยตรง!
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 9: Interactive Fourier Studio -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">5. Interactive Simulator</span>
+        <h2 class="section-title">สตูดิโอสังเคราะห์สัญญาณฟูเรียร์และปรากฏการณ์กิบบส์ (Interactive Fourier Synthesizer)</h2>
+
+        <p>
+          ทดลองสังเคราะห์รูปคลื่นสี่เหลี่ยมดิจิทัลจากผลรวมคลื่นไซน์ (Harmonics) พร้อมปรับแต่งความถี่มูลฐาน เติมสัญญาณรบกวน และวัดค่ายอดคลื่นสวิงเกินของปรากฏการณ์กิบบส์แบบเรียลไทม์:
+        </p>
+
+        <div class="interactive-panel" style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 24px; margin: 20px 0;">
+          <div class="fourier-controls">
+            <div class="fourier-box">
+              <div style="font-weight: 700; font-size: 0.90rem; margin-bottom: 8px;">เลือกฮาร์มอนิกที่ต้องการรวมคลื่น:</div>
+              <div id="harmonics-container">
+                <span class="harmonic-pill active" data-h="1">H1 (1f₀)</span>
+                <span class="harmonic-pill active" data-h="3">H3 (3f₀)</span>
+                <span class="harmonic-pill active" data-h="5">H5 (5f₀)</span>
+                <span class="harmonic-pill" data-h="7">H7 (7f₀)</span>
+                <span class="harmonic-pill" data-h="9">H9 (9f₀)</span>
+                <span class="harmonic-pill" data-h="11">H11 (11f₀)</span>
+                <span class="harmonic-pill" data-h="13">H13 (13f₀)</span>
+              </div>
+            </div>
+
+            <div class="fourier-box">
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-bottom: 4px;">
+                ความถี่มูลฐาน f₀: <span id="val-f0" style="color: var(--accent);">1.0</span> Hz
+              </label>
+              <input type="range" id="slider-f0" min="0.5" max="3.0" step="0.1" value="1.0" style="width: 100%;">
+
+              <label style="font-weight: 700; font-size: 0.88rem; display: block; margin-top: 10px; margin-bottom: 4px;">
+                สัญญาณรบกวน Noise Level: <span id="val-noise" style="color: var(--purple);">0.00</span>
+              </label>
+              <input type="range" id="slider-noise" min="0" max="0.30" step="0.02" value="0.00" style="width: 100%;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+            <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 12px;">
+              <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; color: var(--ink);">
+                โดเมนเวลา (Time Domain: s(t)):
+              </div>
+              <canvas id="canvas-time" width="500" height="220" style="width: 100%; height: 220px; background: #ffffff; border: 1px solid var(--rule); border-radius: 4px;"></canvas>
+            </div>
+
+            <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 12px;">
+              <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; color: var(--ink);">
+                โดเมนความถี่ (Frequency Spectrum: S(f)):
+              </div>
+              <canvas id="canvas-freq" width="500" height="220" style="width: 100%; height: 220px; background: #ffffff; border: 1px solid var(--rule); border-radius: 4px;"></canvas>
+            </div>
+          </div>
+
+          <div id="fourier-metrics" style="margin-top: 16px; padding: 12px 16px; background: var(--paper2); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); font-size: 0.90rem; line-height: 1.7;">
+            <strong>สถานะการสังเคราะห์:</strong> จำนวนฮาร์มอนิกที่เปิดใช้งาน: 3 ตัว (H1, H3, H5) | พลังงานสะสมทางทฤษฎี: 93.30% | ยอดสวิงเกิน Gibbs Overshoot: +8.91%
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Self-Assessment Mastery Checklist -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">6. Self-Assessment Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเชี่ยวชาญตนเอง 6 ข้อ (Mastery Assessment)</h2>
+
+        <p>
+          ทดสอบความเข้าใจลึกซึ้งด้านฟิสิกส์คลื่นและคณิตศาสตร์สัญญาณด้วยตนเอง คลิกปุ่มเพื่อตรวจเฉลย:
+        </p>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 1: เหตุใดเราจึงไม่สามารถส่งสัญญาณพัลส์สี่เหลี่ยมดิจิทัลคมกริบ (Zero Rise Time) ผ่านช่องสัญญาณสื่อสารทางกายภาพจริงใดๆ ในจักรวาลได้?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> จากการกระจายอนุกรมฟูเรียร์ สัญญาณสี่เหลี่ยมที่มีขอบชันในอุดมคติ (Rise Time = 0) จำเป็นต้องมีฮาร์มอนิกอนันต์ตัว (n → ∞) ซึ่งหมายความว่าต้องใช้แบนด์วิดท์กว้างเป็นอนันต์ (Infinite Bandwidth) ทว่าตัวกลางสื่อสารทางกายภาพทุกชนิดในโลก (สายทองแดง ใยแก้ว หรืออากาศ) ล้วนมีคุณสมบัติเป็นตัวกรองความถี่ต่ำผ่าน (Low-Pass Filter) ที่มีขีดจำกัดแบนด์วิดท์จำกัดเสมอ ความถี่ฮาร์มอนิกระดับสูงจะถูกลดทอนและหายไป ทำให้ขอบของพัลส์ต้องใช้เวลาในการไต่ระดับ (Non-zero Rise Time) เสมอ
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 2: ความแตกต่างระหว่างหน่วย dB และ dBm คืออะไร และหากพูดว่า "สายเคเบิลนี้สูญเสีย 10 dBm" ประโยคนี้ถูกต้องหรือไม่?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> ประโยคดังกล่าว <strong>ผิดหลักการทางวิศวกรรมอย่างสิ้นเชิง!</strong> เพราะ dBm เป็นหน่วยวัดระดับกำลังสัมบูรณ์ (Absolute Power เทียบกับ 1 mW) เช่น "กำลังส่งเท่ากับ +10 dBm" ส่วนอัตราการสูญเสียหรือการขยายของสายเคเบิลเป็น <em>อัตราส่วนสัมพัทธ์ (Relative Ratio)</em> จึงต้องใช้หน่วย <strong>dB</strong> เท่านั้น ประโยคที่ถูกต้องคือ "สายเคเบิลนี้มีอัตราการสูญเสีย (Loss) เท่ากับ 10 dB"
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 3: หากช่องสัญญาณมีแบนด์วิดท์ 1 MHz และมี SNR สูงมากจนเข้าใกล้อนันต์ ขีดจำกัดอัตราส่งข้อมูลแชนนอนจะมีค่าเป็นเท่าใด?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> เมื่อพิจารณาสมการ C = B × log₂(1 + SNR) หาก SNR เข้าใกล้อนันต์ (SNR → ∞) ค่า log₂(1 + SNR) จะมีค่าเข้าใกล้อนันต์ ส่งผลให้ขีดจำกัดแชนนอนมีค่าเป็น <strong>อนันต์ (Infinite Capacity)</strong> ทว่าในโลกจริง ค่า SNR ถูกจำกัดไว้ด้วยสัญญาณรบกวนความร้อนของจักรวาล (Thermal Noise) และกำลังส่งสูงสุดที่ฮาร์ดแวร์ทนทานได้โดยไม่เกิดความร้อนจนชิปพัง
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 4: เหตุใดสัญญาณรบกวนความร้อน (Thermal Noise) จึงถูกเรียกว่า "White Noise" (สัญญาณรบกวนสีขาว)?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> เป็นการอุปมาอุปไมยกับ <em>แสงสีขาว (White Light)</em> ทางทัศนศาสตร์ ซึ่งประกอบด้วยแสงทุกความถี่สีในสเปกตรัมรวมตัวกันอย่างสม่ำเสมอ สัญญาณรบกวนความร้อนเกิดจากการเคลื่อนที่แบบสุ่มของอิเล็กตรอน จึงมีพลังงานกระจายตัวสม่ำเสมอเท่ากันในทุกย่านความถี่ (Flat Power Spectral Density, N₀ = k·T Watts/Hz) วิศวกรจึงขนานนามว่าสัญญาณรบกวนสีขาว
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 5: หากเพิ่มกำลังส่งของเครื่องส่งขึ้น 100 เท่า ระดับกำลังส่งในหน่วย dBm จะเพิ่มขึ้นกี่ dBm?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> จากสูตร ΔdB = 10 log₁₀(P₂ / P₁) = 10 log₁₀(100) = 10 × 2 = <strong>+20 dB (หรือเพิ่มขึ้น 20 dBm)</strong> เสมอ เช่น หากเดิมส่งที่ 0 dBm (1 mW) เมื่อเพิ่มกำลังขึ้น 100 เท่า (100 mW) จะมีกำลังส่งเป็น +20 dBm
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-q">ข้อที่ 6: ปรากฏการณ์กิบบส์ (Gibbs Phenomenon) ส่งผลกระทบต่อวงจรดิจิทัลและตัวแปลงข้อมูล ADC อย่างไรในทางปฏิบัติ?</div>
+          <button class="checklist-toggle" onclick="toggleAns(this)">ดูเฉลยและเหตุผลเชิงลึก</button>
+          <div class="checklist-ans">
+            <strong>เหตุผลเชิงวิศวกรรม:</strong> การที่รูปคลื่นมีแรงดันสวิงเกิน (Overshoot) สูงถึง ~9% ที่ขอบสัญญาณ อาจทำให้ระดับแรงดันไฟฟ้าพุ่งสูงเกินขีดจำกัดสูงสุดของพินอินพุตไมโครคอนโทรลเลอร์ (Absolute Maximum Ratings) ทำให้เกิดกระแสไหลทะลักผ่านไดโอดป้องกัน (ESD Clamping Diodes) หรือทำให้วงจรแปลงสัญญาณแอนะล็อกเป็นดิจิทัล (ADC) เกิดสภาวะอิ่มตัว (Clipping / Saturation) เสียข้อมูลที่ระดับยอดคลื่นไป
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: Synthesis & Mental Model -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">7. Synthesis &amp; Mental Model</span>
+        <h2 class="section-title">สังเคราะห์โมเดลความคิด: สัญญาณแอนะล็อก vs เบสแบนด์ดิจิทัล vs โลกวิทยุเซนเซอร์</h2>
+
+        <p>
+          ตารางเปรียบเทียบมโนทัศน์หลักเพื่อสังเคราะห์ความรู้ฟิสิกส์สัญญาณและวิศวกรรมเครือข่ายเซนเซอร์:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">มิติการเปรียบเทียบ</th>
+                <th style="width: 25%;">สัญญาณแอนะล็อกคลื่นไซน์</th>
+                <th style="width: 25%;">สัญญาณเบสแบนด์ดิจิทัล (Baseband)</th>
+                <th style="width: 25%;">สัญญาณคลื่นวิทยุเซนเซอร์ (Passband RF)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--paper2);">
+                <td><strong>1. รูปร่างสัญญาณในโดเมนเวลา</strong></td>
+                <td>คลื่นไซน์แกว่งกวัดต่อเนื่อง เรียบ ลื่นไหล</td>
+                <td>พัลส์สี่เหลี่ยมไม่ต่อเนื่อง (บิต 0 และ 1)</td>
+                <td>คลื่นไซน์พาหะที่ถูกมอดูเลต (O-QPSK, FSK)</td>
+              </tr>
+              <tr>
+                <td><strong>2. สเปกตรัมในโดเมนความถี่</strong></td>
+                <td>เป็นเส้นเดี่ยวความถี่เดียว (Discrete Line f₀)</td>
+                <td>แบนด์วิดท์เริ่มต้นจาก 0 Hz ถึงอนันต์ (ต้องการ Low-Pass)</td>
+                <td>จำกัดอยู่ในแถบความถี่แคบ 2.4 GHz (ต้องการ Band-Pass)</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>3. สารสนเทศที่บรรจุ</strong></td>
+                <td>ไม่มีสารสนเทศ (หากไม่มีการปรับเปลี่ยนแอมพลิจูด/เฟส)</td>
+                <td>บรรจุบิตข้อมูลดิบโดยตรงผ่านรหัสเส้น (Line Coding)</td>
+                <td>บรรจุข้อมูลผ่านการเปลี่ยนเฟสและแอมพลิจูดของคลื่นพาหะ</td>
+              </tr>
+              <tr>
+                <td><strong>4. ทฤษฎีขีดจำกัดหลัก</strong></td>
+                <td>กฎฟิสิกส์การสั่นทางกลและการเหนี่ยวนำแม่เหล็กไฟฟ้า</td>
+                <td><strong>Nyquist Formula:</strong> C = 2B log₂(L)</td>
+                <td><strong>Shannon Capacity:</strong> C = B log₂(1 + SNR)</td>
+              </tr>
+              <tr style="background: var(--paper2);">
+                <td><strong>5. ความท้าทายในฮาร์ดแวร์</strong></td>
+                <td>สัญญาณรบกวนสะสมจากการขยายหลายทอด</td>
+                <td>การลดทอนของฮาร์มอนิกสูงทำให้ขอบพัลส์มน (ISI)</td>
+                <td>สัญญาณรบกวนความร้อน (-174 dBm/Hz) และสัญญาณจางหาย (Fading)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 12: Curriculum Cross-Links -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">8. Hyperlinked Terminology Network</span>
+        <h2 class="section-title">เครือข่ายเชื่อมโยงความรู้ข้ามบทเรียน (Curriculum Cross-Links)</h2>
+
+        <p>
+          คำศัพท์และรากฐานฟิสิกส์สัญญาณในบทที่ 3 เชื่อมโยงไปยังบทเรียนถัดไปในหลักสูตร:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--accent); font-size: 1.05rem; margin-bottom: 8px;">เชื่อมโยงภายใน Track 1 (DataCom)</h3>
+            <ul style="margin: 0 0 0 18px; font-size: 0.90rem; line-height: 1.8; color: var(--ink-soft);">
+              <li>ย้อนกลับสู่ <a class="term-link" href="ch02.html#sec-osi-layers">Physical Layer ใน OSI Model (บทที่ 2)</a></li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch04.html">Digital Transmission (บทที่ 4)</a> เพื่อศึกษาการแปลงบิตเป็นสัญญาณ Line Coding (NRZ, Manchester, PCM)</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch05.html">Analog Transmission (บทที่ 5)</a> เพื่อศึกษากลุ่มดาวสัญญาณและการมอดูเลต ASK, FSK, PSK, QAM</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch06.html">Multiplexing &amp; Spreading (บทที่ 6)</a> เพื่อศึกษา FDM และการกระจายแถบความถี่ DSSS</li>
+              <li>ก้าวต่อไปสู่ <a class="term-link" href="ch07.html">Transmission Media (บทที่ 7)</a> เพื่อเจาะลึกฟิสิกส์ของสายใยแก้วและสายคู่บิดเกลียว</li>
+            </ul>
+          </div>
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <h3 style="color: var(--purple); font-size: 1.05rem; margin-bottom: 8px;">เชื่อมโยงข้ามสู่ Track 2 (IoT &amp; WSN Core)</h3>
+            <ul style="margin: 0 0 0 18px; font-size: 0.90rem; line-height: 1.8; color: var(--ink-soft);">
+              <li>เชื่อมสู่ <a class="term-link" href="../iot/ch01.html">Node Anatomy &amp; Radio Specs</a> เพื่อศึกษา I_TX / I_RX ของ CC2420</li>
+              <li>เชื่อมสู่ <em>WSN Chapter 2: Physical Layer &amp; Radio Transceivers</em> เพื่อวิเคราะห์ Friis Path Loss และ Link Budget</li>
+              <li>เชื่อมสู่ <em>WSN Chapter 4: Energy Harvesting</em> เพื่อศึกษาขีดจำกัดพลังงานในการส่งสัญญาณวิทยุ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px;">
+        <a href="ch02.html" class="btn btn-secondary">← บทก่อนหน้า: บทที่ 2 Network Models</a>
+        <a href="ch04.html" class="btn btn-primary">บทถัดไป: บทที่ 4 Digital Transmission →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Toggle answers
+    function toggleAns(btn) {
+      var ans = btn.nextElementSibling;
+      if (ans.style.display === 'block') {
+        ans.style.display = 'none';
+        btn.textContent = 'ดูเฉลยและเหตุผลเชิงลึก';
+      } else {
+        ans.style.display = 'block';
+        btn.textContent = 'ซ่อนเฉลย';
+      }
+    }
+
+    // Fourier Synthesizer Interactive Studio
+    (function () {
+      var activeHarmonics = [1, 3, 5];
+      var f0 = 1.0;
+      var noiseLevel = 0.0;
+
+      var sliderF0 = document.getElementById('slider-f0');
+      var sliderNoise = document.getElementById('slider-noise');
+      var valF0 = document.getElementById('val-f0');
+      var valNoise = document.getElementById('val-noise');
+      var metrics = document.getElementById('fourier-metrics');
+      var pills = document.querySelectorAll('.harmonic-pill');
+
+      var canvasTime = document.getElementById('canvas-time');
+      var ctxTime = canvasTime.getContext('2d');
+      var canvasFreq = document.getElementById('canvas-freq');
+      var ctxFreq = canvasFreq.getContext('2d');
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          var h = parseInt(this.getAttribute('data-h'), 10);
+          var idx = activeHarmonics.indexOf(h);
+          if (idx >= 0) {
+            if (activeHarmonics.length > 1) {
+              activeHarmonics.splice(idx, 1);
+              this.classList.remove('active');
+            }
+          } else {
+            activeHarmonics.push(h);
+            activeHarmonics.sort(function (a, b) { return a - b; });
+            this.classList.add('active');
+          }
+          drawAll();
+        });
+      });
+
+      sliderF0.addEventListener('input', function () {
+        f0 = parseFloat(this.value);
+        valF0.textContent = f0.toFixed(1);
+        drawAll();
+      });
+
+      sliderNoise.addEventListener('input', function () {
+        noiseLevel = parseFloat(this.value);
+        valNoise.textContent = noiseLevel.toFixed(2);
+        drawAll();
+      });
+
+      function drawAll() {
+        drawTimeDomain();
+        drawFreqDomain();
+        updateMetrics();
+      }
+
+      function drawTimeDomain() {
+        var w = canvasTime.width;
+        var h = canvasTime.height;
+        ctxTime.clearRect(0, 0, w, h);
+
+        // Grid lines
+        ctxTime.strokeStyle = '#e2e8f0';
+        ctxTime.lineWidth = 1;
+        ctxTime.beginPath();
+        ctxTime.moveTo(0, h / 2);
+        ctxTime.lineTo(w, h / 2);
+        ctxTime.stroke();
+
+        // Draw individual harmonic components in light gray
+        for (var k = 0; k < activeHarmonics.length; k++) {
+          var nh = activeHarmonics[k];
+          var amp_h = (4.0 / (nh * Math.PI)) * 50; // scaled
+          ctxTime.strokeStyle = 'rgba(100, 116, 139, 0.25)';
+          ctxTime.lineWidth = 1;
+          ctxTime.beginPath();
+          for (var x = 0; x < w; x++) {
+            var t = (x / w) * 2.0; // 2 seconds window
+            var y = h / 2 - amp_h * Math.sin(2.0 * Math.PI * nh * f0 * t);
+            if (x === 0) ctxTime.moveTo(x, y);
+            else ctxTime.lineTo(x, y);
+          }
+          ctxTime.stroke();
+        }
+
+        // Draw composite wave
+        ctxTime.strokeStyle = '#2563eb';
+        ctxTime.lineWidth = 2.5;
+        ctxTime.beginPath();
+
+        for (var x = 0; x < w; x++) {
+          var t = (x / w) * 2.0;
+          var sum = 0;
+          for (var k = 0; k < activeHarmonics.length; k++) {
+            var nh = activeHarmonics[k];
+            sum += (4.0 / (nh * Math.PI)) * Math.sin(2.0 * Math.PI * nh * f0 * t);
+          }
+          if (noiseLevel > 0) {
+            sum += (Math.random() - 0.5) * noiseLevel * 2.5;
+          }
+          var y = h / 2 - sum * 50;
+          if (x === 0) ctxTime.moveTo(x, y);
+          else ctxTime.lineTo(x, y);
+        }
+        ctxTime.stroke();
+      }
+
+      function drawFreqDomain() {
+        var w = canvasFreq.width;
+        var h = canvasFreq.height;
+        ctxFreq.clearRect(0, 0, w, h);
+
+        // Baseline
+        ctxFreq.strokeStyle = '#e2e8f0';
+        ctxFreq.lineWidth = 1;
+        ctxFreq.beginPath();
+        ctxFreq.moveTo(30, h - 30);
+        ctxFreq.lineTo(w - 20, h - 30);
+        ctxFreq.stroke();
+
+        var maxHarmonic = 13;
+        var barSpacing = (w - 70) / (maxHarmonic + 1);
+
+        for (var n = 1; n <= maxHarmonic; n += 2) {
+          var bx = 40 + n * barSpacing;
+          var isAct = activeHarmonics.indexOf(n) >= 0;
+          var amp = 4.0 / (n * Math.PI);
+          var barH = isAct ? amp * 110 : 0;
+
+          // Bar
+          ctxFreq.fillStyle = isAct ? '#7c3aed' : '#cbd5e1';
+          ctxFreq.fillRect(bx - 8, h - 30 - barH, 16, barH);
+
+          // Labels
+          ctxFreq.fillStyle = '#64748b';
+          ctxFreq.font = '10px sans-serif';
+          ctxFreq.textAlign = 'center';
+          ctxFreq.fillText(n + 'f₀', bx, h - 14);
+          if (isAct) {
+            ctxFreq.fillStyle = '#7c3aed';
+            ctxFreq.fillText(amp.toFixed(2), bx, h - 34 - barH);
+          }
+        }
+      }
+
+      function updateMetrics() {
+        var pwr = 0;
+        for (var i = 0; i < activeHarmonics.length; i++) {
+          var nh = activeHarmonics[i];
+          pwr += (8.0 / (Math.PI * Math.PI)) * (1.0 / (nh * nh));
+        }
+        var pwrPct = (pwr * 100).toFixed(2);
+        var activeList = activeHarmonics.map(function (n) { return 'H' + n; }).join(', ');
+        metrics.innerHTML = '<strong>สถานะการสังเคราะห์:</strong> จำนวนฮาร์มอนิกที่เปิดใช้งาน: ' +
+          activeHarmonics.length + ' ตัว (' + activeList + ') | พลังงานสะสมทางทฤษฎี: ' +
+          pwrPct + '% | ยอดสวิงเกิน Gibbs Overshoot: +8.95%';
+      }
+
+      drawAll();
+    })();
+  </script>
+</body>
+
+</html>

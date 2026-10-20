@@ -1,0 +1,123 @@
+The most preferred authoring tool to write stories for games
+was a basic word processing tool (76%), such as Microsoft
+Word, Google Docs or LibreOfﬁce Writer, but some had
+experience using Twine (24%). The users also reported the
+following problems when using their preferred authoring tool
+for writing IN:
+Difﬁculty keeping track of game variables and/or objects;
+Difﬁculty identifying “Dead-Ends”, meaning moments in
+the game that prevent the player from continuing playing;
+• Difﬁculty keeping track plot moments in the game that
+the player skips unintentionally, losing the plot coherence;
+• The lack of ability to keep track of user experience
+(before playtesting).
+•
+•
+
+These ﬁndings are aligned with the metrics we propose in
+section IV.
+VII. C ONCLUSION
+In this paper, we have underlined some of the current challenges concerning the authoring process of IN. We addressed
+the lack of tools that provided ways for the authors to test
+their narrative while considering the player’s agency, during
+the game’s developmental stage, without requiring playtesting.
+More often than not, these works opt for online AI approaches
+that, during gameplay, dynamically adapt the narrative and
+resolve conﬂicts created by unintended player’s actions. This
+might lead to situations where the system takes control of the
+story, replacing human authorship.
+With this work, we set ourselves to develop a tool for
+testing interactive dialogues for video games. With such tool,
+we believe that authors gain some control that enables them
+to deﬁne more complex narratives to express their artistic
+intentions without feeling constrained. This approach has been
+designed to facilitate the development of IN in stages before
+human playtesting by letting the author explicitly test different
+hypotheses and narrative properties to identify possible design
+mistakes. The tool’s GUI allows for a clearer picture of the
+IN authoring process, by providing a visual representation
+of the narrative structure through the use of tree structures,
+that run through different test conditions. The two studies
+we conducted show some good sign for the approach and
+tool proposed. As several participants conﬁrmed (“I would
+deﬁnitely use this tool to test my stories”, “[the tool] really
+helps give the designer an idea of how their narrative works”,
+“using [the tool] would save game developers so much time”)
+the tool proves to be an essential asset for the creation of IN.
+Overall, we believe that, as a ﬁrst approach to this type
+of systems, our prototype managed to achieve the proposed
+objectives.
+ACKNOWLEDGMENTS
+We gratefully acknowledge the assistance and support provided by the colleagues of project iv4XR at INESC-ID. We
+would also like to thank all those who participated in the user
+studies; their feedback was extremely helpful.
+
+R EFERENCES
+[1] E. Aarseth, “A narrative theory of games,” in Proceedings of the
+international conference on the foundations of digital Games, 2012, pp.
+129–133.
+[2] H. Qin, P.-L. Patrick Rau, and G. Salvendy, “Measuring player immersion in the computer game narrative,” Intl. Journal of Human– Computer
+Interaction, vol. 25, no. 2, pp. 107–133, 2009.
+[3] M. O. Riedl and V. Bulitko, “Interactive narrative: An intelligent systems
+approach,” Ai Magazine, vol. 34, no. 1, pp. 67–67, 2013.
+[4] S. Dinehart, “Dramatic play,” 2009, online; Retrived 5-November2020. [Online]. Available: http://www.gamasutra.com/view/feature/
+4061/dramaticplay.php
+[5] B. Books, Choose Your Own Adventure Book Series. Bantam Books:
+NYC, 1979 - 1998.
+[6] M. Mateas, “The authoring challenge in interactive storytelling,” in Joint
+International Conference on Interactive Digital Storytelling. Springer,
+2010
+[7] P. Mirza-Babaei, N. Moosajee, and B. Drenikow, “Playtesting for indie
+studios,” in Proceedings of the 20th International Academic Mindtrek
+Conference, 2016, pp. 366–374.
+[8] P. Mirza-Babaei, V. Zammitto, J. Niesenhaus, M. Sangin, and L. Nacke,
+“Games user research: practice, methods, and applications,” in CHI’13
+Extended Abstracts on Human Factors in Computing Systems, 2013, pp.
+3219–3222.
+[9] N. Moosajee and P. Mirza-Babaei, “Games user research (gur) for indie
+studios,” in Proceedings of the 2016 CHI Conference Extended Abstracts
+on Human Factors in Computing Systems, 2016, pp. 3159– 3165.
+[10] J. Bates, “Virtual reality, art, and entertainment,” Presence: Teleoperators
+and Virtual Environments, vol. 1, no. 1, pp. 133–138, 1992.
+[11] C. Klimas, “Twine - an open-source tool for telling interactive, nonlinear
+stories,” 2020, online; Retrived 5-January-2020. [Online]. Available:
+https://twinery.org/
+[12] T. Rothamel, “The ren’py visual novel engine,” 2020, online; Retrieved
+16-November-2020. [Online]. Available: https://www.renpy.org/
+[13] M. O. Riedl, “Incorporating authorial intent into generative narrative systems.” in AAAI Spring Symposium: Intelligent Narrative Technologies
+II, 2009, pp. 91–94.
+[14] R. Aylett, “Emergent narrative, social immersion and “storiﬁcation”,”
+in Proceedings of the 1st International Workshop on Narrative and
+Interactive Learning Environments, 2000, pp. 35–44.
+[15] E. Adams, Fundamentals of game design. Pearson Education, 2014, pp.
+172–173.
+[16] S. Dow, B. MacIntyre, and M. Mateas, “Styles of play in immersive and
+interactive story: case studies from a gallery installation of ar façade,”
+in Proceedings of the 2008 International Conference on Advances in
+Computer Entertainment Technology, 2008, pp. 373–380
+[17] J. Bates, “Virtual reality, art, and entertainment,” Presence: Teleoperators
+and Virtual Environments, vol. 1, no. 1, pp. 133–138, 1992.
+[18] Mateas, Michael, and Andrew Stern. “Façade: An experiment in building
+a fully-realized interactive drama.” Game developers conference. Vol. 2.
+2003.
+[19] M. O. Riedl and A. Stern, “Believable agents and intelligent story
+adaptation for interactive storytelling,” in International Conference on
+Technologies for Interactive Digital Storytelling and Entertainment.
+Springer, 2006, pp. 1–12.
+[20] M. Bernstein, “Collage, composites, construction,” in Proceedings of
+the fourteenth ACM conference on Hypertext and hypermedia, 2003,
+pp. 122–123.
+[21] S. Mascarenhas, M. Guimarães, R. Prada, J. Dias, P. A. Santos, K.
+Star, B. Hirsh, E. Spice, and R. Kommeren, “A virtual agent toolkit for
+serious games developers,” in 2018 IEEE Conference on Computational
+Intelligence and Games (CIG). IEEE, 2018, pp. 1–7.
+[22] A. Bangor, P. T. Kortum, and J. T. Miller, “An empirical evaluation of the
+system usability scale,” Intl. Journal of Human–Computer Interaction,
+vol. 24, no. 6, pp. 574–594, 2008.
+[23] Stahlke, Samantha, Atiya Nova, and Pejman Mirza-Babaei. “Artiﬁcial
+Players in the Design Process: Developing an Automated Testing Tool
+for Game Level and World Design.” Proceedings of the Annual Symposium on Computer-Human Interaction in Play. 2020.
+
+Authorized licensed use limited to: Naresuan University provided by UniNet. Downloaded on September 21,2026 at 03:30:48 UTC from IEEE Xplore. Restrictions apply.
+
+

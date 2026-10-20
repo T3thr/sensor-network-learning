@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 1: บทนำการสื่อสารข้อมูลและโครงสร้างเครือข่าย · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <style>
+    /* สไตล์เฉพาะสำหรับหน้าบทเรียน Data Communications */
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.90rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 6px;
+      line-height: 1.75;
+    }
+
+    /* กล่องจำลองโครงสร้างเครือข่าย Interactive Topology */
+    .sim-panel {
+      background: var(--card-bg);
+      border: 1.5px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin: 28px 0;
+      box-shadow: var(--shadow-md);
+    }
+    .sim-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: var(--paper2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--rule);
+    }
+    .sim-canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sim-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .metric-card {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      text-align: center;
+    }
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+    .metric-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .metric-sub {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    /* เช็กลิสต์ประเมินตนเอง Interactive Mastery Checklist */
+    .checklist-container {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px;
+      border-bottom: 1px solid var(--rule-light);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+    .checklist-item:hover {
+      background: var(--paper2);
+    }
+    .checklist-checkbox {
+      margin-top: 5px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist-content {
+      flex: 1;
+    }
+    .checklist-question {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+    .checklist-feedback {
+      display: none;
+      font-size: 0.88rem;
+      color: var(--green);
+      line-height: 1.6;
+      margin-top: 6px;
+      padding: 8px 12px;
+      background: var(--green-bg);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius-sm);
+    }
+    .checklist-item.checked .checklist-feedback {
+      display: block;
+    }
+
+    /* แท็กเชื่อมโยงข้ามบท Cross-Chapter Links */
+    .cross-tag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .cross-tag-card {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--purple);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+    }
+    .cross-tag-term {
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+    .cross-tag-target {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 6px;
+    }
+    .cross-tag-note {
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════ Unified Standardized Header Component ═══════════ -->
+  <site-header data-page="datacom-ch01" data-base="../" data-crumb="DataCom บทที่ 1: บทนำการสื่อสารข้อมูลและโครงสร้างเครือข่าย"></site-header>
+
+  <!-- ═══════════ Chapter Layout (Sidebar + Main Content) ═══════════ -->
+  <div class="chapter-container">
+
+    <!-- Sticky Table of Contents Sidebar -->
+    <aside class="chapter-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-top">
+          <span class="sidebar-title-text">สารบัญ 7 มิติ</span>
+          <span class="sidebar-badge-pill" style="background: var(--accent); color: #fff;">DataCom 01</span>
+        </div>
+        <div class="sidebar-live-pin">
+          <span class="pin-pulse"></span>
+          <span class="pin-label" id="sidebar-live-section">1. กำเนิดและเหตุผลวิศวกรรม</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li><a href="#sec-genesis" class="sidebar-link active">1. กำเนิดและเหตุผลวิศวกรรม</a></li>
+        <li><a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และคำอ่าน</a></li>
+        <li><a href="#sec-components" class="sidebar-link">3. องค์ประกอบ 5 ประการ</a></li>
+        <li><a href="#sec-flow" class="sidebar-link">4. ทิศทางการไหลของข้อมูล</a></li>
+        <li><a href="#sec-topologies" class="sidebar-link">5. โทโพโลยีและตัวอย่างคำนวณจริง</a></li>
+        <li><a href="#sec-categories" class="sidebar-link">6. การจำแนกประเภท LAN/WAN</a></li>
+        <li><a href="#sec-protocols" class="sidebar-link">7. โปรโตคอลและมาตรฐานสากล</a></li>
+        <li><a href="#sec-silicon" class="sidebar-link">8. กายวิภาคระดับซิลิคอน</a></li>
+        <li><a href="#sec-simulator" class="sidebar-link" style="color: var(--purple); font-weight: 700;">9. วิดเจ็ตจำลองโทโพโลยี</a></li>
+        <li><a href="#sec-checklist" class="sidebar-link" style="color: var(--accent2); font-weight: 700;">10. เช็กลิสต์ประเมินตนเอง</a></li>
+        <li><a href="#sec-synthesis" class="sidebar-link">11. สรุปสังเคราะห์ 3 มิติ</a></li>
+        <li><a href="#sec-crosslinks" class="sidebar-link" style="color: var(--green); font-weight: 700;">12. เชื่อมโยงสู่เครือข่ายเซนเซอร์</a></li>
+      </ul>
+
+      <div style="margin-top: 24px; padding: 14px; background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.82rem; line-height: 1.6;">
+        <div style="font-weight: 800; color: var(--accent); margin-bottom: 4px;">Track 1: Data Communications</div>
+        <div style="color: var(--ink-soft);">อ้างอิง: Data Communications and Networking (Behrouz A. Forouzan 4th/5th Edition) Chapter 1</div>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; gap: 8px;">
+        <a href="../index.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Portal</a>
+        <a href="ch02.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch02 →</a>
+      </div>
+    </aside>
+
+    <!-- Main Academic Article Content -->
+    <main class="chapter-content">
+
+      <!-- Hero Header Banner -->
+      <div class="academic-callout" style="background: var(--paper2); border-left: 6px solid var(--accent); margin-bottom: 32px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <span class="academic-badge badge-primary">วิชา 305432 เครือข่ายเซนเซอร์</span>
+          <span class="academic-badge">Track 1: Data Communications Foundations</span>
+          <span class="unit-tag" style="background: var(--card-bg);">บทที่ 1 จาก 14</span>
+        </div>
+        <h1 class="book-title" style="font-size: 1.85rem; margin-bottom: 8px;">บทนำการสื่อสารข้อมูล โครงสร้างเครือข่าย และมาตรฐานสากล</h1>
+        <div class="subtitle" style="font-size: 1.02rem; margin-bottom: 0;">
+          การทำความเข้าใจรากฐานการแลกเปลี่ยนสารสนเทศทางอิเล็กทรอนิกส์ จากสายทองแดงเส้นแรกสู่โครงสร้างเครือข่ายสมัยใหม่ พร้อมการวิเคราะห์ความซับซ้อนของโทโพโลยีทางกายภาพและตรรกะ
+        </div>
+      </div>
+
+      <!-- ═══════════ SECTION 1: The Origin & Engineering Genesis ═══════════ -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. The Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">ที่มาและความจำเป็นทางวิศวกรรม: เหตุใดมนุษย์จึงต้องสร้างเครือข่ายข้อมูล?</h2>
+
+        <p>
+          ในยุคเริ่มต้นของการประมวลผลช่วงทศวรรษ 1940 ถึง 1950 คอมพิวเตอร์อิเล็กทรอนิกส์อย่าง ENIAC หรือเมนเฟรมในยุคถัดมาทำงานในฐานะ <strong>“เกาะเอกเทศ (Isolated Islands of Computation)”</strong> ข้อมูลทั้งหมดถูกป้อนเข้าสู่ระบบผ่านบัตรเจาะรู (Punched Cards) หรือม้วนเทปแม่เหล็ก หากวิศวกรต้องการนำผลลัพธ์จากคอมพิวเตอร์เครื่องหนึ่งไปประมวลผลต่อยังอีกเครื่องหนึ่ง วิธีการเดียวในยุคนั้นคือการใช้มนุษย์ถือม้วนเทปเดินข้ามห้องหรือข้ามอาคาร ซึ่งเป็นวิธีการที่ถูกเรียกในวงการวิศวกรรมเชิงล้อเลียนว่า <em>“สนีกเกอร์เน็ต (Sneakernet /สนีก-เกอร์-เน็ต/)”</em>
+        </p>
+
+        <p>
+          เมื่อองค์กรเริ่มมีคอมพิวเตอร์มากกว่าหนึ่งเครื่อง ปัญหาความสูญเปล่าจึงทวีความรุนแรงขึ้นทันที:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="padding: 16px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm);">
+            <div style="font-weight: 800; color: var(--red); margin-bottom: 6px;">1. ปัญหาสายไฟพันกันเป็นป่าทึบ (Cable Jungle)</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.7;">
+              ถ้าเราต้องการให้อุปกรณ์ N เครื่องสามารถคุยกันได้แบบจุดต่อจุดโดยไม่มีการออกแบบเครือข่าย เราจะต้องลากสายสัญญาณเป็นจำนวนเท่ากับ
+              <span class="m-frac"><span class="m-num">N(N − 1)</span><span class="m-sr">/</span><span class="m-den">2</span></span>
+              ซึ่งมีความซับซ้อนระดับ O(N²) หากมีคอมพิวเตอร์เพียง 100 เครื่อง จะต้องใช้สายไฟถึง 4,950 เส้น น้ำหนักของสายทองแดงจะถล่มฝ้าเพดานของอาคารลงมา
+            </div>
+          </div>
+          <div style="padding: 16px; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-sm);">
+            <div style="font-weight: 800; color: var(--accent2); margin-bottom: 6px;">2. ความสูญเปล่าของอุปกรณ์รอบข้าง (Peripheral Waste)</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.7;">
+              ในยุคนั้น เครื่องพิมพ์ความเร็วสูง (Line Printer) และหน่วยบันทึกข้อมูลมีราคาสูงนับแสนดอลลาร์ การที่คอมพิวเตอร์แต่ละเครื่องต้องมีอุปกรณ์ประจำตัวโดยไม่สามารถแบ่งปันทรัพยากร (Resource Sharing) กันได้ ทำให้ต้นทุนระบบพุ่งสูงเกินขอบเขตที่องค์กรจะรับได้
+            </div>
+          </div>
+        </div>
+
+        <p>
+          คำว่า <strong>โทรคมนาคม (Telecommunication)</strong> มาจากภาษากรีก <em>tele</em> (ที่แปลว่า ไกล) รวมกับคำว่า <em>communication</em> (การสื่อสาร) จึงมีความหมายตามรากศัพท์ว่า <strong>“การสื่อสารระยะไกล”</strong> ในขณะที่ <strong>การสื่อสารข้อมูล (Data Communications)</strong> คือส่วนย่อยจำเพาะที่หมายถึง:
+        </p>
+
+        <div class="academic-callout callout-blue" style="margin: 20px 0;">
+          <strong>นิยามทางวิศวกรรม (Engineering Definition):</strong><br>
+          <em>การสื่อสารข้อมูล คือการแลกเปลี่ยนสารสนเทศดิจิทัลหรือแอนะล็อกระหว่างอุปกรณ์ฮาร์ดแวร์สองตัวขึ้นไป ผ่านตัวกลางในการส่งสัญญาณทางกายภาพ (เช่น สายทองแดงคู่ตีเกลียว สายเคเบิลใยแก้วนำแสง หรือคลื่นแม่เหล็กไฟฟ้าในอากาศ) โดยมีกฎระเบียบและข้อตกลงร่วมกันที่เรียกว่า โปรโตคอล (Protocol) กำกับดูแลให้การรับส่งสำเร็จลุล่วงอย่างถูกต้องแม่นยำ</em>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 2: Phonetic Pronunciation & Nomenclature ═══════════ -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Phonetic Pronunciation &amp; Nomenclature</span>
+        <h2 class="section-title">อภิธานศัพท์และคำอ่านสัทศาสตร์ภาษาไทย (Technical Glossary)</h2>
+        <p style="margin-bottom: 18px;">
+          วิศวกรคอมพิวเตอร์ที่พร้อมก้าวสู่ระดับสากลต้องออกเสียงศัพท์เทคนิคอย่างถูกต้อง เพื่อการสื่อสารทางเทคนิคที่แม่นยำและเป็นมืออาชีพ:
+        </p>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Data Communication <span class="phonetic-pronounce">ดา-ต้า คอม-มิว-นิ-เค-ชัน</span></div>
+          <div class="phonetic-desc">การแลกเปลี่ยนข้อมูลระหว่างอุปกรณ์ผ่านสื่อกลางส่งสัญญาณในรูปแบบสัญญาณแม่เหล็กไฟฟ้าหรือสัญญาณแสง</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Topology <span class="phonetic-pronounce">โท-พอล-โล-ยี</span></div>
+          <div class="phonetic-desc">รูปแบบการจัดวางเชิงเรขาคณิตของสายส่งและโหนดในเครือข่าย แบ่งออกเป็น โทโพโลยีทางกายภาพ (Physical Topology) และโทโพโลยีทางตรรกะ (Logical Topology)</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Simplex <span class="phonetic-pronounce">ซิม-เพลกซ์</span></div>
+          <div class="phonetic-desc">โหมดการสื่อสารทิศทางเดียวอย่างถาวร อุปกรณ์ตัวหนึ่งทำหน้าที่ส่งได้อย่างเดียว และอีกตัวหนึ่งทำหน้าที่รับได้อย่างเดียว เช่น สัญญาณจากแป้นพิมพ์สู่ระบบประมวลผล</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Half-Duplex <span class="phonetic-pronounce">ฮาล์ฟ-ดู-เพลกซ์</span></div>
+          <div class="phonetic-desc">โหมดการสื่อสารสองทิศทางแต่เกิดขึ้นคนละช่วงเวลา แต่ละอุปกรณ์สามารถเป็นได้ทั้งผู้ส่งและผู้รับ แต่ห้ามส่งรับพร้อมกัน เช่น วิทยุสื่อสารวอล์กเกี้-ทอล์กเกี้ หรือชิปวิทยุ CC2420 บนบอร์ดเซนเซอร์</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Full-Duplex <span class="phonetic-pronounce">ฟูล-ดู-เพลกซ์</span></div>
+          <div class="phonetic-desc">โหมดการสื่อสารสองทิศทางพร้อมกันในเวลาเดียวกัน แบนด์วิดท์ของช่องสัญญาณถูกแบ่งออกเป็นสองช่องทางอิสระสำหรับการส่งและการรับ เช่น เครือข่ายโทรศัพท์ หรือสวิตช์อีเทอร์เน็ตสมัยใหม่</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Protocol <span class="phonetic-pronounce">โปร-โต-คอล</span></div>
+          <div class="phonetic-desc">ชุดของกฎเกณฑ์และมาตรฐานที่ควบคุมการสื่อสารข้อมูล ประกอบด้วย 3 องค์ประกอบหลัก: รูปแบบข้อมูล (Syntax), ความหมาย (Semantics), และจังหวะเวลา (Timing)</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">De facto Standard <span class="phonetic-pronounce">เด ฟัก-โต สแตน-ดาร์ด</span></div>
+          <div class="phonetic-desc">มาตรฐานที่เกิดขึ้นโดยพฤตินัยตามความนิยมใช้งานในตลาด แม้จะยังไม่ได้รับการรับรองเป็นทางการจากองค์กรกำหนดมาตรฐาน เช่น สถาปัตยกรรม TCP/IP ในยุคแรกเริ่ม</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">De jure Standard <span class="phonetic-pronounce">เด จู-เร สแตน-ดาร์ด</span></div>
+          <div class="phonetic-desc">มาตรฐานที่ได้รับการรับรองอย่างเป็นทางการตามข้อบังคับขององค์กรกำหนดมาตรฐานสากล เช่น มาตรฐาน IEEE 802.15.4 หรือ ITU-T</div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">Asymptotic Complexity &amp; Big O Notation <span class="phonetic-pronounce">แอส-ซิมพ-ทอ-ติก คอม-เพล็ก-ซิ-ตี และ บิ๊ก-โอ โน-เท-ชัน</span></div>
+          <div class="phonetic-desc">
+            สัญกรณ์ทางคณิตศาสตร์ที่ใช้วิเคราะห์พฤติกรรมการใช้ทรัพยากร (เช่น จำนวนสายเชื่อมต่อ หรือหน่วยความจำ RAM สำหรับเก็บตารางเส้นทาง) เมื่อขนาดของระบบ N ขยายตัวสู่ค่าอนันต์ (N → ∞) นิยามอย่างเป็นทางการตาม Bachmann-Landau Notation คือ f(N) = O(g(N)) หมายความว่ามีค่าคงที่บวก c และ N₀ ที่ทำให้ |f(N)| ≤ c·|g(N)| สำหรับทุกๆ N ≥ N₀
+          </div>
+          <div style="margin-top: 8px; padding: 8px 12px; background: var(--paper2); border-left: 3px solid var(--purple); font-size: 0.86rem; color: var(--ink); line-height: 1.6;">
+            <strong>ที่มาทางประวัติศาสตร์และบริบทวิศวกรรม IoT:</strong> สัญกรณ์นี้ริเริ่มโดย Paul Bachmann (1894) และ Edmund Landau ต่อมา Donald Knuth ได้นำมาใช้วิเคราะห์ขั้นตอนวิธีคอมพิวเตอร์ ในระบบ IoT ขนาดใหญ่ที่มีโหนดเซนเซอร์ 10,000 โหนด หากใช้โทโพโลยีที่มีความซับซ้อนของสายระดับ O(N²) จะต้องใช้สายมากถึง 49,995,000 เส้น และแต่ละโหนดต้องเก็บตาราง Routing Table ขนาด 9,999 รายการ ซึ่งต้องการหน่วยความจำกว่า 100 KB ล้นเกินขนาด RAM 4 KB - 10 KB ของไมโครคอนโทรลเลอร์เซนเซอร์อย่าง ATmega1281 หรือ CC2530 ระบบจะพังทลายทันที (Out of Memory) วิศวกร WSN จึงต้องบังคับให้โปรโตคอลการหาเส้นทางมีความซับซ้อนของหน่วยความจำในระดับ O(1) หรือ O(d) เทียบกับจำนวนเพื่อนบ้านเฉพาะที่ (Local Neighborhood) เท่านั้น
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 3: The 5 Core Components ═══════════ -->
+      <section id="sec-components" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Textbook-Grade Theoretical Rigor</span>
+        <h2 class="section-title">องค์ประกอบ 5 ประการของการสื่อสารข้อมูล (The 5 Fundamental Components)</h2>
+
+        <p>
+          ตามตำรามาตรฐาน Data Communications and Networking ของ Forouzan ระบบการสื่อสารข้อมูลทุกระบบในโลก ไม่ว่าจะเป็นเครือข่ายอภิมหาศูนย์ข้อมูล (Data Center) หรือเครือข่ายเซนเซอร์ใต้ดิน จะต้องประกอบด้วย 5 องค์ประกอบที่ไม่อาจขาดส่วนใดส่วนหนึ่งได้:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">องค์ประกอบ</th>
+                <th style="width: 25%;">นิยามทางทฤษฎี</th>
+                <th style="width: 30%;">บทบาทในระดับฮาร์ดแวร์และซิลิคอน</th>
+                <th style="width: 27%;">ตัวอย่างในระบบจริง</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. ข้อความ (Message)</strong></td>
+                <td>สารสนเทศหรือข้อมูลที่ต้องการส่งมอบ</td>
+                <td>ถูกจัดเก็บเป็นบิตข้อมูล (0 และ 1) ในบัฟเฟอร์แรมของไมโครคอนโทรลเลอร์</td>
+                <td>ตัวเลขค่าอุณหภูมิ 25.4 องศาเซลเซียส, ไฟล์ภาพ, แพ็กเก็ตสตรีมมิ่ง</td>
+              </tr>
+              <tr>
+                <td><strong>2. ผู้ส่ง (Sender)</strong></td>
+                <td>อุปกรณ์ที่สร้างและส่งสารสนเทศออกไป</td>
+                <td>มีวงจร Transceiver ภาคส่ง แปลงบิตดิจิทัลเป็นคลื่นแม่เหล็กไฟฟ้าหรือแรงดันไฟฟ้า</td>
+                <td>คอมพิวเตอร์ลูกข่าย, กล้องวงจรปิด, โหนดเซนเซอร์วัดความชื้นในดิน</td>
+              </tr>
+              <tr>
+                <td><strong>3. ผู้รับ (Receiver)</strong></td>
+                <td>อุปกรณ์ปลายทางที่รับสารสนเทศ</td>
+                <td>มีวงจรกรองสัญญาณ (Filter), วงจรขยาย (LNA), และวงจรดีมอดูเลเตอร์แปลงคลื่นกลับเป็นบิต</td>
+                <td>เครื่องแม่ข่าย (Server), โหนดรับข้อมูลส่วนกลาง (Sink Node / Base Station)</td>
+              </tr>
+              <tr>
+                <td><strong>4. ตัวกลาง (Transmission Medium)</strong></td>
+                <td>เส้นทางทางกายภาพที่คลื่นเดินทางผ่าน</td>
+                <td>มีคุณสมบัติทางแม่เหล็กไฟฟ้า เช่น ค่าความเหนี่ยวนำ (L), ค่าความจุไฟฟ้า (C), และค่าลดทอน</td>
+                <td>สายคู่ตีเกลียว (UTP Cat6), ใยแก้วนำแสง (Fiber), คลื่นวิทยุ 2.4 GHz ในอากาศ</td>
+              </tr>
+              <tr>
+                <td><strong>5. โปรโตคอล (Protocol)</strong></td>
+                <td>ข้อตกลงและกฎเกณฑ์กำกับดูแลการสื่อสาร</td>
+                <td>อัลกอริทึมซอฟต์แวร์หรือสเตตแมชชีนในฮาร์ดแวร์ที่ควบคุมการเข้าจังหวะและการตรวจข้อผิดพลาด</td>
+                <td>IEEE 802.15.4 MAC, TCP/IP, ZigBee Pro Stack</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="academic-callout callout-amber" style="margin: 20px 0;">
+          <strong>ข้อพึงระวังในข้อสอบวิศวกรรม:</strong> อุปกรณ์สองตัวที่มีสายสัญญาณเชื่อมต่อถึงกันทางกายภาพ แต่ไม่มีโปรโตคอลตรงกัน จะถือว่า <em>“เชื่อมต่อกัน (Connected) แต่ไม่ได้สื่อสารกัน (Not Communicating)”</em> เปรียบเสมือนคนสองคนที่ต่อสายโทรศัพท์ถึงกันแต่คนหนึ่งพูดภาษาไทยและอีกคนหนึ่งพูดภาษาญี่ปุ่นโบราณโดยไม่มีล่าม การสื่อสารจะไม่เกิดขึ้น
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 4: Data Flow Directions ═══════════ -->
+      <section id="sec-flow" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Textbook-Grade Theoretical Rigor</span>
+        <h2 class="section-title">ทิศทางการไหลของข้อมูล: Simplex, Half-Duplex, และ Full-Duplex</h2>
+
+        <p>
+          การเคลื่อนที่ของสัญญาณระหว่างสองจุดถูกจำแนกออกเป็น 3 รูปแบบตามทิศทางและเวลา:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0;">
+          <!-- Simplex -->
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-weight: 800; color: var(--accent); font-size: 1.05rem; margin-bottom: 6px;">1. ซิมเพลกซ์ (Simplex)</div>
+            <div style="font-size: 0.86rem; color: var(--ink-muted); margin-bottom: 10px;">ทิศทางเดียวตลอดกาล (One-Way Only)</div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.7;">
+              ช่องสัญญาณส่งได้ทิศทางเดียว 100% ของความจุช่องสัญญาณถูกอุทิศให้การส่งทิศทางนั้น เช่น แป้นพิมพ์ส่งรหัสคีย์ไปยังเมนบอร์ด หรือจอมอนิเตอร์รับสัญญาณภาพจากกราฟิกการ์ด ผู้รับไม่สามารถส่งข้อมูลย้อนกลับมาได้แม้แต่บิตเดียว
+            </p>
+          </div>
+
+          <!-- Half-Duplex -->
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-weight: 800; color: var(--accent2); font-size: 1.05rem; margin-bottom: 6px;">2. ฮาล์ฟดูเพลกซ์ (Half-Duplex)</div>
+            <div style="font-size: 0.86rem; color: var(--ink-muted); margin-bottom: 10px;">สองทิศทางแต่สลับกัน (Both Ways, Alternate)</div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.7;">
+              แต่ละอุปกรณ์สามารถส่งและรับข้อมูลได้ แต่ต้องทำคนละเวลา เมื่ออุปกรณ์ A กำลังส่ง อุปกรณ์ B ต้องทำหน้าที่รับอย่างเดียว เมื่อ A ส่งเสร็จ B จึงจะสามารถส่งกลับมาได้ เช่น วิทยุสื่อสาร และ <strong>ชิปวิทยุ CC2420 ในเครือข่ายเซนเซอร์</strong> ที่มีสายอากาศเดียวและสวิตช์ RF ภายในสลับระหว่างภาคส่งและภาครับ
+            </p>
+          </div>
+
+          <!-- Full-Duplex -->
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-md); padding: 18px;">
+            <div style="font-weight: 800; color: var(--green); font-size: 1.05rem; margin-bottom: 6px;">3. ฟูลดูเพลกซ์ (Full-Duplex)</div>
+            <div style="font-size: 0.86rem; color: var(--ink-muted); margin-bottom: 10px;">สองทิศทางพร้อมกัน (Simultaneous Both Ways)</div>
+            <p style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.7;">
+              สัญญาณสามารถเดินทางสวนทางกันได้ในเวลาเดียวกัน ตัวกลางต้องแบ่งช่องสัญญาณออกเป็นสองเส้นทางกายภาพแยกกัน (เช่น สายคู่ตีเกลียวคู่รับและคู่ส่งคนละคู่ใน 100Base-TX) หรือแบ่งย่านความถี่พาหะคนละความถี่ (Frequency Division Duplexing: FDD)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 5: Topologies & Mathematics ═══════════ -->
+      <section id="sec-topologies" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Textbook-Grade Theoretical Rigor</span>
+        <h2 class="section-title">สถาปัตยกรรมโทโพโลยีและคณิตศาสตร์สายส่ง (Network Topologies &amp; Link Math)</h2>
+
+        <p>
+          โทโพโลยีของเครือข่ายระบุถึงวิธีการเชื่อมโยงทางเรขาคณิตของโหนด (Nodes) และสายเชื่อมโยง (Links) ก่อนจะเลือกโทโพโลยี วิศวกรต้องเข้าใจรูปแบบการเชื่อมต่อพื้นฐาน 2 ชนิด:
+        </p>
+
+        <div class="academic-callout" style="background: var(--paper3); border-left: 4px solid var(--accent); margin: 20px 0;">
+          <strong>รากฐานคณิตศาสตร์และวิศวกรรมระบบ: ทำไมวิศวกรคอมพิวเตอร์ต้องวัดสถาปัตยกรรมด้วย Big O Notation?</strong>
+          <p style="font-size: 0.94rem; line-height: 1.75; margin: 8px 0;">
+            เมื่อระบบมีขนาดเล็ก (เช่น N = 3 โหนด) ความแตกต่างระหว่างฟังก์ชันเส้นตรง N-1 (2 เส้น) กับฟังก์ชันพหุนาม N(N-1)/2 (3 เส้น) อาจดูไม่มีนัยสำคัญ ทว่าในทางวิศวกรรม สถาปัตยกรรมต้องรองรับการขยายตัว (Scalability) เมื่อ N เติบโตขึ้น เทอมกำลังสอง N² จะเติบโตอย่างรวดเร็วจนครอบงำทรัพยากรทุกอย่าง:
+          </p>
+          <div class="table-responsive" style="margin: 12px 0;">
+            <table class="academic-table" style="font-size: 0.88rem;">
+              <thead>
+                <tr>
+                  <th>จำนวนโหนด (N)</th>
+                  <th>Full Mesh: O(N²) [N(N-1)/2]</th>
+                  <th>Star Topology: O(N) [N เส้น]</th>
+                  <th>Bus / Ring: O(N)</th>
+                  <th>ผลกระทบเชิงสถาปัตยกรรมและต้นทุน</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: var(--paper2);">
+                  <td><strong>N = 10</strong></td>
+                  <td>45 ลิงก์ (9 พอร์ต/โหนด)</td>
+                  <td>10 ลิงก์</td>
+                  <td>10 ลิงก์</td>
+                  <td>Mesh ยังพอรับไหวในตู้ Rack เดียวกัน</td>
+                </tr>
+                <tr>
+                  <td><strong>N = 100</strong></td>
+                  <td>4,950 ลิงก์ (99 พอร์ต/โหนด)</td>
+                  <td>100 ลิงก์</td>
+                  <td>100 ลิงก์</td>
+                  <td>Mesh เริ่มล้มเหลวทางกายภาพ สายไฟแน่นตู้เซิร์ฟเวอร์</td>
+                </tr>
+                <tr style="background: var(--paper2);">
+                  <td><strong>N = 1,000</strong></td>
+                  <td>499,500 ลิงก์ (999 พอร์ต/โหนด)</td>
+                  <td>1,000 ลิงก์</td>
+                  <td>1,000 ลิงก์</td>
+                  <td>Mesh เป็นไปไม่ได้ในทางปฏิบัติ ต้นทุนสายและพอร์ตมหาศาล</td>
+                </tr>
+                <tr>
+                  <td><strong>N = 10,000 (IoT)</strong></td>
+                  <td><strong>49,995,000 ลิงก์</strong> (9,999 พอร์ต/โหนด)</td>
+                  <td>10,000 ลิงก์</td>
+                  <td>10,000 ลิงก์</td>
+                  <td>RAM บนชิปเซนเซอร์พังทลาย ต้องใช้ Multi-hop WSN Routing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <ul style="margin: 12px 0 20px 24px; font-size: 0.96rem; line-height: 1.8;">
+          <li><strong>Point-to-Point:</strong> ลิงก์เฉพาะเจาะจงอุทิศให้ระหว่างอุปกรณ์ 2 ตัว ความจุของสายเป็นของทั้งสองฝ่าย 100%</li>
+          <li><strong>Multipoint (Multidrop):</strong> อุปกรณ์มากกว่า 2 ตัวใช้งานสายสัญญาณเส้นเดียวกันร่วมกัน (Shared Capacity) ทั้งในเชิงเวลา (Time-shared) หรือเชิงพื้นที่ (Spatially shared)</li>
+        </ul>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">1. โทโพโลยีแบบร่างแหสมบูรณ์ (Fully-Connected Mesh Topology)</h3>
+        <p>
+          ทุกโหนดมีสายเชื่อมโยงเฉพาะ (Dedicated Link) ไปยังโหนดอื่นๆ ทุกโหนดในระบบอย่างทั่วถึง หากเครือข่ายมีจำนวนโหนดทั้งหมดเท่ากับ N โหนด:
+        </p>
+
+        <!-- Math Block using Native Semantic HTML/CSS according to MATH_FORMATTING_GUIDE.md -->
+        <div class="m-block">
+          จำนวนสายส่งทางกายภาพทั้งหมด
+          <span class="m-op">=</span>
+          <span class="m-frac">
+            <span class="m-num"><span class="m-var">N</span>(<span class="m-var">N</span> − 1)</span>
+            <span class="m-sr">/</span>
+            <span class="m-den">2</span>
+          </span>
+          <span class="m-unit">เส้น</span>
+          <span style="display: block; margin-top: 10px; font-size: 0.92rem; color: var(--ink-soft);">
+            จำนวนพอร์ต I/O ต่อแต่ละโหนด <span class="m-op">=</span> <span class="m-var">N</span> − 1 <span class="m-unit">พอร์ต</span>
+          </span>
+        </div>
+
+        <p>
+          <strong>การพิสูจน์ทางคณิตศาสตร์ (Mathematical Proof):</strong><br>
+          แต่ละโหนดต้องเชื่อมสายไปยังโหนดที่เหลือจำนวน N − 1 โหนด ดังนั้นผลรวมของพอร์ตในระบบทั้งหมดคือ N × (N − 1) พอร์ต แต่เนื่องจากสายเคเบิล 1 เส้นเชื่อมต่อระหว่าง 2 พอร์ต (ปลายทางทั้งสองด้าน) เราจึงต้องหารด้วย 2 เพื่อไม่ให้นับสายส่งซ้ำซ้อน
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
+          <div style="padding: 14px; background: var(--green-bg); border-left: 4px solid var(--green); border-radius: var(--radius-sm); font-size: 0.88rem; line-height: 1.65;">
+            <strong style="color: var(--green);">ข้อดีของ Mesh:</strong>
+            <ul style="margin: 6px 0 0 16px;">
+              <li>ไม่มีปัญหาการแย่งสัญญาณ (No traffic contention) เพราะแต่ละคู่มีสายส่วนตัว</li>
+              <li>ทนทานต่อความเสียหายสูงสุด (High Robustness): ถ้าสายเส้นใดขาด เส้นอื่นยังทำงานได้</li>
+              <li>ความปลอดภัยและความเป็นส่วนตัวสูง (Privacy &amp; Security) เพราะสัญญาณไม่รั่วไปโหนดอื่น</li>
+              <li>ตรวจหาจุดบกพร่องของสายได้ง่าย (Easy fault identification)</li>
+            </ul>
+          </div>
+          <div style="padding: 14px; background: var(--red-bg); border-left: 4px solid var(--red); border-radius: var(--radius-sm); font-size: 0.88rem; line-height: 1.65;">
+            <strong style="color: var(--red);">ข้อเสียของ Mesh:</strong>
+            <ul style="margin: 6px 0 0 16px;">
+              <li>ปริมาณสายเคเบิลและจำนวนพอร์ต I/O มหาศาล ระดับ O(N²)</li>
+              <li>ต้นทุนฮาร์ดแวร์และการติดตั้งสูงที่สุด ไม่สามารถขยายระบบขนาดใหญ่ด้วยสายจริงได้</li>
+              <li>พื้นที่ท่อร้อยสายไฟในอาคารไม่เพียงพอ</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">2. โทโพโลยีแบบดาว (Star Topology)</h3>
+        <p>
+          ทุกโหนดมีสายสัญญาณ Point-to-Point เชื่อมโยงเข้าหาตัวควบคุมศูนย์กลาง (Central Controller) ซึ่งเรียกว่า <strong>Hub หรือ Switch</strong> โดยโหนดจะไม่สามารถคุยกันเองได้โดยตรง หากโหนด A ต้องการส่งข้อมูลหาโหนด B โหนด A จะต้องส่งข้อมูลไปให้ Hub ก่อน แล้ว Hub จะส่งต่อนำข้อมูลไปให้โหนด B
+        </p>
+
+        <div class="m-block">
+          จำนวนสายส่งทางกายภาพทั้งหมด <span class="m-op">=</span> <span class="m-var">N</span> <span class="m-unit">เส้น</span>
+          <span style="display: block; margin-top: 10px; font-size: 0.92rem; color: var(--ink-soft);">
+            จำนวนพอร์ตต่อลูกข่าย <span class="m-op">=</span> 1 <span class="m-unit">พอร์ต</span>, จำนวนพอร์ตบนอุปกรณ์ศูนย์กลาง <span class="m-op">=</span> <span class="m-var">N</span> <span class="m-unit">พอร์ต</span>
+          </span>
+        </div>
+
+        <p>
+          <strong>จุดเด่นและจุดตายในเชิงวิศวกรรม:</strong> Star ใช้วิธีการลดความซับซ้อนของสายจาก O(N²) ลงมาเหลือ O(N) ทำให้ติดตั้งง่าย ราคาประหยัด ถ้าสายของโหนดใดโหนดหนึ่งขาด โหนดอื่นๆ ในระบบยังทำงานต่อไปได้อย่างสมบูรณ์ แต่จุดอ่อนมหันต์คือ <strong>จุดล้มเหลวเดี่ยว (Single Point of Failure: SPOF)</strong> หาก Hub ส่วนกลางพัง เครือข่ายทั้งหมดจะหยุดทำงานทันที
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">3. โทโพโลยีแบบบัส (Bus Topology)</h3>
+        <p>
+          เป็นโครงสร้างแบบ <strong>Multipoint</strong> โดยใช้สายเคเบิลหลักเส้นเดียวที่เรียกว่า <strong>กระดูกงู (Backbone Cable)</strong> เชื่อมต่ออุปกรณ์ทั้งหมดผ่านสายต่อย่อย (Drop Line) และข้อต่อสามทาง (Tap)
+        </p>
+        <p>
+          <strong>ฟิสิกส์คลื่นและการลดทอนใน Bus:</strong> เมื่อสัญญาณวิ่งไปตามสายทองแดง สัญญาณจะลดทอนพลังงานลงตามระยะทาง ยิ่งต่อหลายจุด สัญญาณยิ่งสูญเสียพลังงาน และที่ปลายสายทั้งสองข้างของแบ็กโบน <strong>จำเป็นต้องมีตัวสิ้นสุดสาย (Terminator)</strong> ซึ่งเป็นตัวต้านทานค่า 50 โอห์ม เพื่อดูดกลืนพลังงานของคลื่นแม่เหล็กไฟฟ้า ป้องกันไม่ให้เกิด <em>“คลื่นสะท้อนกลับ (Signal Reflection)”</em> ซึ่งจะรบกวนสัญญาณข้อมูลหลักจนพังทลาย
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">4. โทโพโลยีแบบวงแหวน (Ring Topology)</h3>
+        <p>
+          แต่ละโหนดเชื่อมโยงกับเพื่อนบ้าน 2 โหนดทางซ้ายและขวาเป็นวงปิด สัญญาณจะเดินทางวนไปในทิศทางเดียว (Unidirectional) ภายในแต่ละโหนดจะมีวงจร <strong>รีพีตเตอร์ (Repeater)</strong> ประจำตัว เมื่อได้รับสัญญาณเข้ามา รีพีตเตอร์จะทำการรีเจนเนอเรตบิตขึ้นมาใหม่ (Regenerate bits) เพื่อขจัดสัญญาณรบกวนแล้วส่งต่อให้โหนดถัดไป การส่งข้อมูลในวงแหวนมักควบคุมด้วยบัตรผ่านที่เรียกว่า <strong>โทเค็น (Token)</strong>
+        </p>
+
+        <!-- ═══════════ Worked Examples with Real Numbers ═══════════ -->
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 36px 0 16px;">
+          ตัวอย่างโจทย์คำนวณสถาปัตยกรรมโทโพโลยีจริง (Step-by-Step Worked Calculation Examples)
+        </h3>
+        <p>
+          เพื่อให้นิสิตเห็นภาพการคำนวณเชิงตัวเลขและการนำสูตรไปประยุกต์ใช้ในการสอบและงานวิศวกรรมจริง ด้านล่างนี้คือโจทย์คำนวณมาตรฐาน 3 สถานการณ์พร้อมการเฉลยอย่างละเอียด:
+        </p>
+
+        <!-- ตัวอย่างที่ 1 -->
+        <div class="academic-callout" style="background: var(--card-bg); border-left: 4px solid var(--accent); margin: 20px 0;">
+          <div style="font-weight: 800; color: var(--accent); font-size: 1.05rem; margin-bottom: 6px;">
+            ตัวอย่างคำนวณที่ 1: การออกแบบโครงข่าย Fully-Connected Mesh สำหรับศูนย์ข้อมูลธนาคาร
+          </div>
+          <p style="margin-bottom: 10px;">
+            <strong>โจทย์:</strong> สถาบันการเงินแห่งหนึ่งต้องการเชื่อมต่อศูนย์ข้อมูล (Data Centers) จำนวน 12 แห่ง (N = 12 โหนด) ด้วยโครงข่ายสายใยแก้วนำแสงแบบ Fully-Connected Mesh เพื่อให้เกิดความทนทานต่อความเสียหายสูงสุด จงคำนวณ:
+          </p>
+          <ol style="margin-left: 20px; line-height: 1.8; margin-bottom: 12px;">
+            <li>จำนวนสายส่งสัญญาณทางกายภาพ (Duplex Links) ทั้งหมดที่ต้องติดตั้งในระบบ</li>
+            <li>จำนวนพอร์ต I/O ที่ต้องติดตั้งบนอุปกรณ์เราเตอร์ในแต่ละศูนย์ข้อมูล และจำนวนพอร์ตรวมทั้งระบบ</li>
+            <li>หากในอนาคตมีศูนย์ข้อมูลเพิ่มขึ้นเป็น 24 แห่ง (เพิ่มขึ้นเป็น 2 เท่า) จำนวนสายส่งจะเพิ่มขึ้นเป็นกี่เท่าของเดิม</li>
+          </ol>
+          <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 14px; margin-top: 10px; font-size: 0.92rem; line-height: 1.8;">
+            <strong style="color: var(--ink);">วิธีทำทีละขั้นตอน:</strong><br>
+            <strong>ข้อ 1:</strong> จากสูตรคำนวณจำนวนสายส่งใน Mesh Topology:
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Links</span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num"><span class="m-var">N</span>(<span class="m-var">N</span> − 1)</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">12 × (12 − 1)</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">12 × 11</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">132</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              66 <span class="m-unit">เส้น</span>
+            </div>
+            <strong>ตอบ:</strong> ต้องติดตั้งสายเคเบิลทั้งหมด <strong>66 เส้น</strong><br><br>
+
+            <strong>ข้อ 2:</strong> จำนวนพอร์ต I/O ต่อแต่ละโหนด เท่ากับ N − 1:
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Ports_per_Node</span> <span class="m-op">=</span> 12 − 1 <span class="m-op">=</span> 11 <span class="m-unit">พอร์ต</span>
+            </div>
+            และจำนวนพอร์ตรวมของทั้งระบบ เท่ากับ N × (N − 1):
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Total_Ports</span> <span class="m-op">=</span> 12 × 11 <span class="m-op">=</span> 132 <span class="m-unit">พอร์ต</span>
+            </div>
+            <strong>ตอบ:</strong> แต่ละศูนย์ข้อมูลต้องมี <strong>11 พอร์ต</strong> และรวมทั้งระบบต้องมี <strong>132 พอร์ต</strong><br><br>
+
+            <strong>ข้อ 3:</strong> เมื่อจำนวนศูนย์ข้อมูลเพิ่มเป็น N = 24 แห่ง:
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Links_new</span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">24 × 23</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">552</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              276 <span class="m-unit">เส้น</span>
+            </div>
+            อัตราส่วนการเพิ่มขึ้นของสายส่ง:
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Ratio</span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">276</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">66</span>
+              </span>
+              <span class="m-op">≈</span>
+              4.18 <span class="m-unit">เท่า</span>
+            </div>
+            <strong>วิเคราะห์เชิงวิศวกรรม:</strong> แม้จำนวนโหนดจะเพิ่มขึ้นเพียง 2 เท่า แต่จำนวนสายส่งกลับเพิ่มขึ้นถึง <strong>4.18 เท่า</strong> นี่คือภาพสะท้อนชัดเจนของความซับซ้อนเชิงพหุนามระดับ O(N²)
+          </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 2 -->
+        <div class="academic-callout" style="background: var(--card-bg); border-left: 4px solid var(--purple); margin: 20px 0;">
+          <div style="font-weight: 800; color: var(--purple); font-size: 1.05rem; margin-bottom: 6px;">
+            ตัวอย่างคำนวณที่ 2: การเปรียบเทียบต้นทุนทางกายภาพระหว่าง Star Topology และ Mesh Topology ในอาคารสำนักงาน
+          </div>
+          <p style="margin-bottom: 10px;">
+            <strong>โจทย์:</strong> บริษัทเทคโนโลยีต้องการติดตั้งระบบเครือข่ายสำหรับพนักงาน 100 เครื่อง (N = 100) ภายในอาคารสำนักงาน วิศวกรกำลังพิจารณา 2 แนวทาง:
+          </p>
+          <ul style="margin-left: 20px; line-height: 1.8; margin-bottom: 12px;">
+            <li><strong>แนวทาง ก:</strong> เชื่อมต่อคอมพิวเตอร์ทั้ง 100 เครื่องเข้าหากันด้วย Full Mesh</li>
+            <li><strong>แนวทาง ข:</strong> เชื่อมต่อด้วย Hierarchical Star โดยแบ่งเป็น 5 แผนก แผนกละ 20 เครื่อง แต่ละแผนกต่อเข้า Workgroup Switch 24 พอร์ต จากนั้นต่อสาย Uplink จากแต่ละสวิตช์เข้าหา Core Switch ศูนย์กลาง</li>
+          </ul>
+          <p>จงคำนวณเปรียบเทียบจำนวนสายเคเบิล และร้อยละของการประหยัดสายเคเบิลของแนวทาง ข เมื่อเทียบกับแนวทาง ก</p>
+          <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 14px; margin-top: 10px; font-size: 0.92rem; line-height: 1.8;">
+            <strong style="color: var(--ink);">วิธีทำทีละขั้นตอน:</strong><br>
+            <strong>แนวทาง ก (Full Mesh):</strong>
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Links_Mesh</span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">100 × 99</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">2</span>
+              </span>
+              <span class="m-op">=</span>
+              4,950 <span class="m-unit">เส้น</span>
+            </div>
+            ต้องใช้สายเคเบิล 4,950 เส้น และคอมพิวเตอร์แต่ละเครื่องต้องติดตั้งการ์ดแลน 99 พอร์ต ซึ่งเป็นไปไม่ได้ในทางปฏิบัติ<br><br>
+
+            <strong>แนวทาง ข (Hierarchical Star):</strong>
+            <ul style="margin: 4px 0 8px 16px;">
+              <li>สายเชื่อมจากคอมพิวเตอร์เข้า Workgroup Switch: 5 แผนก × 20 เครื่อง = 100 เส้น</li>
+              <li>สาย Uplink จาก Workgroup Switch เข้าหา Core Switch: 5 เส้น</li>
+              <li>รวมจำนวนสายเคเบิลทั้งหมด: 100 + 5 = 105 เส้น</li>
+            </ul>
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Links_Star</span> <span class="m-op">=</span> 100 + 5 <span class="m-op">=</span> 105 <span class="m-unit">เส้น</span>
+            </div>
+            คำนวณร้อยละของการประหยัดสายส่ง:
+            <div class="m-block" style="margin: 8px 0;">
+              <span class="m-var">Savings</span>
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">4,950 − 105</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">4,950</span>
+              </span>
+              <span class="m-op">×</span>
+              100%
+              <span class="m-op">=</span>
+              <span class="m-frac">
+                <span class="m-num">4,845</span>
+                <span class="m-sr">/</span>
+                <span class="m-den">4,950</span>
+              </span>
+              <span class="m-op">×</span>
+              100%
+              <span class="m-op">≈</span>
+              97.88%
+            </div>
+            <strong>ตอบ:</strong> แนวทางแบบ Star ประหยัดสายเคเบิลได้ถึง <strong>97.88%</strong> (จาก 4,950 เส้นเหลือเพียง 105 เส้น) และคอมพิวเตอร์แต่ละเครื่องใช้การ์ดแลนเพียง 1 พอร์ตเท่านั้น
+          </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 3 -->
+        <div class="academic-callout" style="background: var(--card-bg); border-left: 4px solid var(--green); margin: 20px 0;">
+          <div style="font-weight: 800; color: var(--green); font-size: 1.05rem; margin-bottom: 6px;">
+            ตัวอย่างคำนวณที่ 3: การวิเคราะห์ความทนทานต่อสายส่งชำรุด (Fault Tolerance in Mesh vs Ring)
+          </div>
+          <p style="margin-bottom: 10px;">
+            <strong>โจทย์:</strong> พิจารณาเครือข่าย 6 โหนด (โหนด 1 ถึง 6):
+          </p>
+          <ol style="margin-left: 20px; line-height: 1.8; margin-bottom: 12px;">
+            <li>ใน Full Mesh Topology หากสายสัญญาณระหว่างโหนด 1 และโหนด 2 ขาดลง จงหาจำนวนเส้นทางสำรองแบบ 2 ฮอป (2-Hop Alternative Paths) ที่โหนด 1 ยังสามารถส่งข้อมูลหาโหนด 2 ได้</li>
+            <li>โหนด 1 สามารถทนต่อสายเคเบิลที่ต่อตรงกับตนเองขาดได้สูงสุดกี่เส้นก่อนที่โหนด 1 จะถูกตัดขาดจากเครือข่ายโดยสิ้นเชิง (Node Isolation)</li>
+            <li>เปรียบเทียบกับ Ring Topology จำนวน 6 โหนด หากสายขาด 1 เส้น ระบบจะยังทำงานได้หรือไม่ และหากสายขาด 2 เส้นพร้อมกันจะเกิดผลอย่างไร</li>
+          </ol>
+          <div style="background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-sm); padding: 14px; margin-top: 10px; font-size: 0.92rem; line-height: 1.8;">
+            <strong style="color: var(--ink);">วิธีทำทีละขั้นตอน:</strong><br>
+            <strong>ข้อ 1:</strong> ใน Full Mesh 6 โหนด โหนด 1 เชื่อมต่อตรงกับโหนด 3, 4, 5, 6 และโหนดเหล่านี้ต่างก็มีสายเชื่อมตรงไปยังโหนด 2 เช่นกัน ดังนั้น เส้นทางสำรองแบบ 2 ฮอปคือ:
+            <ul style="margin: 4px 0 8px 16px;">
+              <li>เส้นทางที่ 1: โหนด 1 → โหนด 3 → โหนด 2</li>
+              <li>เส้นทางที่ 2: โหนด 1 → โหนด 4 → โหนด 2</li>
+              <li>เส้นทางที่ 3: โหนด 1 → โหนด 5 → โหนด 2</li>
+              <li>เส้นทางที่ 4: โหนด 1 → โหนด 6 → โหนด 2</li>
+            </ul>
+            <strong>ตอบ:</strong> มีเส้นทางสำรองแบบ 2 ฮอปจำนวน <strong>4 เส้นทาง</strong> (เท่ากับ N − 2 เสมอ)<br><br>
+
+            <strong>ข้อ 2:</strong> โหนด 1 มีสายเชื่อมต่อตรงทั้งหมด N − 1 = 5 เส้น การที่โหนด 1 จะถูกตัดขาดอย่างสมบูรณ์ สายทั้ง 5 เส้นต้องขาดทั้งหมด ดังนั้น โหนด 1 สามารถทนต่อสายขาดได้สูงสุด 5 − 1 = <strong>4 เส้น</strong> ตราบใดที่ยังเหลือสายส่ง 1 เส้น โหนด 1 ก็ยังสามารถสื่อสารกับเครือข่ายได้<br><br>
+
+            <strong>ข้อ 3:</strong> ใน Ring Topology:
+            <ul style="margin: 4px 0 8px 16px;">
+              <li>หากเป็น Unidirectional Ring สายขาด 1 เส้นจะทำให้วงแหวนเปิดออก การสื่อสารทั้งหมดจะหยุดชะงักทันที เว้นแต่จะมีวงแหวนคู่ Dual-Ring (เช่น FDDI) ที่สามารถพับสายวนกลับ (Wrap Around) เพื่อกู้คืนระบบได้</li>
+              <li>หากสายขาด 2 เส้นพร้อมกันในจุดที่ต่างกัน เครือข่ายวงแหวนจะแตกตัวออกเป็น 2 เสี้ยวอิสระ (Network Partition) และโหนดคนละฝั่งจะไม่สามารถสื่อสารหากันได้อีกต่อไป</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 6: LAN, MAN, WAN ═══════════ -->
+      <section id="sec-categories" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Textbook-Grade Theoretical Rigor</span>
+        <h2 class="section-title">การจำแนกประเภทเครือข่ายตามขอบเขตภูมิศาสตร์ (LAN, MAN, WAN)</h2>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">ประเภทเครือข่าย</th>
+                <th style="width: 25%;">ขอบเขตภูมิศาสตร์</th>
+                <th style="width: 25%;">อัตราการส่งข้อมูลและเทคโนโลยี</th>
+                <th style="width: 30%;">ความเป็นเจ้าของและการจัดการ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LAN (Local Area Network)</strong></td>
+                <td>ภายในห้อง อาคาร หรือมหาวิทยาลัย (ระยะทางไม่เกิน 1-2 กิโลเมตร)</td>
+                <td>อัตราเร็วสูงมาก (100 Mbps ถึง 10 Gbps) ใช้สวิตช์อีเทอร์เน็ต (IEEE 802.3) หรือ Wi-Fi (802.11)</td>
+                <td>เป็นของเอกชนหรือบุคคลคนเดียว ดูแลติดตั้งเองทั้งหมด</td>
+              </tr>
+              <tr>
+                <td><strong>MAN (Metropolitan Area Network)</strong></td>
+                <td>ครอบคลุมระดับเมืองหรือเทศบาล (ระยะทางหลายสิบกิโลเมตร)</td>
+                <td>ความเร็วปานกลางถึงสูง เช่น เครือข่ายเคเบิลทีวี หรือ WiMAX</td>
+                <td>ดำเนินการโดยผู้ให้บริการร่วมหรือรัฐวิสาหกิจเพื่อบริการสาธารณะ</td>
+              </tr>
+              <tr>
+                <td><strong>WAN (Wide Area Network)</strong></td>
+                <td>ครอบคลุมระดับประเทศ ทวีป หรือทั่วทั้งโลก (ไม่จำกัดระยะทาง)</td>
+                <td>เชื่อมโยงด้วยสายเช่าใยแก้วนำแสง (Leased Lines) ผ่านชุมสายเราเตอร์ข้ามทวีป</td>
+                <td>ดำเนินการโดยผู้ให้บริการโทรคมนาคมรายใหญ่ (Telecom Carriers / ISPs)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 7: Protocols and Standards ═══════════ -->
+      <section id="sec-protocols" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Textbook-Grade Theoretical Rigor</span>
+        <h2 class="section-title">โปรโตคอลและเสาหลัก 3 ประการ (Protocols &amp; The 3 Key Pillars)</h2>
+
+        <p>
+          โปรโตคอลในระบบสื่อสารข้อมูลมีเสาหลัก 3 ประการที่กำหนดพฤติกรรมของระบบอย่างสมบูรณ์:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 16px;">
+            <div style="font-weight: 800; color: var(--accent); font-size: 1.05rem; margin-bottom: 4px;">1. ซินแทกซ์ (Syntax)</div>
+            <div style="font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 8px;">โครงสร้างหรือรูปแบบของข้อมูล</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.65;">
+              กำหนดรูปแบบของบิต เช่น บิตที่ 1-8 คือที่อยู่ผู้ส่ง, บิตที่ 9-16 คือที่อยู่ผู้รับ, และบิตที่เหลือคือเพย์โหลดข้อมูลจริง
+            </div>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 16px;">
+            <div style="font-weight: 800; color: var(--purple); font-size: 1.05rem; margin-bottom: 4px;">2. ซีแมนติกส์ (Semantics)</div>
+            <div style="font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 8px;">ความหมายของรูปแบบบิต</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.65;">
+              ตีความว่ารูปแบบบิตแต่ละชุดต้องการให้ทำอะไร เช่น รหัส 0000 คือคำสั่งขอเริ่มส่งข้อมูล หรือรหัส 1111 คือคำสั่งตัดการเชื่อมต่อ
+            </div>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 16px;">
+            <div style="font-weight: 800; color: var(--green); font-size: 1.05rem; margin-bottom: 4px;">3. ไทม์มิ่ง (Timing)</div>
+            <div style="font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 8px;">จังหวะเวลาและความเร็ว</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.65;">
+              ตอบคำถามว่า ข้อมูลจะถูกส่งเมื่อใด และส่งด้วยความเร็วเท่าใด เพื่อป้องกันไม่ให้ผู้ส่งส่งเร็วเกินไปจนผู้รับบัฟเฟอร์ล้น (Buffer Overflow)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION: Hardware & Silicon Reality Check ═══════════ -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">4. Hardware &amp; Silicon Reality Check</span>
+        <h2 class="section-title">กายวิภาคระดับซิลิคอน: ชิปจริง รีจิสเตอร์ แรงดันไฟฟ้า และสัญญาณนาฬิกา</h2>
+
+        <p>
+          ในการศึกษาวิศวกรรมคอมพิวเตอร์ ทฤษฎีการสื่อสารข้อมูลไม่ได้ดำรงอยู่เพียงบนกระดาษ แต่ถูกขับเคลื่อนด้วยวงจรรวม (Integrated Circuit: IC) ระดับไมโครมิเตอร์และนาโนเมตร การเปลี่ยนบิตในหน่วยความจำสู่คลื่นแม่เหล็กไฟฟ้าในสายส่งต้องผ่านกลไกทางกายภาพดังต่อไปนี้:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 18px;">
+            <div style="font-weight: 800; color: var(--accent); margin-bottom: 6px; font-size: 1.02rem;">1. ระดับแรงดันไฟฟ้าและการปรับระดับสัญญาณ (Logic Levels &amp; Level Shifting)</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.75;">
+              ภายใน CPU และ MCU สัญญาณลอจิกทำงานที่ระดับแรงดัน TTL/CMOS เช่น 0V (Logic 0) และ +3.3V หรือ +5V (Logic 1) แต่เมื่อต้องส่งสัญญาณออกสู่สายภายนอกในมาตรฐาน RS-232 สัญญาณต้องถูกแปลงเป็นระดับแรงดันสองขั้ว (Bipolar) คือ −3V ถึง −15V (แทน Logic 1 หรือ Mark) และ +3V ถึง +15V (แทน Logic 0 หรือ Space) เพื่อให้ทนทานต่อสัญญาณรบกวน วงจรจึงต้องพึ่งพาชิปแปลงระดับแรงดัน เช่น <strong>MAX232</strong> ซึ่งบรรจุวงจร Charge Pump ในตัวเพื่อสร้างแรงดัน ±10V จากแหล่งจ่ายไฟ +5V เส้นเดียว
+            </div>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 18px;">
+            <div style="font-weight: 800; color: var(--purple); margin-bottom: 6px; font-size: 1.02rem;">2. คอนโทรลเลอร์ UART และรีจิสเตอร์รับส่ง (16550 UART Architecture)</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.75;">
+              การแปลงข้อมูลขนาน 8 บิตจากบัสของระบบคอมพิวเตอร์ไปเป็นข้อมูลอนุกรมทีละบิตบนสายส่ง ดำเนินการโดยชิป <strong>UART (Universal Asynchronous Receiver-Transmitter)</strong> ภายในประกอบด้วยรีจิสเตอร์สำคัญ:
+              <ul style="margin: 6px 0 0 16px;">
+                <li><strong>THR (Transmit Holding Register):</strong> บัฟเฟอร์พักข้อมูลไบต์ก่อนส่ง</li>
+                <li><strong>TSR (Transmit Shift Register):</strong> ทำหน้าที่ Shift บิตออกทีละบิตตามสัญญาณนาฬิกา Baud Rate Generator</li>
+                <li><strong>FIFO Buffers:</strong> บัฟเฟอร์คิวแบบ 16 ไบต์ ป้องกัน CPU เกิดสภาวะ Overrun Error เมื่อข้อมูลเข้าเร็วเกินไป</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1.5px solid var(--rule); border-radius: var(--radius-sm); padding: 18px;">
+            <div style="font-weight: 800; color: var(--green); margin-bottom: 6px; font-size: 1.02rem;">3. สัญญาณนาฬิกาและความคลาดเคลื่อน (Clock Drift &amp; Framing Jitter)</div>
+            <div style="font-size: 0.90rem; color: var(--ink-soft); line-height: 1.75;">
+              การรับส่งแบบ Asynchronous ไม่มีการส่งสาย Clock ไปด้วย ผู้รับจึงต้องสร้างสัญญาณนาฬิกาสุ่มตัวอย่าง (Sampling Clock) ขึ้นมาเอง โดยทั่วไปจะทำ Oversampling ที่ความถี่ 16 เท่าของ Baud Rate เพื่อหาจุดกึ่งกลางของ Start Bit ความคลาดเคลื่อนของผลึกคริสตัล (Crystal Oscillator Drift) จะต้องไม่เกิน ±2% มิฉะนั้นการอ่านบิตที่ตำแหน่ง Stop Bit จะเลื่อนหลุดกรอบเวลาและเกิด <strong>Framing Error</strong> ทันที
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 8: Interactive Topology Visualizer ═══════════ -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">4. Interactive Component / Visualizer</span>
+        <h2 class="section-title">โปรแกรมจำลองโครงสร้างเครือข่ายและสายสัญญาณ (Interactive Topology Visualizer)</h2>
+        <p>
+          ทดลองปรับเปลี่ยนโครงสร้างโทโพโลยีและจำนวนโหนด N เพื่อคำนวณจำนวนสายส่ง พอร์ตเชื่อมต่อ และสังเกตผลกระทบเมื่อเกิดสายสัญญาณขาด:
+        </p>
+
+        <div class="sim-panel">
+          <div class="sim-controls">
+            <div>
+              <label for="topo-select" style="font-weight: 700; font-size: 0.88rem; display: block; margin-bottom: 6px;">เลือกโทโพโลยี (Topology):</label>
+              <select id="topo-select" class="form-control" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--rule); background: var(--card-bg); font-family: var(--font-sans); font-size: 0.92rem;">
+                <option value="mesh">Mesh (ร่างแหสมบูรณ์)</option>
+                <option value="star" selected>Star (ดาว)</option>
+                <option value="bus">Bus (บัสกระดูกงู)</option>
+                <option value="ring">Ring (วงแหวน)</option>
+              </select>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.88rem; margin-bottom: 6px;">
+                <span>จำนวนโหนด (N):</span>
+                <span id="node-count-label" style="color: var(--accent); font-weight: 800;">5 โหนด</span>
+              </div>
+              <input type="range" id="node-slider" min="3" max="10" value="5" style="width: 100%; accent-color: var(--accent);">
+            </div>
+
+            <div style="text-align: center;">
+              <button id="btn-toggle-fault" class="btn btn-secondary" style="width: 100%; padding: 8px 12px; font-size: 0.86rem; border-color: var(--red); color: var(--red);">
+                จำลองสายส่งขาด 1 จุด
+              </button>
+            </div>
+          </div>
+
+          <!-- Canvas Drawing Area -->
+          <div class="sim-canvas-wrapper">
+            <svg id="topo-svg" width="100%" height="100%" viewBox="0 0 600 360" style="display: block;"></svg>
+          </div>
+
+          <!-- Dynamic Real-Time Metrics -->
+          <div class="sim-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-label">จำนวนสายส่งทางกายภาพ</div>
+              <div class="metric-val" id="metric-links">5 เส้น</div>
+              <div class="metric-sub" id="metric-links-formula">สูตร: N</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-label">พอร์ตต่อโหนดลูกข่าย</div>
+              <div class="metric-val" id="metric-ports">1 พอร์ต</div>
+              <div class="metric-sub" id="metric-ports-sub">อุปกรณ์กลาง: 5 พอร์ต</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-label">ระดับความทนทาน (Robustness)</div>
+              <div class="metric-val" id="metric-robust" style="color: var(--accent2);">ปานกลาง</div>
+              <div class="metric-sub" id="metric-robust-sub">ระวังจุดล้มเหลวเดี่ยวที่ Hub</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-label">ความซับซ้อนสายส่ง (Big-O)</div>
+              <div class="metric-val" id="metric-complexity">O(N)</div>
+              <div class="metric-sub">ติดตั้งและขยายระบบได้ง่าย</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 9: Interactive Mastery Checklist ═══════════ -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">5. Interactive Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเข้าใจวิศวกรรม (Mastery Checklist)</h2>
+        <p>
+          ติ๊กเพื่อยืนยันว่าคุณเข้าใจมโนทัศน์วิศวกรรมของบทที่ 1 อย่างถ่องแท้ก่อนก้าวสู่บทถัดไป:
+        </p>
+
+        <div class="checklist-container">
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">1. ทำไมโทโพโลยีแบบ Mesh จึงมีความซับซ้อนของสายสัญญาณระดับ O(N²) และทำไมจึงไม่ถูกนำมาใช้ในเครือข่ายคอมพิวเตอร์ขนาดใหญ่?</div>
+              <div class="checklist-feedback">
+                <strong>ถูกต้อง:</strong> เพราะสูตรคือ N(N − 1) / 2 สายสัญญาณเพิ่มขึ้นตามกำลังสองของโหนด ถ้ามี 1,000 โหนดจะต้องใช้สายเกือบ 500,000 เส้น ทั้งต้นทุนและขนาดช่องร้อยสายไฟทางกายภาพจึงเป็นไปไม่ได้ในทางปฏิบัติ จึงต้องใช้ Star หรือ Tree แทน
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">2. การสื่อสารของชิปวิทยุ CC2420 บนโหนดเซนเซอร์ MICAz เป็นแบบ Simplex, Half-Duplex, หรือ Full-Duplex เพราะเหตุใด?</div>
+              <div class="checklist-feedback">
+                <strong>ถูกต้อง:</strong> เป็นแบบ Half-Duplex เนื่องจากตัวชิปมีสายอากาศเดียวและใช้วงจร RF Switch ภายในสลับระหว่างภาครับและภาคส่ง ไม่สามารถส่งและรับไปพร้อมกันที่ความถี่เดียวกันได้เพราะกำลังส่งของตัวเองจะกลืนสัญญาณรับจากภายนอกจนพังทลาย
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">3. ตัวต้านทาน Terminator ปลายสายใน Bus Topology มีหน้าที่สำคัญอะไรในเชิงฟิสิกส์คลื่น?</div>
+              <div class="checklist-feedback">
+                <strong>ถูกต้อง:</strong> ทำหน้าที่จับคู่อิมพีแดนซ์ (Impedance Matching 50 โอห์ม) เพื่อดูดกลืนพลังงานของคลื่นแม่เหล็กไฟฟ้าเมื่อวิ่งไปถึงปลายสาย ป้องกันการเกิดคลื่นสะท้อนกลับ (Signal Reflection) ซึ่งจะแทรกสอดและทำลายสัญญาณข้อมูลของโหนดอื่น
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">4. อะไรคือความแตกต่างระหว่าง Syntax, Semantics, และ Timing ในการออกแบบโปรโตคอล?</div>
+              <div class="checklist-feedback">
+                <strong>ถูกต้อง:</strong> Syntax กำหนดโครงสร้างตำแหน่งบิต, Semantics กำหนดความหมายและคำสั่งของบิตเหล่านั้น, และ Timing กำหนดจังหวะเวลาในการส่งและอัตราความเร็วเพื่อป้องกันบัฟเฟอร์ล้น
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-item" onclick="toggleCheck(this)">
+            <input type="checkbox" class="checklist-checkbox" onclick="event.stopPropagation(); toggleCheck(this.parentElement)">
+            <div class="checklist-content">
+              <div class="checklist-question">5. คำว่า De facto Standard และ De jure Standard แตกต่างกันอย่างไรในประวัติศาสตร์คอมพิวเตอร์?</div>
+              <div class="checklist-feedback">
+                <strong>ถูกต้อง:</strong> De facto เกิดจากความนิยมในตลาดจริงโดยผู้ผลิต (เช่น TCP/IP ในยุคแรก) ส่วน De jure คือมาตรฐานที่ได้รับการรับรองอย่างเป็นทางการตามกฎหมายหรือองค์กรกำหนดมาตรฐานสากล (เช่น IEEE 802.11 หรือ ITU-T)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 10: Chapter Synthesis & Mental Model ═══════════ -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">6. Chapter Synthesis &amp; Mental Model</span>
+        <h2 class="section-title">สรุปสังเคราะห์และโมเดลความคิด 3 มิติ (Mental Model Synthesis)</h2>
+
+        <p>
+          ตารางเปรียบเทียบเชิงวิศวกรรมระหว่าง <strong>เครือข่ายคอมพิวเตอร์ทั่วไป (Traditional Computer Networks)</strong> กับ <strong>เครือข่ายเซนเซอร์ไร้สาย (Wireless Sensor Networks: WSN)</strong> เพื่อปรับกรอบความคิดก่อนศึกษาลงลึก:
+        </p>
+
+        <div class="table-responsive" style="margin: 20px 0;">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">มิติการวิเคราะห์ (Dimension)</th>
+                <th style="width: 37%;">เครือข่ายคอมพิวเตอร์ทั่วไป (PC / Server)</th>
+                <th style="width: 38%;">เครือข่ายเซนเซอร์ไร้สาย (WSN Motes)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>เป้าหมายสูงสุด (Core Objective)</strong></td>
+                <td>เน้นอัตราเร็วในการส่งข้อมูลสูง (High Throughput) และเวลาหน่วงต่ำ (Low Latency)</td>
+                <td>เน้นยืดอายุการใช้งานแบตเตอรี่ให้นานที่สุด (Energy Conservation Above All)</td>
+              </tr>
+              <tr>
+                <td><strong>โทโพโลยีทางกายภาพ</strong></td>
+                <td>Star หรือ Tree โดยมีสวิตช์และเราเตอร์เชื่อมโยงสายทองแดงหรือใยแก้ว</td>
+                <td>ไร้สายแบบ Ad-hoc Multi-hop Mesh หรือ Clustered Star โครงสร้างเปลี่ยนตามสภาพคลื่น</td>
+              </tr>
+              <tr>
+                <td><strong>รูปแบบการสื่อสาร</strong></td>
+                <td>เน้นการสื่อสารสองทิศทางแบบ Full-Duplex แบนด์วิดท์มหาศาล (Gbps)</td>
+                <td>มักเป็น Half-Duplex อัตราส่งต่ำมาก (250 kbps หรือน้อยกว่า) ส่งข้อมูลเป็นจังหวะตามเหตุการณ์</td>
+              </tr>
+              <tr>
+                <td><strong>ผลกระทบต่อความผิดพลาด</strong></td>
+                <td>มีระบบสำรองไฟและการส่งซ้ำผ่านโปรโตคอล TCP ขนาดบัฟเฟอร์ระดับเมกะไบต์</td>
+                <td>แรมมีจำกัดเพียงไม่กี่กิโลไบต์ แพ็กเก็ตตกหล่นได้ง่ายจากสัญญาณรบกวนในอากาศ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECTION 11: Cross-Chapter Terminology Links ═══════════ -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">7. Cross-Chapter Terminology Links</span>
+        <h2 class="section-title">ป้ายแท็กเชื่อมโยงสู่เครือข่ายเซนเซอร์ (Cross-Chapter WSN Links)</h2>
+        <p>
+          คำศัพท์และทฤษฎีพื้นฐานจากบทที่ 1 นี้ จะถูกนำไปต่อยอดในตำรา Wireless Sensor Networks ในบทต่อๆ ไปดังนี้:
+        </p>
+
+        <div class="cross-tag-grid">
+          <div class="cross-tag-card">
+            <div class="cross-tag-term">Simplex &amp; Half-Duplex</div>
+            <div class="cross-tag-target">ส่งต่อไปยัง: WSN Chapter 3 (MAC Layer Protocols)</div>
+            <div class="cross-tag-note">
+              เป็นพื้นฐานทำความเข้าใจว่าทำไมโปรโตคอล S-MAC และ T-MAC จึงต้องมีกลไกป้องกันการชนกันของสัญญาณวิทยุ เพราะชิปเซนเซอร์เป็นแบบ Half-Duplex
+            </div>
+          </div>
+
+          <div class="cross-tag-card">
+            <div class="cross-tag-term">Mesh Topology</div>
+            <div class="cross-tag-target">ส่งต่อไปยัง: WSN Chapter 4 (Routing &amp; Dissemination)</div>
+            <div class="cross-tag-note">
+              ใน WSN แม้จะไม่มีสายส่ง แต่โครงข่ายไร้สายจะเชื่อมต่อแบบ Multi-hop Mesh ซึ่งต้องใช้อัลกอริทึมอย่าง Directed Diffusion เพื่อส่งแพ็กเก็ตข้ามทอด
+            </div>
+          </div>
+
+          <div class="cross-tag-card">
+            <div class="cross-tag-term">Star Topology &amp; Hub</div>
+            <div class="cross-tag-target">ส่งต่อไปยัง: WSN Chapter 6 (Node Clustering &amp; LEACH)</div>
+            <div class="cross-tag-note">
+              โปรโตคอล LEACH จำลองกลุ่มเซนเซอร์เป็นรูปดาว (Cluster) โดยให้โหนดหัวหน้ากลุ่ม (Cluster Head) ทำหน้าที่เสมือน Hub รวมข้อมูลส่งต่อไปยัง Base Station
+            </div>
+          </div>
+
+          <div class="cross-tag-card">
+            <div class="cross-tag-term">Protocol Timing</div>
+            <div class="cross-tag-target">ส่งต่อไปยัง: WSN Chapter 9 (Time Synchronization: TPSN, FTSP)</div>
+            <div class="cross-tag-note">
+              การเข้าจังหวะเวลาในเซนเซอร์มีความสำคัญระดับไมโครวินาที เพื่อการวัดตำแหน่ง (Localization) และการสั่งให้อุปกรณ์หลับพร้อมกัน
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px;">
+        <a href="../index.html" class="btn btn-secondary">← กลับสู่หน้าหลัก Portal</a>
+        <a href="ch02.html" class="btn btn-primary">บทถัดไป: บทที่ 2 Network Models →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ═══════════ Embedded Script for Interactive Topology Simulator ═══════════ -->
+  <script>
+    // การจัดการสถานะของตัวจำลอง Interactive Topology
+    const topoSelect = document.getElementById('topo-select');
+    const nodeSlider = document.getElementById('node-slider');
+    const nodeCountLabel = document.getElementById('node-count-label');
+    const btnToggleFault = document.getElementById('btn-toggle-fault');
+    const svg = document.getElementById('topo-svg');
+
+    const mLinks = document.getElementById('metric-links');
+    const mLinksFormula = document.getElementById('metric-links-formula');
+    const mPorts = document.getElementById('metric-ports');
+    const mPortsSub = document.getElementById('metric-ports-sub');
+    const mRobust = document.getElementById('metric-robust');
+    const mRobustSub = document.getElementById('metric-robust-sub');
+    const mComplexity = document.getElementById('metric-complexity');
+
+    let hasFault = false;
+
+    function updateTopology() {
+      const type = topoSelect.value;
+      const N = parseInt(nodeSlider.value, 10);
+      nodeCountLabel.textContent = N + ' โหนด';
+
+      // อัปเดตเมตริกส์
+      if (type === 'mesh') {
+        const links = (N * (N - 1)) / 2;
+        mLinks.textContent = links + ' เส้น';
+        mLinksFormula.textContent = 'สูตร: N(N−1)/2 = ' + N + '×' + (N - 1) + '/2';
+        mPorts.textContent = (N - 1) + ' พอร์ต';
+        mPortsSub.textContent = 'พอร์ตรวมทั้งระบบ: ' + (N * (N - 1)) + ' พอร์ต';
+        mRobust.textContent = 'สูงสุด';
+        mRobust.style.color = 'var(--green)';
+        mRobustSub.textContent = 'มีเส้นทางสำรองหลากหลาย สายขาดไม่สะเทือน';
+        mComplexity.textContent = 'O(N²)';
+      } else if (type === 'star') {
+        mLinks.textContent = N + ' เส้น';
+        mLinksFormula.textContent = 'สูตร: N = ' + N;
+        mPorts.textContent = '1 พอร์ต';
+        mPortsSub.textContent = 'พอร์ตบนอุปกรณ์กลาง (Hub): ' + N + ' พอร์ต';
+        mRobust.textContent = 'ปานกลาง';
+        mRobust.style.color = 'var(--accent2)';
+        mRobustSub.textContent = 'โหนดลูกข่ายแยกอิสระ แต่มีจุดตายเดี่ยวที่ Hub';
+        mComplexity.textContent = 'O(N)';
+      } else if (type === 'bus') {
+        mLinks.textContent = '1 สายหลัก + ' + N + ' สายย่อย';
+        mLinksFormula.textContent = 'Backbone + Drop lines';
+        mPorts.textContent = '1 ข้อต่อ (Tap)';
+        mPortsSub.textContent = 'ต้องมีตัวสิ้นสุดสาย (Terminator 50Ω) 2 ด้าน';
+        mRobust.textContent = 'ต่ำมาก';
+        mRobust.style.color = 'var(--red)';
+        mRobustSub.textContent = 'สายหลักขาดหรือเทอร์มิเนเตอร์หลุด เครือข่ายล่มหมด';
+        mComplexity.textContent = 'O(N)';
+      } else if (type === 'ring') {
+        mLinks.textContent = N + ' เส้น';
+        mLinksFormula.textContent = 'สูตร: N = ' + N;
+        mPorts.textContent = '2 พอร์ต';
+        mPortsSub.textContent = 'พอร์ตรับ 1, พอร์ตส่ง 1 (พร้อมวงจร Repeater)';
+        mRobust.textContent = 'ต่ำ';
+        mRobust.style.color = 'var(--red)';
+        mRobustSub.textContent = 'โหนดหนึ่งเสีย วงแหวนขาด เว้นแต่มี Dual-Ring';
+        mComplexity.textContent = 'O(N)';
+      }
+
+      // วาดภาพ SVG
+      renderSVG(type, N, hasFault);
+    }
+
+    function renderSVG(type, N, fault) {
+      svg.innerHTML = '';
+      const w = 600;
+      const h = 360;
+      const cx = w / 2;
+      const cy = h / 2;
+      const r = 130;
+
+      // พิกัดโหนดรอบวงกลม
+      const nodes = [];
+      for (let i = 0; i < N; i++) {
+        const angle = (i * 2 * Math.PI) / N - Math.PI / 2;
+        nodes.push({
+          x: cx + r * Math.cos(angle),
+          y: cy + r * Math.sin(angle),
+          id: 'Node ' + (i + 1)
+        });
+      }
+
+      const linkColor = 'var(--accent)';
+      const faultColor = 'var(--red)';
+      const nodeFill = 'var(--card-bg)';
+      const nodeStroke = 'var(--accent)';
+
+      if (type === 'mesh') {
+        let linkIndex = 0;
+        for (let i = 0; i < N; i++) {
+          for (let j = i + 1; j < N; j++) {
+            const isBroken = fault && linkIndex === 0;
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', nodes[i].x);
+            line.setAttribute('y1', nodes[i].y);
+            line.setAttribute('x2', nodes[j].x);
+            line.setAttribute('y2', nodes[j].y);
+            line.setAttribute('stroke', isBroken ? faultColor : linkColor);
+            line.setAttribute('stroke-width', isBroken ? '2.5' : '1.5');
+            line.setAttribute('stroke-opacity', isBroken ? '1' : '0.45');
+            if (isBroken) line.setAttribute('stroke-dasharray', '5,5');
+            svg.appendChild(line);
+            linkIndex++;
+          }
+        }
+      } else if (type === 'star') {
+        // วาด Hub ตรงกลาง
+        const hub = { x: cx, y: cy };
+        nodes.forEach((n, idx) => {
+          const isBroken = fault && idx === 0;
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', hub.x);
+          line.setAttribute('y1', hub.y);
+          line.setAttribute('x2', n.x);
+          line.setAttribute('y2', n.y);
+          line.setAttribute('stroke', isBroken ? faultColor : linkColor);
+          line.setAttribute('stroke-width', isBroken ? '2.5' : '2');
+          if (isBroken) line.setAttribute('stroke-dasharray', '5,5');
+          svg.appendChild(line);
+        });
+
+        // Hub Icon Circle
+        const hubCircle = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        hubCircle.setAttribute('x', cx - 26);
+        hubCircle.setAttribute('y', cy - 20);
+        hubCircle.setAttribute('width', '52');
+        hubCircle.setAttribute('height', '40');
+        hubCircle.setAttribute('rx', '6');
+        hubCircle.setAttribute('fill', 'var(--accent)');
+        hubCircle.setAttribute('stroke', 'var(--rule)');
+        hubCircle.setAttribute('stroke-width', '1.5');
+        svg.appendChild(hubCircle);
+
+        const hubText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        hubText.setAttribute('x', cx);
+        hubText.setAttribute('y', cy + 5);
+        hubText.setAttribute('fill', '#ffffff');
+        hubText.setAttribute('font-size', '11');
+        hubText.setAttribute('font-weight', 'bold');
+        hubText.setAttribute('text-anchor', 'middle');
+        hubText.textContent = 'HUB';
+        svg.appendChild(hubText);
+      } else if (type === 'bus') {
+        // วาดสายหลัก Backbone แนวนอน
+        const bbY = cy;
+        const bbX1 = 60;
+        const bbX2 = w - 60;
+
+        const bb = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        bb.setAttribute('x1', bbX1);
+        bb.setAttribute('y1', bbY);
+        bb.setAttribute('x2', bbX2);
+        bb.setAttribute('y2', bbY);
+        bb.setAttribute('stroke', fault ? faultColor : 'var(--accent2)');
+        bb.setAttribute('stroke-width', '4');
+        if (fault) bb.setAttribute('stroke-dasharray', '8,4');
+        svg.appendChild(bb);
+
+        // Terminators
+        [bbX1, bbX2].forEach((tx) => {
+          const term = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          term.setAttribute('x', tx - 6);
+          term.setAttribute('y', bbY - 14);
+          term.setAttribute('width', '12');
+          term.setAttribute('height', '28');
+          term.setAttribute('fill', 'var(--ink)');
+          svg.appendChild(term);
+        });
+
+        // โหนดวางสลับบนล่าง
+        const step = (bbX2 - bbX1 - 60) / (N - 1);
+        nodes.length = 0;
+        for (let i = 0; i < N; i++) {
+          const nx = bbX1 + 30 + i * step;
+          const ny = i % 2 === 0 ? cy - 70 : cy + 70;
+          nodes.push({ x: nx, y: ny, id: 'N' + (i + 1) });
+
+          // Drop line
+          const drop = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          drop.setAttribute('x1', nx);
+          drop.setAttribute('y1', bbY);
+          drop.setAttribute('x2', nx);
+          drop.setAttribute('y2', ny);
+          drop.setAttribute('stroke', linkColor);
+          drop.setAttribute('stroke-width', '1.5');
+          svg.appendChild(drop);
+
+          // Tap point
+          const tap = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          tap.setAttribute('cx', nx);
+          tap.setAttribute('cy', bbY);
+          tap.setAttribute('r', '4');
+          tap.setAttribute('fill', 'var(--accent2)');
+          svg.appendChild(tap);
+        }
+      } else if (type === 'ring') {
+        for (let i = 0; i < N; i++) {
+          const next = (i + 1) % N;
+          const isBroken = fault && i === 0;
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', nodes[i].x);
+          line.setAttribute('y1', nodes[i].y);
+          line.setAttribute('x2', nodes[next].x);
+          line.setAttribute('y2', nodes[next].y);
+          line.setAttribute('stroke', isBroken ? faultColor : linkColor);
+          line.setAttribute('stroke-width', isBroken ? '2.5' : '2');
+          if (isBroken) line.setAttribute('stroke-dasharray', '5,5');
+          svg.appendChild(line);
+        }
+      }
+
+      // วาดโหนดทุกตัว
+      nodes.forEach((n, idx) => {
+        const isFaultyNode = fault && idx === 0 && (type === 'star' || type === 'ring');
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', n.x);
+        circle.setAttribute('cy', n.y);
+        circle.setAttribute('r', '17');
+        circle.setAttribute('fill', isFaultyNode ? 'var(--red-bg)' : nodeFill);
+        circle.setAttribute('stroke', isFaultyNode ? faultColor : nodeStroke);
+        circle.setAttribute('stroke-width', '2');
+        g.appendChild(circle);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', n.x);
+        text.setAttribute('y', n.y + 4);
+        text.setAttribute('fill', isFaultyNode ? faultColor : 'var(--ink)');
+        text.setAttribute('font-size', '10');
+        text.setAttribute('font-weight', 'bold');
+        text.setAttribute('text-anchor', 'middle');
+        text.textContent = n.id;
+        g.appendChild(text);
+
+        svg.appendChild(g);
+      });
+    }
+
+    topoSelect.addEventListener('change', updateTopology);
+    nodeSlider.addEventListener('input', updateTopology);
+    btnToggleFault.addEventListener('click', () => {
+      hasFault = !hasFault;
+      btnToggleFault.textContent = hasFault ? 'ฟื้นฟูสายส่งปกติ' : 'จำลองสายส่งขาด 1 จุด';
+      btnToggleFault.style.background = hasFault ? 'var(--red-bg)' : '';
+      updateTopology();
+    });
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      const cb = el.querySelector('.checklist-checkbox');
+      cb.checked = el.classList.contains('checked');
+    }
+
+    // เริ่มต้นระบบเมื่อโหลดหน้า
+    window.addEventListener('DOMContentLoaded', () => {
+      updateTopology();
+    });
+  </script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+</body>
+
+</html>

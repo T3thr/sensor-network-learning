@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>DataCom บทที่ 4: การส่งสัญญาณดิจิทัล · 305432 เครือข่ายเซนเซอร์</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/math.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/lesson.css?v=20261020">
+  <script src="../assets/js/header-component.js?v=20261019"></script>
+  <script src="../assets/js/chapter-layout.js?v=20261020" defer></script>
+  <style>
+    .blueprint-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-genesis { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-nomen { background: var(--paper3); color: var(--ink); border: 1px solid var(--rule); }
+    .badge-theory { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-sim { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple); }
+    .badge-check { background: var(--accent2-bg); color: var(--accent2); border: 1px solid var(--accent2); }
+    .badge-cross { background: var(--paper2); color: var(--ink-soft); border: 1px solid var(--rule); }
+
+    .phonetic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .phonetic-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .phonetic-term {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phonetic-pronounce {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .phonetic-desc {
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .phonetic-impl {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: var(--paper2);
+      border-left: 3px solid var(--purple);
+      font-size: 0.86rem;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-xs);
+    }
+    .calc-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-scenario {
+      background: var(--paper2);
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .canvas-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .canvas-ctrl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .canvas-box {
+      background: #0f172a;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-top: 14px;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .metric-pill-val {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .code-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.9rem;
+    }
+    .code-table th, .code-table td {
+      border: 1px solid var(--rule);
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .code-table th {
+      background: var(--paper2);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .code-table tr:hover {
+      background: var(--paper2);
+    }
+
+    .checklist-item {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .checklist-item:hover {
+      border-color: var(--accent);
+    }
+    .checklist-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .checklist-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist-body {
+      margin-top: 10px;
+      margin-left: 30px;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      display: none;
+    }
+    .checklist-item.checked {
+      background: var(--paper2);
+      border-color: var(--green);
+    }
+    .checklist-item.checked .checklist-body {
+      display: block;
+    }
+
+    .synthesis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+    .synthesis-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .synthesis-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <site-header></site-header>
+
+  <div class="chapter-container">
+
+    <!-- ═══════════════ SIDEBAR NAVIGATION ═══════════════ -->
+    <aside class="chapter-sidebar">
+      <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+        <a href="ch03.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">← Ch03</a>
+        <a href="ch05.html" class="nav-button" style="flex: 1; text-align: center; font-size: 0.82rem; padding: 6px;">Ch05 →</a>
+      </div>
+
+      <div style="font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);">
+        กำลังอ่าน: <span id="sidebar-live-section" style="font-weight: 700; color: var(--accent);">บทนำ</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 4px;">
+        <a href="#sec-genesis" class="sidebar-link active">1. ปฐมบทการแปลงสัญญาณดิจิทัล</a>
+        <a href="#sec-nomenclature" class="sidebar-link">2. อภิธานศัพท์และสัทศาสตร์</a>
+        <a href="#sec-line-coding" class="sidebar-link">3. รหัสสายสัญญาณ (Line Coding)</a>
+        <a href="#sec-block-coding" class="sidebar-link">4. รหัสแบบกลุ่ม (Block Coding 4B/5B)</a>
+        <a href="#sec-scrambling" class="sidebar-link">5. การกวนสัญญาณ (B8ZS &amp; HDB3)</a>
+        <a href="#sec-digitization" class="sidebar-link">6. การดิจิไทซ์สัญญาณอนาล็อก (PCM &amp; DM)</a>
+        <a href="#sec-calculations" class="sidebar-link">7. ตัวอย่างการคำนวณ 4 กรณีศึกษา</a>
+        <a href="#sec-silicon" class="sidebar-link">8. กายวิภาคระดับซิลิคอนและชิปเซนเซอร์</a>
+        <a href="#sec-simulator" class="sidebar-link">9. สตูดิโอจำลองรูปคลื่นเสมือนจริง</a>
+        <a href="#sec-checklist" class="sidebar-link">10. เช็กลิสต์ประเมินความเข้าใจวิศวกรรม</a>
+        <a href="#sec-synthesis" class="sidebar-link">11. สรุปสังเคราะห์โมเดลความคิด 3 มิติ</a>
+        <a href="#sec-crosslinks" class="sidebar-link">12. จุดเชื่อมโยงสู่เครือข่ายเซนเซอร์ (WSN)</a>
+      </nav>
+    </aside>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="chapter-content">
+
+      <!-- Header Banner -->
+      <div style="margin-bottom: 36px;">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">
+          หลักสูตรการสื่อสารข้อมูลและสถาปัตยกรรมเครือข่ายเซนเซอร์ · Data Communications Track
+        </div>
+        <h1 style="font-size: 2.2rem; font-weight: 900; color: var(--ink); line-height: 1.25; margin-bottom: 12px;">
+          บทที่ 4: การส่งสัญญาณดิจิทัล (Digital Transmission)
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7;">
+          เจาะลึกรากเหง้าทางฟิสิกส์และคณิตศาสตร์ของการแปลงสารสนเทศดิจิทัล (0 และ 1) ให้เป็นพัลส์แรงดันไฟฟ้าบนสายส่งจริง
+          ศึกษากลไกกำจัดปัญหาไฟตรงค้าง (DC Component), การรักษาระดับการอ้างอิงแรงดัน (Baseline Wandering), การสกัดสัญญาณนาฬิกาในตัวเอง (Self-Synchronization),
+          การบีบอัดแบนด์วิดท์ด้วย Block Coding 4B/5B, การกวนสัญญาณ B8ZS/HDB3, และการแปลงสัญญาณอนาล็อกเป็นดิจิทัลด้วย Pulse Code Modulation (PCM) และ Delta Modulation (DM)
+        </p>
+      </div>
+
+      <!-- SECTION 1: Genesis -->
+      <section id="sec-genesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-genesis">1. Origin &amp; Engineering Genesis</span>
+        <h2 class="section-title">ปฐมบททางวิศวกรรม: เหตุใดบิตดิจิทัลจึงไม่สามารถเดินทางบนสายทองแดงได้โดยตรง?</h2>
+
+        <p>
+          ในเชิงตรรกศาสตร์ของวิศวกรรมคอมพิวเตอร์ ข้อมูลดิจิทัลคือลำดับของตัวเลขฐานสอง 0 และ 1 ในอุดมคติ ซึ่งมีสถานะทางนามธรรมอันบริสุทธิ์
+          อย่างไรก็ดี เมื่อสารสนเทศดังกล่าวจำเป็นต้องเดินทางข้ามสายเคเบิลทองแดงคู่ตีเกลียว (Twisted-Pair), สายโคแอกเชียล (Coaxial), หรือลายวงจรพิมพ์ (PCB Trace)
+          ข้อมูลนามธรรมนั้นจะต้องถูกแปลงรูปให้เป็น <strong>ปรากฏการณ์ทางกายภาพ (Physical Phenomenon)</strong> นั่นคือ ระดับแรงดันไฟฟ้า (Voltage Levels) ในโดเมนเวลา
+        </p>
+
+        <p>
+          ในยุคเริ่มต้น วิศวกรพยายามใช้วิธีการที่ตรงไปตรงมาที่สุด เรียกว่า <strong>Unipolar Non-Return-to-Zero (Unipolar NRZ)</strong> โดยกำหนดให้บิต 1 แทนด้วยแรงดันไฟฟ้าบวก (+V โวลต์)
+          และบิต 0 แทนด้วยแรงดันศูนย์ (0 โวลต์) ทว่าเมื่อระบบเครือข่ายขยายตัวข้ามระยะทางไกล วงจรเครื่องรับกลับเผชิญกับ <em>หายนะทางวิศวกรรม 3 ประการ</em> ที่ทำให้การถอดรหัสบิตล้มเหลวโดยสิ้นเชิง:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+          <div style="background: var(--card-bg); border-left: 4px solid var(--red); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--rule);">
+            <strong style="color: var(--red); font-size: 1.05rem;">1. ปัญหาไฟตรงค้าง (DC Component)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              สัญญาณ Unipolar มีค่าเฉลี่ยแรงดันเป็นบวกเสมอ ทำให้เกิดพลังงานสะสมที่ความถี่ 0 Hz ซึ่งหม้อแปลงแยกสัญญาณ (Pulse Transformer) และคาปาซิเตอร์กั้นไฟตรง (AC Coupling Capacitor) ในการ์ดแลนไม่ยอมให้ผ่าน ส่งผลให้รูปคลื่นบิดเบี้ยวอย่างรุนแรง
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border-left: 4px solid var(--accent2); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--rule);">
+            <strong style="color: var(--accent2); font-size: 1.05rem;">2. ฐานแรงดันลอยตัว (Baseline Wandering)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              วงจรเครื่องรับตัดสินใจว่าบิตเป็น 0 หรือ 1 โดยการเปรียบเทียบแรงดันที่วัดได้กับค่าเฉลี่ยแรงดันพื้นฐาน (Baseline) หากส่งบิต 1 ติดต่อกันเป็นเวลานาน ฐานแรงดันจะลอยสูงขึ้นเรื่อยๆ จนเมื่อมีบิต 0 เข้ามา วงจรจะตัดสินใจผิดพลาดว่ายังคงเป็นบิต 1
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border-left: 4px solid var(--purple); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--rule);">
+            <strong style="color: var(--purple); font-size: 1.05rem;">3. สัญญาณนาฬิกาหลุดลอย (Clock Drift &amp; De-synchronization)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              หากไม่มีการเปลี่ยนระดับแรงดัน (Transition) เลยเป็นเวลานาน เช่น ส่งบิต 0 ติดต่อกัน 1,000 บิต วงจรกำเนิดสัญญาณนาฬิกาของเครื่องรับที่คลาดเคลื่อนเพียง 0.1% จะนับจำนวนบิตผิดพลาดทันที ทำให้สูญเสียการเข้าจังหวะเวลาอย่างกู้คืนไม่ได้
+            </p>
+          </div>
+        </div>
+
+        <p>
+          ความท้าทายเหล่านี้ผลักดันให้เกิดการประดิษฐ์คิดค้น <strong>รหัสสายสัญญาณ (Line Coding Schemes)</strong> ในรูปแบบต่างๆ เช่น Manchester Encoding ในมาตรฐานอีเทอร์เน็ต 10BASE-T,
+          Block Coding 4B/5B ใน 100BASE-FX, ตลอดจนเทคนิคการกวนสัญญาณ (Scrambling) B8ZS และ HDB3 บนโครงข่ายโทรคมนาคมดิจิทัลความเร็วสูง T1 และ E1 ซึ่งวิศวกรคอมพิวเตอร์จำเป็นต้องเข้าใจกลไกทางคณิตศาสตร์อย่างถ่องแท้
+        </p>
+      </section>
+
+      <!-- SECTION 2: Technical Glossary & Phonetics -->
+      <section id="sec-nomenclature" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-nomen">2. Technical Glossary &amp; Phonetics</span>
+        <h2 class="section-title">อภิธานศัพท์เทคนิค สัทศาสตร์ และการประยุกต์ใช้ในระบบจริง (Nomenclature &amp; Phonetics)</h2>
+
+        <p>
+          คำศัพท์เทคนิคมาตรฐานสากลตามข้อกำหนด IEEE, ITU-T, และ ANSI ที่นิสิตวิศวกรรมคอมพิวเตอร์ต้องออกเสียงและเข้าใจกลไกการทำงานระดับลึก:
+        </p>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Line Coding
+            <span class="phonetic-pronounce">ไลน์ โคด-ดิง</span>
+          </div>
+          <div class="phonetic-desc">
+            กระบวนการแปลงสารสนเทศดิจิทัลในรูปแบบของบิต (0 และ 1) ให้กลายเป็นสัญญาณดิจิทัลในรูปแบบของพัลส์แรงดันไฟฟ้าที่ไม่ต่อเนื่องในโดเมนเวลา เพื่อส่งผ่านตัวกลางสื่อสารทางกายภาพอย่างมีประสิทธิภาพ
+          </div>
+          <div class="phonetic-impl">
+            Context: ในชิปอีเทอร์เน็ต PHY (เช่น RTL8211) วงจร Line Coding จะรับบิตขนานจาก MAC ผ่านบัส MII/RGMII แล้วแปลงเป็นลำดับพัลส์ไฟฟ้าส่งออกสู่พอร์ต RJ-45
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Baud Rate (Signal Rate: S)
+            <span class="phonetic-pronounce">โบด์ เรต</span>
+          </div>
+          <div class="phonetic-desc">
+            จำนวนครั้งของการเปลี่ยนแปลงสถานะของสัญญาณ (Signal Elements หรือ Symbols) ในหนึ่งวินาที มีหน่วยเป็น โบด์ (Baud) ซึ่งสัมพันธ์กับอัตราบิต (Bit Rate: N) ตามสมการ S = c × N × (1/r) โดยที่ r คือจำนวนบิตที่บรรจุอยู่ในหนึ่งสัญลักษณ์สัญญาณ
+          </div>
+          <div class="phonetic-impl">
+            Context: การสื่อสาร UART บนไมโครคอนโทรลเลอร์ระบุความเร็วเป็น Baud Rate (เช่น 115200 Baud) ซึ่งหากใช้รหัส 1 บิตต่อ 1 สัญลักษณ์ (r = 1) อัตราโบด์จะมีค่าเท่ากับอัตราบิต
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            DC Component
+            <span class="phonetic-pronounce">ดี-ซี คอม-โพ-เนนต์</span>
+          </div>
+          <div class="phonetic-desc">
+            องค์ประกอบของกระแสไฟฟ้าตรง หรือพลังงานสัญญาณที่ความถี่ศูนย์เฮิรตซ์ (0 Hz) อันเกิดจากสัญญาณที่มีค่าเฉลี่ยของแรงดันไฟฟ้าไม่เป็นศูนย์ตลอดช่วงเวลาการส่งสัญญาณ
+          </div>
+          <div class="phonetic-impl">
+            Context: หม้อแปลงพัลส์ (Pulse Transformer / Magnetics) ที่คั่นอยู่ระหว่างการ์ดแลนและสายทองแดงทำหน้าที่เป็นฟิลเตอร์ตัดความถี่ 0 Hz สัญญาณที่มี DC Component จึงสูญเสียรูปทรงและเกิดความร้อนสะสม
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Baseline Wandering
+            <span class="phonetic-pronounce">เบส-ไลน์ วอน-เดอ-ริง</span>
+          </div>
+          <div class="phonetic-desc">
+            ปรากฏการณ์ที่ระดับแรงดันเฉลี่ยที่วงจรเครื่องรับใช้เป็นจุดอ้างอิงในการเปรียบเทียบระดับบิต (Threshold) เกิดการขยับเลื่อนขึ้นหรือลง อันเนื่องมาจากการสะสมของประจุไฟฟ้าเมื่อได้รับสัญญาณที่มีระดับแรงดันขั้วเดียวยาวนานต่อเนื่อง
+          </div>
+          <div class="phonetic-impl">
+            Context: วงจรเครื่องรับใช้ฟิลเตอร์กรองความถี่ต่ำเพื่อคำนวณ Baseline หากสัญญาณไม่มีการสลับขั้วอย่างสมดุล Baseline จะขยับจนเกิดข้อผิดพลาดในการตัดสินใจระดับบิต (Bit Decision Error)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Self-Synchronization
+            <span class="phonetic-pronounce">เซลฟ์ ซิง-โคร-ไน-เซ-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            คุณสมบัติของรหัสสายสัญญาณที่มีการเปลี่ยนระดับแรงดันไฟฟ้า (Transition) ภายในช่วงเวลาของแต่ละบิตอย่างสม่ำเสมอ ทำให้วงจรเครื่องรับสามารถสกัดสัญญาณนาฬิกา (Clock Extraction) ออกมาจากตัวข้อมูลได้โดยตรงโดยไม่ต้องเดินสายสัญญาณนาฬิกาแยกต่างหาก
+          </div>
+          <div class="phonetic-impl">
+            Context: ชิปเครื่องรับใช้วงจร Phase-Locked Loop (PLL) ตรวจจับขอบขาขึ้นและขาลงของสัญญาณเพื่อปรับความถี่และเฟสของสัญญาณนาฬิกาภายในให้ตรงกับฝั่งส่งตลอดเวลา
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Manchester Encoding
+            <span class="phonetic-pronounce">แมน-เชสเตอร์ เอ็น-โคด-ดิง</span>
+          </div>
+          <div class="phonetic-desc">
+            รหัสสายสัญญาณแบบสองขั้วสองสถานะ (Biphase) ที่บังคับให้เกิดการเปลี่ยนระดับแรงดันไฟฟ้าตรงกึ่งกลางของทุกๆ บิตเสมอ โดยบิต 1 แทนด้วยการเปลี่ยนจากต่ำไปสูง (Low-to-High) และบิต 0 แทนด้วยการเปลี่ยนจากสูงไปต่ำ (High-to-Low) ตามมาตรฐาน IEEE 802.3
+          </div>
+          <div class="phonetic-impl">
+            Context: ใช้ในมาตรฐานอีเทอร์เน็ตดั้งเดิม 10BASE-T และระบบแท็ก RFID เนื่องจากไม่มีปัญหา DC Component และกู้คืนสัญญาณนาฬิกาได้สมบูรณ์แบบ 100% แลกกับการที่ต้องใช้แบนด์วิดท์เป็นสองเท่าของอัตราบิต
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Alternate Mark Inversion (AMI)
+            <span class="phonetic-pronounce">อัล-เทอร์-เนต มาร์ก อิน-เวอร์-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            รหัสสายสัญญาณแบบสามระดับแรงดัน (Bipolar) โดยบิต 0 แทนด้วยแรงดันศูนย์โวลต์ ส่วนบิต 1 (Mark) แทนด้วยพัลส์แรงดันบวกและลบสลับขั้วกันไปเรื่อยๆ ทำให้ค่าเฉลี่ยแรงดันสุทธิเป็นศูนย์พอดี
+          </div>
+          <div class="phonetic-impl">
+            Context: เป็นรากฐานของโครงข่าย T1/E1 ข้อดีคือกำจัด DC Component และมีแบนด์วิดท์แคบกว่า NRZ ทว่ามีจุดอ่อนคือหากส่งบิต 0 ติดต่อกันยาวนาน เครื่องรับจะสูญเสียการซิงโครไนซ์สัญญาณนาฬิกา
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Block Coding (4B/5B)
+            <span class="phonetic-pronounce">บล็อก โคด-ดิง (โฟร์-บี ไฟฟ์-บี)</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการเข้ารหัสโดยแบ่งข้อมูลเป็นกลุ่มขนาด m บิต แล้วจับคู่แปลงเป็นกลุ่มรหัสใหม่ขนาด n บิต (โดยที่ n > m) เพื่อเพิ่มความซ้ำซ้อน (Redundancy) สำหรับป้องกันไม่ให้เกิดบิต 0 ติดต่อกันเกินกว่าที่กำหนด และใช้รหัสส่วนเกินสำหรับควบคุมความผิดพลาด
+          </div>
+          <div class="phonetic-impl">
+            Context: ในมาตรฐาน 100BASE-FX ข้อมูล 4 บิตจะถูกแปลงเป็น 5 บิต เพื่อรับประกันว่าจะไม่มีบิต 0 ติดต่อกันเกิน 3 บิต จากนั้นจึงส่งต่อด้วยรหัส NRZ-I ทำให้มีโอเวอร์เฮดแบนด์วิดท์เพียง 25% เทียบกับ Manchester ที่กินถึง 100%
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            B8ZS (Bipolar with 8-Zero Substitution)
+            <span class="phonetic-pronounce">บี-เอต-ซีด-เอส</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการกวนสัญญาณสำหรับโครงข่าย T1 ในอเมริกาเหนือ เมื่อตรวจพบลำดับบิต 0 ติดต่อกัน 8 ตัว จะแทนที่ด้วยรูปแบบพิเศษ '000VB0VB' โดยที่ V คือการจงใจละเมิดกฎสลับขั้ว (Bipolar Violation) เพื่อสร้างการเปลี่ยนระดับแรงดันให้เครื่องรับซิงค์สัญญาณนาฬิกาได้โดยไม่สูญเสียความสมดุล DC
+          </div>
+          <div class="phonetic-impl">
+            Context: ช่วยแก้จุดบอดของ AMI โดยไม่ต้องเพิ่มอัตราโบด์หรือขยายแบนด์วิดท์สายส่ง
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Pulse Code Modulation (PCM)
+            <span class="phonetic-pronounce">พัลส์ โคด มอด-ดู-เล-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            กระบวนการแปลงสัญญาณอนาล็อกต่อเนื่องให้กลายเป็นรหัสข้อมูลดิจิทัล ประกอบด้วย 3 ขั้นตอนหลักตามลำดับ: 1. การสุ่มสัญญาณ (Sampling) 2. การจัดระดับสัญญาณ (Quantization) 3. การเข้ารหัสไบนารี (Encoding)
+          </div>
+          <div class="phonetic-impl">
+            Context: มาตรฐานโทรศัพท์ดิจิทัลสากล ITU-T G.711 ใช้ PCM สุ่มสัญญาณเสียง 8,000 ครั้งต่อวินาที ความละเอียด 8 บิต ได้อัตราข้อมูลมาตรฐาน 64 kbps (DS0 Channel)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Quantization Error (Quantization Noise)
+            <span class="phonetic-pronounce">ควอน-ไต-เซ-ชัน เออร์-เรอร์</span>
+          </div>
+          <div class="phonetic-desc">
+            ความคลาดเคลื่อนที่หลีกเลี่ยงไม่ได้ในกระบวนการปัดเศษแรงดันอนาล็อกจริงให้ตรงกับระดับขั้นควอนไตเซชันที่ใกล้ที่สุด ค่าความคลาดเคลื่อนสูงสุดในอุดมคติมีค่าเท่ากับครึ่งหนึ่งของขนาดขั้นควอนไตซ์ (Δ / 2)
+          </div>
+          <div class="phonetic-impl">
+            Context: การเพิ่มความละเอียด ADC ทีละ 1 บิต จะช่วยลดกำลังของสัญญาณรบกวนควอนไตเซชันลงได้ 6 dB (ช่วยเพิ่ม SNR_q ตามกฎ 6.02N + 1.76 dB)
+          </div>
+        </div>
+
+        <div class="phonetic-card">
+          <div class="phonetic-term">
+            Delta Modulation (DM)
+            <span class="phonetic-pronounce">เดล-ต้า มอด-ดู-เล-ชัน</span>
+          </div>
+          <div class="phonetic-desc">
+            เทคนิคการแปลงสัญญาณอนาล็อกเป็นดิจิทัลแบบประหยัด โดยในแต่ละรอบการสุ่มจะส่งข้อมูลเพียง 1 บิต เพื่อระบุว่าสัญญาณในปัจจุบันมีค่า 'เพิ่มขึ้น (+Δ)' หรือ 'ลดลง (-Δ)' เมื่อเทียบกับระดับสัญญาณที่ประมาณไว้ในรอบก่อนหน้า
+          </div>
+          <div class="phonetic-impl">
+            Context: นิยมใช้ในชิปประมวลผลสัญญาณเสียงกำลังงานต่ำและหูฟังบลูทูธยุคแรก (CVSD) เนื่องจากวงจรฮาร์ดแวร์เรียบง่าย ไม่ต้องใช้วงจรหาระดับแรงดันหลายขั้น
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Line Coding Schemes Deep Dive -->
+      <section id="sec-line-coding" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">3. Exhaustive Theoretical Rigor</span>
+        <h2 class="section-title">สถาปัตยกรรมรหัสสายสัญญาณ (Line Coding Architecture)</h2>
+
+        <p>
+          หัวใจหลักของการส่งสัญญาณดิจิทัลคือการสร้างความสัมพันธ์ระหว่าง <strong>อัตราบิต (Data Rate / Bit Rate: N)</strong> กับ <strong>อัตราสัญญาณ (Signal Rate / Baud Rate: S)</strong>:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">S</span>
+          <span class="m-op">=</span>
+          <span class="m-var">c</span>
+          <span class="m-op">·</span>
+          <span class="m-var">N</span>
+          <span class="m-op">·</span>
+          <div class="m-frac">
+            <span class="m-numr">1</span>
+            <span class="m-denm"><span class="m-var">r</span></span>
+          </div>
+          <span class="m-op">[Baud]</span>
+        </div>
+
+        <p style="font-size: 0.94rem; line-height: 1.8;">
+          โดยที่:
+          <br>• <code>N</code> คืออัตราบิต มีหน่วยเป็น บิตต่อวินาที (bps)
+          <br>• <code>r</code> คืออัตราส่วนข้อมูล (Data Element per Signal Element) บ่งบอกว่าหนึ่งสัญลักษณ์สัญญาณบรรจุข้อมูลกี่บิต
+          <br>• <code>c</code> คือแฟกเตอร์ของรูปแบบข้อมูล (Case Factor) ในกรณีเลวร้ายสุด (Worst Case) <code>c = 1</code>, กรณีดีสุด (Best Case) <code>c = 0</code>, และกรณีเฉลี่ย (Average Case) สำหรับข้อมูลสุ่มทั่วไป <code>c = 1/2</code>
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">1. กลุ่มสัญญาณขั้วเดียว (Unipolar Scheme: NRZ)</h3>
+        <p>
+          เป็นรูปแบบที่เรียบง่ายที่สุด โดยระดับแรงดันไฟฟ้าทั้งหมดอยู่บนระนาบเดียวของแกนเวลา (เหนือศูนย์โวลต์) เช่น บิต 1 = +V, บิต 0 = 0V
+          <br><strong>ข้อวิเคราะห์ทางวิศวกรรม:</strong> สัญญาณนี้มีอัตราส่วน <code>r = 1</code> อัตราโบด์เฉลี่ย <code>S = N / 2</code>
+          ทว่ามีค่า DC Component สูงถึง <code>V / 2</code> และเกิดปัญหา Baseline Wandering อย่างรุนแรง จึงไม่สามารถใช้ส่งข้อมูลบนสายเคเบิลระยะเกินกว่าลายวงจรบนแผ่น PCB ได้
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">2. กลุ่มสัญญาณสองขั้ว (Polar Schemes)</h3>
+        <p>
+          ใช้แรงดันไฟฟ้าสองระดับที่มีขั้วตรงข้ามกันรอบแกนศูนย์โวลต์ (+V และ -V):
+        </p>
+        <ul style="margin: 10px 0 20px 24px; font-size: 0.94rem; line-height: 1.8;">
+          <li>
+            <strong>NRZ-L (Non-Return to Zero-Level):</strong> ระดับของแรงดันเป็นตัวตัดสินค่าบิต เช่น +V แทนบิต 0 และ -V แทนบิต 1 จุดอ่อนคือหากสายสัญญาณสลับขั้ว (Polarity Inversion) ข้อมูลจะกลับทิศทั้งหมด
+          </li>
+          <li>
+            <strong>NRZ-I (Non-Return to Zero-Invert):</strong> ใช้การเปลี่ยนระดับแรงดัน (Transition) เป็นตัวตัดสินค่าบิต โดยหากพบ <em>บิต 1 จะต้องเกิดการสลับระดับแรงดัน</em> ส่วนบิต 0 จะรักษาระดับแรงดันเดิมไว้ ทนทานต่อการสลับสาย แต่ยังมีปัญหา Clock Drift หากมีบิต 0 ติดต่อกันยาวนาน
+          </li>
+          <li>
+            <strong>RZ (Return to Zero):</strong> แก้ปัญหาการซิงค์โดยกำหนดให้สัญญาณต้อง <em>วกกลับมาที่ 0 โวลต์ ณ กึ่งกลางของทุกๆ บิตเสมอ</em> โดยบิต 1 คือครึ่งแรกเป็น +V ครึ่งหลังเป็น 0V ส่วนบิต 0 คือครึ่งแรกเป็น -V ครึ่งหลังเป็น 0V จุดตายคือต้องใช้การเปลี่ยนแปลงแรงดันถึง 2 ครั้งต่อหนึ่งบิต ส่งผลให้ต้องการแบนด์วิดท์เพิ่มขึ้นเป็นสองเท่า
+          </li>
+          <li>
+            <strong>Manchester Encoding (IEEE 802.3):</strong> กำหนดให้เกิด Transition กึ่งกลางบิตเสมอ โดยบิต 1 แทนด้วย Low-to-High (-V ไป +V) และบิต 0 แทนด้วย High-to-Low (+V ไป -V) ได้ทั้ง Self-Synchronization สมบูรณ์แบบ และมีค่าเฉลี่ย DC Component เท่ากับศูนย์พอดี ทว่าอัตราส่วน <code>r = 1/2</code> ทำให้ต้องการแบนด์วิดท์เป็นสองเท่าของ NRZ
+          </li>
+          <li>
+            <strong>Differential Manchester (IEEE 802.5):</strong> กึ่งกลางบิตเกิด Transition เพื่อรักษาสัญญาณนาฬิกาเสมอ แต่ค่าบิตจะดูที่ <em>จุดเริ่มต้นของบิต</em>: หากเริ่มต้นบิตมีการเปลี่ยนขั้ว แทนด้วยบิต 0 หากไม่มีการเปลี่ยนขั้ว แทนด้วยบิต 1 มีภูมิคุ้มกันต่อสัญญาณรบกวนและการกลับขั้วสายส่งสูงสุด
+          </li>
+        </ul>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 14px;">3. กลุ่มสัญญาณสามระดับ (Bipolar Scheme: AMI &amp; Pseudoternary)</h3>
+        <p>
+          ใช้ระดับแรงดันไฟฟ้า 3 ระดับ (+V, 0, -V):
+          <br>ใน <strong>AMI (Alternate Mark Inversion)</strong>: บิต 0 ถูกแทนด้วย 0 โวลต์อย่างคงที่ ส่วนบิต 1 จะสลับขั้วระหว่าง +V และ -V อย่างเคร่งครัด
+          <br><strong>ข้อได้เปรียบทางวิศวกรรม:</strong>
+          <br>1. พลังงานส่วนใหญ่ของสัญญาณ AMI กระจุกตัวอยู่ที่ความถี่ <code>N / 2</code> และค่าพลังงานที่ 0 Hz มีค่าเป็นศูนย์ (Zero DC Component) พอดี
+          <br>2. มีคุณสมบัติตรวจจับความผิดพลาดในตัว (Built-in Error Detection): หากเครื่องรับตรวจพบพัลส์บวกตามหลังพัลส์บวกโดยไม่มีพัลส์ลบคั่นกลาง จะทราบได้ทันทีว่าเกิดสัญญาณรบกวนบนสายส่ง (Bipolar Violation)
+        </p>
+
+        <!-- เปรียบเทียบตารางรหัสสายสัญญาณ -->
+        <table class="code-table">
+          <thead>
+            <tr>
+              <th>รหัสสายสัญญาณ (Scheme)</th>
+              <th>แบนด์วิดท์ขั้นต่ำ (B_min)</th>
+              <th>การตัดไฟตรง (DC Blocking)</th>
+              <th>การซิงค์นาฬิกา (Self-Sync)</th>
+              <th>การประยุกต์ใช้งานจริง</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unipolar NRZ</strong></td>
+              <td>N / 2</td>
+              <td>แย่มาก (มี DC สูง)</td>
+              <td>ไม่มี</td>
+              <td>ลายวงจรภายในบอร์ด PCB</td>
+            </tr>
+            <tr>
+              <td><strong>Polar NRZ-I</strong></td>
+              <td>N / 2</td>
+              <td>ปานกลาง</td>
+              <td>มีเฉพาะเมื่อมีบิต 1</td>
+              <td>USB 2.0 (NRZI with Bit Stuffing)</td>
+            </tr>
+            <tr>
+              <td><strong>Manchester</strong></td>
+              <td>N</td>
+              <td>สมบูรณ์แบบ (DC = 0)</td>
+              <td>สมบูรณ์แบบ 100%</td>
+              <td>Ethernet 10BASE-T, RFID</td>
+            </tr>
+            <tr>
+              <td><strong>Differential Manchester</strong></td>
+              <td>N</td>
+              <td>สมบูรณ์แบบ (DC = 0)</td>
+              <td>สมบูรณ์แบบ 100%</td>
+              <td>Token Ring (IEEE 802.5)</td>
+            </tr>
+            <tr>
+              <td><strong>Bipolar AMI</strong></td>
+              <td>N / 2</td>
+              <td>สมบูรณ์แบบ (DC = 0)</td>
+              <td>สูญเสียเมื่อเจอเลข 0 ยาว</td>
+              <td>T1 Line (1.544 Mbps), ISDN</td>
+            </tr>
+            <tr>
+              <td><strong>2B1Q (Multilevel)</strong></td>
+              <td>N / 4</td>
+              <td>มี DC เล็กน้อย</td>
+              <td>ปานกลาง</td>
+              <td>ISDN BRI, HDSL, ADSL</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SECTION 4: Block Coding 4B/5B -->
+      <section id="sec-block-coding" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">4. Block Coding Architecture</span>
+        <h2 class="section-title">รหัสแบบกลุ่ม 4B/5B (Block Coding 4B/5B Architecture)</h2>
+
+        <p>
+          ในการพัฒนาเครือข่าย Fast Ethernet (100 Mbps) วิศวกรพบว่าหากยังคงใช้ Manchester Encoding เหมือนอีเทอร์เน็ต 10 Mbps เดิม สายส่งจะต้องรองรับอัตราโบด์สูงถึง 200 Mbaud (ต้องการแบนด์วิดท์ 100 MHz) ซึ่งสายทองแดงคู่ตีเกลียว Category 5 ในยุคนั้นไม่สามารถรองรับได้
+          ทว่าหากใช้ NRZ-I โดยตรง ก็จะเสี่ยงต่อการหลุดซิงค์เมื่อส่งบิต 0 ต่อเนื่อง
+        </p>
+
+        <p>
+          ทางออกระดับอัจฉริยะคือการใช้ <strong>Block Coding 4B/5B</strong>:
+          โดยนำข้อมูลขนาด 4 บิต (ซึ่งมีรูปแบบที่เป็นไปได้ 2⁴ = 16 รูปแบบ) มาจับคู่แปลงให้เป็นรหัสขนาด 5 บิต (ซึ่งมีรูปแบบที่เป็นไปได้ถึง 2⁵ = 32 รูปแบบ)
+          โดย <em>เลือกเฉพาะกลุ่มรหัส 5 บิตที่มีเลข 0 นำหน้าไม่เกิน 1 ตัว และมีเลข 0 ลงท้ายไม่เกิน 2 ตัว</em>
+        </p>
+
+        <div style="background: var(--paper2); border-left: 4px solid var(--accent); padding: 16px; border-radius: var(--radius-sm); margin: 18px 0; font-size: 0.94rem; line-height: 1.7;">
+          <strong>กฎเหล็กของรหัส 4B/5B:</strong>
+          เมื่อนำรหัส 5 บิตมาเรียงต่อกันเป็นกระแสข้อมูล จะรับประกันว่า <strong>จะไม่มีการเกิดบิต 0 ติดต่อกันเกิน 3 บิตอย่างเด็ดขาด!</strong> (ลงท้ายมากสุด 2 ตัว + นำหน้ามากสุด 1 ตัว = 3 ตัว)
+          เมื่อนำกระแสบิต 5B นี้ไปเข้ารหัสต่อด้วย NRZ-I สัญญาณจะมีการเปลี่ยนระดับแรงดันอย่างน้อย 1 ครั้งในทุกๆ 3 บิต ทำให้ Phase-Locked Loop (PLL) ของเครื่องรับสามารถตรึงสัญญาณนาฬิกาได้อย่างไม่มีวันหลุด
+        </div>
+
+        <p>
+          <strong>การคำนวณแบนด์วิดท์และประสิทธิภาพ:</strong>
+          <br>ข้อมูล 100 Mbps เมื่อผ่าน 4B/5B จะมีอัตราบิตเพิ่มขึ้นเป็น:
+          <br><code>N_coded = 100 Mbps × (5 / 4) = 125 Mbps</code>
+          <br>และเมื่อส่งด้วย NRZ-I (ซึ่งมี r = 1) อัตราโบด์เฉลี่ยคือ:
+          <br><code>S = 125 Mbps / 2 = 62.5 Mbaud</code> (ต้องการแบนด์วิดท์ขั้นต่ำเพียง 62.5 MHz)
+          <br>ประหยัดแบนด์วิดท์กว่า Manchester Coding (ที่ต้องการ 100 MHz) ได้ถึง <strong>37.5%</strong> โดยมีค่าโอเวอร์เฮดเพิ่มขึ้นเพียง 25% เท่านั้น
+        </p>
+      </section>
+
+      <!-- SECTION 5: Scrambling -->
+      <section id="sec-scrambling" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">5. Scrambling Mechanisms</span>
+        <h2 class="section-title">กลไกการกวนสัญญาณเพื่อรักษาจังหวะเวลา (Scrambling: B8ZS &amp; HDB3)</h2>
+
+        <p>
+          ในระบบโทรคมนาคมสายส่งทางไกล เช่น ระบบสาย T1 (1.544 Mbps) และ E1 (2.048 Mbps) การเพิ่มอัตราบิตด้วย Block Coding (เช่น เพิ่ม 25%) ถือเป็นเรื่องยอมรับไม่ได้ เนื่องจากช่องสัญญาณคู่สายทองแดงถูกออกแบบฟิลเตอร์ตัดความถี่ไว้อย่างเข้มงวด
+          วิศวกรจึงคิดค้นเทคนิค <strong>การกวนสัญญาณ (Scrambling)</strong> ซึ่งทำหน้าที่แทนที่ลำดับบิต 0 ที่ยาวเกินไป โดยไม่ทำให้อัตราข้อมูลหรืออัตราโบด์เพิ่มขึ้นแม้แต่บิตเดียว:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. B8ZS (Bipolar with 8-Zero Substitution) - มาตรฐาน T1 อเมริกาเหนือ</h3>
+        <p>
+          เมื่อระบบตรวจพบลำดับบิต 0 ติดต่อกัน 8 ตัว (00000000) ระบบจะสอดแทรกรูปแบบพิเศษขนาด 8 บิตเข้าไปแทนที่ นั่นคือ:
+        </p>
+        <div class="m-block" style="font-size: 1.15rem;">
+          <span class="m-num">0</span> <span class="m-num">0</span> <span class="m-num">0</span>
+          <span class="m-var" style="color: var(--red); font-weight: 800;">V</span>
+          <span class="m-var" style="color: var(--green); font-weight: 800;">B</span>
+          <span class="m-num">0</span>
+          <span class="m-var" style="color: var(--red); font-weight: 800;">V</span>
+          <span class="m-var" style="color: var(--green); font-weight: 800;">B</span>
+        </div>
+        <p style="font-size: 0.92rem; line-height: 1.7;">
+          • <strong>V (Bipolar Violation):</strong> พัลส์แรงดันที่มีขั้ว <em>เหมือนกับ</em> พัลส์บิต 1 ตัวก่อนหน้าอย่างจงใจ (ละเมิดกฎ AMI) เพื่อให้เครื่องรับจับได้ว่าเป็นรหัสพิเศษ
+          <br>• <strong>B (Bipolar Pulse):</strong> พัลส์แรงดันที่มีขั้ว <em>สลับตามปกติ</em> ตามกฎ AMI เพื่อรักษาความสมดุลของกระแสตรงสุทธิ (Net DC Balance = 0)
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. HDB3 (High-Density Bipolar 3-Zero) - มาตรฐาน E1 ยุโรปและสากล</h3>
+        <p>
+          เคร่งครัดกว่า B8ZS โดยไม่อนุญาตให้มีบิต 0 ติดต่อกันเกิน 3 ตัว หากตรวจพบบิต 0 สี่ตัวติดต่อกัน (0000) จะแทนที่ด้วย <code>000V</code> หรือ <code>B00V</code> ขึ้นอยู่กับจำนวนพัลส์ที่ไม่ใช่ศูนย์นับตั้งแต่การแทนที่ครั้งล่าสุด:
+        </p>
+        <ul style="margin: 8px 0 16px 24px; font-size: 0.92rem; line-height: 1.7;">
+          <li>หากจำนวนพัลส์ที่ไม่ใช่ศูนย์เป็น <strong>จำนวนคี่ (Odd)</strong>: จะแทนที่ด้วย <code>000V</code> (พัลส์ V ตัวเดียวก็เพียงพอที่จะรักษาสมดุล)</li>
+          <li>หากจำนวนพัลส์ที่ไม่ใช่ศูนย์เป็น <strong>จำนวนคู่ (Even)</strong>: จะแทนที่ด้วย <code>B00V</code> (ต้องใส่พัลส์ B นำหน้า เพื่อลบล้างประจุของพัลส์ V ไม่ให้เกิด DC สะสม)</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6: Digitization of Analog Signals -->
+      <section id="sec-digitization" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">6. Digitization Fundamentals</span>
+        <h2 class="section-title">การแปลงสัญญาณอนาล็อกเป็นดิจิทัล (Digitization: PCM &amp; Delta Modulation)</h2>
+
+        <p>
+          สัญญาณจากธรรมชาติ เช่น เสียงพูด อุณหภูมิ และแรงสั่นสะเทือนทางกายภาพ ล้วนเป็นสัญญาณอนาล็อกต่อเนื่อง เพื่อที่จะส่งผ่านระบบดิจิทัล สัญญาณเหล่านี้ต้องผ่านกระบวนการแปลงสภาพด้วย 2 เทคนิคหลัก:
+        </p>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 24px 0 12px;">1. Pulse Code Modulation (PCM)</h3>
+        <p>
+          ประกอบด้วย 3 ลำดับขั้นอันเป็นมาตรฐานทองคำของวิศวกรรมสื่อสาร:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 18px 0;">
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--accent); font-size: 1.05rem;">ขั้นที่ 1: การสุ่มสัญญาณ (Sampling)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.6;">
+              แปลงสัญญาณต่อเนื่องในโดเมนเวลาให้กลายเป็นสัญญาณพัลส์ไม่ต่อเนื่อง (PAM: Pulse Amplitude Modulation) ตามทฤษฎีบทการสุ่มไนควิสต์:
+              <br><code>f_s ≥ 2 · f_max</code>
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--accent); font-size: 1.05rem;">ขั้นที่ 2: การควอนไทซ์ (Quantization)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.6;">
+              การแบ่งช่วงแอมพลิจูดออกเป็น L ระดับขั้น โดยที่ <code>L = 2ⁿ</code> (เมื่อ n คือจำนวนบิตต่อตัวอย่าง) แต่ละตัวอย่างจะถูกปัดเศษเข้าหาระดับขั้นที่ใกล้เคียงที่สุด เกิดสัญญาณรบกวนควอนไตซ์
+            </p>
+          </div>
+
+          <div style="background: var(--card-bg); border: 1px solid var(--rule); padding: 18px; border-radius: var(--radius-sm);">
+            <strong style="color: var(--accent); font-size: 1.05rem;">ขั้นที่ 3: การเข้ารหัส (Encoding)</strong>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.6;">
+              แปลงระดับควอนไตซ์แต่ละระดับให้กลายเป็นรหัสเลขฐานสองขนาด n บิต ส่งออกสู่สายส่งด้วยอัตราบิตข้อมูล:
+              <br><code>Data Rate = f_s · n [bps]</code>
+            </p>
+          </div>
+        </div>
+
+        <p>
+          <strong>ทฤษฎีอัตราส่วนสัญญาณต่อสัญญาณรบกวนควอนไตเซชัน (SNR_q):</strong>
+          <br>สำหรับสัญญาณไซน์ที่ครอบคลุมเต็มสเกลของ ADC อัตราส่วน SNR_q สูงสุดในหน่วยเดซิเบลถูกคำนวณจากสูตร:
+        </p>
+
+        <div class="m-block">
+          <span class="m-var">SNR</span><span class="m-sub">q(dB)</span>
+          <span class="m-op">=</span>
+          6.02
+          <span class="m-op">·</span>
+          <span class="m-var">n</span>
+          <span class="m-op">+</span>
+          1.76
+          <span class="m-op">[dB]</span>
+        </div>
+
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent); margin: 28px 0 12px;">2. Delta Modulation (DM)</h3>
+        <p>
+          ในระบบที่ต้องการวงจรขนาดกะทัดรัดและประหยัดพลังงานสูง เช่น โหนดเซนเซอร์ตรวจวัดเสียงหรือแรงดัน DM จะทำการเปรียบเทียบค่าสัญญาณปัจจุบันกับสัญญาณที่ประมาณการไว้รอบก่อนหน้า:
+          <br>• หากสัญญาณจริง <em>สูงกว่า</em> ค่าประมาณการ: ส่งบิต <strong>1</strong> และปรับบันไดแรงดันขึ้นไปอีก <code>+Δ</code>
+          <br>• หากสัญญาณจริง <em>ต่ำกว่า</em> ค่าประมาณการ: ส่งบิต <strong>0</strong> และปรับบันไดแรงดันลงไปอีก <code>-Δ</code>
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0;">
+          <div style="background: var(--paper2); padding: 16px; border-radius: var(--radius-sm); border-left: 4px solid var(--red);">
+            <strong style="color: var(--red);">ความบิดเบือนจากการชันเกิน (Slope Overload Distortion)</strong>
+            <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              เกิดขึ้นเมื่อสัญญาณอนาล็อกอินพุตเปลี่ยนระดับเร็วมากจนบันไดสเต็ป Δ ไต่ตามไม่ทัน (ความชันของสัญญาณสูงกว่า <code>Δ / T_s</code>)
+            </p>
+          </div>
+          <div style="background: var(--paper2); padding: 16px; border-radius: var(--radius-sm); border-left: 4px solid var(--accent2);">
+            <strong style="color: var(--accent2);">สัญญาณรบกวนแบบเม็ดทราย (Granular Noise)</strong>
+            <p style="font-size: 0.88rem; color: var(--ink-soft); margin-top: 6px; line-height: 1.6;">
+              เกิดขึ้นเมื่อสัญญาณอนาล็อกอินพุตมีค่าคงที่ราบเรียบ แต่บันไดสเต็ป Δ ยังคงแกว่งขึ้นลงสลับไปมาครอบแกนศูนย์
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: Worked Calculation Examples -->
+      <section id="sec-calculations" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">7. Worked Calculation Examples</span>
+        <h2 class="section-title">การพิสูจน์คณิตศาสตร์และตัวอย่างคำนวณจริง 4 กรณีศึกษา (Worked Examples)</h2>
+
+        <!-- Example 4.1 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 4.1: การวิเคราะห์เปรียบเทียบอัตราโบด์และแบนด์วิดท์ของรหัสสายสัญญาณสำหรับสตรีม 100 Mbps</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> ระบบเครือข่ายต้องการส่งสตรีมข้อมูลดิจิทัลขนาด N = 100 Mbps ข้ามสายสัญญาณ จงคำนวณหาอัตราโบด์เฉลี่ย (Average Baud Rate: S) และแบนด์วิดท์ขั้นต่ำเชิงทฤษฎี (B_min) สำหรับรหัสสายสัญญาณ 4 ประเภทต่อไปนี้:
+            <br>1. Polar NRZ-L
+            <br>2. Manchester Encoding
+            <br>3. 4B/5B ร่วมกับ NRZ-I
+            <br>4. 2B1Q (Two Binary, One Quaternary)
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณสำหรับ Polar NRZ-L</strong></p>
+            <div class="math-step">
+              สำหรับ NRZ-L หนึ่งสัญลักษณ์สัญญาณบรรจุข้อมูล 1 บิตพอดี ดังนั้น r = 1 และสำหรับข้อมูลสุ่ม c = 0.5:
+              <br><code>S = c · N · (1/r) = 0.5 · (100 × 10⁶) · (1/1) = 50 × 10⁶ Baud = 50 Mbaud</code>
+              <br>แบนด์วิดท์ขั้นต่ำเชิงทฤษฎีคือ B_min = S = <strong>50 MHz</strong>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณสำหรับ Manchester Encoding</strong></p>
+            <div class="math-step">
+              ใน Manchester เกิดการเปลี่ยนสถานะ 2 ครั้งต่อหนึ่งบิต ดังนั้น r = 1/2 และ c = 1:
+              <br><code>S = c · N · (1/r) = 1 · (100 × 10⁶) · (1 / 0.5) = 200 × 10⁶ Baud = 200 Mbaud</code>
+              <br>แบนด์วิดท์ขั้นต่ำเชิงทฤษฎีคือ B_min = S / 2 (สำหรับฮาร์มอนิกแรก) หรือต้องการแบนด์วิดท์ใช้งานจริง = <strong>100 MHz</strong> (กินแบนด์วิดท์เป็น 2 เท่าของ NRZ)
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: คำนวณสำหรับ 4B/5B ร่วมกับ NRZ-I</strong></p>
+            <div class="math-step">
+              ข้อมูล 100 Mbps ถูกแปลงเป็นรหัส 125 Mbps (ขยายขนาด 5/4 เท่า) แล้วส่งด้วย NRZ-I (r = 1, c = 0.5):
+              <br><code>N_coded = 100 × (5/4) = 125 Mbps</code>
+              <br><code>S = 0.5 · 125 × 10⁶ · (1/1) = 62.5 × 10⁶ Baud = 62.5 Mbaud</code>
+              <br>แบนด์วิดท์ขั้นต่ำคือ B_min = <strong>62.5 MHz</strong> (ประหยัดแบนด์วิดท์กว่า Manchester ถึง 37.5%)
+            </div>
+
+            <p><strong>ขั้นตอนที่ 4: คำนวณสำหรับ 2B1Q</strong></p>
+            <div class="math-step">
+              รหัส 2B1Q ใช้ 4 ระดับแรงดัน (+3, +1, -1, -3) โดยหนึ่งสัญลักษณ์บรรจุข้อมูล 2 บิต (r = 2, c = 0.5):
+              <br><code>S = 0.5 · (100 × 10⁶) · (1/2) = 25 × 10⁶ Baud = 25 Mbaud</code>
+              <br>แบนด์วิดท์ขั้นต่ำลดลงเหลือเพียง B_min = <strong>25 MHz</strong> (ประหยัดแบนด์วิดท์ได้ถึง 75% เมื่อเทียบกับ Manchester)
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4.2 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 4.2: การออกแบบช่องสัญญาณเสียงดิจิทัล PCM ตามมาตรฐาน ITU-T G.711</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> สัญญาณเสียงพูดของมนุษย์ในโครงข่ายโทรศัพท์มาตรฐานถูกกรองแถบความถี่ให้จำกัดอยู่ที่ f_max = 4,000 Hz จงออกแบบระบบแปลงสัญญาณดิจิทัล PCM เพื่อให้ได้อัตราส่วนสัญญาณต่อสัญญาณรบกวนควอนไตซ์ไม่ต่ำกว่า 45 dB พร้อมคำนวณหา:
+            <br>1. อัตราการสุ่มตัวอย่างขั้นต่ำตามเกณฑ์ไนควิสต์ (Nyquist Rate: f_s)
+            <br>2. จำนวนบิตต่อตัวอย่าง (n) และจำนวนระดับควอนไตซ์ (L)
+            <br>3. อัตราบิตข้อมูลขาออก (Output Bit Rate)
+            <br>4. ค่า SNR_q จริงที่ระบบทำได้
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหาอัตราการสุ่มตัวอย่างขั้นต่ำ (f_s)</strong></p>
+            <div class="math-step">
+              ตามทฤษฎีบทการสุ่มของไนควิสต์:
+              <br><code>f_s = 2 · f_max = 2 · 4,000 Hz = 8,000 ตัวอย่างต่อวินาที (Samples/sec)</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: คำนวณหาจำนวนบิตต่อตัวอย่าง (n)</strong></p>
+            <div class="math-step">
+              จากสมการอัตราส่วนสัญญาณต่อสัญญาณรบกวนควอนไตซ์:
+              <br><code>SNR_q(dB) = 6.02 · n + 1.76 ≥ 45 dB</code>
+              <br><code>6.02 · n ≥ 45 - 1.76 = 43.24</code>
+              <br><code>n ≥ 43.24 / 6.02 = 7.18 บิต</code>
+              <br>เนื่องจากจำนวนบิตต้องเป็นจำนวนเต็ม จึงต้องเลือก <strong>n = 8 บิตต่อตัวอย่าง</strong>
+              <br>จำนวนระดับควอนไตเซชันคือ <code>L = 2⁸ = 256 ระดับ</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: คำนวณหาอัตราบิตข้อมูลขาออก</strong></p>
+            <div class="math-step">
+              <code>Data Rate = f_s · n = 8,000 samples/s · 8 bits/sample = 64,000 bps = 64 kbps</code>
+              <br>นี่คือที่มาของ <strong>ช่องสัญญาณมาตรฐาน DS0 (Digital Signal 0: 64 kbps)</strong> ซึ่งเป็นรากฐานของระบบโทรศัพท์ทั่วโลก
+            </div>
+
+            <p><strong>ขั้นตอนที่ 4: คำนวณหาค่า SNR_q จริง</strong></p>
+            <div class="math-step">
+              <code>SNR_q = 6.02 · (8) + 1.76 = 48.16 + 1.76 = 49.92 dB</code>
+              <br>ระบบมีอัตราส่วนสัญญาณต่อสัญญาณรบกวนสูงกว่าข้อกำหนด 45 dB อยู่ถึง 4.92 dB (Safety Margin)
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4.3 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 4.3: การคำนวณขนาดขั้นแรงดันใน Delta Modulation เพื่อป้องกันความบิดเบือนจากการชันเกิน</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> สัญญาณอนาล็อกทดสอบเป็นคลื่นไซน์ m(t) = A · sin(2π · f · t) มีแอมพลิจูดสูงสุด A = 2 โวลต์ และความถี่ f = 1,000 Hz ถูกแปลงเป็นดิจิทัลด้วยวิธี Delta Modulation โดยมีอัตราการสุ่มตัวอย่าง f_s = 64,000 ตัวอย่างต่อวินาที จงคำนวณหาขนาดของขั้นแรงดันขั้นต่ำ (Minimum Step Size: Δ) ที่จะรับประกันว่าจะไม่เกิดความบิดเบือนจากการชันเกิน (Slope Overload Distortion)
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>ขั้นตอนที่ 1: คำนวณหาอัตราการเปลี่ยนแปลงสูงสุดของสัญญาณอินพุต (Maximum Slope)</strong></p>
+            <div class="math-step">
+              หาอนุพันธ์ของ m(t) เทียบกับเวลา t:
+              <br><code>dm(t)/dt = 2π · f · A · cos(2π · f · t)</code>
+              <br>อัตราการเปลี่ยนแปลงสูงสุดเกิดขึ้นเมื่อ cos มีค่าเท่ากับ 1:
+              <br><code>|dm/dt|_max = 2π · f · A = 2 · 3.14159 · 1,000 Hz · 2 V = 12,566.37 โวลต์ต่อวินาที</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 2: ตั้งสมการเงื่อนไขป้องกัน Slope Overload</strong></p>
+            <div class="math-step">
+              ระบบ Delta Modulation สามารถไต่ระดับแรงดันได้สูงสุดเท่ากับขนาดขั้นแรงดัน Δ ต่อหนึ่งคาบเวลาการสุ่ม T_s:
+              <br><code>ความชันสูงสุดของบันได DM = Δ / T_s = Δ · f_s</code>
+              <br>เพื่อไม่ให้เกิด Slope Overload ความชันของบันไดต้องไม่น้อยกว่าความชันสูงสุดของสัญญาณ:
+              <br><code>Δ · f_s ≥ |dm/dt|_max</code>
+              <br><code>Δ ≥ |dm/dt|_max / f_s</code>
+            </div>
+
+            <p><strong>ขั้นตอนที่ 3: แทนค่าคำนวณหาขนาดขั้นแรงดัน Δ</strong></p>
+            <div class="math-step">
+              <code>Δ ≥ 12,566.37 V/s / 64,000 samples/s = 0.1963 โวลต์ = 196.3 มิลลิโวลต์ (mV)</code>
+              <br><strong>บทสรุปเชิงวิศวกรรม:</strong> ขนาดขั้นแรงดันต้องตั้งค่าไว้ไม่ต่ำกว่า <strong>196.3 mV</strong> มิฉะนั้นบันไดแรงดันของเครื่องรับจะตอบสนองต่อรูปคลื่นไม่ทัน ทำให้เกิดความเพี้ยนเสียงรุนแรง
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4.4 -->
+        <div class="calc-card">
+          <div class="calc-title">ตัวอย่าง 4.4: การแกะรอยการกวนสัญญาณ B8ZS และ HDB3 เพื่อกำจัดลำดับบิตศูนย์ต่อเนื่อง</div>
+          <div class="calc-scenario">
+            <strong>สถานการณ์วิศวกรรม:</strong> สายส่งโทรคมนาคมได้รับลำดับบิตดิจิทัล <code>1 0 0 0 0 0 0 0 0 1</code> โดยสมมติว่าพัลส์บิต 1 ตัวแรกก่อนหน้านี้มีระดับแรงดันเป็น <strong>ขั้วบวก (+V)</strong> จงเขียนลำดับระดับแรงดันขาออกตามรหัส Bipolar AMI ปกติเปรียบเทียบกับการแทนที่ด้วยกลไก <strong>B8ZS</strong> และ <strong>HDB3</strong> พร้อมพิสูจน์ความสมดุลของกระแสตรง
+          </div>
+
+          <div style="font-size: 0.94rem; line-height: 1.8;">
+            <p><strong>กรณีที่ 1: การเข้ารหัส Bipolar AMI แบบดั้งเดิม (ไม่มี Scrambling)</strong></p>
+            <div class="math-step">
+              • บิต 1 ตัวแรก: +V
+              <br>• บิต 0 แปดตัว: 0 0 0 0 0 0 0 0
+              <br>• บิต 1 ตัวสุดท้าย: -V (สลับขั้วจากพัลส์ก่อนหน้า)
+              <br>ลำดับแรงดัน: <code>+V, 0, 0, 0, 0, 0, 0, 0, 0, -V</code>
+              <br><em>วิเคราะห์:</em> ช่วงบิต 0 แปดตัวติดต่อกันทำให้ไม่มีการเปลี่ยนแรงดันยาวนานถึง 8 บิตอินเทอร์วัล เครื่องรับสูญเสียการซิงโครไนซ์สัญญาณนาฬิกา
+            </div>
+
+            <p><strong>กรณีที่ 2: การแทนที่ด้วย B8ZS (มาตรฐาน T1)</strong></p>
+            <div class="math-step">
+              ลำดับบิตศูนย์ 8 ตัวจะถูกแทนที่ด้วยรูปแบบ <code>0 0 0 V B 0 V B</code>
+              <br>เนื่องจากพัลส์ก่อนหน้าคือ +V:
+              <br>• 0 0 0
+              <br>• V = +V (Violation: ซ้ำขั้วเดิมเพื่อส่งสัญญาณเตือนเครื่องรับ)
+              <br>• B = -V (Bipolar: สลับขั้วตามปกติ)
+              <br>• 0
+              <br>• V = -V (Violation: ซ้ำขั้วของพัลส์ B ตัวก่อนหน้า)
+              <br>• B = +V (Bipolar: สลับขั้วตามปกติ)
+              <br>ลำดับแรงดันรวม: <code>+V, 0, 0, 0, +V, -V, 0, -V, +V, -V</code>
+              <br><em>พิสูจน์ความสมดุล DC:</em> ผลรวมพัลส์ในบล็อกแทนที่คือ (+V) + (-V) + (-V) + (+V) = <strong>0 โวลต์พอดี!</strong> ไม่มี DC ตกค้างและมีพัลส์สลับถึง 4 ครั้ง
+            </div>
+
+            <p><strong>กรณีที่ 3: การแทนที่ด้วย HDB3 (มาตรฐาน E1)</strong></p>
+            <div class="math-step">
+              HDB3 ตรวจจับทุกๆ 4 บิตศูนย์ (0000) ในที่นี้มี 8 ตัว จึงแบ่งเป็น 2 กลุ่มคือ [0000] กลุ่มแรก และ [0000] กลุ่มที่สอง
+              <br>• กลุ่มแรก: ก่อนหน้านี้มีพัลส์บิต 1 เพียง 1 ตัว (จำนวนคี่) จึงใช้รูปแบบ <code>0 0 0 V</code> -> จะได้ <code>0, 0, 0, +V</code>
+              <br>• กลุ่มที่สอง: นับตั้งแต่ V ตัวแรก มีพัลส์เกิดขึ้น 1 ตัว (คี่) จึงใช้ <code>0 0 0 V</code> -> ขั้วต้องสลับจาก V เดิมเพื่อรักษา DC จึงได้ <code>0, 0, 0, -V</code>
+              <br>ลำดับแรงดันรวม: <code>+V, 0, 0, 0, +V, 0, 0, 0, -V, +V</code>
+              <br><em>พิสูจน์:</em> ไม่มีช่วงว่างศูนย์ติดต่อกันเกิน 3 ตัว และรักษาสมดุลแรงดันเฉลี่ยได้อย่างสมบูรณ์แบบ
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Silicon & Hardware Reality Check -->
+      <section id="sec-silicon" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">8. Silicon &amp; Hardware Reality Check</span>
+        <h2 class="section-title">กายวิภาคระดับซิลิคอน: ชิปไดรเวอร์ วงจรกู้คืนสัญญาณนาฬิกา และการเผาผลาญพลังงาน CMOS</h2>
+
+        <p>
+          ในฮาร์ดแวร์จริง การตัดสินใจเลือกรหัสสายสัญญาณส่งผลกระทบโดยตรงต่อต้นทุนชิป ความร้อน และอายุการใช้งานแบตเตอรี่ของอุปกรณ์:
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">1. การสูญเสียพลังงานสวิตชิ่งในวงจร CMOS (CMOS Dynamic Power Dissipation)</h3>
+        <p>
+          วงจรดิจิทัลที่สร้างจากทรานซิสเตอร์ CMOS มีการใช้พลังงานหลักตามสมการ:
+        </p>
+        <div class="m-block">
+          <span class="m-var">P</span><span class="m-sub">dynamic</span>
+          <span class="m-op">=</span>
+          <span class="m-var">C</span><span class="m-sub">L</span>
+          <span class="m-op">·</span>
+          <span class="m-var">V</span><span class="m-sub">DD</span><span class="m-sup">2</span>
+          <span class="m-op">·</span>
+          <span class="m-var">f</span><span class="m-sub">switching</span>
+        </div>
+        <p style="font-size: 0.92rem; line-height: 1.7;">
+          โดยที่ C_L คือคาปาซิแตนซ์โหลด, V_DD คือแรงดันไฟเลี้ยง, และ f_switching คือความถี่ของการเปลี่ยนระดับแรงดัน
+          <br><strong>เหตุใดเครือข่ายเซนเซอร์ไร้สายจึงหลีกเลี่ยง Manchester บนสายส่ง:</strong>
+          เนื่องจาก Manchester บังคับให้เกิด Transition ในทุกๆ บิต ทำให้ f_switching สูงเป็น 2 เท่าของ NRZ ส่งผลให้วงจรขับสายส่ง (Line Driver) และภาคดิจิทัลของไมโครคอนโทรลเลอร์ <strong>กินพลังงานแบตเตอรี่สูงขึ้นเกือบ 100%!</strong> ด้วยเหตุนี้ ระบบเซนเซอร์ IoT ที่ใช้พลังงานต่ำจึงนิยมใช้ NRZ หรือ NRZ-I ควบคู่กับการสอดไส้บิต (Bit Stuffing) แทน
+        </p>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent); margin: 20px 0 10px;">2. วงจรกู้คืนสัญญาณนาฬิกาและข้อมูล (Clock and Data Recovery: CDR)</h3>
+        <p>
+          ชิป PHY ของอีเทอร์เน็ตและคอนโทรลเลอร์ความเร็วสูงจะบรรจุวงจร CDR ซึ่งประกอบด้วย <strong>Phase-Locked Loop (PLL)</strong>:
+          <br>• วงจร Phase Detector (PD) จะเปรียบเทียบเฟสระหว่างขอบสัญญาณข้อมูลขาเข้ากับสัญญาณนาฬิกาของ Voltage-Controlled Oscillator (VCO)
+          <br>• หากข้อมูลขาเข้านิ่งสนิทไม่มี Transition วงจรชาร์จปั๊ม (Charge Pump) จะสูญเสียแรงดันอ้างอิง ทำให้ความถี่ของ VCO เลื่อนลอย (Frequency Drift) จนหลุดล็อก (Loss of Lock)
+          นี่คือสาเหตุทางกายภาพที่สายสัญญาณต้องมีรหัส 4B/5B หรือการ Scrambling เพื่อรับประกันความหนาแน่นของการเปลี่ยนสถานะ (Transition Density ≥ 20%)
+        </p>
+      </section>
+
+      <!-- SECTION 9: Interactive Simulator -->
+      <section id="sec-simulator" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-sim">9. Interactive Simulator</span>
+        <h2 class="section-title">สตูดิโอจำลองรูปคลื่นรหัสสายสัญญาณเสมือนจริง (Line Coding Waveform Studio)</h2>
+
+        <p>
+          ทดลองป้อนกระแสบิตดิจิทัลและเลือกรหัสสายสัญญาณ เพื่อสังเกตรูปคลื่นแรงดันไฟฟ้าในโดเมนเวลา การตัดไฟตรง (DC Component) และความหนาแน่นของการสลับระดับสัญญาณ (Transition Density) แบบเรียลไทม์:
+        </p>
+
+        <div class="canvas-panel">
+          <div class="canvas-ctrl-grid">
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">กระแสบิตข้อมูล (Bitstream):</label>
+              <input type="text" id="sim-bits" value="1011000101" style="width: 100%; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); font-family: monospace; font-size: 1rem; margin-top: 6px;">
+            </div>
+
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 700; color: var(--ink);">รหัสสายสัญญาณ (Scheme):</label>
+              <select id="sim-scheme" style="width: 100%; padding: 8px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); font-size: 0.95rem; margin-top: 6px; background: var(--card-bg); color: var(--ink);">
+                <option value="unipolar-nrz">Unipolar NRZ</option>
+                <option value="polar-nrz-l">Polar NRZ-L</option>
+                <option value="polar-nrz-i">Polar NRZ-I</option>
+                <option value="bipolar-ami">Bipolar AMI</option>
+                <option value="manchester" selected>Manchester (IEEE 802.3)</option>
+                <option value="diff-manchester">Differential Manchester</option>
+              </select>
+            </div>
+
+            <div style="display: flex; align-items: flex-end; gap: 8px;">
+              <button id="btn-rand-bits" class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.88rem; flex: 1;">สุ่มบิตใหม่</button>
+            </div>
+          </div>
+
+          <!-- Real-time Metrics -->
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
+            <div class="metric-pill">
+              แรงดันไฟตรงเฉลี่ย (DC Component): <span id="metric-dc" class="metric-pill-val">0.00 V</span>
+            </div>
+            <div class="metric-pill">
+              ความหนาแน่นการเปลี่ยนระดับ (Transitions): <span id="metric-trans" class="metric-pill-val">100%</span>
+            </div>
+            <div class="metric-pill">
+              จำนวนสัญลักษณ์สัญญาณ: <span id="metric-baud" class="metric-pill-val">20 Symbols</span>
+            </div>
+          </div>
+
+          <div class="canvas-box">
+            <canvas id="canvas-wave" width="800" height="260"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Mastery Checklist -->
+      <section id="sec-checklist" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-check">10. Interactive Mastery Checklist</span>
+        <h2 class="section-title">เช็กลิสต์ประเมินความเข้าใจวิศวกรรม (Mastery Checklist)</h2>
+
+        <p>
+          คลิกที่หัวข้อเพื่อเปิดเฉลยคำตอบเชิงลึกและประเมินความพร้อมก่อนสอบ:
+        </p>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>1. ทำไม Manchester Encoding จึงไม่มีปัญหา DC Component แม้จะส่งบิต 1 ติดต่อกันเป็นพันบิต?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะในทุกๆ หนึ่งคาบบิต สัญญาณ Manchester จะแบ่งออกเป็นสองช่วงเวลาเท่าๆ กัน โดยครึ่งหนึ่งเป็นแรงดันบวก (+V) และอีกครึ่งหนึ่งเป็นแรงดันลบ (-V) เสมอ ทำให้พื้นที่ใต้กราฟแรงดันไฟฟ้าในแต่ละบิตรวมกันเป็นศูนย์อย่างสมบูรณ์ ส่งผลให้ค่าเฉลี่ยแรงดันสะสมเป็นศูนย์โวลต์ตลอดเวลา จึงไม่มี DC Component ตกค้าง
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>2. เหตุใด 4B/5B ร่วมกับ NRZ-I จึงดีกว่าการใช้ Manchester ในระบบ Fast Ethernet 100 Mbps?</span>
+          </div>
+          <div class="checklist-body">
+            เพราะ Manchester ต้องการอัตราโบด์ 200 Mbaud (แบนด์วิดท์ 100 MHz) ซึ่งเกินขีดจำกัดของสาย Cat 5 ในขณะที่ 4B/5B ทำการเพิ่มบิตเพียง 25% (จาก 100 Mbps เป็น 125 Mbps) และส่งด้วย NRZ-I ซึ่งมีอัตราโบด์เฉลี่ยเพียง 62.5 Mbaud (แบนด์วิดท์ 62.5 MHz) ทำให้สายทองแดงรองรับได้ โดยยังคงรับประกันว่าจะไม่มีเลขศูนย์ติดต่อกันเกิน 3 ตัว จึงไม่สูญเสียการซิงโครไนซ์สัญญาณนาฬิกา
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>3. ปรากฏการณ์ Baseline Wandering เกิดขึ้นจากสาเหตุใด และส่งผลร้ายต่อวงจรรับอย่างไร?</span>
+          </div>
+          <div class="checklist-body">
+            เกิดจากการที่สายสัญญาณส่งระดับแรงดันขั้วเดียวยาวนาน ทำให้คาปาซิเตอร์และวงจรอินพุตของเครื่องรับสะสมประจุจนค่าเฉลี่ยแรงดันอ้างอิง (Threshold) ขยับเลื่อนสูงขึ้น เมื่อมีพัลส์แรงดันระดับปกติเข้ามา วงจรเปรียบเทียบแรงดัน (Comparator) จะตัดสินใจผิดพลาดว่าระดับแรงดันนั้นต่ำกว่า Threshold หรือสูงกว่า Threshold ทำให้ถอดรหัสบิต 0 และ 1 สลับกัน
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>4. ในมาตรฐาน T1 หากส่งบิต 0 ติดต่อกัน 16 ตัว จะเกิดรหัส B8ZS อย่างไร และมีพัลส์กี่ลูก?</span>
+          </div>
+          <div class="checklist-body">
+            บิตศูนย์ 16 ตัวจะถูกมองเป็นสองบล็อก บล็อกละ 8 ตัว แต่ละบล็อกจะถูกแทนที่ด้วย 000VB0VB รวมสองบล็อกจะได้พัลส์แรงดันทั้งหมด 8 ลูก (บล็อกละ 4 ลูก: V, B, V, B) ทำให้เครื่องรับมีพัลส์ไฟฟ้าสำหรับกระตุ้นวงจร PLL ถึง 8 ครั้ง โดยที่ค่าเฉลี่ยกระแสตรงสุทธิยังคงเป็นศูนย์โวลต์
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>5. กฎ 6.02N + 1.76 dB บ่งบอกความสัมพันธ์อะไรในการออกแบบวงจร ADC?</span>
+          </div>
+          <div class="checklist-body">
+            บ่งบอกว่าทุกๆ 1 บิตความละเอียดของวงจรแปลงสัญญาณอนาล็อกเป็นดิจิทัล (ADC) ที่เพิ่มขึ้น จะช่วยกดสัญญาณรบกวนควอนไตเซชันลงและเพิ่มอัตราส่วน SNR ได้ประมาณ 6 dB (หรือช่วยเพิ่มช่วงไดนามิกขึ้นประมาณ 4 เท่าในเชิงกำลังงาน) เช่น ADC 12 บิต จะมี SNR_q สูงสุดประมาณ 74 dB
+          </div>
+        </div>
+
+        <div class="checklist-item" onclick="toggleCheck(this)">
+          <div class="checklist-header">
+            <input type="checkbox" class="checklist-checkbox">
+            <span>6. ในระบบ Delta Modulation หากสัญญาณเปลี่ยนระดับเร็วกว่าขนาดขั้นบันได Δ จะเกิดผลเสียอะไร?</span>
+          </div>
+          <div class="checklist-body">
+            จะเกิดความบิดเบือนจากการชันเกิน (Slope Overload Distortion) โดยบันไดประมาณการของเครื่องรับจะไม่สามารถไต่ตามความชันของสัญญาณจริงได้ทัน ส่งผลให้รูปคลื่นเสียงหรือข้อมูลถูกเฉือนยอด (Clipping) และสูญเสียรายละเอียดความถี่สูงไปอย่างถาวร
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: Mental Model Synthesis -->
+      <section id="sec-synthesis" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-theory">11. Mental Model Synthesis</span>
+        <h2 class="section-title">สรุปสังเคราะห์และโมเดลความคิด 3 มิติ (Mental Model Synthesis)</h2>
+
+        <div class="synthesis-grid">
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 1: การแลกเปลี่ยนแบนด์วิดท์กับความเรียบง่าย (Trade-offs)</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              ไม่มีรหัสสายสัญญาณใดสมบูรณ์แบบในทุกด้าน:
+              <br>• <strong>NRZ:</strong> แบนด์วิดท์แคบสุด (N/2) แต่วงจรมีปัญหา DC และ Clock Drift
+              <br>• <strong>Manchester:</strong> ปลอด DC และซิงค์นาฬิกา 100% แต่ยอมเสียแบนด์วิดท์เป็น 2 เท่า
+              <br>• <strong>Block 4B/5B:</strong> ทางสายกลาง เพิ่มแบนด์วิดท์เพียง 25% แต่ได้การซิงค์นาฬิกาครบถ้วน
+              <br>• <strong>Multilevel (2B1Q):</strong> บีบแบนด์วิดท์เหลือ N/4 แต่ต้องใช้วงจรรับที่ตรวจจับแรงดันได้ 4 ระดับ
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 2: บทบาทของฮาร์ดแวร์แม่เหล็ก (Magnetics)</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              อุปกรณ์เครือข่ายทุกชิ้นมีหม้อแปลงแยกสัญญาณ (Isolation Transformer) เพื่อป้องกันไฟกระชากและกราวด์ลูป หม้อแปลงทำงานด้วยการเหนี่ยวนำแม่เหล็กไฟฟ้า ซึ่งต้องการ <em>สนามแม่เหล็กที่เปลี่ยนแปลงตลอดเวลา (dΦ/dt ≠ 0)</em> สัญญาณไฟตรง (DC Component) จึงถูกกั้นขวางและกลายเป็นความร้อนสูญเปล่า รหัสสายสัญญาณที่ยอดเยี่ยมจึงต้องมีค่าเฉลี่ย DC เป็นศูนย์เสมอ
+            </p>
+          </div>
+
+          <div class="synthesis-card">
+            <div class="synthesis-title">มิติที่ 3: กฎการอนุรักษ์พลังงานในโหนดเซนเซอร์</div>
+            <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">
+              ในระบบสมองกลฝังตัวและโหนดเซนเซอร์ การเปลี่ยนระดับแรงดันของพิน I/O ทุกครั้งจะสูญเสียพลังงานชาร์จคาปาซิเตอร์ <code>C · V²</code> การเลือกรหัสที่มี Transition Density ต่ำแต่ยังซิงค์นาฬิกาได้ (เช่น NRZ-I with Stuffing) ช่วยยืดอายุแบตเตอรี่ของเซนเซอร์ได้นานกว่าการใช้ Manchester บนสายบัสอย่างมีนัยสำคัญ
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: Cross-Chapter WSN Links -->
+      <section id="sec-crosslinks" style="margin-bottom: 48px;">
+        <span class="blueprint-badge badge-cross">12. Cross-Chapter WSN Links</span>
+        <h2 class="section-title">ป้ายแท็กเชื่อมโยงสู่เครือข่ายเซนเซอร์ไร้สาย (Cross-Chapter WSN Links)</h2>
+
+        <div style="background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 22px;">
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.94rem; line-height: 1.8;">
+            <li>
+              <strong>การสื่อสาร RFID แบบพาสซีฟ (Passive RFID Tags):</strong>
+              แท็กเซนเซอร์ RFID ที่ไม่มีแบตเตอรี่ในตัวเอง ใช้รหัส <strong>Manchester Encoding</strong> ในการส่งข้อมูลย้อนกลับ (Backscatter) เนื่องจากแท็กต้องการพลังงานจากสนามแม่เหล็กไฟฟ้าอย่างต่อเนื่อง การมี Transition กึ่งกลางบิตอย่างสม่ำเสมอช่วยให้อุปกรณ์เหนี่ยวนำพลังงานและตรึงจังหวะเวลาได้พร้อมกัน
+            </li>
+            <li>
+              <strong>การเชื่อมต่อเซนเซอร์ผ่าน UART / RS-485:</strong>
+              ในการเชื่อมต่อระหว่างไมโครคอนโทรลเลอร์กับเซนเซอร์อุตสาหกรรม (เช่น เซนเซอร์วัดคุณภาพน้ำ Modbus RTU ผ่าน RS-485) จะใช้รหัส <strong>NRZ</strong> ร่วมกับการแทรกบิต Start/Stop เพื่อแก้ปัญหาการหลุดซิงค์โดยไม่ต้องใช้วงจร Phase-Locked Loop ราคาแพง
+            </li>
+            <li>
+              <strong>ทำไมคลื่นวิทยุ IEEE 802.15.4 (CC2420) จึงไม่ใช้ Line Coding ส่งตรง?</strong>
+              คลื่นวิทยุไม่สามารถส่งพัลส์สี่เหลี่ยมดิจิทัลตรงๆ ได้เนื่องจากข้อจำกัดของเสาอากาศและแถบความถี่ จึงต้องนำบิตดิจิทัลเหล่านี้ไปผ่านการมอดูเลตแอนะล็อกใน <a class="term-link" href="ch05.html">บทที่ 5: Analog Transmission (O-QPSK)</a> และกระจายแถบความถี่ใน <a class="term-link" href="ch06.html">บทที่ 6: Multiplexing &amp; Spreading (DSSS)</a> ต่อไป
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navigation Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1.5px solid var(--rule); padding-top: 24px; margin-top: 40px; flex-wrap: wrap; gap: 16px;">
+        <a href="ch03.html" class="btn btn-secondary">← บทก่อนหน้า: บทที่ 3 Data and Signals</a>
+        <a href="ch05.html" class="btn btn-primary">บทถัดไป: บทที่ 5 Analog Transmission →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ═══════════ Embedded Script for Interactive Line Coding Simulator ═══════════ -->
+  <script>
+    (function () {
+      const bitInput = document.getElementById('sim-bits');
+      const schemeSelect = document.getElementById('sim-scheme');
+      const btnRand = document.getElementById('btn-rand-bits');
+      const canvas = document.getElementById('canvas-wave');
+      const ctx = canvas.getContext('2d');
+
+      const metricDc = document.getElementById('metric-dc');
+      const metricTrans = document.getElementById('metric-trans');
+      const metricBaud = document.getElementById('metric-baud');
+
+      function sanitizeBits(str) {
+        return str.replace(/[^01]/g, '') || '1010';
+      }
+
+      function drawWaveform() {
+        const bits = sanitizeBits(bitInput.value);
+        bitInput.value = bits;
+        const scheme = schemeSelect.value;
+
+        // Resize canvas for display
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = 260 * dpr;
+        ctx.scale(dpr, dpr);
+
+        const width = rect.width;
+        const height = 260;
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Background grid & axes
+        const padX = 40;
+        const padY = 30;
+        const plotW = width - padX * 2;
+        const plotH = height - padY * 2;
+        const midY = padY + plotH / 2;
+        const topY = padY + 20;
+        const botY = padY + plotH - 20;
+
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 1;
+
+        // Zero axis
+        ctx.beginPath();
+        ctx.setLineDash([4, 4]);
+        ctx.moveTo(padX, midY);
+        ctx.lineTo(padX + plotW, midY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Labels
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '11px sans-serif';
+        ctx.fillText('+V', 12, topY + 4);
+        ctx.fillText(' 0V', 12, midY + 4);
+        ctx.fillText('-V', 12, botY + 4);
+
+        const nBits = bits.length;
+        const bitW = plotW / nBits;
+
+        // Draw vertical bit clock boundaries
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= nBits; i++) {
+          const x = padX + i * bitW;
+          ctx.beginPath();
+          ctx.moveTo(x, padY);
+          ctx.lineTo(x, padY + plotH);
+          ctx.stroke();
+
+          if (i < nBits) {
+            ctx.fillStyle = '#f8fafc';
+            ctx.font = 'bold 13px monospace';
+            ctx.fillText(bits[i], x + bitW / 2 - 4, padY - 8);
+          }
+        }
+
+        // Generate levels array for wave points
+        // Points: array of {x, y, level}
+        const pts = [];
+        let transitions = 0;
+        let sumLevel = 0;
+        let totalSamples = 0;
+
+        let lastPol = -1; // for AMI (starts with next bit 1 being +1)
+        let lastNRZI = 1; // for NRZ-I
+        let lastDiffM = -1; // for Diff Manchester
+
+        if (scheme === 'unipolar-nrz') {
+          for (let i = 0; i < nBits; i++) {
+            const b = bits[i] === '1';
+            const lvl = b ? 1 : 0;
+            const y = b ? topY : midY;
+            pts.push({ x: padX + i * bitW, y: y, lvl: lvl });
+            pts.push({ x: padX + (i + 1) * bitW, y: y, lvl: lvl });
+            sumLevel += lvl;
+            totalSamples++;
+            if (i > 0 && bits[i] !== bits[i - 1]) transitions++;
+          }
+        } else if (scheme === 'polar-nrz-l') {
+          for (let i = 0; i < nBits; i++) {
+            const b = bits[i] === '1';
+            const lvl = b ? -1 : 1;
+            const y = b ? botY : topY;
+            pts.push({ x: padX + i * bitW, y: y, lvl: lvl });
+            pts.push({ x: padX + (i + 1) * bitW, y: y, lvl: lvl });
+            sumLevel += lvl;
+            totalSamples++;
+            if (i > 0 && bits[i] !== bits[i - 1]) transitions++;
+          }
+        } else if (scheme === 'polar-nrz-i') {
+          for (let i = 0; i < nBits; i++) {
+            if (bits[i] === '1') {
+              lastNRZI = -lastNRZI;
+              transitions++;
+            }
+            const y = lastNRZI > 0 ? topY : botY;
+            pts.push({ x: padX + i * bitW, y: y, lvl: lastNRZI });
+            pts.push({ x: padX + (i + 1) * bitW, y: y, lvl: lastNRZI });
+            sumLevel += lastNRZI;
+            totalSamples++;
+          }
+        } else if (scheme === 'bipolar-ami') {
+          for (let i = 0; i < nBits; i++) {
+            let lvl = 0;
+            if (bits[i] === '1') {
+              lastPol = -lastPol;
+              lvl = lastPol;
+              transitions++;
+            }
+            const y = lvl === 0 ? midY : (lvl > 0 ? topY : botY);
+            pts.push({ x: padX + i * bitW, y: y, lvl: lvl });
+            pts.push({ x: padX + (i + 1) * bitW, y: y, lvl: lvl });
+            sumLevel += lvl;
+            totalSamples++;
+          }
+        } else if (scheme === 'manchester') {
+          for (let i = 0; i < nBits; i++) {
+            const b = bits[i] === '1';
+            const lvl1 = b ? -1 : 1;
+            const lvl2 = b ? 1 : -1;
+            const y1 = lvl1 > 0 ? topY : botY;
+            const y2 = lvl2 > 0 ? topY : botY;
+            const halfX = padX + (i + 0.5) * bitW;
+
+            pts.push({ x: padX + i * bitW, y: y1, lvl: lvl1 });
+            pts.push({ x: halfX, y: y1, lvl: lvl1 });
+            pts.push({ x: halfX, y: y2, lvl: lvl2 });
+            pts.push({ x: padX + (i + 1) * bitW, y: y2, lvl: lvl2 });
+
+            transitions++; // Middle transition
+            if (i > 0 && bits[i] === bits[i - 1]) transitions++; // Edge transition
+            sumLevel += (lvl1 + lvl2) / 2;
+            totalSamples++;
+          }
+        } else if (scheme === 'diff-manchester') {
+          for (let i = 0; i < nBits; i++) {
+            if (bits[i] === '0') {
+              lastDiffM = -lastDiffM; // Invert at start for 0
+              transitions++;
+            }
+            const lvl1 = lastDiffM;
+            const lvl2 = -lastDiffM; // Invert in middle
+            transitions++;
+            lastDiffM = lvl2;
+
+            const y1 = lvl1 > 0 ? topY : botY;
+            const y2 = lvl2 > 0 ? topY : botY;
+            const halfX = padX + (i + 0.5) * bitW;
+
+            pts.push({ x: padX + i * bitW, y: y1, lvl: lvl1 });
+            pts.push({ x: halfX, y: y1, lvl: lvl1 });
+            pts.push({ x: halfX, y: y2, lvl: lvl2 });
+            pts.push({ x: padX + (i + 1) * bitW, y: y2, lvl: lvl2 });
+            sumLevel += (lvl1 + lvl2) / 2;
+            totalSamples++;
+          }
+        }
+
+        // Draw waveform path
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.lineJoin = 'miter';
+        ctx.beginPath();
+        for (let i = 0; i < pts.length; i++) {
+          if (i === 0) ctx.moveTo(pts[i].x, pts[i].y);
+          else ctx.lineTo(pts[i].x, pts[i].y);
+        }
+        ctx.stroke();
+
+        // Calculate and display metrics
+        const avgDc = totalSamples > 0 ? (sumLevel / totalSamples) : 0;
+        const transDensity = nBits > 0 ? ((transitions / nBits) * 100).toFixed(0) : '0';
+
+        metricDc.textContent = (avgDc > 0 ? '+' : '') + avgDc.toFixed(2) + ' V';
+        metricDc.style.color = Math.abs(avgDc) < 0.05 ? 'var(--green)' : 'var(--red)';
+
+        metricTrans.textContent = transDensity + '%';
+        metricTrans.style.color = parseInt(transDensity) >= 50 ? 'var(--green)' : 'var(--accent2)';
+
+        metricBaud.textContent = scheme.includes('manchester') ? (nBits * 2) + ' Symbols' : nBits + ' Symbols';
+      }
+
+      btnRand.addEventListener('click', () => {
+        let b = '';
+        for (let i = 0; i < 10; i++) b += Math.random() > 0.5 ? '1' : '0';
+        bitInput.value = b;
+        drawWaveform();
+      });
+
+      bitInput.addEventListener('input', drawWaveform);
+      schemeSelect.addEventListener('change', drawWaveform);
+      window.addEventListener('resize', drawWaveform);
+
+      drawWaveform();
+    })();
+  </script>
+
+</body>
+
+</html>
