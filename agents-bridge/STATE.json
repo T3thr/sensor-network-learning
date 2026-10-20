@@ -3,8 +3,14 @@
   "current_chapter": "Chapter 1: Introduction to WSN and Node Anatomy",
   "active_turn": "MIMO_TERMINAL",
   "next_role": "MIMO_TERMINAL",
-  "turn_counter": 11,
-  "last_updated": "2026-10-20T08:40:00Z",
+  "turn_counter": 12,
+  "last_updated": "2026-10-20T08:54:00Z",
+  "git_repository": {
+    "remote_url": "https://github.com/T3thr/sensor-network-learning",
+    "remote_ssh": "ssh://git@github.com/T3thr/sensor-network-learning.git",
+    "branch": "main",
+    "status": "synchronized"
+  },
   "canonical_separation": {
     "directive": "Only Track1 datacom/ and Track2 lecture 305141 + textbook/wireless-sensor-networks.pdf are exam content",
     "track1_source": "datacom/ (Forouzan 14 chapters) owned by agent_alpha",

@@ -315,12 +315,20 @@
      - ch04: 1,378 บรรทัด | Dollars: 0 | Em-dashes: 0 | Emojis: 0
      - ch05: 1,251 บรรทัด | Dollars: 0 | Em-dashes: 0 | Emojis: 0
      - ch06: 1,261 บรรทัด | Dollars: 0 | Em-dashes: 0 | Emojis: 0
-
+- **บันทึกที่ 14 (Agent Alpha - Git Repository & Remote Setup):**
+   1. **การเชื่อมต่อ Git Remote สมบูรณ์แบบ:**
+      - ได้ทำการ Initialized git repository ด้วยกิ่งหลัก `main` ในไดเรกทอรีโครงการ
+      - สร้าง `.gitignore` เพื่อคัดกรองไฟล์ระบบปฏิบัติการ (`.DS_Store`), แคชไพธอน (`__pycache__`), และไฟล์บันทึกการทำงานของระบบ (`logs/*.log`, `logs/*.pid`)
+      - เชื่อมต่อ Remote Repository ไปยัง `https://github.com/T3thr/sensor-network-learning` (ผ่าน `ssh://git@github.com/T3thr/sensor-network-learning.git` ภายใต้ตัวตนยืนยันสิทธิ์ `T3thr`)
+   2. **การอัปโหลดขึ้นคลาวด์:**
+      - บันทึกคอมมิตประวัติแรก `feat: initial commit for sensor network and data communications learning platform` รวมทั้งสิ้น 911 ไฟล์ (255,880 บรรทัด)
+      - ทำการ `git push -u origin main` ขึ้นสู่ GitHub สำเร็จเรียบร้อย พร้อมตั้งค่า tracking branch `main -> origin/main`
+      - สภาพ Working Tree บนเครื่องสะอาดหมดจด (nothing to commit, working tree clean)
 
 ---
 
 ## 3. ส่วนส่งต่องานประจำรอบ (3-Line Agent Handoff Footer)
 
-- สถานะปัจจุบัน: DataCom Ch 1-6 เปิดตัวสมบูรณ์แบบ (>1,250 - 1,440 บรรทัดต่อบท), Scrollspy top 140 ซิงค์เรียลไทม์ทุกบท, ลิงก์เชื่อมโยงสองทิศทาง Ch 1-6 ไร้รอยต่อ, Mega Menu ติดป้าย Active ครบ 6 บท
-- งานที่ส่งต่อ: Agent Bravo เดินหน้าพัฒนา iot/ch02.html (IoT System Architectures) ส่วน Agent Alpha เตรียมขยายผลสู่บทที่ 7 (Transmission Media: Guided vs Wireless) และบทที่ 8 (Switching)
-- การเตรียมพร้อม: วิดเจ็ตอินเทอร์แอคทีฟ Line Coding, Constellation Diagram, และ TDM/DSSS ใช้งานได้เสถียร 100% บนทุกเบราว์เซอร์
+- สถานะปัจจุบัน: DataCom Ch 1-6 และโครงสร้างระบบทั้งหมดถูก Sync ขึ้น GitHub Remote (`T3thr/sensor-network-learning`) เรียบร้อยแล้ว, Working Tree สะอาด 100%
+- งานที่ส่งต่อ: Agent Bravo เดินหน้าพัฒนา iot/ch02.html (IoT System Architectures) ส่วน Agent Alpha พร้อมขยายผลสู่ DataCom Ch 7 (Transmission Media) และ Ch 8 (Switching)
+- การเตรียมพร้อม: ระบบ Git Remote พร้อมรองรับการ push อัปเดตเนื้อหาบทเรียนใหม่และการทำงานร่วมกันของทั้งสองเอเจนต์อย่างไร้รอยต่อ
